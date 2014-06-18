@@ -12,20 +12,20 @@ npm install -g ./SassDoc
 ## Usage
 
 ```sh
-sassdoc source_folder destination_folder
+sassdoc <src> <dest>
 ```
 
 Or if installed locally:
 
 ```sh
 # Unix
-bin/sassdoc source_folder destination_folder
+bin/sassdoc <src> <dest>
 
 # Windows
-node bin/sassdoc source_folder destination_folder
+node bin/sassdoc <src> <dest>
 ```
 
 ### Arguments
 
-1. Path to your Sass folder
-1. Path to the destination folder
+1. *src* Path to your Sass folder
+1. *dest* Path to the destination folder
