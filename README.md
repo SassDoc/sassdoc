@@ -28,13 +28,11 @@ bin/sassdoc <src> <dest>
 
 ## Description block
 
-### Available tokens
-
-#### Name
+### Name
 
 Self parsed.
 
-#### Scope
+### Scope
 
 Either of the 3. None is considered `@public`.
 
@@ -44,23 +42,24 @@ Either of the 3. None is considered `@public`.
 // @protected
 ```
 
-#### Parameters
+### Parameters
 
 ```scss
+// @param [type] $name: description
 // @param [type] $name (default value): description
 ```
 
-#### Return
+### Return
 
 ```scss
 // @return [type]
 ```
 
-#### Description
+### Description
 
 Any line which is not one of the previous tokens or a separator line is considered part of the description.
 
-### Example
+## Example
 
 ```scss
 // Description ...
@@ -76,6 +75,8 @@ Any line which is not one of the previous tokens or a separator line is consider
   // ...
 }
 ```
+
+It works exactly the same with mixins.
 
 ## Credits
 
