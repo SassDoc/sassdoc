@@ -26,6 +26,9 @@ module.exports.documentize = function (source, destination) {
 
     // Copy CSS into dist folder
     this.copyCSS(destination);
+
+    // Build index
+    this.buildIndex(destination, files);
   }.bind(this));
 };
 
@@ -52,27 +55,41 @@ module.exports.generateFolder = function (folder) {
 
 // Read, parse then write a file
 module.exports.processFile = function (file, source, destination) {
-  var source = source + '/' + file,
-      dest = helpers.removeExtension(destination + '/' + file) + '.html';
+  var dest = destination + '/' + file;
 
   // Parse file
-  fs.readFile(source, 'utf-8', function (err, data) {
+  fs.readFile(source + '/' + file, 'utf-8', function (err, data) {
     if (err) throw err;
 
-    // Generate HTML response
-    var template = swig.compileFile(__dirname + '/../assets/templates/default.html.swig');
-    var content = template({
+    this.writeFile(dest, '/../assets/templates/file.html.swig', {
       data: parser.parseFile(data),
-      title: destination + '/' + file,
+      title: dest,
       base_class: 'sassdoc'
     });
 
-    // Write output
-    fs.writeFile(dest, content, function (err) {
-      if (err) throw err;
-
-      // Log
-      console.log(helpers.getDateTime() + ' :: File `' + dest + '` successfully generated.');
-    });
   }.bind(this));
+};
+
+module.exports.writeFile = function (destination, template, data) {
+  var dest = helpers.removeExtension(destination) + '.html';
+  var tmp = swig.compileFile(__dirname + template);
+  var content = tmp(data);
+
+  fs.writeFile(destination, content, function (err) {
+    if (err) throw err;
+
+    // Log
+    console.log(helpers.getDateTime() + ' :: File `' + dest + '` successfully generated.');
+  });
+};
+
+module.exports.buildIndex = function (destination, files) {
+  files = files.map(function (file) {
+    return helpers.removeExtension(file) + '.html';
+  });
+
+  this.writeFile(destination + '/index.html', '/../assets/templates/index.html.swig', {
+    files: files,
+    base_class: 'sassdoc'
+  });
 };
