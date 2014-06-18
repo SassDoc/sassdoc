@@ -1,0 +1,25 @@
+{
+  "name": "SassDoc",
+  "description": "Like JSDoc but for Sass files.",
+  "author": "Hugo Giraudel",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HugoGiraudel/SassDoc"
+  },
+  "homepage": "https://github.com/HugoGiraudel/SassDoc",
+  "keywords": [
+    "sass",
+    "scss",
+    "doc",
+    "jsdoc"
+  ],
+  "bugs": {
+    "url": "https://github.com/HugoGiraudel/SassDoc/issues"
+  },
+  "main": "sassdoc.js",
+  "dependencies": {
+    "swig": "~1.3.2"
+  }
+}
