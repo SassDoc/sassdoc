@@ -7,5 +7,5 @@ if (userArguments.length > 1) {
 }
 
 else {
-  throw "Not enough arguments.";
+  throw 'Not enough arguments.';
 }
