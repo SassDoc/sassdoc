@@ -80,7 +80,7 @@ module.exports.parseCommentBlock = function (comments) {
 // Run
 module.exports.parseFile = function (content) {
   var array = content.split("\n"),
-      tree = { 'functions': [], 'mixins': [] };
+      tree = []; //{ 'functions': [], 'mixins': [] };
 
   // Looping through the file
   array.forEach(function (line, index) {
@@ -89,9 +89,10 @@ module.exports.parseFile = function (content) {
     // If it's either a mixin or a function
     if (isCallable) {
       var item = this.parseCommentBlock(this.findCommentBlock(index, array));
+      item.type = isCallable[1];
       item.name = isCallable[2];
 
-      tree[isCallable[1] + 's'].push(item);
+      tree.push(item);
     }
   }.bind(this));
 

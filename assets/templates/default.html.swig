@@ -9,9 +9,9 @@
 <article class="{{ base_class }}">
   <h1 class="{{ base_class }}__title">SassDoc :: {{ title }}</h1>
   <div class="{{ base_class }}__container">
-    {% for item in data.functions %}
+    {% for item in data %}
       <section class="{{ base_class }}__item">
-        <h2 class="{{ base_class }}__item-name">{{ item.name }}</h2>
+        <h2 class="{{ base_class }}__item-name"><span class="{{ base_class }}__item-type">{{ item.type }}</span> {{ item.name }}</h2>
         <p class="{{ base_class }}__item-description">{{ item.description }}</p>
           <h3>Parameters</h3>
           {% if item.parameters.length > 0 %}
@@ -55,7 +55,7 @@
             <p>None.</p>
           {% endif %}
           <h3>Signature</h3>
-          <pre class="{{ base_class }}__item-code"><code>@function {{ item.name }}({{ parameters_string }}) { ... }</code></pre>
+          <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }}({{ parameters_string }}) { ... }</code></pre>
       </section>
     {% endfor %}
   </div>

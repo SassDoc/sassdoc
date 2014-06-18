@@ -57,10 +57,23 @@ body {
 
 .sassdoc__item-parameters tr:nth-of-type(even),
 .sassdoc__item-parameters thead {
-  background: rgba(0,0,0,.1);
+  background: #ccc;
 }
 
 .sassdoc__item-code {
-  background: rgba(0,0,0,.1);
+  background: #ccc;
   padding: .5em;
+}
+
+.sassdoc__item-type {
+  color: #bbb;
+  text-transform: capitalize;
+}
+
+.sassdoc__item-type::before {
+  content: '[';
+}
+
+.sassdoc__item-type::after {
+  content: ']';
 }
