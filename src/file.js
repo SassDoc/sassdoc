@@ -77,6 +77,15 @@ module.exports.copyCSS = function (destination) {
 
 // Build index page
 module.exports.buildIndex = function (destination, files) {
+  // Write index file
+  this.writeFile(destination, 'index.html', 'index.html.swig', {
+    files: this.buildIndexTree(files),
+    base_class: 'sassdoc',
+    asset_path: helpers.assetPath(destination, 'css/styles.css')
+  });
+};
+
+module.exports.buildIndexTree = function (files) {
   // Loop over files
   for (var i = 0; i < files.length; i++) {
     // Remove dotfiles
@@ -95,12 +104,7 @@ module.exports.buildIndex = function (destination, files) {
     }
   }
 
-  // Write index file
-  this.writeFile(destination, 'index.html', 'index.html.swig', {
-    files: files,
-    base_class: 'sassdoc',
-    asset_path: helpers.assetPath(destination, 'css/styles.css')
-  });
+  return files;
 };
 
 
