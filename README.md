@@ -2,16 +2,30 @@
 
 SassDoc. Like JSDoc, but for Sass files.
 
+## Installation
+
+```sh
+git clone https://github.com/HugoGiraudel/SassDoc.git
+npm install -g ./SassDoc
+```
 
 ## Usage
 
-```bash
-node sassdoc.js source_folder destination_folder
+```sh
+sassdoc <src> <dest>
+```
+
+Or if installed locally:
+
+```sh
+# Unix
+bin/sassdoc <src> <dest>
+
+# Windows
+node bin/sassdoc <src> <dest>
 ```
 
 ### Arguments
 
-1. `node`
-2. `sassdoc.js`
-3. Path to your Sass folder
-4. Path to the destination folder
+1. *src* Path to your Sass folder.
+1. *dest* Path to the destination folder.

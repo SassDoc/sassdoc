@@ -18,8 +18,11 @@
   "bugs": {
     "url": "https://github.com/HugoGiraudel/SassDoc/issues"
   },
-  "main": "sassdoc.js",
+  "main": "src/api.js",
   "dependencies": {
     "swig": "~1.3.2"
+  },
+  "bin": {
+    "sassdoc": "bin/sassdoc"
   }
 }
