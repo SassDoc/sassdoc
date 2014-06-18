@@ -2,6 +2,24 @@
 
 SassDoc. Like JSDoc, but for Sass files.
 
+## Example
+
+```scss
+// Returns opposite-position of positions
+// ---
+// @param [list] $positions: positions
+// ---
+// @return [string|null]
+
+@function opposite-direction($positions) {
+  // ...
+}
+```
+
+![SassDoc](http://i.imgur.com/BrzU2Ic.png)
+
+*Note: it works exactly the same with mixins.*
+
 ## Installation
 
 ```sh
@@ -58,27 +76,6 @@ Either of the 3. None is considered `@public`.
 ### Description
 
 Any line which is not one of the previous tokens or a separator line is considered part of the description.
-
-## Example
-
-```scss
-// Description ...
-// ... on multiple lines if you will
-// ---
-// @private
-// ---
-// @param [type] $parameter (default value): description of the parameter
-// ---
-// @return [type]
-
-@function whatever($parameter: default value) {
-  // ...
-}
-```
-
-![SassDoc](http://i.imgur.com/BrzU2Ic.png)
-
-It works exactly the same with mixins.
 
 ## Credits
 
