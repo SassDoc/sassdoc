@@ -5,14 +5,22 @@ var parser = require('./parser');
 
 // Test if folder exists
 // If it doesn't, create it
-module.exports.generateFolder = function (folder) {
+module.exports.createFolder = function (folder, callback) {
   // Test whether destination exists
   fs.exists(folder, function (exists) {
-    if (exists) return;
+    // If it exists, execute callback
+    if (exists && typeof callback === "function") {
+      callback();
+      return;
+    }
 
     // If it doesn't exist, create it
     fs.mkdir(folder, function () {
       console.log(helpers.getDateTime() + ' :: Folder `' + folder + '` successfully created.');
+
+      if (typeof callback === "function") {
+        callback();
+      }
     });
   });
 };
@@ -47,4 +55,8 @@ module.exports.processFile = function (file, source, destination) {
     });
 
   }.bind(this));
+};
+
+module.exports.copyFile = function (source, destination) {
+  fs.createReadStream(source).pipe(fs.createWriteStream(destination));
 };

@@ -5,37 +5,40 @@ var fileHelpers = require('./file');
 // Main API function
 // Run the whole thing
 module.exports.documentize = function (source, destination) {
-  // Read folder
-  fs.readdir(source, function (err, files) {
-    if (err) throw err;
+  var self = this;
 
-    // Test whether destination exists
-    fileHelpers.generateFolder(destination);
+  // Create destination folder
+  fileHelpers.createFolder(destination, function () {
+    // CSS
+    self.copyCSS(destination);
 
-    // Loop over the files
-    files.forEach(function (file) {
-      // If not a SCSS file, break
-      if (helpers.getExtension(file) !== "scss") {
-        return;
-      }
+    // Parse source folder
+    fs.readdir(source, function (err, files) {
+      // Build index
+      self.buildIndex(destination, files);
 
-      // Process the file
-      fileHelpers.processFile(file, source, destination);
-    }.bind(this));
+      // Loop over the files
+      files.forEach(function (file) {
+        // If not a SCSS file, break
+        if (helpers.getExtension(file) !== "scss") {
+          return;
+        }
 
-    // Copy CSS into dist folder
-    this.copyCSS(destination);
+        // Process file
+        fileHelpers.processFile(file, source, destination);
+      });
+    });
 
-    // Build index
-    this.buildIndex(destination, files);
-  }.bind(this));
+  });
 };
 
 // Copy the CSS file from the assets folder to the dist folder
 module.exports.copyCSS = function (destination) {
-  var folderName = 'css';
-  fileHelpers.generateFolder(destination + '/' + folderName);
-  fs.createReadStream('./assets/' + folderName + '/styles.css').pipe(fs.createWriteStream(destination + '/' + folderName + '/styles.css'));
+  var cssFolder = destination + '/css';
+
+  fileHelpers.createFolder(cssFolder, function () {
+    fileHelpers.copyFile('./assets/css/styles.css', cssFolder + '/styles.css');
+  });
 };
 
 // Build index page
