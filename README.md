@@ -9,7 +9,7 @@ SassDoc. Like JSDoc, but for Sass files.
 // ---
 // @param {list} $positions - list of positions
 // ---
-// @return [string | null]
+// @returns {string | null}
 
 @function opposite-direction($positions) {
   // ...
@@ -63,14 +63,15 @@ Either of the 3. None is considered `@public`.
 ### Parameters
 
 ```scss
-// @param [type] $name: description
-// @param [type] $name (default value): description
+// @param {type} $name - description
+// @param {type} $name (default value) - description of the parameter
 ```
 
 ### Return
 
 ```scss
-// @return [type]
+// @return {type}
+// @return {type} Description of the return statement
 ```
 
 ### Description
