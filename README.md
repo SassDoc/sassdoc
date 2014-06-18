@@ -18,11 +18,7 @@ sassdoc <src> <dest>
 Or if installed locally:
 
 ```sh
-# Unix
 bin/sassdoc <src> <dest>
-
-# Windows
-node bin/sassdoc <src> <dest>
 ```
 
 ### Arguments
