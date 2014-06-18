@@ -7,7 +7,7 @@ module.exports.isParameter = function (line) {
 };
 
 module.exports.isReturn = function (line) {
-  return line.match(/^\/{2,}\s*@return\s+\[(.+)\]/i);
+  return line.match(/^\/{2,}\s*@returns(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})(?:\s+([\w-\s]*))?/i);
 };
 
 module.exports.isScope = function (line) {

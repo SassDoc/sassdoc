@@ -2,7 +2,7 @@
 // ---
 // @param {list} $positions - list of positions
 // ---
-// @return [string | null]
+// @returns {string | null}
 
 @function opposite-direction($directions) {
   $opposite-directions: ();
@@ -33,7 +33,7 @@
 // @param {number} $min - minimum value
 // @param {number} $max - maximum value
 // ---
-// @return [number | false]
+// @returns {number | false}
 
 @function clamp($value, $min, $max) {
   @if type-of($value) != "number" or type-of($min) != "number" or type-of($max) != "number" {
@@ -48,7 +48,7 @@
 // ---
 // @param {number} $cdn (1) - CDN ID
 // ---
-// @return [string]
+// @returns {string}
 
 @function base-path($cdn: 1) {
   @return "http://media" + clamp($cdn, 1, 4) + ".tootici.fr/bundles/squarecofront/";
@@ -58,7 +58,7 @@
 // ---
 // @param {string} $path - asset path
 // ---
-// @return [string]
+// @returns {string}
 
 @function asset($type, $path) {
   @return url(base-path() + $type + $path);
@@ -68,7 +68,7 @@
 // ---
 // @param {string} $path - asset path
 // ---
-// @return [string]
+// @returns {string}
 
 @function image($path) {
   @return asset("images/", $path);
@@ -79,7 +79,7 @@
 // ---
 // @param {string} $component - component
 // ---
-// @return [number | null]
+// @returns {number | null}
 
 @function z($component) {
   @if not map-has-key($z-indexes, $component) {
@@ -94,7 +94,7 @@
 // ---
 // @param {string} $color - color to fetch
 // ---
-// @return [color | null]
+// @returns {color | null}
 
 @function color($color) {
   @if not map-has-key($colors, $color) {
@@ -109,7 +109,7 @@
 // ---
 // @param {string} $font-stack - font-stack to fetch
 // ---
-// @return [list | null]
+// @returns {list | null}
 
 @function font($font-stack) {
   @if not map-has-key($font-stacks, $font-stack) {
@@ -124,7 +124,7 @@
 // ---
 // @param {string} $keys - keys to fetch
 // ---
-// @return [color | null]
+// @returns {color | null}
 
 @function theme($keys...) {
   @return map-fetch($themes, $keys...);
@@ -136,7 +136,7 @@
 // @param {map} $map - map
 // @param {literal} $key - key to fetch
 // ---
-// @return [literal | null]
+// @returns {literal | null}
 
 @function map-get($map, $key) {
   @each $tuple in $map {
@@ -154,7 +154,7 @@
 // @param {map} $map - map
 // @param {literal} $key - key to check
 // ---
-// @return [bool]
+// @returns {bool}
 
 @function map-has-key($map, $key) {
   @each $tuple in $map {
@@ -171,7 +171,7 @@
 // @param {map} $map - map
 // @param {argList} $keys - keys to fetch
 // ---
-// @return [literal]
+// @returns {literal}
 
 @function map-fetch($map, $keys...) {
   @each $key in $keys {
