@@ -1,0 +1,182 @@
+// Returns opposite-position of positions
+// ---
+// @param [list] $positions : positions
+// ---
+// @return [string] | [null]
+
+@function opposite-direction($directions) {
+  $opposite-directions: ();
+  $direction-map: (
+    "top"    "bottom",
+    "right"    "left",
+    "bottom"    "top",
+    "left"    "right",
+    "ltr"       "rtl",
+    "rtl"       "ltr"
+  );
+
+  @each $direction in $directions {
+    @if not map-has-key($direction-map, $direction) {
+      @warn "No opposite direction can be found for `#{$direction}`.";
+      @return null;
+    }
+
+    $opposite-directions: append($opposite-directions, map-get($direction-map, $direction));
+  }
+
+  @return $opposite-directions;
+}
+
+// Clamp
+// ---
+// @param [number] $value : value to clamp
+// @param [number] $min : min
+// @param [number] $max : max
+// ---
+// @return [number] | false
+
+@function clamp($value, $min, $max) {
+  @if type-of($value) != "number" or type-of($min) != "number" or type-of($max) != "number" {
+    @warn "All parameters must be numbers for `clamp`.";
+    @return null;
+  }
+
+  @return if($value > $max, $max, if($value < $min, $min, $value));
+}
+
+// Return base path
+// ---
+// @param [number] $cdn (1) : CDN ID
+// ---
+// @return [string]
+
+@function base-path($cdn: 1) {
+  @return "http://media" + clamp($cdn, 1, 4) + ".tootici.fr/bundles/squarecofront/";
+}
+
+// Asset handler
+// ---
+// @param [string] $path : asset path
+// ---
+// @return [string]
+
+@function asset($type, $path) {
+  @return url(base-path() + $type + $path);
+}
+
+// Image URL function
+// ---
+// @param [string] $path : asset path
+// ---
+// @return [string]
+
+@function image($path) {
+  @return asset("images/", $path);
+}
+
+// Function handling z-index
+// See _variables.scss -> $z-indexes map
+// ---
+// @param [string] $component : component
+// ---
+// @return [number] | [null]
+
+@function z($component) {
+  @if not map-has-key($z-indexes, $component) {
+    @warn "No z-index found for `#{$component}`.";
+  }
+
+  @return map-get($z-indexes, $component);
+}
+
+// Function handling colors
+// See _variables.scss -> $colors map
+// ---
+// @param [string] $color : color to fetch
+// ---
+// @return [color] | [null]
+
+@function color($color) {
+  @if not map-has-key($colors, $color) {
+    @warn "No color found for `#{$color}`.";
+  }
+
+  @return map-get($colors, $color);
+}
+
+// Function handling font stacks
+// See _variables.scss -> $font-stacks map
+// ---
+// @param [string] $font-stack : font-stack to fetch
+// ---
+// @return [list] | [null]
+
+@function font($font-stack) {
+  @if not map-has-key($font-stacks, $font-stack) {
+    @warn "No font stack found for `#{$font-stack}`.";
+  }
+
+  @return map-get($font-stacks, $font-stack);
+}
+
+// Function handling theming
+// See _variables.scss -> $themes map
+// ---
+// @param [string] $color : color to fetch
+// ---
+// @return [color] | [null]
+
+@function theme($keys...) {
+  @return map-fetch($themes, $keys...);
+}
+
+// Function polyfilling `map-get` from Sass 3.3
+// To be removed when moving to Sass 3.3
+// ---
+// @param [map] $map : map
+// @param [literal] $key : key to fetch
+// ---
+// @return [literal] | [null]
+
+@function map-get($map, $key) {
+  @each $tuple in $map {
+    @if nth($tuple, 1) == $key {
+      @return nth($tuple, 2);
+    }
+  }
+
+  @return null;
+}
+
+// Function polyfilling `map-has-key` from Sass 3.3
+// To be removed when moving to Sass 3.3
+// ---
+// @param [map] $map : map
+// @param [literal] $key : key to check
+// ---
+// @return [bool]
+
+@function map-has-key($map, $key) {
+  @each $tuple in $map {
+    @if nth($tuple, 1) == $key {
+      @return true;
+    }
+  }
+
+  @return false;
+}
+
+// Function fetching multiple nested keys at once
+// ---
+// @param [map] $map : map
+// @param [argList] $keys : keys to fetch
+// ---
+// @return [literal]
+
+@function map-fetch($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}

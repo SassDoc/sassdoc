@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SassDoc :: examples/dist/mixins.scss</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<article class="sassdoc">
+  <h1 class="sassdoc__title">SassDoc :: examples/dist/mixins.scss</h1>
+  <div class="sassdoc__container">
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> size</h2>
+        <p class="sassdoc__item-description">Mixin to give size to elements</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>width</td>
+                  <td>width</td>
+                  <td><code>number</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+                
+
+                
+                  
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>height</td>
+                  <td>height</td>
+                  <td><code>number</code></td>
+                  
+                    <td>$width</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin size ($width, $height: $width) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> position</h2>
+        <p class="sassdoc__item-description">Private method<br />Can be called but it's not the point
+Documentation: http://hugogiraudel.com/2013/08/05/offsets-sass-mixin/</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>position</td>
+                  <td>position</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>args</td>
+                  <td>list of offsets and values</td>
+                  <td><code>list</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin position ($position, $args) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> absolute</h2>
+        <p class="sassdoc__item-description">Mixin triplet calling the private mixin<br />with the appropriate position value
+Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>args</td>
+                  <td>list of offsets and values</td>
+                  <td><code>list</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin absolute ($args) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> relative</h2>
+        <p class="sassdoc__item-description"></p>
+          <h3>Parameters</h3>
+          
+            <p>None.</p>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin relative ($args) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> fixed</h2>
+        <p class="sassdoc__item-description"></p>
+          <h3>Parameters</h3>
+          
+            <p>None.</p>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin fixed ($args) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> breakpoint</h2>
+        <p class="sassdoc__item-description">Mixin handling media queries</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>point</td>
+                  <td>breakpoint to call</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin breakpoint ($point) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> triangle</h2>
+        <p class="sassdoc__item-description">Mixin handling CSS triangles</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>direction</td>
+                  <td>arrow direction</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+                
+
+                
+                  
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>color</td>
+                  <td>arrow color</td>
+                  <td><code>color</code></td>
+                  
+                    <td>currentColor</td>
+                  
+                </tr>
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>position</td>
+                  <td>arrow position</td>
+                  <td><code>list</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+                
+
+                
+                  
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>size</td>
+                  <td>arrow size</td>
+                  <td><code>number</code></td>
+                  
+                    <td>1em</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin triangle ($direction, $color: currentColor, $position, $size: 1em) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> helper</h2>
+        <p class="sassdoc__item-description">Mixin to create both a class and a placeholder at once</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>name</td>
+                  <td>helper name</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin helper ($name) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> keyframes</h2>
+        <p class="sassdoc__item-description">Mixin to handle cross browser keyframes</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>name</td>
+                  <td>animation name</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin keyframes ($name) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> prefixer</h2>
+        <p class="sassdoc__item-description">Mixin to prefix properties that are not prefixed by Compass<br />@param $property : property to prefix
+@param $value : value to use</p>
+          <h3>Parameters</h3>
+          
+            <p>None.</p>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin prefixer ($name) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> eq</h2>
+        <p class="sassdoc__item-description">Mixin to handle element queries breakpoint</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>breakpoint</td>
+                  <td>keyword</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin eq ($breakpoint) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> opacity</h2>
+        <p class="sassdoc__item-description">Mixin for opacity</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>opacity</td>
+                  <td>opacity</td>
+                  <td><code>number</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin opacity ($opacity) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> font</h2>
+        <p class="sassdoc__item-description">Mixin importing a font</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>name</td>
+                  <td>font name</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin font ($name) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> inline-block</h2>
+        <p class="sassdoc__item-description">Mixin handling inline-block and vertical-align</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>align</td>
+                  <td>vertical align</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin inline-block ($align) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> yep</h2>
+        <p class="sassdoc__item-description">Modernizr mixin when a feature is supported</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>features</td>
+                  <td>features that need to be supported</td>
+                  <td><code>arglist</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin yep ($features) { ... }</code></pre>
+      </section>
+    
+      <section class="sassdoc__item">
+        <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> nope</h2>
+        <p class="sassdoc__item-description">Modernizr mixin when a feature is not supported</p>
+          <h3>Parameters</h3>
+          
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>features</td>
+                  <td>features that shouldn&#39;t be supported</td>
+                  <td><code>arglist</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
+          
+          <h3>Returns</h3>
+          <p><code></code></p>
+          <h3>Signature</h3>
+          <pre class="sassdoc__item-code"><code>@mixin nope ($features) { ... }</code></pre>
+      </section>
+    
+  </div>
+</article>
+</body>
+</html>
