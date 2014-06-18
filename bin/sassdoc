@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var api = require('./src/api');
+var api = require('../src/api');
 
 var userArguments = process.argv.slice(2);
 
