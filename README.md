@@ -27,5 +27,5 @@ node bin/sassdoc <src> <dest>
 
 ### Arguments
 
-1. *src* Path to your Sass folder
-1. *dest* Path to the destination folder
+1. *src* Path to your Sass folder.
+1. *dest* Path to the destination folder.

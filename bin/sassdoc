@@ -2,12 +2,23 @@
 
 var api = require('../src/api');
 
+function help() {
+  console.log('Usage: sassdoc <src> <dest>');
+  console.log();
+  console.log('Arguments:');
+  console.log('  <src>   Path to your Sass folder.');
+  console.log('  <dest>  Path to the destination folder.');
+}
+
 var userArguments = process.argv.slice(2);
 
-if (userArguments.length > 1) {
-  api.documentize(userArguments[0], userArguments[1]);
+if (userArguments.length < 2) {
+  console.log('Not enough arguments.')
+  console.log();
+
+  help();
+
+  process.exit(1);
 }
 
-else {
-  throw 'Not enough arguments.';
-}
+api.documentize(userArguments[0], userArguments[1]);
