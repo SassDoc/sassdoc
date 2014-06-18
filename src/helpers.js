@@ -14,11 +14,15 @@ module.exports.getDateTime = function () {
       year, month, day, hour, min, sec;
 
   year  = date.getFullYear();
-  month = (date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1);
-  day   = (date.getDate()      < 10 ? '0' : '') + date.getDate();
-  hour  = (date.getHours()     < 10 ? '0' : '') + date.getHours();
-  min   = (date.getMinutes()   < 10 ? '0' : '') + date.getMinutes();
-  sec   = (date.getSeconds()   < 10 ? '0' : '') + date.getSeconds();
+  month = this.pad(date.getMonth() + 1);
+  day   = this.pad(date.getDate());
+  hour  = this.pad(date.getHours());
+  min   = this.pad(date.getMinutes());
+  sec   = this.pad(date.getSeconds());
 
   return year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec;
+};
+
+module.exports.pad = function (value) {
+  return (value < 10 ? '0' : '') + value;
 };
