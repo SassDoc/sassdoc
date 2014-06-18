@@ -57,11 +57,11 @@ body {
 
 .sassdoc__item-parameters tr:nth-of-type(even),
 .sassdoc__item-parameters thead {
-  background: #ccc;
+  background: #e1d7d2;
 }
 
 .sassdoc__item-code {
-  background: #ccc;
+  background: #e1d7d2;
   padding: .5em;
 }
 
