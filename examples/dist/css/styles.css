@@ -2,25 +2,35 @@
   box-sizing: border-box;
 }
 
-body {
+.sassdoc {
   padding: 1em;
-  font: 1em/1.35 "Helvetica", "Arial", sans-serif ;
+  font: 1em/1.35 "Helvetica", "Arial", sans-serif;
+  overflow: auto;
 }
 
-@media (min-width: 800px) {
-  .sassdoc__container {
-    -webkit-columns: 2;
-    -moz-columns: 2;
-    columns: 2;
-  }
+.sassdoc a {
+  color: #c69;
 }
 
-@media (min-width: 1200px) {
-  .sassdoc__container {
-    -webkit-columns: 3;
-    -moz-columns: 3;
-    columns: 3;
-  }
+.sassdoc__container {
+  width: 70%;
+  float: left;
+}
+
+.sassdoc__map {
+  width: 25%;
+  float: right;
+  padding: 1em;
+  background: #EFEFEF;
+}
+
+.sassdoc__map h2 {
+  color: #699;
+  margin-top: 0;
+}
+
+.sassdoc p {
+  margin: 0 0 .5em 0;
 }
 
 .sassdoc__title {
@@ -41,6 +51,7 @@ body {
 
 .sassdoc__item h3 {
   color: #699;
+  margin-bottom: .5em;
 }
 
 .sassdoc__item-name {
@@ -52,6 +63,7 @@ body {
 
 .sassdoc__item-parameters {
   width: 100%;
+  text-align: center;
 }
 
 .sassdoc__item-parameters td,
