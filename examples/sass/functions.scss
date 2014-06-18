@@ -2,7 +2,7 @@
 // ---
 // @param [list] $positions : positions
 // ---
-// @return [string] | [null]
+// @return [string|null]
 
 @function opposite-direction($directions) {
   $opposite-directions: ();
@@ -79,7 +79,7 @@
 // ---
 // @param [string] $component : component
 // ---
-// @return [number] | [null]
+// @return [number|null]
 
 @function z($component) {
   @if not map-has-key($z-indexes, $component) {
@@ -94,7 +94,7 @@
 // ---
 // @param [string] $color : color to fetch
 // ---
-// @return [color] | [null]
+// @return [color|null]
 
 @function color($color) {
   @if not map-has-key($colors, $color) {
@@ -109,7 +109,7 @@
 // ---
 // @param [string] $font-stack : font-stack to fetch
 // ---
-// @return [list] | [null]
+// @return [list|null]
 
 @function font($font-stack) {
   @if not map-has-key($font-stacks, $font-stack) {
@@ -124,7 +124,7 @@
 // ---
 // @param [string] $color : color to fetch
 // ---
-// @return [color] | [null]
+// @return [color|null]
 
 @function theme($keys...) {
   @return map-fetch($themes, $keys...);
@@ -136,7 +136,7 @@
 // @param [map] $map : map
 // @param [literal] $key : key to fetch
 // ---
-// @return [literal] | [null]
+// @return [literal|null]
 
 @function map-get($map, $key) {
   @each $tuple in $map {

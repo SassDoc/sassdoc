@@ -58,11 +58,11 @@ module.exports.parseCommentBlock = function (comments) {
     }
 
     else if (check.isReturn(line)) {
-      doc['return'] = this.parseReturn(line);
+      doc.return = this.parseReturn(line).split('|');
     }
 
-    else if (check.isPrivate(line)) {
-      doc['private'] = true;
+    else if (check.isScope(line)) {
+      doc.scope = check.isScope(line)[1];
     }
 
     else if (check.isSeparator(line)) {

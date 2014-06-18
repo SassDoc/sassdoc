@@ -39,6 +39,10 @@ body {
   break-inside: avoid;
 }
 
+.sassdoc__item h3 {
+  color: #699;
+}
+
 .sassdoc__item-name {
   margin-top: 0;
   color: #699;
@@ -76,4 +80,8 @@ body {
 
 .sassdoc__item-type::after {
   content: ']';
+}
+
+.sassdoc__item-scope {
+  text-transform: capitalize;
 }

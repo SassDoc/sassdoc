@@ -13,6 +13,8 @@
       <section class="{{ base_class }}__item">
         <h2 class="{{ base_class }}__item-name"><span class="{{ base_class }}__item-type">{{ item.type }}</span> {{ item.name }}</h2>
         <p class="{{ base_class }}__item-description">{{ item.description | replace('\n', '<br />') | raw }}</p>
+          <h3>Scope</h3>
+          <p class="{{ base_class }}__item-scope">{{ item.scope | default("Public") }}</p>
           <h3>Parameters</h3>
           {% if item.parameters.length > 0 %}
           <table class="{{ base_class }}__item-parameters">
@@ -54,8 +56,10 @@
           {% else %}
             <p>None.</p>
           {% endif %}
+          {% if item.return %}
           <h3>Returns</h3>
-          <p><code>{{ item.return }}</code></p>
+          <p><code>{{ item.return | join(' | ') }}</code></p>
+          {% endif %}
           <h3>Signature</h3>
           <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
       </section>
