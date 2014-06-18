@@ -24,7 +24,7 @@ module.exports.writeFile = function (destination, template, data) {
   var tmp = swig.compileFile(__dirname + template);
   var content = tmp(data);
 
-  fs.writeFile(destination, content, function (err) {
+  fs.writeFile(dest, content, function (err) {
     if (err) throw err;
 
     // Log

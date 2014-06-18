@@ -12,7 +12,7 @@
     {% for item in data %}
       <section class="{{ base_class }}__item">
         <h2 class="{{ base_class }}__item-name"><span class="{{ base_class }}__item-type">{{ item.type }}</span> {{ item.name }}</h2>
-        <p class="{{ base_class }}__item-description">{{ item.description }}</p>
+        <p class="{{ base_class }}__item-description">{{ item.description | replace('\n', '<br />') | raw }}</p>
           <h3>Parameters</h3>
           {% if item.parameters.length > 0 %}
           <table class="{{ base_class }}__item-parameters">
@@ -54,8 +54,10 @@
           {% else %}
             <p>None.</p>
           {% endif %}
+          <h3>Returns</h3>
+          <p><code>{{ item.return }}</code></p>
           <h3>Signature</h3>
-          <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }}({{ parameters_string }}) { ... }</code></pre>
+          <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
       </section>
     {% endfor %}
   </div>
