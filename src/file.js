@@ -27,16 +27,19 @@ module.exports.createFolder = function (folder, callback) {
 
 // Write a file
 // using a template
-module.exports.writeFile = function (destination, template, data) {
-  var dest = helpers.removeExtension(destination) + '.html';
+module.exports.writeFile = function (destination, file, template, data) {
+  var dest = (destination + '/' + file).replace('.scss', '.html');
   var tmp = swig.compileFile(__dirname + template);
-  var content = tmp(data);
 
-  fs.writeFile(dest, content, function (err) {
-    if (err) throw err;
+  // Make sure folder exists
+  this.createFolder(destination, function () {
+    // Write file
+    fs.writeFile(dest, tmp(data), function (err) {
+      if (err) throw err;
 
-    // Log
-    console.log(helpers.getDateTime() + ' :: File `' + dest + '` successfully generated.');
+      // Log success
+      console.log(helpers.getDateTime() + ' :: File `' + dest + '` successfully generated.');
+    });
   });
 };
 
@@ -48,7 +51,7 @@ module.exports.processFile = function (file, source, destination) {
   fs.readFile(source + '/' + file, 'utf-8', function (err, data) {
     if (err) throw err;
 
-    this.writeFile(dest, '/../assets/templates/file.html.swig', {
+    this.writeFile(destination, file, '/../assets/templates/file.html.swig', {
       data: parser.parseFile(data),
       title: dest,
       base_class: 'sassdoc'

@@ -26,3 +26,7 @@ module.exports.getDateTime = function () {
 module.exports.pad = function (value) {
   return (value < 10 ? '0' : '') + value;
 };
+
+module.exports.hasExtension = function (filename) {
+  return filename.indexOf('.');
+};
