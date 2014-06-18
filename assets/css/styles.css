@@ -12,16 +12,22 @@
   color: #c69;
 }
 
-.sassdoc__container {
-  width: 70%;
-  float: left;
-}
-
 .sassdoc__map {
-  width: 25%;
-  float: right;
   padding: 1em;
   background: #EFEFEF;
+  margin-bottom: 1em;
+}
+
+@media (min-width: 800px) {
+  .sassdoc__container {
+    width: 70%;
+    float: left;
+  }
+
+  .sassdoc__map {
+    width: 25%;
+    float: right;
+  }
 }
 
 .sassdoc__map h2 {

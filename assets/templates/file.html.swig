@@ -7,6 +7,14 @@
 </head>
 <body class="{{ base_class }}">
   <h1 class="{{ base_class }}__title">SassDoc :: {{ title }}</h1>
+  <aside class="{{ base_class }}__map">
+    <h2>File map</h2>
+    {% for item in data %}
+      {% if loop.first %}<ul>{% endif %}
+      <li><a href="#{{ base_class }}__item--{{ item.name }}">{{ item.name }}</a></li>
+      {% if loop.last %}</ul>{% endif %}
+    {% endfor %}
+  </aside>
   <article class="{{ base_class }}__container">
     {% for item in data %}
       <section class="{{ base_class }}__item" id="{{ base_class }}__item--{{ item.name }}">
@@ -69,14 +77,5 @@
       </section>
     {% endfor %}
   </article>
-  <aside class="{{ base_class }}__map">
-    <h2>Map</h2>
-    {% for item in data %}
-      {% if loop.first %}<ul>{% endif %}
-      <li><a href="#{{ base_class }}__item--{{ item.name }}">{{ item.name }}</a></li>
-      {% if loop.last %}</ul>{% endif %}
-    {% endfor %}
-  </aside>
-</article>
 </body>
 </html>
