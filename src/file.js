@@ -25,11 +25,10 @@ module.exports.createFolder = function (folder, callback) {
   });
 };
 
-// Write a file
-// using a template
+// Write a file using a Swig template
 module.exports.writeFile = function (destination, file, template, data) {
-  var dest = (destination + '/' + file).replace('.scss', '.html');
-  var tmp = swig.compileFile(__dirname + template);
+  var dest = (destination + '/' + file).replace('.scss', '.html'),
+      tmp = swig.compileFile(__dirname + '/../assets/templates/' + template);
 
   // Make sure folder exists
   this.createFolder(destination, function () {
@@ -51,11 +50,11 @@ module.exports.processFile = function (file, source, destination) {
   fs.readFile(source + '/' + file, 'utf-8', function (err, data) {
     if (err) throw err;
 
-    this.writeFile(destination, file, '/../assets/templates/file.html.swig', {
+    this.writeFile(destination, file, 'file.html.swig', {
       data: parser.parseFile(data),
       title: dest,
       base_class: 'sassdoc',
-      asset_path: helpers.computeAssetPath(destination)
+      asset_path: helpers.assetPath(destination, 'css/styles.css')
     });
 
   }.bind(this));
@@ -97,17 +96,16 @@ module.exports.buildIndex = function (destination, files) {
   }
 
   // Write index file
-  this.writeFile(destination, 'index.html', '/../assets/templates/index.html.swig', {
+  this.writeFile(destination, 'index.html', 'index.html.swig', {
     files: files,
     base_class: 'sassdoc',
-    asset_path: helpers.computeAssetPath(destination)
+    asset_path: helpers.assetPath(destination, 'css/styles.css')
   });
 };
 
 
-module.exports.readFolder = function (source, destination) {
-  var path, 
-      self = this;
+module.exports.parseFolder = function (source, destination) {
+  var path;
 
   // Read folder
   fs.readdir(source, function (err, files) {
@@ -123,7 +121,7 @@ module.exports.readFolder = function (source, destination) {
 
       // If it's a folder, go recursive
       if (isFolder) {
-        self.readFolder(path, destination + '/' + file);
+        this.parseFolder(path, destination + '/' + file);
       }
 
       // Else parse it
@@ -132,11 +130,11 @@ module.exports.readFolder = function (source, destination) {
         if (helpers.getExtension(file) !== "scss") return;
 
         // Process file
-        self.processFile(file, source, destination);
+        this.processFile(file, source, destination);
       }
-    });
+    }.bind(this));
 
-    self.buildIndex(destination, files);
+    this.buildIndex(destination, files);
 
-  });
+  }.bind(this));
 };

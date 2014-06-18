@@ -27,14 +27,10 @@ module.exports.pad = function (value) {
   return (value < 10 ? '0' : '') + value;
 };
 
-module.exports.computeAssetPath = function (destination) {
-  var path = '';
+module.exports.assetPath = function (destination, asset) {
+  return '../'.repeat(destination.split('/').length) + 'assets/' + asset;
+};
 
-  for (var i = 0; i < destination.split('/').length; i++) {
-    path = '../' + path;
-  }
-
-  path += 'assets/css/styles.css';
-
-  return path;
+String.prototype.repeat = function(times) {
+   return (new Array(times + 1)).join(this);
 };
