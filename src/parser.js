@@ -10,7 +10,7 @@ module.exports.parseParameter = function (line) {
   return {
     'type': match[1],
     'name': match[2],
-    'default': (match[3] ? match[3].substr(0, match[3].length - 1).substring(1) : null),
+    'default': match[3] || null,
     'description': match[4]
   };
 };

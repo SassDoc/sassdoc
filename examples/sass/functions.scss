@@ -1,6 +1,6 @@
 // Returns opposite-position of positions
 // ---
-// @param [list] $positions : positions
+// @param {list} $positions - list of positions
 // ---
 // @return [string | null]
 
@@ -29,9 +29,9 @@
 
 // Clamp
 // ---
-// @param [number] $value : value to clamp
-// @param [number] $min : min
-// @param [number] $max : max
+// @param {number} $value - value to clamp
+// @param {number} $min - minimum value
+// @param {number} $max - maximum value
 // ---
 // @return [number | false]
 
@@ -46,7 +46,7 @@
 
 // Return base path
 // ---
-// @param [number] $cdn (1) : CDN ID
+// @param {number} $cdn (1) - CDN ID
 // ---
 // @return [string]
 
@@ -56,7 +56,7 @@
 
 // Asset handler
 // ---
-// @param [string] $path : asset path
+// @param {string} $path - asset path
 // ---
 // @return [string]
 
@@ -66,7 +66,7 @@
 
 // Image URL function
 // ---
-// @param [string] $path : asset path
+// @param {string} $path - asset path
 // ---
 // @return [string]
 
@@ -77,7 +77,7 @@
 // Function handling z-index
 // See _variables.scss -> $z-indexes map
 // ---
-// @param [string] $component : component
+// @param {string} $component - component
 // ---
 // @return [number | null]
 
@@ -92,7 +92,7 @@
 // Function handling colors
 // See _variables.scss -> $colors map
 // ---
-// @param [string] $color : color to fetch
+// @param {string} $color - color to fetch
 // ---
 // @return [color | null]
 
@@ -107,7 +107,7 @@
 // Function handling font stacks
 // See _variables.scss -> $font-stacks map
 // ---
-// @param [string] $font-stack : font-stack to fetch
+// @param {string} $font-stack - font-stack to fetch
 // ---
 // @return [list | null]
 
@@ -122,7 +122,7 @@
 // Function handling theming
 // See _variables.scss -> $themes map
 // ---
-// @param [string] $color : color to fetch
+// @param {string} $keys - keys to fetch
 // ---
 // @return [color | null]
 
@@ -133,8 +133,8 @@
 // Function polyfilling `map-get` from Sass 3.3
 // To be removed when moving to Sass 3.3
 // ---
-// @param [map] $map : map
-// @param [literal] $key : key to fetch
+// @param {map} $map - map
+// @param {literal} $key - key to fetch
 // ---
 // @return [literal | null]
 
@@ -151,8 +151,8 @@
 // Function polyfilling `map-has-key` from Sass 3.3
 // To be removed when moving to Sass 3.3
 // ---
-// @param [map] $map : map
-// @param [literal] $key : key to check
+// @param {map} $map - map
+// @param {literal} $key - key to check
 // ---
 // @return [bool]
 
@@ -168,8 +168,8 @@
 
 // Function fetching multiple nested keys at once
 // ---
-// @param [map] $map : map
-// @param [argList] $keys : keys to fetch
+// @param {map} $map - map
+// @param {argList} $keys - keys to fetch
 // ---
 // @return [literal]
 

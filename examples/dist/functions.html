@@ -92,7 +92,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>positions</td>
-                  <td>positions</td>
+                  <td> list of positions</td>
                   <td><code>list</code></td>
                   
                     <td>&mdash;</td>
@@ -141,7 +141,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>value</td>
-                  <td>value to clamp</td>
+                  <td> value to clamp</td>
                   <td><code>number</code></td>
                   
                     <td>&mdash;</td>
@@ -159,7 +159,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>min</td>
-                  <td>min</td>
+                  <td> minimum value</td>
                   <td><code>number</code></td>
                   
                     <td>&mdash;</td>
@@ -177,7 +177,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>max</td>
-                  <td>max</td>
+                  <td> maximum value</td>
                   <td><code>number</code></td>
                   
                     <td>&mdash;</td>
@@ -228,7 +228,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>cdn</td>
-                  <td>CDN ID</td>
+                  <td> CDN ID</td>
                   <td><code>number</code></td>
                   
                     <td>1</td>
@@ -277,7 +277,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>path</td>
-                  <td>asset path</td>
+                  <td> asset path</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -326,7 +326,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>path</td>
-                  <td>asset path</td>
+                  <td> asset path</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -375,7 +375,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>component</td>
-                  <td>component</td>
+                  <td> component</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -424,7 +424,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>color</td>
-                  <td>color to fetch</td>
+                  <td> color to fetch</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -445,20 +445,50 @@
       <section class="sassdoc__item" id="sassdoc__item--font">
         <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">function</span> font</h2>
         <h3>Description</h3>
-        <p class="sassdoc__item-description">Function handling font stacks<br />See _variables.scss -> $font-stacks map
-@param [string] $font-stack : font-stack to fetch</p>
+        <p class="sassdoc__item-description">Function handling font stacks<br />See _variables.scss -> $font-stacks map</p>
           <h3>Scope</h3>
           <p class="sassdoc__item-scope">Public</p>
           <h3>Parameters</h3>
           
-            <p>None.</p>
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>font-stack</td>
+                  <td> font-stack to fetch</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
           
           
           <h3>Returns</h3>
           <p><code>list  |  null</code></p>
           
           <h3>Signature</h3>
-          <pre class="sassdoc__item-code"><code>@function font ($color) { ... }</code></pre>
+          <pre class="sassdoc__item-code"><code>@function font ($font-stack) { ... }</code></pre>
       </section>
     
       <section class="sassdoc__item" id="sassdoc__item--theme">
@@ -491,8 +521,8 @@
                   
                 
                 <tr class="sassdoc__item-parameter">
-                  <td>color</td>
-                  <td>color to fetch</td>
+                  <td>keys</td>
+                  <td> keys to fetch</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -507,7 +537,7 @@
           <p><code>color  |  null</code></p>
           
           <h3>Signature</h3>
-          <pre class="sassdoc__item-code"><code>@function theme ($color) { ... }</code></pre>
+          <pre class="sassdoc__item-code"><code>@function theme ($keys) { ... }</code></pre>
       </section>
     
       <section class="sassdoc__item" id="sassdoc__item--map-get">
@@ -541,7 +571,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>map</td>
-                  <td>map</td>
+                  <td> map</td>
                   <td><code>map</code></td>
                   
                     <td>&mdash;</td>
@@ -559,7 +589,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>key</td>
-                  <td>key to fetch</td>
+                  <td> key to fetch</td>
                   <td><code>literal</code></td>
                   
                     <td>&mdash;</td>
@@ -608,7 +638,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>map</td>
-                  <td>map</td>
+                  <td> map</td>
                   <td><code>map</code></td>
                   
                     <td>&mdash;</td>
@@ -626,7 +656,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>key</td>
-                  <td>key to check</td>
+                  <td> key to check</td>
                   <td><code>literal</code></td>
                   
                     <td>&mdash;</td>
@@ -675,7 +705,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>map</td>
-                  <td>map</td>
+                  <td> map</td>
                   <td><code>map</code></td>
                   
                     <td>&mdash;</td>
@@ -695,7 +725,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>keys</td>
-                  <td>keys to fetch</td>
+                  <td> keys to fetch</td>
                   <td><code>argList</code></td>
                   
                     <td>&mdash;</td>

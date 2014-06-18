@@ -108,7 +108,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>width</td>
-                  <td>width</td>
+                  <td> width</td>
                   <td><code>number</code></td>
                   
                     <td>&mdash;</td>
@@ -118,8 +118,6 @@
                 
 
                 
-                  
-                
 
                 
 
@@ -128,10 +126,10 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>height</td>
-                  <td>height</td>
+                  <td></td>
                   <td><code>number</code></td>
                   
-                    <td>$width</td>
+                    <td>&mdash;</td>
                   
                 </tr>
               
@@ -140,7 +138,7 @@
           
           
           <h3>Signature</h3>
-          <pre class="sassdoc__item-code"><code>@mixin size ($width, $height: $width) { ... }</code></pre>
+          <pre class="sassdoc__item-code"><code>@mixin size ($width, $height) { ... }</code></pre>
       </section>
     
       <section class="sassdoc__item" id="sassdoc__item--position">
@@ -174,7 +172,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>position</td>
-                  <td>position</td>
+                  <td> position</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -192,7 +190,7 @@
                 
                 <tr class="sassdoc__item-parameter">
                   <td>args</td>
-                  <td>list of offsets and values</td>
+                  <td> list of offsets and values</td>
                   <td><code>list</code></td>
                   
                     <td>&mdash;</td>
@@ -210,8 +208,7 @@
       <section class="sassdoc__item" id="sassdoc__item--absolute">
         <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> absolute</h2>
         <h3>Description</h3>
-        <p class="sassdoc__item-description">Mixin triplet calling the private mixin<br />with the appropriate position value
-Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
+        <p class="sassdoc__item-description">Calling `position` with absolute as first arg<br />Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
           <h3>Scope</h3>
           <p class="sassdoc__item-scope">Public</p>
           <h3>Parameters</h3>
@@ -239,7 +236,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>args</td>
-                  <td>list of offsets and values</td>
+                  <td> list of offsets and values</td>
                   <td><code>list</code></td>
                   
                     <td>&mdash;</td>
@@ -257,12 +254,43 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
       <section class="sassdoc__item" id="sassdoc__item--relative">
         <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> relative</h2>
         <h3>Description</h3>
-        <p class="sassdoc__item-description"></p>
+        <p class="sassdoc__item-description">Calling `position` with absolute as first arg<br />Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
           <h3>Scope</h3>
           <p class="sassdoc__item-scope">Public</p>
           <h3>Parameters</h3>
           
-            <p>None.</p>
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>args</td>
+                  <td> list of offsets and values</td>
+                  <td><code>list</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
           
           
           <h3>Signature</h3>
@@ -272,12 +300,43 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
       <section class="sassdoc__item" id="sassdoc__item--fixed">
         <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> fixed</h2>
         <h3>Description</h3>
-        <p class="sassdoc__item-description"></p>
+        <p class="sassdoc__item-description">Calling `position` with absolute as first arg<br />Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
           <h3>Scope</h3>
           <p class="sassdoc__item-scope">Public</p>
           <h3>Parameters</h3>
           
-            <p>None.</p>
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>args</td>
+                  <td> list of offsets and values</td>
+                  <td><code>list</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
           
           
           <h3>Signature</h3>
@@ -315,7 +374,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>point</td>
-                  <td>breakpoint to call</td>
+                  <td> breakpoint to call</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -361,7 +420,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>direction</td>
-                  <td>arrow direction</td>
+                  <td> arrow direction</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -381,7 +440,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>color</td>
-                  <td>arrow color</td>
+                  <td> arrow color</td>
                   <td><code>color</code></td>
                   
                     <td>currentColor</td>
@@ -399,7 +458,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>position</td>
-                  <td>arrow position</td>
+                  <td> arrow position</td>
                   <td><code>list</code></td>
                   
                     <td>&mdash;</td>
@@ -419,7 +478,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>size</td>
-                  <td>arrow size</td>
+                  <td> arrow size</td>
                   <td><code>number</code></td>
                   
                     <td>1em</td>
@@ -465,7 +524,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>name</td>
-                  <td>helper name</td>
+                  <td> helper name</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -511,7 +570,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>name</td>
-                  <td>animation name</td>
+                  <td> animation name</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -529,17 +588,83 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
       <section class="sassdoc__item" id="sassdoc__item--prefixer">
         <h2 class="sassdoc__item-name"><span class="sassdoc__item-type">mixin</span> prefixer</h2>
         <h3>Description</h3>
-        <p class="sassdoc__item-description">Mixin to prefix properties that are not prefixed by Compass<br />@param $property : property to prefix
-@param $value : value to use</p>
+        <p class="sassdoc__item-description">Mixin to prefix properties that are not prefixed by Compass</p>
           <h3>Scope</h3>
           <p class="sassdoc__item-scope">Public</p>
           <h3>Parameters</h3>
           
-            <p>None.</p>
+          <table class="sassdoc__item-parameters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>property</td>
+                  <td> property to prefix</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>value</td>
+                  <td> value to use</td>
+                  <td><code>string</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+                <tr class="sassdoc__item-parameter">
+                  <td>vendors</td>
+                  <td> list of vendors to output</td>
+                  <td><code>list</code></td>
+                  
+                    <td>&mdash;</td>
+                  
+                </tr>
+              
+            </tbody>
+          </table>
           
           
           <h3>Signature</h3>
-          <pre class="sassdoc__item-code"><code>@mixin prefixer ($name) { ... }</code></pre>
+          <pre class="sassdoc__item-code"><code>@mixin prefixer ($property, $value, $vendors) { ... }</code></pre>
       </section>
     
       <section class="sassdoc__item" id="sassdoc__item--eq">
@@ -573,7 +698,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>breakpoint</td>
-                  <td>keyword</td>
+                  <td> keyword</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -619,7 +744,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>opacity</td>
-                  <td>opacity</td>
+                  <td> opacity</td>
                   <td><code>number</code></td>
                   
                     <td>&mdash;</td>
@@ -665,7 +790,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>name</td>
-                  <td>font name</td>
+                  <td> font name</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -711,7 +836,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>align</td>
-                  <td>vertical align</td>
+                  <td> vertical align</td>
                   <td><code>string</code></td>
                   
                     <td>&mdash;</td>
@@ -759,7 +884,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>features</td>
-                  <td>features that need to be supported</td>
+                  <td> features that need to be supported</td>
                   <td><code>arglist</code></td>
                   
                     <td>&mdash;</td>
@@ -807,7 +932,7 @@ Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/</p>
                 
                 <tr class="sassdoc__item-parameter">
                   <td>features</td>
-                  <td>features that shouldn&#39;t be supported</td>
+                  <td> features that shouldn</td>
                   <td><code>arglist</code></td>
                   
                     <td>&mdash;</td>

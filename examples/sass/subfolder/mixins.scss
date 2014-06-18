@@ -1,7 +1,7 @@
 // Mixin to give size to elements
 // ---
-// @param [number] $width : width
-// @param [number] $height ($width) : height
+// @param {number} $width - width
+// @param {number} $height ($width) - height
 
 @mixin size($width, $height: $width) {
   width: $width;
@@ -13,8 +13,8 @@
 // ---
 // @private
 // ---
-// @param [string] $position : position
-// @param [list] $args : list of offsets and values
+// @param {string} $position - position
+// @param {list} $args - list of offsets and values
 
 @mixin position($position: null, $args: ()) {
   $offsets: top right bottom left;
@@ -43,19 +43,28 @@
   }
 }
 
-// Mixin triplet calling the private mixin
-// with the appropriate position value
+// Calling `position` with absolute as first arg
 // Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/
 // ---
-// @param [list] $args : list of offsets and values
+// @param {list} $args - list of offsets and values
 
 @mixin absolute($args) {
   @include position(absolute, $args);
 }
 
+// Calling `position` with absolute as first arg
+// Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/
+// ---
+// @param {list} $args - list of offsets and values
+
 @mixin relative($args) {
   @include position(relative, $args);
 }
+
+// Calling `position` with absolute as first arg
+// Documentation: http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/
+// ---
+// @param {list} $args - list of offsets and values
 
 @mixin fixed($args) {
   @include position(fixed,   $args);
@@ -63,7 +72,7 @@
 
 // Mixin handling media queries
 // ---
-// @param [string] $point : breakpoint to call
+// @param {string} $point - breakpoint to call
 
 @mixin breakpoint($point) {
   @if not map-has-key($breakpoints, $point) {
@@ -84,10 +93,10 @@
 
 // Mixin handling CSS triangles
 // ---
-// @param [string] $direction : arrow direction
-// @param [color] $color (currentColor) : arrow color
-// @param [list] $position : arrow position
-// @param [number] $size (1em) : arrow size
+// @param {string} $direction - arrow direction
+// @param {color} $color (currentColor) - arrow color
+// @param {list} $position - arrow position
+// @param {number} $size (1em) - arrow size
 
 @mixin triangle($direction, $position, $color: currentColor, $size: 1em) {
   $border: $size solid transparent;
@@ -117,7 +126,7 @@
 
 // Mixin to create both a class and a placeholder at once
 // ---
-// @param [string] $name : helper name
+// @param {string} $name - helper name
 
 @mixin helper($name) {
   .#{$name},
@@ -129,7 +138,7 @@
 
 // Mixin to handle cross browser keyframes
 // ---
-// @param [string] $name : animation name
+// @param {string} $name - animation name
 
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
@@ -143,8 +152,9 @@
 
 // Mixin to prefix properties that are not prefixed by Compass
 // ---
-// @param $property : property to prefix
-// @param $value : value to use
+// @param {string} $property - property to prefix
+// @param {string} $value - value to use
+// @param {list} $vendors - list of vendors to output
 
 @mixin prefixer($property, $value, $vendors: webkit moz ms o) {
   @if $vendors {
@@ -157,7 +167,7 @@
 
 // Mixin to handle element queries breakpoint
 // ---
-// @param [string] $breakpoint : keyword
+// @param {string} $breakpoint - keyword
 
 @mixin eq($breakpoint) {
   [data-eq-state="#{$breakpoint}"] & {
@@ -167,7 +177,7 @@
 
 // Mixin for opacity
 // ---
-// @param [number] $opacity : opacity
+// @param {number} $opacity - opacity
 
 @mixin opacity($opacity) {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity * 100})";
@@ -177,7 +187,7 @@
 
 // Mixin importing a font
 // ---
-// @param [string] $name : font name
+// @param {string} $name - font name
 
 @mixin font($font-name, $file-name) {
   $path: base-path() + "fonts/";
@@ -196,7 +206,7 @@
 
 // Mixin handling inline-block and vertical-align
 // ---
-// @param [string] $align : vertical align
+// @param {string} $align - vertical align
 
 @mixin inline-block($align: null) {
   display: inline-block;
@@ -205,7 +215,7 @@
 
 // Modernizr mixin when a feature is supported
 // ---
-// @param [arglist] $features : features that need to be supported
+// @param {arglist} $features - features that need to be supported
 
 @mixin yep($features...) {
   $selector: '';
@@ -221,7 +231,7 @@
 
 // Modernizr mixin when a feature is not supported
 // ---
-// @param [arglist] $features : features that shouldn't be supported
+// @param {arglist} $features - features that shouldn't be supported
 
 @mixin nope($features...) {
   @each $feature in $features {
