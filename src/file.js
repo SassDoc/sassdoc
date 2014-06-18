@@ -54,12 +54,89 @@ module.exports.processFile = function (file, source, destination) {
     this.writeFile(destination, file, '/../assets/templates/file.html.swig', {
       data: parser.parseFile(data),
       title: dest,
-      base_class: 'sassdoc'
+      base_class: 'sassdoc',
+      asset_path: helpers.computeAssetPath(destination)
     });
 
   }.bind(this));
 };
 
+// Copy a file
 module.exports.copyFile = function (source, destination) {
   fs.createReadStream(source).pipe(fs.createWriteStream(destination));
+};
+
+// Copy the CSS file from the assets folder to the dist folder
+module.exports.copyCSS = function (destination) {
+  var cssFolder = destination + '/css';
+
+  // Create CSS folder
+  this.createFolder(cssFolder, function () {
+    this.copyFile('./assets/css/styles.css', cssFolder + '/styles.css');
+  }.bind(this));
+};
+
+// Build index page
+module.exports.buildIndex = function (destination, files) {
+  // Loop over files
+  for (var i = 0; i < files.length; i++) {
+    // Remove dotfiles
+    if (files[i].charAt(0) === '.') {
+      files.splice(i, 1);
+    }
+
+    // Is a file
+    if (files[i].indexOf('.') > 0) {
+      files[i] = files[i].replace('.scss', '.html');
+    }
+
+    // Is a folder
+    else {
+      files[i] += '/index.html';
+    }
+  }
+
+  // Write index file
+  this.writeFile(destination, 'index.html', '/../assets/templates/index.html.swig', {
+    files: files,
+    base_class: 'sassdoc',
+    asset_path: helpers.computeAssetPath(destination)
+  });
+};
+
+
+module.exports.readFolder = function (source, destination) {
+  var path, 
+      self = this;
+
+  // Read folder
+  fs.readdir(source, function (err, files) {
+    if (err) throw err;
+
+    // Loop through all items from folder
+    files.forEach(function (file) {
+      path = source + '/' + file;
+      var isFolder = fs.lstatSync(path).isDirectory();
+
+      // Skip dotfiles
+      if (file.charAt(0) === '.') return;
+
+      // If it's a folder, go recursive
+      if (isFolder) {
+        self.readFolder(path, destination + '/' + file);
+      }
+
+      // Else parse it
+      else {
+        // If not a SCSS file, break
+        if (helpers.getExtension(file) !== "scss") return;
+
+        // Process file
+        self.processFile(file, source, destination);
+      }
+    });
+
+    self.buildIndex(destination, files);
+
+  });
 };

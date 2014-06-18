@@ -27,6 +27,14 @@ module.exports.pad = function (value) {
   return (value < 10 ? '0' : '') + value;
 };
 
-module.exports.hasExtension = function (filename) {
-  return filename.indexOf('.');
+module.exports.computeAssetPath = function (destination) {
+  var path = '';
+
+  for (var i = 0; i < destination.split('/').length; i++) {
+    path = '../' + path;
+  }
+
+  path += 'assets/css/styles.css';
+
+  return path;
 };

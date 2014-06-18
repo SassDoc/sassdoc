@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>SassDoc :: {{ title }}</title>
-<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="{{ asset_path }}" />
 </head>
 <body class="{{ base_class }}">
   <h1 class="{{ base_class }}__title">SassDoc :: {{ title }}</h1>
