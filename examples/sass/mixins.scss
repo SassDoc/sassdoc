@@ -8,9 +8,10 @@
   height: $height;
 }
 
-// Private method
 // Can be called but it's not the point
 // Documentation: http://hugogiraudel.com/2013/08/05/offsets-sass-mixin/
+// ---
+// @private
 // ---
 // @param [string] $position : position
 // @param [list] $args : list of offsets and values
