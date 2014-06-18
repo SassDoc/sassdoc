@@ -5,11 +5,11 @@ SassDoc. Like JSDoc, but for Sass files.
 ## Example
 
 ```scss
-// Returns opposite-position of positions
+// Returns the opposite direction of each direction in the given list
 // ---
-// @param [list] $positions: positions
+// @param {list} $positions - list of positions
 // ---
-// @return [string|null]
+// @return [string | null]
 
 @function opposite-direction($positions) {
   // ...
