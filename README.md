@@ -76,6 +76,8 @@ Any line which is not one of the previous tokens or a separator line is consider
 }
 ```
 
+![SassDoc](http://i.imgur.com/BrzU2Ic.png)
+
 It works exactly the same with mixins.
 
 ## Credits
