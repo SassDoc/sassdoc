@@ -48,6 +48,10 @@ module.exports.findCommentBlock = function (index, array) {
 module.exports.parseLine = function (line) {
   var value;
 
+  if (check.isSeparator(line) || check.isIgnore(line)) {
+    return false;
+  }
+
   if (check.isParameter(line)) {
     return {
       'is': 'parameter',
@@ -90,10 +94,6 @@ module.exports.parseLine = function (line) {
     }
   }
 
-  if (check.isSeparator(line)) {
-    return false;
-  }
-
   return {
     'is': 'description',
     'value': '\n' + this.stripComments(line)
@@ -123,7 +123,7 @@ module.exports.parseCommentBlock = function (comments) {
   comments.forEach(function (line, index) {
     line = this.parseLine(line);
 
-    // Separator
+    // Separator or @ignore
     if (!line) return;
 
     // Parameter
