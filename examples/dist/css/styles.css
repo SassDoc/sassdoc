@@ -116,6 +116,6 @@
   content: ']';
 }
 
-.sassdoc__item-scope {
+.sassdoc__item-access {
   text-transform: capitalize;
 }

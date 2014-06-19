@@ -1,31 +1,6 @@
 var Regex = new (require('./regex')).regex();
 var Utils = new (require('./utils')).utils();
 
-// Parse a parameter line to get data
-module.exports.parseParameter = function (line) {
-  var match = Regex.isParameter(line);
-
-  // Error
-  if (!match) return false;
-
-  return {
-    'type': match[1],
-    'name': match[2],
-    'default': match[3] || null,
-    'description': match[4]
-  };
-};
-
-// Parse a return line
-module.exports.parseReturn = function (line) {
-  var match = Regex.isReturn(line);
-
-  // Error
-  if (!match) return false;
-
-  return match[1];
-};
-
 // Define a block of comments
 module.exports.findCommentBlock = function (index, array) {
   var previousLine = index - 1;
@@ -45,18 +20,88 @@ module.exports.findCommentBlock = function (index, array) {
   return comments;
 };
 
+// Parse a block of comments
+module.exports.parseCommentBlock = function (comments) {
+  var line, doc = {
+    'parameters': [],
+    'throws': [],
+    'todos': [],
+    'alias': false,
+    'description': '',
+    'access': 'public',
+    'deprecated': false,
+    'author': false,
+    'return': {
+      'type': null,
+      'description': false
+    }
+  };
+
+  comments.forEach(function (line, index) {
+    line = Utils.uncomment(line);
+    line = this.parseLine(line);
+
+    // Separator or @ignore
+    if (!line) return;
+
+    // Array things (@throws, @parameters...)
+    if (typeof line.array !== "undefined" && line.array === true) {
+      doc[line.is].push(line.value);
+    }
+
+    // Anything else
+    else {
+      doc[line.is] += line.value;
+    }
+
+  }.bind(this));
+
+  doc.description = doc.description.substring(1);
+  return doc;
+};
+
+// Run
+module.exports.parseFile = function (content) {
+  var array = content.split("\n"),
+      tree = [];
+
+  // Looping through the file
+  array.forEach(function (line, index) {
+    var isCallable = Regex.isFunctionOrMixin(line);
+
+    // If it's either a mixin or a function
+    if (isCallable) {
+      var commentBlock = this.findCommentBlock(index, array);
+      var item = this.parseCommentBlock(commentBlock);
+      item.type = isCallable[1];
+      item.name = isCallable[2];
+
+      tree.push(item);
+    }
+  }.bind(this));
+
+  return tree;
+};
+
 // Parse a line to determine what it is
 module.exports.parseLine = function (line) {
   var value;
 
+  // Useless line, skip
   if (line.length === 0 || Regex.isSeparator(line) || Regex.isIgnore(line)) {
     return false;
   }
 
-  if (Regex.isParameter(line)) {
+  value = Regex.isParam(line);
+  if (value) {
     return {
       'is': 'parameters',
-      'value': this.parseParameter(line),
+      'value': {
+        'type': value[1],
+        'name': value[2],
+        'default': value[3] || null,
+        'description': value[4]
+      },
       'array': true
     }
   }
@@ -77,7 +122,7 @@ module.exports.parseLine = function (line) {
     }
   }
 
-  value = Regex.isReturn(line);
+  value = Regex.isReturns(line);
   if (value) {
     return {
       'is': 'return',
@@ -88,15 +133,15 @@ module.exports.parseLine = function (line) {
     }
   }
 
-  value = Regex.isScope(line);
+  value = Regex.isAccess(line);
   if (value) {
     return {
-      'is': 'scope',
+      'is': 'access',
       'value': value[1]
     }
   }
 
-  value = Regex.isThrow(line);
+  value = Regex.isThrows(line);
   if (value) {
     return {
       'is': 'throws',
@@ -126,66 +171,4 @@ module.exports.parseLine = function (line) {
     'is': 'description',
     'value': '\n' + line
   }
-};
-
-// Parse a block of comments
-module.exports.parseCommentBlock = function (comments) {
-  var line, doc = {
-    'parameters': [],
-    'throws': [],
-    'todos': [],
-    'alias': false,
-    'description': '',
-    'scope': 'public',
-    'deprecated': false,
-    'author': false,
-    'return': {
-      'type': null,
-      'description': false
-    }
-  };
-
-  comments.forEach(function (line, index) {
-    line = this.parseLine(Utils.uncomment(line));
-
-    // Separator or @ignore
-    if (!line) return;
-
-    // Array things (@throws, @parameters...)
-    if (typeof line.array !== "undefined" && line.array === true) {
-      doc[line.is].push(line.value);
-    }
-
-    // Anything else
-    else {
-      doc[line.is] += line.value;
-    }
-
-  }.bind(this));
-
-  doc.description = doc.description.substring(1);
-  return doc;
-};
-
-// Run
-module.exports.parseFile = function (content) {
-  var array = content.split("\n"),
-      tree = []; //{ 'functions': [], 'mixins': [] };
-
-  // Looping through the file
-  array.forEach(function (line, index) {
-    var isCallable = Regex.isFunctionOrMixin(line);
-
-    // If it's either a mixin or a function
-    if (isCallable) {
-      var commentBlock = this.findCommentBlock(index, array);
-      var item = this.parseCommentBlock(commentBlock);
-      item.type = isCallable[1];
-      item.name = isCallable[2];
-
-      tree.push(item);
-    }
-  }.bind(this));
-
-  return tree;
 };

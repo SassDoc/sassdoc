@@ -7,6 +7,7 @@
 </head>
 <body class="{{ base_class }}">
   <h1 class="{{ base_class }}__title">SassDoc :: {{ title }}</h1>
+
   <aside class="{{ base_class }}__map">
     <h2>File map</h2>
     {% for item in data %}
@@ -15,6 +16,7 @@
       {% if loop.last %}</ul>{% endif %}
     {% endfor %}
   </aside>
+
   <article class="{{ base_class }}__container">
     {% for item in data %}
       <section class="{{ base_class }}__item" id="{{ base_class }}__item--{{ item.name }}">
@@ -28,90 +30,97 @@
             <span class="{{ base_class }}__item-alias">alias of <code>{{ item.alias }}</code></span>
           {% endif %}
         </h2>
-        <h3>Description</h3>
-        <p class="{{ base_class }}__item-description">{{ item.description | replace('\n', '<br />') | raw }}</p>
-          <h3>Scope</h3>
-          <p class="{{ base_class }}__item-scope">{{ item.scope }}</p>
 
-          <h3>Parameters</h3>
-          {% if item.parameters.length > 0 %}
-          <table class="{{ base_class }}__item-parameters">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Type</th>
-                <th>Default value</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% set parameters_string = '' %}
-              {% for parameter in item.parameters %}
-                {% set value = '$' + parameter.name %}
+        {% if item.description %}
+          <h3>Description</h3>
+          <p class="{{ base_class }}__item-description">{{ item.description | replace('\n', '<br />') | raw }}</p>
+        {% endif %}
 
+        {% if item.access != "public" %}
+          <h3>Access</h3>
+          <p class="{{ base_class }}__item-access">{{ item.access }}</p>
+        {% endif %}
+
+        <h3>Parameters</h3>
+        {% if item.parameters.length > 0 %}
+        <table class="{{ base_class }}__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% set parameters_string = '' %}
+            {% for parameter in item.parameters %}
+              {% set value = '$' + parameter.name %}
+
+              {% if parameter.default %}
+                {% set value = value + ': ' + parameter.default %}
+              {% endif %}
+
+              {% if parameter.type | lower === "arglist" %}
+                {% set value = value + '...' %}
+              {% endif %}
+
+              {% if loop.first %}
+                {% set parameters_string = value %}
+              {% else %}
+                {% set parameters_string = parameters_string + ', ' + value %}
+              {% endif %}
+              <tr class="{{ base_class }}__item-parameter">
+                <td>{{ parameter.name }}</td>
+                <td>{{ parameter.description }}</td>
+                <td><code>{{ parameter.type }}</code></td>
                 {% if parameter.default %}
-                  {% set value = value + ': ' + parameter.default %}
-                {% endif %}
-
-                {% if parameter.type | lower === "arglist" %}
-                  {% set value = value + '...' %}
-                {% endif %}
-
-                {% if loop.first %}
-                  {% set parameters_string = value %}
+                  <td>{{ parameter.default }}</td>
                 {% else %}
-                  {% set parameters_string = parameters_string + ', ' + value %}
+                  <td>&mdash;</td>
                 {% endif %}
-                <tr class="{{ base_class }}__item-parameter">
-                  <td>{{ parameter.name }}</td>
-                  <td>{{ parameter.description }}</td>
-                  <td><code>{{ parameter.type }}</code></td>
-                  {% if parameter.default %}
-                    <td>{{ parameter.default }}</td>
-                  {% else %}
-                    <td>&mdash;</td>
-                  {% endif %}
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-          {% else %}
-            <p>None.</p>
-          {% endif %}
-
-          {% if item.return %}
-            <h3>Returns</h3>
-            {% if item.return.description %}
-            <p>{{ item.return.description }}</p>
-            {% endif %}
-            <p><code>{{ item.return.type | join('|') }}</code></p>
-          {% endif %}
-
-          {% if item.throws.length > 0 %}
-            <h3>Throws</h3>
-            {% for _throw in item.throws %}
-              {% if loop.first %}<ul>{% endif %}
-              <li>{{ _throw }}</li>
-              {% if loop.last %}</ul>{% endif %}
+              </tr>
             {% endfor %}
-          {% endif %}
+          </tbody>
+        </table>
+        {% else %}
+          <p>None.</p>
+        {% endif %}
 
-          {% if item.todos.length > 0 %}
-            <h3>TODO's</h3>
-            {% for todo in item.todos %}
-              {% if loop.first %}<ul>{% endif %}
-              <li>{{ todo }}</li>
-              {% if loop.last %}</ul>{% endif %}
-            {% endfor %}
+        {% if item.return %}
+          <h3>Returns</h3>
+          {% if item.return.description %}
+          <p>{{ item.return.description }}</p>
           {% endif %}
+          <p><code>{{ item.return.type | join('|') }}</code></p>
+        {% endif %}
 
-          <h3>Signature</h3>
-          <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
+        {% if item.throws.length > 0 %}
+          <h3>Throws</h3>
+          {% for _throw in item.throws %}
+            {% if loop.first %}<ul>{% endif %}
+            <li>{{ _throw }}</li>
+            {% if loop.last %}</ul>{% endif %}
+          {% endfor %}
+        {% endif %}
 
-          {% if item.author %}
-            <h3>Author</h3>
-            <p>{{ item.author }}</p>
-          {% endif %}
+        {% if item.todos.length > 0 %}
+          <h3>TODO's</h3>
+          {% for todo in item.todos %}
+            {% if loop.first %}<ul>{% endif %}
+            <li>{{ todo }}</li>
+            {% if loop.last %}</ul>{% endif %}
+          {% endfor %}
+        {% endif %}
+
+        <h3>Signature</h3>
+        <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
+
+        {% if item.author %}
+          <h3>Author</h3>
+          <p>{{ item.author }}</p>
+        {% endif %}
+
       </section>
     {% endfor %}
   </article>
