@@ -44,9 +44,71 @@ module.exports.findCommentBlock = function (index, array) {
   return comments;
 };
 
+// Parse a line to determine what it is
+module.exports.parseLine = function (line) {
+  var value;
+
+  if (check.isParameter(line)) {
+    return {
+      'is': 'parameter',
+      'value': this.parseParameter(line)
+    }
+  }
+
+  value = check.isDeprecated(line);
+  if (value) {
+    return {
+      'is': 'deprecated',
+      'value': value[1] || true
+    }
+  }
+
+  value = check.isAuthor(line);
+  if (value) {
+    return {
+      'is': 'author',
+      'value': value[1]
+    }
+  }
+
+  value = check.isReturn(line);
+  if (value) {
+    return {
+      'is': 'return',
+      'value': {
+        'type': value[1].split('|'),
+        'description': value[2]
+      }
+    }
+  }
+
+  value = check.isScope(line);
+  if (value) {
+    return {
+      'is': 'scope',
+      'value': value[1]
+    }
+  }
+
+  if (check.isSeparator(line)) {
+    return false;
+  }
+
+  return {
+    'is': 'description',
+    'value': '\n' + this.stripComments(line)
+  }
+};
+
+// Strip comments from a line
+// @TODO improve
+module.exports.stripComments = function (line) {
+  return line.substring(3);
+};
+
 // Parse a block of comments
 module.exports.parseCommentBlock = function (comments) {
-  var doc = {
+  var line, doc = {
     'parameters': [],
     'description': '',
     'scope': 'public',
@@ -59,48 +121,23 @@ module.exports.parseCommentBlock = function (comments) {
   };
 
   comments.forEach(function (line, index) {
+    line = this.parseLine(line);
+
+    // Separator
+    if (!line) return;
+
     // Parameter
-    if (check.isParameter(line)) {
-      var parameter = this.parseParameter(line);
-
-      if (parameter !== false) {
-        doc.parameters.push(parameter);
-      }
+    if (line.is === 'parameter') {
+      doc.parameters.push(line.value);
     }
 
-    // Deprecated flag
-    else if (check.isDeprecated(line)) {
-      doc.deprecated = check.isDeprecated(line)[1] || true;
-    }
-
-    // Author
-    else if (check.isAuthor(line)) {
-      doc.author = check.isAuthor(line)[1];
-    }
-
-    // Return
-    else if (check.isReturn(line)) {
-      var ret = check.isReturn(line);
-      doc.return.type = ret[1].split('|');
-      doc.return.description = ret[2];
-    }
-
-    // Scope
-    else if (check.isScope(line)) {
-      doc.scope = check.isScope(line)[1];
-    }
-
-    // Separator, skip
-    else if (check.isSeparator(line)) {
-      return;
-    }
-
-    // Description
+    // Anything else
     else {
-      doc.description += (doc.description.length === 0 ? line.substring(3) : '\n' + line.substring(3));
+      doc[line.is] = line.value;
     }
   }.bind(this));
 
+  doc.description = doc.description.substring(1);
   return doc;
 };
 
