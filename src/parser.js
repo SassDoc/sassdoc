@@ -1,4 +1,5 @@
 var Regex = new (require('./regex')).regex();
+var Utils = new (require('./utils')).utils();
 
 // Parse a parameter line to get data
 module.exports.parseParameter = function (line) {
@@ -48,7 +49,7 @@ module.exports.findCommentBlock = function (index, array) {
 module.exports.parseLine = function (line) {
   var value;
 
-  if (Regex.isSeparator(line) || Regex.isIgnore(line)) {
+  if (line.length === 0 || Regex.isSeparator(line) || Regex.isIgnore(line)) {
     return false;
   }
 
@@ -123,14 +124,8 @@ module.exports.parseLine = function (line) {
 
   return {
     'is': 'description',
-    'value': '\n' + this.stripComments(line)
+    'value': '\n' + line
   }
-};
-
-// Strip comments from a line
-// @TODO improve
-module.exports.stripComments = function (line) {
-  return line.substring(3);
 };
 
 // Parse a block of comments
@@ -151,7 +146,7 @@ module.exports.parseCommentBlock = function (comments) {
   };
 
   comments.forEach(function (line, index) {
-    line = this.parseLine(line);
+    line = this.parseLine(Utils.uncomment(line));
 
     // Separator or @ignore
     if (!line) return;
@@ -163,8 +158,9 @@ module.exports.parseCommentBlock = function (comments) {
 
     // Anything else
     else {
-      doc[line.is] = line.value;
+      doc[line.is] += line.value;
     }
+
   }.bind(this));
 
   doc.description = doc.description.substring(1);
@@ -182,7 +178,8 @@ module.exports.parseFile = function (content) {
 
     // If it's either a mixin or a function
     if (isCallable) {
-      var item = this.parseCommentBlock(this.findCommentBlock(index, array));
+      var commentBlock = this.findCommentBlock(index, array);
+      var item = this.parseCommentBlock(commentBlock);
       item.type = isCallable[1];
       item.name = isCallable[2];
 

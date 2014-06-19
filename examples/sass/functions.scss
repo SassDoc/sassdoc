@@ -1,16 +1,17 @@
-// Returns opposite-position of positions
-// ---
-// @alias other-function
-// @param {list} $positions - list of positions
-// ---
-// @todo Brush my unicorn
-// @todo Buy a rainbow
-// ---
-// @throws No opposite direction can be found for $direction.
-// @throws Why not Zoidberg?
-// ---
-// @returns {string | null}
-
+/**
+ * Returns opposite-position of positions
+ * ---
+ * @alias other-function
+ * @param {list} $positions - list of positions
+ * ---
+ * @todo Brush my unicorn
+ * @todo Buy a rainbow
+ * ---
+ * @throws No opposite direction can be found for $direction.
+ * @throws Why not Zoidberg?
+ * ---
+ * @returns {string | null}
+ */
 @function opposite-direction($directions) {
   $opposite-directions: ();
   $direction-map: (

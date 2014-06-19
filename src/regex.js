@@ -1,23 +1,23 @@
 var Regex = function () {};
 
 Regex.prototype.isComment = function (line) {
-  return line.match(/^\/{2,}/i);
+  return line.match(/^\/{2,}/i) || line.match(/^\s*\/?\*+\/?/i);
 };
 
 Regex.prototype.isParameter = function (line) {
-  return line.match(/^\/{2,}\s*@(?:param|arg|argument|parameter)(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})?\s+(?:\$([\w-]+))(?:\s+\(([\w-\s]+)\))?(?:\s+-\s*?([\w-\s]+))?/i);
+  return line.match(/^@(?:param|arg|argument|parameter)(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})?\s+(?:\$([\w-]+))(?:\s+\(([\w-\s]+)\))?(?:\s+-\s*?([\w-\s]+))?/i);
 };
 
 Regex.prototype.isReturn = function (line) {
-  return line.match(/^\/{2,}\s*@returns(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})(?:\s+([\w-\s]*))?/i);
+  return line.match(/^@returns(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})(?:\s+([\w-\s]*))?/i);
 };
 
 Regex.prototype.isScope = function (line) {
-  return line.match(/^\/{2,}\s*@(private|public|protected)/i) || line.match(/^\/{2,}\s*@access\s+(private|public|protected)/i);
+  return line.match(/^@(private|public|protected)/i) || line.match(/^@access\s+(private|public|protected)/i);
 };
 
 Regex.prototype.isSeparator = function (line) {
-  return line.match(/^\/{2,}\s*---/i);
+  return line.match(/^---/i);
 };
 
 Regex.prototype.isFunctionOrMixin = function (line) {
@@ -29,27 +29,27 @@ Regex.prototype.isEmpty = function (line) {
 };
 
 Regex.prototype.isDeprecated = function (line) {
-  return line.match(/^\/{2,}\s*@deprecated(?:\s+([\w-\$\.\s]+))?/i);
+  return line.match(/^@deprecated(?:\s+([\w-\$\.\s]+))?/i);
 };
 
 Regex.prototype.isAuthor = function (line) {
-  return line.match(/^\/{2,}\s*@author\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@author\s+([\w-\$\"\.\s]+)/i);
 };
 
 Regex.prototype.isTodo = function (line) {
-  return line.match(/^\/{2,}\s*@todo\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@todo\s+([\w-\$\"\.\s]+)/i);
 };
 
 Regex.prototype.isIgnore = function (line) {
-  return line.match(/^\/{2,}\s*@ignore\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@ignore\s+([\w-\$\"\.\s]+)/i);
 };
 
 Regex.prototype.isThrow = function (line) {
-  return line.match(/^\/{2,}\s*@throws\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@throws\s+([\w-\$\"\.\s]+)/i);
 };
 
 Regex.prototype.isAlias = function (line) {
-  return line.match(/^\/{2,}\s*@alias\s+([\w-]+)/i);
+  return line.match(/^@alias\s+([\w-]+)/i);
 };
 
 module.exports.regex = Regex;

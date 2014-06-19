@@ -1,6 +1,6 @@
 var fs = require('fs');
 var swig  = require('swig');
-var Utils = new (require('./helpers')).utils();
+var Utils = new (require('./utils')).utils();
 var parser = require('./parser');
 
 // Test if folder exists
