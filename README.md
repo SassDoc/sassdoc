@@ -53,7 +53,7 @@ bin/sassdoc <src> <dest>
 
 ## Description block
 
-### Alias
+### @alias
 
 Defines if the documented function/mixin is an alias of another function.
 
@@ -61,7 +61,7 @@ Defines if the documented function/mixin is an alias of another function.
 // @alias other-function
 ```
 
-### Author
+### @author
 
 Describes the author of the documented function/mixin.
 
@@ -69,7 +69,7 @@ Describes the author of the documented function/mixin.
 // @author Author's name
 ```
 
-### Deprecated
+### @deprecated
 
 Defines if the documented documented function/mixin is deprecated. Message is optional.
 
@@ -82,7 +82,7 @@ Defines if the documented documented function/mixin is deprecated. Message is op
 
 Describes the documented function/mixin. Any line which is nota valid token or a separator line is considered part of the description.
 
-### Ignore
+### @ignore
 
 Defines a line which won't be documented.
 
@@ -94,16 +94,16 @@ Defines a line which won't be documented.
 
 Name of the documented function/mixin is self parsed, hence `@name` doesn't exist.
 
-### Parameters
+### @param
 
-Describes a parameter of the documented function/mixin. Default value is optional.
+Describes a parameter of the documented function/mixin. Default value is optional. `@arg`, `@argument` and `@parameter` are accepted as well.
 
 ```scss
 // @param {type} $name - description
 // @param {type} $name (default value) - description of the parameter
 ```
 
-### Return
+### @returns
 
 Describes the return statement of the documented function/mixin. Description is optional.
 
@@ -112,7 +112,7 @@ Describes the return statement of the documented function/mixin. Description is 
 // @returns {type} Description of the return statement
 ```
 
-### Scope
+### @scope
 
 Defines the scope of the documented function/mixin. None is considered `@public`.
 
@@ -122,7 +122,7 @@ Defines the scope of the documented function/mixin. None is considered `@public`
 // @protected
 ```
 
-### Throws
+### @throws
 
 Describes the error thrown by the documented function/mixin.
 
@@ -130,7 +130,7 @@ Describes the error thrown by the documented function/mixin.
 // @throws Error related message
 ```
 
-### Todos
+### @todo
 
 Defines any task to do regarding the documented function/mixin.
 
