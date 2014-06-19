@@ -61,6 +61,24 @@ Name of the documented function/mixin is self parsed, hence `@name` doesn't exis
 
 Describes the documented function/mixin. Any line which is nota valid token or a separator line is considered part of the description.
 
+### @access
+
+Defines the access of the documented function/mixin. None is considered `@access public`.
+
+```scss
+// @access private
+// @access public
+// @access protected
+```
+
+It is also possible to define access like this:
+
+```scss
+// @private
+// @public
+// @protected
+```
+
 ### @alias
 
 Defines if the documented function/mixin is an alias of another function.
@@ -110,16 +128,6 @@ Describes the return statement of the documented function/mixin. Description is 
 ```scss
 // @returns {type}
 // @returns {type} Description of the return statement
-```
-
-### @scope
-
-Defines the scope of the documented function/mixin. None is considered `@public`.
-
-```scss
-// @private
-// @public
-// @protected
 ```
 
 ### @throws

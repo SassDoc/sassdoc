@@ -13,7 +13,7 @@ Regex.prototype.isReturn = function (line) {
 };
 
 Regex.prototype.isScope = function (line) {
-  return line.match(/^\/{2,}\s*@(private|public|protected)/i);
+  return line.match(/^\/{2,}\s*@(private|public|protected)/i) || line.match(/^\/{2,}\s*@access\s+(private|public|protected)/i);
 };
 
 Regex.prototype.isSeparator = function (line) {
