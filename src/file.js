@@ -1,6 +1,6 @@
 var fs = require('fs');
 var swig  = require('swig');
-var helpers = require('./helpers');
+var Utils = new (require('./helpers')).utils();
 var parser = require('./parser');
 
 // Test if folder exists
@@ -16,7 +16,7 @@ module.exports.createFolder = function (folder, callback) {
 
     // If it doesn't exist, create it
     fs.mkdir(folder, function () {
-      console.log(helpers.getDateTime() + ' :: Folder `' + folder + '` successfully created.');
+      console.log(Utils.getDateTime() + ' :: Folder `' + folder + '` successfully created.');
 
       if (typeof callback === "function") {
         callback();
@@ -37,7 +37,7 @@ module.exports.writeFile = function (destination, file, template, data) {
       if (err) throw err;
 
       // Log success
-      console.log(helpers.getDateTime() + ' :: File `' + dest + '` successfully generated.');
+      console.log(Utils.getDateTime() + ' :: File `' + dest + '` successfully generated.');
     });
   });
 };
@@ -54,7 +54,7 @@ module.exports.processFile = function (file, source, destination) {
       data: parser.parseFile(data),
       title: dest,
       base_class: 'sassdoc',
-      asset_path: helpers.assetPath(destination, 'css/styles.css')
+      asset_path: Utils.assetPath(destination, 'css/styles.css')
     });
 
   }.bind(this));
@@ -81,7 +81,7 @@ module.exports.buildIndex = function (destination, files) {
   this.writeFile(destination, 'index.html', 'index.html.swig', {
     files: this.buildIndexTree(files),
     base_class: 'sassdoc',
-    asset_path: helpers.assetPath(destination, 'css/styles.css')
+    asset_path: Utils.assetPath(destination, 'css/styles.css')
   });
 };
 
@@ -131,7 +131,7 @@ module.exports.parseFolder = function (source, destination) {
       // Else parse it
       else {
         // If not a SCSS file, break
-        if (helpers.getExtension(file) !== "scss") return;
+        if (Utils.getExtension(file) !== "scss") return;
 
         // Process file
         this.processFile(file, source, destination);

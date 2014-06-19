@@ -1,15 +1,17 @@
+var Utils = function () {};
+
 // Get filename without extension
-module.exports.removeExtension = function (filename) {
+Utils.prototype.removeExtension = function (filename) {
   return filename.replace(/(.*)\.(.*?)$/, '$1');
 };
 
 // Get file extension
-module.exports.getExtension = function (filename) {
+Utils.prototype.getExtension = function (filename) {
   return filename.split('.').pop();
 };
 
 // Get current date/time
-module.exports.getDateTime = function () {
+Utils.prototype.getDateTime = function () {
   var date = new Date(),
       year, month, day, hour, min, sec;
 
@@ -23,14 +25,16 @@ module.exports.getDateTime = function () {
   return year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec;
 };
 
-module.exports.pad = function (value) {
+Utils.prototype.pad = function (value) {
   return (value < 10 ? '0' : '') + value;
 };
 
-module.exports.assetPath = function (destination, asset) {
+Utils.prototype.assetPath = function (destination, asset) {
   return '../'.repeat(destination.split('/').length) + 'assets/' + asset;
 };
 
 String.prototype.repeat = function(times) {
    return (new Array(times + 1)).join(this);
 };
+
+module.exports.utils = Utils;

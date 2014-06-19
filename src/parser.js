@@ -1,8 +1,8 @@
-var check = require('./regex');
+var Regex = new (require('./regex')).regex();
 
 // Parse a parameter line to get data
 module.exports.parseParameter = function (line) {
-  var match = check.isParameter(line);
+  var match = Regex.isParameter(line);
 
   // Error
   if (!match) return false;
@@ -17,7 +17,7 @@ module.exports.parseParameter = function (line) {
 
 // Parse a return line
 module.exports.parseReturn = function (line) {
-  var match = check.isReturn(line);
+  var match = Regex.isReturn(line);
 
   // Error
   if (!match) return false;
@@ -33,7 +33,7 @@ module.exports.findCommentBlock = function (index, array) {
   // Loop back
   while (previousLine--) {
     // If it's not a comment or if it's an empty line, break
-    if ((comments.length > 0 && check.isEmpty(array[previousLine])) || !check.isComment(array[previousLine])) {
+    if ((comments.length > 0 && Regex.isEmpty(array[previousLine])) || !Regex.isComment(array[previousLine])) {
       break;
     }
 
@@ -48,18 +48,18 @@ module.exports.findCommentBlock = function (index, array) {
 module.exports.parseLine = function (line) {
   var value;
 
-  if (check.isSeparator(line) || check.isIgnore(line)) {
+  if (Regex.isSeparator(line) || Regex.isIgnore(line)) {
     return false;
   }
 
-  if (check.isParameter(line)) {
+  if (Regex.isParameter(line)) {
     return {
       'is': 'parameter',
       'value': this.parseParameter(line)
     }
   }
 
-  value = check.isDeprecated(line);
+  value = Regex.isDeprecated(line);
   if (value) {
     return {
       'is': 'deprecated',
@@ -67,7 +67,7 @@ module.exports.parseLine = function (line) {
     }
   }
 
-  value = check.isAuthor(line);
+  value = Regex.isAuthor(line);
   if (value) {
     return {
       'is': 'author',
@@ -75,7 +75,7 @@ module.exports.parseLine = function (line) {
     }
   }
 
-  value = check.isReturn(line);
+  value = Regex.isReturn(line);
   if (value) {
     return {
       'is': 'return',
@@ -86,7 +86,7 @@ module.exports.parseLine = function (line) {
     }
   }
 
-  value = check.isScope(line);
+  value = Regex.isScope(line);
   if (value) {
     return {
       'is': 'scope',
@@ -148,7 +148,7 @@ module.exports.parseFile = function (content) {
 
   // Looping through the file
   array.forEach(function (line, index) {
-    var isCallable = check.isFunctionOrMixin(line);
+    var isCallable = Regex.isFunctionOrMixin(line);
 
     // If it's either a mixin or a function
     if (isCallable) {
