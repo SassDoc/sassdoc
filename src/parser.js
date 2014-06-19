@@ -113,6 +113,14 @@ module.exports.parseLine = function (line) {
     }
   }
 
+  value = Regex.isAlias(line);
+  if (value) {
+    return {
+      'is': 'alias',
+      'value': value[1]
+    }
+  }
+
   return {
     'is': 'description',
     'value': '\n' + this.stripComments(line)
@@ -131,6 +139,7 @@ module.exports.parseCommentBlock = function (comments) {
     'parameters': [],
     'throws': [],
     'todos': [],
+    'alias': false,
     'description': '',
     'scope': 'public',
     'deprecated': false,

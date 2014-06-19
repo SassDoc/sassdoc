@@ -24,6 +24,9 @@
           {% endif %}
           <span class="{{ base_class }}__item-type">{{ item.type }}</span>
           {{ item.name }}
+          {% if item.alias %}
+            <span class="{{ base_class }}__item-alias">alias of <code>{{ item.alias }}</code></span>
+          {% endif %}
         </h2>
         <h3>Description</h3>
         <p class="{{ base_class }}__item-description">{{ item.description | replace('\n', '<br />') | raw }}</p>

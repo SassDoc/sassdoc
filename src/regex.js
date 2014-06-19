@@ -48,4 +48,8 @@ Regex.prototype.isThrow = function (line) {
   return line.match(/^\/{2,}\s*@throws\s+([\w-\$\"\.\s]+)/i);
 };
 
+Regex.prototype.isAlias = function (line) {
+  return line.match(/^\/{2,}\s*@alias\s+([\w-]+)/i);
+};
+
 module.exports.regex = Regex;

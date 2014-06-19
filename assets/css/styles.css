@@ -72,6 +72,15 @@
   text-transform: uppercase;
 }
 
+.sassdoc__item-alias {
+  color: #bbb;
+  margin-left: -.25em;
+}
+
+.sassdoc__item-alias::before {
+  content: ', ';
+}
+
 .sassdoc__item-parameters {
   width: 100%;
   text-align: center;
