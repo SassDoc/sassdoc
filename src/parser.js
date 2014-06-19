@@ -1,5 +1,6 @@
 var Regex = new (require('./regex')).regex();
 var Utils = new (require('./utils')).utils();
+var __SELF__ = this;
 
 /**
  * Define a block of comments
@@ -48,7 +49,7 @@ module.exports.parseCommentBlock = function (comments) {
 
   comments.forEach(function (line, index) {
     line = Utils.uncomment(line);
-    line = this.parseLine(line);
+    line = __SELF__.parseLine(line);
 
     // Separator or @ignore
     if (!line) return;
@@ -63,7 +64,7 @@ module.exports.parseCommentBlock = function (comments) {
       doc[line.is] += line.value;
     }
 
-  }.bind(this));
+  });
 
   doc.description = doc.description.substring(1);
   return doc;
@@ -84,14 +85,14 @@ module.exports.parseFile = function (content) {
 
     // If it's either a mixin or a function
     if (isCallable) {
-      var commentBlock = this.findCommentBlock(index, array);
-      var item = this.parseCommentBlock(commentBlock);
+      var commentBlock = __SELF__.findCommentBlock(index, array);
+      var item = __SELF__.parseCommentBlock(commentBlock);
       item.type = isCallable[1];
       item.name = isCallable[2];
 
       tree.push(item);
     }
-  }.bind(this));
+  });
 
   return tree;
 };
