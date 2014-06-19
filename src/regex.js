@@ -28,4 +28,8 @@ module.exports.isEmpty = function (line) {
 
 module.exports.isDeprecated = function (line) {
   return line.match(/^\/{2,}\s*@deprecated(?:\s+([\w-\.\s]+))?/i);
-}
+};
+
+module.exports.isAuthor = function(line) {
+  return line.match(/^\/{2,}\s*@author\s+([\w-\"\s]+)/i);
+};

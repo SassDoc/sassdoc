@@ -51,9 +51,10 @@ module.exports.parseCommentBlock = function (comments) {
     'description': '',
     'scope': 'public',
     'deprecated': false,
+    'author': false,
     'return': {
       'type': null,
-      'description': ''
+      'description': false
     }
   };
 
@@ -70,6 +71,11 @@ module.exports.parseCommentBlock = function (comments) {
     // Deprecated flag
     else if (check.isDeprecated(line)) {
       doc.deprecated = check.isDeprecated(line)[1] || true;
+    }
+
+    // Author
+    else if (check.isAuthor(line)) {
+      doc.author = check.isAuthor(line)[1];
     }
 
     // Return

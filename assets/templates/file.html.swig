@@ -86,6 +86,11 @@
 
           <h3>Signature</h3>
           <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
+
+          {% if item.author %}
+            <h3>Author</h3>
+            <p>{{ item.author }}</p>
+          {% endif %}
       </section>
     {% endfor %}
   </article>
