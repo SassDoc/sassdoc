@@ -104,6 +104,15 @@ module.exports.parseLine = function (line) {
     }
   }
 
+  value = Regex.isTodo(line);
+  if (value) {
+    return {
+      'is': 'todos',
+      'value': value[1],
+      'array': true
+    }
+  }
+
   return {
     'is': 'description',
     'value': '\n' + this.stripComments(line)
@@ -120,11 +129,12 @@ module.exports.stripComments = function (line) {
 module.exports.parseCommentBlock = function (comments) {
   var line, doc = {
     'parameters': [],
+    'throws': [],
+    'todos': [],
     'description': '',
     'scope': 'public',
     'deprecated': false,
     'author': false,
-    'throws': [],
     'return': {
       'type': null,
       'description': false

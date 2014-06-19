@@ -36,6 +36,10 @@ Regex.prototype.isAuthor = function (line) {
   return line.match(/^\/{2,}\s*@author\s+([\w-\$\"\.\s]+)/i);
 };
 
+Regex.prototype.isTodo = function (line) {
+  return line.match(/^\/{2,}\s*@todo\s+([\w-\$\"\.\s]+)/i);
+};
+
 Regex.prototype.isIgnore = function (line) {
   return line.match(/^\/{2,}\s*@ignore\s+([\w-\$\"\.\s]+)/i);
 };

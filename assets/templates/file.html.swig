@@ -93,6 +93,15 @@
             {% endfor %}
           {% endif %}
 
+          {% if item.todos.length > 0 %}
+            <h3>TODO's</h3>
+            {% for todo in item.todos %}
+              {% if loop.first %}<ul>{% endif %}
+              <li>{{ todo }}</li>
+              {% if loop.last %}</ul>{% endif %}
+            {% endfor %}
+          {% endif %}
+
           <h3>Signature</h3>
           <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
 
