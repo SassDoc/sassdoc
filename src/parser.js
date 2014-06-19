@@ -1,7 +1,12 @@
 var Regex = new (require('./regex')).regex();
 var Utils = new (require('./utils')).utils();
 
-// Define a block of comments
+/**
+ * Define a block of comments
+ * @param  {index} index - index of line where function/mixin starts
+ * @param  {array} array - file as an array of lines
+ * @return {array}         array of lines
+ */
 module.exports.findCommentBlock = function (index, array) {
   var previousLine = index - 1;
   var comments = [];
@@ -20,7 +25,11 @@ module.exports.findCommentBlock = function (index, array) {
   return comments;
 };
 
-// Parse a block of comments
+/**
+ * Parse a block of comments
+ * @param  {array} comments - array of lines
+ * @return {object}           function/mixin documentation
+ */
 module.exports.parseCommentBlock = function (comments) {
   var line, doc = {
     'parameters': [],
@@ -60,7 +69,11 @@ module.exports.parseCommentBlock = function (comments) {
   return doc;
 };
 
-// Run
+/**
+ * Parse a file
+ * @param  {string} content - file content
+ * @return {array}            array of documented functions/mixins
+ */
 module.exports.parseFile = function (content) {
   var array = content.split("\n"),
       tree = [];
@@ -83,7 +96,11 @@ module.exports.parseFile = function (content) {
   return tree;
 };
 
-// Parse a line to determine what it is
+/**
+ * Parse a line to determine what it is
+ * @param  {string} line  - line to be parsed
+ * @return {object|false}
+ */
 module.exports.parseLine = function (line) {
   var value;
 

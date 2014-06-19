@@ -3,8 +3,12 @@ var swig  = require('swig');
 var Utils = new (require('./utils')).utils();
 var parser = require('./parser');
 
-// Test if folder exists
-// If it doesn't, create it
+/**
+ * Test if folder exists; if it doesn't, create it
+ * @param {string} folder     - folder to be created
+ * @param {function} callback - function to be executed once folder is created
+ * @return {undefined}
+ */
 module.exports.createFolder = function (folder, callback) {
   // Test whether destination exists
   fs.exists(folder, function (exists) {
@@ -25,7 +29,14 @@ module.exports.createFolder = function (folder, callback) {
   });
 };
 
-// Write a file using a Swig template
+/**
+ * Write a file using a Swig template
+ * @param  {string} destination - destination folder
+ * @param  {string} file        - source file name
+ * @param  {string} template    - template file
+ * @param  {object} data        - data to pass to view
+ * @return {undefined}
+ */
 module.exports.writeFile = function (destination, file, template, data) {
   var dest = (destination + '/' + file).replace('.scss', '.html'),
       tmp = swig.compileFile(__dirname + '/../assets/templates/' + template);
@@ -42,7 +53,13 @@ module.exports.writeFile = function (destination, file, template, data) {
   });
 };
 
-// Read, parse then write a file
+/**
+ * Read, parse then write a file
+ * @param  {string} file        - file to be parsed
+ * @param  {string} source      - source folder
+ * @param  {string} destination - destination folder
+ * @return {undefined}
+ */
 module.exports.processFile = function (file, source, destination) {
   var dest = destination + '/' + file;
 
@@ -60,12 +77,21 @@ module.exports.processFile = function (file, source, destination) {
   }.bind(this));
 };
 
-// Copy a file
+/**
+ * Copy a file
+ * @param  {string} source
+ * @param  {string} destination
+ * @return {undefined}
+ */
 module.exports.copyFile = function (source, destination) {
   fs.createReadStream(source).pipe(fs.createWriteStream(destination));
 };
 
-// Copy the CSS file from the assets folder to the dist folder
+/**
+ * Copy the CSS file from the assets folder to the dist folder
+ * @param  {string} destination - destination folder
+ * @return {undefined}
+ */
 module.exports.copyCSS = function (destination) {
   var cssFolder = destination + '/css';
 
@@ -75,7 +101,12 @@ module.exports.copyCSS = function (destination) {
   }.bind(this));
 };
 
-// Build index page
+/**
+ * Build index page
+ * @param  {string} destination - destination folder
+ * @param  {array} files        - array of file names
+ * @return {undefined}
+ */
 module.exports.buildIndex = function (destination, files) {
   // Write index file
   this.writeFile(destination, 'index.html', 'index.html.swig', {
@@ -85,6 +116,13 @@ module.exports.buildIndex = function (destination, files) {
   });
 };
 
+/**
+ * Build index tree
+ * Remove dotfiles
+ * Replace extensions
+ * @param  {array} files - array of file names
+ * @return {array}         purged array
+ */
 module.exports.buildIndexTree = function (files) {
   // Loop over files
   for (var i = 0; i < files.length; i++) {
@@ -107,7 +145,12 @@ module.exports.buildIndexTree = function (files) {
   return files;
 };
 
-
+/**
+ * Parse a folder of files
+ * @param  {string} source      - folder to be parsed
+ * @param  {string} destination - destination folder
+ * @return {undefined}
+ */
 module.exports.parseFolder = function (source, destination) {
   var path;
 
