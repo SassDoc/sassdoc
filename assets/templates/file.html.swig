@@ -84,6 +84,15 @@
             <p><code>{{ item.return.type | join('|') }}</code></p>
           {% endif %}
 
+          {% if item.throws.length > 0 %}
+            <h3>Throws</h3>
+            {% for _throw in item.throws %}
+              {% if loop.first %}<ul>{% endif %}
+              <li>{{ _throw }}</li>
+              {% if loop.last %}</ul>{% endif %}
+            {% endfor %}
+          {% endif %}
+
           <h3>Signature</h3>
           <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
 

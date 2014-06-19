@@ -29,15 +29,19 @@ Regex.prototype.isEmpty = function (line) {
 };
 
 Regex.prototype.isDeprecated = function (line) {
-  return line.match(/^\/{2,}\s*@deprecated(?:\s+([\w-\.\s]+))?/i);
+  return line.match(/^\/{2,}\s*@deprecated(?:\s+([\w-\$\.\s]+))?/i);
 };
 
 Regex.prototype.isAuthor = function (line) {
-  return line.match(/^\/{2,}\s*@author\s+([\w-\"\s]+)/i);
+  return line.match(/^\/{2,}\s*@author\s+([\w-\$\"\.\s]+)/i);
 };
 
 Regex.prototype.isIgnore = function (line) {
-  return line.match(/^\/{2,}\s*@ignore\s+([\w-\"\s]+)/i);
+  return line.match(/^\/{2,}\s*@ignore\s+([\w-\$\"\.\s]+)/i);
+};
+
+Regex.prototype.isThrow = function (line) {
+  return line.match(/^\/{2,}\s*@throws\s+([\w-\$\"\.\s]+)/i);
 };
 
 module.exports.regex = Regex;

@@ -54,8 +54,9 @@ module.exports.parseLine = function (line) {
 
   if (Regex.isParameter(line)) {
     return {
-      'is': 'parameter',
-      'value': this.parseParameter(line)
+      'is': 'parameters',
+      'value': this.parseParameter(line),
+      'array': true
     }
   }
 
@@ -94,6 +95,15 @@ module.exports.parseLine = function (line) {
     }
   }
 
+  value = Regex.isThrow(line);
+  if (value) {
+    return {
+      'is': 'throws',
+      'value': value[1],
+      'array': true
+    }
+  }
+
   return {
     'is': 'description',
     'value': '\n' + this.stripComments(line)
@@ -114,6 +124,7 @@ module.exports.parseCommentBlock = function (comments) {
     'scope': 'public',
     'deprecated': false,
     'author': false,
+    'throws': [],
     'return': {
       'type': null,
       'description': false
@@ -126,9 +137,9 @@ module.exports.parseCommentBlock = function (comments) {
     // Separator or @ignore
     if (!line) return;
 
-    // Parameter
-    if (line.is === 'parameter') {
-      doc.parameters.push(line.value);
+    // Array things (@throws, @parameters...)
+    if (typeof line.array !== "undefined" && line.array === true) {
+      doc[line.is].push(line.value);
     }
 
     // Anything else
