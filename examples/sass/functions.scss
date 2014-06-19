@@ -29,11 +29,13 @@
 
 // Clamp
 // ---
+// @deprecated Since v2.0.2
+// ---
 // @param {number} $value - value to clamp
 // @param {number} $min - minimum value
 // @param {number} $max - maximum value
 // ---
-// @returns {number | false}
+// @returns {number | false} The clamped value
 
 @function clamp($value, $min, $max) {
   @if type-of($value) != "number" or type-of($min) != "number" or type-of($max) != "number" {

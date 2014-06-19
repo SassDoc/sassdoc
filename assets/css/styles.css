@@ -67,6 +67,11 @@
   border-bottom: 1px solid #998099;
 }
 
+.sassdoc__item-deprecated {
+  color: #998099;
+  text-transform: uppercase;
+}
+
 .sassdoc__item-parameters {
   width: 100%;
   text-align: center;
@@ -92,10 +97,12 @@
   text-transform: capitalize;
 }
 
+.sassdoc__item-deprecated::before,
 .sassdoc__item-type::before {
   content: '[';
 }
 
+.sassdoc__item-deprecated::after,
 .sassdoc__item-type::after {
   content: ']';
 }

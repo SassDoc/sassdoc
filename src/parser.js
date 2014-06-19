@@ -46,9 +46,19 @@ module.exports.findCommentBlock = function (index, array) {
 
 // Parse a block of comments
 module.exports.parseCommentBlock = function (comments) {
-  var doc = { parameters: [], description: '' };
+  var doc = {
+    'parameters': [],
+    'description': '',
+    'scope': 'public',
+    'deprecated': false,
+    'return': {
+      'type': null,
+      'description': ''
+    }
+  };
 
   comments.forEach(function (line, index) {
+    // Parameter
     if (check.isParameter(line)) {
       var parameter = this.parseParameter(line);
 
@@ -57,18 +67,29 @@ module.exports.parseCommentBlock = function (comments) {
       }
     }
 
-    else if (check.isReturn(line)) {
-      doc.return = this.parseReturn(line).split('|');
+    // Deprecated flag
+    else if (check.isDeprecated(line)) {
+      doc.deprecated = check.isDeprecated(line)[1] || true;
     }
 
+    // Return
+    else if (check.isReturn(line)) {
+      var ret = check.isReturn(line);
+      doc.return.type = ret[1].split('|');
+      doc.return.description = ret[2];
+    }
+
+    // Scope
     else if (check.isScope(line)) {
       doc.scope = check.isScope(line)[1];
     }
 
+    // Separator, skip
     else if (check.isSeparator(line)) {
       return;
     }
 
+    // Description
     else {
       doc.description += (doc.description.length === 0 ? line.substring(3) : '\n' + line.substring(3));
     }

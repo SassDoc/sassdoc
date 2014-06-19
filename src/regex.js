@@ -25,3 +25,7 @@ module.exports.isFunctionOrMixin = function (line) {
 module.exports.isEmpty = function (line) {
   return line.match(/^\s*$/i);
 };
+
+module.exports.isDeprecated = function (line) {
+  return line.match(/^\/{2,}\s*@deprecated(?:\s+([\w-\.\s]+))?/i);
+}
