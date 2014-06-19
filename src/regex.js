@@ -5,7 +5,7 @@ Regex.prototype.isComment = function (line) {
 };
 
 Regex.prototype.isParameter = function (line) {
-  return line.match(/^\/{2,}\s*@param(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})?\s+(?:\$([\w-]+))(?:\s+\(([\w-\s]+)\))?(?:\s+-\s*?([\w-\s]+))?/i);
+  return line.match(/^\/{2,}\s*@(?:param|arg|argument|parameter)(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})?\s+(?:\$([\w-]+))(?:\s+\(([\w-\s]+)\))?(?:\s+-\s*?([\w-\s]+))?/i);
 };
 
 Regex.prototype.isReturn = function (line) {
