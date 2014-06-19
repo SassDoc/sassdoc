@@ -51,7 +51,15 @@ bin/sassdoc <src> <dest>
 1. `<src>` Path to your Sass folder.
 1. `<dest>` Path to the destination folder.
 
-## Description block
+## API Documentation
+
+### Name
+
+Name of the documented function/mixin is self parsed, hence `@name` doesn't exist.
+
+### Description
+
+Describes the documented function/mixin. Any line which is nota valid token or a separator line is considered part of the description.
 
 ### @alias
 
@@ -78,10 +86,6 @@ Defines if the documented documented function/mixin is deprecated. Message is op
 // @deprecated Deprecation related message
 ```
 
-### Description
-
-Describes the documented function/mixin. Any line which is nota valid token or a separator line is considered part of the description.
-
 ### @ignore
 
 Defines a line which won't be documented.
@@ -89,10 +93,6 @@ Defines a line which won't be documented.
 ```scss
 // @ignore Message
 ```
-
-### Name
-
-Name of the documented function/mixin is self parsed, hence `@name` doesn't exist.
 
 ### @param
 
@@ -135,7 +135,7 @@ Describes the error thrown by the documented function/mixin.
 Defines any task to do regarding the documented function/mixin.
 
 ```scss
-@todo Task to be done
+// @todo Task to be done
 ```
 
 ## Credits
