@@ -1,28 +1,45 @@
-var fs = require('fs');
-var swig  = require('swig');
+var FS = require('fs');
+var Swig  = require('swig');
 var Utils = new (require('./utils')).utils();
 var Parser = require('./parser');
 var Q = require('q');
 var __self = this;
 
-/**
- * Denodeified fs functions through Q, stored in module
- */
 module.exports.folder = {};
-module.exports.folder.create = Q.denodeify(fs.mkdir);
-module.exports.folder.remove = Q.denodeify(fs.rmdir);
-module.exports.folder.read = Q.denodeify(fs.readdir);
+module.exports.folder.create = Q.denodeify(FS.mkdir);
+module.exports.folder.remove = Q.denodeify(FS.rmdir);
+module.exports.folder.read = Q.denodeify(FS.readdir);
 
 module.exports.file = {};
-module.exports.file.read = Q.denodeify(fs.readFile);
-module.exports.file.create = Q.denodeify(fs.writeFile);
-module.exports.file.remove = Q.denodeify(fs.unlink);
+module.exports.file.read = Q.denodeify(FS.readFile);
+module.exports.file.create = Q.denodeify(FS.writeFile);
+module.exports.file.remove = Q.denodeify(FS.unlink);
 module.exports.file.parse = Parser.parseFile;
 
+/**
+ * Copy a file
+ * @param  {string} source
+ * @param  {string} destination
+ * @return {undefined}
+ */
 module.exports.file.copy = function (source, destination) {
-  fs.createReadStream(source).pipe(fs.createWriteStream(destination));
+  FS.createReadStream(source).pipe(FS.createWriteStream(destination));
 };
 
+/**
+ * Test if path is a directory
+ * @param  {string}  path
+ * @return {Boolean}
+ */
+module.exports.isDirectory = function (path) {
+  return FS.lstatSync(path).isDirectory();
+};
+
+/**
+ * Remove then create a folder
+ * @param  {string} folder
+ * @return {promise}
+ */
 module.exports.folder.refresh = function (folder) {
   return __self.folder.remove(folder)
     .then(function() {
@@ -32,6 +49,12 @@ module.exports.folder.refresh = function (folder) {
     });
 };
 
+/**
+ * Parse a folder
+ * @param  {string} folder
+ * @param  {string} destination
+ * @return {promise}
+ */
 module.exports.folder.parse = function (folder, destination) {
   return __self.folder.read(folder)
     .then(function (files) {
@@ -39,10 +62,15 @@ module.exports.folder.parse = function (folder, destination) {
 
       files.forEach(function (file) {
         var path = folder + '/' + file,
-            isDirectory = fs.lstatSync(path).isDirectory(),
-            func = isDirectory ? 'parse' : 'process';
+            isDirectory = __self.isDirectory(path);
 
-        promises.push(__self.file[func](path, destination));
+        if (isDirectory) {
+          promises.push(__self.folder.parse(path, destination));
+        }
+
+        else {
+          promises.push(__self.file.process(path, destination));
+        }
       });
 
       return Q.all(promises);
@@ -52,6 +80,12 @@ module.exports.folder.parse = function (folder, destination) {
     })
 };
 
+/**
+ * Process a file
+ * @param  {string} file
+ * @param  {string} destination
+ * @return {promise}
+ */
 module.exports.file.process = function (file, destination) {
   return __self.file.read(file, 'utf-8')
     .then(function (data) {
@@ -61,8 +95,14 @@ module.exports.file.process = function (file, destination) {
     });
 };
 
+/**
+ * Generate a file with Swig
+ * @param  {string} destination
+ * @param  {array} data
+ * @return {promise}
+ */
 module.exports.file.generate = function (destination, data) {
-  var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
+  var template = Swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
 
   return __self.file.create(destination, template(data));
 };
