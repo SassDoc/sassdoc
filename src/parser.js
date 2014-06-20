@@ -59,9 +59,13 @@ module.exports.parseCommentBlock = function (comments) {
       doc[line.is].push(line.value);
     }
 
+    else if (line.is === "description") {
+      doc[line.is] += line.value;
+    }
+
     // Anything else
     else {
-      doc[line.is] += line.value;
+      doc[line.is] = line.value;
     }
 
   });

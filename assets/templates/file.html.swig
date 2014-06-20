@@ -5,45 +5,45 @@
 <title>SassDoc :: {{ title }}</title>
 <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="{{ base_class }}">
-  <h1 class="{{ base_class }}__title">SassDoc :: {{ title }}</h1>
+<body class="sassdoc">
+  <h1 class="sassdoc__title">SassDoc :: {{ title }}</h1>
 
-  <aside class="{{ base_class }}__map">
+  <aside class="sassdoc__map">
     <h2>File map</h2>
     {% for item in data %}
       {% if loop.first %}<ul>{% endif %}
-      <li><a href="#{{ base_class }}__item--{{ item.name }}">{{ item.name }}</a></li>
+      <li><a href="#sassdoc__item--{{ item.name }}">{{ item.name }}</a></li>
       {% if loop.last %}</ul>{% endif %}
     {% endfor %}
   </aside>
 
-  <article class="{{ base_class }}__container">
+  <article class="sassdoc__container">
     {% for item in data %}
-      <section class="{{ base_class }}__item" id="{{ base_class }}__item--{{ item.name }}">
-        <h2 class="{{ base_class }}__item-name">
+      <section class="sassdoc__item" id="sassdoc__item--{{ item.name }}">
+        <h2 class="sassdoc__item-name">
           {% if item.deprecated %}
-            <span class="{{ base_class }}__item-deprecated" title="{{ item.deprecated }}">Deprecated</span>
+            <span class="sassdoc__item-deprecated" title="{{ item.deprecated }}">Deprecated</span>
           {% endif %}
-          <span class="{{ base_class }}__item-type">{{ item.type }}</span>
+          <span class="sassdoc__item-type">{{ item.type }}</span>
           {{ item.name }}
           {% if item.alias %}
-            <span class="{{ base_class }}__item-alias">alias of <code>{{ item.alias }}</code></span>
+            <span class="sassdoc__item-alias">alias of <code>{{ item.alias }}</code></span>
           {% endif %}
         </h2>
 
         {% if item.description %}
           <h3>Description</h3>
-          <p class="{{ base_class }}__item-description">{{ item.description | replace('\n', '<br />') | raw }}</p>
+          <p class="sassdoc__item-description">{{ item.description | replace('\n', '<br />') | raw }}</p>
         {% endif %}
 
         {% if item.access != "public" %}
           <h3>Access</h3>
-          <p class="{{ base_class }}__item-access">{{ item.access }}</p>
+          <p class="sassdoc__item-access">{{ item.access }}</p>
         {% endif %}
 
         <h3>Parameters</h3>
         {% if item.parameters.length > 0 %}
-        <table class="{{ base_class }}__item-parameters">
+        <table class="sassdoc__item-parameters">
           <thead>
             <tr>
               <th>Name</th>
@@ -70,7 +70,7 @@
               {% else %}
                 {% set parameters_string = parameters_string + ', ' + value %}
               {% endif %}
-              <tr class="{{ base_class }}__item-parameter">
+              <tr class="sassdoc__item-parameter">
                 <td>{{ parameter.name }}</td>
                 <td>{{ parameter.description }}</td>
                 <td><code>{{ parameter.type }}</code></td>
@@ -114,7 +114,7 @@
         {% endif %}
 
         <h3>Signature</h3>
-        <pre class="{{ base_class }}__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
+        <pre class="sassdoc__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
 
         {% if item.author %}
           <h3>Author</h3>

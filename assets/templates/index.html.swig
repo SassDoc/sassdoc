@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <article class="{{ base_class }}">
-  <h1 class="{{ base_class }}__title">Files</h1>
+  <article class="sassdoc">
+  <h1 class="sassdoc__title">Files</h1>
   {% for file in files %}
     {% if loop.first %}<ul>{% endif %}
     <li><a href="{{ file }}">{{ file }}</a></li>

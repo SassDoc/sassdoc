@@ -94,8 +94,7 @@ module.exports.file.generate = function (destination, data) {
 
   return __self.file.create(destination, template({
     data: data,
-    title: destination,
-    base_class: 'sassdoc'
+    title: destination
   }));
 };
 
@@ -126,15 +125,10 @@ module.exports.buildIndex = function (destination) {
 
       var template = Swig.compileFile(__dirname + '/../assets/templates/index.html.swig');
 
-      return __self.file.create(destination + '/index.html', template({
-        files: files,
-        title: destination,
-        base_class: 'sassdoc'
-      }));
-
+      return __self.file.create(destination + '/index.html', template({ files: files }));
     }, function (err) {
       console.log(err);
-    })
+    });
 };
 
 /**

@@ -74,7 +74,7 @@ Regex.prototype.isEmpty = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isDeprecated = function (line) {
-  return line.match(/^@deprecated(?:\s+([\w-\$\.\s]+))?/i);
+  return line.match(/^@deprecated(?:\s+(.+))?/i);
 };
 
 /**
@@ -83,7 +83,7 @@ Regex.prototype.isDeprecated = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isAuthor = function (line) {
-  return line.match(/^@author\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@author\s+(.+)/i);
 };
 
 /**
@@ -92,7 +92,7 @@ Regex.prototype.isAuthor = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isTodo = function (line) {
-  return line.match(/^@todo\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@todo\s+(.+)/i);
 };
 
 /**
@@ -101,7 +101,7 @@ Regex.prototype.isTodo = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isIgnore = function (line) {
-  return line.match(/^@ignore\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@ignore\s+(.+)/i);
 };
 
 /**
@@ -110,7 +110,7 @@ Regex.prototype.isIgnore = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isThrows = function (line) {
-  return line.match(/^@throws\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@throws\s+(.+)/i);
 };
 
 /**
@@ -119,7 +119,7 @@ Regex.prototype.isThrows = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isAlias = function (line) {
-  return line.match(/^@alias\s+([\w-]+)/i);
+  return line.match(/^@alias\s+(.+)/i);
 };
 
 module.exports.regex = Regex;
