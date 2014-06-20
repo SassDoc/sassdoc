@@ -15,12 +15,11 @@ module.exports.documentize = function (source, destination) {
     .then(function () {
       FS.folder.parse(source, destination)
         .then(function () {
-          console.log('Yay!');
-        }, function (err) {
-          console.log(err);
-        })
-    }, function (err) {
-      console.log(err);
-    });
-
+          FS.dumpAssets(destination);
+          FS.buildIndex(destination)
+            .then(function () {
+              console.log('Everything is okay!');
+            });
+        });
+      });
 };

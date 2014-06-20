@@ -51,16 +51,6 @@ Utils.prototype.pad = function (value) {
 };
 
 /**
- * Return asset path
- * @param  {string} destination - destination folder
- * @param  {string} asset       - asset
- * @return {string}             computed asset path
- */
-Utils.prototype.assetPath = function (destination, asset) {
-  return '../'.repeat(destination.split('/').length) + 'assets/' + asset;
-};
-
-/**
  * Remove leading comment symbols from a line
  * @param  {string} line - line to be purged
  * @return {string}        new line

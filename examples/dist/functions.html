@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SassDoc :: examples/dist/functions.html</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="sassdoc">
+  <h1 class="sassdoc__title">SassDoc :: examples/dist/functions.html</h1>
+
+  <aside class="sassdoc__map">
+    <h2>File map</h2>
+    
+      <ul>
+      <li><a href="#sassdoc__item--opposite-direction">opposite-direction</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--clamp">clamp</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--base-path">base-path</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--asset">asset</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--image">image</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--z">z</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--color">color</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--font">font</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--theme">theme</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--map-get">map-get</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--map-has-key">map-has-key</a></li>
+      
+    
+      
+      <li><a href="#sassdoc__item--map-fetch">map-fetch</a></li>
+      </ul>
+    
+  </aside>
+
+  <article class="sassdoc__container">
+    
+      <section class="sassdoc__item" id="sassdoc__item--opposite-direction">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          opposite-direction
+          
+            <span class="sassdoc__item-alias">alias of <code>falseother-function</code></span>
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Returns opposite-position of positions</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>positions</td>
+                <td> list of positions</td>
+                <td><code>list</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+          <h3>Throws</h3>
+          
+            <ul>
+            <li>No opposite direction can be found for $direction.</li>
+            
+          
+            
+            <li>Why not Zoidberg</li>
+            </ul>
+          
+        
+
+        
+          <h3>TODO's</h3>
+          
+            <ul>
+            <li>Brush my unicorn</li>
+            
+          
+            
+            <li>Buy a rainbow</li>
+            </ul>
+          
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function opposite-direction ($positions) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--clamp">
+        <h2 class="sassdoc__item-name">
+          
+            <span class="sassdoc__item-deprecated" title="falseSince v2.0.2">Deprecated</span>
+          
+          <span class="sassdoc__item-type">function</span>
+          clamp
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Clamp</p>
+        
+
+        
+          <h3>Access</h3>
+          <p class="sassdoc__item-access">publicprotected</p>
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>value</td>
+                <td> value to clamp</td>
+                <td><code>number</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>min</td>
+                <td> minimum value</td>
+                <td><code>number</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>max</td>
+                <td> maximum value</td>
+                <td><code>number</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function clamp ($value, $min, $max) { ... }</code></pre>
+
+        
+          <h3>Author</h3>
+          <p>falseHugo &quot;Sass&quot; Giraudel</p>
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--base-path">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          base-path
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Return base path</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+                
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>cdn</td>
+                <td> CDN ID</td>
+                <td><code>number</code></td>
+                
+                  <td>1</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function base-path ($cdn: 1) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--asset">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          asset
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Asset handler</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>path</td>
+                <td> asset path</td>
+                <td><code>string</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function asset ($path) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--image">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          image
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Image URL function</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>path</td>
+                <td> asset path</td>
+                <td><code>string</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function image ($path) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--z">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          z
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Function handling z-index<br />See _variables.scss -> $z-indexes map</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>component</td>
+                <td> component</td>
+                <td><code>string</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function z ($component) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--color">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          color
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Function handling colors<br />See _variables.scss -> $colors map</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>color</td>
+                <td> color to fetch</td>
+                <td><code>string</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function color ($color) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--font">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          font
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Function handling font stacks<br />See _variables.scss -> $font-stacks map</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>font-stack</td>
+                <td> font-stack to fetch</td>
+                <td><code>string</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function font ($font-stack) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--theme">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          theme
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Function handling theming<br />See _variables.scss -> $themes map</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>keys</td>
+                <td> keys to fetch</td>
+                <td><code>string</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function theme ($keys) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--map-get">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          map-get
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Function polyfilling `map-get` from Sass 3.3<br />To be removed when moving to Sass 3.3</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>map</td>
+                <td> map</td>
+                <td><code>map</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>key</td>
+                <td> key to fetch</td>
+                <td><code>literal</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function map-get ($map, $key) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--map-has-key">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          map-has-key
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Function polyfilling `map-has-key` from Sass 3.3<br />To be removed when moving to Sass 3.3</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>map</td>
+                <td> map</td>
+                <td><code>map</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>key</td>
+                <td> key to check</td>
+                <td><code>literal</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function map-has-key ($map, $key) { ... }</code></pre>
+
+        
+
+      </section>
+    
+      <section class="sassdoc__item" id="sassdoc__item--map-fetch">
+        <h2 class="sassdoc__item-name">
+          
+          <span class="sassdoc__item-type">function</span>
+          map-fetch
+          
+        </h2>
+
+        
+          <h3>Description</h3>
+          <p class="sassdoc__item-description">Function fetching multiple nested keys at once</p>
+        
+
+        
+
+        <h3>Parameters</h3>
+        
+        <table class="sassdoc__item-parameters">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default value</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            
+              
+
+              
+
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>map</td>
+                <td> map</td>
+                <td><code>map</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+              
+
+              
+
+              
+                
+              
+
+              
+                
+              
+              <tr class="sassdoc__item-parameter">
+                <td>keys</td>
+                <td> keys to fetch</td>
+                <td><code>argList</code></td>
+                
+                  <td>&mdash;</td>
+                
+              </tr>
+            
+          </tbody>
+        </table>
+        
+
+        
+          <h3>Returns</h3>
+          
+          <p><code></code></p>
+        
+
+        
+
+        
+
+        <h3>Signature</h3>
+        <pre class="sassdoc__item-code"><code>@function map-fetch ($map, $keys...) { ... }</code></pre>
+
+        
+
+      </section>
+    
+  </article>
+</body>
+</html>

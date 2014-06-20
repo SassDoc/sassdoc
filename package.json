@@ -21,7 +21,8 @@
   "main": "src/api.js",
   "dependencies": {
     "swig": "~1.3.2",
-    "q": "^1.0.1"
+    "q": "^1.0.1",
+    "rimraf": "~2.2.8"
   },
   "bin": {
     "sassdoc": "bin/sassdoc"
