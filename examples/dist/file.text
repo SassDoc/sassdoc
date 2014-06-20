@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SassDoc :: examples/dist/file.text</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="sassdoc">
+  <h1 class="sassdoc__title">SassDoc :: examples/dist/file.text</h1>
+
+  <aside class="sassdoc__map">
+    <h2>File map</h2>
+    
+  </aside>
+
+  <article class="sassdoc__container">
+    
+  </article>
+</body>
+</html>

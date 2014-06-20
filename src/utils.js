@@ -1,55 +1,54 @@
-/**
- * Get filename without extension
- * @param  {string} filename - filename to remove extension from
- * @return {string}            filename without extension
- */
-module.exports.removeExtension = function (filename) {
-  return filename.replace(/(.*)\.(.*?)$/, '$1');
-};
+exports = module.exports = {
 
-/**
- * Get file extension
- * @param  {string} filename - filename to retrieve extension from
- * @return {string}            extension
- */
-module.exports.getExtension = function (filename) {
-  return filename.split('.').pop();
-};
+  /**
+   * Get file extension
+   * @param  {string} filename - filename to retrieve extension from
+   * @return {string}            extension
+   */
+  getExtension: function (filename) {
+    return filename.split('.').pop();
+  },
 
-/**
- * Get current date/time
- * @return {string} Stringified date time
- */
-module.exports.getDateTime = function () {
-  var date = new Date(),
-      year, month, day, hour, min, sec;
+  /**
+   * Get current date/time
+   * @return {string} Stringified date time
+   */
+  getDateTime: function () {
+    var date = new Date(),
+        year, month, day, hour, min, sec;
 
-  year  = date.getFullYear();
-  month = this.pad(date.getMonth() + 1);
-  day   = this.pad(date.getDate());
-  hour  = this.pad(date.getHours());
-  min   = this.pad(date.getMinutes());
-  sec   = this.pad(date.getSeconds());
+    year  = date.getFullYear();
+    month = exports.pad(date.getMonth() + 1);
+    day   = exports.pad(date.getDate());
+    hour  = exports.pad(date.getHours());
+    min   = exports.pad(date.getMinutes());
+    sec   = exports.pad(date.getSeconds());
 
-  return year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec;
-};
+    return year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec;
+  },
 
-/**
- * Pad a number with a leading 0 if inferior to 10
- * @param  {number} value - number to pad
- * @return {string|number}  padded number or initial number
- */
-module.exports.pad = function (value) {
-  return (value < 10 ? '0' : '') + value;
-};
+  /**
+   * Pad a number with a leading 0 if inferior to 10
+   * @param  {number} value - number to pad
+   * @return {string|number}  padded number or initial number
+   */
+  pad: function (value) {
+    return (value < 10 ? '0' : '') + value;
+  },
 
-/**
- * Remove leading comment symbols from a line
- * @param  {string} line - line to be purged
- * @return {string}        new line
- */
-module.exports.uncomment = function (line) {
-  return line.trim().replace(/^\/{2,}/i, '').replace(/^\/?\*+\/?/i, '').trim();
+  /**
+   * Remove leading comment symbols from a line
+   * @param  {string} line - line to be purged
+   * @return {string}        new line
+   */
+  uncomment: function (line) {
+    return line.trim().replace(/^\/{2,}/i, '').replace(/^\/?\*+\/?/i, '').trim();
+  },
+
+  log: function (message) {
+    console.log(exports.getDateTime() + ' :: ' + message);
+  },
+
 };
 
 /**
@@ -59,7 +58,7 @@ module.exports.uncomment = function (line) {
  */
 String.prototype.repeat = function (times) {
    return (new Array(times + 1)).join(this);
-};
+},
 
 /**
  * Extend String primitive to add a trim function
@@ -67,4 +66,4 @@ String.prototype.repeat = function (times) {
  */
 String.prototype.trim = function () {
   return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');
-};
+}
