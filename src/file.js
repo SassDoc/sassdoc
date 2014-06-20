@@ -58,16 +58,23 @@ exports = module.exports = {
         files.forEach(function (file) {
           var path = folder + '/' + file;
 
+          // Folder
           if (exports.isDirectory(path)) {
             promises.push(exports.folder.parse(path).then(function (response) {
               data = data.concat(response);
             }));
           }
 
-          else if (utils.getExtension(file) === "scss") {
+          // SCSS file
+          else if (utils.getExtension(file).toLowerCase() === "scss") {
             promises.push(exports.file.process(folder, file).then(function (response) {
               data = data.concat(response);
             }));
+          }
+
+          // Else
+          else {
+            log.log('File `' + file + '` is not a `.scss` file. Omitted.');
           }
         });
 
@@ -169,10 +176,15 @@ exports = module.exports = {
     });
   },
 
+  /**
+   * Generate a document
+   * @param {Array}  data
+   * @param {String} destination
+   */
   generateDocumentation: function (data, destination) {
     var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
 
-    return exports.file.create(destination + '/index.html', template({
+    return exports.file.create(destination, template({
       data: data,
       title: destination
     }));
