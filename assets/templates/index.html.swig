@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>SassDoc :: Index</title>
-<link rel="stylesheet" href="{{ asset_path }}" />
+<link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <article class="{{ base_class }}">

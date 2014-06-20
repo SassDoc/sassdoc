@@ -127,7 +127,7 @@ module.exports.buildIndex = function (destination) {
       var template = Swig.compileFile(__dirname + '/../assets/templates/index.html.swig');
 
       return __self.file.create(destination + '/index.html', template({
-        data: files,
+        files: files,
         title: destination,
         base_class: 'sassdoc'
       }));
