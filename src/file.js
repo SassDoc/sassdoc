@@ -5,13 +5,7 @@ var FS     = require('fs');
 var rimraf = require('rimraf');
 var Swig   = require('swig');
 var Q      = require('q');
-
-/**
- * Internal dependencies
- */
-var Parser = require('./parser');
-var Regex  = require('./regex');
-var Utils  = require('./utils');
+var parser = require('./parser');
 
 /**
  * Folder API
@@ -124,8 +118,8 @@ module.exports.file.copy = function (source, destination) {
  * Parse a file
  * @return {array}
  */
-module.exports.file.parse  = function () {
-  return Parser.parseFile;
+module.exports.file.parse = function (file) {
+  return parser.parseFile(file);
 };
 
 /**

@@ -1,16 +1,9 @@
 /**
- * Regex object
- *
- * @constructs
- */
-var Regex = function () {};
-
-/**
  * Checks whether the line is a comment
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isComment = function (line) {
+module.exports.isComment = function (line) {
   return line.match(/^\/{2,}/i) || line.match(/^\s*\/?\*+\/?/i);
 };
 
@@ -19,7 +12,7 @@ Regex.prototype.isComment = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isParam = function (line) {
+module.exports.isParam = function (line) {
   return line.match(/^@(?:param|arg|argument|parameter)(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})?\s+(?:\$([\w-]+))(?:\s+\(([\w-\s]+)\))?(?:\s+-\s*?([\w-\s]+))?/i);
 };
 
@@ -28,7 +21,7 @@ Regex.prototype.isParam = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isReturns = function (line) {
+module.exports.isReturns = function (line) {
   return line.match(/^@returns(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})(?:\s+([\w-\s]*))?/i);
 };
 
@@ -37,7 +30,7 @@ Regex.prototype.isReturns = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isAccess = function (line) {
+module.exports.isAccess = function (line) {
   return line.match(/^@(private|public|protected)/i) || line.match(/^@access\s+(private|public|protected)/i);
 };
 
@@ -46,7 +39,7 @@ Regex.prototype.isAccess = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isSeparator = function (line) {
+module.exports.isSeparator = function (line) {
   return line.match(/^---/i);
 };
 
@@ -55,7 +48,7 @@ Regex.prototype.isSeparator = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isFunctionOrMixin = function (line) {
+module.exports.isFunctionOrMixin = function (line) {
   return line.match(/@(function|mixin)\s+([\w-]+)/i);
 };
 
@@ -64,7 +57,7 @@ Regex.prototype.isFunctionOrMixin = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isEmpty = function (line) {
+module.exports.isEmpty = function (line) {
   return line.match(/^\s*$/i);
 };
 
@@ -73,7 +66,7 @@ Regex.prototype.isEmpty = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isDeprecated = function (line) {
+module.exports.isDeprecated = function (line) {
   return line.match(/^@deprecated(?:\s+(.+))?/i);
 };
 
@@ -82,7 +75,7 @@ Regex.prototype.isDeprecated = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isAuthor = function (line) {
+module.exports.isAuthor = function (line) {
   return line.match(/^@author\s+(.+)/i);
 };
 
@@ -91,7 +84,7 @@ Regex.prototype.isAuthor = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isTodo = function (line) {
+module.exports.isTodo = function (line) {
   return line.match(/^@todo\s+(.+)/i);
 };
 
@@ -100,7 +93,7 @@ Regex.prototype.isTodo = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isIgnore = function (line) {
+module.exports.isIgnore = function (line) {
   return line.match(/^@ignore\s+(.+)/i);
 };
 
@@ -109,7 +102,7 @@ Regex.prototype.isIgnore = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isThrows = function (line) {
+module.exports.isThrows = function (line) {
   return line.match(/^@throws\s+(.+)/i);
 };
 
@@ -118,8 +111,6 @@ Regex.prototype.isThrows = function (line) {
  * @param  {string}  line - line to check
  * @return {Boolean}
  */
-Regex.prototype.isAlias = function (line) {
+module.exports.isAlias = function (line) {
   return line.match(/^@alias\s+(.+)/i);
 };
-
-module.exports.regex = new Regex();

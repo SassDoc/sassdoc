@@ -1,15 +1,8 @@
 /**
  * Dependencies
  */
-var Regex = require('./regex');
-var Utils = require('./utils');
-
-/**
- * Regex object
- *
- * @constructs
- */
-var Parser = function () {};
+var regex = require('./regex');
+var utils = require('./utils');
 
 /**
  * Define a block of comments
@@ -17,14 +10,14 @@ var Parser = function () {};
  * @param  {array} array - file as an array of lines
  * @return {array}         array of lines
  */
-Parser.prototype.findCommentBlock = function (index, array) {
+module.exports.findCommentBlock = function (index, array) {
   var previousLine = index - 1;
   var comments = [];
 
   // Loop back
   while (previousLine--) {
     // If it's not a comment or if it's an empty line, break
-    if ((comments.length > 0 && Regex.isEmpty(array[previousLine])) || !Regex.isComment(array[previousLine])) {
+    if ((comments.length > 0 && regex.isEmpty(array[previousLine])) || !regex.isComment(array[previousLine])) {
       break;
     }
 
@@ -40,7 +33,7 @@ Parser.prototype.findCommentBlock = function (index, array) {
  * @param  {array} comments - array of lines
  * @return {object}           function/mixin documentation
  */
-Parser.prototype.parseCommentBlock = function (comments) {
+module.exports.parseCommentBlock = function (comments) {
   var line, doc = {
     'parameters': [],
     'throws': [],
@@ -57,7 +50,7 @@ Parser.prototype.parseCommentBlock = function (comments) {
   };
 
   comments.forEach(function (line, index) {
-    line = this.parseLine(Utils.uncomment(line));
+    line = this.parseLine(utils.uncomment(line));
 
     // Separator or @ignore
     if (!line) return;
@@ -87,13 +80,13 @@ Parser.prototype.parseCommentBlock = function (comments) {
  * @param  {string} content - file content
  * @return {array}            array of documented functions/mixins
  */
-Parser.prototype.parseFile = function (content) {
+module.exports.parseFile = function (content) {
   var array = content.split("\n"),
       tree = [];
 
   // Looping through the file
   array.forEach(function (line, index) {
-    var isCallable = Regex.isFunctionOrMixin(line);
+    var isCallable = regex.isFunctionOrMixin(line);
 
     // If it's either a mixin or a function
     if (isCallable) {
@@ -114,15 +107,15 @@ Parser.prototype.parseFile = function (content) {
  * @param  {string} line  - line to be parsed
  * @return {object|false}
  */
-Parser.prototype.parseLine = function (line) {
+module.exports.parseLine = function (line) {
   var value;
 
   // Useless line, skip
-  if (line.length === 0 || Regex.isSeparator(line) || Regex.isIgnore(line)) {
+  if (line.length === 0 || regex.isSeparator(line) || regex.isIgnore(line)) {
     return false;
   }
 
-  value = Regex.isParam(line);
+  value = regex.isParam(line);
   if (value) {
     return {
       'is': 'parameters',
@@ -136,7 +129,7 @@ Parser.prototype.parseLine = function (line) {
     }
   }
 
-  value = Regex.isDeprecated(line);
+  value = regex.isDeprecated(line);
   if (value) {
     return {
       'is': 'deprecated',
@@ -144,7 +137,7 @@ Parser.prototype.parseLine = function (line) {
     }
   }
 
-  value = Regex.isAuthor(line);
+  value = regex.isAuthor(line);
   if (value) {
     return {
       'is': 'author',
@@ -152,7 +145,7 @@ Parser.prototype.parseLine = function (line) {
     }
   }
 
-  value = Regex.isReturns(line);
+  value = regex.isReturns(line);
   if (value) {
     return {
       'is': 'return',
@@ -163,7 +156,7 @@ Parser.prototype.parseLine = function (line) {
     }
   }
 
-  value = Regex.isAccess(line);
+  value = regex.isAccess(line);
   if (value) {
     return {
       'is': 'access',
@@ -171,7 +164,7 @@ Parser.prototype.parseLine = function (line) {
     }
   }
 
-  value = Regex.isThrows(line);
+  value = regex.isThrows(line);
   if (value) {
     return {
       'is': 'throws',
@@ -180,7 +173,7 @@ Parser.prototype.parseLine = function (line) {
     }
   }
 
-  value = Regex.isTodo(line);
+  value = regex.isTodo(line);
   if (value) {
     return {
       'is': 'todos',
@@ -189,7 +182,7 @@ Parser.prototype.parseLine = function (line) {
     }
   }
 
-  value = Regex.isAlias(line);
+  value = regex.isAlias(line);
   if (value) {
     return {
       'is': 'alias',
@@ -202,6 +195,3 @@ Parser.prototype.parseLine = function (line) {
     'value': '\n' + line
   }
 };
-
-
-module.exports.parser = new Parser();

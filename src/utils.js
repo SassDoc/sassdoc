@@ -1,16 +1,9 @@
 /**
- * Utils object
- *
- * @constructs
- */
-var Utils = function () {};
-
-/**
  * Get filename without extension
  * @param  {string} filename - filename to remove extension from
  * @return {string}            filename without extension
  */
-Utils.prototype.removeExtension = function (filename) {
+module.exports.removeExtension = function (filename) {
   return filename.replace(/(.*)\.(.*?)$/, '$1');
 };
 
@@ -19,7 +12,7 @@ Utils.prototype.removeExtension = function (filename) {
  * @param  {string} filename - filename to retrieve extension from
  * @return {string}            extension
  */
-Utils.prototype.getExtension = function (filename) {
+module.exports.getExtension = function (filename) {
   return filename.split('.').pop();
 };
 
@@ -27,7 +20,7 @@ Utils.prototype.getExtension = function (filename) {
  * Get current date/time
  * @return {string} Stringified date time
  */
-Utils.prototype.getDateTime = function () {
+module.exports.getDateTime = function () {
   var date = new Date(),
       year, month, day, hour, min, sec;
 
@@ -46,7 +39,7 @@ Utils.prototype.getDateTime = function () {
  * @param  {number} value - number to pad
  * @return {string|number}  padded number or initial number
  */
-Utils.prototype.pad = function (value) {
+module.exports.pad = function (value) {
   return (value < 10 ? '0' : '') + value;
 };
 
@@ -55,7 +48,7 @@ Utils.prototype.pad = function (value) {
  * @param  {string} line - line to be purged
  * @return {string}        new line
  */
-Utils.prototype.uncomment = function (line) {
+module.exports.uncomment = function (line) {
   return line.trim().replace(/^\/{2,}/i, '').replace(/^\/?\*+\/?/i, '').trim();
 };
 
@@ -75,5 +68,3 @@ String.prototype.repeat = function (times) {
 String.prototype.trim = function () {
   return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');
 };
-
-module.exports.utils = new Utils();
