@@ -16,5 +16,7 @@ module.exports.documentize = function (source, destination) {
     .then(function () { return FS.dumpAssets(destination) })
     .then(function () {
       console.log('Everything is okay!');
+    }).fail(function (err) {
+      console.log(err);
     });
 };

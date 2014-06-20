@@ -18,16 +18,6 @@ module.exports.file.remove = Q.denodeify(FS.unlink);
 module.exports.file.parse = Parser.parseFile;
 
 /**
- * Copy a file
- * @param  {string} source
- * @param  {string} destination
- * @return {undefined}
- */
-module.exports.file.copy = function (source, destination) {
-  return FS.createReadStream(source).pipe(FS.createWriteStream(destination));
-};
-
-/**
  * Test if path is a directory
  * @param  {string}  path
  * @return {Boolean}
@@ -110,6 +100,16 @@ module.exports.file.generate = function (destination, data) {
 };
 
 /**
+ * Copy a file
+ * @param  {string} source
+ * @param  {string} destination
+ * @return {undefined}
+ */
+module.exports.file.copy = function (source, destination) {
+  return FS.createReadStream(source).pipe(FS.createWriteStream(destination));
+};
+
+/**
  * Build index
  * @param  {string} destination
  * @return {promise}
@@ -119,16 +119,14 @@ module.exports.buildIndex = function (destination) {
     .then(function (files) {
 
       for (var i = 0; i < files.length; i++) {
-        if (__self.isDirectory(destination + '/' + files)) {
+        if (__self.isDirectory(destination + '/' + files[i])) {
           files = files.splice(i, 1);
         }
       }
 
-      console.log(files);
-
       var template = Swig.compileFile(__dirname + '/../assets/templates/index.html.swig');
 
-      return __self.file.create(destination, template({
+      return __self.file.create(destination + '/index.html', template({
         data: files,
         title: destination,
         base_class: 'sassdoc'
