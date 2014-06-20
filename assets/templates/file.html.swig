@@ -87,12 +87,12 @@
           <p>None.</p>
         {% endif %}
 
-        {% if item.return %}
+        {% if item.returns %}
           <h3>Returns</h3>
-          {% if item.return.description %}
-          <p>{{ item.return.description }}</p>
+          {% if item.returns.description %}
+          <p>{{ item.returns.description }}</p>
           {% endif %}
-          <p><code>{{ item.return.type | join('|') }}</code></p>
+          <p><code>{{ item.returns.type | join('|') }}</code></p>
         {% endif %}
 
         {% if item.throws.length > 0 %}
@@ -104,9 +104,9 @@
           {% endfor %}
         {% endif %}
 
-        {% if item.todos.length > 0 %}
+        {% if item.todo.length > 0 %}
           <h3>TODO's</h3>
-          {% for todo in item.todos %}
+          {% for todo in item.todo %}
             {% if loop.first %}<ul>{% endif %}
             <li>{{ todo }}</li>
             {% if loop.last %}</ul>{% endif %}

@@ -20,7 +20,7 @@ Regex.prototype.isComment = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isParam = function (line) {
-  return line.match(/^@(?:param|arg|argument|parameter)(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})?\s+(?:\$([\w-]+))(?:\s+\(([\w-\s]+)\))?(?:\s+-\s*?([\w-\s]+))?/i);
+  return line.match(/^@(?:param|arg|argument|parameter)\s+{\s*(\w(?:\s*\|?\s*\w)*)\s*}\s+\$([\w-]+)(?:\s+\((.+)\))?(?:\s+-\s*?(.+))?/i);
 };
 
 /**
@@ -29,7 +29,7 @@ Regex.prototype.isParam = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isReturns = function (line) {
-  return line.match(/^@returns(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})(?:\s+([\w-\s]*))?/i);
+  return line.match(/^@returns(?:\s+{\s*(\w(?:\s*\|?\s*\w)*)\s*})(?:\s+(.*))?/i);
 };
 
 /**
@@ -56,7 +56,7 @@ Regex.prototype.isSeparator = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isFunctionOrMixin = function (line) {
-  return line.match(/@(function|mixin)\s+([\w-]+)/i);
+  return line.match(/^@(function|mixin)\s+([\w-]+)/i);
 };
 
 /**
@@ -83,7 +83,7 @@ Regex.prototype.isDeprecated = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isAuthor = function (line) {
-  return line.match(/^@author\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@author\s+(.+)/i);
 };
 
 /**
@@ -92,7 +92,7 @@ Regex.prototype.isAuthor = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isTodo = function (line) {
-  return line.match(/^@todo\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@todo\s+(.+)/i);
 };
 
 /**
@@ -101,7 +101,7 @@ Regex.prototype.isTodo = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isIgnore = function (line) {
-  return line.match(/^@ignore\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@ignore\s+(.+)/i);
 };
 
 /**
@@ -110,7 +110,7 @@ Regex.prototype.isIgnore = function (line) {
  * @return {Boolean}
  */
 Regex.prototype.isThrows = function (line) {
-  return line.match(/^@throws\s+([\w-\$\"\.\s]+)/i);
+  return line.match(/^@throws\s+(.+)/i);
 };
 
 /**

@@ -13,10 +13,10 @@ var file = require('./file');
  */
 
 module.exports.documentize = function (source, destination) {
-
   file.createFolder(destination, function () { // 1
     file.copyCSS(destination);                 // 2
-    file.parseFolder(source, destination);     // 3
+    file.parseFolder(source, destination, function () {
+      file.buildIndex(destination);
+    });     // 3
   });
-
 };

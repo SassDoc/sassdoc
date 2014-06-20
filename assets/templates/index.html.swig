@@ -9,7 +9,7 @@
   <article class="{{ base_class }}">
   <h1 class="{{ base_class }}__title">Files</h1>
   {% for file in files %}
-    {% if loop.first %}<ul>{% endif %}
+    {% if loop.first %}<ul class="{{ base_class }}__index-list">{% endif %}
     <li><a href="{{ file }}">{{ file }}</a></li>
     {% if loop.last %}</ul>{% endif %}
   {% endfor %}

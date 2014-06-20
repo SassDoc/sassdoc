@@ -2,6 +2,7 @@ var fs = require('fs');
 var swig  = require('swig');
 var Utils = new (require('./utils')).utils();
 var parser = require('./parser');
+var __SELF__ = this;
 
 /**
  * Test if folder exists; if it doesn't, create it
@@ -30,6 +31,40 @@ module.exports.createFolder = function (folder, callback) {
 };
 
 /**
+ * Parse a folder of files
+ * @param  {string} source      - folder to be parsed
+ * @param  {string} destination - destination folder
+ * @return {undefined}
+ */
+module.exports.parseFolder = function (source, destination, callback) {
+  var path;
+
+  // Read folder
+  fs.readdir(source, function (err, files) {
+    if (err) throw err;
+
+    // Loop through all items from folder
+    files.forEach(function (file) {
+      path = source + '/' + file;
+
+      // Skip dotfiles
+      if (file.charAt(0) === '.') return;
+
+      // If it's a folder, go recursive
+      if (fs.lstatSync(path).isDirectory()) {
+        __SELF__.parseFolder(path, destination + '/' + file);
+      }
+
+      // Else if it's a SCSS file, process it
+      else if (Utils.getExtension(file) === "scss") {
+        __SELF__.processFile(file, source, destination);
+      }
+
+    });
+  });
+};
+
+/**
  * Write a file using a Swig template
  * @param  {string} destination - destination folder
  * @param  {string} file        - source file name
@@ -42,7 +77,7 @@ module.exports.writeFile = function (destination, file, template, data) {
       tmp = swig.compileFile(__dirname + '/../assets/templates/' + template);
 
   // Make sure folder exists
-  this.createFolder(destination, function () {
+  __SELF__.createFolder(destination, function () {
     // Write file
     fs.writeFile(dest, tmp(data), function (err) {
       if (err) throw err;
@@ -61,20 +96,27 @@ module.exports.writeFile = function (destination, file, template, data) {
  * @return {undefined}
  */
 module.exports.processFile = function (file, source, destination) {
-  var dest = destination + '/' + file;
+  var dest = destination + '/' + file,
+      processedData;
 
   // Parse file
   fs.readFile(source + '/' + file, 'utf-8', function (err, data) {
     if (err) throw err;
+    processedData = parser.parseFile(data);
 
-    this.writeFile(destination, file, 'file.html.swig', {
-      data: parser.parseFile(data),
+    if (processedData.length === 0) {
+      console.log(Utils.getDateTime() + ' :: No function or mixin documented in `' + source + '/' + file + '`. Omitted.');
+      return;
+    }
+
+    __SELF__.writeFile(destination, file, 'file.html.swig', {
+      data: processedData,
       title: dest,
       base_class: 'sassdoc',
       asset_path: Utils.assetPath(destination, 'css/styles.css')
     });
 
-  }.bind(this));
+  });
 };
 
 /**
@@ -96,9 +138,9 @@ module.exports.copyCSS = function (destination) {
   var cssFolder = destination + '/css';
 
   // Create CSS folder
-  this.createFolder(cssFolder, function () {
-    this.copyFile('./assets/css/styles.css', cssFolder + '/styles.css');
-  }.bind(this));
+  __SELF__.createFolder(cssFolder, function () {
+    __SELF__.copyFile('./assets/css/styles.css', cssFolder + '/styles.css');
+  });
 };
 
 /**
@@ -107,10 +149,32 @@ module.exports.copyCSS = function (destination) {
  * @param  {array} files        - array of file names
  * @return {undefined}
  */
-module.exports.buildIndex = function (destination, files) {
+module.exports.buildIndex = function (destination) {
+  var _files = [];
+
+  fs.readdir(destination, function (err, files) {
+
+    files.forEach(function (file) {
+      // Skip dotfiles
+      if (file.charAt(0) === '.') return;
+
+      // If it's a folder, go recursive
+      if (fs.lstatSync(path).isDirectory()) {
+        __SELF__.buildIndex(destination + '/' + file);
+      }
+
+      // Else if it's a SCSS file, process it
+      else if (Utils.getExtension(file) === "scss") {
+        _files.push(file);
+      }
+
+    });
+
+  });
+
   // Write index file
-  this.writeFile(destination, 'index.html', 'index.html.swig', {
-    files: this.buildIndexTree(files),
+  __SELF__.writeFile(destination, 'index.html', 'index.html.swig', {
+    files: _files,
     base_class: 'sassdoc',
     asset_path: Utils.assetPath(destination, 'css/styles.css')
   });
@@ -132,7 +196,7 @@ module.exports.buildIndexTree = function (files) {
     }
 
     // Is a file
-    if (files[i].indexOf('.') > 0) {
+    if (files[i].indexOf('.') !== -1) {
       files[i] = files[i].replace('.scss', '.html');
     }
 
@@ -143,45 +207,4 @@ module.exports.buildIndexTree = function (files) {
   }
 
   return files;
-};
-
-/**
- * Parse a folder of files
- * @param  {string} source      - folder to be parsed
- * @param  {string} destination - destination folder
- * @return {undefined}
- */
-module.exports.parseFolder = function (source, destination) {
-  var path;
-
-  // Read folder
-  fs.readdir(source, function (err, files) {
-    if (err) throw err;
-
-    // Loop through all items from folder
-    files.forEach(function (file) {
-      path = source + '/' + file;
-      var isFolder = fs.lstatSync(path).isDirectory();
-
-      // Skip dotfiles
-      if (file.charAt(0) === '.') return;
-
-      // If it's a folder, go recursive
-      if (isFolder) {
-        this.parseFolder(path, destination + '/' + file);
-      }
-
-      // Else parse it
-      else {
-        // If not a SCSS file, break
-        if (Utils.getExtension(file) !== "scss") return;
-
-        // Process file
-        this.processFile(file, source, destination);
-      }
-    }.bind(this));
-
-    this.buildIndex(destination, files);
-
-  }.bind(this));
 };

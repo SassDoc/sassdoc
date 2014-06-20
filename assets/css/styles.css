@@ -119,3 +119,7 @@
 .sassdoc__item-access {
   text-transform: capitalize;
 }
+
+.sassdoc__index-list {
+  padding-left: 1.5em;
+}

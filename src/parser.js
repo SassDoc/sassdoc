@@ -1,5 +1,6 @@
 var Regex = new (require('./regex')).regex();
 var Utils = new (require('./utils')).utils();
+var __SELF__ = this;
 
 /**
  * Define a block of comments
@@ -34,13 +35,13 @@ module.exports.parseCommentBlock = function (comments) {
   var line, doc = {
     'parameters': [],
     'throws': [],
-    'todos': [],
+    'todo': [],
     'alias': false,
     'description': '',
     'access': 'public',
     'deprecated': false,
     'author': false,
-    'return': {
+    'returns': {
       'type': null,
       'description': false
     }
@@ -48,22 +49,27 @@ module.exports.parseCommentBlock = function (comments) {
 
   comments.forEach(function (line, index) {
     line = Utils.uncomment(line);
-    line = this.parseLine(line);
+    line = __SELF__.parseLine(line);
 
     // Separator or @ignore
     if (!line) return;
 
+    // Concatenate description
+    if (typeof line.is === "description") {
+      doc[line.is] += line.value;
+    }
+
     // Array things (@throws, @parameters...)
-    if (typeof line.array !== "undefined" && line.array === true) {
+    else if (typeof line.array !== "undefined" && line.array === true) {
       doc[line.is].push(line.value);
     }
 
     // Anything else
     else {
-      doc[line.is] += line.value;
+      doc[line.is] = line.value;
     }
 
-  }.bind(this));
+  });
 
   doc.description = doc.description.substring(1);
   return doc;
@@ -84,14 +90,14 @@ module.exports.parseFile = function (content) {
 
     // If it's either a mixin or a function
     if (isCallable) {
-      var commentBlock = this.findCommentBlock(index, array);
-      var item = this.parseCommentBlock(commentBlock);
+      var commentBlock = __SELF__.findCommentBlock(index, array);
+      var item = __SELF__.parseCommentBlock(commentBlock);
       item.type = isCallable[1];
       item.name = isCallable[2];
 
       tree.push(item);
     }
-  }.bind(this));
+  });
 
   return tree;
 };
@@ -142,7 +148,7 @@ module.exports.parseLine = function (line) {
   value = Regex.isReturns(line);
   if (value) {
     return {
-      'is': 'return',
+      'is': 'returns',
       'value': {
         'type': value[1].split('|'),
         'description': value[2]
@@ -170,7 +176,7 @@ module.exports.parseLine = function (line) {
   value = Regex.isTodo(line);
   if (value) {
     return {
-      'is': 'todos',
+      'is': 'todo',
       'value': value[1],
       'array': true
     }
