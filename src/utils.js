@@ -43,11 +43,7 @@ exports = module.exports = {
    */
   uncomment: function (line) {
     return line.trim().replace(/^\/{2,}/i, '').replace(/^\/?\*+\/?/i, '').trim();
-  },
-
-  log: function (message) {
-    console.log(exports.getDateTime() + ' :: ' + message);
-  },
+  }
 
 };
 

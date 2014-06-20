@@ -1,7 +1,7 @@
-var FS = require('./file');
+var fs  = require('./file');
+var log = require('./log');
 
 exports = module.exports = {
-
   /**
    * Main API function, running the whole thing
    * @param {String} source - Source folder
@@ -10,12 +10,21 @@ exports = module.exports = {
    * documentize('examples/sass', 'examples/dist')
    */
   documentize: function (source, destination) {
-    FS.folder.refresh(destination)
-      .then(function () { return FS.folder.parse(source, destination) })
-      .then(function () { return FS.buildIndex(destination) })
-      .then(function () { return FS.dumpAssets(destination) })
+    fs.folder.refresh(destination)
+      .then(function () { 
+        log.log('Folder `' + destination + '` successfully generated.');
+        return fs.folder.parse(source, destination)
+      })
+      .then(function () { 
+        log.log('Folder `' + source + '` successfully parsed.');
+        return fs.buildIndex(destination) 
+      })
+      .then(function () { 
+        log.log('Index for folder `' + source + '` successfully generated.');
+        return fs.dumpAssets(destination) 
+      })
       .then(function () {
-        console.log('Everything is okay!');
+        log.log('Process over. Everything okay!');
       }).fail(function (err) {
         console.log(err);
       });

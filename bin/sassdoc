@@ -1,24 +1,19 @@
 #!/usr/bin/env node
 
 var api = require('../src/api');
+var log = require('../src/log');
+var options = require('docopt').docopt('Usage: sassdoc <src> <dest> [options]\n\
+\n\
+Options:\n\
+-h, --help     Bring help.\n\
+-v, --verbose  Run in verbose mode.');
 
-function help() {
-  console.log('Usage: sassdoc <src> <dest>');
-  console.log();
-  console.log('Arguments:');
-  console.log('  <src>   Path to your Sass folder.');
-  console.log('  <dest>  Path to the destination folder.');
+
+if (options['--verbose'] === true) {
+  log.enabled = true;
 }
 
-var userArguments = process.argv.slice(2);
-
-if (userArguments.length < 2) {
-  console.log('Not enough arguments.')
-  console.log();
-
-  help();
-
-  process.exit(1);
+if (typeof options['<src>'] !== 'undefined' || typeof options['<dest>'] !== 'undefined') {
+  api.documentize(options['<src>'], options['<dest>']);
 }
 
-api.documentize(userArguments[0], userArguments[1]);
