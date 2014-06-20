@@ -3,6 +3,7 @@ var rimraf = require('rimraf');
 var swig   = require('swig');
 var Q      = require('q');
 var parser = require('./parser');
+var utils = require('./utils');
 
 exports = module.exports = {
 
@@ -53,13 +54,16 @@ exports = module.exports = {
 
         files.forEach(function (file) {
           var path = folder + '/' + file;
+          console.log(utils);
 
           if (exports.isDirectory(path)) {
             promises.concat(exports.folder.parse(path, destination));
           }
 
           else {
-            promises.push(exports.file.process(folder, destination, file));
+            if (utils.getExtension(file) === "scss") {
+              promises.push(exports.file.process(folder, destination, file));
+            }
           }
         });
 
