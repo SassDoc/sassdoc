@@ -1,9 +1,9 @@
 /**
  * External dependencies
  */
-var FS     = require('fs');
+var fs     = require('fs');
 var rimraf = require('rimraf');
-var Swig   = require('swig');
+var swig   = require('swig');
 var Q      = require('q');
 var parser = require('./parser');
 
@@ -11,31 +11,31 @@ var parser = require('./parser');
  * Folder API
  */
 module.exports.folder = {};
-module.exports.folder.read   = Q.denodeify(FS.readdir);
-module.exports.folder.create = Q.denodeify(FS.mkdir);
+module.exports.folder.read   = Q.denodeify(fs.readdir);
+module.exports.folder.create = Q.denodeify(fs.mkdir);
 module.exports.folder.remove = Q.denodeify(rimraf);
 
 /**
  * File API
  */
 module.exports.file = {};
-module.exports.file.read   = Q.denodeify(FS.readFile);
-module.exports.file.create = Q.denodeify(FS.writeFile);
-module.exports.file.remove = Q.denodeify(FS.unlink);
+module.exports.file.read   = Q.denodeify(fs.readFile);
+module.exports.file.create = Q.denodeify(fs.writeFile);
+module.exports.file.remove = Q.denodeify(fs.unlink);
 
 /**
  * Test if path is a directory
- * @param  {string}  path
+ * @param  {String}  path
  * @return {Boolean}
  */
 module.exports.isDirectory = function (path) {
-  return FS.lstatSync(path).isDirectory();
+  return fs.lstatSync(path).isDirectory();
 };
 
 /**
  * Remove then create a folder
- * @param  {string} folder
- * @return {promise}
+ * @param  {String} folder
+ * @return {Q.Promise}
  */
 module.exports.folder.refresh = function (folder) {
   return exports.folder.remove(folder)
@@ -48,9 +48,9 @@ module.exports.folder.refresh = function (folder) {
 
 /**
  * Parse a folder
- * @param  {string} folder
- * @param  {string} destination
- * @return {promise}
+ * @param  {String} folder
+ * @param  {String} destination
+ * @return {Q.Promise}
  */
 module.exports.folder.parse = function (folder, destination) {
   return exports.folder.read(folder)
@@ -78,9 +78,9 @@ module.exports.folder.parse = function (folder, destination) {
 
 /**
  * Process a file
- * @param  {string} file
- * @param  {string} destination
- * @return {promise}
+ * @param  {String} file
+ * @param  {String} destination
+ * @return {Q.Promise}
  */
 module.exports.file.process = function (source, destination, file) {
   return exports.file.read(source + '/' + file, 'utf-8')
@@ -90,13 +90,13 @@ module.exports.file.process = function (source, destination, file) {
 };
 
 /**
- * Generate a file with Swig
- * @param  {string} destination
- * @param  {array} data
- * @return {promise}
+ * Generate a file with swig
+ * @param  {String} destination
+ * @param  {Array} data
+ * @return {Q.Promise}
  */
 module.exports.file.generate = function (destination, data) {
-  var template = Swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
+  var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
 
   return exports.file.create(destination, template({
     data: data,
@@ -106,17 +106,17 @@ module.exports.file.generate = function (destination, data) {
 
 /**
  * Copy a file
- * @param  {string} source
- * @param  {string} destination
- * @return {undefined}
+ * @param  {String} source
+ * @param  {String} destination
+ * @return {Q.Promise}
  */
 module.exports.file.copy = function (source, destination) {
-  return FS.createReadStream(source).pipe(FS.createWriteStream(destination));
+  return fs.createReadStream(source).pipe(fs.createWriteStream(destination));
 };
 
 /**
  * Parse a file
- * @return {array}
+ * @return {Array}
  */
 module.exports.file.parse = function (file) {
   return parser.parseFile(file);
@@ -124,8 +124,8 @@ module.exports.file.parse = function (file) {
 
 /**
  * Build index
- * @param  {string} destination
- * @return {promise}
+ * @param  {String} destination
+ * @return {Q.Promise}
  */
 module.exports.buildIndex = function (destination) {
   return exports.folder.read(destination)
@@ -137,7 +137,7 @@ module.exports.buildIndex = function (destination) {
         }
       }
 
-      var template = Swig.compileFile(__dirname + '/../assets/templates/index.html.swig');
+      var template = swig.compileFile(__dirname + '/../assets/templates/index.html.swig');
 
       return exports.file.create(destination + '/index.html', template({ files: files }));
     }, function (err) {
@@ -147,8 +147,8 @@ module.exports.buildIndex = function (destination) {
 
 /**
  * Dump CSS
- * @param  {string} destination
- * @return {promise}
+ * @param  {String} destination
+ * @return {Q.Promise}
  */
 module.exports.dumpAssets = function (destination) {
   destination = __dirname + '/../' + destination + '/css';

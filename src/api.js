@@ -2,11 +2,10 @@ var FS = require('./file');
 
 /**
  * Main API function, running the whole thing
- * @param {string} source - Source folder
- * @param {string} destination - Destination folder
+ * @param {String} source - Source folder
+ * @param {String} destination - Destination folder
  * @example
  * documentize('examples/sass', 'examples/dist')
- * @returns {undefined} Doesn't return anything
  */
 
 module.exports.documentize = function (source, destination) {

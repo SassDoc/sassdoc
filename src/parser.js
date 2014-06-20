@@ -6,9 +6,9 @@ var utils = require('./utils');
 
 /**
  * Define a block of comments
- * @param  {index} index - index of line where function/mixin starts
- * @param  {array} array - file as an array of lines
- * @return {array}         array of lines
+ * @param  {Number} index - index of line where function/mixin starts
+ * @param  {Array}  array - file as an array of lines
+ * @return {Array}          array of lines
  */
 module.exports.findCommentBlock = function (index, array) {
   var previousLine = index - 1;
@@ -30,8 +30,8 @@ module.exports.findCommentBlock = function (index, array) {
 
 /**
  * Parse a block of comments
- * @param  {array} comments - array of lines
- * @return {object}           function/mixin documentation
+ * @param  {Array} comments - array of lines
+ * @return {Object}           function/mixin documentation
  */
 module.exports.parseCommentBlock = function (comments) {
   var line, doc = {
@@ -77,8 +77,8 @@ module.exports.parseCommentBlock = function (comments) {
 
 /**
  * Parse a file
- * @param  {string} content - file content
- * @return {array}            array of documented functions/mixins
+ * @param  {String} content - file content
+ * @return {Array}            array of documented functions/mixins
  */
 module.exports.parseFile = function (content) {
   var array = content.split("\n"),
@@ -104,8 +104,8 @@ module.exports.parseFile = function (content) {
 
 /**
  * Parse a line to determine what it is
- * @param  {string} line  - line to be parsed
- * @return {object|false}
+ * @param  {String} line  - line to be parsed
+ * @return {Object|false}
  */
 module.exports.parseLine = function (line) {
   var value;
