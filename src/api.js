@@ -1,5 +1,5 @@
-var fs  = require('./file');
-var log = require('./log');
+var fs     = require('./file');
+var logger = require('./log');
 
 exports = module.exports = {
   /**
@@ -12,19 +12,19 @@ exports = module.exports = {
   documentize: function (source, destination) {
     fs.folder.refresh(destination)
       .then(function () { 
-        log.log('Folder `' + destination + '` successfully generated.');
+        logger.log('Folder `' + destination + '` successfully generated.');
         return fs.folder.parse(source);
       })
       .then(function (data) {
-        log.log('Folder `' + source + '` successfully parsed.');
+        logger.log('Folder `' + source + '` successfully parsed.');
         return fs.generateDocumentation(data, destination + '/index.html');
       })
       .then(function () {
-        log.log('Documentation for folder `' + source + '` successfully generated.');
+        logger.log('Documentation for folder `' + source + '` successfully generated.');
         return fs.dumpAssets(destination);
       })
       .then(function () {
-        log.log('Process over. Everything okay!');
+        logger.log('Process over. Everything okay!');
       })
       .fail(function (err) {
         console.log(err);

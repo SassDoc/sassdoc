@@ -4,7 +4,7 @@ var swig   = require('swig');
 var Q      = require('q');
 var parser = require('./parser');
 var utils  = require('./utils');
-var log    = require('./log');
+var logger = require('./log');
 
 exports = module.exports = {
 
@@ -37,7 +37,7 @@ exports = module.exports = {
      */
     refresh: function (folder) {
       return exports.folder.remove(folder).then(function() {
-        log.log('Folder `' + folder + '` successfully removed.');
+        logger.log('Folder `' + folder + '` successfully removed.');
         return exports.folder.create(folder);
       }, function () {
         return exports.folder.create(folder);
@@ -47,16 +47,14 @@ exports = module.exports = {
     /**
      * Parse a folder
      * @param  {String} folder
-     * @param  {String} destination
      * @return {Q.Promise}
      */
     parse: function (folder) {
-
       return exports.folder.read(folder).then(function (files) {
-        var promises = [], data = [];
+        var path, promises = data = [];
 
         files.forEach(function (file) {
-          var path = folder + '/' + file;
+          path = folder + '/' + file;
 
           // Folder
           if (exports.isDirectory(path)) {
@@ -66,15 +64,15 @@ exports = module.exports = {
           }
 
           // SCSS file
-          else if (utils.getExtension(file).toLowerCase() === "scss") {
-            promises.push(exports.file.process(folder, file).then(function (response) {
+          else if (utils.getExtension(path) === "scss") {
+            promises.push(exports.file.process(path).then(function (response) {
               data = data.concat(response);
             }));
           }
 
           // Else
           else {
-            log.log('File `' + file + '` is not a `.scss` file. Omitted.');
+            logger.log('File `' + path + '` is not a `.scss` file. Omitted.');
           }
         });
 
@@ -113,12 +111,11 @@ exports = module.exports = {
     /**
      * Process a file
      * @param  {String} file
-     * @param  {String} destination
      * @return {Q.Promise}
      */
-    process: function (source, file) {
-      return exports.file.read(source + '/' + file, 'utf-8').then(function (data) {
-        return exports.file.parse(data);
+    process: function (file) {
+      return exports.file.read(file, 'utf-8').then(function (data) {
+        return parser.parseFile(data);
       });
     },
 
@@ -145,13 +142,7 @@ exports = module.exports = {
      */
     copy: function (source, destination) {
       return fs.createReadStream(source).pipe(fs.createWriteStream(destination));
-    },
-
-    /**
-     * Parse a file
-     * @return {Array}
-     */
-    parse: parser.parseFile
+    }
   },
 
   /**

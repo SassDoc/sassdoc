@@ -6,7 +6,7 @@ exports = module.exports = {
    * @return {string}            extension
    */
   getExtension: function (filename) {
-    return filename.split('.').pop();
+    return filename.split('.').pop().toLowerCase();
   },
 
   /**

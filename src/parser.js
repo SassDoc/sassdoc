@@ -10,13 +10,18 @@ exports = module.exports = {
    * @return {Array}          array of lines
    */
   findCommentBlock: function (index, array) {
-    var previousLine = index - 1;
-    var comments = [];
+    var previousLine = index - 1,
+        comments = [];
 
     // Loop back
     while (previousLine--) {
-      // If it's not a comment or if it's an empty line, break
-      if ((comments.length > 0 && regex.isEmpty(array[previousLine])) || !regex.isComment(array[previousLine])) {
+      // If it's an empty line, break (unless it hasn't started yet)
+      if (comments.length > 0 && regex.isEmpty(array[previousLine])) {
+        break;
+      } 
+
+      // If it's not a comment, break
+      if (!regex.isComment(array[previousLine])) {
         break;
       }
 
@@ -52,10 +57,12 @@ exports = module.exports = {
       line = exports.parseLine(utils.uncomment(line));
 
       // Separator or @ignore
-      if (!line) return;
+      if (!line) {
+        return false;
+      }
 
       // Array things (@throws, @parameters...)
-      if (typeof line.array !== "undefined" && line.array === true) {
+      if (line.array === true) {
         doc[line.is].push(line.value);
       }
 
@@ -70,7 +77,9 @@ exports = module.exports = {
 
     });
 
+    // Remove first carriage return
     doc.description = doc.description.substring(1);
+
     return doc;
   },
 
@@ -89,8 +98,7 @@ exports = module.exports = {
 
       // If it's either a mixin or a function
       if (isCallable) {
-        var commentBlock = exports.findCommentBlock(index, array);
-        var item = exports.parseCommentBlock(commentBlock);
+        var item = exports.parseCommentBlock(exports.findCommentBlock(index, array));
         item.type = isCallable[1];
         item.name = isCallable[2];
 
@@ -112,6 +120,17 @@ exports = module.exports = {
     // Useless line, skip
     if (line.length === 0 || regex.isSeparator(line) || regex.isIgnore(line)) {
       return false;
+    }
+
+    value = regex.isReturns(line);
+    if (value) {
+      return {
+        'is': 'return',
+        'value': {
+          'type': value[1].split('|'),
+          'description': value[2]
+        }
+      };
     }
 
     value = regex.isParam(line);
@@ -141,17 +160,6 @@ exports = module.exports = {
       return {
         'is': 'author',
         'value': value[1]
-      };
-    }
-
-    value = regex.isReturns(line);
-    if (value) {
-      return {
-        'is': 'return',
-        'value': {
-          'type': value[1].split('|'),
-          'description': value[2]
-        }
       };
     }
 
