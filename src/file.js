@@ -130,16 +130,17 @@ module.exports.file.parse = function (file) {
 module.exports.buildIndex = function (destination) {
   return exports.folder.read(destination)
     .then(function (files) {
+      var _files = [];
 
       for (var i = 0; i < files.length; i++) {
-        if (exports.isDirectory(destination + '/' + files[i])) {
-          files = files.splice(i, 1);
+        if (files[i].charAt(0) !== '.' && !exports.isDirectory(destination + '/' + files[i])) {
+          _files.push(files[i]);
         }
       }
 
       var template = swig.compileFile(__dirname + '/../assets/templates/index.html.swig');
 
-      return exports.file.create(destination + '/index.html', template({ files: files }));
+      return exports.file.create(destination + '/index.html', template({ files: _files }));
     }, function (err) {
       console.log(err);
     });
