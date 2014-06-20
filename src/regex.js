@@ -122,4 +122,4 @@ Regex.prototype.isAlias = function (line) {
   return line.match(/^@alias\s+(.+)/i);
 };
 
-module.exports.regex = Regex;
+module.exports.regex = new Regex();

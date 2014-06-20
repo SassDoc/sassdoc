@@ -76,4 +76,4 @@ String.prototype.trim = function () {
   return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');
 };
 
-module.exports.utils = Utils;
+module.exports.utils = new Utils();

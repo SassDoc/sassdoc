@@ -1,8 +1,8 @@
 /**
  * Dependencies
  */
-var Regex = new (require('./regex')).regex();
-var Utils = new (require('./utils')).utils();
+var Regex = require('./regex');
+var Utils = require('./utils');
 
 /**
  * Regex object
@@ -204,4 +204,4 @@ Parser.prototype.parseLine = function (line) {
 };
 
 
-module.exports.parser = Parser;
+module.exports.parser = new Parser();

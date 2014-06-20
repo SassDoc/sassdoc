@@ -1,25 +1,33 @@
 /**
- * Dependencies
+ * External dependencies
  */
 var FS     = require('fs');
 var rimraf = require('rimraf');
 var Swig   = require('swig');
 var Q      = require('q');
 
-var Parser = new (require('./parser')).parser();
-var Regex  = new (require('./regex')).regex();
-var Utils  = new (require('./utils')).utils();
+/**
+ * Internal dependencies
+ */
+var Parser = require('./parser');
+var Regex  = require('./regex');
+var Utils  = require('./utils');
 
+/**
+ * Folder API
+ */
 module.exports.folder = {};
+module.exports.folder.read   = Q.denodeify(FS.readdir);
 module.exports.folder.create = Q.denodeify(FS.mkdir);
 module.exports.folder.remove = Q.denodeify(rimraf);
-module.exports.folder.read = Q.denodeify(FS.readdir);
 
+/**
+ * File API
+ */
 module.exports.file = {};
-module.exports.file.read = Q.denodeify(FS.readFile);
+module.exports.file.read   = Q.denodeify(FS.readFile);
 module.exports.file.create = Q.denodeify(FS.writeFile);
 module.exports.file.remove = Q.denodeify(FS.unlink);
-module.exports.file.parse = Parser.parseFile;
 
 /**
  * Test if path is a directory
@@ -110,6 +118,14 @@ module.exports.file.generate = function (destination, data) {
  */
 module.exports.file.copy = function (source, destination) {
   return FS.createReadStream(source).pipe(FS.createWriteStream(destination));
+};
+
+/**
+ * Parse a file
+ * @return {array}
+ */
+module.exports.file.parse  = function () {
+  return Parser.parseFile;
 };
 
 /**
