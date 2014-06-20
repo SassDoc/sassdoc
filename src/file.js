@@ -172,7 +172,7 @@ exports = module.exports = {
     destination = __dirname + '/../' + destination + '/css';
 
     return exports.folder.create(destination).then(function () {
-      return exports.file.copy(__dirname + '/../assets/css/styles.css', destination + '/styles.css')
+      return exports.file.copy(__dirname + '/../assets/css/styles.css', destination + '/styles.css');
     });
   },
 
@@ -190,4 +190,4 @@ exports = module.exports = {
     }));
   }
 
-}
+};

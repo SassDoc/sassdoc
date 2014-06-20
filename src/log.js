@@ -11,4 +11,4 @@ exports = module.exports = {
       console.log.apply(console, [utils.getDateTime()].concat(Array.prototype.slice.call(arguments)));
     }
   }
-}
+};

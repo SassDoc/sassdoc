@@ -1,7 +1,5 @@
 var fs  = require('./file');
 var log = require('./log');
-var utils = require('./utils');
-var Q = require('q');
 
 exports = module.exports = {
   /**
@@ -15,7 +13,7 @@ exports = module.exports = {
     fs.folder.refresh(destination)
       .then(function () { 
         log.log('Folder `' + destination + '` successfully generated.');
-        return fs.folder.parse(source)
+        return fs.folder.parse(source);
       })
       .then(function (data) {
         log.log('Folder `' + source + '` successfully parsed.');
@@ -24,6 +22,9 @@ exports = module.exports = {
       .then(function () {
         log.log('Documentation for folder `' + source + '` successfully generated.');
         return fs.dumpAssets(destination);
+      })
+      .then(function () {
+        log.log('Process over. Everything okay!');
       })
       .fail(function (err) {
         console.log(err);

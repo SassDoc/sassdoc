@@ -125,7 +125,7 @@ exports = module.exports = {
           'description': value[4]
         },
         'array': true
-      }
+      };
     }
 
     value = regex.isDeprecated(line);
@@ -133,7 +133,7 @@ exports = module.exports = {
       return {
         'is': 'deprecated',
         'value': value[1] || true
-      }
+      };
     }
 
     value = regex.isAuthor(line);
@@ -141,7 +141,7 @@ exports = module.exports = {
       return {
         'is': 'author',
         'value': value[1]
-      }
+      };
     }
 
     value = regex.isReturns(line);
@@ -152,7 +152,7 @@ exports = module.exports = {
           'type': value[1].split('|'),
           'description': value[2]
         }
-      }
+      };
     }
 
     value = regex.isAccess(line);
@@ -160,7 +160,7 @@ exports = module.exports = {
       return {
         'is': 'access',
         'value': value[1]
-      }
+      };
     }
 
     value = regex.isThrows(line);
@@ -169,7 +169,7 @@ exports = module.exports = {
         'is': 'throws',
         'value': value[1],
         'array': true
-      }
+      };
     }
 
     value = regex.isTodo(line);
@@ -178,7 +178,7 @@ exports = module.exports = {
         'is': 'todos',
         'value': value[1],
         'array': true
-      }
+      };
     }
 
     value = regex.isAlias(line);
@@ -186,13 +186,13 @@ exports = module.exports = {
       return {
         'is': 'alias',
         'value': value[1]
-      }
+      };
     }
 
     return {
       'is': 'description',
       'value': '\n' + line
-    }
+    };
   }
 
 };

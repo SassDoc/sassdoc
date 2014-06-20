@@ -54,7 +54,7 @@ exports = module.exports = {
  */
 String.prototype.repeat = function (times) {
    return (new Array(times + 1)).join(this);
-},
+};
 
 /**
  * Extend String primitive to add a trim function
@@ -62,4 +62,4 @@ String.prototype.repeat = function (times) {
  */
 String.prototype.trim = function () {
   return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');
-}
+};
