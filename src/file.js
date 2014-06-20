@@ -50,7 +50,7 @@ exports = module.exports = {
      * @param  {String} destination
      * @return {Q.Promise}
      */
-    parse: function (folder, destination) {
+    parse: function (folder) {
       return exports.folder.read(folder).then(function (files) {
         var promises = [];
 
@@ -58,12 +58,12 @@ exports = module.exports = {
           var path = folder + '/' + file;
 
           if (exports.isDirectory(path)) {
-            promises.concat(exports.folder.parse(path, destination));
+            promises.concat(exports.folder.parse(path));
           }
 
           else {
             if (utils.getExtension(file) === "scss") {
-              promises.push(exports.file.process(folder, destination, file));
+              promises.push(exports.file.process(folder, file));
             }
           }
         });
@@ -104,15 +104,9 @@ exports = module.exports = {
      * @param  {String} destination
      * @return {Q.Promise}
      */
-    process: function (source, destination, file) {
+    process: function (source, file) {
       return exports.file.read(source + '/' + file, 'utf-8').then(function (data) {
-        data = exports.file.parse(data);
-        
-        if (data.length) {
-          return exports.file.generate(destination + '/' + file.replace('.scss', '.html'), data);
-        }
-
-        return false;
+        return exports.file.parse(data);
       });
     },
 
@@ -158,29 +152,6 @@ exports = module.exports = {
   },
 
   /**
-   * Build index
-   * @param  {String} destination
-   * @return {Q.Promise}
-   */
-  buildIndex: function (destination) {
-    return exports.folder.read(destination).then(function (files) {
-      var _files = [];
-
-      for (var i = 0; i < files.length; i++) {
-        if (files[i].charAt(0) !== '.' && !exports.isDirectory(destination + '/' + files[i])) {
-          _files.push(files[i]);
-        }
-      }
-
-      var template = swig.compileFile(__dirname + '/../assets/templates/index.html.swig');
-
-      return exports.file.create(destination + '/index.html', template({ files: _files }));
-    }, function (err) {
-      console.log(err);
-    });
-  },
-
-  /**
    * Dump CSS
    * @param  {String} destination
    * @return {Q.Promise}
@@ -191,6 +162,15 @@ exports = module.exports = {
     return exports.folder.create(destination).then(function () {
       return exports.file.copy(__dirname + '/../assets/css/styles.css', destination + '/styles.css')
     });
+  },
+
+  generateDocumentation: function (data, destination) {
+    var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
+
+    return exports.file.create(destination + '/index.html', template({
+      data: data[0],
+      title: destination
+    }));
   }
 
 }
