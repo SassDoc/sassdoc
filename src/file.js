@@ -54,7 +54,6 @@ exports = module.exports = {
 
         files.forEach(function (file) {
           var path = folder + '/' + file;
-          console.log(utils);
 
           if (exports.isDirectory(path)) {
             promises.concat(exports.folder.parse(path, destination));
@@ -105,7 +104,12 @@ exports = module.exports = {
      */
     process: function (source, destination, file) {
       return exports.file.read(source + '/' + file, 'utf-8').then(function (data) {
-        return exports.file.generate(destination + '/' + file.replace('.scss', '.html'), exports.file.parse(data));
+        data = exports.file.parse(data);
+        if (data.length) {
+          return exports.file.generate(destination + '/' + file.replace('.scss', '.html'), data);
+        }
+
+        return false;
       });
     },
 
