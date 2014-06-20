@@ -1,6 +1,6 @@
 var Regex = new (require('./regex')).regex();
 var Utils = new (require('./utils')).utils();
-var __SELF__ = this;
+var __self = this;
 
 /**
  * Define a block of comments
@@ -49,7 +49,7 @@ module.exports.parseCommentBlock = function (comments) {
 
   comments.forEach(function (line, index) {
     line = Utils.uncomment(line);
-    line = __SELF__.parseLine(line);
+    line = __self.parseLine(line);
 
     // Separator or @ignore
     if (!line) return;
@@ -85,8 +85,8 @@ module.exports.parseFile = function (content) {
 
     // If it's either a mixin or a function
     if (isCallable) {
-      var commentBlock = __SELF__.findCommentBlock(index, array);
-      var item = __SELF__.parseCommentBlock(commentBlock);
+      var commentBlock = __self.findCommentBlock(index, array);
+      var item = __self.parseCommentBlock(commentBlock);
       item.type = isCallable[1];
       item.name = isCallable[2];
 
