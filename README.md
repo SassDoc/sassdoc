@@ -36,20 +36,37 @@ npm install -g ./SassDoc
 
 ## Usage
 
+### Command line
+
 ```sh
-sassdoc <src> <dest>
+sassdoc <src> <dest> [options]
 ```
 
 Or if installed locally:
 
 ```sh
-bin/sassdoc <src> <dest>
+bin/sassdoc <src> <dest> [options]
 ```
 
-### Arguments
+#### Arguments
 
 1. `<src>` Path to your Sass folder.
 1. `<dest>` Path to the destination folder.
+
+#### Options
+
+* `-h, --help`: bring help
+* `-v, --verbose`: run in verbose mode
+
+### [WIP] Node API
+
+```js
+var sassdoc = require('sassdoc');
+
+sassdoc.parse(__dirname + '/sass').then(function (items) {
+  console.log(items);
+})
+```
 
 ## API Documentation
 
