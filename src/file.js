@@ -3,7 +3,8 @@ var rimraf = require('rimraf');
 var swig   = require('swig');
 var Q      = require('q');
 var parser = require('./parser');
-var utils = require('./utils');
+var utils  = require('./utils');
+var log    = require('./log');
 
 exports = module.exports = {
 
@@ -36,6 +37,7 @@ exports = module.exports = {
      */
     refresh: function (folder) {
       return exports.folder.remove(folder).then(function() {
+        log.log('Folder `' + folder + '` successfully removed.');
         return exports.folder.create(folder);
       }, function () {
         return exports.folder.create(folder);
@@ -105,6 +107,7 @@ exports = module.exports = {
     process: function (source, destination, file) {
       return exports.file.read(source + '/' + file, 'utf-8').then(function (data) {
         data = exports.file.parse(data);
+        
         if (data.length) {
           return exports.file.generate(destination + '/' + file.replace('.scss', '.html'), data);
         }
