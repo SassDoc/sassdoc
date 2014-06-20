@@ -141,7 +141,7 @@ module.exports.buildIndex = function (destination) {
 
 /**
  * Dump CSS
- * @param  {string} destination [description]
+ * @param  {string} destination
  * @return {promise}
  */
 module.exports.dumpAssets = function (destination) {

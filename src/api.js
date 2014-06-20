@@ -10,16 +10,11 @@ var FS = require('./file');
  */
 
 module.exports.documentize = function (source, destination) {
-
   FS.folder.refresh(destination)
+    .then(function () { return FS.folder.parse(source, destination) })
+    .then(function () { return FS.buildIndex(destination) })
+    .then(function () { return FS.dumpAssets(destination) })
     .then(function () {
-      FS.folder.parse(source, destination)
-        .then(function () {
-          FS.dumpAssets(destination);
-          FS.buildIndex(destination)
-            .then(function () {
-              console.log('Everything is okay!');
-            });
-        });
-      });
+      console.log('Everything is okay!');
+    });
 };
