@@ -1,10 +1,14 @@
-var FS = require('fs');
+/**
+ * Dependencies
+ */
+var FS     = require('fs');
 var rimraf = require('rimraf');
-var Swig  = require('swig');
-var Utils = new (require('./utils')).utils();
-var Parser = require('./parser');
-var Q = require('q');
-var __self = this;
+var Swig   = require('swig');
+var Q      = require('q');
+
+var Parser = new (require('./parser')).parser();
+var Regex  = new (require('./regex')).regex();
+var Utils  = new (require('./utils')).utils();
 
 module.exports.folder = {};
 module.exports.folder.create = Q.denodeify(FS.mkdir);
@@ -32,11 +36,11 @@ module.exports.isDirectory = function (path) {
  * @return {promise}
  */
 module.exports.folder.refresh = function (folder) {
-  return __self.folder.remove(folder)
+  return exports.folder.remove(folder)
     .then(function() {
-      return __self.folder.create(folder);
-    }, function (err) {
-      return __self.folder.create(folder);
+      return exports.folder.create(folder);
+    }, function () {
+      return exports.folder.create(folder);
     });
 };
 
@@ -47,19 +51,19 @@ module.exports.folder.refresh = function (folder) {
  * @return {promise}
  */
 module.exports.folder.parse = function (folder, destination) {
-  return __self.folder.read(folder)
+  return exports.folder.read(folder)
     .then(function (files) {
       var promises = [];
 
       files.forEach(function (file) {
         var path = folder + '/' + file;
 
-        if (__self.isDirectory(path)) {
-          promises.concat(__self.folder.parse(path, destination));
+        if (exports.isDirectory(path)) {
+          promises.concat(exports.folder.parse(path, destination));
         }
 
         else {
-          promises.push(__self.file.process(folder, destination, file));
+          promises.push(exports.file.process(folder, destination, file));
         }
       });
 
@@ -77,9 +81,9 @@ module.exports.folder.parse = function (folder, destination) {
  * @return {promise}
  */
 module.exports.file.process = function (source, destination, file) {
-  return __self.file.read(source + '/' + file, 'utf-8')
+  return exports.file.read(source + '/' + file, 'utf-8')
     .then(function (data) {
-      return __self.file.generate(destination + '/' + file.replace('.scss', '.html'), __self.file.parse(data));
+      return exports.file.generate(destination + '/' + file.replace('.scss', '.html'), exports.file.parse(data));
     });
 };
 
@@ -92,7 +96,7 @@ module.exports.file.process = function (source, destination, file) {
 module.exports.file.generate = function (destination, data) {
   var template = Swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
 
-  return __self.file.create(destination, template({
+  return exports.file.create(destination, template({
     data: data,
     title: destination
   }));
@@ -114,18 +118,18 @@ module.exports.file.copy = function (source, destination) {
  * @return {promise}
  */
 module.exports.buildIndex = function (destination) {
-  return __self.folder.read(destination)
+  return exports.folder.read(destination)
     .then(function (files) {
 
       for (var i = 0; i < files.length; i++) {
-        if (__self.isDirectory(destination + '/' + files[i])) {
+        if (exports.isDirectory(destination + '/' + files[i])) {
           files = files.splice(i, 1);
         }
       }
 
       var template = Swig.compileFile(__dirname + '/../assets/templates/index.html.swig');
 
-      return __self.file.create(destination + '/index.html', template({ files: files }));
+      return exports.file.create(destination + '/index.html', template({ files: files }));
     }, function (err) {
       console.log(err);
     });
@@ -139,8 +143,8 @@ module.exports.buildIndex = function (destination) {
 module.exports.dumpAssets = function (destination) {
   destination = __dirname + '/../' + destination + '/css';
 
-  return __self.folder.create(destination)
+  return exports.folder.create(destination)
     .then(function () {
-      return __self.file.copy(__dirname + '/../assets/css/styles.css', destination + '/styles.css')
+      return exports.file.copy(__dirname + '/../assets/css/styles.css', destination + '/styles.css')
     });
 };

@@ -1,6 +1,15 @@
+/**
+ * Dependencies
+ */
 var Regex = new (require('./regex')).regex();
 var Utils = new (require('./utils')).utils();
-var __self = this;
+
+/**
+ * Regex object
+ *
+ * @constructs
+ */
+var Parser = function () {};
 
 /**
  * Define a block of comments
@@ -8,7 +17,7 @@ var __self = this;
  * @param  {array} array - file as an array of lines
  * @return {array}         array of lines
  */
-module.exports.findCommentBlock = function (index, array) {
+Parser.prototype.findCommentBlock = function (index, array) {
   var previousLine = index - 1;
   var comments = [];
 
@@ -31,7 +40,7 @@ module.exports.findCommentBlock = function (index, array) {
  * @param  {array} comments - array of lines
  * @return {object}           function/mixin documentation
  */
-module.exports.parseCommentBlock = function (comments) {
+Parser.prototype.parseCommentBlock = function (comments) {
   var line, doc = {
     'parameters': [],
     'throws': [],
@@ -48,8 +57,7 @@ module.exports.parseCommentBlock = function (comments) {
   };
 
   comments.forEach(function (line, index) {
-    line = Utils.uncomment(line);
-    line = __self.parseLine(line);
+    line = this.parseLine(Utils.uncomment(line));
 
     // Separator or @ignore
     if (!line) return;
@@ -68,7 +76,7 @@ module.exports.parseCommentBlock = function (comments) {
       doc[line.is] = line.value;
     }
 
-  });
+  }.bind(this));
 
   doc.description = doc.description.substring(1);
   return doc;
@@ -79,7 +87,7 @@ module.exports.parseCommentBlock = function (comments) {
  * @param  {string} content - file content
  * @return {array}            array of documented functions/mixins
  */
-module.exports.parseFile = function (content) {
+Parser.prototype.parseFile = function (content) {
   var array = content.split("\n"),
       tree = [];
 
@@ -89,14 +97,14 @@ module.exports.parseFile = function (content) {
 
     // If it's either a mixin or a function
     if (isCallable) {
-      var commentBlock = __self.findCommentBlock(index, array);
-      var item = __self.parseCommentBlock(commentBlock);
+      var commentBlock = this.findCommentBlock(index, array);
+      var item = this.parseCommentBlock(commentBlock);
       item.type = isCallable[1];
       item.name = isCallable[2];
 
       tree.push(item);
     }
-  });
+  }.bind(this));
 
   return tree;
 };
@@ -106,7 +114,7 @@ module.exports.parseFile = function (content) {
  * @param  {string} line  - line to be parsed
  * @return {object|false}
  */
-module.exports.parseLine = function (line) {
+Parser.prototype.parseLine = function (line) {
   var value;
 
   // Useless line, skip
@@ -194,3 +202,6 @@ module.exports.parseLine = function (line) {
     'value': '\n' + line
   }
 };
+
+
+module.exports.parser = Parser;
