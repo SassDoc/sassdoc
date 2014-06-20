@@ -51,24 +51,29 @@ exports = module.exports = {
      * @return {Q.Promise}
      */
     parse: function (folder) {
+
       return exports.folder.read(folder).then(function (files) {
-        var promises = [];
+        var promises = [], data = [];
 
         files.forEach(function (file) {
           var path = folder + '/' + file;
 
           if (exports.isDirectory(path)) {
-            promises.concat(exports.folder.parse(path));
+            promises.push(exports.folder.parse(path).then(function (response) {
+              data = data.concat(response);
+            }));
           }
 
-          else {
-            if (utils.getExtension(file) === "scss") {
-              promises.push(exports.file.process(folder, file));
-            }
+          else if (utils.getExtension(file) === "scss") {
+            promises.push(exports.file.process(folder, file).then(function (response) {
+              data = data.concat(response);
+            }));
           }
         });
 
-        return Q.all(promises);
+        return Q.all(promises).then(function () {
+          return data;
+        });
 
       }, function (err) {
         console.log(err);
@@ -168,7 +173,7 @@ exports = module.exports = {
     var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
 
     return exports.file.create(destination + '/index.html', template({
-      data: data[0],
+      data: data,
       title: destination
     }));
   }
