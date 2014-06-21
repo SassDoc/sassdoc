@@ -9,11 +9,11 @@
   <h1 class="sassdoc__title">SassDoc :: {{ title }}</h1>
 
   <aside class="sassdoc__map">
-    <h2>File map</h2>
+    <h2>File map ({{ data.length }})</h2>
     {% for item in data %}
       {% if loop.first %}<ul>{% endif %}
         {% if item.alias == false %}
-          <li><a href="#sassdoc__item--{{ item.name }}">{{ item.name }}</a></li>
+          <li>{{ item.type }} <a href="#sassdoc__item--{{ item.type }}-{{ item.name }}">{{ item.name }}</a></li>
         {% endif %}
       {% if loop.last %}</ul>{% endif %}
     {% endfor %}
@@ -21,7 +21,7 @@
 
   <article class="sassdoc__container">
     {% for item in data %}
-      <section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="sassdoc__item--{{ item.name }}">
+      <section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="sassdoc__item--{{ item.type }}-{{ item.name }}">
         
         <h2 class="sassdoc__item-name">
           {% if item.deprecated %}
@@ -39,7 +39,7 @@
           {% endif %}
 
           {% if item.alias %}
-            <span class="sassdoc__item-alias">alias for <a href="#sassdoc__item--{{ item.alias }}">{{ item.alias }}</a></span>
+            <span class="sassdoc__item-alias">alias for <a href="#sassdoc__item--{{ item.type }}-{{ item.alias }}">{{ item.alias }}</a></span>
           {% endif %}
         </h2>
 
@@ -103,23 +103,28 @@
 
           {% if item.returns.type %}
             <h3>Returns</h3>
-            <p>{% if item.returns.description %}{{ item.returns.description }}: {% endif %}<code>{{ item.returns.type | join('|') }}</code></p>
+            <p class="sassdoc__item-description">{% if item.returns.description %}{{ item.returns.description }}: {% endif %}<code>{{ item.returns.type | join('|') }}</code></p>
           {% endif %}
 
           {% if item.throws.length > 0 %}
             <h3>Throws</h3>
             {% for _throw in item.throws %}
-              {% if loop.first %}<ul>{% endif %}
+              {% if loop.first %}<ul class="sassdoc__item-throws">{% endif %}
               <li>{{ _throw }}</li>
               {% if loop.last %}</ul>{% endif %}
             {% endfor %}
           {% endif %}
 
-          {% if item.todos.length > 0 %}
-            <h3>TODO's</h3>
-            {% for _todo in item.todos %}
-              {% if loop.first %}<ul>{% endif %}
-              <li>{{ _todo }}</li>
+          {% if item.requires.length > 0 %}
+            <h3>Requires</h3>
+            {% for _require in item.requires %}
+              {% if loop.first %}<ul class="sassdoc__item-requires">{% endif %}
+              {% if item.type == "function" %}
+                {% set require_type = "mixin" %}
+              {% else %}
+                {% set require_type = "function" %}
+              {% endif %}
+              <li><a href="#sassdoc__item--{{ require_type }}-{{ _require }}"><code>{{ _require }}</code></a></li>
               {% if loop.last %}</ul>{% endif %}
             {% endfor %}
           {% endif %}
@@ -127,15 +132,19 @@
           <h3>Signature</h3>
           <pre class="sassdoc__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
 
-          {% if item.author %}
-            <h3>Author</h3>
-            <p>{{ item.author }}</p>
+          {% if item.todos.length > 0 %}
+            <h3>TODO's</h3>
+            {% for _todo in item.todos %}
+              {% if loop.first %}<ul class="sassdoc__item-todos">{% endif %}
+              <li>{{ _todo }}</li>
+              {% if loop.last %}</ul>{% endif %}
+            {% endfor %}
           {% endif %}
 
           {% if item.links.length > 0 %}
             <h3>Links</h3>
             {% for _link in item.links %}
-              {% if loop.first %}<ul>{% endif %}
+              {% if loop.first %}<ul class="sassdoc__item-links">{% endif %}
               <li><a href="{{ _link.url }}">
                 {% if _link.caption %}
                   {{ _link.caption }}
@@ -147,15 +156,11 @@
             {% endfor %}
           {% endif %}
 
-          {% if item.requires.length > 0 %}
-            <h3>Requires</h3>
-            {% for _require in item.requires %}
-              {% if loop.first %}<ul>{% endif %}
-              <li><a href="#sassdoc__item--{{ _require }}"><code>{{ _require }}</code></a></li>
-              {% if loop.last %}</ul>{% endif %}
-            {% endfor %}
+          {% if item.author %}
+            <h3>Author</h3>
+            <p>{{ item.author }}</p>
           {% endif %}
-        
+
         {% endif %}
 
       </section>

@@ -18,6 +18,11 @@
   margin-bottom: 1em;
 }
 
+.sassdoc__map li {
+  color: #999;
+  text-transform: capitalize;
+}
+
 @media (min-width: 800px) {
   .sassdoc__container {
     width: 70%;
@@ -134,4 +139,12 @@
 
 .sassdoc__item-access {
   text-transform: capitalize;
+}
+
+.sassdoc__item-throws,
+.sassdoc__item-todos,
+.sassdoc__item-links,
+.sassdoc__item-requires {
+  padding-left: 0;
+  list-style: none;
 }

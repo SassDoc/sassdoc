@@ -6,6 +6,34 @@ var parser = require('./parser');
 var utils  = require('./utils');
 var logger = require('./log');
 
+/**
+ * Data holder
+ * @constructs
+ */
+function Data() {
+  this.index = {};
+  this.length = 0;
+}
+
+/**
+ * Push a value into Data
+ * @param {Object} value
+ */
+Data.prototype.push = function (value) {
+  this[this.length++] = value;
+  this.index[value.name] = value;
+};
+
+/**
+ * Concatenate values to Data
+ * @param {Array} values
+ */
+Data.prototype.concat = function (values) {
+  for (var i = 0; i < values.length; i++) {
+    this.push(values[i]);
+  }
+};
+
 exports = module.exports = {
 
   /**
@@ -53,7 +81,7 @@ exports = module.exports = {
       return exports.folder.read(folder).then(function (files) {
         var path, 
             promises = [],
-            data = [];
+            data = new Data();
 
         files.forEach(function (file) {
           path = folder + '/' + file;
@@ -61,14 +89,14 @@ exports = module.exports = {
           // Folder
           if (exports.isDirectory(path)) {
             promises.push(exports.folder.parse(path).then(function (response) {
-              data = data.concat(response);
+              data.concat(response);
             }));
           }
 
           // SCSS file
           else if (utils.getExtension(path) === "scss") {
             promises.push(exports.file.process(path).then(function (response) {
-              data = data.concat(response);
+              data.concat(response);
             }));
           }
 
@@ -176,7 +204,8 @@ exports = module.exports = {
    */
   generateDocumentation: function (data, destination) {
     var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
-    data = exports.compileAliases(data);
+    
+    exports.compileAliases(data);
 
     return exports.file.create(destination, template({
       data: data,
@@ -186,23 +215,15 @@ exports = module.exports = {
 
   /**
    * Compile aliases for each function
-   * @param   {Array} data
-   * @returns {Array} updated data
    */
   compileAliases: function (data) {
-    var index = {};
-
-    data.forEach(function (item) {
-      index[item.name] = item;
-    });
-
-    for (item in index) {
-      if (index[item].alias !== false) {
-        index[index[item].alias].aliased.push(item);
+    for (var item in data.index) {
+      if (data.index[item].alias === false) {
+        continue;
       }
-    }
 
-    return data;
+      data.index[data.index[item].alias].aliased.push(item);
+    }
   }
 
 };

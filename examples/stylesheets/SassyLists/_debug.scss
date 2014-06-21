@@ -72,7 +72,9 @@
 
 // Mixin displaying clean debug
 // ---
-// @param $list [List] : list
+// @param {List} $list - list to debug
+// ---
+// @requires debug
 
 @mixin debug($list) {
   body:before {
