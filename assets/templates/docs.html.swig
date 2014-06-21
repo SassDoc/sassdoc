@@ -47,7 +47,7 @@
 
           {% if item.description %}
             <h3>Description</h3>
-            <p class="sassdoc__item-description">{{ item.description | replace('\n', '<br />') | raw }}</p>
+            <p class="sassdoc__item-description">{{ item.description | replace('\n', '<br />') | markdown }}</p>
           {% endif %}
 
           {% if item.access != "public" %}

@@ -1,4 +1,4 @@
-// Adds $value at $index in $list
+// Adds `$value` at `$index` in $list
 // ---
 // @ignore Documentation: http://sassylists.com/documentation/#insert-nth
 // ---
@@ -6,8 +6,8 @@
 // @param {Number}  $index - index to add
 // @param {Literal} $value - value to add
 // ---
-// @throws List index $index is not a number for `insert-nth`.
-// @throws List index $index must be a non-zero integer for `insert-nth`.
+// @throws List index `$index` is not a number for `insert-nth`.
+// @throws List index `$index` must be a non-zero integer for `insert-nth`.
 // ---
 // @returns {List | false}
 

@@ -12,6 +12,14 @@
   color: #c69;
 }
 
+.sassdoc code {
+  color: #c69;
+  background: #e1d7d2;
+  padding: .1em .25em;
+  border-radius: .15em;
+  display: inline-block;
+}
+
 .sassdoc__map {
   padding: 1em;
   background: #EFEFEF;

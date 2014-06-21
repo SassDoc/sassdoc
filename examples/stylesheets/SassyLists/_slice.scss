@@ -1,4 +1,4 @@
-// Slices $list between $start and $end
+// Slices `$list` between `$start` and `$end`
 // ---
 // @ignore Documentation: http://sassylists.com/documentation/#slice
 // ---
@@ -6,7 +6,7 @@
 // @param {Number} $start (1)             - start index
 // @param {Number} $end   (length($list)) - end index
 // ---
-// @throws List indexes $start and $end must be numbers for `slice`.
+// @throws List indexes `$start` and `$end` must be numbers for `slice`.
 // @throws Start index has to be lesser than or equals to the end index for `slice`.
 // @throws List indexes must be non-zero integers for `slice`.
 // @throws Start index has to be lesser than or equal to list length for `slice`.

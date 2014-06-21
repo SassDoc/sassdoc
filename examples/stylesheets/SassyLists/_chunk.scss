@@ -1,11 +1,11 @@
-// Chunks $list into $size large lists
+// Chunks `$list` into `$size` large lists
 // ---
 // @ignore Documentation: http://sassylists.com/documentation/#chunk
 // ---
 // @param {List}   $list  - list to chunk
 // @param {Number} $size  - length of lists
 // ---
-// @throws $size is not a number for `chunk`.
+// @throws `$size` is not a number for `chunk`.
 // ---
 // @returns {List | false}
 

@@ -1,4 +1,4 @@
-// Adds $value as first index of $list
+// Adds `$value` as first index of `$list`
 // ---
 // @ignore Documentation: http://sassylists.com/documentation/#prepend
 // ---
@@ -7,7 +7,7 @@
 // @param {List}    $list  - list to preprend value to
 // @param {Literal} $value - value to prepend to the list
 // ---
-// @returns [List]
+// @returns {List}
 
 @function prepend($list, $value) {
   @if is-true($value) {

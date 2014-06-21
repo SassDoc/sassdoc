@@ -1,4 +1,4 @@
-// Shift indexes from $list of $value
+// Shift indexes from `$list` of `$value`
 // ---
 // @author Ana Tudor
 // ---
@@ -7,7 +7,7 @@
 // @param {List}   $list      - list to update
 // @param {Number} $value (1) - number of position between old and new indexes
 // ---
-// @throws $value is not a number for `loop`.
+// @throws `$value` is not a number for `loop`.
 // ---
 // @returns {List | false}
 

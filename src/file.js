@@ -1,10 +1,12 @@
 var fs     = require('fs');
 var rimraf = require('rimraf');
 var swig   = require('swig');
+var extras = require('swig-extras');
 var Q      = require('q');
 var parser = require('./parser');
 var utils  = require('./utils');
 var logger = require('./log');
+extras.useFilter(swig, 'markdown');
 
 /**
  * Data holder
