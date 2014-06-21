@@ -190,10 +190,10 @@ exports = module.exports = {
   generate: function (data, destination) {
     var template = swig.compileFile(__dirname + '/../assets/templates/docs.html.swig');
     
-    exports.compileAliases(data);
+    exports.compileAliases(data)
 
     return exports.file.create(destination, template({
-      data: data
+      data: Array.prototype.slice.call(data)
     }));
   },
 

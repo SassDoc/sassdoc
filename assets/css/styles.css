@@ -20,7 +20,6 @@
 
 .sassdoc__map li {
   color: #999;
-  text-transform: capitalize;
 }
 
 @media (min-width: 800px) {
@@ -56,13 +55,13 @@
 }
 
 .sassdoc__item + .sassdoc__item {
-  margin-top: 4em;
+  margin: 4em 0;
 }
 
 .sassdoc__item--alias {
   opacity: .75;
   transition: .15s;
-  margin-top: 1em !important;
+  margin-top: -3em !important;
   -webkit-transform: translateX(1em);
   -ms-transform: translateX(1em);
   transform: translateX(1em);

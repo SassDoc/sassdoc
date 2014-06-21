@@ -13,7 +13,7 @@
     {% for item in data %}
       {% if loop.first %}<ul>{% endif %}
         {% if item.alias == false %}
-          <li>{{ item.type }} <a href="#sassdoc__item--{{ item.type }}-{{ item.name }}">{{ item.name }}</a></li>
+          <li>{{ item.type | capitalize }} <a href="#sassdoc__item--{{ item.type }}-{{ item.name }}">{{ item.name }}</a></li>
         {% endif %}
       {% if loop.last %}</ul>{% endif %}
     {% endfor %}
@@ -39,7 +39,7 @@
           {% endif %}
 
           {% if item.alias %}
-            <span class="sassdoc__item-alias">alias for <a href="#sassdoc__item--{{ item.type }}-{{ item.alias }}">{{ item.alias }}</a></span>
+            <span class="sassdoc__item-alias">alias for <a href="#sassdoc__item--{{ item.type }}-{{ item.alias }}"><code>{{ item.alias }}</code></a></span>
           {% endif %}
         </h2>
 
