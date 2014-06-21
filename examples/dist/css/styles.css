@@ -55,6 +55,22 @@
   break-inside: avoid;
 }
 
+.sassdoc__item--alias {
+  opacity: .5;
+  transition: .15s;
+  -webkit-transform: translateX(1em);
+  -ms-transform: translateX(1em);
+  transform: translateX(1em);
+}
+
+.sassdoc__item--alias:hover {
+  opacity: 1;
+}
+
+.sassdoc__item--alias .sassdoc__item-name {
+  margin-bottom: 0;
+}
+
 .sassdoc__item h3 {
   color: #699;
   margin-bottom: .5em;

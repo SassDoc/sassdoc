@@ -1,0 +1,23 @@
+// Replaces value at $index from $list by $value
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#replace-nth
+// ---
+// @requires purge
+// ---
+// @param {List} $list     - list to update
+// @param {Number} $index  - index to update
+// @param {Literal} $value - new value for index
+// ---
+// @throws Invalid index $index for `replace-nth`.
+// ---
+// @returns {List | false}
+
+@function replace-nth($list, $index, $value) {
+  @if type-of($index) != "number" or $index == 0 or abs($index) > length($list) {
+    @warn "Invalid index (#{$index}) for `replace-nth`.";
+    @return false;
+  }
+
+  $list: set-nth($list, $index, $value);
+  @return if(not is-true($value), purge($list), $list);
+}

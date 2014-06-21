@@ -1,0 +1,27 @@
+// Removes all false and null values from $list
+// ---
+// @ignore Documentation: http://sassylists.com/documentation.html#purge
+// ---
+// @requires is-true
+// ---
+// @param {List} $list - list to purge
+// ---
+// @returns {List}
+
+@function purge($list) {
+  $result: ();
+
+  @each $item in $list {
+    @if is-true($item) {
+      $result: append($result, $item, list-separator($list));
+    }
+  }
+
+  @return $result;
+}
+
+// @alias purge
+
+@function clean($list) {
+  @return purge($list);
+}

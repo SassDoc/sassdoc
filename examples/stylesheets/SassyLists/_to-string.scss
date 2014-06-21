@@ -1,0 +1,26 @@
+// Joins all elements of $list with $glue
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#to-string
+// ---
+// @param {List}   $list      - list to cast
+// @param {String} $glue ('') - value to use as a join string
+// ---
+// @returns {String}
+
+@function to-string($list, $glue: '') {
+  $result: '';
+  $length: length($list);
+
+  @for $i from 1 through $length {
+    $item: nth($list, $i);
+    $result: $result + if(length($item) > 1, to-string($item, $glue), $item + $glue);
+  }
+
+  @return quote(str-slice($result, 1, str-length($glue) * -1 - 1));
+}
+
+// @alias to-string
+
+@function stringify($list, $glue: '') {
+  @return to-string($list, $glue);
+}

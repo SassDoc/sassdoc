@@ -1,0 +1,42 @@
+// Chunks $list into $size large lists
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#chunk
+// ---
+// @param {List}   $list  - list to chunk
+// @param {Number} $size  - length of lists
+// ---
+// @throws $size is not a number for `chunk`.
+// ---
+// @returns {List | false}
+
+@function chunk($list, $size) {
+  @if type-of($size) != "number" {
+    @warn "#{$size} is not a number for `chunk`.";
+    @return false;
+  }
+
+  @if $size >= length($list) {
+    @return $list;
+  }
+
+  $index: 1;
+  $result: ();
+  $length: length($list);
+  $end: ceil($length / $size);
+
+  @for $i from 1 through $end {
+    $tmp: ();
+
+    @for $j from 1 through $size {
+      @if $index <= $length {
+        $is-orphan: $length % $size == 1 and $j == 1;
+        $tmp: if($is-orphan, nth($list, $index), append($tmp, nth($list, $index)));
+      }
+      $index: $index + 1;
+    }
+
+    $result: append($result, $tmp);
+  }
+
+  @return $result;
+}

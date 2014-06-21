@@ -117,8 +117,22 @@ exports = module.exports = {
     return line.match(/^@alias\s+(.+)/i);
   },
 
+  /**
+   * Checks whether the line is a link
+   * @param  {string}  line - line to check
+   * @return {Boolean}
+   */
   isLink: function (line) {
     return line.match(/^@link\s+(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:[-a-zA-Z0-9@:%_\+.~#?&//=]*))(?:\s+(.+))?/i);
+  },
+
+  /**
+   * Checks whether the line is a require
+   * @param  {string}  line - line to check
+   * @return {Boolean}
+   */
+  isRequires: function (line) {
+    return line.match(/^@requires\s+([\w-]+)/i);
   }
 
 };

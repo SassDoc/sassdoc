@@ -1,0 +1,28 @@
+// Sums up all numeric values in $list
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#sum
+// ---
+// @param {List}    $list          - list
+// @param {Boolean} $force (false) - enable/disable parseInt
+// ---
+// @returns {Number}
+
+@function sum($list, $force: false) {
+  $result: 0;
+
+  @each $item in $list {
+    @if type-of($item) == number {
+
+      @if $force and not unitless($item) {
+        $item: $item / ($item * 0 + 1);
+      }
+
+      @if unitless($item) {
+        $result: $result + $item;
+      }
+
+    }
+  }
+
+  @return $result;
+}

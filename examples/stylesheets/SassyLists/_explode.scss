@@ -1,0 +1,50 @@
+// Explode $string into a list using $break as a breaker
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#explode
+// ---
+// @param {String} $string         - string to explode
+// @param {String} $separator ('') - string to use as a delimiter
+// ---
+// @throws $string is not a string for `explode`.
+// @throws $delimiter is not a string for `explode`.
+// ---
+// @returns {List | false}
+
+@function explode($string, $delimiter: '') {
+  @if type-of($string) != "string" {
+    @warn "`explode` function expecting a string; #{type-of($string)} given.";
+    @return false;
+  }
+
+  @if type-of($delimiter) != "string" {
+    @warn "`explode` function expecting a string; #{type-of($delimiter)} given.";
+    @return false;
+  }
+
+  $result: ();
+  $length: str-length($string);
+
+  @if str-length($delimiter) == 0 {
+    @for $i from 1 through $length {
+      $result: append($result, str-slice($string, $i, $i));
+    }
+    @return $result;
+  }
+
+  $running: true;
+  $remaining: $string;
+
+  @while $running {
+    $index: str-index($remaining, $delimiter);
+    @if not $index or $index == 0 {
+      $running: false;
+    }
+    @else {
+      $slice: str-slice($remaining, 1, $index - 1);
+      $result: append($result, $slice);
+      $remaining: str-slice($remaining, $index + str-length($delimiter));
+    }
+  }
+
+  @return append($result, $remaining);
+}

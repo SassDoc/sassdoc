@@ -1,0 +1,18 @@
+// Returns last element of $list
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#last
+// ---
+// @param {List} $list - list to retrieve last value from
+// ---
+// @throws Cannot find last item of empty list.
+// ---
+// @returns {Literal | false}
+
+@function last($list) {
+  @if length($list) == 0 {
+    @warn "Cannot find last item of empty list.";
+    @return false;
+  }
+
+  @return nth($list, -1);
+}

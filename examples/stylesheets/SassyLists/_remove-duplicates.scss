@@ -1,0 +1,25 @@
+// Removes duplicate values from $list
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#remove-duplicates
+// ---
+// @param {List} $list - list to remove duplicates from
+// ---
+// @returns {List}
+
+@function remove-duplicates($list) {
+  $result: ();
+
+  @each $item in $list {
+    @if not index($result, $item) {
+      $result: append($result, $item, list-separator($list));
+    }
+  }
+
+  @return $result;
+}
+
+// @alias remove-duplicates
+
+@function unique($list, $recursive: false) {
+  @return remove-duplicates($list, $recursive);
+}

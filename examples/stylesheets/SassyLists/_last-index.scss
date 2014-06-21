@@ -1,0 +1,20 @@
+// Returns last index of $value in $list
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#last-index
+// ---
+// @param {List}    $list  - list to search
+// @param {Literal} $value - value to be searched for
+// ---
+// @returns {Number | null}
+
+@function last-index($list, $value) {
+  $length: length($list);
+
+  @for $i from $length through 1 {
+    @if nth($list, $i) == $value {
+      @return $i;
+    }
+  }
+
+  @return null;
+}

@@ -1,0 +1,49 @@
+// Slices $list between $start and $end
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#slice
+// ---
+// @param {List}   $list                  - list to slice
+// @param {Number} $start (1)             - start index
+// @param {Number} $end   (length($list)) - end index
+// ---
+// @throws List indexes $start and $end must be numbers for `slice`.
+// @throws Start index has to be lesser than or equals to the end index for `slice`.
+// @throws List indexes must be non-zero integers for `slice`.
+// @throws Start index has to be lesser than or equal to list length for `slice`.
+// @throws End index has to be lesser than or equal to list length for `slice`.
+// ---
+// @returns {List | false}
+
+@function slice($list, $start: 1, $end: length($list)) {
+  @if type-of($start) != "number" or type-of($end) != "number" {
+    @warn "List indexes #{$start} and #{$end} must be numbers for `slice`.";
+    @return false;
+  }
+
+  @if $start > $end {
+    @warn "Start index is #{$start} but has to be lesser than or equals to the end index (#{$end}) for `slice`.";
+    @return false;
+  }
+
+  @if $start < 1 or $end < 1 {
+    @warn "List indexes must be non-zero integers for `slice`.";
+    @return false;
+  }
+
+  @if $start > length($list) {
+    @warn "Start index is #{$start} but list is only #{length($list)} items long for `slice`.";
+    @return false;
+  }
+
+  @if $end > length($list) {
+    @warn "End index is #{$end} but list is only #{length($list)} items long for `slice`.";
+    @return false;
+  }
+
+  $result: ();
+  @for $i from $start through $end {
+    $result: append($result, nth($list, $i), list-separator($list));
+  }
+
+  @return $result;
+}

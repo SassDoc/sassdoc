@@ -1,0 +1,94 @@
+// Returns $list as a string
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#debug
+// ---
+// @param {List}   $list          - list to debug
+// @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
+// @param {Number} $level (1)     - internal variable for recursion
+// ---
+// @returns {String}
+
+@function debug($list, $pre: false, $level: 1) {
+  @if length($list) == 0 {
+    @return "( )";
+  }
+
+  @if length($list) == 1 {
+    @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
+  }
+
+  $tab: "    ";
+  $indent: "";
+  $break: if($pre, "\A ", "");
+  $length: length($list);
+
+  @for $i from 1 to $level {
+    $indent: $indent + $tab;
+  }
+
+  $result: "[" + $break;
+
+  @for $i from 1 through $length {
+    $item: nth($list, $i);
+    $result: $result + if($pre, $indent + $tab, " ");
+
+    @if length($item) > 1 {
+      $result: $result
+        + if($pre, "(list: " + length($item) + ") ", "")
+        + debug($item, $pre, $level + 1);
+    }
+
+    @else {
+      @if $pre {
+        $result: $result + "(" + type-of($item) + ") ";
+      }
+
+      @if length($item) == 0 {
+        $result: $result + "( )";
+      }
+
+      @else if type-of($item) == "string" {
+        $result: $result + quote($item);
+      }
+
+      @else if $item == null {
+        $result: $result + "null";
+      }
+
+      @else {
+        $result: $result + $item;
+      }
+    }
+
+    @if $i != $length {
+      $result: $result + "," + $break;
+    }
+  }
+
+  $result: $result + $break + if($pre, if($level > 1, $indent, ""), " ") + "]";
+
+  @return quote($result);
+}
+
+// Mixin displaying clean debug
+// ---
+// @param $list [List] : list
+
+@mixin debug($list) {
+  body:before {
+    content: debug($list, true)               !important;
+
+    display: block                            !important;
+    margin: 1em                               !important;
+    padding: .5em                             !important; 
+
+    background: #EFEFEF                       !important;
+    border: 1px solid #DDD                    !important;
+    border-radius: .2em                       !important;
+
+    color: #333                               !important;
+    font: .75em/1.5 "Courier New", monospace  !important;
+    text-shadow: 0 1px white                  !important;
+    white-space: pre-wrap                     !important;
+  }
+}

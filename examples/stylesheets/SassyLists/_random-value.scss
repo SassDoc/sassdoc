@@ -1,0 +1,32 @@
+// Returns a random value of $list
+// ---
+// @ignore Documentation: http://sassylists.com/documentation.html#random-value
+// ---
+// @requires random
+// ---
+// @param {List} $list - list to random value from
+// ---
+// @throws Cannot find a random value in an empty list.
+// ---
+// @returns {Literal | false}
+
+@function random-value($list) {
+  @if length($list) == 0 {
+    @warn "Cannot find a random value in an empty list.";
+    @return false;
+  }
+
+  @return nth($list, random(length($list)) + 1);
+}
+
+// @alias random-value
+
+@function roll($list) {
+  @return random-value($list);
+}
+
+// @alias random-value
+
+@function luck($list) {
+  @return random-value($list);
+}

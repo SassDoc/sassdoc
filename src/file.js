@@ -176,11 +176,33 @@ exports = module.exports = {
    */
   generateDocumentation: function (data, destination) {
     var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
-    
+    data = exports.compileAliases(data);
+
     return exports.file.create(destination, template({
       data: data,
       title: destination
     }));
+  },
+
+  /**
+   * Compile aliases for each function
+   * @param   {Array} data
+   * @returns {Array} updated data
+   */
+  compileAliases: function (data) {
+    var index = {};
+
+    data.forEach(function (item) {
+      index[item.name] = item;
+    });
+
+    for (item in index) {
+      if (index[item].alias !== false) {
+        index[index[item].alias].aliased.push(item);
+      }
+    }
+
+    return data;
   }
 
 };

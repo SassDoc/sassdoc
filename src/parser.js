@@ -42,13 +42,15 @@ exports = module.exports = {
       'parameters': [],
       'throws': [],
       'todos': [],
-      'alias': [],
-      'link': [],
+      'alias': false,
+      'aliased': [],
+      'links': [],
+      'requires': [],
       'description': '',
       'access': 'public',
       'deprecated': false,
       'author': false,
-      'return': {
+      'returns': {
         'type': null,
         'description': false
       }
@@ -126,7 +128,7 @@ exports = module.exports = {
     value = regex.isReturns(line);
     if (value) {
       return {
-        'is': 'return',
+        'is': 'returns',
         'value': {
           'type': value[1].split('|'),
           'description': value[2]
@@ -194,21 +196,29 @@ exports = module.exports = {
     if (value) {
       return {
         'is': 'alias',
-        'value': value[1],
-        'array': true
+        'value': value[1]
       };
     }
 
     value = regex.isLink(line);
     if (value) {
       return {
-        'is': 'link',
+        'is': 'links',
         'value': {
           'url': value[1],
           'caption': value[2]
         },
         'array': true
       };
+    }
+
+    value = regex.isRequires(line);
+    if (value) {
+      return {
+        'is': 'requires',
+        'value': value[1],
+        'array': true
+      }
     }
 
     return {

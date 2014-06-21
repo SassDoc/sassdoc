@@ -1,0 +1,11 @@
+// Returns truthiness of a value
+// ---
+// @private
+// ---
+// @param {Literal} $value - value to check
+// ---
+// @returns {Bool}
+
+@function is-true($value) {
+  @return if($value == null, false, $value and $value != null and $value != "" and $value != ());
+}

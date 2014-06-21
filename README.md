@@ -129,6 +129,15 @@ Defines a line which won't be documented.
 // @ignore Message
 ```
 
+### @link
+
+Describes a link.
+
+```scss
+// @link http://some.url
+// @link http://some.url Optional caption
+```
+
 ### @param
 
 Describes a parameter of the documented function/mixin. Default value is optional. `@arg`, `@argument` and `@parameter` are accepted as well.
@@ -137,6 +146,10 @@ Describes a parameter of the documented function/mixin. Default value is optiona
 // @param {type} $name - description
 // @param {type} $name (default value) - description of the parameter
 ```
+
+### @requires
+
+Defines if the documented function/mixin requires any other function/mixin.
 
 ### @returns
 

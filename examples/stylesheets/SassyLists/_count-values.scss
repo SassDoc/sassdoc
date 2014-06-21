@@ -1,0 +1,19 @@
+// Counts the number of occurrences of each value of $list
+// ---
+// @ignore Documentation: http://sassylists.com/documentation/#count-values
+// ---
+// @param {List} $list - list to count values from
+// ---
+// @returns {Map} Values mapped to their count
+
+@function count-values($list) {
+  $map: ();
+
+  @each $item in $list {
+    $index: map-get($map, $item);
+    $value: if($index, $index + 1, 1);
+    $map: map-merge($map, ($item: $value));
+  }
+
+  @return $map;
+}
