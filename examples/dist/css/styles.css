@@ -53,16 +53,16 @@
   background: #EFEFEF;
   border-left: .5em solid #c69;
   padding: 1em;
-  margin-bottom: 1em;
-  width: 100%;
-  -webkit-break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  break-inside: avoid;
+}
+
+.sassdoc__item + .sassdoc__item {
+  margin-top: 4em;
 }
 
 .sassdoc__item--alias {
-  opacity: .5;
+  opacity: .75;
   transition: .15s;
+  margin-top: 1em !important;
   -webkit-transform: translateX(1em);
   -ms-transform: translateX(1em);
   transform: translateX(1em);

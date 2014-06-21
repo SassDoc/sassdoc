@@ -150,21 +150,6 @@ exports = module.exports = {
     },
 
     /**
-     * Generate a file with swig
-     * @param  {String} destination
-     * @param  {Array} data
-     * @return {Q.Promise}
-     */
-    generate: function (destination, data) {
-      var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
-
-      return exports.file.create(destination, template({
-        data: data,
-        title: destination
-      }));
-    },
-
-    /**
      * Copy a file
      * @param  {String} source
      * @param  {String} destination
@@ -202,14 +187,13 @@ exports = module.exports = {
    * @param {Array}  data
    * @param {String} destination
    */
-  generateDocumentation: function (data, destination) {
-    var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
+  generate: function (data, destination) {
+    var template = swig.compileFile(__dirname + '/../assets/templates/docs.html.swig');
     
     exports.compileAliases(data);
 
     return exports.file.create(destination, template({
-      data: data,
-      title: destination
+      data: data
     }));
   },
 

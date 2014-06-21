@@ -17,7 +17,7 @@ exports = module.exports = {
       })
       .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
-        return fs.generateDocumentation(data, destination + '/index.html');
+        return fs.generate(data, destination + '/index.html');
       })
       .then(function () {
         logger.log('Documentation for folder `' + source + '` successfully generated.');
