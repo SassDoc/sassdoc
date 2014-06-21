@@ -51,7 +51,9 @@ exports = module.exports = {
      */
     parse: function (folder) {
       return exports.folder.read(folder).then(function (files) {
-        var path, promises = data = [];
+        var path, 
+            promises = [],
+            data = [];
 
         files.forEach(function (file) {
           path = folder + '/' + file;
@@ -174,7 +176,7 @@ exports = module.exports = {
    */
   generateDocumentation: function (data, destination) {
     var template = swig.compileFile(__dirname + '/../assets/templates/file.html.swig');
-
+    
     return exports.file.create(destination, template({
       data: data,
       title: destination

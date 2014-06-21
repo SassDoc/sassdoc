@@ -31,6 +31,13 @@ exports = module.exports = {
       });
   },
 
+  /**
+   * Parse a folder and returns a promise yielding an array of documented items
+   * @param {String} source - Source folder
+   * @example
+   * sassdoc.parse('examples/sass')
+   * @return {Q.promise}
+   */
   parse: function (source) {
     return fs.folder.read(source).then(function () {
       return fs.folder.parse(source);
