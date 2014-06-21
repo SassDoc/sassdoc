@@ -43,6 +43,7 @@ exports = module.exports = {
       'throws': [],
       'todos': [],
       'alias': [],
+      'link': [],
       'description': '',
       'access': 'public',
       'deprecated': false,
@@ -194,6 +195,18 @@ exports = module.exports = {
       return {
         'is': 'alias',
         'value': value[1],
+        'array': true
+      };
+    }
+
+    value = regex.isLink(line);
+    if (value) {
+      return {
+        'is': 'link',
+        'value': {
+          'url': value[1],
+          'caption': value[2]
+        },
         'array': true
       };
     }

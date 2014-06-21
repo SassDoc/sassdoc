@@ -121,6 +121,20 @@
           <p>{{ item.author }}</p>
         {% endif %}
 
+        {% if item.link.length > 0 %}
+          <h3>Links</h3>
+          {% for link in item.link %}
+            {% if loop.first %}<ul>{% endif %}
+            <li><a href="{{ link.url }}">
+              {% if link.caption %}
+                {{ link.caption }}
+              {% else %}
+                {{ link.url }}
+              {% endif %}
+            </a></li>
+            {% if loop.last %}</ul>{% endif %}
+          {% endfor %}
+        {% endif %}
       </section>
     {% endfor %}
   </article>

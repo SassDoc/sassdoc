@@ -115,6 +115,10 @@ exports = module.exports = {
    */
   isAlias: function (line) {
     return line.match(/^@alias\s+(.+)/i);
+  },
+
+  isLink: function (line) {
+    return line.match(/^@link\s+(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b(?:[-a-zA-Z0-9@:%_\+.~#?&//=]*))(?:\s+(.+))?/i);
   }
 
 };
