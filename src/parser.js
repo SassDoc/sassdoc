@@ -42,7 +42,7 @@ exports = module.exports = {
       'parameters': [],
       'throws': [],
       'todos': [],
-      'alias': false,
+      'alias': [],
       'description': '',
       'access': 'public',
       'deprecated': false,
@@ -193,7 +193,8 @@ exports = module.exports = {
     if (value) {
       return {
         'is': 'alias',
-        'value': value[1]
+        'value': value[1],
+        'array': true
       };
     }
 

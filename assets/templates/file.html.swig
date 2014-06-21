@@ -26,8 +26,8 @@
           {% endif %}
           <span class="sassdoc__item-type">{{ item.type }}</span>
           {{ item.name }}
-          {% if item.alias %}
-            <span class="sassdoc__item-alias">alias of <code>{{ item.alias }}</code></span>
+          {% if item.alias.length %}
+            <span class="sassdoc__item-alias">aliased as <code>{{ item.alias | join(', ') }}</code></span>
           {% endif %}
         </h2>
 
