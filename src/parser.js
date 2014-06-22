@@ -120,7 +120,7 @@ exports = module.exports = {
   parseLine: function (line) {
     var type, value, i,
         res = { array: false },
-        tokens = ['returns', 'param', 'deprecated', 'author', 'access', 'throws', 'todo', 'alias', 'link', 'requires'];
+        tokens = ['returns', 'parameters', 'deprecated', 'author', 'access', 'throws', 'todo', 'alias', 'link', 'requires'];
 
     // Useless line, skip
     if (line.length === 0 

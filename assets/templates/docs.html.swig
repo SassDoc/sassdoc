@@ -7,11 +7,13 @@
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu'>
   <meta name="viewport" content="width=device-width">
 </head>
-<body class="sassdoc">
+<body>
+  <div class="sassdoc">
   <h1 class="sassdoc__title">SassDoc :: {{ data.length }} items documented</h1>
 
   <aside class="sassdoc__map">
-    <h2>File map ({{ data.length }})</h2>
+    <h2 class="sassdoc__map-heading">File map ({{ data.length }})</h2>
+    <div class="sassdoc__map-container">
     {% for item in data %}
       {% if loop.first %}<ul>{% endif %}
         {% if item.alias == false %}
@@ -19,6 +21,7 @@
         {% endif %}
       {% if loop.last %}</ul>{% endif %}
     {% endfor %}
+    </div>
   </aside>
 
   <article class="sassdoc__container">
@@ -115,7 +118,7 @@
             <h3>Throws</h3>
             {% for _throw in item.throws %}
               {% if loop.first %}<ul class="sassdoc__item-throws">{% endif %}
-              <li>{{ _throw }}</li>
+              <li>{{ _throw | markdown }}</li>
               {% if loop.last %}</ul>{% endif %}
             {% endfor %}
           {% endif %}
@@ -168,5 +171,6 @@
       </section>
     {% endfor %}
   </article>
+  </div>
 </body>
 </html>

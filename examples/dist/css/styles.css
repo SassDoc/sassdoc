@@ -2,6 +2,60 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
+
+body {
+  padding: 1em;
+  font: 1.6em/1.35 'Ubuntu', 'Helvetica', sans-serif;
+  overflow: auto;
+}
+
+.sassdoc {
+  width: 1170px;
+  margin: 0 auto;
+}
+
+.sassdoc__map {
+  width: 30%;
+  float: left;
+}
+
+.sassdoc__map-container {
+  padding-top: .5em;
+  background-color: #f7f5fa;
+}
+
+.sassdoc__map ul {
+  list-style: none;
+}
+
+.sassdoc__map a {
+  font-weight: bold;
+  color: #699;
+  text-decoration: none;
+}
+
+.sassdoc__map a:hover {
+  text-decoration: underline;
+}
+
+.sassdoc__map-heading {
+  color: #333;
+  font-size: 1.2em;
+}
+
+.sassdoc__container {
+  width: 70%;
+  float: right;
+}
+
+.sassdoc__map,
+.sassdoc__container {
+  padding: 0 1em;
+}
+
 pre {
   display: block;
   font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
@@ -61,48 +115,9 @@ code {
  * Function name
  */
 .sassdoc__item-name {
-  margin-top: 0;
   color: #699;
-  padding-bottom: .5em;
-  border-bottom: 1px solid #998099;
-}
-
-
-.sassdoc {
-  padding: 1em;
-  font: 1em/1.35 "Helvetica", "Arial", sans-serif;
-  overflow: auto;
-}
-
-.sassdoc a {
-  color: #c69;
-}
-
-.sassdoc__map {
-  padding: 1em;
-  background: #EFEFEF;
-  margin-bottom: 1em;
-}
-
-.sassdoc__map li {
-  color: #999;
-}
-
-@media (min-width: 800px) {
-  .sassdoc__container {
-    width: 70%;
-    float: left;
-  }
-
-  .sassdoc__map {
-    width: 25%;
-    float: right;
-  }
-}
-
-.sassdoc__map h2 {
-  color: #699;
-  margin-top: 0;
+  font-size: 2.2em;
+  margin: 0;
 }
 
 .sassdoc p {
@@ -125,10 +140,9 @@ code {
 .sassdoc__item--alias {
   opacity: .75;
   transition: .15s;
-  margin-top: -3em !important;
-  -webkit-transform: translateX(1em);
-  -ms-transform: translateX(1em);
-  transform: translateX(1em);
+  margin-top: -2em !important;
+  border-left: .5em solid #ccc;
+  padding-left: 1em;
 }
 
 .sassdoc__item--alias:hover {
@@ -139,8 +153,6 @@ code {
   margin-bottom: 0;
 }
 
-
-
 .sassdoc__item-deprecated {
   color: #998099;
   text-transform: uppercase;
@@ -148,23 +160,32 @@ code {
 
 .sassdoc__item-parameters {
   width: 100%;
-  text-align: center;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+}
+
+.sassdoc__item-parameters > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  border-top: none;
+  text-align: left;
 }
 
 .sassdoc__item-parameters td,
 .sassdoc__item-parameters th {
   padding: .5em;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
 }
 
-.sassdoc__item-parameters tr:nth-of-type(even),
-.sassdoc__item-parameters thead {
-  background: #e1d7d2;
+.sassdoc__item-parameters > tbody > tr:first-of-type > td {
+  border-top: none;
 }
-
 
 .sassdoc__item-type {
   color: #bbb;
   text-transform: capitalize;
+  font-size: .8em;
 }
 
 .sassdoc__item-deprecated::before,
