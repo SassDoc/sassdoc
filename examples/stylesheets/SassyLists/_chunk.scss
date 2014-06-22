@@ -5,7 +5,7 @@
 // @param {List}   $list  - list to chunk
 // @param {Number} $size  - length of lists
 // ---
-// @throws `$size` is not a number for `chunk`.
+// @exception `$size` is not a number for `chunk`.
 // ---
 // @return {List | false}
 

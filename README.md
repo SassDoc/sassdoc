@@ -155,8 +155,7 @@ Defines if the documented function/mixin requires any other function/mixin. Mult
 // @requires other-function
 ```
 
-### @returns
-
+### @returns (synonym: @return)
 Describes the return statement of the documented function/mixin. Description is optional.
 
 ```scss
@@ -164,7 +163,7 @@ Describes the return statement of the documented function/mixin. Description is 
 // @returns {type} Description of the return statement
 ```
 
-### @throws
+### @throws (synonym: @exception)
 
 Describes the error thrown by the documented function/mixin. Multiple `@throws` allowed on the same function/mixin.
 

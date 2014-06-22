@@ -105,7 +105,7 @@ exports = module.exports = {
    * @return {Boolean}
    */
   isThrows: function (line) {
-    return line.match(/^@throws\s+(.+)/i);
+    return line.match(/^@(?:throws|exception)\s+(.+)/i);
   },
 
   /**
