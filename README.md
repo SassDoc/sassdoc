@@ -138,7 +138,7 @@ Describes a link. Multiple `@link` allowed on the same function/mixin.
 // @link http://some.url Optional caption
 ```
 
-### @param
+### @param (synonyms: @arg, @argument)
 
 Describes a parameter of the documented function/mixin. Default value is optional. `@arg`, `@argument` and `@parameter` are accepted as well.
 

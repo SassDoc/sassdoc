@@ -15,7 +15,7 @@ exports = module.exports = {
    * @return {Boolean}
    */
   isParameters: function (line) {
-    return line.match(/^@(?:param|arg|argument|parameter)(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})?\s+(?:\$([\w-]+))(?:\s+\(([\w-\s]+)\))?(?:\s+-\s*?([\w-\s]+))?/i);
+    return line.match(/^@(?:param|arg|argument)(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})?\s+(?:\$([\w-]+))(?:\s+\(([\w-\s]+)\))?(?:\s+-\s*?([\w-\s]+))?/i);
   },
 
   /**
