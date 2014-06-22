@@ -123,7 +123,7 @@ Defines if the documented documented function/mixin is deprecated. Message is op
 
 ### @ignore
 
-Defines a line which won't be documented.
+Defines a line which won't be documented. Multiple `@ignore` allowed on the same function/mixin.
 
 ```scss
 // @ignore Message
@@ -131,7 +131,7 @@ Defines a line which won't be documented.
 
 ### @link
 
-Describes a link.
+Describes a link. Multiple `@link` allowed on the same function/mixin.
 
 ```scss
 // @link http://some.url
@@ -149,7 +149,11 @@ Describes a parameter of the documented function/mixin. Default value is optiona
 
 ### @requires
 
-Defines if the documented function/mixin requires any other function/mixin.
+Defines if the documented function/mixin requires any other function/mixin. Multiple `@requires` allowed on the same function/mixin.
+
+```scss
+// @requires other-function
+```
 
 ### @returns
 
@@ -162,7 +166,7 @@ Describes the return statement of the documented function/mixin. Description is 
 
 ### @throws
 
-Describes the error thrown by the documented function/mixin.
+Describes the error thrown by the documented function/mixin. Multiple `@throws` allowed on the same function/mixin.
 
 ```scss
 // @throws Error related message
@@ -170,7 +174,7 @@ Describes the error thrown by the documented function/mixin.
 
 ### @todo
 
-Defines any task to do regarding the documented function/mixin.
+Defines any task to do regarding the documented function/mixin. Multiple `@todo` allowed on the same function/mixin.
 
 ```scss
 // @todo Task to be done
