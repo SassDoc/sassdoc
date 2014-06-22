@@ -2,6 +2,72 @@
   box-sizing: border-box;
 }
 
+pre {
+  display: block;
+  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: #333;
+  line-height: 1.42;
+}
+
+code {
+  color: #c6538c;
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+/**
+ * Function code
+ */
+.sassdoc__item-code {
+  background: #efefef;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-left: .3em solid #c69;
+}
+
+/**
+ * Aliases
+ */ 
+.sassdoc__item-alias {
+  color: #bbb;
+  font-size: .8em;
+}
+
+.sassdoc__item-alias::before {
+  content: ' (';
+}
+
+.sassdoc__item-alias::after {
+  content: ') ';
+}
+
+/**
+ * Subtitles
+ */
+.sassdoc__item h3 {
+  color: #699;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+
+/**
+ * Function name
+ */
+.sassdoc__item-name {
+  margin-top: 0;
+  color: #699;
+  padding-bottom: .5em;
+  border-bottom: 1px solid #998099;
+}
+
+
 .sassdoc {
   padding: 1em;
   font: 1em/1.35 "Helvetica", "Arial", sans-serif;
@@ -10,14 +76,6 @@
 
 .sassdoc a {
   color: #c69;
-}
-
-.sassdoc code {
-  color: #c69;
-  background: #e1d7d2;
-  padding: .1em .25em;
-  border-radius: .15em;
-  display: inline-block;
 }
 
 .sassdoc__map {
@@ -57,9 +115,7 @@
 }
 
 .sassdoc__item {
-  background: #EFEFEF;
-  border-left: .5em solid #c69;
-  padding: 1em;
+
 }
 
 .sassdoc__item + .sassdoc__item {
@@ -83,30 +139,11 @@
   margin-bottom: 0;
 }
 
-.sassdoc__item h3 {
-  color: #699;
-  margin-bottom: .5em;
-}
 
-.sassdoc__item-name {
-  margin-top: 0;
-  color: #699;
-  padding-bottom: .5em;
-  border-bottom: 1px solid #998099;
-}
 
 .sassdoc__item-deprecated {
   color: #998099;
   text-transform: uppercase;
-}
-
-.sassdoc__item-alias {
-  color: #bbb;
-  margin-left: -.25em;
-}
-
-.sassdoc__item-alias::before {
-  content: ', ';
 }
 
 .sassdoc__item-parameters {
@@ -124,10 +161,6 @@
   background: #e1d7d2;
 }
 
-.sassdoc__item-code {
-  background: #e1d7d2;
-  padding: .5em;
-}
 
 .sassdoc__item-type {
   color: #bbb;

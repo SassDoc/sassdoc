@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>SassDoc :: Documentation</title>
-<link rel="stylesheet" href="css/styles.css" />
+  <meta charset="utf-8" />
+  <title>SassDoc :: Documentation</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu'>
+  <meta name="viewport" content="width=device-width">
 </head>
 <body class="sassdoc">
   <h1 class="sassdoc__title">SassDoc :: {{ data.length }} items documented</h1>
@@ -23,12 +25,13 @@
     {% for item in data %}
       <section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="sassdoc__item--{{ item.type }}-{{ item.name }}">
         
+
         <h2 class="sassdoc__item-name">
           {% if item.deprecated %}
             <span class="sassdoc__item-deprecated" title="{{ item.deprecated }}">Deprecated</span>
           {% endif %}
           <span class="sassdoc__item-type">{{ item.type }}</span>
-          {{ item.name }}
+          <code>{{ item.name }}</code>
 
           {% if item.aliased.length > 0 %}
             <span class="sassdoc__item-alias">aliased as 
@@ -42,6 +45,8 @@
             <span class="sassdoc__item-alias">alias for <a href="#sassdoc__item--{{ item.type }}-{{ item.alias }}"><code>{{ item.alias }}</code></a></span>
           {% endif %}
         </h2>
+
+        <pre class="sassdoc__item-code">@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }  </pre>
 
         {% if item.alias == false %}
 
@@ -85,7 +90,7 @@
                   {% set parameters_string = parameters_string + ', ' + value %}
                 {% endif %}
                 <tr class="sassdoc__item-parameter">
-                  <td>{{ parameter.name }}</td>
+                  <td><code>${{ parameter.name }}</code></td>
                   <td>{{ parameter.description }}</td>
                   <td><code>{{ parameter.type }}</code></td>
                   {% if parameter.default %}
@@ -128,9 +133,6 @@
               {% if loop.last %}</ul>{% endif %}
             {% endfor %}
           {% endif %}
-
-          <h3>Signature</h3>
-          <pre class="sassdoc__item-code"><code>@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }</code></pre>
 
           {% if item.todos.length > 0 %}
             <h3>TODO's</h3>

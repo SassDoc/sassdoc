@@ -66,16 +66,16 @@ exports = module.exports = {
 
       // Array things (@throws, @parameters...)
       if (line.array === true) {
-        doc[line.is].push(line.value);
+        doc[line.type].push(line.value);
       }
 
-      else if (line.is === "description") {
-        doc[line.is] += line.value;
+      else if (line.type === 'description') {
+        doc[line.type] += line.value;
       }
 
       // Anything else
       else {
-        doc[line.is] = line.value;
+        doc[line.type] = line.value;
       }
 
     });
@@ -118,113 +118,66 @@ exports = module.exports = {
    * @return {Object|false}
    */
   parseLine: function (line) {
-    var value;
+    var type, value, i,
+        res = { array: false },
+        tokens = ['returns', 'param', 'deprecated', 'author', 'access', 'throws', 'todo', 'alias', 'link', 'requires'];
 
     // Useless line, skip
-    if (line.length === 0 || regex.isSeparator(line) || regex.isIgnore(line)) {
+    if (line.length === 0 
+      || regex.isSeparator(line) 
+      || regex.isIgnore(line)) {
       return false;
     }
 
-    value = regex.isReturns(line);
-    if (value) {
-      return {
-        'is': 'returns',
-        'value': {
-          'type': value[1].split('|'),
-          'description': value[2]
-        }
-      };
-    }
+    for (var i = 0; i < tokens.length; i++) {
+      value = regex['is' + tokens[i].capitalize()](line);
 
-    value = regex.isParam(line);
-    if (value) {
-      return {
-        'is': 'parameters',
-        'value': {
-          'type': value[1],
-          'name': value[2],
-          'default': value[3] || null,
-          'description': value[4]
-        },
-        'array': true
-      };
-    }
-
-    value = regex.isDeprecated(line);
-    if (value) {
-      return {
-        'is': 'deprecated',
-        'value': value[1] || true
-      };
-    }
-
-    value = regex.isAuthor(line);
-    if (value) {
-      return {
-        'is': 'author',
-        'value': value[1]
-      };
-    }
-
-    value = regex.isAccess(line);
-    if (value) {
-      return {
-        'is': 'access',
-        'value': value[1]
-      };
-    }
-
-    value = regex.isThrows(line);
-    if (value) {
-      return {
-        'is': 'throws',
-        'value': value[1],
-        'array': true
-      };
-    }
-
-    value = regex.isTodo(line);
-    if (value) {
-      return {
-        'is': 'todos',
-        'value': value[1],
-        'array': true
-      };
-    }
-
-    value = regex.isAlias(line);
-    if (value) {
-      return {
-        'is': 'alias',
-        'value': value[1]
-      };
-    }
-
-    value = regex.isLink(line);
-    if (value) {
-      return {
-        'is': 'links',
-        'value': {
-          'url': value[1],
-          'caption': value[2]
-        },
-        'array': true
-      };
-    }
-
-    value = regex.isRequires(line);
-    if (value) {
-      return {
-        'is': 'requires',
-        'value': value[1],
-        'array': true
+      if (value !== null) {
+        type = tokens[i];
+        break;
       }
     }
 
-    return {
-      'is': 'description',
-      'value': '\n' + line
-    };
+    res.type = type;
+
+    switch (type) {
+      case 'returns':
+        res.value = { 'type': value[1].split('|'), 'description': value[2] };
+        break;
+
+      case 'parameters':
+        res.value = { 'type': value[1], 'name': value[2], 'default': value[3], 'description': value[4] };
+        res.array = true;
+        break;
+
+      case 'deprecated':
+        res.value = value[1] || true;
+        break;
+
+      case 'author':
+      case 'access':
+      case 'alias':
+        res.value = value[1];
+        break;
+
+      case 'throws':
+      case 'todos':
+      case 'requires':
+        res.value = value[1];
+        res.array = true;
+        break;
+
+      case 'link':
+        res.value = { 'url': value[1], 'caption': value[2] }
+        break;
+
+      case 'description':
+      default:
+        res.value = '\n' + line;
+        res.type = 'description';
+    }
+
+    return res;
   }
 
 };
