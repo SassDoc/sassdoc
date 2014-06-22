@@ -24,7 +24,7 @@ exports = module.exports = {
    * @return {Boolean}
    */
   isReturns: function (line) {
-    return line.match(/^@returns(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})(?:\s+([\w-\s]*))?/i);
+    return line.match(/^@returns?(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})(?:\s+([\w-\s]*))?/i);
   },
 
   /**

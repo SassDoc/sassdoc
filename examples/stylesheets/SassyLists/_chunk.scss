@@ -7,7 +7,7 @@
 // ---
 // @throws `$size` is not a number for `chunk`.
 // ---
-// @returns {List | false}
+// @return {List | false}
 
 @function chunk($list, $size) {
   @if type-of($size) != "number" {
