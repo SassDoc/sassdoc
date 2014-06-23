@@ -13,7 +13,7 @@ exports = module.exports = {
     fs.folder.refresh(destination)
       .then(function () { 
         logger.log('Folder `' + destination + '` successfully generated.');
-        return fs.folder.parse(source);
+        return fs.getData(source);
       })
       .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
@@ -39,9 +39,7 @@ exports = module.exports = {
    * @return {Q.promise}
    */
   parse: function (source) {
-    return fs.folder.read(source).then(function () {
-      return fs.folder.parse(source);
-    });
+    return fs.getData(source);
   }
 
 };
