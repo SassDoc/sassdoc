@@ -31,7 +31,7 @@ SassDoc. Like JSDoc, but for Sass files.
 
 ```sh
 git clone https://github.com/HugoGiraudel/SassDoc.git
-npm install -g ./SassDoc
+npm install -g sassdoc
 ```
 
 ## Usage
@@ -40,12 +40,6 @@ npm install -g ./SassDoc
 
 ```sh
 sassdoc <src> <dest> [options]
-```
-
-Or if installed locally:
-
-```sh
-bin/sassdoc <src> <dest> [options]
 ```
 
 #### Arguments
