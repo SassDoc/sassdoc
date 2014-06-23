@@ -23,7 +23,7 @@ SassDoc. Like JSDoc, but for Sass files.
 }
 ```
 
-![SassDoc](https://www.dropbox.com/s/7fe68o06oley7kn/Screenshot%202014-06-23%2019.06.33.png)
+![SassDoc](http://i.imgur.com/RCCC44h.png)
 
 *Note: it works exactly the same with mixins.*
 
