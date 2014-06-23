@@ -31,17 +31,17 @@
         
           
             
+              <li>Function <a href="#sassdoc__item--function-count-values">count-values</a></li>
+            
+          
+        
+          
+            
               <li>Function <a href="#sassdoc__item--function-contain">contain</a></li>
             
           
         
           
-            
-          
-        
-          
-            
-              <li>Function <a href="#sassdoc__item--function-count-values">count-values</a></li>
             
           
         
@@ -159,16 +159,6 @@
         
           
             
-              <li>Function <a href="#sassdoc__item--function-remove-nth">remove-nth</a></li>
-            
-          
-        
-          
-            
-          
-        
-          
-            
               <li>Function <a href="#sassdoc__item--function-remove-duplicates">remove-duplicates</a></li>
             
           
@@ -189,13 +179,17 @@
         
           
             
-              <li>Function <a href="#sassdoc__item--function-replace-nth">replace-nth</a></li>
+              <li>Function <a href="#sassdoc__item--function-remove-nth">remove-nth</a></li>
             
           
         
           
             
-              <li>Function <a href="#sassdoc__item--function-replace">replace</a></li>
+          
+        
+          
+            
+              <li>Function <a href="#sassdoc__item--function-replace-nth">replace-nth</a></li>
             
           
         
@@ -216,6 +210,12 @@
           
         
           
+            
+          
+        
+          
+            
+              <li>Function <a href="#sassdoc__item--function-replace">replace</a></li>
             
           
         
@@ -307,7 +307,29 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function chunk () { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function chunk ($list, $size) { ... }  </pre>
 
             
 
@@ -331,16 +353,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to chunk</td>
@@ -350,15 +362,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$size</code></td>
                       <td> length of lists</td>
@@ -398,6 +401,87 @@
 
           </section>
         
+          <section class="sassdoc__item  " id="sassdoc__item--function-count-values">
+            
+
+            <h2 class="sassdoc__item-name">
+              
+              <span class="sassdoc__item-type">[function]</span>
+              <code>count-values</code>
+
+              
+
+              
+            </h2>
+
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function count-values ($list) { ... }  </pre>
+
+            
+
+              
+                <h3>Description</h3>
+                <p class="sassdoc__item-description"><p>Counts the number of occurrences of each value of <code>$list</code></p></p>
+              
+
+              
+
+              <h3>Parameters</h3>
+              
+              <table class="sassdoc__item-parameters">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    <tr class="sassdoc__item-parameter">
+                      <td><code>$list</code></td>
+                      <td> list to count values from</td>
+                      <td><code>List</code></td>
+                      
+                        <td>&mdash;</td>
+                      
+                    </tr>
+                  
+                </tbody>
+              </table>
+              
+
+              
+                <h3>Returns</h3>
+                <p class="sassdoc__item-description">Values mapped to their count: <code>Map</code></p>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+            
+
+          </section>
+        
           <section class="sassdoc__item  " id="sassdoc__item--function-contain">
             
 
@@ -417,7 +501,29 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function contain ($list, $size) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function contain ($list, $value) { ... }  </pre>
 
             
 
@@ -441,16 +547,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to check</td>
@@ -460,15 +556,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$value</code></td>
                       <td> value to look for</td>
@@ -516,86 +603,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function include ($list, $value) { ... }  </pre>
-
             
-
-          </section>
-        
-          <section class="sassdoc__item  " id="sassdoc__item--function-count-values">
-            
-
-            <h2 class="sassdoc__item-name">
               
-              <span class="sassdoc__item-type">[function]</span>
-              <code>count-values</code>
-
-              
-
-              
-            </h2>
-
-            <pre class="sassdoc__item-code">@function count-values ($list, $value) { ... }  </pre>
-
-            
-
-              
-                <h3>Description</h3>
-                <p class="sassdoc__item-description"><p>Counts the number of occurrences of each value of <code>$list</code></p></p>
-              
-
-              
-
-              <h3>Parameters</h3>
-              
-              <table class="sassdoc__item-parameters">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Default value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
-                    <tr class="sassdoc__item-parameter">
-                      <td><code>$list</code></td>
-                      <td> list to count values from</td>
-                      <td><code>List</code></td>
-                      
-                        <td>&mdash;</td>
-                      
-                    </tr>
-                  
-                </tbody>
-              </table>
-              
-
-              
-                <h3>Returns</h3>
-                <p class="sassdoc__item-description">Values mapped to their count: <code>Map</code></p>
-              
-
-              
-
-              
-
-              
-
-              
-
-              
+            <pre class="sassdoc__item-code">@function include () { ... }  </pre>
 
             
 
@@ -614,7 +624,43 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function debug ($list) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+                  
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+                  
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function debug ($list, $pre: false, $level: 1) { ... }  </pre>
 
             
 
@@ -638,16 +684,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to debug</td>
@@ -657,17 +693,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-                      
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$pre</code></td>
                       <td> enable</td>
@@ -677,17 +702,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-                      
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$level</code></td>
                       <td> internal variable for recursion</td>
@@ -733,7 +747,19 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@mixin debug ($list, $pre: false, $level: 1) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@mixin debug ($list) { ... }  </pre>
 
             
 
@@ -757,16 +783,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to debug</td>
@@ -819,7 +835,29 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function explode ($list) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function explode ($string, $separator) { ... }  </pre>
 
             
 
@@ -843,16 +881,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$string</code></td>
                       <td> string to explode</td>
@@ -862,15 +890,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$separator</code></td>
                       <td></td>
@@ -933,7 +952,19 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function first ($string, $separator) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function first ($list) { ... }  </pre>
 
             
 
@@ -957,16 +988,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to retrieve first item from</td>
@@ -1021,7 +1042,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function head ($list) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function head () { ... }  </pre>
 
             
 
@@ -1046,6 +1069,18 @@
               
             </h2>
 
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
             <pre class="sassdoc__item-code">@function flatten ($list) { ... }  </pre>
 
             
@@ -1070,16 +1105,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to flatten</td>
@@ -1127,7 +1152,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function unfold ($list) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function unfold () { ... }  </pre>
 
             
 
@@ -1146,7 +1173,39 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function insert-nth ($list) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function insert-nth ($list, $index, $value) { ... }  </pre>
 
             
 
@@ -1170,16 +1229,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to update</td>
@@ -1189,15 +1238,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$index</code></td>
                       <td> index to add</td>
@@ -1207,15 +1247,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$value</code></td>
                       <td> value to add</td>
@@ -1272,7 +1303,31 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function intersection ($list, $index, $value) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+                  
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function intersection ($list, $lists...) { ... }  </pre>
 
             
 
@@ -1296,16 +1351,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> first list</td>
@@ -1315,17 +1360,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-                      
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$lists</code></td>
                       <td> other lists</td>
@@ -1377,7 +1411,19 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function is-symmetrical ($list, $lists...) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function is-symmetrical ($list) { ... }  </pre>
 
             
 
@@ -1401,16 +1447,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to check</td>
@@ -1468,7 +1504,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function is-mirror ($list) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function is-mirror () { ... }  </pre>
 
             
 
@@ -1487,7 +1525,29 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function last-index ($list) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function last-index ($list, $value) { ... }  </pre>
 
             
 
@@ -1511,16 +1571,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to search</td>
@@ -1530,15 +1580,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$value</code></td>
                       <td> value to be searched for</td>
@@ -1584,7 +1625,19 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function last ($list, $value) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function last ($list) { ... }  </pre>
 
             
 
@@ -1608,16 +1661,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to retrieve last value from</td>
@@ -1676,7 +1719,31 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function loop ($list) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+                  
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function loop ($list, $value: 1) { ... }  </pre>
 
             
 
@@ -1700,16 +1767,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to update</td>
@@ -1719,17 +1776,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-                      
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$value</code></td>
                       <td> number of position between old and new indexes</td>
@@ -1787,7 +1833,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function shift-indexes ($list, $value: 1) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function shift-indexes () { ... }  </pre>
 
             
 
@@ -1806,7 +1854,29 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function prepend ($list, $value: 1) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function prepend ($list, $value) { ... }  </pre>
 
             
 
@@ -1830,16 +1900,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to preprend value to</td>
@@ -1849,15 +1909,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$value</code></td>
                       <td> value to prepend to the list</td>
@@ -1919,7 +1970,19 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function purge ($list, $value) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function purge ($list) { ... }  </pre>
 
             
 
@@ -1943,16 +2006,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to purge</td>
@@ -2010,7 +2063,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function clean ($list) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function clean () { ... }  </pre>
 
             
 
@@ -2037,6 +2092,18 @@
               
             </h2>
 
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
             <pre class="sassdoc__item-code">@function random-value ($list) { ... }  </pre>
 
             
@@ -2061,16 +2128,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to random value from</td>
@@ -2135,7 +2192,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function roll ($list) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function roll () { ... }  </pre>
 
             
 
@@ -2156,141 +2215,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function luck ($list) { ... }  </pre>
-
             
-
-          </section>
-        
-          <section class="sassdoc__item  " id="sassdoc__item--function-remove-nth">
-            
-
-            <h2 class="sassdoc__item-name">
               
-              <span class="sassdoc__item-type">[function]</span>
-              <code>remove-nth</code>
-
-              
-                <span class="sassdoc__item-alias">(aliased as 
-                
-                  <a href="#sassdoc__item--without-nth"><code>without-nth</code></a>
-                
-                )</span>
-              
-
-              
-            </h2>
-
-            <pre class="sassdoc__item-code">@function remove-nth ($list) { ... }  </pre>
-
-            
-
-              
-                <h3>Description</h3>
-                <p class="sassdoc__item-description"><p>Removes value from <code>$list</code> at index <code>$index</code></p></p>
-              
-
-              
-
-              <h3>Parameters</h3>
-              
-              <table class="sassdoc__item-parameters">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Default value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
-                    <tr class="sassdoc__item-parameter">
-                      <td><code>$list</code></td>
-                      <td> list to remove value from</td>
-                      <td><code>List</code></td>
-                      
-                        <td>&mdash;</td>
-                      
-                    </tr>
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
-                    <tr class="sassdoc__item-parameter">
-                      <td><code>$index</code></td>
-                      <td> index to remove</td>
-                      <td><code>Number</code></td>
-                      
-                        <td>&mdash;</td>
-                      
-                    </tr>
-                  
-                </tbody>
-              </table>
-              
-
-              
-                <h3>Returns</h3>
-                <p class="sassdoc__item-description"><code>List | false</code></p>
-              
-
-              
-
-              
-                <h3>Requires</h3>
-                
-                  <ul class="sassdoc__item-requires">
-                  
-                    
-                  
-                  <li><a href="#sassdoc__item--mixin-replace-nth"><code>replace-nth</code></a></li>
-                  </ul>
-                
-              
-
-              
-
-              
-
-              
-
-            
-
-          </section>
-        
-          <section class="sassdoc__item  sassdoc__item--alias" id="sassdoc__item--function-without-nth">
-            
-
-            <h2 class="sassdoc__item-name">
-              
-              <span class="sassdoc__item-type">[function]</span>
-              <code>without-nth</code>
-
-              
-
-              
-                <span class="sassdoc__item-alias">alias for <a href="#sassdoc__item--function-remove-nth"><code>remove-nth</code></a></span>
-              
-            </h2>
-
-            <pre class="sassdoc__item-code">@function without-nth ($list, $index) { ... }  </pre>
+            <pre class="sassdoc__item-code">@function luck () { ... }  </pre>
 
             
 
@@ -2315,7 +2242,19 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function remove-duplicates ($list, $index) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function remove-duplicates ($list) { ... }  </pre>
 
             
 
@@ -2339,16 +2278,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to remove duplicates from</td>
@@ -2396,7 +2325,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function unique ($list) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function unique () { ... }  </pre>
 
             
 
@@ -2421,7 +2352,39 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function remove ($list) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function remove ($list, $value, $recursive) { ... }  </pre>
 
             
 
@@ -2445,16 +2408,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to update</td>
@@ -2464,15 +2417,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$value</code></td>
                       <td> value to remove</td>
@@ -2482,15 +2426,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$recursive</code></td>
                       <td> enable</td>
@@ -2548,7 +2483,148 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function without ($list, $value, $recursive) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function without () { ... }  </pre>
+
+            
+
+          </section>
+        
+          <section class="sassdoc__item  " id="sassdoc__item--function-remove-nth">
+            
+
+            <h2 class="sassdoc__item-name">
+              
+              <span class="sassdoc__item-type">[function]</span>
+              <code>remove-nth</code>
+
+              
+                <span class="sassdoc__item-alias">(aliased as 
+                
+                  <a href="#sassdoc__item--without-nth"><code>without-nth</code></a>
+                
+                )</span>
+              
+
+              
+            </h2>
+
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function remove-nth ($list, $index) { ... }  </pre>
+
+            
+
+              
+                <h3>Description</h3>
+                <p class="sassdoc__item-description"><p>Removes value from <code>$list</code> at index <code>$index</code></p></p>
+              
+
+              
+
+              <h3>Parameters</h3>
+              
+              <table class="sassdoc__item-parameters">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    <tr class="sassdoc__item-parameter">
+                      <td><code>$list</code></td>
+                      <td> list to remove value from</td>
+                      <td><code>List</code></td>
+                      
+                        <td>&mdash;</td>
+                      
+                    </tr>
+                  
+                    <tr class="sassdoc__item-parameter">
+                      <td><code>$index</code></td>
+                      <td> index to remove</td>
+                      <td><code>Number</code></td>
+                      
+                        <td>&mdash;</td>
+                      
+                    </tr>
+                  
+                </tbody>
+              </table>
+              
+
+              
+                <h3>Returns</h3>
+                <p class="sassdoc__item-description"><code>List | false</code></p>
+              
+
+              
+
+              
+                <h3>Requires</h3>
+                
+                  <ul class="sassdoc__item-requires">
+                  
+                    
+                  
+                  <li><a href="#sassdoc__item--mixin-replace-nth"><code>replace-nth</code></a></li>
+                  </ul>
+                
+              
+
+              
+
+              
+
+              
+
+            
+
+          </section>
+        
+          <section class="sassdoc__item  sassdoc__item--alias" id="sassdoc__item--function-without-nth">
+            
+
+            <h2 class="sassdoc__item-name">
+              
+              <span class="sassdoc__item-type">[function]</span>
+              <code>without-nth</code>
+
+              
+
+              
+                <span class="sassdoc__item-alias">alias for <a href="#sassdoc__item--function-remove-nth"><code>remove-nth</code></a></span>
+              
+            </h2>
+
+            
+              
+            <pre class="sassdoc__item-code">@function without-nth () { ... }  </pre>
 
             
 
@@ -2567,7 +2643,39 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function replace-nth ($list, $value, $recursive) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function replace-nth ($list, $index, $value) { ... }  </pre>
 
             
 
@@ -2591,16 +2699,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to update</td>
@@ -2610,15 +2708,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$index</code></td>
                       <td> index to update</td>
@@ -2628,15 +2717,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$value</code></td>
                       <td> new value for index</td>
@@ -2686,121 +2766,6 @@
 
           </section>
         
-          <section class="sassdoc__item  " id="sassdoc__item--function-replace">
-            
-
-            <h2 class="sassdoc__item-name">
-              
-              <span class="sassdoc__item-type">[function]</span>
-              <code>replace</code>
-
-              
-
-              
-            </h2>
-
-            <pre class="sassdoc__item-code">@function replace ($list, $index, $value) { ... }  </pre>
-
-            
-
-              
-                <h3>Description</h3>
-                <p class="sassdoc__item-description"><p>Replaces <code>$old</code> by <code>$new</code> in <code>$list</code></p></p>
-              
-
-              
-
-              <h3>Parameters</h3>
-              
-              <table class="sassdoc__item-parameters">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Default value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
-                    <tr class="sassdoc__item-parameter">
-                      <td><code>$list</code></td>
-                      <td> list to update</td>
-                      <td><code>List</code></td>
-                      
-                        <td>&mdash;</td>
-                      
-                    </tr>
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
-                    <tr class="sassdoc__item-parameter">
-                      <td><code>$old</code></td>
-                      <td> value to replace</td>
-                      <td><code>Literal</code></td>
-                      
-                        <td>&mdash;</td>
-                      
-                    </tr>
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
-                    <tr class="sassdoc__item-parameter">
-                      <td><code>$value</code></td>
-                      <td> new value for </td>
-                      <td><code>Literal</code></td>
-                      
-                        <td>&mdash;</td>
-                      
-                    </tr>
-                  
-                </tbody>
-              </table>
-              
-
-              
-                <h3>Returns</h3>
-                <p class="sassdoc__item-description"><code>List</code></p>
-              
-
-              
-
-              
-
-              
-
-              
-
-              
-
-            
-
-          </section>
-        
           <section class="sassdoc__item  " id="sassdoc__item--function-reverse">
             
 
@@ -2820,7 +2785,19 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function reverse ($list, $old, $value) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function reverse ($list) { ... }  </pre>
 
             
 
@@ -2844,16 +2821,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to revers</td>
@@ -2901,7 +2868,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function mirror ($list) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function mirror () { ... }  </pre>
 
             
 
@@ -2926,6 +2895,18 @@
               
             </h2>
 
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
             <pre class="sassdoc__item-code">@function shuffle ($list) { ... }  </pre>
 
             
@@ -2950,16 +2931,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to shuffle</td>
@@ -3007,7 +2978,128 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function randomize ($list) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function randomize () { ... }  </pre>
+
+            
+
+          </section>
+        
+          <section class="sassdoc__item  " id="sassdoc__item--function-replace">
+            
+
+            <h2 class="sassdoc__item-name">
+              
+              <span class="sassdoc__item-type">[function]</span>
+              <code>replace</code>
+
+              
+
+              
+            </h2>
+
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function replace ($list, $old, $value) { ... }  </pre>
+
+            
+
+              
+                <h3>Description</h3>
+                <p class="sassdoc__item-description"><p>Replaces <code>$old</code> by <code>$new</code> in <code>$list</code></p></p>
+              
+
+              
+
+              <h3>Parameters</h3>
+              
+              <table class="sassdoc__item-parameters">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Default value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    <tr class="sassdoc__item-parameter">
+                      <td><code>$list</code></td>
+                      <td> list to update</td>
+                      <td><code>List</code></td>
+                      
+                        <td>&mdash;</td>
+                      
+                    </tr>
+                  
+                    <tr class="sassdoc__item-parameter">
+                      <td><code>$old</code></td>
+                      <td> value to replace</td>
+                      <td><code>Literal</code></td>
+                      
+                        <td>&mdash;</td>
+                      
+                    </tr>
+                  
+                    <tr class="sassdoc__item-parameter">
+                      <td><code>$value</code></td>
+                      <td> new value for </td>
+                      <td><code>Literal</code></td>
+                      
+                        <td>&mdash;</td>
+                      
+                    </tr>
+                  
+                </tbody>
+              </table>
+              
+
+              
+                <h3>Returns</h3>
+                <p class="sassdoc__item-description"><code>List</code></p>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
 
             
 
@@ -3026,7 +3118,41 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function slice ($list) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+                  
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function slice ($list, $start: 1, $end) { ... }  </pre>
 
             
 
@@ -3050,16 +3176,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to slice</td>
@@ -3069,17 +3185,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-                      
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$start</code></td>
                       <td> start index</td>
@@ -3089,15 +3194,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$end</code></td>
                       <td></td>
@@ -3172,7 +3268,29 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function sort ($list, $start: 1, $end) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function sort ($list, $order) { ... }  </pre>
 
             
 
@@ -3196,16 +3314,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to sort</td>
@@ -3215,15 +3323,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$order</code></td>
                       <td> order to respect</td>
@@ -3281,7 +3380,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function order ($list, $order) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function order () { ... }  </pre>
 
             
 
@@ -3300,7 +3401,31 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function sum ($list, $order) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+                  
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function sum ($list, $force: false) { ... }  </pre>
 
             
 
@@ -3324,16 +3449,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list</td>
@@ -3343,17 +3458,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-                      
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$force</code></td>
                       <td> enable</td>
@@ -3405,7 +3509,19 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function tail ($list, $force: false) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function tail ($list) { ... }  </pre>
 
             
 
@@ -3429,16 +3545,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to retrieve tail from</td>
@@ -3496,7 +3602,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function rest ($list) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function rest () { ... }  </pre>
 
             
 
@@ -3521,7 +3629,29 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function to-string ($list) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function to-string ($list, $glue) { ... }  </pre>
 
             
 
@@ -3545,16 +3675,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to cast</td>
@@ -3564,15 +3684,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$glue</code></td>
                       <td></td>
@@ -3620,7 +3731,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function stringify ($list, $glue) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function stringify () { ... }  </pre>
 
             
 
@@ -3645,7 +3758,21 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function union ($list, $glue) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+                  
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function union ($lists...) { ... }  </pre>
 
             
 
@@ -3669,18 +3796,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-                      
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$lists</code></td>
                       <td> lists to unify</td>
@@ -3745,7 +3860,9 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function merge ($lists...) { ... }  </pre>
+            
+              
+            <pre class="sassdoc__item-code">@function merge () { ... }  </pre>
 
             
 
@@ -3764,7 +3881,41 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function walk ($lists...) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+                  
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function walk ($list, $function, $args...) { ... }  </pre>
 
             
 
@@ -3788,16 +3939,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$list</code></td>
                       <td> list to update</td>
@@ -3807,15 +3948,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$function</code></td>
                       <td> function to call on each value</td>
@@ -3825,17 +3957,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-                      
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$args</code></td>
                       <td> optional function arguments</td>
@@ -3888,7 +4009,39 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function str-compare ($list, $function, $args...) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function str-compare ($a, $b, $matrix) { ... }  </pre>
 
             
 
@@ -3915,16 +4068,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$a</code></td>
                       <td> first value</td>
@@ -3934,15 +4077,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$b</code></td>
                       <td> second value</td>
@@ -3952,15 +4086,6 @@
                       
                     </tr>
                   
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$matrix</code></td>
                       <td> alphabetical order</td>
@@ -4006,7 +4131,19 @@
               
             </h2>
 
-            <pre class="sassdoc__item-code">@function is-true ($a, $b, $matrix) { ... }  </pre>
+            
+              
+                
+
+                
+
+                
+
+                
+                  
+                
+              
+            <pre class="sassdoc__item-code">@function is-true ($value) { ... }  </pre>
 
             
 
@@ -4033,16 +4170,6 @@
                 </thead>
                 <tbody>
                   
-                  
-                    
-
-                    
-
-                    
-
-                    
-                      
-                    
                     <tr class="sassdoc__item-parameter">
                       <td><code>$value</code></td>
                       <td> value to check</td>

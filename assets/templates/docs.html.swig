@@ -57,6 +57,24 @@
               {% endif %}
             </h2>
 
+            {% set parameters_string = '' %}
+              {% for parameter in item.parameters %}
+                {% set value = '$' + parameter.name %}
+
+                {% if parameter.default %}
+                  {% set value = value + ': ' + parameter.default %}
+                {% endif %}
+
+                {% if parameter.type | lower === "arglist" %}
+                  {% set value = value + '...' %}
+                {% endif %}
+
+                {% if loop.first %}
+                  {% set parameters_string = value %}
+                {% else %}
+                  {% set parameters_string = parameters_string + ', ' + value %}
+                {% endif %}
+              {% endfor %}
             <pre class="sassdoc__item-code">@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }  </pre>
 
             {% if item.alias == false %}
@@ -83,23 +101,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {% set parameters_string = '' %}
                   {% for parameter in item.parameters %}
-                    {% set value = '$' + parameter.name %}
-
-                    {% if parameter.default %}
-                      {% set value = value + ': ' + parameter.default %}
-                    {% endif %}
-
-                    {% if parameter.type | lower === "arglist" %}
-                      {% set value = value + '...' %}
-                    {% endif %}
-
-                    {% if loop.first %}
-                      {% set parameters_string = value %}
-                    {% else %}
-                      {% set parameters_string = parameters_string + ', ' + value %}
-                    {% endif %}
                     <tr class="sassdoc__item-parameter">
                       <td><code>${{ parameter.name }}</code></td>
                       <td>{{ parameter.description }}</td>
