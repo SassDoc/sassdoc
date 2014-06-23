@@ -8,17 +8,17 @@ SassDoc. Like JSDoc, but for Sass files.
 // Function description
 // ... on several lines if you will
 // ---
-// @private
-// ---
-// @deprecated since v4.2
+// @access private
 // ---
 // @alias other-function
 // ---
-// @param {type} $parameter-name - description of the parameter
+// @param {Literal} $parameter-name            - description of the parameter
+// @param {String}  $other-parameter (default) - parameter with a default value
+// @param {ArgList} $args                      - extra parameters
 // ---
-// @returns {string | null} description of the returned value
+// @return {String | null} description of the returned value
 
-@function dummy-function($parameter-name) {
+@function dummy-function($parameter-name, $other-parameter: 'default', $args...) {
   // ...
 }
 ```
@@ -30,7 +30,6 @@ SassDoc. Like JSDoc, but for Sass files.
 ## Installation
 
 ```sh
-git clone https://github.com/HugoGiraudel/SassDoc.git
 npm install -g sassdoc
 ```
 
