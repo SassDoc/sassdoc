@@ -27,14 +27,6 @@ Data.prototype.push = function (value) {
 };
 
 /**
- * Concatenate values to Data
- * @param {Array} data
- */
-Data.prototype.concatArray = function (data) {
-  data.data.forEach(this.push.bind(this));
-};
-
-/**
  * Create a data object from an array
  * @param  {Array} array
  * @return {Data}
