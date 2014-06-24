@@ -203,7 +203,11 @@ exports = module.exports = {
     return exports.folder.parse(folder).then(function (response) {
       var data = Data.fromArray(response);
       exports.compileAliases(data);
-      return data.data;
+      return data.data.sort(function (a, b) {
+        if (a.name > b.name) return 1;
+        if (a.name < b.name) return -1;
+        return 0;
+      });
     });
   },
 
