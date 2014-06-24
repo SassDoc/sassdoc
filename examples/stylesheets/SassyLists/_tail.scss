@@ -6,7 +6,7 @@
 // ---
 // @param {List} $list - list to retrieve tail from
 // ---
-// @returns {List | false}
+// @returns {List | Bool}
 
 @function tail($list) {
   @return slice($list, 2);

@@ -8,7 +8,7 @@
 // ---
 // @throws Cannot find a random value in an empty list.
 // ---
-// @returns {Literal | false}
+// @returns {* | Bool}
 
 @function random-value($list) {
   @if length($list) == 0 {

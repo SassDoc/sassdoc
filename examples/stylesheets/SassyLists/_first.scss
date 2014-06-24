@@ -6,7 +6,7 @@
 // ---
 // @throws Cannot find first item of empty list.
 // ---
-// @returns {Literal | false}
+// @returns {* | Bool}
 
 @function first($list) {
   @if length($list) == 0 {

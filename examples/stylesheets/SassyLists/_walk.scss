@@ -8,7 +8,7 @@
 // ---
 // @throws There is no `$function` function.
 // ---
-// @returns {List | false}
+// @returns {List | Bool}
 
 @function walk($list, $function, $args...) {
   @if not function-exists($function) {

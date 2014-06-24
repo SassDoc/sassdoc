@@ -12,7 +12,7 @@ SassDoc. Like JSDoc, but for Sass files.
 // ---
 // @alias other-function
 // ---
-// @param {Literal} $parameter-name            - description of the parameter
+// @param {*}       $parameter-name            - description of the parameter
 // @param {String}  $other-parameter (default) - parameter with a default value
 // @param {ArgList} $args                      - extra parameters
 // ---
@@ -133,12 +133,15 @@ Describes a link. Multiple `@link` allowed on the same function/mixin.
 
 ### @param (synonyms: @arg, @argument)
 
-Describes a parameter of the documented function/mixin. Default value is optional. `@arg`, `@argument` and `@parameter` are accepted as well.
+Describes a parameter of the documented function/mixin. Default value and description are optional.
 
 ```scss
+// @param {type | othertype} $name
 // @param {type} $name - description
 // @param {type} $name (default value) - description of the parameter
 ```
+
+Type is any of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `string` or `*` when any type is allowed. Case insensitive.
 
 ### @requires
 
@@ -149,12 +152,15 @@ Defines if the documented function/mixin requires any other function/mixin. Mult
 ```
 
 ### @returns (synonym: @return)
+
 Describes the return statement of the documented function/mixin. Description is optional.
 
 ```scss
-// @returns {type}
+// @returns {type | othertype}
 // @returns {type} Description of the return statement
 ```
+
+Type is one of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `string` or `*` when any type is allowed. Case insensitive.
 
 ### @throws (synonym: @exception)
 

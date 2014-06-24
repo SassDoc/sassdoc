@@ -8,7 +8,7 @@
 // @throws `$string` is not a string for `explode`.
 // @throws `$delimiter` is not a string for `explode`.
 // ---
-// @returns {List | false}
+// @returns {List | Bool}
 
 @function explode($string, $delimiter: '') {
   @if type-of($string) != "string" {

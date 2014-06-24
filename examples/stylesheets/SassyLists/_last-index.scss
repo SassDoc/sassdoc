@@ -3,9 +3,9 @@
 // @ignore Documentation: http://sassylists.com/documentation/#last-index
 // ---
 // @param {List}    $list  - list to search
-// @param {Literal} $value - value to be searched for
+// @param {*}       $value - value to be searched for
 // ---
-// @returns {Number | null}
+// @returns {Number | Null}
 
 @function last-index($list, $value) {
   $length: length($list);

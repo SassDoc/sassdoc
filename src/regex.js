@@ -1,3 +1,6 @@
+var types = "(?:null|\\*|number|color|string|list|map|bool|arglist)";
+var multipleTypes = "\\{\\s*(" + types + "(?:\\s*\\|\\s*" + types + ")*)\\s*\\}";
+
 exports = module.exports = {
 
   /**
@@ -15,7 +18,8 @@ exports = module.exports = {
    * @return {Boolean}
    */
   isParameters: function (line) {
-    return line.match(/^@(?:param|arg|argument)(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})?\s+(?:\$([\w-]+))(?:\s+\(([\w-\s]+)\))?(?:\s+-\s*?([\w-\s]+))?/i);
+    var re = new RegExp("^@(?:param|arg|argument)\\s+" + multipleTypes + "\\s+\\$([\\w-]+)(?:\\s+\\((.+)\\))?(?:\\s+-?\\s*(.+))?", "i");
+    return line.match(re);
   },
 
   /**
@@ -24,7 +28,8 @@ exports = module.exports = {
    * @return {Boolean}
    */
   isReturns: function (line) {
-    return line.match(/^@returns?(?:\s+{\s*([\w-](?:\s*\|?\s*[\w-])*)\s*})(?:\s+([\w-\s]*))?/i);
+    var re = new RegExp("^@returns?(?:\\s+" + multipleTypes + ")(?:\\s+(.+))?", "i");
+    return line.match(re);
   },
 
   /**

@@ -3,8 +3,8 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#replace
 // ---
 // @param {List}    $list  - list to update
-// @param {Literal} $old   - value to replace
-// @param {Literal} $value - new value for $old
+// @param {*}       $old   - value to replace
+// @param {*}       $value - new value for $old
 // ---
 // @returns {List}
 

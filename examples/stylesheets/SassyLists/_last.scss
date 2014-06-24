@@ -6,7 +6,7 @@
 // ---
 // @throws Cannot find last item of empty list.
 // ---
-// @returns {Literal | false}
+// @returns {* | Bool}
 
 @function last($list) {
   @if length($list) == 0 {

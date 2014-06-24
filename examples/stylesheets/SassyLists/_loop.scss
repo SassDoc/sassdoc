@@ -9,7 +9,7 @@
 // ---
 // @throws `$value` is not a number for `loop`.
 // ---
-// @returns {List | false}
+// @returns {List | Bool}
 
 @function loop($list, $value: 1) {
   @if type-of($value) != "number" {

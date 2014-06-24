@@ -7,7 +7,7 @@
 // @param {List}   $list  - list to remove value from
 // @param {Number} $index - index to remove
 // ---
-// @returns {List | false}
+// @returns {List | Bool}
 
 @function remove-nth($list, $index) {
   @return replace-nth($list, $index, "");

@@ -4,13 +4,13 @@
 // ---
 // @requires purge
 // ---
-// @param {List} $list     - list to update
-// @param {Number} $index  - index to update
-// @param {Literal} $value - new value for index
+// @param {List}   $list  - list to update
+// @param {Number} $index - index to update
+// @param {*}      $value - new value for index
 // ---
 // @throws Invalid index `$index` for `replace-nth`.
 // ---
-// @returns {List | false}
+// @returns {List | Bool}
 
 @function replace-nth($list, $index, $value) {
   @if type-of($index) != "number" or $index == 0 or abs($index) > length($list) {

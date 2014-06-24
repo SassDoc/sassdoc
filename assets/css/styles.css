@@ -223,17 +223,10 @@ a:hover {
 .sassdoc__item--alias {
   opacity: .75;
   transition: .15s;
-  margin-top: -2em !important;
-  border-left: .5em solid #ccc;
-  padding-left: 1em;
 }
 
 .sassdoc__item--alias:hover {
   opacity: 1;
-}
-
-.sassdoc__item--alias .sassdoc__item-name {
-  margin-bottom: 0;
 }
 
 /**

@@ -7,7 +7,7 @@
 // ---
 // @exception `$size` is not a number for `chunk`.
 // ---
-// @return {List | false}
+// @return {List | Bool}
 
 @function chunk($list, $size) {
   @if type-of($size) != "number" {

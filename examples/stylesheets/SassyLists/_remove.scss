@@ -5,7 +5,7 @@
 // @requires replace
 // ---
 // @param {List}    $list      - list to update
-// @param {Literal} $value     - value to remove
+// @param {*}       $value     - value to remove
 // @param {Bool}    $recursive - enable/disable recursion
 // ---
 // @returns {List}

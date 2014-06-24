@@ -2,7 +2,7 @@
   "name": "sassdoc",
   "description": "Like JSDoc but for Sass files.",
   "author": "Hugo Giraudel",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "license": "MIT",
   "repository": {
     "type": "git",

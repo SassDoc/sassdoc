@@ -104,13 +104,9 @@
                   {% for parameter in item.parameters %}
                     <tr class="sassdoc__item-parameter">
                       <td><code>${{ parameter.name }}</code></td>
-                      <td>{{ parameter.description }}</td>
-                      <td><code>{{ parameter.type }}</code></td>
-                      {% if parameter.default %}
-                        <td>{{ parameter.default }}</td>
-                      {% else %}
-                        <td>&mdash;</td>
-                      {% endif %}
+                      <td>{% if parameter.description %}{{ parameter.description }}{% else %}&mdash;{% endif %}</td>
+                      <td>{% if parameter.type == "*" %}Any{% else %}<code>{{ parameter.type }}</code>{% endif %}</td>
+                      <td>{% if parameter.default %}{{ parameter.default }}{% else %}&mdash;{% endif %}</td>
                     </tr>
                   {% endfor %}
                 </tbody>
