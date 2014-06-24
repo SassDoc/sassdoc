@@ -25,7 +25,7 @@
         {% for item in data %}
           {% if loop.first %}<ul>{% endif %}
             {% if item.alias == false %}
-              <li>{{ item.type | capitalize }} <a href="#sassdoc__item--{{ item.type }}-{{ item.name }}">{{ item.name }}</a></li>
+              <li>{{ item.type | capitalize }} <a href="#{{ item.type }}-{{ item.name }}">{{ item.name }}</a></li>
             {% endif %}
           {% if loop.last %}</ul>{% endif %}
         {% endfor %}
@@ -34,7 +34,7 @@
 
       <article class="sassdoc__container">
         {% for item in data %}
-          <section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="sassdoc__item--{{ item.type }}-{{ item.name }}">
+          <section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="{{ item.type }}-{{ item.name }}">
             
 
             <h2 class="sassdoc__item-name">
@@ -47,17 +47,19 @@
               {% if item.aliased.length > 0 %}
                 <span class="sassdoc__item-alias">(aliased as 
                 {% for _alias in item.aliased %}
-                  <a href="#sassdoc__item--{{ _alias }}"><code>{{ _alias }}</code></a>
+                  <a href="#{{ item.type }}-{{ _alias }}"><code>{{ _alias }}</code></a>
                 {% endfor %}
                 )</span>
               {% endif %}
 
               {% if item.alias %}
-                <span class="sassdoc__item-alias">alias for <a href="#sassdoc__item--{{ item.type }}-{{ item.alias }}"><code>{{ item.alias }}</code></a></span>
+                <span class="sassdoc__item-alias">alias for <a href="#{{ item.type }}-{{ item.alias }}"><code>{{ item.alias }}</code></a></span>
               {% endif %}
             </h2>
 
-            {% set parameters_string = '' %}
+            {% if item.alias == false %}
+
+              {% set parameters_string = '' %}
               {% for parameter in item.parameters %}
                 {% set value = '$' + parameter.name %}
 
@@ -75,9 +77,7 @@
                   {% set parameters_string = parameters_string + ', ' + value %}
                 {% endif %}
               {% endfor %}
-            <pre class="sassdoc__item-code">@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }  </pre>
-
-            {% if item.alias == false %}
+              <pre class="sassdoc__item-code">@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }  </pre>
 
               {% if item.description %}
                 <h3>Description</h3>
@@ -142,7 +142,7 @@
                   {% else %}
                     {% set require_type = "function" %}
                   {% endif %}
-                  <li><a href="#sassdoc__item--{{ require_type }}-{{ _require }}"><code>{{ _require }}</code></a></li>
+                  <li><a href="#{{ require_type }}-{{ _require }}"><code>{{ _require }}</code></a></li>
                   {% if loop.last %}</ul>{% endif %}
                 {% endfor %}
               {% endif %}

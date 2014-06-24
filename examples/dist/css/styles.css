@@ -23,6 +23,20 @@ body {
 }
 
 /**
+ * Links
+ */
+a {
+  transition: .15s;
+  text-decoration: none;
+  color: #c6538c;
+}
+
+a:hover code,
+a:hover {
+  color: #333;
+}
+
+/**
  * Main container
  */
 .container {
@@ -128,7 +142,6 @@ body {
  * Inline code
  */
 .sassdoc code {
-  color: #c6538c;
   padding: 2px 4px;
   font-size: 90%;
   color: #c7254e;
