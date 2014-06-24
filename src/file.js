@@ -13,8 +13,8 @@ extras.useFilter(swig, 'markdown');
  * @constructs
  */
 function Data() {
+  this.data = [];
   this.index = {};
-  this.length = 0;
 }
 
 /**
@@ -22,18 +22,28 @@ function Data() {
  * @param {Object} value
  */
 Data.prototype.push = function (value) {
-  this[this.length++] = value;
+  this.data.push(value);
   this.index[value.name] = value;
 };
 
 /**
  * Concatenate values to Data
- * @param {Array} values
+ * @param {Array} data
  */
-Data.prototype.concat = function (values) {
-  for (var i = 0; i < values.length; i++) {
-    this.push(values[i]);
-  }
+Data.prototype.concatArray = function (data) {
+  console.log(data.constructor.name);
+  data.data.forEach(this.push.bind(this));
+};
+
+/**
+ * Create a data object from an array
+ * @param  {Array} array
+ * @return {Data}
+ */
+Data.fromArray = function (array) {
+  var data = new Data();
+  array.forEach(data.push.bind(data));
+  return data;
 };
 
 exports = module.exports = {
@@ -83,7 +93,7 @@ exports = module.exports = {
       return exports.folder.read(folder).then(function (files) {
         var path, 
             promises = [],
-            data = new Data();
+            data = [];
 
         files.forEach(function (file) {
           path = folder + '/' + file;
@@ -91,14 +101,14 @@ exports = module.exports = {
           // Folder
           if (exports.isDirectory(path)) {
             promises.push(exports.folder.parse(path).then(function (response) {
-              data.concat(response);
+              data = data.concat(response);
             }));
           }
 
           // SCSS file
           else if (utils.getExtension(path) === "scss") {
             promises.push(exports.file.process(path).then(function (response) {
-              data.concat(response);
+              data = data.concat(response);
             }));
           }
 
@@ -192,19 +202,17 @@ exports = module.exports = {
   generate: function (data, destination) {
     var template = swig.compileFile(__dirname + '/../assets/templates/docs.html.swig');
     
-
-    return exports.file.create(destination, template({
-      data: data
-    }));
+    return exports.file.create(destination, template({ 'data': data }));
   },
 
   /**
    * Get data
    */
   getData: function (folder) {
-    return exports.folder.parse(folder).then(function (data) {
+    return exports.folder.parse(folder).then(function (response) {
+      var data = Data.fromArray(response);
       exports.compileAliases(data);
-      return Array.prototype.slice.call(data);
+      return data.data;
     });
   },
 
