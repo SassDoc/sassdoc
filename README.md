@@ -12,11 +12,15 @@ SassDoc. Like JSDoc, but for Sass files.
 // ---
 // @alias other-function
 // ---
+// @requires dependency-function
+// ---
 // @param {*}       $parameter-name            - description of the parameter
 // @param {String}  $other-parameter (default) - parameter with a default value
 // @param {ArgList} $args                      - extra parameters
 // ---
-// @return {String | null} description of the returned value
+// @throws `$other-parameter` must be a string.
+// ---
+// @return {String | Null} description of the returned value
 
 @function dummy-function($parameter-name, $other-parameter: 'default', $args...) {
   // ...
@@ -51,7 +55,7 @@ sassdoc <src> <dest> [options]
 * `-h, --help`: bring help
 * `-v, --verbose`: run in verbose mode
 
-### [WIP] Node API
+### Node API
 
 ```js
 var sassdoc = require('sassdoc');
@@ -59,6 +63,39 @@ var sassdoc = require('sassdoc');
 sassdoc.parse(__dirname + '/sass').then(function (items) {
   console.log(items);
 })
+```
+
+Yielding a result like this:
+
+```js
+[
+  {
+    'parameters': [
+      { 'type': '*', 'name': 'parameter-name', 'default': undefined, 'description': 'description of the parameter' },
+      { 'type': 'String', 'name': 'other-parameter', 'default': 'default', 'description': 'parameter with a default value' },
+      { 'type': 'ArgList', 'name': 'args', 'default': undefined, 'description': 'extra parameters' }
+    ],
+    'throws': ['`$other-parameter` must be a string.'],
+    'todos': [],
+    'alias': false,
+    'aliased': 'other-function',
+    'links': [],
+    'requires': ['dependency-function'],
+    'description': 'Function description\n... on several lines if you will',
+    'access': 'private',
+    'deprecated': false,
+    'author': false,
+    'returns': {
+      'type': ['String', 'Null'],
+      'description': 'description of the returned value'
+    },
+    'type': 'function',
+    'name': 'dummy-function'
+  }
+  /*,
+    ... other documented mixins/functions.
+  */
+]
 ```
 
 ## API Documentation

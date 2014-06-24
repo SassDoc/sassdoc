@@ -1,7 +1,7 @@
 var utils = require('./utils');
 
 exports = module.exports = {
-	enabled: false,
+  enabled: false,
 
   /**
    * Log arguments into the console
