@@ -31,7 +31,6 @@ Data.prototype.push = function (value) {
  * @param {Array} data
  */
 Data.prototype.concatArray = function (data) {
-  console.log(data.constructor.name);
   data.data.forEach(this.push.bind(this));
 };
 
