@@ -203,12 +203,26 @@ exports = module.exports = {
     return exports.folder.parse(folder).then(function (response) {
       var data = Data.fromArray(response);
       exports.compileAliases(data);
-      return data.data.sort(function (a, b) {
+      return exports.splitData(data.data.sort(function (a, b) {
         if (a.name > b.name) return 1;
         if (a.name < b.name) return -1;
         return 0;
-      });
+      }));
     });
+  },
+
+  splitData: function (data) {
+    var _data = {
+      'functions': [],
+      'mixins': [],
+      'variables': []
+    };
+
+    data.forEach(function (item) {
+      _data[item.type + 's'].push(item);
+    });
+
+    return _data;
   },
 
   /**
@@ -216,7 +230,7 @@ exports = module.exports = {
    */
   compileAliases: function (data) {
     for (var item in data.index) {
-      if (data.index[item].alias === false) {
+      if (!data.index[item].alias) {
         continue;
       }
 

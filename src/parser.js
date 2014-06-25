@@ -13,21 +13,27 @@ exports = module.exports = {
     var previousLine = index - 1,
         comments = [];
 
+
     // Loop back
-    while (previousLine--) {
+    while (previousLine >= 0) {
       // If it's an empty line, break (unless it hasn't started yet)
-      if (comments.length > 0 && regex.isEmpty(array[previousLine])) {
-        break;
+      if (regex.isEmpty(array[previousLine]) !== null) {
+        if (comments.length > 0) break;
       } 
 
       // If it's not a comment, break
-      if (!regex.isComment(array[previousLine])) {
+      else if (!regex.isComment(array[previousLine])) {
         break;
       }
 
-      // Push the new comment line
-      comments.unshift(array[previousLine]);
+      else {
+        // Push the new comment line
+        comments.unshift(array[previousLine]);
+      }
+      
+      previousLine--;
     }
+
 
     return comments;
   },
@@ -88,6 +94,27 @@ exports = module.exports = {
   },
 
   /**
+   * Parse a block of comments
+   * @param  {Array} comments - array of lines
+   * @return {Object}           function/mixin documentation
+   */
+  parseVariableBlock: function (comments) {
+    var line, doc = {
+      'description': '',
+      'datatype': ''
+    };
+
+    comments.forEach(function (line, index) {
+      line = regex.isVar(utils.uncomment(line));
+
+      doc.datatype = line[1];
+      doc.description = line[2];
+    });
+
+    return doc;
+  },
+
+  /**
    * Parse a file
    * @param  {String} content - file content
    * @return {Array}            array of documented functions/mixins
@@ -108,6 +135,20 @@ exports = module.exports = {
 
         tree.push(item);
       }
+      
+      
+      var isVariable = regex.isVariable(line);
+
+      if (isVariable) {
+        var item = exports.parseVariableBlock(exports.findCommentBlock(index, array));
+        item.type = "variable";
+        item.name = isVariable[1];
+        item.value = isVariable[2];
+        item.access = isVariable[3] == "!global" ? "public" : "private";
+
+        tree.push(item);
+      }
+      
     });
 
     return tree;

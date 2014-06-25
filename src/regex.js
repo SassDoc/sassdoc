@@ -33,6 +33,16 @@ exports = module.exports = {
   },
 
   /**
+   * Checks whether the line is a var doc
+   * @param  {string}  line - line to check
+   * @return {Boolean}
+   */
+  isVar: function (line) {
+    var re = new RegExp("^@var(?:\\s+" + multipleTypes + ")(?:\\s+-?\\s*(.+))?", "i");
+    return line.match(re);
+  },
+
+  /**
    * Checks whether the line is an access
    * @param  {string}  line - line to check
    * @return {Boolean}
@@ -147,6 +157,15 @@ exports = module.exports = {
    */
   isRequires: function (line) {
     return line.match(/^@requires\s+([\w-]+)/i);
+  },
+
+  /**
+   * Checks whether the line is a variable
+   * @param  {string}  line - line to check
+   * @return {Boolean}
+   */
+  isVariable: function (line) {
+    return line.match(/^\$([\w-]*)\s*\:\s*(.+?)(?:\s+(!global))?\;/i);
   }
 
 };

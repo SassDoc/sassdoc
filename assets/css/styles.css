@@ -20,6 +20,7 @@ body {
   font: 1.6em/1.35 'Ubuntu', 'Helvetica', sans-serif;
   overflow: auto;
   margin: 0;
+  counter-reset: sections;
 }
 
 /**
@@ -124,6 +125,22 @@ a:hover {
 .sassdoc__container {
   width: 70%;
   float: right;
+}
+
+/**
+ * Main titles
+ */
+.sassdoc__section {
+  color: #555;
+  background: #f9f2f4;
+  padding: 1em;
+  text-transform: uppercase;
+  counter-increment: sections;
+  border-bottom: .3em solid #c69;
+}
+
+.sassdoc__section::before {
+  content: counter(sections) '.';
 }
 
 /**
