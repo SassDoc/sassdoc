@@ -4,6 +4,8 @@ SassDoc. Like JSDoc, but for Sass files.
 
 ## Example
 
+### Function/mixin
+
 ```scss
 // Function description
 // ... on several lines if you will
@@ -26,6 +28,15 @@ SassDoc. Like JSDoc, but for Sass files.
   // ...
 }
 ```
+
+### Variable
+
+```scss
+// @var {Bool} - Defines whether the library should support legacy browsers (e.g. IE8).
+$legacy-support: true !global;
+```
+
+### Preview
 
 ![SassDoc](http://i.imgur.com/GnNo4HB.png)
 
@@ -227,7 +238,7 @@ Defines any task to do regarding the documented function/mixin. Multiple `@todo`
 
 Describes a variable. Has nothing to do with function/mixin. 
 
-```
+```scss
 // @var {Bool} - Defines whether the library should support legacy browsers (e.g. IE8).
 $legacy-support: true !global;
 ```
