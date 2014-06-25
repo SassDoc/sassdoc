@@ -16,4 +16,3 @@ if (options['--verbose'] === true) {
 if (typeof options['<src>'] !== 'undefined' || typeof options['<dest>'] !== 'undefined') {
   api.documentize(options['<src>'], options['<dest>']);
 }
-
