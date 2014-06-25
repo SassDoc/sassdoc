@@ -120,6 +120,14 @@ a:hover {
 }
 
 /**
+ * List item section
+ */
+.sassdoc__map-section a {
+  font-weight: bold;
+  color: #c7254e;
+}
+
+/**
  * Main wrapper
  */
 .sassdoc__container {

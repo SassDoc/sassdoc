@@ -223,6 +223,17 @@ Defines any task to do regarding the documented function/mixin. Multiple `@todo`
 // @todo Task to be done
 ```
 
+### @var
+
+Describes a variable. Has nothing to do with function/mixin. 
+
+```
+// @var {Bool} - Defines whether the library should support legacy browsers (e.g. IE8).
+$legacy-support: true !global;
+```
+
+Scope is defined by the (lack of) use of `!global`. 
+
 ## Credits
 
 Huge thanks to [Valérian Galliat](https://twitter.com/valeriangalliat) for the help.
