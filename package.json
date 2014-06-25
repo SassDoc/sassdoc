@@ -27,6 +27,6 @@
     "swig-extras": "0.0.1"
   },
   "bin": {
-    "sassdoc": "bin/sassdoc"
+    "sassdoc": "./bin/sassdoc"
   }
 }
