@@ -1,3 +1,5 @@
+'use strict';
+
 var fs     = require('./file');
 var logger = require('./log');
 

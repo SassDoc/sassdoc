@@ -1,3 +1,5 @@
+'use strict';
+
 var regex = require('./regex');
 var utils = require('./utils');
 

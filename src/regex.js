@@ -1,3 +1,5 @@
+'use strict';
+
 var types = "(?:null|\\*|number|color|string|list|map|bool|arglist)";
 var multipleTypes = "\\{\\s*(" + types + "(?:\\s*\\|\\s*" + types + ")*)\\s*\\}";
 
