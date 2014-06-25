@@ -124,7 +124,9 @@ a:hover {
  */
 .sassdoc__map-section a {
   font-weight: bold;
+  display: block;
   color: #c7254e;
+  margin-top: 1em;
 }
 
 /**
@@ -148,7 +150,7 @@ a:hover {
 }
 
 .sassdoc__section::before {
-  content: counter(sections) '.';
+  content: counter(sections) '. ';
 }
 
 /**

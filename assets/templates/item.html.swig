@@ -3,7 +3,6 @@
     {% if item.deprecated %}
       <span class="sassdoc__item-deprecated" title="{{ item.deprecated }}">[Deprecated]</span>
     {% endif %}
-    <span class="sassdoc__item-type">[{{ item.type }}]</span>
     <code>{{ item.name }}</code>
 
     {% if item.aliased.length > 0 %}
@@ -15,7 +14,7 @@
     {% endif %}
 
     {% if item.alias %}
-      <span class="sassdoc__item-alias">alias for <a href="#{{ item.type }}-{{ item.alias }}"><code>{{ item.alias }}</code></a></span>
+      <span class="sassdoc__item-alias">(alias for <a href="#{{ item.type }}-{{ item.alias }}"><code>{{ item.alias }}</code></a>)</span>
     {% endif %}
   </h2>
 

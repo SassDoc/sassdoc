@@ -4,8 +4,7 @@
   {% for type, obj in data %}
     <h1 class="sassdoc__section" id="{{ type }}">{{ type | capitalize }}</h1>
     {% for item in obj %}
-      {% set partial = type %}
-      {% set partial += ".html.swig" %}
+      {% set partial = type + ".html.swig" %}
       {% include partial with item %}
     {% endfor %}
   {% endfor %}
@@ -19,7 +18,7 @@
     <li class="sassdoc__map-section"><a href="#{{ type }}">{{ type | capitalize }}</a></li>
     {% for item in obj %}
       {% if item.alias == false %}
-        <li>{{ item.type | capitalize }} <a href="#{{ item.type }}-{{ item.name }}">{{ item.name }}</a></li>
+        <li><a href="#{{ item.type }}-{{ item.name }}">{{ item.name }}</a></li>
       {% endif %}
     {% endfor %}
   {% endfor %}
