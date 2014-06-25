@@ -180,10 +180,10 @@ exports = module.exports = {
    * @return {Q.Promise}
    */
   dumpAssets: function (destination) {
-    destination = __dirname + '/../' + destination + '/css';
-
-    return exports.folder.create(destination).then(function () {
-      return exports.file.copy(__dirname + '/../assets/css/styles.css', destination + '/styles.css');
+    return exports.folder.create(destination + '/css').then(function () {
+      return exports.file.copy(__dirname + '/../assets/css/styles.css', destination + '/css/styles.css');
+    }, function (err) {
+      console.error(err);
     });
   },
 
