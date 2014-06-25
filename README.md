@@ -199,6 +199,14 @@ Describes the return statement of the documented function/mixin. Description is 
 
 Type is one of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `string` or `*` when any type is allowed. Case insensitive.
 
+### @since
+
+Describes the version at which the documented function/mixin has been implemented.
+
+```scss
+// @since 4.2
+```
+
 ### @throws (synonym: @exception)
 
 Describes the error thrown by the documented function/mixin. Multiple `@throws` allowed on the same function/mixin.

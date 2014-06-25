@@ -89,6 +89,11 @@
                 <p class="sassdoc__item-access">{{ item.access }}</p>
               {% endif %}
 
+              {% if item.since %}
+                <h3>Since</h3>
+                <p>{{ item.since }}</p>
+              {% endif %}
+
               <h3>Parameters</h3>
               {% if item.parameters.length > 0 %}
               <table class="sassdoc__item-parameters">

@@ -47,6 +47,7 @@ exports = module.exports = {
       'links': [],
       'requires': [],
       'description': '',
+      'since': false,
       'access': 'public',
       'deprecated': false,
       'author': false,
@@ -120,7 +121,7 @@ exports = module.exports = {
   parseLine: function (line) {
     var type, value, i,
         res = { array: false },
-        tokens = ['returns', 'parameters', 'deprecated', 'author', 'access', 'throws', 'todo', 'alias', 'link', 'requires'];
+        tokens = ['returns', 'parameters', 'deprecated', 'author', 'access', 'throws', 'todo', 'alias', 'link', 'requires', 'since'];
 
     // Useless line, skip
     if (line.length === 0 
@@ -157,6 +158,7 @@ exports = module.exports = {
       case 'author':
       case 'access':
       case 'alias':
+      case 'since':
         res.value = value[1];
         break;
 

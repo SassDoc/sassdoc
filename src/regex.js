@@ -123,6 +123,15 @@ exports = module.exports = {
   },
 
   /**
+   * Checks whether the line is a since
+   * @param  {string}  line - line to check
+   * @return {Boolean}
+   */
+  isSince: function (line) {
+    return line.match(/^@since\s+(.+)/i);
+  },
+
+  /**
    * Checks whether the line is a link
    * @param  {string}  line - line to check
    * @return {Boolean}
