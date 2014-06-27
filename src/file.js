@@ -204,7 +204,9 @@ exports = module.exports = {
   getData: function (folder) {
     return exports.folder.parse(folder).then(function (response) {
       var data = Data.fromArray(response);
-      exports.compileAliases(data);
+
+      exports.postTreatData(data);
+
       return exports.splitData(data.data.sort(function (a, b) {
         if (a.name > b.name) return 1;
         if (a.name < b.name) return -1;
@@ -228,7 +230,17 @@ exports = module.exports = {
   },
 
   /**
-   * Compile aliases for each function
+   * Post treat data to fill missing informations
+   * @param  {Object} data
+   */
+  postTreatData: function (data) {
+    exports.compileAliases(data);
+    exports.compileRequires(data);
+  },
+
+  /**
+   * Compile aliases for each item
+   * @param  {Object} data
    */
   compileAliases: function (data) {
     for (var item in data.index) {
@@ -236,7 +248,27 @@ exports = module.exports = {
         continue;
       }
 
-      data.index[data.index[item].alias].aliased.push(item);
+      if (typeof data.index[data.index[item].alias] !== "undefined") {
+        data.index[data.index[item].alias].aliased.push(item);
+      }
+    }
+  },
+
+  /**
+   * Compile requires for each item
+   * @param  {Object} data
+   */
+  compileRequires: function (data) {
+    for (var item in data.index) {
+      if (!data.index[item].requires) {
+        continue;
+      }
+
+      for (var i = 0; i < data.index[item].requires.length; i++) {
+        if (typeof data.index[item].requires[i].type === "undefined" && typeof data.index[data.index[item].requires[i].item] !== "undefined") {
+          data.index[item].requires[i].type = data.index[data.index[item].requires[i].item].type;
+        }
+      }
     }
   }
 

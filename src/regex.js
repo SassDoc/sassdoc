@@ -158,7 +158,7 @@ exports = module.exports = {
    * @return {Boolean}
    */
   isRequires: function (line) {
-    return line.match(/^@requires\s+([\w-]+)/i);
+    return line.match(/^@requires\s+(?:{(function|mixin|var)})?\s*([\w-]+)/i);
   },
 
   /**

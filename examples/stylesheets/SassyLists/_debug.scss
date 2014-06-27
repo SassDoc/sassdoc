@@ -74,7 +74,7 @@
 // ---
 // @param {List} $list - list to debug
 // ---
-// @requires debug
+// @requires {function} debug
 
 @mixin debug($list) {
   body:before {

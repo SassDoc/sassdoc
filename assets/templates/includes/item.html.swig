@@ -97,14 +97,9 @@
 
     {% if item.requires.length > 0 %}
       <h3>Requires</h3>
-      {% for _require in item.requires %}
+      {% for require in item.requires %}
         {% if loop.first %}<ul class="sassdoc__item-requires">{% endif %}
-        {% if item.type == "function" %}
-          {% set require_type = "mixin" %}
-        {% else %}
-          {% set require_type = "function" %}
-        {% endif %}
-        <li><a href="#{{ require_type }}-{{ _require }}"><code>{{ _require }}</code></a></li>
+        <li><a href="#{{ require.type }}-{{ require.item }}"><code>{{ require.item }}</code></a></li>
         {% if loop.last %}</ul>{% endif %}
       {% endfor %}
     {% endif %}

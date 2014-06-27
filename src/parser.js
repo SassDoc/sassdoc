@@ -207,11 +207,15 @@ exports = module.exports = {
 
       case 'throws':
       case 'todos':
-      case 'requires':
         res.value = value[1];
         res.array = true;
         break;
 
+      case 'requires':
+        res.value = { 'type': value[1], 'item': value[2] };
+        res.array = true;
+        break;
+     
       case 'link':
         res.value = { 'url': value[1], 'caption': value[2] }
         break;
