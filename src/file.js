@@ -236,39 +236,107 @@ exports = module.exports = {
   postTreatData: function (data) {
     exports.compileAliases(data);
     exports.compileRequires(data);
+    exports.raiseWarnings(data);
   },
 
   /**
    * Compile aliases for each item
-   * @param  {Object} data
+   * @param {Object} data
    */
   compileAliases: function (data) {
-    for (var item in data.index) {
-      if (!data.index[item].alias) {
+    var item, name;
+
+    for (name in data.index) {
+      item = data.index[name];
+
+      if (!item.alias) {
         continue;
       }
 
-      if (typeof data.index[data.index[item].alias] !== "undefined") {
-        data.index[data.index[item].alias].aliased.push(item);
+      if (utils.isset(data.index[item.alias])) {
+        data.index[item.alias].aliased.push(item.name);
+      }
+
+      // Incorrect @alias
+      else {
+        logger.log("Item `" + name + " is an alias of `" + item.alias + "` but this item doesn't exist."); 
       }
     }
   },
 
   /**
    * Compile requires for each item
-   * @param  {Object} data
+   * @param {Object} data
    */
   compileRequires: function (data) {
-    for (var item in data.index) {
-      if (!data.index[item].requires) {
+    var item, name;
+
+    for (name in data.index) {
+      item = data.index[name];
+
+      if (!utils.isset(item.requires)) {
         continue;
       }
 
-      for (var i = 0; i < data.index[item].requires.length; i++) {
-        if (typeof data.index[item].requires[i].type === "undefined" && typeof data.index[data.index[item].requires[i].item] !== "undefined") {
-          data.index[item].requires[i].type = data.index[data.index[item].requires[i].item].type;
+      for (var i = 0; i < item.requires.length; i++) {
+        if (utils.isset(item.requires[i].type)) {
+          continue;
+        } 
+
+        if (utils.isset(data.index[item.requires[i].item])) {
+          data.index[name].requires[i].type = data.index[item.requires[i].item].type;
+        }
+
+        // Incorrect @requires
+        else {
+          logger.log("Item `" + name + " requires `" + item.requires[i].item + "` but this item doesn't exist.");
         }
       }
+    }
+  },
+
+  /**
+   * Raise warning for incoherent or invalid things
+   * @param {Object} data
+   */
+  raiseWarnings: function (data) {
+    var name, item, i;
+    var validTypes = ["*", "arglist", "bool", "color", "list", "map", "null", "number", "string"];
+    
+    if (logger.enabled === false) {
+      return;
+    }
+
+    for (name in data.index) {
+      item = data.index[name];
+
+      // Incorrect data type in @param
+      if (utils.isset(item.parameters)) {
+        for (i = 0; i < item.parameters.length; i++) {
+          if (validTypes.indexOf(item.parameters[i].type.toLowerCase()) === -1) {
+            logger.log("Parameter `" + item.parameters[i].name + "` from item `" + item.name + "` is from type `" + item.parameters[i].type + "` which is not a valid Sass type.");
+          }
+        }
+      }
+
+      // Incorrect data type in @return
+      if (utils.isset(item.returns) && item.returns.type) {
+        for (i = 0; i < item.returns.type.length; i++) {
+          if (validTypes.indexOf(item.returns.type[i].trim().toLowerCase()) === -1) {
+            logger.log("Item `" + item.name + "` can return a `" + item.returns.type[i] + "` which is not a valid Sass type.");
+          }
+        }
+      }
+
+      // Incorrect URL in @link
+      if (utils.isset(item.links)) {
+        for (i = 0; i < item.links.length; i++) {
+          if (!item.links[i].url.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)) {
+            logger.log("Item `" + item.name + "` has a link leading to an invalid URL (`" + item.links[i].url + "`).");
+          }
+        }
+      }
+
     }
   }
 

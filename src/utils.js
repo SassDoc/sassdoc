@@ -45,6 +45,15 @@ exports = module.exports = {
    */
   uncomment: function (line) {
     return line.trim().replace(/^\/{2,}/i, '').replace(/^\/?\*+\/?/i, '').trim();
+  },
+
+  /**
+   * Returns whether a value is set or not
+   * @param {*} value - value to check
+   * @return {Bool}
+   */
+  isset: function (value) {
+    return typeof value !== "undefined";
   }
 
 };
