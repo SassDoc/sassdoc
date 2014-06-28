@@ -135,6 +135,7 @@ a:hover {
 .sassdoc__container {
   width: 70%;
   float: right;
+  margin-top: .5em;
 }
 
 /**
@@ -142,7 +143,7 @@ a:hover {
  */
 .sassdoc__section {
   color: #555;
-  background: #f9f2f4;
+  background-color: #f7f5fa;
   padding: 1em;
   text-transform: uppercase;
   counter-increment: sections;
@@ -168,7 +169,7 @@ a:hover {
 /**
  * Inline code
  */
-.sassdoc code {
+.sassdoc :not(pre) > code {
   padding: 2px 4px;
   font-size: 90%;
   color: #c7254e;

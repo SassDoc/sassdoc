@@ -1,14 +1,18 @@
 'use strict';
 
-var fs     = require('fs');
-var rimraf = require('rimraf');
-var swig   = require('swig');
-var extras = require('swig-extras');
-var Q      = require('q');
+var fs     = require('fs');          // File system
+var rimraf = require('rimraf');      // rm -rf
+var ncp    = require('ncp');         // cp -r
+var swig   = require('swig');        // Templating
+var extras = require('swig-extras'); // Moar templating
+var Q      = require('q');           // Promises
+
 var parser = require('./parser');
 var utils  = require('./utils');
 var logger = require('./log');
+
 extras.useFilter(swig, 'markdown');
+ncp.limit = 16;
 
 /**
  * Data holder
@@ -46,18 +50,28 @@ exports = module.exports = {
    */
   folder: {
     /**
+     * Read a folder
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_readdir_path_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     read: Q.denodeify(fs.readdir),
 
     /**
+     * Create a folder
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_mkdir_path_mode_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     create: Q.denodeify(fs.mkdir),
+
+    /**
+     * Copy a folder
+     * @see {@link https://github.com/AvianFlu/ncp}
+     * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
+     */
+    copy: Q.denodeify(ncp),
     
     /**
+     * Remove a folder
      * @see {@link https://github.com/isaacs/rimraf}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
@@ -126,18 +140,21 @@ exports = module.exports = {
    */
   file: {
     /**
+     * Read a file
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_readfile_filename_options_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     read: Q.denodeify(fs.readFile),
 
     /**
+     * Create a file
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_writefile_filename_data_options_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     create: Q.denodeify(fs.writeFile),
 
     /**
+     * Remove a file
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_unlink_path_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
@@ -152,16 +169,6 @@ exports = module.exports = {
       return exports.file.read(file, 'utf-8').then(function (data) {
         return parser.parseFile(data);
       });
-    },
-
-    /**
-     * Copy a file
-     * @param  {String} source
-     * @param  {String} destination
-     * @return {Q.Promise}
-     */
-    copy: function (source, destination) {
-      return fs.createReadStream(source).pipe(fs.createWriteStream(destination));
     }
   },
 
@@ -180,11 +187,7 @@ exports = module.exports = {
    * @return {Q.Promise}
    */
   dumpAssets: function (destination) {
-    return exports.folder.create(destination + '/css').then(function () {
-      return exports.file.copy(__dirname + '/../assets/css/styles.css', destination + '/css/styles.css');
-    }, function (err) {
-      console.error(err);
-    });
+    return exports.folder.copy(__dirname + '/../assets', destination + '/assets');
   },
 
   /**
@@ -193,7 +196,7 @@ exports = module.exports = {
    * @param {String} destination
    */
   generate: function (data, destination) {
-    var template = swig.compileFile(__dirname + '/../assets/templates/docs.html.swig');
+    var template = swig.compileFile(__dirname + '/../templates/docs.html.swig');
     
     return exports.file.create(destination, template({ 'data': data }));
   },

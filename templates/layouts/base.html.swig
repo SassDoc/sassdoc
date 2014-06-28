@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>SassDoc :: Documentation</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu'>
   <meta name="viewport" content="width=device-width">
 </head>
