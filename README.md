@@ -79,6 +79,16 @@ sassdoc.parse(__dirname + '/sass').then(function (items) {
 Yielding a result like this:
 
 ```js
+{
+  'functions': [],
+  'mixins': [],
+  'variables': []
+}
+```
+
+Where a function/mixin is like this:
+
+```js
 [
   {
     'parameters': [
@@ -107,6 +117,19 @@ Yielding a result like this:
     ... other documented mixins/functions.
   */
 ]
+```
+
+And a variable like this:
+
+```js
+{ 
+  type: 'variable',
+  datatype: ['Bool'],
+  description: 'Defines whether the lib should support legacy browsers (e.g. `IE 8`).',
+  name: 'support-legacy',
+  value: 'true',
+  access: 'global' 
+}
 ```
 
 ## API Documentation
@@ -144,6 +167,8 @@ Defines if the documented function/mixin is an alias of another function.
 ```scss
 // @alias other-function
 ```
+
+The other function will automatically have a key named `aliased` containing the name of aliases.
 
 ### @author
 
@@ -199,6 +224,8 @@ Defines if the documented function/mixin requires any other function/mixin. Mult
 // @requires other-function
 ```
 
+The other function will automatically have a key named `usedBy` containing the name of function requiring it.
+
 ### @returns (synonym: @return)
 
 Describes the return statement of the documented function/mixin. Description is optional.
@@ -247,4 +274,5 @@ Scope is defined by the (lack of) use of `!global`.
 
 ## Credits
 
-Huge thanks to [Valérian Galliat](https://twitter.com/valeriangalliat) for the help.
+* [Valérian Galliat](https://twitter.com/valeriangalliat)
+* [Hugo Giraudel](http://twitter.com/HugoGiraudel)
