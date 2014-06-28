@@ -293,7 +293,8 @@ a:hover {
 /**
  * Lists
  */
-.sassdoc__item-throws,
+.sassdoc__item-usedby,
+.sassdoc__item-todos,
 .sassdoc__item-todos,
 .sassdoc__item-links,
 .sassdoc__item-requires {

@@ -285,6 +285,13 @@ exports = module.exports = {
 
         if (utils.isset(data.index[item.requires[i].item])) {
           data.index[name].requires[i].type = data.index[item.requires[i].item].type;
+
+          // And fill `usedBy` key
+          if (!utils.isset(data.index[item.requires[i].item].usedBy)) {
+            data.index[item.requires[i].item].usedBy = [];
+          }
+
+          data.index[item.requires[i].item].usedBy.push({ 'item': item.name, 'type': item.type });
         }
 
         // Incorrect @requires
