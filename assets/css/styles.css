@@ -102,7 +102,7 @@ a:hover {
  * Map link
  */
 .sassdoc__map a {
-  font-weight: bold;
+  font-weight: 500;
   color: #699;
   text-decoration: none;
 }
@@ -123,7 +123,7 @@ a:hover {
  * List item section
  */
 .sassdoc__map-section a {
-  font-weight: bold;
+  font-weight: 500;
   display: block;
   color: #c7254e;
   margin-top: 1em;
