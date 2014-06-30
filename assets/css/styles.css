@@ -87,7 +87,7 @@ a:hover {
  * Map main wrapper
  */
 .sassdoc__map-container {
-  padding-top: .5em;
+  padding: .5em 0;
   background-color: #f7f5fa;
 }
 
