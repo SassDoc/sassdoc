@@ -1,7 +1,7 @@
 <section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="{{ item.type }}-{{ item.name }}">
   <h2 class="sassdoc__item-name">
     {% if item.deprecated %}
-      <span class="sassdoc__item-deprecated" title="{{ item.deprecated }}">[Deprecated]</span>
+      <span class="sassdoc__item-deprecated" title="{{ item.deprecated | markdown }}">[Deprecated]</span>
     {% endif %}
     <code>{{ item.name }}</code>
 
@@ -52,7 +52,7 @@
 
     {% if item.since %}
       <h3>Since</h3>
-      <p>{{ item.since }}</p>
+      <p>{{ item.since | markdown }}</p>
     {% endif %}
 
     <h3>Parameters</h3>
@@ -70,8 +70,14 @@
         {% for parameter in item.parameters %}
           <tr class="sassdoc__item-parameter">
             <td><code>${{ parameter.name }}</code></td>
-            <td>{% if parameter.description %}{{ parameter.description }}{% else %}&mdash;{% endif %}</td>
-            <td>{% if parameter.type == "*" %}Any{% else %}<code>{{ parameter.type }}</code>{% endif %}</td>
+            <td>{% if parameter.description %}{{ parameter.description | markdown }}{% else %}&mdash;{% endif %}</td>
+            <td>
+            {% if parameter.type == '*' %}
+              Any
+            {% else %}
+              <code>{{ parameter.type | capitalize | join('</code>, <code>') | raw }}</code>
+            {% endif %}
+            </td>
             <td>{% if parameter.default %}{{ parameter.default }}{% else %}&mdash;{% endif %}</td>
           </tr>
         {% endfor %}
@@ -83,7 +89,13 @@
 
     {% if item.returns.type %}
       <h3>Returns</h3>
-      <p class="sassdoc__item-description">{% if item.returns.description %}{{ item.returns.description }}: {% endif %}<code>{{ item.returns.type | join('|') }}</code></p>
+      <p class="sassdoc__item-description">{% if item.returns.description %}{{ item.returns.description | markdown }}{% endif %}
+      {% if item.returns.type == '*' %}
+        Any
+      {% else %}
+        <code>{{ item.returns.type | capitalize | join('</code>, <code>') | raw }}</code>
+      {% endif %}
+      </p>
     {% endif %}
 
     {% if item.throws.length > 0 %}
@@ -117,7 +129,7 @@
       <h3>TODO's</h3>
       {% for _todo in item.todos %}
         {% if loop.first %}<ul class="sassdoc__item-todos">{% endif %}
-        <li>{{ _todo }}</li>
+        <li>{{ _todo | markdown }}</li>
         {% if loop.last %}</ul>{% endif %}
       {% endfor %}
     {% endif %}

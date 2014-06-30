@@ -7,27 +7,28 @@ SassDoc. Like JSDoc, but for Sass files.
 ### Function/mixin
 
 ```scss
-// Function description
-// ... on several lines if you will
-// ---
-// @access private
-// ---
-// @alias other-function
-// ---
-// @requires dependency-function
-// ---
-// @param {*}       $parameter-name            - description of the parameter
-// @param {String}  $other-parameter (default) - parameter with a default value
-// @param {ArgList} $args                      - extra parameters
-// ---
-// @throws `$other-parameter` must be a string.
-// ---
-// @return {String | Null} description of the returned value
+// Adds `$value` at `$index` in `$list`.
+//
+// @author Hugo Giraudel
+//
+// @ignore Documentation: http://sassylists.com/documentation/#insert-nth
+//
+// @requires is-true
+//
+// @param {List}   $list  - list to update
+// @param {Number} $index - index to add
+// @param {*}      $value - value to add
+//
+// @throws List index $index is not a number for `insert-nth`.
+// @throws List index $index must be a non-zero integer for `insert-nth`.
+//
+// @return {List | Bool}
 
-@function dummy-function($parameter-name, $other-parameter: 'default', $args...) {
+@function insert-nth($list, $index, $value) {
   // ...
 }
 ```
+
 
 ### Variable
 
@@ -39,8 +40,6 @@ $legacy-support: true !global;
 ### Preview
 
 ![SassDoc](http://i.imgur.com/GnNo4HB.png)
-
-*Note: it works exactly the same with mixins.*
 
 ## Installation
 
@@ -89,34 +88,35 @@ Yielding a result like this:
 Where a function/mixin is like this:
 
 ```js
-[
-  {
-    'parameters': [
-      { 'type': '*', 'name': 'parameter-name', 'default': undefined, 'description': 'description of the parameter' },
-      { 'type': 'String', 'name': 'other-parameter', 'default': 'default', 'description': 'parameter with a default value' },
-      { 'type': 'ArgList', 'name': 'args', 'default': undefined, 'description': 'extra parameters' }
+{
+  'parameters': [
+    { 'type': 'List',   'name': 'list',  'default': undefined, 'description': 'list to update' },
+    { 'type': 'Number', 'name': 'index', 'default': undefined, 'description': 'index to add'   },
+    { 'type': '*',      'name': 'value', 'default': undefined, 'description': 'value to add'   }
+  ],
+  'throws': [
+    'List index $index is not a number for `insert-nth`.', 
+    'List index $index must be a non-zero integer for `insert-nth`.'
+  ],
+  'alias': false,
+  'aliased': [],
+  'links': [],
+  'todos': [],
+  'requires': ['is-true'],
+  'description': 'Adds `$value` at `$index` in `$list`.',
+  'access': 'public',
+  'deprecated': false,
+  'author': "Hugo Giraudel",
+  'returns': {
+    'type': [
+      'List', 
+      'Bool'
     ],
-    'throws': ['`$other-parameter` must be a string.'],
-    'todos': [],
-    'alias': false,
-    'aliased': 'other-function',
-    'links': [],
-    'requires': ['dependency-function'],
-    'description': 'Function description\n... on several lines if you will',
-    'access': 'private',
-    'deprecated': false,
-    'author': false,
-    'returns': {
-      'type': ['String', 'Null'],
-      'description': 'description of the returned value'
-    },
-    'type': 'function',
-    'name': 'dummy-function'
-  }
-  /*,
-    ... other documented mixins/functions.
-  */
-]
+    'description': ''
+  },
+  'type': 'function',
+  'name': 'insert-nth'
+}
 ```
 
 And a variable like this:
@@ -140,7 +140,7 @@ Name of the documented function/mixin is self parsed, hence `@name` doesn't exis
 
 ### Description
 
-Describes the documented function/mixin. Any line which is nota valid token or a separator line is considered part of the description.
+Describes the documented function/mixin. Any line which is nota valid token or a separator line is considered part of the description. Parsed as markdown.
 
 ### @access
 
@@ -150,14 +150,6 @@ Defines the access of the documented function/mixin. None is considered `@access
 // @access private
 // @access public
 // @access protected
-```
-
-It is also possible to define access like this:
-
-```scss
-// @private
-// @public
-// @protected
 ```
 
 ### @alias
@@ -187,6 +179,8 @@ Defines if the documented documented function/mixin is deprecated. Message is op
 // @deprecated Deprecation related message
 ```
 
+Description parsed as markdown.
+
 ### @ignore
 
 Defines a line which won't be documented. Multiple `@ignore` allowed on the same function/mixin.
@@ -214,6 +208,8 @@ Describes a parameter of the documented function/mixin. Default value and descri
 // @param {type} $name (default value) - description of the parameter
 ```
 
+Description parsed as markdown.
+
 Type is any of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `string` or `*` when any type is allowed. Case insensitive.
 
 ### @requires
@@ -235,6 +231,8 @@ Describes the return statement of the documented function/mixin. Description is 
 // @returns {type} Description of the return statement
 ```
 
+Description parsed as markdown.
+
 Type is one of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `string` or `*` when any type is allowed. Case insensitive.
 
 ### @since
@@ -245,6 +243,8 @@ Describes the version at which the documented function/mixin has been implemente
 // @since 4.2
 ```
 
+Description parsed as markdown.
+
 ### @throws (synonym: @exception)
 
 Describes the error thrown by the documented function/mixin. Multiple `@throws` allowed on the same function/mixin.
@@ -253,6 +253,8 @@ Describes the error thrown by the documented function/mixin. Multiple `@throws` 
 // @throws Error related message
 ```
 
+Description parsed as markdown.
+
 ### @todo
 
 Defines any task to do regarding the documented function/mixin. Multiple `@todo` allowed on the same function/mixin.
@@ -260,6 +262,8 @@ Defines any task to do regarding the documented function/mixin. Multiple `@todo`
 ```scss
 // @todo Task to be done
 ```
+
+Description parsed as markdown.
 
 ### @var
 
