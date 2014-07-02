@@ -114,7 +114,7 @@ exports = module.exports = {
           }
 
           // SCSS file
-          else if (utils.getExtension(path) === "scss") {
+          else if (utils.getExtension(path) === 'scss') {
             promises.push(exports.file.process(path).then(function (response) {
               data = data.concat(response);
             }));
@@ -212,8 +212,14 @@ exports = module.exports = {
       exports.postTreatData(data);
 
       return exports.splitData(data.data.sort(function (a, b) {
-        if (a.name > b.name) return 1;
-        if (a.name < b.name) return -1;
+        if (a.name > b.name) {
+          return 1;
+        }
+
+        if (a.name < b.name) {
+          return -1;
+        }
+        
         return 0;
       }));
     });
@@ -264,7 +270,7 @@ exports = module.exports = {
 
       // Incorrect @alias
       else {
-        logger.log("Item `" + name + " is an alias of `" + item.alias + "` but this item doesn't exist."); 
+        logger.log('Item `' + name + ' is an alias of `' + item.alias + '` but this item doesn\'t exist.'); 
       }
     }
   },
@@ -301,7 +307,7 @@ exports = module.exports = {
 
         // Incorrect @requires
         else {
-          logger.log("Item `" + name + " requires `" + item.requires[i].item + "` but this item doesn't exist.");
+          logger.log('Item `' + name + ' requires `' + item.requires[i].item + '` but this item doesn\'t exist.');
         }
       }
     }
@@ -313,7 +319,7 @@ exports = module.exports = {
    */
   raiseWarnings: function (data) {
     var name, item, i;
-    var validTypes = ["*", "arglist", "bool", "color", "list", "map", "null", "number", "string"];
+    var validTypes = ['*', 'arglist', 'bool', 'color', 'list', 'map', 'null', 'number', 'string'];
     
     if (logger.enabled === false) {
       return;
@@ -326,7 +332,7 @@ exports = module.exports = {
       if (utils.isset(item.parameters)) {
         for (i = 0; i < item.parameters.length; i++) {
           if (validTypes.indexOf(item.parameters[i].type.toLowerCase()) === -1) {
-            logger.log("Parameter `" + item.parameters[i].name + "` from item `" + item.name + "` is from type `" + item.parameters[i].type + "` which is not a valid Sass type.");
+            logger.log('Parameter `' + item.parameters[i].name + '` from item `' + item.name + '` is from type `' + item.parameters[i].type + '` which is not a valid Sass type.');
           }
         }
       }
@@ -335,7 +341,7 @@ exports = module.exports = {
       if (utils.isset(item.returns) && item.returns.type) {
         for (i = 0; i < item.returns.type.length; i++) {
           if (validTypes.indexOf(item.returns.type[i].trim().toLowerCase()) === -1) {
-            logger.log("Item `" + item.name + "` can return a `" + item.returns.type[i] + "` which is not a valid Sass type.");
+            logger.log('Item `' + item.name + '` can return a `' + item.returns.type[i] + '` which is not a valid Sass type.');
           }
         }
       }
@@ -344,7 +350,7 @@ exports = module.exports = {
       if (utils.isset(item.links)) {
         for (i = 0; i < item.links.length; i++) {
           if (!item.links[i].url.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)) {
-            logger.log("Item `" + item.name + "` has a link leading to an invalid URL (`" + item.links[i].url + "`).");
+            logger.log('Item `' + item.name + '` has a link leading to an invalid URL (`' + item.links[i].url + '`).');
           }
         }
       }

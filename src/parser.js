@@ -20,7 +20,9 @@ exports = module.exports = {
     while (previousLine >= 0) {
       // If it's an empty line, break (unless it hasn't started yet)
       if (regex.isEmpty(array[previousLine]) !== null) {
-        if (comments.length > 0) break;
+        if (comments.length > 0) {
+          break;
+        }
       } 
 
       // If it's not a comment, break
@@ -46,7 +48,7 @@ exports = module.exports = {
    * @return {Object}           function/mixin documentation
    */
   parseCommentBlock: function (comments) {
-    var line, doc = {
+    var _line, doc = {
       'parameters': [],
       'throws': [],
       'todos': [],
@@ -65,26 +67,26 @@ exports = module.exports = {
       }
     };
 
-    comments.forEach(function (line, index) {
-      line = exports.parseLine(utils.uncomment(line));
+    comments.forEach(function (line) {
+      _line = exports.parseLine(utils.uncomment(line));
 
       // Separator or @ignore
-      if (!line) {
+      if (!_line) {
         return false;
       }
 
       // Array things (@throws, @parameters...)
-      if (line.array === true) {
-        doc[line.type].push(line.value);
+      if (_line.array === true) {
+        doc[_line.type].push(_line.value);
       }
 
-      else if (line.type === 'description') {
+      else if (_line.type === 'description') {
         if (doc.description.length === 0) {
-          doc.description = line.value;
+          doc.description = _line.value;
         }
 
         else {
-          doc.description += line.value;
+          doc.description += _line.value;
         }
 
         doc.description += '\n';
@@ -92,7 +94,7 @@ exports = module.exports = {
 
       // Anything else
       else {
-        doc[line.type] = line.value;
+        doc[_line.type] = _line.value;
       }
 
     });
@@ -106,16 +108,16 @@ exports = module.exports = {
    * @return {Object}           function/mixin documentation
    */
   parseVariableBlock: function (comments) {
-    var line, doc = {
+    var _line, doc = {
       'description': '',
       'datatype': ''
     };
 
-    comments.forEach(function (line, index) {
-      line = regex.isVar(utils.uncomment(line));
+    comments.forEach(function (line) {
+      _line = regex.isVar(utils.uncomment(line));
 
-      doc.datatype = line[1];
-      doc.description = line[2];
+      doc.datatype = _line[1];
+      doc.description = _line[2];
     });
 
     return doc;
@@ -127,8 +129,8 @@ exports = module.exports = {
    * @return {Array}            array of documented functions/mixins
    */
   parseFile: function (content) {
-    var array = content.split("\n"),
-        tree = [];
+    var array = content.split('\n'),
+        tree = [], item;
 
     // Looping through the file
     array.forEach(function (line, index) {
@@ -136,7 +138,7 @@ exports = module.exports = {
 
       // If it's either a mixin or a function
       if (isCallable) {
-        var item = exports.parseCommentBlock(exports.findCommentBlock(index, array));
+        item = exports.parseCommentBlock(exports.findCommentBlock(index, array));
         item.type = isCallable[1];
         item.name = isCallable[2];
 
@@ -147,11 +149,11 @@ exports = module.exports = {
       var isVariable = regex.isVariable(line);
 
       if (isVariable) {
-        var item = exports.parseVariableBlock(exports.findCommentBlock(index, array));
-        item.type = "variable";
+        item = exports.parseVariableBlock(exports.findCommentBlock(index, array));
+        item.type = 'variable';
         item.name = isVariable[1];
         item.value = isVariable[2];
-        item.access = isVariable[3] == "!global" ? "public" : "private";
+        item.access = isVariable[3] === '!global' ? 'public' : 'private';
 
         tree.push(item);
       }
@@ -172,13 +174,11 @@ exports = module.exports = {
         tokens = ['returns', 'parameters', 'deprecated', 'author', 'access', 'throws', 'todo', 'alias', 'link', 'requires', 'since'];
 
     // Useless line, skip
-    if (line.length === 0 
-      || regex.isSeparator(line) 
-      || regex.isIgnore(line)) {
+    if (line.length === 0 || regex.isSeparator(line) || regex.isIgnore(line)) {
       return false;
     }
 
-    for (var i = 0; i < tokens.length; i++) {
+    for (i = 0; i < tokens.length; i++) {
       value = regex['is' + tokens[i].capitalize()](line);
 
       if (value !== null) {
@@ -222,10 +222,14 @@ exports = module.exports = {
         break;
      
       case 'link':
-        res.value = { 'url': value[1], 'caption': value[2] }
+        res.value = { 'url': value[1], 'caption': value[2] };
         break;
 
       case 'description':
+        res.value = line;
+        res.type = 'description';
+        break;
+
       default:
         res.value = line;
         res.type = 'description';
