@@ -1,4 +1,4 @@
-{% if (item.access != "private") %}
+{% if item.access != "private" %}
 
 <section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="{{ item.type }}-{{ item.name }}">
   <h2 class="sassdoc__item-name">

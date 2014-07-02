@@ -258,6 +258,7 @@ exports = module.exports = {
       }
 
       if (utils.isset(data.index[item.alias])) {
+        data.index[name].access = data.index[item.alias].access;
         data.index[item.alias].aliased.push(item.name);
       }
 
