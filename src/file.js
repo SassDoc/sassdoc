@@ -12,6 +12,7 @@ var utils  = require('./utils');
 var logger = require('./log');
 
 extras.useFilter(swig, 'markdown');
+extras.useFilter(swig, 'nl2br');
 ncp.limit = 16;
 
 /**
