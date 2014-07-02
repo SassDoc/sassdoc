@@ -79,7 +79,15 @@ exports = module.exports = {
       }
 
       else if (line.type === 'description') {
-        doc[line.type] += line.value;
+        if (doc.description.length === 0) {
+          doc.description = line.value;
+        }
+
+        else {
+          doc.description += line.value;
+        }
+
+        doc.description += '\n';
       }
 
       // Anything else
@@ -88,9 +96,6 @@ exports = module.exports = {
       }
 
     });
-
-    // Remove first carriage return
-    doc.description = doc.description.substring(1);
 
     return doc;
   },
@@ -222,7 +227,7 @@ exports = module.exports = {
 
       case 'description':
       default:
-        res.value = '\n' + line;
+        res.value = line;
         res.type = 'description';
     }
 
