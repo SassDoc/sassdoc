@@ -210,7 +210,7 @@ Describes a parameter of the documented function/mixin. Default value and descri
 
 Description parsed as markdown.
 
-Type is any of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `string` or `*` when any type is allowed. Case insensitive.
+Type is any of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `spritemap` (for Compass sprites), `string` or `*` when any type is allowed. Case insensitive.
 
 ### @requires
 
@@ -233,7 +233,7 @@ Describes the return statement of the documented function/mixin. Description is 
 
 Description parsed as markdown.
 
-Type is one of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `string` or `*` when any type is allowed. Case insensitive.
+Type is one of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `spritemap` (for Compass sprites), `string` or `*` when any type is allowed. Case insensitive.
 
 ### @since
 

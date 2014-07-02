@@ -1,6 +1,6 @@
 'use strict';
 
-var types = "(?:null|\\*|number|color|string|list|map|bool|arglist)";
+var types = "(?:null|\\*|number|color|string|list|map|bool|arglist|spritemap)";
 var multipleTypes = "\\{\\s*(" + types + "(?:\\s*\\|\\s*" + types + ")*)\\s*\\}";
 
 exports = module.exports = {
