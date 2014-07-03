@@ -154,6 +154,10 @@ a:hover {
   content: counter(sections) '. ';
 }
 
+.sassdoc__section.no-counter::before {
+  content: none;
+}
+
 /**
  * Code blocks
  */

@@ -207,6 +207,9 @@ exports = module.exports = {
    */
   getData: function (folder) {
     return exports.folder.parse(folder).then(function (response) {
+      response = response || [];
+      logger.log(response.length + ' item' + (response.length > 1 ? 's' : '') + ' documented.');
+
       var data = Data.fromArray(response);
 
       exports.postTreatData(data);
