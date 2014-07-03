@@ -108,16 +108,53 @@ exports = module.exports = {
    * @return {Object}           function/mixin documentation
    */
   parseVariableBlock: function (comments) {
-    var _line, doc = {
+    var tmp, _line, doc = {
       'description': '',
-      'datatype': ''
+      'datatype': '',
+      'since': false,
+      'deprecated': false,
+      'links': [],
+      'todos': []
     };
 
     comments.forEach(function (line) {
-      _line = regex.isVar(utils.uncomment(line));
+      _line = utils.uncomment(line);
+      tmp = regex.isVar(_line);
 
-      doc.datatype = _line[1];
-      doc.description = _line[2];
+      if (tmp) {
+        doc.datatype = tmp[1];
+        doc.description = tmp[2];
+      }
+
+      tmp = regex.isAccess(_line);
+
+      if (tmp) {
+        doc.access = tmp[1];
+      }
+
+      tmp = regex.isSince(_line);
+
+      if (tmp) {
+        doc.since = tmp[1];
+      }
+
+      tmp = regex.isDeprecated(_line);
+
+      if (tmp) {
+        doc.deprecated = tmp[1] || true;
+      }
+
+      tmp = regex.isTodo(_line);
+
+      if (tmp) {
+        doc.todos.push(tmp[1]);
+      }
+
+      tmp = regex.isLink(_line);
+
+      if (tmp) {
+        doc.links.push({ 'url': tmp[1], 'caption': tmp[2] })
+      }
     });
 
     return doc;
@@ -153,7 +190,10 @@ exports = module.exports = {
         item.type = 'variable';
         item.name = isVariable[1];
         item.value = isVariable[2];
-        item.access = isVariable[3] === '!global' ? 'public' : 'private';
+
+        if (typeof item.access === "undefined") {
+          item.access = isVariable[3] === '!global' ? 'public' : 'private';
+        }
 
         tree.push(item);
       }

@@ -1,6 +1,9 @@
 // @var {Bool} - Defines whether the lib should support legacy browsers (e.g. `IE 8`).
+// @since 0.3.9
+// @todo Nothing. It's awesome.
+// @link https://github.com/HugoGiraudel/SassDoc SassDoc
 $support-legacy: true !global;
 
 // @var {Number} - Defines the number of iteration.
-
-$i: 0;
+// @deprecated
+$i: 0 !global;

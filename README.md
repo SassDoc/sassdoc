@@ -34,6 +34,11 @@ SassDoc. Like JSDoc, but for Sass files.
 
 ```scss
 // @var {Bool} - Defines whether the library should support legacy browsers (e.g. IE8).
+//
+// @since 0.3.8
+//
+// @access private
+
 $legacy-support: true !global;
 ```
 
@@ -128,9 +133,34 @@ And a variable like this:
   description: 'Defines whether the lib should support legacy browsers (e.g. `IE 8`).',
   name: 'support-legacy',
   value: 'true',
-  access: 'global' 
+  access: 'private',
+  since: '0.3.8'
 }
 ```
+
+## Allowed annotations
+
+### On mixins/functions
+
+* `@access`
+* `@author`
+* `@deprecated`
+* `@ignore`
+* `@link`
+* `@param`
+* `@requires`
+* `@return`
+* `@since`
+* `@todo`
+
+### On variables
+
+* `@access`
+* `@deprecated`
+* `@link`
+* `@since`
+* `@todo`
+* `@var`
 
 ## API Documentation
 

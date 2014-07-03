@@ -21,6 +21,7 @@ body {
   overflow: auto;
   margin: 0;
   counter-reset: sections;
+  padding-bottom: 5em;
 }
 
 /**
@@ -187,6 +188,7 @@ a:hover {
  */
 .sassdoc__item-deprecated {
   color: #998099;
+  font-size: .7em;
   text-transform: uppercase;
 }
 
