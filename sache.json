@@ -1,0 +1,5 @@
+{
+  "name": "SassDoc",
+  "description": "A documentation tool for Sass.",
+  "tags": ["sass", "documentation", "functions", "mixins", "variables"]
+}
