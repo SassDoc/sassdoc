@@ -10,10 +10,20 @@
 <body>
   <div class="sassdoc">
 
+    {% set item_count = 0 %}
+
+    {% for group, object in data %}
+      {% for item in object %}
+        {% if item.access != "private" and item.alias == false %}
+          {% set item_count = item_count + 1 %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
     <header class="sassdoc__header">
       <div class="container">
         <h1 class="sassdoc__title">SassDoc</h1>
-        <p class="sassdoc__count">{{ data.functions.length + data.mixins.length + data.variables.length }} items documented</p>
+        <p class="sassdoc__count">{{ item_count }} items documented</p>
       </div>
     </header>
 
