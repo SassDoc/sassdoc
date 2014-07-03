@@ -138,30 +138,6 @@ And a variable like this:
 }
 ```
 
-## Allowed annotations
-
-### On mixins/functions
-
-* `@access`
-* `@author`
-* `@deprecated`
-* `@ignore`
-* `@link`
-* `@param`
-* `@requires`
-* `@return`
-* `@since`
-* `@todo`
-
-### On variables
-
-* `@access`
-* `@deprecated`
-* `@link`
-* `@since`
-* `@todo`
-* `@var`
-
 ## API Documentation
 
 ### Name
@@ -170,11 +146,17 @@ Name of the documented function/mixin is self parsed, hence `@name` doesn't exis
 
 ### Description
 
-Describes the documented function/mixin. Any line which is nota valid token or a separator line is considered part of the description. Parsed as markdown.
+Describes the documented function/mixin. Parsed as markdown.
+
+For functions and mixins, any line which is not a valid token or a separator line is considered part of the description. 
+
+For variables, see `@var`.
 
 ### @access
 
-Defines the access of the documented function/mixin. None is considered `@access public`.
+**Allowed on:** functions, mixins, variables.
+
+Defines the access of the documented item. 
 
 ```scss
 // @access private
@@ -182,19 +164,29 @@ Defines the access of the documented function/mixin. None is considered `@access
 // @access protected
 ```
 
+**Notes:**
+
+* None is considered `public` for functions and mixins, `private` for variables.
+
 ### @alias
 
-Defines if the documented function/mixin is an alias of another function.
+**Allowed on:** functions, mixins.
+
+Defines if the documented item is an alias of another function.
 
 ```scss
 // @alias other-function
 ```
 
-The other function will automatically have a key named `aliased` containing the name of aliases.
+**Notes:**
+
+* The other item will automatically have a key named `aliased` containing the name of aliases.
 
 ### @author
 
-Describes the author of the documented function/mixin.
+**Allowed on:** functions, mixins.
+
+Describes the author of the documented item.
 
 ```scss
 // @author Author's name
@@ -202,35 +194,55 @@ Describes the author of the documented function/mixin.
 
 ### @deprecated
 
-Defines if the documented documented function/mixin is deprecated. Message is optional.
+**Allowed on:** functions, mixins, variables.
+
+Defines if the documented documented item is deprecated.
 
 ```scss
 // @deprecated
 // @deprecated Deprecation related message
 ```
 
-Description parsed as markdown.
+**Notes:**
+
+* Message is optional.
+* Message is parsed as markdown.
 
 ### @ignore
 
-Defines a line which won't be documented. Multiple `@ignore` allowed on the same function/mixin.
+**Allowed on:** functions, mixins.
+
+Defines a line which won't be documented. 
 
 ```scss
 // @ignore Message
 ```
 
+**Notes:**
+
+* Multiple `@ignore` allowed on the same item.
+
 ### @link
 
-Describes a link. Multiple `@link` allowed on the same function/mixin.
+**Allowed on:** functions, mixins, variables.
+
+Describes a link. 
 
 ```scss
 // @link http://some.url
 // @link http://some.url Optional caption
 ```
 
+**Notes:**
+
+* Caption is optional.
+* Multiple `@link` allowed on the same item.
+
 ### @param (synonyms: @arg, @argument)
 
-Describes a parameter of the documented function/mixin. Default value and description are optional.
+**Allowed on:** functions, mixins.
+
+Describes a parameter of the documented item.
 
 ```scss
 // @param {type | othertype} $name
@@ -238,73 +250,105 @@ Describes a parameter of the documented function/mixin. Default value and descri
 // @param {type} $name (default value) - description of the parameter
 ```
 
-Description parsed as markdown.
+**Notes:**
 
-Type is any of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `spritemap` (for Compass sprites), `string` or `*` when any type is allowed. Case insensitive.
+* Type should be any of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `spritemap` (for Compass sprites), `string` or `*` when any type is allowed. 
+* Type is case insensitive.
+* Default value is optional.
+* Description is optional.
+* Description is parsed as markdown.
 
 ### @requires
 
-Defines if the documented function/mixin requires any other function/mixin. Multiple `@requires` allowed on the same function/mixin.
+**Allowed on:** functions, mixins.
+
+Defines if the documented item requires any other item. 
 
 ```scss
 // @requires other-function
 ```
 
-The other function will automatically have a key named `usedBy` containing the name of function requiring it.
+**Notes:**
+
+* The other item will automatically have a key named `usedBy` containing the name of function requiring it.
+* Multiple `@requires` allowed on the same item.
 
 ### @returns (synonym: @return)
 
-Describes the return statement of the documented function/mixin. Description is optional.
+**Allowed on:** functions.
+
+Describes the return statement of the documented item.
 
 ```scss
 // @returns {type | othertype}
 // @returns {type} Description of the return statement
 ```
 
-Description parsed as markdown.
+**Notes:**
 
-Type is one of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `spritemap` (for Compass sprites), `string` or `*` when any type is allowed. Case insensitive.
+* Type should be any of: `arglist`, `bool`, `color`, `list`, `map`, `null`, `number`, `spritemap` (for Compass sprites), `string` or `*` when any type is allowed. 
+* Type is case insensitive.
+* Description is optional.
+* Description is parsed as markdown.
 
 ### @since
 
-Describes the version at which the documented function/mixin has been implemented.
+**Allowed on:** functions, mixins, variables.
+
+Describes the version at which the documented item has been implemented.
 
 ```scss
 // @since 4.2
 ```
 
-Description parsed as markdown.
+**Notes:**
+
+* Description is parsed as markdown.
 
 ### @throws (synonym: @exception)
 
-Describes the error thrown by the documented function/mixin. Multiple `@throws` allowed on the same function/mixin.
+**Allowed on:** functions, mixins.
+
+Describes the error thrown by the documented item. 
 
 ```scss
 // @throws Error related message
 ```
 
-Description parsed as markdown.
+**Notes:**
+
+* Description is parsed as markdown.
+* Multiple `@throws` allowed on the same item.
 
 ### @todo
 
-Defines any task to do regarding the documented function/mixin. Multiple `@todo` allowed on the same function/mixin.
+**Allowed on:** functions, mixins, variables.
+
+Defines any task to do regarding the documented item.
 
 ```scss
 // @todo Task to be done
 ```
 
-Description parsed as markdown.
+**Notes:**
+
+* Description is parsed as markdown.
+* Multiple `@todo` allowed on the same item.
 
 ### @var
 
-Describes a variable. Has nothing to do with function/mixin. 
+**Allowed on:** variables.
+
+Describes a variable.
 
 ```scss
 // @var {Bool} - Defines whether the library should support legacy browsers (e.g. IE8).
 $legacy-support: true !global;
 ```
 
-Scope is defined by the (lack of) use of `!global`. 
+**Notes:**
+
+* Has nothing to do with function/mixin. 
 
 ## Credits
 
