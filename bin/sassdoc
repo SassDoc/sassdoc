@@ -6,13 +6,15 @@ var options = require('docopt').docopt('Usage: sassdoc <src> <dest> [options]\n\
 \n\
 Options:\n\
 -h, --help     Bring help.\n\
--v, --verbose  Run in verbose mode.');
-
+-v, --verbose  Run in verbose mode.\n\
+-c <path>, --config <path>   Path to configuration file.');
 
 if (options['--verbose'] === true) {
   log.enabled = true;
 }
 
+var config = require(options['--config'] ? '../' + options['--config'] : '../view.json');
+
 if (typeof options['<src>'] !== 'undefined' || typeof options['<dest>'] !== 'undefined') {
-  api.documentize(options['<src>'], options['<dest>']);
+  api.documentize(options['<src>'], options['<dest>'], config);
 }

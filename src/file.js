@@ -195,11 +195,14 @@ exports = module.exports = {
    * Generate a document
    * @param {Array}  data
    * @param {String} destination
+   * @param {Object} options
    */
-  generate: function (data, destination) {
+  generate: function (data, destination, options) {
     var template = swig.compileFile(__dirname + '/../templates/docs.html.swig');
+
+    options.data = data;
     
-    return exports.file.create(destination, template({ 'data': data }));
+    return exports.file.create(destination, template(options));
   },
 
   /**

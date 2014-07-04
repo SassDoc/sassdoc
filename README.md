@@ -29,7 +29,6 @@ SassDoc. Like JSDoc, but for Sass files.
 }
 ```
 
-
 ### Variable
 
 ```scss
@@ -69,6 +68,7 @@ sassdoc <src> <dest> [options]
 
 * `-h, --help`: bring help
 * `-v, --verbose`: run in verbose mode
+* `-c, --config`: path to `.json` file containing variables to be passed to the view
 
 ### Node API
 
@@ -349,6 +349,16 @@ $legacy-support: true !global;
 **Notes:**
 
 * Has nothing to do with function/mixin. 
+
+## Pass extra variables to the view
+
+With the `-c` or `--config` flag, you can set the path to a JSON file containing variables to be passed to the view so the latter is a little more customized than the default documentation. 
+
+Default path leads to the `view.json` file at root level. You can update this file or make your own.
+
+Allowed variables:
+
+* `title`
 
 ## Credits
 

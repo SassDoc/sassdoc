@@ -153,7 +153,7 @@ exports = module.exports = {
       tmp = regex.isLink(_line);
 
       if (tmp) {
-        doc.links.push({ 'url': tmp[1], 'caption': tmp[2] })
+        doc.links.push({ 'url': tmp[1], 'caption': tmp[2] });
       }
     });
 
@@ -191,7 +191,7 @@ exports = module.exports = {
         item.name = isVariable[1];
         item.value = isVariable[2];
 
-        if (typeof item.access === "undefined") {
+        if (typeof item.access === 'undefined') {
           item.access = isVariable[3] === '!global' ? 'public' : 'private';
         }
 

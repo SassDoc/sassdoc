@@ -11,7 +11,7 @@ exports = module.exports = {
    * @example
    * documentize('examples/sass', 'examples/dist')
    */
-  documentize: function (source, destination) {
+  documentize: function (source, destination, config) {
     fs.folder.refresh(destination)
       .then(function () { 
         logger.log('Folder `' + destination + '` successfully generated.');
@@ -19,7 +19,7 @@ exports = module.exports = {
       })
       .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
-        return fs.generate(data, destination + '/index.html');
+        return fs.generate(data, destination + '/index.html', config);
       })
       .then(function () {
         logger.log('Documentation for folder `' + source + '` successfully generated.');

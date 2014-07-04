@@ -22,7 +22,7 @@
 
     <header class="sassdoc__header">
       <div class="container">
-        <h1 class="sassdoc__title">SassDoc</h1>
+        <h1 class="sassdoc__title">{{ title }}</h1>
         <p class="sassdoc__count">{{ item_count }} items documented</p>
       </div>
     </header>
