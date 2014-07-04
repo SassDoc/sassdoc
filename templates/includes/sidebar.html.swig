@@ -1,6 +1,6 @@
 <h2 class="sassdoc__map-heading">Documentation map</h2>
 <div class="sassdoc__map-container">
-{% if data.functions.length === 0 and data.mixins.length === 0 and data.variables.length === 0 %}
+{% if data.function.length === 0 and data.mixin.length === 0 and data.variable.length === 0 %}
   <ul><li>No item yet.</li></ul>
 {% else %}
 
@@ -13,7 +13,7 @@
       {% else %}
         {% set item_title = item.name %}
           <li>
-          <a href="#{{ item.type }}-{{ item.name }}">{{ item.name }}</a> 
+          <a href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a> 
           {% if item.access == "private" %}<span class="annotation">private</span>{% endif %}
           {% if item.alias != false %}<span class="annotation">alias</span>{% endif %}
           </li>

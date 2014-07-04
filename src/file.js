@@ -15,35 +15,6 @@ extras.useFilter(swig, 'markdown');
 extras.useFilter(swig, 'nl2br');
 ncp.limit = 16;
 
-/**
- * Data holder
- * @constructs
- */
-function Data() {
-  this.data = [];
-  this.index = {};
-}
-
-/**
- * Push a value into Data
- * @param {Object} value
- */
-Data.prototype.push = function (value) {
-  this.data.push(value);
-  this.index[value.name] = value;
-};
-
-/**
- * Create a data object from an array
- * @param  {Array} array
- * @return {Data}
- */
-Data.fromArray = function (array) {
-  var data = new Data();
-  array.forEach(data.push.bind(data));
-  return data;
-};
-
 exports = module.exports = {
 
   /**
@@ -70,14 +41,14 @@ exports = module.exports = {
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     copy: Q.denodeify(ncp),
-    
+
     /**
      * Remove a folder
      * @see {@link https://github.com/isaacs/rimraf}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     remove: Q.denodeify(rimraf),
-    
+
     /**
      * Remove then create a folder
      * @param  {String} folder
@@ -99,7 +70,7 @@ exports = module.exports = {
      */
     parse: function (folder) {
       return exports.folder.read(folder).then(function (files) {
-        var path, 
+        var path,
             promises = [],
             data = [];
 
@@ -168,7 +139,7 @@ exports = module.exports = {
      */
     process: function (file) {
       return exports.file.read(file, 'utf-8').then(function (data) {
-        return parser.parseFile(data);
+        return parser.parse(data);
       });
     }
   },
@@ -201,7 +172,7 @@ exports = module.exports = {
     var template = swig.compileFile(__dirname + '/../templates/docs.html.swig');
 
     options.data = data;
-    
+
     return exports.file.create(destination, template(options));
   },
 
@@ -213,155 +184,50 @@ exports = module.exports = {
       response = response || [];
       logger.log(response.length + ' item' + (response.length > 1 ? 's' : '') + ' documented.');
 
-      var data = Data.fromArray(response);
 
-      exports.postTreatData(data);
+      var result = {};
+      var index = {};
 
-      return exports.splitData(data.data.sort(function (a, b) {
-        if (a.name > b.name) {
-          return 1;
+      response.forEach(function(obj){
+        Object.keys(obj).forEach(function(key){
+          if ( result[key] === undefined ) { result[key] = []; }
+          obj[key].forEach(function(item){
+            index[item.context.name] = item;
+            result[key].push(item);
+          });
+        });
+      });
+
+      // Resovle alias and requires
+      Object.keys(index).forEach(function(key){
+        var item = index[key];
+
+        if (!utils.isset(item.access)) {
+          item.access = 'public';
         }
 
-        if (a.name < b.name) {
-          return -1;
+        if (utils.isset(item.alias)) { // Alias
+          item.alias.forEach(function(alias){
+            if (utils.isset(index[alias])) {
+              if ( ! Array.isArray(index[alias].aliased) ) { index[alias].aliased = []; }
+              index[alias].aliased.push(item.context.name);
+            } else {
+              logger.log('Item `' + item.context.name + ' is an alias of `' + alias + '` but this item doesn\'t exist.');
+            }
+          });
+        } else if ( utils.isset(item.requires)){
+          item.requires = item.requires.map(function(name){
+            if (utils.isset(index[name])) {
+              var reqItem = index[name];
+              if ( ! Array.isArray(reqItem.usedBy) ) { reqItem.usedBy = []; }
+              reqItem.usedBy.push({ item : item.context.name, type : item.context.type });
+              return reqItem.context;
+            }
+          }).filter(function(item){return item !== undefined;});
         }
-        
-        return 0;
-      }));
+      });
+
+      return result;
     });
-  },
-
-  splitData: function (data) {
-    var _data = {
-      'functions': [],
-      'mixins': [],
-      'variables': []
-    };
-
-    data.forEach(function (item) {
-      _data[item.type + 's'].push(item);
-    });
-
-    return _data;
-  },
-
-  /**
-   * Post treat data to fill missing informations
-   * @param  {Object} data
-   */
-  postTreatData: function (data) {
-    exports.compileAliases(data);
-    exports.compileRequires(data);
-    exports.raiseWarnings(data);
-  },
-
-  /**
-   * Compile aliases for each item
-   * @param {Object} data
-   */
-  compileAliases: function (data) {
-    var item, name;
-
-    for (name in data.index) {
-      item = data.index[name];
-
-      if (!item.alias) {
-        continue;
-      }
-
-      if (utils.isset(data.index[item.alias])) {
-        data.index[name].access = data.index[item.alias].access;
-        data.index[item.alias].aliased.push(item.name);
-      }
-
-      // Incorrect @alias
-      else {
-        logger.log('Item `' + name + ' is an alias of `' + item.alias + '` but this item doesn\'t exist.'); 
-      }
-    }
-  },
-
-  /**
-   * Compile requires for each item
-   * @param {Object} data
-   */
-  compileRequires: function (data) {
-    var item, name;
-
-    for (name in data.index) {
-      item = data.index[name];
-
-      if (!utils.isset(item.requires)) {
-        continue;
-      }
-
-      for (var i = 0; i < item.requires.length; i++) {
-        if (utils.isset(item.requires[i].type)) {
-          continue;
-        } 
-
-        if (utils.isset(data.index[item.requires[i].item])) {
-          data.index[name].requires[i].type = data.index[item.requires[i].item].type;
-
-          // And fill `usedBy` key
-          if (!utils.isset(data.index[item.requires[i].item].usedBy)) {
-            data.index[item.requires[i].item].usedBy = [];
-          }
-
-          data.index[item.requires[i].item].usedBy.push({ 'item': item.name, 'type': item.type });
-        }
-
-        // Incorrect @requires
-        else {
-          logger.log('Item `' + name + ' requires `' + item.requires[i].item + '` but this item doesn\'t exist.');
-        }
-      }
-    }
-  },
-
-  /**
-   * Raise warning for incoherent or invalid things
-   * @param {Object} data
-   */
-  raiseWarnings: function (data) {
-    var name, item, i;
-    var validTypes = ['*', 'arglist', 'bool', 'color', 'list', 'map', 'null', 'number', 'string'];
-    
-    if (logger.enabled === false) {
-      return;
-    }
-
-    for (name in data.index) {
-      item = data.index[name];
-
-      // Incorrect data type in @param
-      if (utils.isset(item.parameters)) {
-        for (i = 0; i < item.parameters.length; i++) {
-          if (validTypes.indexOf(item.parameters[i].type.toLowerCase()) === -1) {
-            logger.log('Parameter `' + item.parameters[i].name + '` from item `' + item.name + '` is from type `' + item.parameters[i].type + '` which is not a valid Sass type.');
-          }
-        }
-      }
-
-      // Incorrect data type in @return
-      if (utils.isset(item.returns) && item.returns.type) {
-        for (i = 0; i < item.returns.type.length; i++) {
-          if (validTypes.indexOf(item.returns.type[i].trim().toLowerCase()) === -1) {
-            logger.log('Item `' + item.name + '` can return a `' + item.returns.type[i] + '` which is not a valid Sass type.');
-          }
-        }
-      }
-
-      // Incorrect URL in @link
-      if (utils.isset(item.links)) {
-        for (i = 0; i < item.links.length; i++) {
-          if (!item.links[i].url.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)) {
-            logger.log('Item `' + item.name + '` has a link leading to an invalid URL (`' + item.links[i].url + '`).');
-          }
-        }
-      }
-
-    }
   }
-
 };

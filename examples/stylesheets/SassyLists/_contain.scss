@@ -1,13 +1,15 @@
-// Returns whether `$list` contains `$value`
-// ---
-// @since 0.3.0
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#contain
-// ---
-// @param {List}    $list  - list to check
-// @param {*}       $value - value to look for
-// ---
-// @returns {Bool}
+/**
+ * Returns whether `$list` contains `$value`
+ * ---
+ * @since 0.3.0
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation/#contain
+ * ---
+ * @param {List}    $list  - list to check
+ * @param {*}       $value - value to look for
+ * ---
+ * @returns {Bool}
+ */
 
 @function contain($list, $value) {
   @return not not index($list, $value);

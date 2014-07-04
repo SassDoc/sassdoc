@@ -1,16 +1,17 @@
-// Adds `$value` at `$index` in $list
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#insert-nth
-// ---
-// @param {List}    $list  - list to update
-// @param {Number}  $index - index to add
-// @param {*}       $value - value to add
-// ---
-// @throws List index `$index` is not a number for `insert-nth`.
-// @throws List index `$index` must be a non-zero integer for `insert-nth`.
-// ---
-// @returns {List | Bool}
-
+/*
+ * Adds `$value` at `$index` in $list
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation/#insert-nth
+ * ---
+ * @param {List}    $list  - list to update
+ * @param {Number}  $index - index to add
+ * @param {*}       $value - value to add
+ * ---
+ * @throws List index `$index` is not a number for `insert-nth`.
+ * @throws List index `$index` must be a non-zero integer for `insert-nth`.
+ * ---
+ * @returns {List | Bool}
+ */
 @function insert-nth($list, $index, $value) {
   $length: length($list);
 

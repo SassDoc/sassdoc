@@ -1,9 +1,17 @@
-// @var {Bool} - Defines whether the lib should support legacy browsers (e.g. `IE 8`).
-// @since 0.3.9
-// @todo Nothing. It's awesome.
-// @link https://github.com/HugoGiraudel/SassDoc SassDoc
+/**
+ * Defines whether the lib should support legacy browsers (e.g. `IE 8`).
+ * ---
+ * @since 0.3.9
+ * @todo Nothing. It's awesome.
+ * @link https://github.com/HugoGiraudel/SassDoc SassDoc
+ * @datatype Bool
+ */
 $support-legacy: true !global;
 
-// @var {Number} - Defines the number of iteration.
-// @deprecated
+/**
+ * Defines the number of iteration.
+ * ---
+ * @deprecated
+ * @datatype Int
+ */
 $i: 0 !global;
