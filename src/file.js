@@ -88,7 +88,9 @@ exports = module.exports = {
           // SCSS file
           else if (utils.getExtension(path) === 'scss') {
             promises.push(exports.file.process(path).then(function (response) {
-              data = data.concat(response);
+              if (Object.keys(response).length > 0) {
+                data = data.concat(response);
+              }
             }));
           }
 
@@ -183,8 +185,9 @@ exports = module.exports = {
   getData: function (folder) {
     return exports.folder.parse(folder).then(function (response) {
       response = response || [];
-      logger.log(response.length + ' item' + (response.length > 1 ? 's' : '') + ' documented.');
 
+      logger.log(response.length + ' item' + (response.length > 1 ? 's' : '') + ' documented.');
+            
       var result = {};
       var index = {};
 

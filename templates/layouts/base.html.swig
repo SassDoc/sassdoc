@@ -14,7 +14,7 @@
 
     {% for group, object in data %}
       {% for item in object %}
-        {% if item.access != "private" and item.alias == false %}
+        {% if (display.alias == false and item.alias != false) or (display.private == false and item.access[0] == "private") %}{% else %}
           {% set item_count = item_count + 1 %}
         {% endif %}
       {% endfor %}
@@ -23,7 +23,7 @@
     <header class="sassdoc__header">
       <div class="container">
         <h1 class="sassdoc__title">{{ title }}</h1>
-        <p class="sassdoc__count">{{ item_count }} items documented</p>
+        <p class="sassdoc__count">{{ item_count }} item{% if item_count > 1 %}s{% endif %} documented</p>
       </div>
     </header>
 

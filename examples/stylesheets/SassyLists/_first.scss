@@ -12,6 +12,11 @@
  * $first: first($list);
  * // -> 1
  * ---
+ * @example
+ * $list: 1;
+ * $first: first($list);
+ * // -> 1
+ * ---
  * @returns {*}
  */
 @function first($list) {
