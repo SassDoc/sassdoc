@@ -150,7 +150,10 @@ Default path leads to the `view.json` file at root level. You can update this fi
 
 Allowed variables:
 
-* `title`
+* (`String`) `title`: title of the page
+* (`Object`) `display`: see below
+* (`Boolean`) `display.private`: enable/disable display of private items
+* (`Boolean`) `display.alias`: enable/disable display of alias items
 
 ## Credits
 

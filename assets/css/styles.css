@@ -97,6 +97,11 @@ a:hover {
  */
 .sassdoc__map ul {
   list-style: none;
+  padding: 0 1.5em;
+}
+
+.sassdoc__map li {
+  line-height: 1.5;
 }
 
 /**
@@ -108,8 +113,8 @@ a:hover {
   text-decoration: none;
 }
 
-.sassdoc__map a:hover {
-  text-decoration: underline;
+.sassdoc__map .annotation {
+  color: #b08c99;
 }
 
 /**
@@ -235,6 +240,7 @@ a:hover {
   color: #699;
   font-size: 2.2em;
   margin: 0;
+  font-weight: normal;
 }
 
 /**
@@ -249,18 +255,6 @@ a:hover {
  */
 .sassdoc__item + .sassdoc__item {
   margin: 4em 0;
-}
-
-/**
- * Alias functions/mixins
- */
-.sassdoc__item--alias {
-  opacity: .75;
-  transition: .15s;
-}
-
-.sassdoc__item--alias:hover {
-  opacity: 1;
 }
 
 /**
