@@ -25,7 +25,7 @@ fs.readdirSync(path.resolve(__dirname, './annotations')).forEach(function(file) 
   alias[name] = name;
 
   if (Array.isArray(annotation.alias)) {
-    annotation.alias.forEach(function(aliasName) {
+    annotation.alias.forEach(function (aliasName) {
       alias[aliasName] = name;
     });
   }

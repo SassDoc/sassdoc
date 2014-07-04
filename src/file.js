@@ -200,7 +200,7 @@ exports = module.exports = {
         });
       });
 
-      // Resovle alias and requires
+      // Resolve alias and requires
       Object.keys(index).forEach(function (key) {
         var item = index[key];
 
@@ -230,7 +230,7 @@ exports = module.exports = {
           item.requires = item.requires.map(function (name) {
             if (utils.isset(index[name])) {
               var reqItem = index[name];
-              
+
               if (!Array.isArray(reqItem.usedBy)) { 
                 reqItem.usedBy = [];
               }
