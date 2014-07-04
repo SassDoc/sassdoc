@@ -184,14 +184,16 @@ exports = module.exports = {
       response = response || [];
       logger.log(response.length + ' item' + (response.length > 1 ? 's' : '') + ' documented.');
 
-
       var result = {};
       var index = {};
 
-      response.forEach(function(obj){
-        Object.keys(obj).forEach(function(key){
-          if ( result[key] === undefined ) { result[key] = []; }
-          obj[key].forEach(function(item){
+      response.forEach(function (obj) {
+        Object.keys(obj).forEach(function (key) {
+          if (typeof result[key] === 'undefined' ) { 
+            result[key] = [];
+          }
+
+          obj[key].forEach(function (item) {
             index[item.context.name] = item;
             result[key].push(item);
           });
@@ -199,31 +201,50 @@ exports = module.exports = {
       });
 
       // Resovle alias and requires
-      Object.keys(index).forEach(function(key){
+      Object.keys(index).forEach(function (key) {
         var item = index[key];
 
         if (!utils.isset(item.access)) {
           item.access = 'public';
         }
 
-        if (utils.isset(item.alias)) { // Alias
-          item.alias.forEach(function(alias){
+        // Alias
+        if (utils.isset(item.alias)) { 
+          item.alias.forEach(function (alias) {
             if (utils.isset(index[alias])) {
-              if ( ! Array.isArray(index[alias].aliased) ) { index[alias].aliased = []; }
+              if (!Array.isArray(index[alias].aliased)) {
+                index[alias].aliased = [];
+              }
+
               index[alias].aliased.push(item.context.name);
-            } else {
+            } 
+
+            else {
               logger.log('Item `' + item.context.name + ' is an alias of `' + alias + '` but this item doesn\'t exist.');
             }
           });
-        } else if ( utils.isset(item.requires)){
-          item.requires = item.requires.map(function(name){
+        } 
+
+        // Requires
+        else if (utils.isset(item.requires)) {
+          item.requires = item.requires.map(function (name) {
             if (utils.isset(index[name])) {
               var reqItem = index[name];
-              if ( ! Array.isArray(reqItem.usedBy) ) { reqItem.usedBy = []; }
-              reqItem.usedBy.push({ item : item.context.name, type : item.context.type });
+              
+              if (!Array.isArray(reqItem.usedBy)) { 
+                reqItem.usedBy = [];
+              }
+
+              reqItem.usedBy.push({ 
+                item: item.context.name,
+                type: item.context.type
+              });
+
               return reqItem.context;
             }
-          }).filter(function(item){return item !== undefined;});
+          }).filter(function (item) {
+            return typeof item !== 'undefined';
+          });
         }
       });
 

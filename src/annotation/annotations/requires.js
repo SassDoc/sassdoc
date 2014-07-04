@@ -1,4 +1,5 @@
 'use strict';
-module.exports = function( text){
+
+module.exports = function (text) {
   return text.trim();
 };
