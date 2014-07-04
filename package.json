@@ -1,8 +1,9 @@
 {
   "name": "sassdoc",
   "description": "Like JSDoc but for Sass files.",
-  "author": "Hugo Giraudel",
-  "version": "0.4.1",
+  "author": "Hugo Giraudel <hugo.giraudel@gmail.com> http://hugogiraudel.com",
+  "contributors": ["Fabrice Weinberg", "Valérian Galliat"],
+  "version": "1.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
