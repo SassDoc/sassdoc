@@ -30,6 +30,8 @@ exports = module.exports = {
       })
       .fail(function (err) {
         console.error(err);
+        throw new Error(err)
+        return err;
       });
   },
 
