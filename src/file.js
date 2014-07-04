@@ -13,6 +13,7 @@ var logger = require('./log');
 
 extras.useFilter(swig, 'markdown');
 extras.useFilter(swig, 'nl2br');
+extras.useFilter(swig, 'split');
 ncp.limit = 16;
 
 exports = module.exports = {
@@ -203,6 +204,10 @@ exports = module.exports = {
       // Resovle alias and requires
       Object.keys(index).forEach(function (key) {
         var item = index[key];
+
+        if (!utils.isset(item.access)) {
+          item.access = ['public'];
+        }
 
         // Alias
         if (utils.isset(item.alias)) { 

@@ -1,6 +1,5 @@
-{% if item.access != "private" %}
-
 <section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
+
   <h2 class="sassdoc__item-name">
     {% if item.deprecated %}
       <span class="sassdoc__item-deprecated" title="{{ item.deprecated }}">[Deprecated]</span>
@@ -20,27 +19,27 @@
     {% endif %}
   </h2>
 
+  {% set parameters_string = '' %}
+  {% for parameter in item.parameters %}
+    {% set value = '$' + parameter.name %}
+
+    {% if parameter.default %}
+      {% set value = value + ': ' + parameter.default %}
+    {% endif %}
+
+    {% if parameter.type | lower === "arglist" %}
+      {% set value = value + '...' %}
+    {% endif %}
+
+    {% if loop.first %}
+      {% set parameters_string = value %}
+    {% else %}
+      {% set parameters_string = parameters_string + ', ' + value %}
+    {% endif %}
+  {% endfor %}
+  <pre class="sassdoc__item-code">@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }  </pre>
+
   {% if item.alias == false %}
-
-    {% set parameters_string = '' %}
-    {% for parameter in item.parameters %}
-      {% set value = '$' + parameter.name %}
-
-      {% if parameter.default %}
-        {% set value = value + ': ' + parameter.default %}
-      {% endif %}
-
-      {% if parameter.type | lower === "arglist" %}
-        {% set value = value + '...' %}
-      {% endif %}
-
-      {% if loop.first %}
-        {% set parameters_string = value %}
-      {% else %}
-        {% set parameters_string = parameters_string + ', ' + value %}
-      {% endif %}
-    {% endfor %}
-    <pre class="sassdoc__item-code">@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }  </pre>
 
     {% if item.description %}
       <h3>Description</h3>
@@ -49,7 +48,9 @@
 
     {% if item.example %}
       <h3>Example</h3>
-      <pre class="sassdoc__item-code">{{ item.example[0] | raw }}</pre>
+      {% for example in item.example %}
+        <pre class="sassdoc__item-code">{{ example | raw | nl2br  }}</pre>
+      {% endfor %}
     {% endif %}
 
     {% if item.since %}
@@ -95,7 +96,7 @@
       {% if item.returns[0].type == '*' %}
         Any
       {% else %}
-        <code>{{ item.returns[0].type | capitalize | join('</code>, <code>') | raw }}</code>
+        <code>{{ item.returns[0].type | split('|') | capitalize | join('</code>, <code>') | raw }}</code>
       {% endif %}
       </p>
     {% endif %}
@@ -158,8 +159,10 @@
       {% endfor %}
     {% endif %}
 
+  {% else %}
+
+    <p>Refer to <a href="#{{ item.context.type }}-{{ item.alias[0] }}">{{ item.alias[0] }}</a>.</p>
+
   {% endif %}
 
 </section>
-
-{% endif %}

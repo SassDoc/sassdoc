@@ -8,8 +8,13 @@
   {% for type, obj in data %}
     <li class="sassdoc__map-section"><a href="#{{ type }}">{{ type | capitalize }}</a></li>
     {% for item in obj %}
-      {% if item.alias == false and item.access != "private" %}
-        <li><a href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a></li>
+      {% if (display.alias == false and item.alias != false) or (display.private == false and item.access[0] == "private") %} 
+      {% else %}
+        <li>
+        <a href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a> 
+        {% if item.access[0] == "private" %}<span class="annotation">private</span>{% endif %}
+        {% if item.alias != false %}<span class="annotation">alias</span>{% endif %}
+        </li>
       {% endif %}
     {% endfor %}
   {% endfor %}

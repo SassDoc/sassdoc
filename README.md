@@ -2,27 +2,31 @@
 
 SassDoc. Like JSDoc, but for Sass files.
 
+Currently only work for `.scss` files. Also, inline comments are not parsed (`//`).
+
 ## Example
 
 ### Function/mixin
 
 ```scss
-// Adds `$value` at `$index` in `$list`.
-//
-// @author Hugo Giraudel
-//
-// @ignore Documentation: http://sassylists.com/documentation/#insert-nth
-//
-// @requires is-true
-//
-// @param {List}   $list  - list to update
-// @param {Number} $index - index to add
-// @param {*}      $value - value to add
-//
-// @throws List index $index is not a number for `insert-nth`.
-// @throws List index $index must be a non-zero integer for `insert-nth`.
-//
-// @return {List | Bool}
+/**
+ * Adds `$value` at `$index` in `$list`.
+ *
+ * @author Hugo Giraudel
+ *
+ * @ignore Documentation: http://sassylists.com/documentation/#insert-nth
+ *
+ * @requires is-true
+ *
+ * @param {List}   $list  - list to update
+ * @param {Number} $index - index to add
+ * @param {*}      $value - value to add
+ *
+ * @throws List index $index is not a number for `insert-nth`.
+ * @throws List index $index must be a non-zero integer for `insert-nth`.
+ *
+ * @return {List | Null}
+ */
 
 @function insert-nth($list, $index, $value) {
   // ...
@@ -32,12 +36,14 @@ SassDoc. Like JSDoc, but for Sass files.
 ### Variable
 
 ```scss
-// @var {Bool} - Defines whether the library should support legacy browsers (e.g. IE8).
-//
-// @since 0.3.8
-//
-// @access private
-
+/**
+ * Defines whether the lib should support legacy browsers (e.g. `IE 8`).
+ * ---
+ * @since 0.3.9
+ * @todo Nothing. It's awesome.
+ * @link https://github.com/HugoGiraudel/SassDoc SassDoc
+ * @datatype Bool
+ */
 $legacy-support: true !global;
 ```
 
@@ -80,64 +86,6 @@ sassdoc.parse(__dirname + '/sass').then(function (items) {
 })
 ```
 
-Yielding a result like this:
-
-```js
-{
-  'functions': [],
-  'mixins': [],
-  'variables': []
-}
-```
-
-Where a function/mixin is like this:
-
-```js
-{
-  'parameters': [
-    { 'type': 'List',   'name': 'list',  'default': undefined, 'description': 'list to update' },
-    { 'type': 'Number', 'name': 'index', 'default': undefined, 'description': 'index to add'   },
-    { 'type': '*',      'name': 'value', 'default': undefined, 'description': 'value to add'   }
-  ],
-  'throws': [
-    'List index $index is not a number for `insert-nth`.', 
-    'List index $index must be a non-zero integer for `insert-nth`.'
-  ],
-  'alias': false,
-  'aliased': [],
-  'links': [],
-  'todos': [],
-  'requires': ['is-true'],
-  'description': 'Adds `$value` at `$index` in `$list`.',
-  'access': 'public',
-  'deprecated': false,
-  'author': "Hugo Giraudel",
-  'returns': {
-    'type': [
-      'List', 
-      'Bool'
-    ],
-    'description': ''
-  },
-  'type': 'function',
-  'name': 'insert-nth'
-}
-```
-
-And a variable like this:
-
-```js
-{ 
-  type: 'variable',
-  datatype: ['Bool'],
-  description: 'Defines whether the lib should support legacy browsers (e.g. `IE 8`).',
-  name: 'support-legacy',
-  value: 'true',
-  access: 'private',
-  since: '0.3.8'
-}
-```
-
 ## Documentation
 
 See [Wiki](https://github.com/HugoGiraudel/SassDoc/wiki/Documentation).
@@ -158,4 +106,5 @@ Allowed variables:
 ## Credits
 
 * [Valérian Galliat](https://twitter.com/valeriangalliat)
+* [Fabrice Weinberg](https://twitter.com/fweinb)
 * [Hugo Giraudel](http://twitter.com/HugoGiraudel)

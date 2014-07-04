@@ -8,11 +8,11 @@
  * @throws Cannot find first item of empty list.
  * ---
  * @example
- * body::before{
- *  content:first((1, 2, 3, 4))
- * }
+ * $list: (1, 2, 3, 4);
+ * $first: first($list);
+ * // -> 1
  * ---
- * @returns {* | Bool}
+ * @returns {*}
  */
 @function first($list) {
   @if length($list) == 0 {
