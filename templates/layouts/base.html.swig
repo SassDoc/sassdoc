@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>SassDoc :: Documentation</title>
+  <title>{{ title }}</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700'>
   <meta name="viewport" content="width=device-width">
