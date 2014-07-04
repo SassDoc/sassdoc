@@ -10,9 +10,10 @@ exports = module.exports = {
    * @param {String} destination - Destination folder
    * @example
    * documentize('examples/sass', 'examples/dist')
+   * @return {Q.promise}
    */
   documentize: function (source, destination, config) {
-    fs.folder.refresh(destination)
+    return fs.folder.refresh(destination)
       .then(function () {
         logger.log('Folder `' + destination + '` successfully generated.');
         return fs.getData(source);
