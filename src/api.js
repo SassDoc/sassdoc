@@ -13,7 +13,7 @@ exports = module.exports = {
    */
   documentize: function (source, destination, config) {
     fs.folder.refresh(destination)
-      .then(function () { 
+      .then(function () {
         logger.log('Folder `' + destination + '` successfully generated.');
         return fs.getData(source);
       })

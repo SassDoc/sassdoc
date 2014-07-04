@@ -1,17 +1,18 @@
-// Explode `$string` into a list using `$delimiter` as a delimiter
-// ---
-// @since 1.0.0
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#explode
-// ---
-// @param {String} $string         - string to explode
-// @param {String} $separator ('') - string to use as a delimiter
-// ---
-// @throws `$string` is not a string for `explode`.
-// @throws `$delimiter` is not a string for `explode`.
-// ---
-// @returns {List | Bool}
-
+/**
+ * Explode `$string` into a list using `$delimiter` as a delimiter
+ * ---
+ * @since 1.0.0
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation/#explode
+ * ---
+ * @param {String} $string         - string to explode
+ * @param {String} $separator ('') - string to use as a delimiter
+ * ---
+ * @throws `$string` is not a string for `explode`.
+ * @throws `$delimiter` is not a string for `explode`.
+ * ---
+ * @returns {List | Bool}
+ */
 @function explode($string, $delimiter: '') {
   @if type-of($string) != "string" {
     @warn "`explode` function expecting a string; #{type-of($string)} given.";

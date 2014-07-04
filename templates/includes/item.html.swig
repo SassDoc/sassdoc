@@ -1,22 +1,22 @@
 {% if item.access != "private" %}
 
-<section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="{{ item.type }}-{{ item.name }}">
+<section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
   <h2 class="sassdoc__item-name">
     {% if item.deprecated %}
       <span class="sassdoc__item-deprecated" title="{{ item.deprecated }}">[Deprecated]</span>
     {% endif %}
-    <code>{{ item.name }}</code>
+    <code>{{ item.context.name }}</code>
 
     {% if item.aliased.length > 0 %}
-      <span class="sassdoc__item-alias">(aliased as 
+      <span class="sassdoc__item-alias">(aliased as
       {% for _alias in item.aliased %}
-        <a href="#{{ item.type }}-{{ _alias }}"><code>{{ _alias }}</code></a>
+        <a href="#{{ item.context.type }}-{{ _alias }}"><code>{{ _alias }}</code></a>
       {% endfor %}
       )</span>
     {% endif %}
 
     {% if item.alias %}
-      <span class="sassdoc__item-alias">(alias for <a href="#{{ item.type }}-{{ item.alias }}"><code>{{ item.alias }}</code></a>)</span>
+      <span class="sassdoc__item-alias">(alias for <a href="#{{ item.context.type }}-{{ item.alias[0] }}"><code>{{ item.alias[0] }}</code></a>)</span>
     {% endif %}
   </h2>
 
@@ -40,7 +40,7 @@
         {% set parameters_string = parameters_string + ', ' + value %}
       {% endif %}
     {% endfor %}
-    <pre class="sassdoc__item-code">@{{ item.type }} {{ item.name }} ({{ parameters_string }}) { ... }  </pre>
+    <pre class="sassdoc__item-code">@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }  </pre>
 
     {% if item.description %}
       <h3>Description</h3>
@@ -49,7 +49,7 @@
 
     {% if item.since %}
       <h3>Since</h3>
-      <p>{{ item.since | markdown }}</p>
+      <p>{{ item.since[0] | markdown }}</p>
     {% endif %}
 
     <h3>Parameters</h3>
@@ -84,13 +84,13 @@
       <p>None.</p>
     {% endif %}
 
-    {% if item.returns.type %}
+    {% if item.returns %}
       <h3>Returns</h3>
-      <p class="sassdoc__item-description">{% if item.returns.description %}{{ item.returns.description | markdown }}{% endif %}
-      {% if item.returns.type == '*' %}
+      <p class="sassdoc__item-description">{% if item.returns[0].description %}{{ item.returns[0].description | markdown }}{% endif %}
+      {% if item.returns[0].type == '*' %}
         Any
       {% else %}
-        <code>{{ item.returns.type | capitalize | join('</code>, <code>') | raw }}</code>
+        <code>{{ item.returns[0].type | capitalize | join('</code>, <code>') | raw }}</code>
       {% endif %}
       </p>
     {% endif %}
@@ -108,7 +108,7 @@
       <h3>Requires</h3>
       {% for require in item.requires %}
         {% if loop.first %}<ul class="sassdoc__item-requires">{% endif %}
-        <li><a href="#{{ require.type }}-{{ require.item }}"><code>{{ require.item }}</code></a></li>
+        <li><a href="#{{ require.type }}-{{ require.name }}"><code>{{ require.name }}</code></a></li>
         {% if loop.last %}</ul>{% endif %}
       {% endfor %}
     {% endif %}
@@ -147,8 +147,10 @@
     {% endif %}
 
     {% if item.author %}
-      <h3>Author</h3>
-      <p>{{ item.author }}</p>
+      <h3>Author{% if item.author.length > 1%}'s{% endif %}</h3>
+      {% for author in item.author %}
+         <p>{{ author }}</p>
+      {% endfor %}
     {% endif %}
 
   {% endif %}

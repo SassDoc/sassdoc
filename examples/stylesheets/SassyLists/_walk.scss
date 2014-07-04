@@ -1,14 +1,16 @@
-// Apply `$function` to every item from `$list` passing `$args` as parameters
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#walk
-// ---
-// @param {List}    $list     - list to update
-// @param {String}  $function - function to call on each value
-// @param {ArgList} $args     - optional function arguments
-// ---
-// @throws There is no `$function` function.
-// ---
-// @returns {List | Bool}
+/**
+ * Apply `$function` to every item from `$list` passing `$args` as parameters
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation/#walk
+ * ---
+ * @param {List}    $list     - list to update
+ * @param {String}  $function - function to call on each value
+ * @param {ArgList} $args     - optional function arguments
+ * ---
+ * @throws There is no `$function` function.
+ * ---
+ * @returns {List | Bool}
+ */
 
 @function walk($list, $function, $args...) {
   @if not function-exists($function) {
@@ -19,6 +21,6 @@
   @for $i from 1 through length($list) {
     $list: set-nth($list, $i, call($function, nth($list, $i), $args...));
   }
-  
+
   @return $list;
 }

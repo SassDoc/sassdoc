@@ -1,12 +1,13 @@
-// Sums up all numeric values in `$list`
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#sum
-// ---
-// @param {List} $list          - list
-// @param {Bool} $force (false) - enable/disable parseInt
-// ---
-// @returns {Number}
-
+/**
+ * Sums up all numeric values in `$list`
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation/#sum
+ * ---
+ * @param {List} $list          - list
+ * @param {Bool} $force (false) - enable/disable parseInt
+ * ---
+ * @returns {Number}
+ */
 @function sum($list, $force: false) {
   $result: 0;
 

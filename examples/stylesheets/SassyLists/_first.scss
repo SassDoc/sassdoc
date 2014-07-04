@@ -1,13 +1,14 @@
-// Returns first element of `$list`
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#first
-// ---
-// @param {List} $list - list to retrieve first item from
-// ---
-// @throws Cannot find first item of empty list.
-// ---
-// @returns {* | Bool}
-
+/*
+ * Returns first element of `$list`
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation/#first
+ * ---
+ * @param {List} $list - list to retrieve first item from
+ * ---
+ * @throws Cannot find first item of empty list.
+ * ---
+ * @returns {* | Bool}
+ */
 @function first($list) {
   @if length($list) == 0 {
     @warn "Cannot find first item of empty list.";

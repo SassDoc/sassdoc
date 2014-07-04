@@ -1,7 +1,7 @@
 {% extends 'layouts/base.html.swig' %}
 
 {% block content %}
-  {% if data.functions.length === 0 and data.mixins.length === 0 and data.variables.length === 0 %}
+  {% if data.function.length === 0 and data.mixin.length === 0 and data.variable.length === 0 %}
     <h1 class="sassdoc__section  no-counter">Seems like nothing has been documented yet!</h1>
   {% else %}
 

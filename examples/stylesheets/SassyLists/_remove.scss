@@ -1,21 +1,22 @@
-// Removes value(s) `$value` from `$list`
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#remove
-// ---
-// @requires replace
-// ---
-// @param {List}    $list      - list to update
-// @param {*}       $value     - value to remove
-// @param {Bool}    $recursive - enable/disable recursion
-// ---
-// @returns {List}
-
+/**
+ * Removes value(s) `$value` from `$list`
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation/#remove
+ * ---
+ * @requires replace
+ * ---
+ * @param {List}    $list      - list to update
+ * @param {*}       $value     - value to remove
+ * @param {Bool}    $recursive - enable/disable recursion
+ * ---
+ * @returns {List}
+ */
 @function remove($list, $value) {
   @return replace($list, $value, null);
 }
-
-// @alias remove
-
+/**
+ * @alias remove
+ */
 @function without($list, $value) {
   @return remove($list, $value);
 }

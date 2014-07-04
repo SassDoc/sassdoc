@@ -1,11 +1,12 @@
-// Removes duplicate values from `$list`
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#remove-duplicates
-// ---
-// @param {List} $list - list to remove duplicates from
-// ---
-// @returns {List}
-
+/**
+ * Removes duplicate values from `$list`
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation/#remove-duplicates
+ * ---
+ * @param {List} $list - list to remove duplicates from
+ * ---
+ * @returns {List}
+ */
 @function remove-duplicates($list) {
   $result: ();
 
@@ -18,8 +19,9 @@
   @return $result;
 }
 
-// @alias remove-duplicates
-
+/**
+ * @alias remove-duplicates
+ */
 @function unique($list, $recursive: false) {
   @return remove-duplicates($list, $recursive);
 }

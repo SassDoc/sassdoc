@@ -1,13 +1,14 @@
-// Turns multidimensional `$list` into a one-level list
-// ---
-// @since 0.3.0
-// ---
-// @ignore Documentation: http://sassylists.com/documentation.html#flatten
-// ---
-// @param {List} $list - list to flatten
-// ---
-// @returns {List}
-
+/*
+ * Turns multidimensional `$list` into a one-level list
+ * ---
+ * @since 0.3.0
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation.html#flatten
+ * ---
+ * @param {List} $list - list to flatten
+ * ---
+ * @returns {List}
+ */
 @function flatten($list) {
   $result: ();
 

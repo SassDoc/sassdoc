@@ -1,13 +1,14 @@
-// Replaces `$old` by `$new` in `$list`
-// ---
-// @ignore Documentation: http://sassylists.com/documentation.html#replace
-// ---
-// @param {List}    $list  - list to update
-// @param {*}       $old   - value to replace
-// @param {*}       $value - new value for $old
-// ---
-// @returns {List}
-
+/**
+ * Replaces `$old` by `$new` in `$list`
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation.html#replace
+ * ---
+ * @param {List}    $list  - list to update
+ * @param {*}       $old   - value to replace
+ * @param {*}       $value - new value for $old
+ * ---
+ * @returns {List}
+ */
 @function replace($list, $old, $value) {
   $running: true;
 

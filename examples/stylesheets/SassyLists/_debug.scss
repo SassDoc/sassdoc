@@ -1,13 +1,14 @@
-// Returns `$list` as a string
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#debug
-// ---
-// @param {List}   $list          - list to debug
-// @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
-// @param {Number} $level (1)     - internal variable for recursion
-// ---
-// @returns {String}
-
+/**
+ * Returns `$list` as a string
+ * ---
+ * @ignore Documentation: http://sassylists.com/documentation/#debug
+ * ---
+ * @param {List}   $list          - list to debug
+ * @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
+ * @param {Number} $level (1)     - internal variable for recursion
+ * ---
+ * @returns {String}
+ */
 @function debug($list, $pre: false, $level: 1) {
   @if length($list) == 0 {
     @return "( )";
@@ -82,7 +83,7 @@
 
     display: block                            !important;
     margin: 1em                               !important;
-    padding: .5em                             !important; 
+    padding: .5em                             !important;
 
     background: #EFEFEF                       !important;
     border: 1px solid #DDD                    !important;
