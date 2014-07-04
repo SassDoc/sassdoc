@@ -1,14 +1,15 @@
-// Adds `$value` as first index of `$list`
-// ---
-// @ignore Documentation: http://sassylists.com/documentation/#prepend
-// ---
-// @requires is-true
-// ---
-// @param {List}    $list  - list to preprend value to
-// @param {*}       $value - value to prepend to the list
-// ---
-// @returns {List}
-
+/**
+ * Adds `$value` as first index of `$list`
+ * ---
+ * @ignore Documentation: http: *sassylists.com/documentation/#prepend
+ * ---
+ * @requires is-true
+ * ---
+ * @param {List}    $list  - list to preprend value to
+ * @param {*}       $value - value to prepend to the list
+ * ---
+ * @returns {List}
+ */
 @function prepend($list, $value) {
   @if is-true($value) {
     @return join($value, $list, list-separator($list));

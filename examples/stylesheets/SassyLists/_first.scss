@@ -1,4 +1,4 @@
-/*
+/**
  * Returns first element of `$list`
  * ---
  * @ignore Documentation: http://sassylists.com/documentation/#first
@@ -6,6 +6,11 @@
  * @param {List} $list - list to retrieve first item from
  * ---
  * @throws Cannot find first item of empty list.
+ * ---
+ * @example
+ * body::before{
+ *  content:first((1, 2, 3, 4))
+ * }
  * ---
  * @returns {* | Bool}
  */

@@ -47,6 +47,11 @@
       <p class="sassdoc__item-description">{{ item.description | markdown | nl2br }}</p>
     {% endif %}
 
+    {% if item.example %}
+      <h3>Example</h3>
+      <pre class="sassdoc__item-code">{{ item.example[0] | raw }}</pre>
+    {% endif %}
+
     {% if item.since %}
       <h3>Since</h3>
       <p>{{ item.since[0] | markdown }}</p>
