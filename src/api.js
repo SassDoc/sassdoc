@@ -30,9 +30,7 @@ exports = module.exports = {
         logger.log('Process over. Everything okay!');
       })
       .fail(function (err) {
-        console.error(err);
-        throw new Error(err)
-        return err;
+        throw new Error(err);
       });
   },
 
