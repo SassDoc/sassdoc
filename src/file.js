@@ -188,18 +188,18 @@ exports = module.exports = {
       response = response || [];
 
       logger.log(response.length + ' item' + (response.length > 1 ? 's' : '') + ' documented.');
-            
+
       var result = {};
       var index = {};
 
       response.forEach(function (obj) {
         Object.keys(obj).forEach(function (key) {
-          if (typeof result[key] === 'undefined' ) { 
+          if (typeof result[key] === 'undefined' ) {
             result[key] = [];
           }
 
           obj[key].forEach(function (item) {
-            index[item.context.name] = item;
+            index[item.context.type + '_' + item.context.name] = item;
             result[key].push(item);
           });
         });
@@ -214,33 +214,36 @@ exports = module.exports = {
         }
 
         // Alias
-        if (utils.isset(item.alias)) { 
+        if (utils.isset(item.alias)) {
           item.alias.forEach(function (alias) {
-            if (utils.isset(index[alias])) {
-              if (!Array.isArray(index[alias].aliased)) {
-                index[alias].aliased = [];
+            var lookupKey = item.context.type + '_' + alias; // Alias has to be from same type
+            if (utils.isset(index[lookupKey])) {
+
+              if (!Array.isArray(index[lookupKey].aliased)) {
+                index[lookupKey].aliased = [];
               }
 
-              index[alias].aliased.push(item.context.name);
-            } 
+              index[lookupKey].aliased.push(item.context.name);
+            }
 
             else {
               logger.log('Item `' + item.context.name + ' is an alias of `' + alias + '` but this item doesn\'t exist.');
             }
           });
-        } 
+        }
 
         // Requires
         if (utils.isset(item.requires)) {
-          item.requires = item.requires.map(function (name) {
-            if (utils.isset(index[name])) {
-              var reqItem = index[name];
-              
-              if (!Array.isArray(reqItem.usedBy)) { 
+          item.requires = item.requires.map(function (req) {
+            var lookupKey = req.type + '_' + req.name;
+            if (utils.isset(index[lookupKey])) {
+              var reqItem = index[lookupKey];
+
+              if (!Array.isArray(reqItem.usedBy)) {
                 reqItem.usedBy = [];
               }
 
-              reqItem.usedBy.push({ 
+              reqItem.usedBy.push({
                 item: item.context.name,
                 type: item.context.type
               });
@@ -249,7 +252,7 @@ exports = module.exports = {
             }
 
             else {
-              logger.log('Item `' + item.context.name + ' requires `' + name + '` but this item doesn\'t exist.');
+              logger.log('Item `' + item.context.name + ' requires `' + req.name + '` from type `' + req.type + '` but this item doesn\'t exist.');
             }
           }).filter(function (item) {
             return typeof item !== 'undefined';
