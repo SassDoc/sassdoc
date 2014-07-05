@@ -14,7 +14,7 @@
         <h1 class="sassdoc__section" id="{{ type }}">{{ (type + 's') | capitalize }}</h1>
         {% for item in obj %}
           {% set partial = "includes/" + type + ".html.swig" %}
-          {% if (display.alias == false and item.alias != false) or (display.private == false and item.access[0] == "private") %}{% else %}
+          {% if (display_access.indexOf(item.access[0]) !== -1) and not (not display_alias and item.alias[0]) %}
             {% include partial with item %}
           {% endif %}
         {% endfor %}
