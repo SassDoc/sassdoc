@@ -59,10 +59,10 @@
         
       
           
-      
-          
           
         
+      
+          
       
           
           
@@ -352,20 +352,20 @@
     
       
         <li>
+        <a href="#function-sl-explode">sl-explode</a> 
+        
+        
+        </li>
+      
+    
+      
+        <li>
         <a href="#function-sl-first">sl-first</a> 
         
         
         </li>
       
     
-      
-    
-      
-        <li>
-        <a href="#function-sl-explode">sl-explode</a> 
-        
-        
-        </li>
       
     
       
@@ -380,7 +380,7 @@
     
       
         <li>
-        <a href="#function-sl-has-values">sl-has-values</a> 
+        <a href="#function-sl-has-multiple-values">sl-has-multiple-values</a> 
         
         
         </li>
@@ -388,7 +388,7 @@
     
       
         <li>
-        <a href="#function-sl-has-multiple-values">sl-has-multiple-values</a> 
+        <a href="#function-sl-has-values">sl-has-values</a> 
         
         
         </li>
@@ -514,7 +514,7 @@
     
       
         <li>
-        <a href="#function-sl-remove-nth">sl-remove-nth</a> 
+        <a href="#function-sl-remove">sl-remove</a> 
         
         
         </li>
@@ -524,7 +524,7 @@
     
       
         <li>
-        <a href="#function-sl-remove">sl-remove</a> 
+        <a href="#function-sl-remove-nth">sl-remove-nth</a> 
         
         
         </li>
@@ -769,6 +769,11 @@
 
     
 
+    
+  <h3>Found at</h3>
+  <p><code>examples/stylesheets/_variables.scss</code></p>
+
+
   
 </section>
 
@@ -814,6 +819,11 @@
     
 
     
+
+    
+  <h3>Found at</h3>
+  <p><code>examples/stylesheets/_variables.scss</code></p>
+
 
   
 </section>
@@ -861,6 +871,11 @@
     
 
     
+
+    
+  <h3>Found at</h3>
+  <p><code>examples/stylesheets/_variables.scss</code></p>
+
 
   
 </section>
@@ -1674,142 +1689,6 @@
         
           
           
-            <section class="sassdoc__item  " id="function-sl-first">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-first</code>
-
-  
-
-  
-
-  
-</h2>
-
-  
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-  <pre class="sassdoc__item-code  language-scss"><code>@function sl-first ($list) { ... }</code></pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p>Returns first element of <code>$list</code>.</p></p>
-
-
-    
-<h3>Parameters</h3>
-
-<table class="sassdoc__item-parameters">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr class="sassdoc__item-parameter">
-        <td data-label="name"><code>$list</code></td>
-        <td data-label="desc"><p>list to retrieve first item from</p></td>
-        <td data-label="type">
-        
-          <code>List</code>
-        
-        </td>
-        <td data-label="default">&mdash;</td>
-      </tr>
-    
-  </tbody>
-</table>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Any
-  
-  </p>
-
-
-    
-  <h3>Example</h3>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-first(a b c)
-// a</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-first(a)
-// a</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-first(())
-// null</code></pre>
-  
-
-
-    
-  <h3>Throws</h3>
-  
-    <ul class="sassdoc__item-throws">
-    <li><p>Cannot find first item of empty list.</p></li>
-    </ul>
-  
-
-
-    
-  <h3>Requires</h3>
-  
-    <ul class="sassdoc__item-requires">
-    <li><a href="#function-sl-is-empty"><code>sl-is-empty</code></a></li>
-    </ul>
-  
-
-
-    
-  <h3>Used by</h3>
-  
-    <ul class="sassdoc__item-usedby">
-    <li><a href="#function-sl-head"><code>sl-head</code></a></li>
-    </ul>
-  
-
-
-    	
-
-    
-
-    
-
-    
-  <h3>Found at</h3>
-  <p><code>examples/stylesheets/SassyLists/_first.scss</code></p>
-
-
-  
-
-</section>
-
-          
-        
-          
-          
-        
-          
-          
             <section class="sassdoc__item  " id="function-sl-explode">
 
   <h2 class="sassdoc__item-name">
@@ -1976,6 +1855,142 @@
         
           
           
+            <section class="sassdoc__item  " id="function-sl-first">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-first</code>
+
+  
+
+  
+
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-first ($list) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p>Returns first element of <code>$list</code>.</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td data-label="name"><code>$list</code></td>
+        <td data-label="desc"><p>list to retrieve first item from</p></td>
+        <td data-label="type">
+        
+          <code>List</code>
+        
+        </td>
+        <td data-label="default">&mdash;</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Any
+  
+  </p>
+
+
+    
+  <h3>Example</h3>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-first(a b c)
+// a</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-first(a)
+// a</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-first(())
+// null</code></pre>
+  
+
+
+    
+  <h3>Throws</h3>
+  
+    <ul class="sassdoc__item-throws">
+    <li><p>Cannot find first item of empty list.</p></li>
+    </ul>
+  
+
+
+    
+  <h3>Requires</h3>
+  
+    <ul class="sassdoc__item-requires">
+    <li><a href="#function-sl-is-empty"><code>sl-is-empty</code></a></li>
+    </ul>
+  
+
+
+    
+  <h3>Used by</h3>
+  
+    <ul class="sassdoc__item-usedby">
+    <li><a href="#function-sl-head"><code>sl-head</code></a></li>
+    </ul>
+  
+
+
+    	
+
+    
+
+    
+
+    
+  <h3>Found at</h3>
+  <p><code>examples/stylesheets/SassyLists/_first.scss</code></p>
+
+
+  
+
+</section>
+
+          
+        
+          
+          
+        
+          
+          
             <section class="sassdoc__item  " id="function-sl-flatten">
 
   <h2 class="sassdoc__item-name">
@@ -2105,117 +2120,6 @@
         
           
           
-            <section class="sassdoc__item  " id="function-sl-has-values">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-has-values</code>
-
-  
-
-  
-
-  
-    <span class="sassdoc__item-since">Since 2.2.0</span>
-  
-</h2>
-
-  
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-  <pre class="sassdoc__item-code  language-scss"><code>@function sl-has-values ($list) { ... }</code></pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p>Tests whether <code>$list</code> is not empty.</p></p>
-
-
-    
-<h3>Parameters</h3>
-
-<table class="sassdoc__item-parameters">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr class="sassdoc__item-parameter">
-        <td data-label="name"><code>$list</code></td>
-        <td data-label="desc"><p>list to run test against</p></td>
-        <td data-label="type">
-        
-          <code>List</code>
-        
-        </td>
-        <td data-label="default">&mdash;</td>
-      </tr>
-    
-  </tbody>
-</table>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    <code>Bool</code>
-  
-  </p>
-
-
-    
-  <h3>Example</h3>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-has-values(a)
-// true</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-has-values(())
-// false</code></pre>
-  
-
-
-    
-
-    
-
-    
-
-    	
-
-    
-
-    
-
-    
-  <h3>Found at</h3>
-  <p><code>examples/stylesheets/SassyLists/_has-values.scss</code></p>
-
-
-  
-
-</section>
-
-          
-        
-          
-          
             <section class="sassdoc__item  " id="function-sl-has-multiple-values">
 
   <h2 class="sassdoc__item-name">
@@ -2340,6 +2244,117 @@
     
   <h3>Found at</h3>
   <p><code>examples/stylesheets/SassyLists/_has-multiple-values.scss</code></p>
+
+
+  
+
+</section>
+
+          
+        
+          
+          
+            <section class="sassdoc__item  " id="function-sl-has-values">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-has-values</code>
+
+  
+
+  
+
+  
+    <span class="sassdoc__item-since">Since 2.2.0</span>
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-has-values ($list) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p>Tests whether <code>$list</code> is not empty.</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td data-label="name"><code>$list</code></td>
+        <td data-label="desc"><p>list to run test against</p></td>
+        <td data-label="type">
+        
+          <code>List</code>
+        
+        </td>
+        <td data-label="default">&mdash;</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    <code>Bool</code>
+  
+  </p>
+
+
+    
+  <h3>Example</h3>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-has-values(a)
+// true</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-has-values(())
+// false</code></pre>
+  
+
+
+    
+
+    
+
+    
+
+    	
+
+    
+
+    
+
+    
+  <h3>Found at</h3>
+  <p><code>examples/stylesheets/SassyLists/_has-values.scss</code></p>
 
 
   
@@ -4155,153 +4170,6 @@
         
           
           
-            <section class="sassdoc__item  " id="function-sl-remove-nth">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-remove-nth</code>
-
-  
-
-  
-
-  
-</h2>
-
-  
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-  <pre class="sassdoc__item-code  language-scss"><code>@function sl-remove-nth ($list, $index) { ... }</code></pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p>Removes value from <code>$list</code> at index <code>$index</code>.</p></p>
-
-
-    
-<h3>Parameters</h3>
-
-<table class="sassdoc__item-parameters">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr class="sassdoc__item-parameter">
-        <td data-label="name"><code>$list</code></td>
-        <td data-label="desc"><p>list to remove value from</p></td>
-        <td data-label="type">
-        
-          <code>List</code>
-        
-        </td>
-        <td data-label="default">&mdash;</td>
-      </tr>
-    
-      <tr class="sassdoc__item-parameter">
-        <td data-label="name"><code>$index</code></td>
-        <td data-label="desc"><p>index to remove</p></td>
-        <td data-label="type">
-        
-          <code>Number</code>
-        
-        </td>
-        <td data-label="default">&mdash;</td>
-      </tr>
-    
-  </tbody>
-</table>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    <code>List </code>, <code> null</code>
-  
-  </p>
-
-
-    
-  <h3>Example</h3>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-remove-nth(a b c, 2)
-// a c</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-remove-nth(a b c, 42)
-// null</code></pre>
-  
-
-
-    
-
-    
-  <h3>Requires</h3>
-  
-    <ul class="sassdoc__item-requires">
-    <li><a href="#function-sl-replace-nth"><code>sl-replace-nth</code></a></li>
-    </ul>
-  
-
-
-    
-  <h3>Used by</h3>
-  
-    <ul class="sassdoc__item-usedby">
-    <li><a href="#function-sl-without-nth"><code>sl-without-nth</code></a></li>
-    </ul>
-  
-
-
-    	
-
-    
-
-    
-
-    
-  <h3>Found at</h3>
-  <p><code>examples/stylesheets/SassyLists/_remove-nth.scss</code></p>
-
-
-  
-
-</section>
-
-          
-        
-          
-          
-        
-          
-          
             <section class="sassdoc__item  " id="function-sl-remove">
 
   <h2 class="sassdoc__item-name">
@@ -4454,6 +4322,153 @@
     
   <h3>Found at</h3>
   <p><code>examples/stylesheets/SassyLists/_remove.scss</code></p>
+
+
+  
+
+</section>
+
+          
+        
+          
+          
+        
+          
+          
+            <section class="sassdoc__item  " id="function-sl-remove-nth">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-remove-nth</code>
+
+  
+
+  
+
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-remove-nth ($list, $index) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p>Removes value from <code>$list</code> at index <code>$index</code>.</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td data-label="name"><code>$list</code></td>
+        <td data-label="desc"><p>list to remove value from</p></td>
+        <td data-label="type">
+        
+          <code>List</code>
+        
+        </td>
+        <td data-label="default">&mdash;</td>
+      </tr>
+    
+      <tr class="sassdoc__item-parameter">
+        <td data-label="name"><code>$index</code></td>
+        <td data-label="desc"><p>index to remove</p></td>
+        <td data-label="type">
+        
+          <code>Number</code>
+        
+        </td>
+        <td data-label="default">&mdash;</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    <code>List </code>, <code> null</code>
+  
+  </p>
+
+
+    
+  <h3>Example</h3>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-remove-nth(a b c, 2)
+// a c</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-remove-nth(a b c, 42)
+// null</code></pre>
+  
+
+
+    
+
+    
+  <h3>Requires</h3>
+  
+    <ul class="sassdoc__item-requires">
+    <li><a href="#function-sl-replace-nth"><code>sl-replace-nth</code></a></li>
+    </ul>
+  
+
+
+    
+  <h3>Used by</h3>
+  
+    <ul class="sassdoc__item-usedby">
+    <li><a href="#function-sl-without-nth"><code>sl-without-nth</code></a></li>
+    </ul>
+  
+
+
+    	
+
+    
+
+    
+
+    
+  <h3>Found at</h3>
+  <p><code>examples/stylesheets/SassyLists/_remove-nth.scss</code></p>
 
 
   
