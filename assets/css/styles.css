@@ -46,6 +46,7 @@ a:hover {
   margin: 0 auto;
   overflow: hidden;
   padding: 0 1em;
+  max-width: 100%;
 }
 
 /**
@@ -76,12 +77,14 @@ a:hover {
   margin: 0;
 }
 
-/**
- * Doc map
- */
-.sassdoc__map {
-  width: 27%;
-  float: left;
+@media (min-width: 600px) {
+  /**
+   * Doc map
+   */
+  .sassdoc__map {
+    width: 27%;
+    float: left;
+  }  
 }
 
 /**
@@ -123,6 +126,8 @@ a:hover {
 .sassdoc__map-heading {
   color: #333;
   font-size: 1.2em;
+  margin-top: 0;
+  
 }
 
 /**
@@ -135,13 +140,15 @@ a:hover {
   margin-top: 1em;
 }
 
-/**
- * Main wrapper
- */
-.sassdoc__container {
-  width: 70%;
-  float: right;
-  margin-top: .5em;
+@media (min-width: 600px) {
+  /**
+   * Main wrapper
+   */
+  .sassdoc__container {
+    width: 70%;
+    float: right;
+    margin-top: 1.25em;
+  }
 }
 
 /**
@@ -167,12 +174,10 @@ a:hover {
 /**
  * Code blocks
  */
-.sassdoc pre {
+.sassdoc__item-code {
+  border-left: .3em solid #c69;
   display: block;
-  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
   word-wrap: break-word;
-  word-break: break-all;
-  color: #333;
   line-height: 1.42;
 }
 
@@ -207,16 +212,6 @@ a:hover {
 }
 
 /**
- * Function code
- */
-.sassdoc__item-code {
-  background: #efefef;
-  margin-bottom: 1em;
-  padding: 1em;
-  border-left: .3em solid #c69;
-}
-
-/**
  * Aliases
  */ 
 .sassdoc__item-alias {
@@ -239,7 +234,7 @@ a:hover {
 .sassdoc__item-name {
   color: #699;
   font-size: 2.2em;
-  margin: 0;
+  margin: 0 0 .5em 0;
   font-weight: normal;
 }
 
@@ -260,6 +255,36 @@ a:hover {
 /**
  * Parameters table
  */
+@media (max-width: 600px) {
+  table, tbody, tr, td, th {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  td::before {
+    content: attr(data-label) ': ';
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+
+  td p {
+    display: inline;
+  }
+
+  td {
+    padding-left: 0 !important;
+  }
+
+  tr {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #ddd;
+  }
+}
+
 .sassdoc__item-parameters {
   width: 100%;
   margin-bottom: 1em;
@@ -277,11 +302,17 @@ a:hover {
 .sassdoc__item-parameters th {
   padding: .5em;
   vertical-align: top;
-  border-top: 1px solid #ddd;
 }
 
-.sassdoc__item-parameters > tbody > tr:first-of-type > td {
-  border-top: none;
+@media (min-width: 600px) {
+  .sassdoc__item-parameters > tbody > tr:first-of-type > td {
+    border-top: none;
+  }
+
+  .sassdoc__item-parameters td,
+  .sassdoc__item-parameters th {
+    border-top: 1px solid #ddd;
+  }
 }
 
 /**
@@ -289,6 +320,17 @@ a:hover {
  */ 
 .sassdoc__item-access {
   text-transform: capitalize;
+}
+
+/**
+ * Since
+ */
+
+.sassdoc__item-since {
+  float: right;
+  font-size: .5em;
+  padding-top: .75em;
+  color: #ccc;
 }
 
 /**

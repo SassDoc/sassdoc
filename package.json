@@ -3,7 +3,7 @@
   "description": "Like JSDoc but for Sass files.",
   "author": "Hugo Giraudel <hugo.giraudel@gmail.com> http://hugogiraudel.com",
   "contributors": ["Fabrice Weinberg", "Valérian Galliat"],
-  "version": "1.0.0rc.4",
+  "version": "1.0.0rc.5",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "docopt": "^0.4.0",
     "swig-extras": "0.0.1",
     "ncp": "^0.5.1",
-    "scsscommentparser": "0.0.14"
+    "scsscommentparser": "0.0.16"
   },
   "bin": {
     "sassdoc": "./bin/sassdoc"

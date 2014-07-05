@@ -13,16 +13,16 @@
   <tbody>
     {% for parameter in item.parameters %}
       <tr class="sassdoc__item-parameter">
-        <td><code>${{ parameter.name }}</code></td>
-        <td>{% if parameter.description %}{{ parameter.description | markdown }}{% else %}&mdash;{% endif %}</td>
-        <td>
+        <td data-label="name"><code>${{ parameter.name }}</code></td>
+        <td data-label="desc">{% if parameter.description %}{{ parameter.description | markdown }}{% else %}&mdash;{% endif %}</td>
+        <td data-label="type">
         {% if parameter.type == '*' %}
           Any
         {% else %}
           <code>{{ parameter.type | capitalize | join('</code>, <code>') | raw }}</code>
         {% endif %}
         </td>
-        <td>{% if parameter.default %}{{ parameter.default }}{% else %}&mdash;{% endif %}</td>
+        <td data-label="default">{% if parameter.default %}{{ parameter.default }}{% else %}&mdash;{% endif %}</td>
       </tr>
     {% endfor %}
   </tbody>

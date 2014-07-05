@@ -1,8 +1,17 @@
 # Changelog
 
+## 1.0.0rc.5
+
+* Improved view
+* Prevented some broken links
+* Made the documentation responsive
+* Added PrismJS
+* Fixed an issue with `@requires` type
+* Fixed some formatting issues with `@example`
+
 ## 1.0.0rc.4
 
-* Fixed an issue prevented `@requires` form working if there was any `@aliaw`
+* Fixed an issue prevented `@requires` form working if there was any `@alias`
 
 ## 1.0.0rc.3
 

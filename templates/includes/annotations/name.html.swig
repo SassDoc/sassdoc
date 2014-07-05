@@ -16,4 +16,8 @@
   {% if item.alias %}
     <span class="sassdoc__item-alias">(alias for <a href="#{{ item.context.type }}-{{ item.alias[0] }}"><code>{{ item.alias[0] }}</code></a>)</span>
   {% endif %}
+
+  {% if item.since %}
+    <span class="sassdoc__item-since">Since {{ item.since[0] }}</span>
+  {% endif %}
 </h2>

@@ -38,8 +38,6 @@
 
     {% include 'annotations/usedby.html.swig' %}
 
-    {% include 'annotations/since.html.swig' %}
-
     {% include 'annotations/todo.html.swig' %}
 
     {% include 'annotations/link.html.swig' %}
