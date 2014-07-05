@@ -1,0 +1,40 @@
+/**
+ * Univeral box-sizing reset
+ */
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/**
+ * Base font size
+ */
+html {
+  font-size: 62.5%;
+}
+
+/**
+ * Body rules
+ */
+body {
+  font: 1.6em/1.35 'Ubuntu', 'Helvetica', sans-serif;
+  overflow: auto;
+  margin: 0;
+  counter-reset: sections;
+  padding-bottom: 5em;
+}
+
+/**
+ * Links
+ */
+a {
+  transition: .15s;
+  text-decoration: none;
+  color: $pink;
+  
+  &:hover {
+  	&, code {
+  	  color: $dark-grey;
+  	}
+  }
+}

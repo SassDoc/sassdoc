@@ -1,0 +1,301 @@
+@import "utils/variables";
+@import "vendors/prism";
+@import "base/base";
+
+/**
+ * Main container
+ */
+.container {
+  width: 1170px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0 1em;
+  max-width: 100%;
+}
+
+/**
+ * Header
+ */
+.sassdoc__header {
+  padding: 1em;
+  background: $pink;
+  color: white;
+  margin-bottom: 2em;
+  border-bottom: 0.5em solid #f2d9e6;
+}
+
+/**
+ * Main title
+ */
+.sassdoc__title {
+  font-size: 1em;
+  margin: 0;
+  float: left;
+}
+
+/**
+ * Item count
+ */
+.sassdoc__count {
+  float: right;
+  margin: 0;
+}
+
+/**
+ * Doc map
+ */
+.sassdoc__map {
+  @media (min-width: 600px) {
+    width: 27%;
+    float: left;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0 1.5em;
+  }
+
+  li {
+    line-height: 1.5;
+  }
+
+  a {
+    font-weight: 500;
+    color: $green;
+    text-decoration: none;
+  }
+
+  .annotation {
+    color: $purple;
+  }
+}  
+
+/**
+ * Map main wrapper
+ */
+.sassdoc__map-container {
+  padding: .5em 0;
+  background-color: $light-grey;
+}
+
+/**
+ * Map heading
+ */
+.sassdoc__map-heading {
+  color: $dark-grey;
+  font-size: 1.2em;
+  margin-top: 0;
+  
+}
+
+/**
+ * List item section
+ */
+.sassdoc__map-section a {
+  font-weight: 500;
+  display: block;
+  color: $pink;
+  margin-top: 1em;
+}
+
+/**
+ * Main wrapper
+ */
+.sassdoc__container {
+  @media (min-width: 600px) {
+    width: 70%;
+    float: right;
+    margin-top: 1.25em;
+  }
+}
+
+/**
+ * Main titles
+ */
+.sassdoc__section {
+  color: $dark-grey;
+  background-color: $light-grey;
+  padding: 1em;
+  text-transform: uppercase;
+  counter-increment: sections;
+  border-bottom: .3em solid $pink;
+
+  &::before {
+    content: counter(sections) '. ';
+  }
+
+  &.no-counter::before {
+    content: none;
+  }
+}
+
+/**
+ * Code blocks
+ */
+.sassdoc__item-code {
+  border-left: .3em solid $pink;
+  display: block;
+  word-wrap: break-word;
+  line-height: 1.42;
+}
+
+/**
+ * Inline code
+ */
+.sassdoc :not(pre) > code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: $pink;
+  background-color: $light-grey;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+/**
+ * Deprecated flag
+ */
+.sassdoc__item-deprecated {
+  color: $purple;
+  font-size: .7em;
+  text-transform: uppercase;
+}
+
+/**
+ * Type
+ */
+.sassdoc__item-type {
+  color: $medium-grey;
+  text-transform: capitalize;
+  font-size: .75em;
+}
+
+/**
+ * Aliases
+ */ 
+.sassdoc__item-alias {
+  color: $medium-grey;
+  font-size: .8em;
+}
+
+/**
+ * Subtitles
+ */
+.sassdoc__item {
+  & + & {
+    margin: 4em 0;
+  }
+
+  h3 {
+    color: $green;
+    text-transform: uppercase;
+    font-size: 1em;
+  }
+
+  p {
+    margin: 0 0 .5em 0;
+  }
+}
+
+/**
+ * Function name
+ */
+.sassdoc__item-name {
+  color: $green;
+  font-size: 2.2em;
+  margin: 0 0 .5em 0;
+  font-weight: normal;
+}
+
+
+/**
+ * Parameters table
+ */
+@media (max-width: 600px) {
+  table, tbody, tr, td, th {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  td::before {
+    content: attr(data-label) ': ';
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+
+  td p {
+    display: inline;
+  }
+
+  td {
+    padding-left: 0 !important;
+  }
+
+  tr {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid $medium-grey;
+  }
+}
+
+.sassdoc__item-parameters {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+
+  > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid $medium-grey;
+    border-top: none;
+    text-align: left;
+  }
+
+  td, th {
+    padding: .5em;
+    vertical-align: top;
+  }
+}
+
+@media (min-width: 600px) {
+  .sassdoc__item-parameters > tbody > tr:first-of-type > td {
+    border-top: none;
+  }
+
+  .sassdoc__item-parameters td,
+  .sassdoc__item-parameters th {
+    border-top: 1px solid $medium-grey;
+  }
+}
+
+/**
+ * Scope/access
+ */ 
+.sassdoc__item-access {
+  text-transform: capitalize;
+}
+
+/**
+ * Since
+ */
+
+.sassdoc__item-since {
+  float: right;
+  font-size: .5em;
+  padding-top: .75em;
+  color: $medium-grey;
+}
+
+/**
+ * Lists
+ */
+.sassdoc__item-usedby,
+.sassdoc__item-todos,
+.sassdoc__item-throws,
+.sassdoc__item-links,
+.sassdoc__item-requires {
+  padding-left: 0;
+  list-style: none;
+}
+

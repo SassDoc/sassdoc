@@ -175,7 +175,7 @@ exports = module.exports = {
    * @return {Q.Promise}
    */
   dumpAssets: function (destination) {
-    return exports.folder.copy(__dirname + '/../assets', destination + '/assets');
+    return exports.folder.copy(__dirname + '/../view/assets', destination + '/assets');
   },
 
   /**
@@ -185,7 +185,7 @@ exports = module.exports = {
    * @param {Object} options
    */
   generate: function (data, destination, options) {
-    var template = swig.compileFile(__dirname + '/../templates/docs.html.swig');
+    var template = swig.compileFile(__dirname + '/../view/templates/docs.html.swig');
 
     options.data = data;
 

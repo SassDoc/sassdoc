@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0rc.6
+
+* Added location where item was found
+* Moved view's stylesheets to Sass
+* Changed the folder structure
+
 ## 1.0.0rc.5
 
 * Improved view

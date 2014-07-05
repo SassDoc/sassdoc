@@ -44,6 +44,8 @@
 
     {% include 'annotations/author.html.swig' %}
 
+    {% include 'annotations/location.html.swig' %}
+
   {% else %}
 
     <p>Refer to <a href="#{{ item.context.type }}-{{ item.alias[0] }}">{{ item.alias[0] }}</a>.</p>
