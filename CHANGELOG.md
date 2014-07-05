@@ -2,8 +2,10 @@
 
 ## 1.0.0 Beta
 
-* Moved to a real parser (`CDocParser` and `ScssCommentParser`)
-* Added the ability to document example
+* Moved to a real parser ([CDocParser](https://github.com/FWeinb/CDocParser) and [ScssCommentParser](https://github.com/FWeinb/ScssCommentParser))
+* Dropped support for inline comments (`//`)
+* Added the ability to document examples with `@example`
+* Variables are now documented exactly like functions and mixins, yet they have a `@datatype` directive to specify their type
 
 ## 0.4.1
 
