@@ -6,6 +6,7 @@ var ncp    = require('ncp');         // cp -r
 var swig   = require('swig');        // Templating
 var extras = require('swig-extras'); // Moar templating
 var Q      = require('q');           // Promises
+var path   = require('path');        // Path
 
 var parser = require('./parser');
 var utils  = require('./utils');
@@ -141,8 +142,20 @@ exports = module.exports = {
      * @return {Q.Promise}
      */
     process: function (file) {
-      return exports.file.read(file, 'utf-8').then(function (data) {
-        return parser.parse(data);
+      return exports.file.read(file, 'utf-8').then(function (code) {
+        var data = parser.parse(code);
+
+        // Merge in from which file the comments where loaded.
+        Object.keys(data).forEach(function(key){
+          data[key].forEach(function(item){
+            item.file = {
+              path : file,
+              name : path.basename(file, '.scss')
+            };
+          });
+        });
+
+        return data;
       });
     }
   },
