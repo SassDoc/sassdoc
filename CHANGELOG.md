@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0rc.4
+
+* Fixed an issue prevented `@requires` form working if there was any `@aliaw`
+
 ## 1.0.0rc.3
 
 * Greatly improved the view

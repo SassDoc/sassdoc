@@ -231,7 +231,7 @@ exports = module.exports = {
         } 
 
         // Requires
-        else if (utils.isset(item.requires)) {
+        if (utils.isset(item.requires)) {
           item.requires = item.requires.map(function (name) {
             if (utils.isset(index[name])) {
               var reqItem = index[name];
@@ -246,6 +246,10 @@ exports = module.exports = {
               });
 
               return reqItem.context;
+            }
+
+            else {
+              logger.log('Item `' + item.context.name + ' requires `' + name + '` but this item doesn\'t exist.');
             }
           }).filter(function (item) {
             return typeof item !== 'undefined';
