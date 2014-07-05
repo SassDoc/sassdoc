@@ -53,9 +53,15 @@ $legacy-support: true !global;
 
 ## Installation
 
+### NPM
+
 ```sh
 npm install -g sassdoc
 ```
+
+### Grunt
+
+See [grunt-sassdoc](https://github.com/pascalduez/grunt-sassdoc).
 
 ## Usage
 
