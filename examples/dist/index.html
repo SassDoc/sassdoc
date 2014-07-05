@@ -47,8 +47,6 @@
         
       
           
-      
-          
           
         
       
@@ -59,88 +57,6 @@
           
           
         
-      
-          
-      
-          
-          
-        
-      
-          
-      
-          
-          
-        
-      
-          
-          
-        
-      
-          
-          
-        
-      
-          
-          
-        
-      
-          
-          
-        
-      
-          
-      
-          
-          
-        
-      
-          
-          
-        
-      
-          
-      
-          
-          
-        
-      
-          
-          
-        
-      
-          
-          
-        
-      
-          
-      
-          
-          
-        
-      
-          
-          
-        
-      
-          
-      
-          
-          
-        
-      
-          
-      
-          
-      
-          
-          
-        
-      
-          
-          
-        
-      
-          
       
           
           
@@ -167,6 +83,18 @@
         
       
           
+          
+        
+      
+          
+          
+        
+      
+          
+      
+          
+          
+        
       
           
           
@@ -203,12 +131,86 @@
         
       
           
+          
+        
+      
+          
+      
+          
       
           
           
         
       
           
+      
+          
+          
+        
+      
+          
+      
+          
+          
+        
+      
+          
+      
+          
+          
+        
+      
+          
+          
+        
+      
+          
+          
+        
+      
+          
+      
+          
+          
+        
+      
+          
+      
+          
+          
+        
+      
+          
+          
+        
+      
+          
+          
+        
+      
+          
+      
+          
+          
+        
+      
+          
+          
+        
+      
+          
+      
+          
+          
+        
+      
+          
+      
+          
+      
+          
+          
+        
       
           
       
@@ -255,7 +257,7 @@
     <header class="sassdoc__header">
       <div class="container">
         <h1 class="sassdoc__title">SassDoc</h1>
-        <p class="sassdoc__count">47 items documented</p>
+        <p class="sassdoc__count">48 items documented</p>
       </div>
     </header>
 
@@ -300,7 +302,7 @@
     
       
         <li>
-        <a href="#function-sl-comma-list">sl-comma-list</a> 
+        <a href="#function-sl-chunk">sl-chunk</a> 
         
         
         </li>
@@ -308,7 +310,7 @@
     
       
         <li>
-        <a href="#function-sl-chunk">sl-chunk</a> 
+        <a href="#function-sl-comma-list">sl-comma-list</a> 
         
         
         </li>
@@ -332,6 +334,12 @@
         </li>
       
     
+      
+        <li>
+        <a href="#function-sl-debug">sl-debug</a> 
+        
+        
+        </li>
       
     
       
@@ -476,6 +484,14 @@
     
       
         <li>
+        <a href="#function-sl-range">sl-range</a> 
+        
+        
+        </li>
+      
+    
+      
+        <li>
         <a href="#function-sl-random-value">sl-random-value</a> 
         
         
@@ -484,14 +500,6 @@
     
       
     
-      
-    
-      
-        <li>
-        <a href="#function-sl-range">sl-range</a> 
-        
-        
-        </li>
       
     
       
@@ -562,7 +570,7 @@
     
       
         <li>
-        <a href="#function-sl-slice">sl-slice</a> 
+        <a href="#function-sl-some">sl-some</a> 
         
         
         </li>
@@ -570,7 +578,7 @@
     
       
         <li>
-        <a href="#function-sl-some">sl-some</a> 
+        <a href="#function-sl-slice">sl-slice</a> 
         
         
         </li>
@@ -606,22 +614,22 @@
     
       
         <li>
-        <a href="#function-sl-to-list">sl-to-list</a> 
-        
-        
-        </li>
-      
-    
-      
-    
-      
-        <li>
         <a href="#function-sl-to-map">sl-to-map</a> 
         
         
         </li>
       
     
+      
+    
+      
+    
+      
+        <li>
+        <a href="#function-sl-to-list">sl-to-list</a> 
+        
+        
+        </li>
       
     
       
@@ -726,8 +734,8 @@
 
   
 </h2>
-
-  <pre class="sassdoc__item-code">$support-legacy: true !global;</pre>
+  true
+  <pre class="sassdoc__item-code  language-scss"><code>$support-legacy: true !global;</code></pre>
 
   
 
@@ -783,8 +791,8 @@
 
   
 </h2>
-
-  <pre class="sassdoc__item-code">$i: 0 !global;</pre>
+  0
+  <pre class="sassdoc__item-code  language-scss"><code>$i: 0 !global;</code></pre>
 
   
 
@@ -828,8 +836,8 @@
 
   
 </h2>
-
-  <pre class="sassdoc__item-code">$map: (&quot;a&quot;: &quot;b&quot;, &quot;c&quot;: &quot;&quot; );</pre>
+  ("a": "b", "c": "" )
+  <pre class="sassdoc__item-code  language-scss"><code>$map: ("a": "b", "c": "" );</code></pre>
 
   
 
@@ -867,76 +875,6 @@
         
           
           
-            <section class="sassdoc__item  " id="function-sl-comma-list">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-comma-list</code>
-
-  
-
-  
-</h2>
-
-  
-  
-  <pre class="sassdoc__item-code">@function sl-comma-list () { ... }  </pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p> Initialize an empty comma-separated list.</p></p>
-
-
-    
-<h3>Parameters</h3>
-
-  <p>None.</p>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    <code>List</code>
-  
-  </p>
-
-
-    
-  <h3>Example</h3>
-  
-    <pre class="sassdoc__item-code">
- sl-comma-list()
- // ()
-</pre>
-  
-
-
-    
-
-    
-
-    
-
-    
-
-    	
-
-    
-
-    
-
-  
-
-</section>
-
-          
-        
-          
-          
             <section class="sassdoc__item  " id="function-sl-chunk">
 
   <h2 class="sassdoc__item-name">
@@ -971,7 +909,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-chunk ($list, $size) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-chunk ($list, $size) { ... }</code></pre>
 
   
 
@@ -1075,6 +1013,76 @@
         
           
           
+            <section class="sassdoc__item  " id="function-sl-comma-list">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-comma-list</code>
+
+  
+
+  
+</h2>
+
+  
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-comma-list () { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p> Initialize an empty comma-separated list.</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+  <p>None.</p>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    <code>List</code>
+  
+  </p>
+
+
+    
+  <h3>Example</h3>
+  
+    <pre class="sassdoc__item-code">
+ sl-comma-list()
+ // ()
+</pre>
+  
+
+
+    
+
+    
+
+    
+
+    
+
+    	
+
+    
+
+    
+
+  
+
+</section>
+
+          
+        
+          
+          
             <section class="sassdoc__item  " id="function-sl-contain">
 
   <h2 class="sassdoc__item-name">
@@ -1109,7 +1117,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-contain ($list, $value) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-contain ($list, $value) { ... }</code></pre>
 
   
 
@@ -1238,7 +1246,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-count-values ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-count-values ($list) { ... }</code></pre>
 
   
 
@@ -1317,6 +1325,174 @@
         
           
           
+            <section class="sassdoc__item  " id="function-sl-debug">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-debug</code>
+
+  
+
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+    
+
+    
+      
+    
+
+    
+
+    
+      
+    
+  
+    
+
+    
+      
+    
+
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-debug ($list, $pre: false, $level: 1) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p> Returns <code>$list</code> as a string, prettified if <code>$pre</code> is set to true.</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td><code>$list</code></td>
+        <td><p>list to debug</p></td>
+        <td>
+        
+          <code>List</code>
+        
+        </td>
+        <td>&mdash;</td>
+      </tr>
+    
+      <tr class="sassdoc__item-parameter">
+        <td><code>$pre</code></td>
+        <td><p>enable/disable variables type and proper indentation</p></td>
+        <td>
+        
+          <code>Bool</code>
+        
+        </td>
+        <td>false</td>
+      </tr>
+    
+      <tr class="sassdoc__item-parameter">
+        <td><code>$level</code></td>
+        <td><p>internal variable for recursion</p></td>
+        <td>
+        
+          <code>Number</code>
+        
+        </td>
+        <td>1</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    <code>String</code>
+  
+  </p>
+
+
+    
+  <h3>Example</h3>
+  
+    <pre class="sassdoc__item-code">
+ sl-debug(a b c)
+ // '("a", "b", "c")'
+</pre>
+  
+
+
+    
+
+    
+  <h3>Requires</h3>
+  
+    <ul class="sassdoc__item-requires">
+    <li><a href="#function-sl-is-empty"><code>sl-is-empty</code></a></li>
+    
+  
+    
+    <li><a href="#function-sl-is-single"><code>sl-is-single</code></a></li>
+    
+  
+    
+    <li><a href="#function-sl-has-multiple-values"><code>sl-has-multiple-values</code></a></li>
+    </ul>
+  
+
+
+    
+  <h3>Used by</h3>
+  
+    <ul class="sassdoc__item-usedby">
+    <li><a href="#mixin-sl-debug"><code>sl-debug</code></a></li>
+    </ul>
+  
+
+
+    
+
+    	
+
+    
+
+    
+
+  
+
+</section>
+
+          
         
           
           
@@ -1366,7 +1542,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-every ($list, $function, $args...) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-every ($list, $function, $args...) { ... }</code></pre>
 
   
 
@@ -1527,7 +1703,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-explode ($string, $delimiter: &#39;&#39;, $separator: &#39;space&#39;) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-explode ($string, $delimiter: &#39;&#39;, $separator: &#39;space&#39;) { ... }</code></pre>
 
   
 
@@ -1668,7 +1844,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-first ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-first ($list) { ... }</code></pre>
 
   
 
@@ -1805,7 +1981,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-flatten ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-flatten ($list) { ... }</code></pre>
 
   
 
@@ -1929,7 +2105,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-has-multiple-values ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-has-multiple-values ($list) { ... }</code></pre>
 
   
 
@@ -1999,6 +2175,10 @@
   <h3>Used by</h3>
   
     <ul class="sassdoc__item-usedby">
+    <li><a href="#function-sl-debug"><code>sl-debug</code></a></li>
+    
+  
+    
     <li><a href="#function-sl-flatten"><code>sl-flatten</code></a></li>
     
   
@@ -2056,7 +2236,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-has-values ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-has-values ($list) { ... }</code></pre>
 
   
 
@@ -2184,7 +2364,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-insert-nth ($list, $index, $value) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-insert-nth ($list, $index, $value) { ... }</code></pre>
 
   
 
@@ -2349,7 +2529,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-intersection ($list, $lists...) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-intersection ($list, $lists...) { ... }</code></pre>
 
   
 
@@ -2474,7 +2654,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-is-empty ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-is-empty ($list) { ... }</code></pre>
 
   
 
@@ -2544,6 +2724,10 @@
   <h3>Used by</h3>
   
     <ul class="sassdoc__item-usedby">
+    <li><a href="#function-sl-debug"><code>sl-debug</code></a></li>
+    
+  
+    
     <li><a href="#function-sl-first"><code>sl-first</code></a></li>
     
   
@@ -2608,7 +2792,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-is-single ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-is-single ($list) { ... }</code></pre>
 
   
 
@@ -2680,6 +2864,13 @@
     
 
     
+  <h3>Used by</h3>
+  
+    <ul class="sassdoc__item-usedby">
+    <li><a href="#function-sl-debug"><code>sl-debug</code></a></li>
+    </ul>
+  
+
 
     
 
@@ -2721,7 +2912,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-is-symmetrical ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-is-symmetrical ($list) { ... }</code></pre>
 
   
 
@@ -2857,7 +3048,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-last-index ($list, $value) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-last-index ($list, $value) { ... }</code></pre>
 
   
 
@@ -2976,7 +3167,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-last ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-last ($list) { ... }</code></pre>
 
   
 
@@ -3122,7 +3313,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-loop ($list, $value: 1) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-loop ($list, $value: 1) { ... }</code></pre>
 
   
 
@@ -3280,7 +3471,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-prepend ($list, $value) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-prepend ($list, $value) { ... }</code></pre>
 
   
 
@@ -3405,7 +3596,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-purge ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-purge ($list) { ... }</code></pre>
 
   
 
@@ -3513,140 +3704,6 @@
         
           
           
-            <section class="sassdoc__item  " id="function-sl-random-value">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-random-value</code>
-
-  
-
-  
-</h2>
-
-  
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-  <pre class="sassdoc__item-code">@function sl-random-value ($list) { ... }  </pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p> Returns a random value of <code>$list</code>.</p></p>
-
-
-    
-<h3>Parameters</h3>
-
-<table class="sassdoc__item-parameters">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr class="sassdoc__item-parameter">
-        <td><code>$list</code></td>
-        <td><p>list to random value from</p></td>
-        <td>
-        
-          <code>List</code>
-        
-        </td>
-        <td>&mdash;</td>
-      </tr>
-    
-  </tbody>
-</table>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Any
-  
-  </p>
-
-
-    
-  <h3>Example</h3>
-  
-    <pre class="sassdoc__item-code">
- sl-random-value(a b c)
- // a
- </pre>
-  
-
-
-    
-  <h3>Throws</h3>
-  
-    <ul class="sassdoc__item-throws">
-    <li><p>Cannot find a random value in an empty list.</p></li>
-    </ul>
-  
-
-
-    
-  <h3>Requires</h3>
-  
-    <ul class="sassdoc__item-requires">
-    <li><a href="#function-sl-is-empty"><code>sl-is-empty</code></a></li>
-    </ul>
-  
-
-
-    
-  <h3>Used by</h3>
-  
-    <ul class="sassdoc__item-usedby">
-    <li><a href="#function-sl-roll"><code>sl-roll</code></a></li>
-    
-  
-    
-    <li><a href="#function-sl-luck"><code>sl-luck</code></a></li>
-    </ul>
-  
-
-
-    
-
-    	
-
-    
-
-    
-
-  
-
-</section>
-
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
             <section class="sassdoc__item  " id="function-sl-range">
 
   <h2 class="sassdoc__item-name">
@@ -3671,7 +3728,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-range ($n) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-range ($n) { ... }</code></pre>
 
   
 
@@ -3782,6 +3839,140 @@
         
           
           
+            <section class="sassdoc__item  " id="function-sl-random-value">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-random-value</code>
+
+  
+
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-random-value ($list) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p> Returns a random value of <code>$list</code>.</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td><code>$list</code></td>
+        <td><p>list to random value from</p></td>
+        <td>
+        
+          <code>List</code>
+        
+        </td>
+        <td>&mdash;</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Any
+  
+  </p>
+
+
+    
+  <h3>Example</h3>
+  
+    <pre class="sassdoc__item-code">
+ sl-random-value(a b c)
+ // a
+ </pre>
+  
+
+
+    
+  <h3>Throws</h3>
+  
+    <ul class="sassdoc__item-throws">
+    <li><p>Cannot find a random value in an empty list.</p></li>
+    </ul>
+  
+
+
+    
+  <h3>Requires</h3>
+  
+    <ul class="sassdoc__item-requires">
+    <li><a href="#function-sl-is-empty"><code>sl-is-empty</code></a></li>
+    </ul>
+  
+
+
+    
+  <h3>Used by</h3>
+  
+    <ul class="sassdoc__item-usedby">
+    <li><a href="#function-sl-roll"><code>sl-roll</code></a></li>
+    
+  
+    
+    <li><a href="#function-sl-luck"><code>sl-luck</code></a></li>
+    </ul>
+  
+
+
+    
+
+    	
+
+    
+
+    
+
+  
+
+</section>
+
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
             <section class="sassdoc__item  " id="function-sl-remove-duplicates">
 
   <h2 class="sassdoc__item-name">
@@ -3806,7 +3997,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-remove-duplicates ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-remove-duplicates ($list) { ... }</code></pre>
 
   
 
@@ -3944,7 +4135,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-remove-nth ($list, $index) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-remove-nth ($list, $index) { ... }</code></pre>
 
   
 
@@ -4100,7 +4291,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-remove ($list, $value, $recursive) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-remove ($list, $value, $recursive) { ... }</code></pre>
 
   
 
@@ -4262,7 +4453,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-replace-nth ($list, $index, $value) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-replace-nth ($list, $index, $value) { ... }</code></pre>
 
   
 
@@ -4441,7 +4632,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-replace ($list, $old, $value) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-replace ($list, $old, $value) { ... }</code></pre>
 
   
 
@@ -4593,7 +4784,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-reverse ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-reverse ($list) { ... }</code></pre>
 
   
 
@@ -4717,7 +4908,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-shuffle ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-shuffle ($list) { ... }</code></pre>
 
   
 
@@ -4813,6 +5004,163 @@
         
           
           
+            <section class="sassdoc__item  " id="function-sl-some">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-some</code>
+
+  
+
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+    
+
+    
+
+    
+      
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-some ($list, $function, $args...) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p> Tests whether some items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td><code>$list</code></td>
+        <td><p>list to run test against</p></td>
+        <td>
+        
+          <code>List</code>
+        
+        </td>
+        <td>&mdash;</td>
+      </tr>
+    
+      <tr class="sassdoc__item-parameter">
+        <td><code>$function</code></td>
+        <td><p>function to run against every item from list</p></td>
+        <td>
+        
+          <code>String</code>
+        
+        </td>
+        <td>&mdash;</td>
+      </tr>
+    
+      <tr class="sassdoc__item-parameter">
+        <td><code>$args</code></td>
+        <td><p>extra arguments to pass to the function</p></td>
+        <td>
+        
+          <code>Arglist</code>
+        
+        </td>
+        <td>&mdash;</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    <code>Bool</code>
+  
+  </p>
+
+
+    
+  <h3>Example</h3>
+  
+    <pre class="sassdoc__item-code">
+ sl-some(1 2 3, unitless)
+ // true
+</pre>
+  
+    <pre class="sassdoc__item-code">
+ sl-some(1 2 3px, unitless)
+ // true
+</pre>
+  
+    <pre class="sassdoc__item-code">
+ sl-some(1px 2px 3px, unitless)
+ // false
+</pre>
+  
+
+
+    
+
+    
+
+    
+
+    
+
+    	
+
+    
+
+    
+
+  
+
+</section>
+
+          
+        
+          
+          
             <section class="sassdoc__item  " id="function-sl-slice">
 
   <h2 class="sassdoc__item-name">
@@ -4861,7 +5209,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-slice ($list, $start: 1, $end: length($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-slice ($list, $start: 1, $end: length($list) { ... }</code></pre>
 
   
 
@@ -5007,163 +5355,6 @@
         
           
           
-            <section class="sassdoc__item  " id="function-sl-some">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-some</code>
-
-  
-
-  
-</h2>
-
-  
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-    
-
-    
-
-    
-      
-    
-
-    
-      
-    
-  
-  <pre class="sassdoc__item-code">@function sl-some ($list, $function, $args...) { ... }  </pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p> Tests whether some items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></p>
-
-
-    
-<h3>Parameters</h3>
-
-<table class="sassdoc__item-parameters">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr class="sassdoc__item-parameter">
-        <td><code>$list</code></td>
-        <td><p>list to run test against</p></td>
-        <td>
-        
-          <code>List</code>
-        
-        </td>
-        <td>&mdash;</td>
-      </tr>
-    
-      <tr class="sassdoc__item-parameter">
-        <td><code>$function</code></td>
-        <td><p>function to run against every item from list</p></td>
-        <td>
-        
-          <code>String</code>
-        
-        </td>
-        <td>&mdash;</td>
-      </tr>
-    
-      <tr class="sassdoc__item-parameter">
-        <td><code>$args</code></td>
-        <td><p>extra arguments to pass to the function</p></td>
-        <td>
-        
-          <code>Arglist</code>
-        
-        </td>
-        <td>&mdash;</td>
-      </tr>
-    
-  </tbody>
-</table>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    <code>Bool</code>
-  
-  </p>
-
-
-    
-  <h3>Example</h3>
-  
-    <pre class="sassdoc__item-code">
- sl-some(1 2 3, unitless)
- // true
-</pre>
-  
-    <pre class="sassdoc__item-code">
- sl-some(1 2 3px, unitless)
- // true
-</pre>
-  
-    <pre class="sassdoc__item-code">
- sl-some(1px 2px 3px, unitless)
- // false
-</pre>
-  
-
-
-    
-
-    
-
-    
-
-    
-
-    	
-
-    
-
-    
-
-  
-
-</section>
-
-          
-        
-          
-          
             <section class="sassdoc__item  " id="function-sl-sort">
 
   <h2 class="sassdoc__item-name">
@@ -5198,7 +5389,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-sort ($list, $order) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-sort ($list, $order) { ... }</code></pre>
 
   
 
@@ -5354,7 +5545,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-sum ($list, $force: false) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-sum ($list, $force: false) { ... }</code></pre>
 
   
 
@@ -5496,7 +5687,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-tail ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-tail ($list) { ... }</code></pre>
 
   
 
@@ -5592,6 +5783,155 @@
         
           
           
+            <section class="sassdoc__item  " id="function-sl-to-map">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-to-map</code>
+
+  
+
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-to-map ($list) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p> Casts <code>$list</code> into a map, using indexes as keys (starting with <code>$start</code>).<br> Useful for iterating through a list with an index variable.<br> e.g. <code>@each $index, $value in to-map($list)</code></p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td><code>$list</code></td>
+        <td><p>list to turn into map</p></td>
+        <td>
+        
+          <code>List</code>
+        
+        </td>
+        <td>&mdash;</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    <code>Map </code>, <code> null</code>
+  
+  </p>
+
+
+    
+  <h3>Example</h3>
+  
+    <pre class="sassdoc__item-code">
+ sl-to-map(a b c)
+ // 1 a, 2 b, 3 c
+ </pre>
+  
+
+
+    
+  <h3>Throws</h3>
+  
+    <ul class="sassdoc__item-throws">
+    <li><p>List cannot be empty for <code>sl-to-map</code>.</p></li>
+    </ul>
+  
+
+
+    
+  <h3>Requires</h3>
+  
+    <ul class="sassdoc__item-requires">
+    <li><a href="#function-sl-range"><code>sl-range</code></a></li>
+    
+  
+    
+    <li><a href="#function-sl-is-empty"><code>sl-is-empty</code></a></li>
+    </ul>
+  
+
+
+    
+  <h3>Used by</h3>
+  
+    <ul class="sassdoc__item-usedby">
+    <li><a href="#function-sl-enumerate"><code>sl-enumerate</code></a></li>
+    
+  
+    
+    <li><a href="#function-sl-mapify"><code>sl-mapify</code></a></li>
+    
+  
+    
+    <li><a href="#function-sl-walk"><code>sl-walk</code></a></li>
+    </ul>
+  
+
+
+    
+
+    	
+
+    
+
+    
+  <h3>Authors</h3>
+  
+    <p>Andrey &quot;Lolmaus&quot; Mikhaylov</p>
+  
+    <p>Chris Eppstein</p>
+  
+
+
+  
+
+</section>
+
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
             <section class="sassdoc__item  " id="function-sl-to-list">
 
   <h2 class="sassdoc__item-name">
@@ -5628,7 +5968,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-to-list ($value, $separator: space) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-to-list ($value, $separator: space) { ... }</code></pre>
 
   
 
@@ -5772,155 +6112,6 @@
         
           
           
-            <section class="sassdoc__item  " id="function-sl-to-map">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-to-map</code>
-
-  
-
-  
-</h2>
-
-  
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-  <pre class="sassdoc__item-code">@function sl-to-map ($list) { ... }  </pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p> Casts <code>$list</code> into a map, using indexes as keys (starting with <code>$start</code>).<br> Useful for iterating through a list with an index variable.<br> e.g. <code>@each $index, $value in to-map($list)</code></p></p>
-
-
-    
-<h3>Parameters</h3>
-
-<table class="sassdoc__item-parameters">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr class="sassdoc__item-parameter">
-        <td><code>$list</code></td>
-        <td><p>list to turn into map</p></td>
-        <td>
-        
-          <code>List</code>
-        
-        </td>
-        <td>&mdash;</td>
-      </tr>
-    
-  </tbody>
-</table>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    <code>Map </code>, <code> null</code>
-  
-  </p>
-
-
-    
-  <h3>Example</h3>
-  
-    <pre class="sassdoc__item-code">
- sl-to-map(a b c)
- // 1 a, 2 b, 3 c
- </pre>
-  
-
-
-    
-  <h3>Throws</h3>
-  
-    <ul class="sassdoc__item-throws">
-    <li><p>List cannot be empty for <code>sl-to-map</code>.</p></li>
-    </ul>
-  
-
-
-    
-  <h3>Requires</h3>
-  
-    <ul class="sassdoc__item-requires">
-    <li><a href="#function-sl-range"><code>sl-range</code></a></li>
-    
-  
-    
-    <li><a href="#function-sl-is-empty"><code>sl-is-empty</code></a></li>
-    </ul>
-  
-
-
-    
-  <h3>Used by</h3>
-  
-    <ul class="sassdoc__item-usedby">
-    <li><a href="#function-sl-enumerate"><code>sl-enumerate</code></a></li>
-    
-  
-    
-    <li><a href="#function-sl-mapify"><code>sl-mapify</code></a></li>
-    
-  
-    
-    <li><a href="#function-sl-walk"><code>sl-walk</code></a></li>
-    </ul>
-  
-
-
-    
-
-    	
-
-    
-
-    
-  <h3>Authors</h3>
-  
-    <p>Andrey &quot;Lolmaus&quot; Mikhaylov</p>
-  
-    <p>Chris Eppstein</p>
-  
-
-
-  
-
-</section>
-
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
             <section class="sassdoc__item  " id="function-sl-to-string">
 
   <h2 class="sassdoc__item-name">
@@ -5957,7 +6148,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-to-string ($list, $glue: &#39;&#39;) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-to-string ($list, $glue: &#39;&#39;) { ... }</code></pre>
 
   
 
@@ -6099,7 +6290,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-union ($lists...) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-union ($lists...) { ... }</code></pre>
 
   
 
@@ -6245,7 +6436,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-walk ($list, $function, $args...) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-walk ($list, $function, $args...) { ... }</code></pre>
 
   
 
@@ -6388,7 +6579,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-is-number ($value) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-is-number ($value) { ... }</code></pre>
 
   
 
@@ -6492,7 +6683,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-missing-dependencies ($functions...) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-missing-dependencies ($functions...) { ... }</code></pre>
 
   
 
@@ -6607,7 +6798,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-str-compare ($a, $b, $matrix) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-str-compare ($a, $b, $matrix) { ... }</code></pre>
 
   
 
@@ -6731,7 +6922,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@function sl-is-true ($value) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-is-true ($value) { ... }</code></pre>
 
   
 
@@ -6854,7 +7045,7 @@
       
     
   
-  <pre class="sassdoc__item-code">@mixin sl-debug ($list) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@mixin sl-debug ($list) { ... }</code></pre>
 
   
 
@@ -6902,19 +7093,12 @@
   <h3>Requires</h3>
   
     <ul class="sassdoc__item-requires">
-    <li><a href="#mixin-sl-debug"><code>sl-debug</code></a></li>
+    <li><a href="#function-sl-debug"><code>sl-debug</code></a></li>
     </ul>
   
 
 
     
-  <h3>Used by</h3>
-  
-    <ul class="sassdoc__item-usedby">
-    <li><a href="#mixin-sl-debug"><code>sl-debug</code></a></li>
-    </ul>
-  
-
 
     
 
@@ -6939,5 +7123,7 @@
 
     </div>
   </div>
+
+  <script src="assets/js/prism.min.js"></script>
 </body>
 </html>

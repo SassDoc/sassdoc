@@ -1,8 +1,7 @@
 <section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
 
   {% include 'annotations/name.html.swig' %}
-
-  <pre class="sassdoc__item-code">${{ item.context.name }}: {{ item.context.value }}{% if item.context.scope !== "private" %} !{{ item.context.scope }}{% endif %};</pre>
+  <pre class="sassdoc__item-code  language-scss"><code>${{ item.context.name }}: {{ item.context.value | raw }}{% if item.context.scope !== "private" %} !{{ item.context.scope }}{% endif %};</code></pre>
 
   {% if item.alias == false %}
 

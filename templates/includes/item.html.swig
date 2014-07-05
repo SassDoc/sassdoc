@@ -20,7 +20,7 @@
       {% set parameters_string = parameters_string + ', ' + value %}
     {% endif %}
   {% endfor %}
-  <pre class="sassdoc__item-code">@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }  </pre>
+  <pre class="sassdoc__item-code  language-scss"><code>@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }</code></pre>
 
   {% if item.alias == false %}
 
