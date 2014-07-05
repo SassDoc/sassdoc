@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0rc.3
+
+* Greatly improved the view
+
 ## 1.0.0rc.2
 
 * Fixed `@deprecated` not supporting a message

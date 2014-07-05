@@ -13,5 +13,15 @@ $support-legacy: true !global;
  * ---
  * @deprecated
  * @datatype Number
+ * @access private
  */
 $i: 0 !global;
+
+/**
+ * Test map
+ * @datatype Map
+ */
+$map: (
+  "a": "b", 
+  "c": ""
+);
