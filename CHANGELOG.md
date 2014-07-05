@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0rc.2
+
+* Fixed `@deprecated` not supporting a message
+* Added a trim to `@datatype`
+
 ## 1.0.0rc.1
 
 * Moved to a real parser ([CDocParser](https://github.com/FWeinb/CDocParser) and [ScssCommentParser](https://github.com/FWeinb/ScssCommentParser))
@@ -7,8 +12,6 @@
 * Added the ability to document examples with `@example`
 * Variables are now documented exactly like functions and mixins, yet they have a `@datatype` directive to specify their type
 * Changed the structure of `view.json`
-* Fixed `@deprecated` not supporting a message
-* Added a trim to `@datatype`
 
 ## 0.4.1
 
