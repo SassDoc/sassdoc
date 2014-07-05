@@ -1,26 +1,35 @@
 /**
- * Apply `$function` to every item from `$list` passing `$args` as parameters
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#walk
- * ---
+ * Apply `$function` to every item from `$list` passing $args as parameters.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-walk
+ *
  * @param {List}    $list     - list to update
  * @param {String}  $function - function to call on each value
  * @param {ArgList} $args     - optional function arguments
- * ---
- * @throws There is no `$function` function.
- * ---
- * @returns {List | Bool}
+ *
+ * @throws There is no `$function` function for `sl-walk`.
+ *
+ * @requires sl-to-map
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-walk(a b c, to-upper-case)
+ * // A B C
+ *
+ * @return {List | Null}
  */
-
-@function walk($list, $function, $args...) {
+ 
+@function sl-walk($list, $function, $args...) {
+  @if sl-missing-dependencies(sl-to-map, sl-to-list) == true { @return null; }
+  
   @if not function-exists($function) {
-    @warn "There is no `#{$function}` function.";
-    @return false;
+    @warn "There is no `#{$function}` function for `sl-walk`.";
+    @return null;
   }
 
-  @for $i from 1 through length($list) {
-    $list: set-nth($list, $i, call($function, nth($list, $i), $args...));
+  @each $index, $value in sl-to-map($list) {
+  	$list: set-nth($list, $index, call($function, $value, $args...));
   }
-
-  @return $list;
+  
+  @return sl-to-list($list);
 }

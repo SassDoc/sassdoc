@@ -1,24 +1,28 @@
 /**
- * Turns multidimensional `$list` into a one-level list
- * ---
- * @since 0.3.0
- * ---
+ * Turns multidimensional `$list` into a one-level list.
+ *
  * @ignore Documentation: http://sassylists.com/documentation.html#flatten
- * ---
+ *
  * @param {List} $list - list to flatten
- * ---
- * @returns {List}
+ * 
+ * @requires sl-has-multiple-values
+ *
+ * @example
+ * sl-flatten(a b c, d e f, g h i)
+ * // a b c d e f g h i
+ *
+ * @return {List}
  */
-@function flatten($list) {
+
+@function sl-flatten($list) {
+  @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
+
   $result: ();
 
-  @if length($list) == 1 {
-    @return $list;
-  }
-
   @each $item in $list {
-    @if length($item) > 1 {
-      $flatten: flatten($item);
+    @if sl-has-multiple-values($item) {
+      $flatten: sl-flatten($item);
+      
       @each $i in $flatten {
         $result: append($result, $i, list-separator($list));
       }
@@ -32,8 +36,11 @@
   @return $result;
 }
 
-// @alias flatten
+/** 
+ * @requires sl-flatten
+ * @alias sl-flatten
+ */
 
-@function unfold($list) {
-    @return flatten($list);
+@function sl-unfold($list) {
+  @return sl-flatten($list);
 }

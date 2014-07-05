@@ -1,13 +1,18 @@
 /**
- * Counts the number of occurrences of each value of `$list`
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#count-values
- * ---
+ * Counts the number of occurrences of each value of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-count-values
+ *
  * @param {List} $list - list to count values from
- * ---
- * @returns {Map} Values mapped to their count
+ *
+ * @example
+ * sl-count-values(a b c a)
+ * // (a: 2, b: 1, c: 1) 
+ *
+ * @return {Map} Values mapped to their count
  */
-@function count-values($list) {
+ 
+@function sl-count-values($list) {
   $map: ();
 
   @each $item in $list {

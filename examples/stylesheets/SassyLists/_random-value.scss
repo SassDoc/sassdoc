@@ -1,37 +1,46 @@
 /**
- * Returns a random value of `$list`
- * ---
- * @since 0.2.0
- * ---
+ * Returns a random value of `$list`.
+ *
  * @ignore Documentation: http://sassylists.com/documentation.html#random-value
- * ---
- * @requires random
- * ---
+ *
  * @param {List} $list - list to random value from
- * ---
+ *
  * @throws Cannot find a random value in an empty list.
- * ---
- * @returns {* | Bool}
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-random-value(a b c)
+ * // a
+ * 
+ * @return {*}
  */
-@function random-value($list) {
-  @if length($list) == 0 {
+
+@function sl-random-value($list) {
+  @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
+
+  @if sl-is-empty($list) {
     @warn "Cannot find a random value in an empty list.";
-    @return false;
+    @return null;
   }
 
-  @return nth($list, random(length($list)) + 1);
+  @return nth($list, random(length($list) - 1) + 1);
 }
 
 /**
- * @alias random-value
+ * @requires sl-random-value
+ * @alias sl-random-value
  */
-@function roll($list) {
-  @return random-value($list);
+
+@function sl-roll($list) {
+  @return sl-random-value($list);
 }
 
 /**
- * @alias random-value
+ * @requires sl-random-value
+ * @alias sl-random-value
  */
-@function luck($list) {
-  @return random-value($list);
+ 
+@function sl-luck($list) {
+  @return sl-random-value($list);
 }

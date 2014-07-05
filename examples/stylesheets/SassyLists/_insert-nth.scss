@@ -1,28 +1,44 @@
-/**
- * Adds `$value` at `$index` in $list
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#insert-nth
- * ---
+/** Adds `$value` at `$index` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-insert-nth
+ *
+ * @requires sl-is-true
+ *
  * @param {List}    $list  - list to update
  * @param {Number}  $index - index to add
  * @param {*}       $value - value to add
- * ---
- * @throws List index `$index` is not a number for `insert-nth`.
- * @throws List index `$index` must be a non-zero integer for `insert-nth`.
- * ---
- * @returns {List | Bool}
+ *
+ * @throws List index $index is not a number for `sl-insert-nth`.
+ * @throws List index $index must be a non-zero integer for `sl-insert-nth`.
+ *
+ * @example
+ * sl-insert-nth(a b c, 2, z)
+ * // a z b c
+ *
+ * @example
+ * sl-insert-nth(a b c, 42, z)
+ * // a b c z
+ *
+ * @example 
+ * sl-insert-nth(a b c, -42, z)
+ * // null
+ * 
+ * @return {List | Null}
  */
-@function insert-nth($list, $index, $value) {
+ 
+@function sl-insert-nth($list, $index, $value) {
+  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
+
   $length: length($list);
 
-  @if type-of($index) != number {
-    @warn "List index #{$index} is not a number for `insert-nth`.";
-    @return false;
+  @if type-of($index) != "number" {
+    @warn "List index #{inspect($index)} is not a number for `sl-insert-nth`.";
+    @return null;
   }
 
   @if $index < 1 {
-    @warn "List index #{$index} must be a non-zero integer for `insert-nth`.";
-    @return false;
+    @warn "List index #{$index} must be a non-zero integer for `sl-insert-nth`.";
+    @return null;
   }
 
   @if $index > $length {
@@ -33,7 +49,7 @@
 
   @for $i from 1 through $length {
     @if $i == $index {
-      @if is-true($value) {
+      @if sl-is-true($value) {
         $result: append($result, $value, list-separator($list));
       }
     }

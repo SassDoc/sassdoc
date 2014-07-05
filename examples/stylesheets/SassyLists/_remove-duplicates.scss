@@ -1,13 +1,22 @@
 /**
- * Removes duplicate values from `$list`
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#remove-duplicates
- * ---
+ * Removes duplicate values from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-duplicates
+ *
  * @param {List} $list - list to remove duplicates from
- * ---
- * @returns {List}
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-remove-duplicates(a b a b)
+ * // a b
+ *
+ * @return {List}
  */
-@function remove-duplicates($list) {
+
+@function sl-remove-duplicates($list) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   $result: ();
 
   @each $item in $list {
@@ -16,12 +25,14 @@
     }
   }
 
-  @return $result;
+  @return sl-to-list($result);
 }
 
 /**
- * @alias remove-duplicates
+ * @requires sl-remove-duplicates
+ * @alias sl-remove-duplicates
  */
-@function unique($list, $recursive: false) {
-  @return remove-duplicates($list, $recursive);
+ 
+@function sl-unique($list) {
+  @return sl-remove-duplicates($list);
 }

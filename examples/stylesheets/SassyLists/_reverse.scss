@@ -1,15 +1,24 @@
 /**
- * Reverse the order of `$list`
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#reverse
- * ---
- * @param {List} $list - list to revers
- * ---
- * @returns {List}
+ * Reverses the order of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-reverse
+ *
+ * @param {List} $list - list to reverse
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-reverse(a b c)
+ * // c b a
+ * 
+ * @return {List}
  */
-@function reverse($list) {
+
+@function sl-reverse($list) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   $length: length($list);
-  $end: floor($length/2);
+  $end: floor($length / 2);
 
   @if $length < 2 {
     @return $list;
@@ -21,12 +30,14 @@
     $list: set-nth($list, -$i, $tmp);
   }
 
-  @return $list;
+  @return sl-to-list($list);
 }
 
 /**
- * @alias reverse
+ * @requires sl-reverse
+ * @alias sl-reverse
  */
-@function mirror($list) {
-  @return reverse($list);
+ 
+@function sl-mirror($list) {
+  @return sl-reverse($list);
 }

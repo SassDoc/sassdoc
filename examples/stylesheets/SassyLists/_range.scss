@@ -1,0 +1,54 @@
+/**
+ * Build a list of values from 1 through `$n`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-range
+ *
+ * @param {Number} $n - maximum value
+ *
+ * @throws `$n` is not a number for `sl-range`.
+ * @throws `$n` is not unitless for `sl-range`.
+ * @throws `$n` is not greater than 0 for `sl-range`.
+ *
+ * @example
+ * sl-range(5)
+ * // 1 2 3 4 5
+ *
+ * @example
+ * sl-range(1)
+ * // 1
+ *
+ * @example
+ * sl-range(-42)
+ * // null
+ *
+ * @return {List | Number | Null}
+ */
+ 
+@function sl-range($n) {
+  @if type-of($n) != "number" {
+    @warn "`#{inspect($n)}` is not a number for `sl-range`.";
+    @return null;
+  }
+
+  @if not unitless($n) {
+    @warn "`#{$n}` is not unitless for `sl-range`.";
+    @return null;
+  }
+
+  @if $n < 1 {
+    @warn "`#{$n}` is not greater than 0 for `sl-range`.";
+    @return null;
+  }
+
+  @if $n == 1 { 
+    @return $n;
+  }
+
+  $range: ();
+
+  @for $i from 1 through $n {
+    $range: append($range, $i);
+  }
+
+  @return $range;
+}

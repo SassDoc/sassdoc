@@ -1,20 +1,31 @@
 /**
- * Returns `$list` as a string
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#debug
- * ---
+ * Returns `$list` as a string, prettified if `$pre` is set to true.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-debug
+ *
  * @param {List}   $list          - list to debug
  * @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
  * @param {Number} $level (1)     - internal variable for recursion
- * ---
- * @returns {String}
+ *
+ * @requires sl-is-empty
+ * @requires sl-is-single
+ * @requires sl-has-multiple-values
+ * 
+ * @example
+ * sl-debug(a b c)
+ * // '("a", "b", "c")'
+ *
+ * @return {String}
  */
-@function debug($list, $pre: false, $level: 1) {
-  @if length($list) == 0 {
+
+@function sl-debug($list, $pre: false, $level: 1) {
+  @if sl-missing-dependencies(sl-is-empty, sl-is-single, sl-has-multiple-values) == true { @return null; }
+
+  @if sl-is-empty($list) {
     @return "( )";
   }
 
-  @if length($list) == 1 {
+  @if sl-is-single($list) {
     @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
   }
 
@@ -33,10 +44,10 @@
     $item: nth($list, $i);
     $result: $result + if($pre, $indent + $tab, " ");
 
-    @if length($item) > 1 {
+    @if sl-has-multiple-values($item) {
       $result: $result
         + if($pre, "(list: " + length($item) + ") ", "")
-        + debug($item, $pre, $level + 1);
+        + sl-debug($item, $pre, $level + 1);
     }
 
     @else {
@@ -44,7 +55,7 @@
         $result: $result + "(" + type-of($item) + ") ";
       }
 
-      @if length($item) == 0 {
+      @if sl-is-empty($item) {
         $result: $result + "( )";
       }
 
@@ -71,19 +82,21 @@
   @return quote($result);
 }
 
-// Mixin displaying clean debug
-// ---
-// @param {List} $list - list to debug
-// ---
-// @requires {function} debug
+/**
+ * Mixin displaying clean debug
+ *
+ * @param {List} $list - list
+ *
+ * @requires sl-debug
+ */
 
-@mixin debug($list) {
+@mixin sl-debug($list) {
   body:before {
-    content: debug($list, true)               !important;
+    content: sl-debug($list, true)            !important;
 
     display: block                            !important;
     margin: 1em                               !important;
-    padding: .5em                             !important;
+    padding: .5em                             !important; 
 
     background: #EFEFEF                       !important;
     border: 1px solid #DDD                    !important;

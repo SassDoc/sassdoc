@@ -1,0 +1,13 @@
+/**
+ * Check whether value is a number
+ *
+ * @access private
+ *
+ * @param {*} $value - value to run test against
+ *
+ * @return {Bool}
+ */
+ 
+@function sl-is-number($value) {
+  @return type-of($value) == "number";
+}

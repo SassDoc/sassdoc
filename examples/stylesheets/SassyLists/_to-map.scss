@@ -1,0 +1,52 @@
+/**
+ * Casts `$list` into a map, using indexes as keys (starting with `$start`).
+ * Useful for iterating through a list with an index variable.
+ * e.g. `@each $index, $value in to-map($list)`
+ *
+ * @author Andrey "Lolmaus" Mikhaylov
+ * @author Chris Eppstein
+ * 
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-map
+ * 
+ * @param {List} $list - list to turn into map
+ *
+ * @requires sl-range
+ * @requires sl-is-empty
+ * 
+ * @throws List cannot be empty for `sl-to-map`.
+ *
+ * @example
+ * sl-to-map(a b c)
+ * // 1 a, 2 b, 3 c
+ * 
+ * @return {Map | Null}
+ */
+
+@function sl-to-map($list) {
+  @if sl-missing-dependencies(sl-range, sl-is-empty) == true { @return null; }
+
+  @if sl-is-empty($list) {
+    @warn "List cannot be empty for `sl-to-map`.";
+    @return null;
+  }
+
+  @return zip(sl-range(length($list)), $list);
+}
+
+/**
+ * @requires sl-to-map
+ * @alias sl-to-map
+ */
+
+@function sl-enumerate($list) {
+  @return sl-to-map($list);
+}
+
+/**
+ * @requires sl-to-map
+ * @alias sl-to-map
+ */
+
+@function sl-mapify($list) {
+  @return sl-to-map($list);
+}

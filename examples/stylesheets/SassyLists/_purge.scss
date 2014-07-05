@@ -1,29 +1,38 @@
-/**
- * Removes all false and null values from `$list`
- * ---
+/** Removes all false and null values from `$list`.
+ *
  * @ignore Documentation: http://sassylists.com/documentation.html#purge
- * ---
- * @requires is-true
- * ---
+ *
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
  * @param {List} $list - list to purge
- * ---
- * @returns {List}
+ *
+ * @example
+ * sl-purge(null a false b)
+ * // a b
+ *
+ * @return {List}
  */
-@function purge($list) {
+
+@function sl-purge($list) {
+  @if sl-missing-dependencies(sl-is-true, sl-to-list) == true { @return null; }
+  
   $result: ();
 
   @each $item in $list {
-    @if is-true($item) {
+    @if sl-is-true($item) {
       $result: append($result, $item, list-separator($list));
     }
   }
 
-  @return $result;
+  @return sl-to-list($result);
 }
 
 /**
- * @alias purge
+ * @requires sl-purge
+ * @alias sl-purge
  */
-@function clean($list) {
-  @return purge($list);
+ 
+@function sl-clean($list) {
+  @return sl-purge($list);
 }

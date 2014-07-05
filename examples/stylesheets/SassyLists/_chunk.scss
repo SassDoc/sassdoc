@@ -1,23 +1,32 @@
 /**
- * Chunks `$list` into `$size` large lists
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#chunk
- * ---
+ * Chunks `$list` into `$size` large lists.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
+ *
  * @param {List}   $list  - list to chunk
  * @param {Number} $size  - length of lists
- * ---
- * @exception `$size` is not a number for `chunk`.
- * ---
- * @return {List | Bool}
+ *
+ * @throws $size is not a number for `sl-chunk`.
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-chunk(a b c d e, 2)
+ * // a b, c d, e
+ *
+ * @return {List | Null}
  */
-@function chunk($list, $size) {
+ 
+@function sl-chunk($list, $size) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   @if type-of($size) != "number" {
-    @warn "#{$size} is not a number for `chunk`.";
-    @return false;
+    @warn "#{inspect($size)} is not a number for `sl-chunk`.";
+    @return null;
   }
 
   @if $size >= length($list) {
-    @return $list;
+    @return sl-to-list($list);
   }
 
   $index: 1;
@@ -31,8 +40,16 @@
     @for $j from 1 through $size {
       @if $index <= $length {
         $is-orphan: $length % $size == 1 and $j == 1;
-        $tmp: if($is-orphan, nth($list, $index), append($tmp, nth($list, $index)));
+        
+        @if $is-orphan {
+          $tmp: nth($list, $index);
+        }
+
+        @else {
+          $tmp: append($tmp, nth($list, $index), list-separator($list));
+        }
       }
+
       $index: $index + 1;
     }
 

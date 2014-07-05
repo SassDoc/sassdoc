@@ -1,0 +1,30 @@
+/** 
+ * Tests whether `$list` is empty.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-empty
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example
+ * sl-is-empty(())
+ * // true
+ *
+ * @example
+ * sl-is-empty(a)
+ * // false
+ *
+ * @return {Bool}
+ */
+
+@function sl-is-empty($list) {
+  @return length($list) == 0;
+}
+
+/**
+ * @requires sl-is-empty
+ * @alias sl-is-empty
+ */
+ 
+@function sl-empty($list) {
+  @return sl-is-empty($list);
+}

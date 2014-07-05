@@ -1,36 +1,49 @@
 /**
- * Explode `$string` into a list using `$delimiter` as a delimiter
- * ---
- * @since 1.0.0
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#explode
- * ---
- * @param {String} $string         - string to explode
- * @param {String} $separator ('') - string to use as a delimiter
- * ---
- * @throws `$string` is not a string for `explode`.
- * @throws `$delimiter` is not a string for `explode`.
- * ---
- * @returns {List | Bool}
+ * Explodes `$string` into a list using `$delimiter` as a delimiter.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-explode
+ *
+ * @param {String} $string              - string to explode
+ * @param {String} $delimiter ('')      - string to use as a delimiter
+ * @param {String} $separator ('space') - list separator
+ *
+ * @throws $string is not a string for `sl-explode`.
+ * @throws $delimiter is not a string for `sl-explode`.
+ *
+ * @example
+ * sl-explode(abc)
+ * // a b c
+ *
+ * @example
+ * sl-explode(abc, b)
+ * // a c
+ * 
+ * @return {List | Null}
  */
-@function explode($string, $delimiter: '') {
+ 
+@function sl-explode($string, $delimiter: '', $separator: "space") {
   @if type-of($string) != "string" {
-    @warn "`explode` function expecting a string; #{type-of($string)} given.";
-    @return false;
+    @warn "`sl-explode` function expecting a string; #{type-of($string)} given.";
+    @return null;
   }
 
   @if type-of($delimiter) != "string" {
-    @warn "`explode` function expecting a string; #{type-of($delimiter)} given.";
-    @return false;
+    @warn "`sl-explode` function expecting a string; #{type-of($delimiter)} given.";
+    @return null;
   }
 
   $result: ();
   $length: str-length($string);
+  
+  @if not index("space" "comma", $separator) {
+    $separator: "space";
+  }
 
   @if str-length($delimiter) == 0 {
     @for $i from 1 through $length {
       $result: append($result, str-slice($string, $i, $i));
     }
+    
     @return $result;
   }
 
@@ -39,15 +52,17 @@
 
   @while $running {
     $index: str-index($remaining, $delimiter);
-    @if not $index or $index == 0 {
+    
+    @if not $index {
       $running: false;
     }
+
     @else {
       $slice: str-slice($remaining, 1, $index - 1);
-      $result: append($result, $slice);
+      $result: append($result, $slice, $separator);
       $remaining: str-slice($remaining, $index + str-length($delimiter));
     }
   }
 
-  @return append($result, $remaining);
+  @return append($result, $remaining, $separator);
 }

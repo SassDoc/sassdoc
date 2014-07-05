@@ -1,0 +1,29 @@
+/**
+ * Tests whether all items from `$list` pass the test implemented by `$function`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-every
+ *
+ * @param {List}    $list     - list to run test against
+ * @param {String}  $function - function to run against every item from list
+ * @param {ArgList} $args     - extra arguments to pass to the function
+ *
+ * @example
+ * sl-every(1 2 3, unitless)
+ * // true
+ *
+ * @example
+ * sl-every(1 2 3px, unitless)
+ * // false
+ *
+ * @return {Bool}
+ */
+
+@function sl-every($list, $function, $args...) {
+  @each $item in $list {
+    @if not call($function, $item, $args...) {
+      @return false;
+    } 
+  }
+  
+  @return true;
+}

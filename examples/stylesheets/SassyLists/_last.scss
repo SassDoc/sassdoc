@@ -1,18 +1,35 @@
 /**
- * Returns last element of `$list`
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#last
- * ---
+ * Returns last element of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-last
+ *
  * @param {List} $list - list to retrieve last value from
- * ---
+ *
  * @throws Cannot find last item of empty list.
- * ---
- * @returns {* | Bool}
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-last(a b c)
+ * // c
+ * 
+ * @example
+ * sl-last(a)
+ * // a
+ *
+ * @example
+ * sl-last(())
+ * // null
+ * 
+ * @return {*}
  */
-@function last($list) {
-  @if length($list) == 0 {
+ 
+@function sl-last($list) {
+  @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
+
+  @if sl-is-empty($list) {
     @warn "Cannot find last item of empty list.";
-    @return false;
+    @return null;
   }
 
   @return nth($list, -1);

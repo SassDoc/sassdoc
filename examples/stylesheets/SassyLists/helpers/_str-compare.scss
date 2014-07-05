@@ -1,21 +1,23 @@
 /**
- * Compares two values based on alphabetical order
- * ---
+ * Compares `$a` and `$b` based on `$order`.
+ *
  * @access private
- * ---
+ *
  * @param {*}       $a      - first value
  * @param {*}       $b      - second value
  * @param {List}    $matrix - alphabetical order
- * ---
- * @returns {Bool}
+ *
+ * @return {Bool}
  */
  
-@function str-compare($a, $b, $order) {
+@function sl-str-compare($a, $b, $order) {
   @if type-of($a) == "number" and type-of($b) == "number" {
     @return $a < $b;
   }
+
   $a: to-lower-case($a + unquote(""));
   $b: to-lower-case($b + unquote(""));
+  
   @for $i from 1 through min(str-length($a), str-length($b)) {
     $char-a: str-slice($a, $i, $i);
     $char-b: str-slice($b, $i, $i);
@@ -23,5 +25,6 @@
       @return index($order, $char-a) < index($order, $char-b);
     }
   }
+  
   @return str-length($a) < str-length($b);
 }

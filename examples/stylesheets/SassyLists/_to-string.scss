@@ -1,28 +1,46 @@
 /**
- * Joins all elements of `$list` with `$glue`
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#to-string
- * ---
+ * Joins all elements of `$list` with `$glue`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-string
+ *
  * @param {List}   $list      - list to cast
  * @param {String} $glue ('') - value to use as a join string
- * ---
- * @returns {String}
+ *
+ * @requires sl-has-multiple-values
+ * @requires sl-last
+ * 
+ * @example
+ * sl-to-string(a b c)
+ * // abc
+ *
+ * @example
+ * sl-to-string(a b c, '-')
+ * // a-b-c
+ * 
+ * @return {String}
  */
-@function to-string($list, $glue: '') {
-  $result: '';
-  $length: length($list);
 
-  @for $i from 1 through $length {
-    $item: nth($list, $i);
-    $result: $result + if(length($item) > 1, to-string($item, $glue), $item + $glue);
+@function sl-to-string($list, $glue: '') {
+  @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
+
+  $result: '';
+
+  @each $item in $list {
+    $result: $result + if(sl-has-multiple-values($item), sl-to-string($item, $glue), $item);
+
+    @if $item != sl-last($list) {
+      $result: $result + $glue;
+    }
   }
 
-  @return quote(str-slice($result, 1, str-length($glue) * -1 - 1));
+  @return quote($result);
 }
 
 /**
- * @alias to-string
+ * @requires sl-to-string
+ * @alias sl-to-string
  */
-@function stringify($list, $glue: '') {
-  @return to-string($list, $glue);
+ 
+@function sl-stringify($list, $glue: '') {
+  @return sl-to-string($list, $glue);
 }

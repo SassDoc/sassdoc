@@ -1,0 +1,20 @@
+/** Tests whether `$list` is not empty.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-has-values
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example 
+ * sl-has-values(a)
+ * // true
+ *
+ * @example 
+ * sl-has-values(())
+ * // false
+ * 
+ * @return {Bool}
+ */
+ 
+@function sl-has-values($list) {
+  @return length($list) > 0;
+}

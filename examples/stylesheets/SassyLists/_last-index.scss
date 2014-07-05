@@ -1,17 +1,24 @@
 /**
- * Returns last index of `$value` in `$list`
- * ---
- * @ignore Documentation: http://sassylists.com/documentation/#last-index
- * ---
- * @param {List}    $list  - list to search
- * @param {*}       $value - value to be searched for
- * ---
- * @returns {Number | Null}
+ * Returns last index of `$value` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-last-index
+ *
+ * @param {List} $list  - list to search
+ * @param {*}    $value - value to be searched for
+ *
+ * @example
+ * sl-last-index(a b a, a)
+ * // 3
+ *
+ * @example
+ * sl-last-index(a b a, z)
+ * // null
+ *
+ * @return {Number | Null}
  */
-@function last-index($list, $value) {
-  $length: length($list);
-
-  @for $i from $length through 1 {
+ 
+@function sl-last-index($list, $value) {
+  @for $i from length($list) through 1 {
     @if nth($list, $i) == $value {
       @return $i;
     }
