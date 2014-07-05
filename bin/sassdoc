@@ -13,7 +13,7 @@ if (options['--verbose'] === true) {
   log.enabled = true;
 }
 
-var config = require(options['--config'] ? process.cwd() + '/' + options['--config'] : '../view.json');
+var config = require(options['--config'] ? process.cwd() + '/' + options['--config'] : '../view/view.json');
 
 if (typeof options['<src>'] !== 'undefined' || typeof options['<dest>'] !== 'undefined') {
   api.documentize(options['<src>'], options['<dest>'], config);

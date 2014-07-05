@@ -100,14 +100,13 @@ See [Wiki](https://github.com/HugoGiraudel/SassDoc/wiki/Documentation).
 
 With the `-c` or `--config` flag, you can set the path to a JSON file containing variables to be passed to the view so the latter is a little more customized than the default documentation. 
 
-Default path leads to the `view.json` file at root level. You can update this file or make your own.
+Default path leads to `view/view.json`. You can update this file or make your own.
 
 Allowed variables:
 
 * (`String`) `title`: title of the page
-* (`Object`) `display`: see below
-* (`Boolean`) `display.private`: enable/disable display of private items
-* (`Boolean`) `display.alias`: enable/disable display of alias items
+* (`Array`) `display_access`: access levels that should be displayed
+* (`Boolean`) `display_alias`: enable/disable display of alias items
 
 ## Credits
 

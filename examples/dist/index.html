@@ -514,7 +514,7 @@
     
       
         <li>
-        <a href="#function-sl-remove">sl-remove</a> 
+        <a href="#function-sl-remove-nth">sl-remove-nth</a> 
         
         
         </li>
@@ -524,7 +524,7 @@
     
       
         <li>
-        <a href="#function-sl-remove-nth">sl-remove-nth</a> 
+        <a href="#function-sl-remove">sl-remove</a> 
         
         
         </li>
@@ -664,7 +664,7 @@
     
       
         <li>
-        <a href="#function-sl-is-number">sl-is-number</a> 
+        <a href="#function-sl-str-compare">sl-str-compare</a> 
         <span class="annotation">private</span>
         
         </li>
@@ -680,7 +680,7 @@
     
       
         <li>
-        <a href="#function-sl-str-compare">sl-str-compare</a> 
+        <a href="#function-sl-is-number">sl-is-number</a> 
         <span class="annotation">private</span>
         
         </li>
@@ -4170,6 +4170,153 @@
         
           
           
+            <section class="sassdoc__item  " id="function-sl-remove-nth">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-remove-nth</code>
+
+  
+
+  
+
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-remove-nth ($list, $index) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p>Removes value from <code>$list</code> at index <code>$index</code>.</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td data-label="name"><code>$list</code></td>
+        <td data-label="desc"><p>list to remove value from</p></td>
+        <td data-label="type">
+        
+          <code>List</code>
+        
+        </td>
+        <td data-label="default">&mdash;</td>
+      </tr>
+    
+      <tr class="sassdoc__item-parameter">
+        <td data-label="name"><code>$index</code></td>
+        <td data-label="desc"><p>index to remove</p></td>
+        <td data-label="type">
+        
+          <code>Number</code>
+        
+        </td>
+        <td data-label="default">&mdash;</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    <code>List </code>, <code> null</code>
+  
+  </p>
+
+
+    
+  <h3>Example</h3>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-remove-nth(a b c, 2)
+// a c</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-remove-nth(a b c, 42)
+// null</code></pre>
+  
+
+
+    
+
+    
+  <h3>Requires</h3>
+  
+    <ul class="sassdoc__item-requires">
+    <li><a href="#function-sl-replace-nth"><code>sl-replace-nth</code></a></li>
+    </ul>
+  
+
+
+    
+  <h3>Used by</h3>
+  
+    <ul class="sassdoc__item-usedby">
+    <li><a href="#function-sl-without-nth"><code>sl-without-nth</code></a></li>
+    </ul>
+  
+
+
+    	
+
+    
+
+    
+
+    
+  <h3>Found at</h3>
+  <p><code>examples/stylesheets/SassyLists/_remove-nth.scss</code></p>
+
+
+  
+
+</section>
+
+          
+        
+          
+          
+        
+          
+          
             <section class="sassdoc__item  " id="function-sl-remove">
 
   <h2 class="sassdoc__item-name">
@@ -4322,153 +4469,6 @@
     
   <h3>Found at</h3>
   <p><code>examples/stylesheets/SassyLists/_remove.scss</code></p>
-
-
-  
-
-</section>
-
-          
-        
-          
-          
-        
-          
-          
-            <section class="sassdoc__item  " id="function-sl-remove-nth">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-remove-nth</code>
-
-  
-
-  
-
-  
-</h2>
-
-  
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-  <pre class="sassdoc__item-code  language-scss"><code>@function sl-remove-nth ($list, $index) { ... }</code></pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p>Removes value from <code>$list</code> at index <code>$index</code>.</p></p>
-
-
-    
-<h3>Parameters</h3>
-
-<table class="sassdoc__item-parameters">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr class="sassdoc__item-parameter">
-        <td data-label="name"><code>$list</code></td>
-        <td data-label="desc"><p>list to remove value from</p></td>
-        <td data-label="type">
-        
-          <code>List</code>
-        
-        </td>
-        <td data-label="default">&mdash;</td>
-      </tr>
-    
-      <tr class="sassdoc__item-parameter">
-        <td data-label="name"><code>$index</code></td>
-        <td data-label="desc"><p>index to remove</p></td>
-        <td data-label="type">
-        
-          <code>Number</code>
-        
-        </td>
-        <td data-label="default">&mdash;</td>
-      </tr>
-    
-  </tbody>
-</table>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    <code>List </code>, <code> null</code>
-  
-  </p>
-
-
-    
-  <h3>Example</h3>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-remove-nth(a b c, 2)
-// a c</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-remove-nth(a b c, 42)
-// null</code></pre>
-  
-
-
-    
-
-    
-  <h3>Requires</h3>
-  
-    <ul class="sassdoc__item-requires">
-    <li><a href="#function-sl-replace-nth"><code>sl-replace-nth</code></a></li>
-    </ul>
-  
-
-
-    
-  <h3>Used by</h3>
-  
-    <ul class="sassdoc__item-usedby">
-    <li><a href="#function-sl-without-nth"><code>sl-without-nth</code></a></li>
-    </ul>
-  
-
-
-    	
-
-    
-
-    
-
-    
-  <h3>Found at</h3>
-  <p><code>examples/stylesheets/SassyLists/_remove-nth.scss</code></p>
 
 
   
@@ -6662,215 +6662,6 @@ null</code></pre>
         
           
           
-            <section class="sassdoc__item  " id="function-sl-is-number">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-is-number</code>
-
-  
-
-  
-
-  
-</h2>
-
-  
-  
-    
-
-    
-
-    
-
-    
-      
-    
-  
-  <pre class="sassdoc__item-code  language-scss"><code>@function sl-is-number ($value) { ... }</code></pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p>Check whether value is a number</p></p>
-
-
-    
-<h3>Parameters</h3>
-
-<table class="sassdoc__item-parameters">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr class="sassdoc__item-parameter">
-        <td data-label="name"><code>$value</code></td>
-        <td data-label="desc"><p>value to run test against</p></td>
-        <td data-label="type">
-        
-          Any
-        
-        </td>
-        <td data-label="default">&mdash;</td>
-      </tr>
-    
-  </tbody>
-</table>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    <code>Bool</code>
-  
-  </p>
-
-
-    
-
-    
-
-    
-
-    
-  <h3>Used by</h3>
-  
-    <ul class="sassdoc__item-usedby">
-    <li><a href="#function-sl-sum"><code>sl-sum</code></a></li>
-    </ul>
-  
-
-
-    	
-
-    
-
-    
-
-    
-  <h3>Found at</h3>
-  <p><code>examples/stylesheets/SassyLists/helpers/_is-number.scss</code></p>
-
-
-  
-
-</section>
-
-          
-        
-          
-          
-            <section class="sassdoc__item  " id="function-sl-missing-dependencies">
-
-  <h2 class="sassdoc__item-name">
-  
-  
-  <code>sl-missing-dependencies</code>
-
-  
-
-  
-
-  
-</h2>
-
-  
-  
-    
-
-    
-
-    
-      
-    
-
-    
-      
-    
-  
-  <pre class="sassdoc__item-code  language-scss"><code>@function sl-missing-dependencies ($functions...) { ... }</code></pre>
-
-  
-
-    
-  <h3>Description</h3>
-  <p class="sassdoc__item-description"><p>Checks whether <code>$functions</code> exist in global scope.</p></p>
-
-
-    
-<h3>Parameters</h3>
-
-<table class="sassdoc__item-parameters">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-      <tr class="sassdoc__item-parameter">
-        <td data-label="name"><code>$functions</code></td>
-        <td data-label="desc"><p>list of functions to check for</p></td>
-        <td data-label="type">
-        
-          <code>Arglist</code>
-        
-        </td>
-        <td data-label="default">&mdash;</td>
-      </tr>
-    
-  </tbody>
-</table>
-
-
-    
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description"><p>Whether or not there are missing dependencies</p>
-  
-    <code>Bool</code>
-  
-  </p>
-
-
-    
-
-    
-
-    
-
-    
-
-    	
-
-    
-
-    
-
-    
-  <h3>Found at</h3>
-  <p><code>examples/stylesheets/SassyLists/helpers/_missing-dependencies.scss</code></p>
-
-
-  
-
-</section>
-
-          
-        
-          
-          
             <section class="sassdoc__item  " id="function-sl-str-compare">
 
   <h2 class="sassdoc__item-name">
@@ -7010,6 +6801,215 @@ null</code></pre>
     
   <h3>Found at</h3>
   <p><code>examples/stylesheets/SassyLists/helpers/_str-compare.scss</code></p>
+
+
+  
+
+</section>
+
+          
+        
+          
+          
+            <section class="sassdoc__item  " id="function-sl-missing-dependencies">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-missing-dependencies</code>
+
+  
+
+  
+
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+      
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-missing-dependencies ($functions...) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p>Checks whether <code>$functions</code> exist in global scope.</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td data-label="name"><code>$functions</code></td>
+        <td data-label="desc"><p>list of functions to check for</p></td>
+        <td data-label="type">
+        
+          <code>Arglist</code>
+        
+        </td>
+        <td data-label="default">&mdash;</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description"><p>Whether or not there are missing dependencies</p>
+  
+    <code>Bool</code>
+  
+  </p>
+
+
+    
+
+    
+
+    
+
+    
+
+    	
+
+    
+
+    
+
+    
+  <h3>Found at</h3>
+  <p><code>examples/stylesheets/SassyLists/helpers/_missing-dependencies.scss</code></p>
+
+
+  
+
+</section>
+
+          
+        
+          
+          
+            <section class="sassdoc__item  " id="function-sl-is-number">
+
+  <h2 class="sassdoc__item-name">
+  
+  
+  <code>sl-is-number</code>
+
+  
+
+  
+
+  
+</h2>
+
+  
+  
+    
+
+    
+
+    
+
+    
+      
+    
+  
+  <pre class="sassdoc__item-code  language-scss"><code>@function sl-is-number ($value) { ... }</code></pre>
+
+  
+
+    
+  <h3>Description</h3>
+  <p class="sassdoc__item-description"><p>Check whether value is a number</p></p>
+
+
+    
+<h3>Parameters</h3>
+
+<table class="sassdoc__item-parameters">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="sassdoc__item-parameter">
+        <td data-label="name"><code>$value</code></td>
+        <td data-label="desc"><p>value to run test against</p></td>
+        <td data-label="type">
+        
+          Any
+        
+        </td>
+        <td data-label="default">&mdash;</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+    
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    <code>Bool</code>
+  
+  </p>
+
+
+    
+
+    
+
+    
+
+    
+  <h3>Used by</h3>
+  
+    <ul class="sassdoc__item-usedby">
+    <li><a href="#function-sl-sum"><code>sl-sum</code></a></li>
+    </ul>
+  
+
+
+    	
+
+    
+
+    
+
+    
+  <h3>Found at</h3>
+  <p><code>examples/stylesheets/SassyLists/helpers/_is-number.scss</code></p>
 
 
   

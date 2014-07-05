@@ -5,6 +5,7 @@
 * Added location where item was found
 * Moved view's stylesheets to Sass
 * Changed the folder structure
+* Moved `view.json` to `view/` folder
 
 ## 1.0.0rc.5
 
