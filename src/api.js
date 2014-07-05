@@ -8,8 +8,9 @@ exports = module.exports = {
    * Main API function, running the whole thing
    * @param {String} source - Source folder
    * @param {String} destination - Destination folder
+   * @param {Object} config - Configuration from `view.json`
    * @example
-   * documentize('examples/sass', 'examples/dist')
+   * documentize('examples/sass', 'examples/dist', config)
    * @return {Q.promise}
    */
   documentize: function (source, destination, config) {

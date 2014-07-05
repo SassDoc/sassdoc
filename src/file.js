@@ -181,6 +181,7 @@ exports = module.exports = {
 
   /**
    * Get data
+   * @param {String} folder - folder path
    */
   getData: function (folder) {
     return exports.folder.parse(folder).then(function (response) {
