@@ -11,7 +11,7 @@ Options:
   -h, --help            Bring help.
   --version             Show version.
   -v, --verbose         Run in verbose mode.
-  -c,  --config=<path>  Path to JSON file containing variable to be passed
+  -c, --config=<path>   Path to JSON file containing variable to be passed
                         to the view.
 */
 
