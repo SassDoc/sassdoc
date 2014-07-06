@@ -1,8 +1,4 @@
 <h2 class="sassdoc__item-name">
-  {% if item.deprecated != false %}
-    <span class="sassdoc__item-deprecated" title="{{ item.deprecated[0] }}">[Deprecated]</span>
-  {% endif %}
-  
   <code>{{ item.context.name }}</code>
 
   {% if display_alias and item.aliased.length > 0 %}

@@ -1,6 +1,8 @@
 @import "utils/variables";
 @import "vendors/prism";
 @import "base/base";
+@import "components/map";
+@import "components/header";
 
 /**
  * Main container
@@ -11,91 +13,6 @@
   overflow: hidden;
   padding: 0 1em;
   max-width: 100%;
-}
-
-/**
- * Header
- */
-.sassdoc__header {
-  padding: 1em;
-  background: $pink;
-  color: white;
-  margin-bottom: 2em;
-  border-bottom: 0.5em solid #f2d9e6;
-}
-
-/**
- * Main title
- */
-.sassdoc__title {
-  font-size: 1em;
-  margin: 0;
-  float: left;
-}
-
-/**
- * Item count
- */
-.sassdoc__count {
-  float: right;
-  margin: 0;
-}
-
-/**
- * Doc map
- */
-.sassdoc__map {
-  @media (min-width: 600px) {
-    width: 27%;
-    float: left;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0 1.5em;
-  }
-
-  li {
-    line-height: 1.5;
-  }
-
-  a {
-    font-weight: 500;
-    color: $green;
-    text-decoration: none;
-  }
-
-  .annotation {
-    color: $purple;
-  }
-}  
-
-/**
- * Map main wrapper
- */
-.sassdoc__map-container {
-  padding: .5em 0;
-  background-color: $light-grey;
-}
-
-/**
- * Map heading
- */
-.sassdoc__map-heading {
-  color: $dark-grey;
-  font-size: 1.2em;
-  margin-top: 0;
-  
-}
-
-/**
- * List item section
- */
-.sassdoc__map-section a {
-  font-weight: 500;
-  display: block;
-  color: $pink;
-  margin-top: 1em;
 }
 
 /**
@@ -136,6 +53,7 @@
   border-left: .3em solid $pink;
   display: block;
   word-wrap: break-word;
+  margin-top: 1em !important;
   line-height: 1.42;
 }
 
@@ -154,9 +72,8 @@
 /**
  * Deprecated flag
  */
-.sassdoc__item-deprecated {
-  color: $purple;
-  font-size: .7em;
+.sassdoc__deprecated strong {
+  color: darken(red, 10%);
   text-transform: uppercase;
 }
 

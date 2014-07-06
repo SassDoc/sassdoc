@@ -3,6 +3,9 @@
 ## 1.0.0rc.7
 
 * Fixed an issue where links were not displayed
+* Added `--version` option
+* Improved Sass and Swig structure
+* Improved the way we display `@deprecated`
 
 ## 1.0.0rc.6
 

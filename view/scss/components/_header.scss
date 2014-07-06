@@ -1,0 +1,27 @@
+/**
+ * Header
+ */
+.sassdoc__header {
+  padding: 1em;
+  background: $pink;
+  color: white;
+  margin-bottom: 2em;
+  border-bottom: 0.5em solid #f2d9e6;
+}
+
+/**
+ * Main title
+ */
+.sassdoc__title {
+  font-size: 1em;
+  margin: 0;
+  float: left;
+}
+
+/**
+ * Item count
+ */
+.sassdoc__count {
+  float: right;
+  margin: 0;
+}
