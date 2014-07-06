@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0rc.7
+
+* Fixed an issue where links were not displayed
+
 ## 1.0.0rc.6
 
 * Added location where item was found

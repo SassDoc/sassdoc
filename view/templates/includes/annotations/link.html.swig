@@ -1,6 +1,6 @@
-{% if item.links.length > 0 %}
+{% if item.link.length > 0 %}
   <h3>Links</h3>
-  {% for _link in item.links %}
+  {% for _link in item.link %}
     {% if loop.first %}<ul class="sassdoc__item-links">{% endif %}
     <li><a href="{{ _link.url }}">
       {% if _link.caption %}
