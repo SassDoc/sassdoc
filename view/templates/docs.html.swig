@@ -10,15 +10,21 @@
   {% else %}
 
     {% for type, obj in data %}
-      {% if obj.length > 0 %}
-        <h1 class="sassdoc__section" id="{{ type }}">{{ (type + 's') | capitalize }}</h1>
-        {% for item in obj %}
-          {% set partial = "includes/" + type + ".html.swig" %}
-          {% if (display_access.indexOf(item.access[0]) !== -1) and not (not display_alias and item.alias[0]) %}
-            {% include partial with item %}
+      {% set is_title_displayed = false %}
+
+      {% for item in obj %}
+        {% set partial = "includes/items/" + type + ".html.swig" %}
+
+        {% if (display_access.indexOf(item.access[0]) !== -1) and not (not display_alias and item.alias[0]) %}
+          {% if not is_title_displayed %}
+            <h1 class="sassdoc__section" id="{{ type }}">{{ (type + 's') | capitalize }}</h1>
+            {% set is_title_displayed = true %}
           {% endif %}
-        {% endfor %}
-      {% endif %}
+        
+          {% include partial with item %}
+        {% endif %}
+      {% endfor %}
+
     {% endfor %}
 
   {% endif %}

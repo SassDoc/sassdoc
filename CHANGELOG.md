@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0rc.8
+
+* Added back the `[Private]` annotation before private items' name
+* Added a `version` parameter to `view.json` that gets displayed right next to the title
+* Prevented empty sections in case items exist but are not displayed
+
 ## 1.0.0rc.7
 
 * Fixed an issue where links were not displayed

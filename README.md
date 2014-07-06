@@ -109,6 +109,7 @@ Allowed variables:
 * (`String`) `title`: title of the page
 * (`Array`) `display_access`: access levels that should be displayed
 * (`Boolean`) `display_alias`: enable/disable display of alias items
+* (`String`|`Boolean`) `version`: if enabled, gets displayed right next to title
 
 ## Credits
 

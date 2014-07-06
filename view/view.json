@@ -1,5 +1,6 @@
 {
   "title": "SassDoc",
-  "display_access": ["public", "private"],
-  "display_alias": false
+  "display_access": ["public"],
+  "display_alias": false,
+  "version": false
 }

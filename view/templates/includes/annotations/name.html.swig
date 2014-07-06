@@ -1,4 +1,8 @@
 <h2 class="sassdoc__item-name">
+  {% if item.access[0] != "public" %}
+    <span class="sassdoc__item-access">[{{ item.access[0] }}]</span>
+  {% endif %}
+
   <code>{{ item.context.name }}</code>
 
   {% if display_alias and item.aliased.length > 0 %}
