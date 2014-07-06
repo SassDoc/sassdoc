@@ -1,26 +1,27 @@
 # Changelog
 
-## 1.0.0rc.8
+## 1.0.0-rc.8
 
 * Added back the `[Private]` annotation before private items' name
 * Added a `version` parameter to `view.json` that gets displayed right next to the title
 * Prevented empty sections in case items exist but are not displayed
+* Prevented broken links with requires and usedby in case of private items
 
-## 1.0.0rc.7
+## 1.0.0-rc.7
 
 * Fixed an issue where links were not displayed
 * Added `--version` option
 * Improved Sass and Swig structure
 * Improved the way we display `@deprecated`
 
-## 1.0.0rc.6
+## 1.0.0-rc.6
 
 * Added location where item was found
 * Moved view's stylesheets to Sass
 * Changed the folder structure
 * Moved `view.json` to `view/` folder
 
-## 1.0.0rc.5
+## 1.0.0-rc.5
 
 * Improved view
 * Prevented some broken links
@@ -29,20 +30,20 @@
 * Fixed an issue with `@requires` type
 * Fixed some formatting issues with `@example`
 
-## 1.0.0rc.4
+## 1.0.0-rc.4
 
 * Fixed an issue prevented `@requires` form working if there was any `@alias`
 
-## 1.0.0rc.3
+## 1.0.0-rc.3
 
 * Greatly improved the view
 
-## 1.0.0rc.2
+## 1.0.0-rc.2
 
 * Fixed `@deprecated` not supporting a message
 * Added a trim to `@datatype`
 
-## 1.0.0rc.1
+## 1.0.0-rc.1
 
 * Moved to a real parser ([CDocParser](https://github.com/FWeinb/CDocParser) and [ScssCommentParser](https://github.com/FWeinb/ScssCommentParser))
 * Dropped support for inline comments (`//`)

@@ -15,6 +15,11 @@ var logger = require('./log');
 extras.useFilter(swig, 'markdown');
 extras.useFilter(swig, 'nl2br');
 extras.useFilter(swig, 'split');
+extras.useFilter(swig, 'trim');
+swig.setFilter('push', function (arr, val) { 
+  return arr.push(val);
+});
+
 ncp.limit = 16;
 
 exports = module.exports = {
@@ -256,12 +261,9 @@ exports = module.exports = {
                 reqItem.usedBy = [];
               }
 
-              reqItem.usedBy.push({
-                item: item.context.name,
-                type: item.context.type
-              });
+              reqItem.usedBy.push(item);
 
-              return reqItem.context;
+              return reqItem;
             }
 
             else {
