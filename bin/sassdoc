@@ -21,7 +21,7 @@ var log = require('../src/log');
 var docopt = require('docopt').docopt;
 
 var doc = fs.readFileSync(__filename, 'utf-8');
-doc = doc.substr(doc.indexOf('/*'));
+doc = doc.substr(doc.indexOf('/*') + 2);
 doc = doc.substr(0, doc.indexOf('*/'));
 
 var package = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf-8'));
