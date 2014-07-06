@@ -1,13 +1,27 @@
 #!/usr/bin/env node
 
+/*
+Usage: sassdoc <src> <dest> [options]
+
+Options:
+  -h, --help            Bring help.
+  --version             Show version.
+  -v, --verbose         Run in verbose mode.
+  -c,  --config=<path>  Path to configuration file.
+*/
+
+var fs = require('fs');
 var api = require('../src/api');
 var log = require('../src/log');
-var options = require('docopt').docopt('Usage: sassdoc <src> <dest> [options]\n\
-\n\
-Options:\n\
--h, --help     Bring help.\n\
--v, --verbose  Run in verbose mode.\n\
--c <path>, --config <path>   Path to configuration file.');
+var docopt = require('docopt').docopt;
+
+var doc = fs.readFileSync(__filename, 'utf-8');
+doc = doc.substr(doc.indexOf('/*'));
+doc = doc.substr(0, doc.indexOf('*/'));
+
+var package = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf-8'));
+
+var options = docopt(doc, {version: package.version});
 
 if (options['--verbose'] === true) {
   log.enabled = true;
