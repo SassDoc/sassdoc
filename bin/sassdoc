@@ -3,11 +3,16 @@
 /*
 Usage: sassdoc <src> <dest> [options]
 
+Arguments:
+  <src>   Path to your Sass folder.
+  <dest>  Path to the destination folder.
+
 Options:
   -h, --help            Bring help.
   --version             Show version.
   -v, --verbose         Run in verbose mode.
-  -c,  --config=<path>  Path to configuration file.
+  -c,  --config=<path>  Path to JSON file containing variable to be passed
+                        to the view.
 */
 
 var fs = require('fs');

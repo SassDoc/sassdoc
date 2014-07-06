@@ -78,9 +78,11 @@ sassdoc <src> <dest> [options]
 
 **Options:**
 
-* `-h, --help`: bring help
-* `-v, --verbose`: run in verbose mode
-* `-c, --config`: path to `.json` file containing variables to be passed to the view
+* `-h, --help`: Bring help.
+* `--version`: Show version.
+* `-v, --verbose`: Run in verbose mode.
+* `-c, --config`: Path to JSON file containing variables to be passed
+                  to the view.
 
 ### Node
 
