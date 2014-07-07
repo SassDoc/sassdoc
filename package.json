@@ -38,5 +38,8 @@
   },
   "bin": {
     "sassdoc": "./bin/sassdoc"
+  },
+  "devDependencies": {
+    "assert": "^1.1.1"
   }
 }
