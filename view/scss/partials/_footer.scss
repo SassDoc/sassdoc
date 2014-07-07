@@ -1,0 +1,28 @@
+.sassdoc__footer {
+  background: color("light-grey");
+  padding: 1em 0;
+  margin-top: 3em;
+}
+
+.sassdoc__footer-project {
+  float: left;
+}
+
+.sassdoc__footer-watermark {
+  float: right;
+}
+
+.project-info__name,
+.project-info__version,
+.project-info__license {
+  display: inline-block;
+}
+
+.project-info__version,
+.project-info__license {
+  color: #555;
+}
+
+.project-info__license {
+  text-indent: -.25em;
+}

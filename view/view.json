@@ -1,6 +1,9 @@
 {
-  "title": "SassDoc",
-  "display_access": ["public", "private"],
-  "display_alias": false,
-  "version": false
+  "display": {
+    "access": ["public", "private"],
+    "alias": false,
+    "watermark": true
+  },
+
+  "package": "./package.json"
 }

@@ -106,13 +106,37 @@ Default path leads to `view/view.json`. You can update this file or make your ow
 
 Allowed variables:
 
-* (`String`) `title`: title of the page
-* (`Array`) `display_access`: access levels that should be displayed
-* (`Boolean`) `display_alias`: enable/disable display of alias items
-* (`String`|`Boolean`) `version`: if enabled, gets displayed right next to title
+```json
+{
+  "display": {
+    "access": ["public", "private"],
+    "alias": false,
+    "watermark": true
+   },
+
+  "package": "../package.json"
+}
+```
+
+* (`Array`) `display.access`: access levels that should be displayed
+* (`Boolean`) `display.alias`: enable/disable display of alias items
+* (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool, leave it!)
+* (`String|Object`) `package`: path to a .json file (ideally your `package.json`) or directly an object
+
+The package object (either direct or required) should ideally contain:
+
+* `name`
+* `version`
+* `license`
+* `homepage`
+* `description`
 
 ## Credits
 
 * [Valérian Galliat](https://twitter.com/valeriangalliat)
 * [Fabrice Weinberg](https://twitter.com/fweinb)
 * [Hugo Giraudel](http://twitter.com/HugoGiraudel)
+
+With huge contributions from:
+
+* [Pascal Duez](https://twitter.com/pascalduez)

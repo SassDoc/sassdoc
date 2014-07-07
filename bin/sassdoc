@@ -17,23 +17,59 @@ Options:
 
 var fs = require('fs');
 var api = require('../src/api');
-var log = require('../src/log');
+var logger = require('../src/log');
 var docopt = require('docopt').docopt;
+
+var project;
+var config;
 
 var doc = fs.readFileSync(__filename, 'utf-8');
 doc = doc.substr(doc.indexOf('/*') + 2);
 doc = doc.substr(0, doc.indexOf('*/'));
 
-var package = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf-8'));
+// Define version
+var pkg = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf-8'));
+var options = docopt(doc, {
+  version: pkg.version
+});
 
-var options = docopt(doc, {version: package.version});
-
+// Enable verbose mode
 if (options['--verbose'] === true) {
-  log.enabled = true;
+  logger.enabled = true;
 }
 
-var config = require(options['--config'] ? process.cwd() + '/' + options['--config'] : '../view/view.json');
+// Find configuration file
+if (!options['--config']) {
+  options['--config'] = 'view/view.json';
+}
 
+try {
+  config = require(process.cwd() + '/' + options['--config']);
+}
+
+catch(e) {
+  console.log(e);
+  throw e;
+}
+
+// Find package file
+
+if (typeof config.package === "string") {
+  var pkg_path = process.cwd() + '/' + config.package;
+  try {
+    package = require(pkg_path);
+  }
+
+  catch(e) {
+    logger.log('Can\'t find a package file at `' + pkg_path + '`.');
+  }
+
+  if (package) {
+    config.package = package;
+  }
+}
+
+// Initialize
 if (typeof options['<src>'] !== 'undefined' || typeof options['<dest>'] !== 'undefined') {
   api.documentize(options['<src>'], options['<dest>'], config);
 }

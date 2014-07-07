@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-rc.10
+
+* Added a footer
+* Changed the structure of `view.json`
+* Added license (MIT)
+
 ## 1.0.0-rc.9
 
 * Massively improved templates quality

@@ -7,7 +7,7 @@
 
   <code>{{ item.context.name }}</code>
 
-  {% if display_alias and item.aliased.length > 0 %}
+  {% if display.alias and item.aliased.length > 0 %}
     <span class="sassdoc__item-alias">(aliased as
     {% for alias in item.aliased %}
       <a href="#{{ item.context.type }}-{{ alias }}"><code>{{ alias }}</code></a>
