@@ -9,8 +9,8 @@
  */
 module.exports = function (text) {
   var example = {
-    type : 'scss', // Default to scss
-    code : text
+    type: 'scss', // Default to scss
+    code: text
   };
 
   // Get the optional type info

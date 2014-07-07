@@ -3,14 +3,17 @@
  *
  * @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
  *
- * @param {List}   $list  - list to chunk
- * @param {Number} $size  - length of lists
+ * @param {List}   $list (())  - list to chunk
+ * @param {Number} $size (0)  - length of lists
  *
  * @throws $size is not a number for `sl-chunk`.
  *
  * @requires sl-to-list
  *
- * @example
+ * @example markup
+ * </body>
+ *
+ * @example 
  * sl-chunk(a b c d e, 2)
  * // a b, c d, e
  *

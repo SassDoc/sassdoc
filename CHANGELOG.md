@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-rc.12
+
+* Fixed issues when parsing `@param`
+* Added language detection to `@example`
+
 ## 1.0.0-rc.11
 
 * Minor code improvements in bin
