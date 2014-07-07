@@ -4,6 +4,7 @@
 
 * Massively improved templates quality
 * Authorized markdown on `@author`
+* Added a favicon
 
 ## 1.0.0-rc.8
 
