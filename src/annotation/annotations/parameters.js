@@ -1,6 +1,6 @@
 'use strict';
 
-var typeRegEx =  /^\s*(?:\{(.*?)\})?\s*(?:\$(\w+))?\s*(?:\((.*?)\))?\s*(?:-?\s*(.*))?$/m;
+var typeRegEx =  /^\s*(?:\{([\w-_]+)\})?\s*(?:\$([\w-_]+))?\s*(?:\((.*)\))?\s*(?:-?\s*(.*))?/m;
 
 module.exports =  function( text ){
   var parsed = typeRegEx.exec(text);
