@@ -1,4 +1,6 @@
 <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#{{ item.context.type }}-{{ item.context.name }}">#</a>
+
   {% if item.access[0] != "public" %}
     <span class="sassdoc__item-access">[{{ item.access[0] }}]</span>
   {% endif %}
@@ -18,6 +20,6 @@
   {% endif %}
 
   {% if item.since %}
-    <span class="sassdoc__item-since">Since {{ item.since[0] | markdown }}</span>
+    <span class="sassdoc__item-since">Since {{ item.since[0] }}</span>
   {% endif %}
 </h2>

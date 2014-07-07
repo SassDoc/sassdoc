@@ -3,8 +3,11 @@
 ## 1.0.0-rc.9
 
 * Massively improved templates quality
+* Massively improved SCSS quality
 * Authorized markdown on `@author`
 * Added a favicon
+* Fixed tiny typo in console warning
+* Added anchor to each item
 
 ## 1.0.0-rc.8
 

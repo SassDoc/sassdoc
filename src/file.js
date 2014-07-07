@@ -245,7 +245,7 @@ exports = module.exports = {
             }
 
             else {
-              logger.log('Item `' + item.context.name + ' is an alias of `' + alias + '` but this item doesn\'t exist.');
+              logger.log('Item `' + item.context.name + '` is an alias of `' + alias + '` but this item doesn\'t exist.');
             }
           });
         }
@@ -267,7 +267,7 @@ exports = module.exports = {
             }
 
             else {
-              logger.log('Item `' + item.context.name + ' requires `' + req.name + '` from type `' + req.type + '` but this item doesn\'t exist.');
+              logger.log('Item `' + item.context.name + '` requires `' + req.name + '` from type `' + req.type + '` but this item doesn\'t exist.');
             }
           }).filter(function (item) {
             return typeof item !== 'undefined';

@@ -30,11 +30,11 @@ body {
 a {
   transition: .15s;
   text-decoration: none;
-  color: $pink;
+  color: color("pink");
   
   &:hover {
-  	&, code {
-  	  color: $dark-grey;
-  	}
+    &, code {
+      color: color("dark-grey");
+    }
   }
 }

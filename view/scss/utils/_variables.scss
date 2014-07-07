@@ -1,6 +1,13 @@
-$pink: #c6538c;
-$green: #699;
-$purple: #998099;
-$light-grey: #f7f5fa;
-$medium-grey: #ddd;
-$dark-grey: #444;
+$colors: (
+  "pink":        #c6538c,
+  "green":       #699,
+  "purple":      #998099,
+  "light-grey":  #f7f5fa,
+  "medium-grey": #ddd,
+  "dark-grey":   #444
+) !global;
+
+$breakpoints: (
+  "small":  (max-width: 600px),
+  "medium": (min-width: 601px)
+) !global;

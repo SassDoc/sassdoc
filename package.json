@@ -3,7 +3,7 @@
   "description": "Like JSDoc but for Sass files.",
   "author": "Hugo Giraudel <hugo.giraudel@gmail.com> http://hugogiraudel.com",
   "contributors": ["Fabrice Weinberg", "Valérian Galliat"],
-  "version": "1.0.0rc.8",
+  "version": "1.0.0-rc.9",
   "license": "MIT",
   "repository": {
     "type": "git",
