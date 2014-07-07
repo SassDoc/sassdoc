@@ -107,8 +107,6 @@ Allowed variables:
 
 ```json
 {
-  "name": "SassDoc",
-
   "display": {
     "access": ["public", "private"],
     "alias": false,
@@ -119,7 +117,6 @@ Allowed variables:
 }
 ```
 
-* (`String`) `name`: name of your project
 * (`Array`) `display.access`: access levels that should be displayed
 * (`Boolean`) `display.alias`: enable/disable display of alias items
 * (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool, leave it!)
