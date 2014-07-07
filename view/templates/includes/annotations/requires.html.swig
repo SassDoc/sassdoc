@@ -1,7 +1,7 @@
 {% set title_displayed = false %}
 {% for require in item.requires %}
 
-  {% if (display_access.indexOf(require.access[0]) !== -1) and not (not display_alias and require.alias[0]) %}
+  {% if (display.access.indexOf(require.access[0]) != -1) and not (not display.alias and require.alias[0]) %}
     {% if not title_displayed %}
       {% set title_displayed = true %}
       <h3>Requires</h3>
@@ -16,4 +16,3 @@
 {% if title_displayed %}
 </ul>
 {% endif %}
-

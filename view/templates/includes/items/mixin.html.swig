@@ -1,1 +1,1 @@
-{% include "item.html.swig" with item %}
+{% include "item.html.swig" with { item: item, display: display } %}

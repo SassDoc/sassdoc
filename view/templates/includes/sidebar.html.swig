@@ -45,7 +45,7 @@
 </div>
 
 {% if package.description %}
-<h2 class="sassdoc__map-heading">{{ package.name | capitalize }}</h2>
+<h2 class="sassdoc__map-heading">{{ project_title }}</h2>
 
 {{ package.description | markdown }}
 {% endif %}

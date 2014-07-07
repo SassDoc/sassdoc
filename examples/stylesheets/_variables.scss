@@ -4,7 +4,7 @@
  * @since 0.3.9
  * @todo Nothing. It's awesome.
  * @link https://github.com/HugoGiraudel/SassDoc SassDoc
- * @datatype Bool
+ * @type Bool
  */
 $support-legacy: true !global;
 
@@ -12,14 +12,14 @@ $support-legacy: true !global;
  * Defines the number of iteration.
  * ---
  * @deprecated No more global variable for this.
- * @datatype Number
+ * @type Number
  * @access private
  */
 $i: 0 !global;
 
 /**
  * Test map
- * @datatype Map | List
+ * @type Map | List
  */
 $map: (
   "a": "b", 

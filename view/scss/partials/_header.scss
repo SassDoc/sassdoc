@@ -16,6 +16,14 @@
   font-size: 1em;
   margin: 0;
   float: left;
+
+  a {
+    color: white;
+
+    &:hover {
+      color: color("light-grey");
+    }
+  }
 }
 
 /**

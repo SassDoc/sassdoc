@@ -31,7 +31,7 @@
           {% set partial = "includes/items/" + type + ".html.swig" %}
           
           <section class="sassdoc__item{% if item.alias %}  sassdoc__item--alias{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
-            {% include partial with item %}
+            {% include partial with { item: item, display: display } %}
           </section>
 
         {% endif %}

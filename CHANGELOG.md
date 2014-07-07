@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.0-rc.11
+
+* Minor code improvements in bin
+* Fixed an issue with bin
+* Fixed some little bugs in view
+* Updated README
+* Changed `@datatype` to `@type`
+* Fixed a parsing bug with expanded licenses in package.json
+
 ## 1.0.0-rc.10
 
 * Added a footer

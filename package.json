@@ -1,10 +1,14 @@
 {
+  "title": "SassDoc",
   "name": "sassdoc",
   "description": "Like JSDoc but for Sass files.",
   "author": "Hugo Giraudel <hugo.giraudel@gmail.com> http://hugogiraudel.com",
   "contributors": ["Fabrice Weinberg", "Valérian Galliat"],
-  "version": "1.0.0-rc.10",
-  "license": "MIT",
+  "version": "1.0.0-rc.11",
+  "license": { 
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/HugoGiraudel/SassDoc"

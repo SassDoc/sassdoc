@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 /*
 Usage: sassdoc <src> <dest> [options]
 
@@ -15,22 +17,21 @@ Options:
                         to the view.
 */
 
+var config, package_;
+
 var fs = require('fs');
 var api = require('../src/api');
 var logger = require('../src/log');
 var docopt = require('docopt').docopt;
 
-var project;
-var config;
-
+var cwd = process.cwd();
 var doc = fs.readFileSync(__filename, 'utf-8');
 doc = doc.substr(doc.indexOf('/*') + 2);
 doc = doc.substr(0, doc.indexOf('*/'));
 
 // Define version
-var pkg = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf-8'));
 var options = docopt(doc, {
-  version: pkg.version
+  version: require(__dirname + '/../package.json').version
 });
 
 // Enable verbose mode
@@ -39,12 +40,8 @@ if (options['--verbose'] === true) {
 }
 
 // Find configuration file
-if (!options['--config']) {
-  options['--config'] = 'view/view.json';
-}
-
 try {
-  config = require(process.cwd() + '/' + options['--config']);
+  config = require(options['--config'] ? (cwd + '/' + options['--config']) : (__dirname + '/../view/view.json'));
 }
 
 catch(e) {
@@ -53,19 +50,17 @@ catch(e) {
 }
 
 // Find package file
-
 if (typeof config.package === "string") {
-  var pkg_path = process.cwd() + '/' + config.package;
   try {
-    package = require(pkg_path);
+    package_ = require(cwd + '/' + config.package);
   }
 
   catch(e) {
-    logger.log('Can\'t find a package file at `' + pkg_path + '`.');
+    logger.log('Can\'t find a package file at `' + cwd + '/' + config.package + '`.');
   }
 
-  if (package) {
-    config.package = package;
+  if (package_) {
+    config.package = package_;
   }
 }
 

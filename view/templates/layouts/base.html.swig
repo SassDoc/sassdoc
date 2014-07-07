@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>{{ package.name | capitalize | default('SassDoc') }}{% if package.version %} - v{{ package.version }}{% endif %}</title>
+  {% set project_title = package.title ? package.title : (package.name | capitalize) %}
+  {% set project_title = project_title | default('SassDoc') %}
+  <title>{{ project_title }}{% if package.version %} - v{{ package.version }}{% endif %}</title>
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700'>
   <meta name="viewport" content="width=device-width">
@@ -26,7 +28,7 @@
      #}
     {% for group, object in data %}
       {% for item in object %}
-        {% if (display.access.indexOf(item.access[0]) !== -1) and not (not display.alias and item.alias[0]) %}
+        {% if (display.access.indexOf(item.access[0]) != -1) and not (not display.alias and item.alias[0]) %}
           {% set item_count = item_count + 1 %}
           {% set item['display'] = true %}
         {% else %}
@@ -36,7 +38,7 @@
     {% endfor %}
 
     {# Include top navbar #}
-    {% include "../includes/header.html.swig" %}
+    {% include "../includes/header.html.swig" with project_title %}
 
     {# Wrapper #}
     <div class="container">
@@ -54,7 +56,7 @@
     </div>
 
     {# Include footer #}
-    {% include "../includes/footer.html.swig" %}
+    {% include "../includes/footer.html.swig" with project_title %}
   </div>
 
   {# Scripts #}

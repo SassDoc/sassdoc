@@ -1,12 +1,11 @@
 # SassDoc
 
-SassDoc. Like JSDoc, but for Sass files.
+Like JSDoc, but for Sass files.
 
-Currently only work for `.scss` files. Also, inline comments are not parsed (`//`).
+Currently only work for `.scss` files.  
+Also, inline comments are not parsed (`//`).
 
 ## Example
-
-### Function/mixin
 
 ```scss
 /**
@@ -31,29 +30,29 @@ Currently only work for `.scss` files. Also, inline comments are not parsed (`//
 @function insert-nth($list, $index, $value) {
   // ...
 }
-```
 
-### Variable
-
-```scss
 /**
  * Defines whether the lib should support legacy browsers (e.g. `IE 8`).
- * ---
- * @since 0.3.9
+ * 
+ * @since 1.3.37
+ * 
  * @todo Nothing. It's awesome.
+ * 
  * @link https://github.com/HugoGiraudel/SassDoc SassDoc
- * @datatype Bool
+ * 
+ * @type Bool
  */
 $legacy-support: true !global;
 ```
 
 ### Preview
 
-![SassDoc](http://i.imgur.com/GnNo4HB.png)
+![SassDoc](http://i.imgur.com/4z3Bt8H.png)
+
 
 ## Installation
 
-### NPM
+### npm
 
 ```sh
 npm install -g sassdoc
@@ -108,16 +107,19 @@ Allowed variables:
 
 ```json
 {
+  "name": "SassDoc",
+
   "display": {
     "access": ["public", "private"],
     "alias": false,
     "watermark": true
    },
 
-  "package": "../package.json"
+  "package": "./package.json"
 }
 ```
 
+* (`String`) `name`: name of your project
 * (`Array`) `display.access`: access levels that should be displayed
 * (`Boolean`) `display.alias`: enable/disable display of alias items
 * (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool, leave it!)
@@ -125,11 +127,17 @@ Allowed variables:
 
 The package object (either direct or required) should ideally contain:
 
-* `name`
-* `version`
-* `license`
-* `homepage`
-* `description`
+* `title`: human name of your project
+* `name`: package name of your project (in case `title` is not defined)
+* `version`: your project's version
+* `license`: your project's license
+* `homepage`: URL to your project's homepage
+* `description`: description of your project
+
+## Built with SassDoc
+
+* [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez
+* [SassyLists](http://sassylists.com/documentation.html) from Hugo Giraudel
 
 ## Credits
 

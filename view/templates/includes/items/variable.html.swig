@@ -8,7 +8,7 @@
 
   {% include '../annotations/description.html.swig' %}
 
-  {% include '../annotations/datatype.html.swig' %}
+  {% include '../annotations/type.html.swig' %}
 
   {% include '../annotations/requires.html.swig' %}
 
