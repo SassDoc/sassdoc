@@ -18,24 +18,35 @@
 <body>
   <div class="sassdoc">
 
+    {# Count how many items will be displayed #}
     {% set item_count = 0 %}
 
+    {# To avoid repeating the same condition over and over again, 
+     # do it once and add a `display` key to items 
+     #}
     {% for group, object in data %}
       {% for item in object %}
-          {% if (display_access.indexOf(item.access[0]) !== -1) and not (not display_alias and item.alias[0]) %}
+        {% if (display_access.indexOf(item.access[0]) !== -1) and not (not display_alias and item.alias[0]) %}
           {% set item_count = item_count + 1 %}
+          {% set item['display'] = true %}
+        {% else %}
+          {% set item['display'] = false %}
         {% endif %}
       {% endfor %}
     {% endfor %}
 
+    {# Include top navbar #}
     {% include "../includes/header.html.swig" %}
 
+    {# Wrapper #}
     <div class="container">
 
+      {# Sidebar #}
       <aside class="sassdoc__map">
         {% block sidebar %}{% endblock %}
       </aside>
 
+      {# Main container #}
       <article class="sassdoc__container">
         {% block content %}{% endblock %}
       </article>
@@ -43,6 +54,7 @@
     </div>
   </div>
 
+  {# Scripts #}
   <script src="assets/js/prism.min.js"></script>
 </body>
 </html>

@@ -104,6 +104,7 @@
 
   h3 {
     color: $green;
+    margin-bottom: .5em;
     text-transform: uppercase;
     font-size: 1em;
   }
@@ -209,11 +210,7 @@
 /**
  * Lists
  */
-.sassdoc__item-usedby,
-.sassdoc__item-todos,
-.sassdoc__item-throws,
-.sassdoc__item-links,
-.sassdoc__item-requires {
+.list-unstyled {
   padding-left: 0;
   list-style: none;
 }

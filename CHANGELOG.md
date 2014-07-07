@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-rc.9
+
+* Massively improved templates quality
+* Authorized markdown on `@author`
+
 ## 1.0.0-rc.8
 
 * Added back the `[Private]` annotation before private items' name

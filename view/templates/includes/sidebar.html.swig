@@ -1,36 +1,45 @@
 <h2 class="sassdoc__map-heading">Documentation map</h2>
+
 <div class="sassdoc__map-container">
-{% if 
-  (not data.function or data.function.length === 0) and 
-  (not data.mixin or data.mixin.length === 0) and
-  (not data.variable or data.variable.length === 0) 
-%}
-  <ul><li>No item yet.</li></ul>
-{% else %}
-
   <ul>
-  {% for type, obj in data %}
-    {% set is_title_displayed = false %}
+  {# No item documented #}
+  {% if item_count == 0 %}
+    <li>No item yet.</li>
 
-    {% for item in obj %}
-      {% if (display_access.indexOf(item.access[0]) !== -1) 
-      and not (not display_alias and item.alias[0]) %}
+  {# Some items documented #}
+  {% else %}
 
-        {% if not is_title_displayed %}
-          <li class="sassdoc__map-section"><a href="#{{ type }}">{{ (type + 's') | capitalize }}</a></li>
-          {% set is_title_displayed = true %}
+    {# Loop over data #}
+    {% for type, obj in data %}
+
+      {# Store whether or not title has been displayed yet #}
+      {% set group_title_displayed = false %}
+
+      {# Loop over items in current group #}
+      {% for item in obj %}
+
+        {# If item should be displayed #}
+        {% if item['display'] == true  %}
+
+          {# If title has not been displayed yet, display it #}
+          {% if not group_title_displayed %}
+            <li class="sassdoc__map-section"><a href="#{{ type }}">{{ (type + 's') | capitalize }}</a></li>
+            {% set group_title_displayed = true %}
+          {% endif %}
+          
+          {# Display item #}
+          <li>
+            <a href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a> 
+            {% if item.access[0] == "private" %}<span class="annotation">private</span>{% endif %}
+            {% if item.alias != false %}<span class="annotation">alias</span>{% endif %}
+          </li>
+
         {% endif %}
-        
-        <li>
-          <a href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a> 
-          {% if item.access[0] == "private" %}<span class="annotation">private</span>{% endif %}
-          {% if item.alias != false %}<span class="annotation">alias</span>{% endif %}
-        </li>
-      {% endif %}
-    {% endfor %}
-    
-  {% endfor %}
-  </ul>
 
-{% endif %}
+      {% endfor %}
+      
+    {% endfor %}
+
+  {% endif %}
+  </ul>
 </div>

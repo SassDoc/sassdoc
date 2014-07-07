@@ -1,14 +1,13 @@
 {% set title_displayed = false %}
 
 {% for usedBy in item.usedBy %}
-  {% set display_access_okay = display_access.indexOf(usedBy.access[0]) != -1 %}
-  {% set display_alias_okay  = not (usedBy.alias and not display_alias) %}
 
-  {% if display_access_okay and display_alias_okay %}
+  {% if (display_access.indexOf(usedBy.access[0]) !== -1) and not (not display_alias and usedBy.alias[0]) %}
+  
     {% if not title_displayed %}
       {% set title_displayed = true %}
       <h3>Used by</h3>
-      <ul class="sassdoc__item-usedby">
+      <ul class="list-unstyled">
     {% endif %}
 
     <li><a href="#{{ usedBy.context.type }}-{{ usedBy.context.name }}"><code>{{ usedBy.context.name }}</code></a></li>

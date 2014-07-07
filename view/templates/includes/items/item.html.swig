@@ -1,59 +1,55 @@
-<section class="sassdoc__item  {% if item.alias %}sassdoc__item--alias{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
+{% include '../annotations/name.html.swig' %}
 
-  {% include '../annotations/name.html.swig' %}
+{% include '../annotations/deprecated.html.swig' %}
+
+{% set parameters_string = '' %}
+{% for parameter in item.parameters %}
+  {% set value = '$' + parameter.name %}
+
+  {% if parameter.default %}
+    {% set value = value + ': ' + parameter.default %}
+  {% endif %}
+
+  {% if parameter.type | lower === "arglist" %}
+    {% set value = value + '...' %}
+  {% endif %}
+
+  {% if loop.first %}
+    {% set parameters_string = value %}
+  {% else %}
+    {% set parameters_string = parameters_string + ', ' + value %}
+  {% endif %}
+{% endfor %}
+<pre class="sassdoc__item-code  language-scss"><code>@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }</code></pre>
+
+{% if not item.alias %}
 
   {% include '../annotations/deprecated.html.swig' %}
 
-  {% set parameters_string = '' %}
-  {% for parameter in item.parameters %}
-    {% set value = '$' + parameter.name %}
+  {% include '../annotations/description.html.swig' %}
 
-    {% if parameter.default %}
-      {% set value = value + ': ' + parameter.default %}
-    {% endif %}
+  {% include '../annotations/parameters.html.swig' %}
 
-    {% if parameter.type | lower === "arglist" %}
-      {% set value = value + '...' %}
-    {% endif %}
+  {% include '../annotations/returns.html.swig' %}
 
-    {% if loop.first %}
-      {% set parameters_string = value %}
-    {% else %}
-      {% set parameters_string = parameters_string + ', ' + value %}
-    {% endif %}
-  {% endfor %}
-  <pre class="sassdoc__item-code  language-scss"><code>@{{ item.context.type }} {{ item.context.name }} ({{ parameters_string }}) { ... }</code></pre>
+  {% include '../annotations/example.html.swig' %}
 
-  {% if item.alias == false %}
+  {% include '../annotations/throws.html.swig' %}
 
-    {% include '../annotations/deprecated.html.swig' %}
+  {% include '../annotations/requires.html.swig' %}
 
-    {% include '../annotations/description.html.swig' %}
+  {% include '../annotations/usedby.html.swig' %}
 
-    {% include '../annotations/parameters.html.swig' %}
+  {% include '../annotations/todo.html.swig' %}
 
-    {% include '../annotations/returns.html.swig' %}
+  {% include '../annotations/link.html.swig' %}
 
-    {% include '../annotations/example.html.swig' %}
+  {% include '../annotations/author.html.swig' %}
 
-    {% include '../annotations/throws.html.swig' %}
+  {% include '../annotations/location.html.swig' %}
 
-    {% include '../annotations/requires.html.swig' %}
+{% else %}
 
-    {% include '../annotations/usedby.html.swig' %}
+  <p>Refer to <a href="#{{ item.context.type }}-{{ item.alias[0] }}">{{ item.alias[0] }}</a>.</p>
 
-    {% include '../annotations/todo.html.swig' %}
-
-    {% include '../annotations/link.html.swig' %}
-
-    {% include '../annotations/author.html.swig' %}
-
-    {% include '../annotations/location.html.swig' %}
-
-  {% else %}
-
-    <p>Refer to <a href="#{{ item.context.type }}-{{ item.alias[0] }}">{{ item.alias[0] }}</a>.</p>
-
-  {% endif %}
-
-</section>
+{% endif %}

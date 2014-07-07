@@ -7,8 +7,8 @@
 
   {% if display_alias and item.aliased.length > 0 %}
     <span class="sassdoc__item-alias">(aliased as
-    {% for _alias in item.aliased %}
-      <a href="#{{ item.context.type }}-{{ _alias }}"><code>{{ _alias }}</code></a>
+    {% for alias in item.aliased %}
+      <a href="#{{ item.context.type }}-{{ alias }}"><code>{{ alias }}</code></a>
     {% endfor %}
     )</span>
   {% endif %}
@@ -18,6 +18,6 @@
   {% endif %}
 
   {% if item.since %}
-    <span class="sassdoc__item-since">Since {{ item.since[0] }}</span>
+    <span class="sassdoc__item-since">Since {{ item.since[0] | markdown }}</span>
   {% endif %}
 </h2>

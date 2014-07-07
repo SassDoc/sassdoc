@@ -1,14 +1,17 @@
 {% if item.link.length > 0 %}
   <h3>Links</h3>
-  {% for _link in item.link %}
-    {% if loop.first %}<ul class="sassdoc__item-links">{% endif %}
-    <li><a href="{{ _link.url }}">
-      {% if _link.caption %}
-        {{ _link.caption }}
-      {% else %}
-        {{ _link.url }}
-      {% endif %}
-    </a></li>
-    {% if loop.last %}</ul>{% endif %}
+
+  <ul class="list-unstyled">
+  {% for link in item.link %}
+    <li>
+      <a href="{{ link.url }}">
+        {% if link.caption %}
+          {{ link.caption }}
+        {% else %}
+          {{ link.url }}
+        {% endif %}
+      </a>
+    </li>
   {% endfor %}
+  </ul>
 {% endif %}
