@@ -1679,8 +1679,6 @@
   
 
   
-    
-  
 
   
 
@@ -1691,8 +1689,6 @@
   
 
   
-    
-  
 
   
 
@@ -1700,7 +1696,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-chunk ($list: (, $size: 0) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-chunk ($list, $) { ... }</code></pre>
 
 
 
@@ -1729,24 +1725,32 @@
       
         <tr class="sassdoc__item-parameter">
           <td data-label="name"><code>$list</code></td>
-          <td data-label="desc"><p>)  - list to chunk</p></td>
+          <td data-label="desc"><p>list to chunk</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">(</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$size</code></td>
-          <td data-label="desc"><p>length of lists</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{Number|String} $size - length of lists</p></td>
           <td data-label="type">
           
-            <code>Number</code>
+            
           
           </td>
-          <td data-label="default">0</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -1758,7 +1762,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Null</code>
+    List, Null
   
   </p>
 
@@ -1767,12 +1771,8 @@
   <h3>Example</h3>
 
   
-    <pre class="sassdoc__item-code"><code class="language-markup">&lt;/body&gt;</code></pre>
-  
     <pre class="sassdoc__item-code"><code class="language-scss">sl-chunk(a b c d e, 2)
 // a b, c d, e</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-javascript">alert(&quot;Hello&quot;);</code></pre>
   
 
 
@@ -1887,7 +1887,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -1986,7 +1986,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-contain ($list, $value) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-contain ($list, $) { ... }</code></pre>
 
 
 
@@ -2018,21 +2018,29 @@
           <td data-label="desc"><p>list to check</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>value to look for</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}       $value - value to look for</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -2044,7 +2052,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -2175,10 +2183,14 @@
           <td data-label="desc"><p>list to count values from</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -2190,7 +2202,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description"><p>Values mapped to their count</p>
   
-    <code>Map</code>
+    Map
   
   </p>
 
@@ -2333,10 +2345,14 @@
           <td data-label="desc"><p>list to debug</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -2344,10 +2360,14 @@
           <td data-label="desc"><p>enable/disable variables type and proper indentation</p></td>
           <td data-label="type">
           
-            <code>Bool</code>
+            Bool
           
           </td>
-          <td data-label="default">false</td>
+          <td data-label="default">
+          
+            <code>false</code>
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -2355,10 +2375,14 @@
           <td data-label="desc"><p>internal variable for recursion</p></td>
           <td data-label="type">
           
-            <code>Number</code>
+            Number
           
           </td>
-          <td data-label="default">1</td>
+          <td data-label="default">
+          
+            <code>1</code>
+          
+          </td>
         </tr>
       
     </tbody>
@@ -2370,7 +2394,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>String</code>
+    String
   
   </p>
 
@@ -2558,10 +2582,14 @@
           <td data-label="desc"><p>list to run test against</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -2569,10 +2597,14 @@
           <td data-label="desc"><p>function to run against every item from list</p></td>
           <td data-label="type">
           
-            <code>String</code>
+            String
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -2580,10 +2612,14 @@
           <td data-label="desc"><p>extra arguments to pass to the function</p></td>
           <td data-label="type">
           
-            <code>Arglist</code>
+            Arglist
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -2595,7 +2631,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -2756,10 +2792,14 @@
           <td data-label="desc"><p>string to explode</p></td>
           <td data-label="type">
           
-            <code>String</code>
+            String
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -2767,10 +2807,14 @@
           <td data-label="desc"><p>string to use as a delimiter</p></td>
           <td data-label="type">
           
-            <code>String</code>
+            String
           
           </td>
-          <td data-label="default">''</td>
+          <td data-label="default">
+          
+            <code>&#39;&#39;</code>
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -2778,10 +2822,14 @@
           <td data-label="desc"><p>list separator</p></td>
           <td data-label="type">
           
-            <code>String</code>
+            String
           
           </td>
-          <td data-label="default">'space'</td>
+          <td data-label="default">
+          
+            <code>&#39;space&#39;</code>
+          
+          </td>
         </tr>
       
     </tbody>
@@ -2793,7 +2841,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Null</code>
+    List, Null
   
   </p>
 
@@ -2925,10 +2973,14 @@
           <td data-label="desc"><p>list to retrieve first item from</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -3098,10 +3150,14 @@
           <td data-label="desc"><p>list to flatten</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -3113,7 +3169,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -3272,10 +3328,14 @@
           <td data-label="desc"><p>list to run test against</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -3287,7 +3347,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -3462,10 +3522,14 @@
           <td data-label="desc"><p>list to run test against</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -3477,7 +3541,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -3587,7 +3651,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-insert-nth ($list, $index, $value) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-insert-nth ($list, $index, $) { ... }</code></pre>
 
 
 
@@ -3619,10 +3683,14 @@
           <td data-label="desc"><p>list to update</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -3630,21 +3698,29 @@
           <td data-label="desc"><p>index to add</p></td>
           <td data-label="type">
           
-            <code>Number</code>
+            Number
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>value to add</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}       $value - value to add</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -3656,7 +3732,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Null</code>
+    List, Null
   
   </p>
 
@@ -3819,10 +3895,14 @@
           <td data-label="desc"><p>first list</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -3830,10 +3910,14 @@
           <td data-label="desc"><p>other lists</p></td>
           <td data-label="type">
           
-            <code>Arglist</code>
+            Arglist
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -3845,7 +3929,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -3988,10 +4072,14 @@
           <td data-label="desc"><p>list to run test against</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -4003,7 +4091,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -4187,10 +4275,14 @@
           <td data-label="desc"><p>list to run test against</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -4202,7 +4294,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -4342,10 +4434,14 @@
           <td data-label="desc"><p>list to check</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -4357,7 +4453,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -4481,7 +4577,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-last-index ($list, $value) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-last-index ($list, $) { ... }</code></pre>
 
 
 
@@ -4513,21 +4609,29 @@
           <td data-label="desc"><p>list to search</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>value to be searched for</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}    $value - value to be searched for</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -4539,7 +4643,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Number</code>, <code>Null</code>
+    Number, Null
   
   </p>
 
@@ -4661,10 +4765,14 @@
           <td data-label="desc"><p>list to retrieve last value from</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -4850,10 +4958,14 @@
           <td data-label="desc"><p>list to update</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -4861,10 +4973,14 @@
           <td data-label="desc"><p>number of position between old and new indexes</p></td>
           <td data-label="type">
           
-            <code>Number</code>
+            Number
           
           </td>
-          <td data-label="default">1</td>
+          <td data-label="default">
+          
+            <code>1</code>
+          
+          </td>
         </tr>
       
     </tbody>
@@ -4876,7 +4992,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Null</code>
+    List, Null
   
   </p>
 
@@ -5015,7 +5131,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-prepend ($list, $value) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-prepend ($list, $) { ... }</code></pre>
 
 
 
@@ -5047,21 +5163,29 @@
           <td data-label="desc"><p>list to preprend value to</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>value to prepend to the list</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}    $value - value to prepend to the list</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -5073,7 +5197,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -5214,10 +5338,14 @@
           <td data-label="desc"><p>list to purge</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -5229,7 +5357,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -5405,10 +5533,14 @@
           <td data-label="desc"><p>list to random value from</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -5581,10 +5713,14 @@
           <td data-label="desc"><p>maximum value</p></td>
           <td data-label="type">
           
-            <code>Number</code>
+            Number
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -5596,7 +5732,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Number</code>, <code>Null</code>
+    List, Number, Null
   
   </p>
 
@@ -5748,10 +5884,14 @@
           <td data-label="desc"><p>list to remove duplicates from</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -5763,7 +5903,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -5939,10 +6079,14 @@
           <td data-label="desc"><p>list to remove value from</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -5950,10 +6094,14 @@
           <td data-label="desc"><p>index to remove</p></td>
           <td data-label="type">
           
-            <code>Number</code>
+            Number
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -5965,7 +6113,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Null</code>
+    List, Null
   
   </p>
 
@@ -6098,7 +6246,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-remove ($list, $value, $recursive) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-remove ($list, $, $recursive) { ... }</code></pre>
 
 
 
@@ -6130,21 +6278,29 @@
           <td data-label="desc"><p>list to update</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>value to remove</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}       $value     - value to remove</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -6152,10 +6308,14 @@
           <td data-label="desc"><p>enable/disable recursion</p></td>
           <td data-label="type">
           
-            <code>Bool</code>
+            Bool
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -6167,7 +6327,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -6297,7 +6457,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-replace-nth ($list, $index, $value) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-replace-nth ($list, $index, $) { ... }</code></pre>
 
 
 
@@ -6329,10 +6489,14 @@
           <td data-label="desc"><p>list to update</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -6340,21 +6504,29 @@
           <td data-label="desc"><p>index to update</p></td>
           <td data-label="type">
           
-            <code>Number</code>
+            Number
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>new value for index</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}      $value - new value for index</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -6366,7 +6538,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Null</code>
+    List, Null
   
   </p>
 
@@ -6529,7 +6701,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-replace ($list, $old, $value) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-replace ($list, $, $) { ... }</code></pre>
 
 
 
@@ -6561,32 +6733,44 @@
           <td data-label="desc"><p>list to update</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$old</code></td>
-          <td data-label="desc"><p>value to replace</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}       $old   - value to replace</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>new value for $old</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}       $value - new value for $old</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -6598,7 +6782,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -6765,10 +6949,14 @@
           <td data-label="desc"><p>list to reverse</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -6780,7 +6968,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -6939,10 +7127,14 @@
           <td data-label="desc"><p>list to shuffle</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -6954,7 +7146,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -7088,7 +7280,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-slice ($list, $start: 1, $end: length($list) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-slice ($list, $start: 1, $end: length($list)) { ... }</code></pre>
 
 
 
@@ -7120,10 +7312,14 @@
           <td data-label="desc"><p>list to slice</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -7131,21 +7327,29 @@
           <td data-label="desc"><p>start index</p></td>
           <td data-label="type">
           
-            <code>Number</code>
+            Number
           
           </td>
-          <td data-label="default">1</td>
+          <td data-label="default">
+          
+            <code>1</code>
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
           <td data-label="name"><code>$end</code></td>
-          <td data-label="desc"><p>) - end index</p></td>
+          <td data-label="desc"><p>end index</p></td>
           <td data-label="type">
           
-            <code>Number</code>
+            Number
           
           </td>
-          <td data-label="default">length($list</td>
+          <td data-label="default">
+          
+            <code>length($list)</code>
+          
+          </td>
         </tr>
       
     </tbody>
@@ -7157,7 +7361,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Null</code>
+    List, Null
   
   </p>
 
@@ -7340,10 +7544,14 @@
           <td data-label="desc"><p>list to run test against</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -7351,10 +7559,14 @@
           <td data-label="desc"><p>function to run against every item from list</p></td>
           <td data-label="type">
           
-            <code>String</code>
+            String
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -7362,10 +7574,14 @@
           <td data-label="desc"><p>extra arguments to pass to the function</p></td>
           <td data-label="type">
           
-            <code>Arglist</code>
+            Arglist
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -7377,7 +7593,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -7512,10 +7728,14 @@
           <td data-label="desc"><p>list to sort</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -7523,10 +7743,14 @@
           <td data-label="desc"><p>order to respect</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -7538,7 +7762,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -7711,10 +7935,14 @@
           <td data-label="desc"><p>list</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -7722,10 +7950,14 @@
           <td data-label="desc"><p>enable/disable parseInt</p></td>
           <td data-label="type">
           
-            <code>Bool</code>
+            Bool
           
           </td>
-          <td data-label="default">false</td>
+          <td data-label="default">
+          
+            <code>false</code>
+          
+          </td>
         </tr>
       
     </tbody>
@@ -7737,7 +7969,7 @@
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Number</code>
+    Number
   
   </p>
 
@@ -7894,10 +8126,14 @@ null</code></pre>
           <td data-label="desc"><p>list to retrieve tail from</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -7909,7 +8145,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Null</code>
+    List, Null
   
   </p>
 
@@ -8033,7 +8269,7 @@ null</code></pre>
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-to-list ($value, $separator: space) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-to-list ($, $separator: space) { ... }</code></pre>
 
 
 
@@ -8061,14 +8297,18 @@ null</code></pre>
     <tbody>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>value to cast to list</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*} $value - value to cast to list</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -8076,10 +8316,14 @@ null</code></pre>
           <td data-label="desc"><p>separator to use</p></td>
           <td data-label="type">
           
-            <code>String</code>
+            String
           
           </td>
-          <td data-label="default">space</td>
+          <td data-label="default">
+          
+            <code>space</code>
+          
+          </td>
         </tr>
       
     </tbody>
@@ -8091,7 +8335,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -8326,10 +8570,14 @@ null</code></pre>
           <td data-label="desc"><p>list to turn into map</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -8341,7 +8589,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Map</code>, <code>Null</code>
+    Map, Null
   
   </p>
 
@@ -8545,10 +8793,14 @@ null</code></pre>
           <td data-label="desc"><p>list to cast</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -8556,10 +8808,14 @@ null</code></pre>
           <td data-label="desc"><p>value to use as a join string</p></td>
           <td data-label="type">
           
-            <code>String</code>
+            String
           
           </td>
-          <td data-label="default">''</td>
+          <td data-label="default">
+          
+            <code>&#39;&#39;</code>
+          
+          </td>
         </tr>
       
     </tbody>
@@ -8571,7 +8827,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>String</code>
+    String
   
   </p>
 
@@ -8728,10 +8984,14 @@ null</code></pre>
           <td data-label="desc"><p>lists to unify</p></td>
           <td data-label="type">
           
-            <code>Arglist</code>
+            Arglist
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -8743,7 +9003,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>
+    List
   
   </p>
 
@@ -8917,10 +9177,14 @@ null</code></pre>
           <td data-label="desc"><p>list to update</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -8928,10 +9192,14 @@ null</code></pre>
           <td data-label="desc"><p>function to call on each value</p></td>
           <td data-label="type">
           
-            <code>String</code>
+            String
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -8939,10 +9207,14 @@ null</code></pre>
           <td data-label="desc"><p>optional function arguments</p></td>
           <td data-label="type">
           
-            <code>Arglist</code>
+            Arglist
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -8954,7 +9226,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>List</code>, <code>Null</code>
+    List, Null
   
   </p>
 
@@ -9073,7 +9345,7 @@ null</code></pre>
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-number ($value) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-number ($) { ... }</code></pre>
 
 
 
@@ -9101,14 +9373,18 @@ null</code></pre>
     <tbody>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>value to run test against</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*} $value - value to run test against</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -9120,7 +9396,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -9251,10 +9527,14 @@ null</code></pre>
           <td data-label="desc"><p>list of functions to check for</p></td>
           <td data-label="type">
           
-            <code>Arglist</code>
+            Arglist
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -9266,7 +9546,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description"><p>Whether or not there are missing dependencies</p>
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -9368,7 +9648,7 @@ null</code></pre>
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-str-compare ($a, $b, $matrix) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-str-compare ($, $, $matrix) { ... }</code></pre>
 
 
 
@@ -9396,25 +9676,33 @@ null</code></pre>
     <tbody>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$a</code></td>
-          <td data-label="desc"><p>first value</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}       $a      - first value</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$b</code></td>
-          <td data-label="desc"><p>second value</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*}       $b      - second value</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
         <tr class="sassdoc__item-parameter">
@@ -9422,10 +9710,14 @@ null</code></pre>
           <td data-label="desc"><p>alphabetical order</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -9437,7 +9729,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -9534,7 +9826,7 @@ null</code></pre>
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-true ($value) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-true ($) { ... }</code></pre>
 
 
 
@@ -9562,14 +9854,18 @@ null</code></pre>
     <tbody>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$value</code></td>
-          <td data-label="desc"><p>value to check</p></td>
+          <td data-label="name"><code>$</code></td>
+          <td data-label="desc"><p>{*} $value - value to check</p></td>
           <td data-label="type">
           
-            Any
+            
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>
@@ -9581,7 +9877,7 @@ null</code></pre>
   <h3>Returns</h3>
   <p class="sassdoc__item-description">
   
-    <code>Bool</code>
+    Bool
   
   </p>
 
@@ -9757,10 +10053,14 @@ null</code></pre>
           <td data-label="desc"><p>list</p></td>
           <td data-label="type">
           
-            <code>List</code>
+            List
           
           </td>
-          <td data-label="default">&mdash;</td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
         </tr>
       
     </tbody>

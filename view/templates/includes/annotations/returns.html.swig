@@ -4,7 +4,7 @@
   {% if item.returns[0].type == '*' %}
     Any
   {% else %}
-    <code>{{ item.returns[0].type | split('|') | trim | capitalize | join('</code>, <code>') | raw }}</code>
+    {{ item.returns[0].type | split('|') | trim | capitalize | join(', ') }}
   {% endif %}
   </p>
 {% endif %}

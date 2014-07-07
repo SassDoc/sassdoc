@@ -20,10 +20,16 @@
           {% if parameter.type == '*' %}
             Any
           {% else %}
-            <code>{{ parameter.type | split('|') | trim | capitalize | join('</code>, <code>') | raw }}</code>
+            {{ parameter.type | split('|') | trim | capitalize | join(', ')}}
           {% endif %}
           </td>
-          <td data-label="default">{{ parameter.default | default('&mdash;') | safe }}</td>
+          <td data-label="default">
+          {% if not parameter.default %}
+            &mdash;
+          {% else %}
+            <code>{{ parameter.default }}</code>
+          {% endif %}
+          </td>
         </tr>
       {% endfor %}
     </tbody>

@@ -134,6 +134,7 @@ The package object (either direct or required) should ideally contain:
 ## Built with SassDoc
 
 * [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez
+* [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez
 * [SassyLists](http://sassylists.com/documentation.html) from Hugo Giraudel
 
 ## Credits

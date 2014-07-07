@@ -2,8 +2,9 @@
 
 ## 1.0.0-rc.12
 
-* Fixed issues when parsing `@param`
+* Fixed minor issues when parsing `@param`
 * Added language detection to `@example`
+* Slightly updated the view
 
 ## 1.0.0-rc.11
 
