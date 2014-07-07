@@ -1,8 +1,8 @@
 'use strict';
 
-var typeRegEx =  /^\s*(?:\{(.*?)\})?\s*(?:\$(\w+))?\s*(?:\((.*?)\))?\s*(?:-?\s*(.*))?$/m;
+var typeRegEx =  /^\s*(?:\{(.*)\})?\s*(?:\$([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*(.*))?/;
 
-module.exports = function( text ){
+module.exports =  function( text ){
   var parsed = typeRegEx.exec(text);
   var obj = {};
 
@@ -11,10 +11,11 @@ module.exports = function( text ){
   }
 
   if (parsed[2]) {
-    obj.variable = {
-      name: parsed[2],
-      default: parsed[3]
-    };
+    obj.name  = parsed[2];
+  }
+
+  if (parsed[3]) {
+    obj.default = parsed[3];
   }
 
   if (parsed[4]) {
