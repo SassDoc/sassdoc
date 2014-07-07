@@ -14,9 +14,12 @@
  * sl-chunk(a b c d e, 2)
  * // a b, c d, e
  *
+ * @example javascript
+ * alert("Hello");
+ *
  * @return {List | Null}
  */
- 
+
 @function sl-chunk($list, $size) {
   @if sl-missing-dependencies(sl-to-list) == true { @return null; }
 
@@ -40,7 +43,7 @@
     @for $j from 1 through $size {
       @if $index <= $length {
         $is-orphan: $length % $size == 1 and $j == 1;
-        
+
         @if $is-orphan {
           $tmp: nth($list, $index);
         }
