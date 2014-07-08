@@ -32,7 +32,7 @@ module.exports = function (grunt) {
 
     sass: {
       options: {
-        style: 'compressed'
+        style: 'expanded'
       },
       dist: {
         files: [{
@@ -67,7 +67,7 @@ module.exports = function (grunt) {
     watch: {
       scss: {
         files: ['<%= dirs.scss %>/**/*.scss'],
-        tasks: ['sass:dist']
+        tasks: ['sass:dist', 'autoprefixer:dist', 'dumpCSS']
       },
       tpl: {
         files: ['<%= dirs.tpl %>/**/*.swig'],
@@ -90,6 +90,20 @@ module.exports = function (grunt) {
             baseDir: '<%= dirs.dist %>'
           }
         }
+      }
+    },
+
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 version', '> 1%', 'ie 9']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= dirs.css %>',
+          src: '{,*/}*.css',
+          dest: '<%= dirs.css %>'
+        }]
       }
     }
 
@@ -120,13 +134,21 @@ module.exports = function (grunt) {
     });
   });
 
+
   // Make the Sass dist action faster
   // by not requiring a full `compile`.
-  grunt.event.on('watch', function (action, filepath, target) {
-    if (target === 'scss' && action === 'changed') {
-      sdfs.dumpAssets(dirs.dist);
-    }
+  grunt.registerTask('dumpCSS', 'Dump CSS to dist', function () {
+    var done = this.async();
+    var src = dirs.css;
+    var dest = dirs.dist + '/assets/css';
+
+    sdfs.folder.copy(src, dest)
+      .then(function () {
+        grunt.log.writeln('CSS' + chalk.cyan(src) + 'copied to ' + chalk.cyan(dest) + '.');
+        done();
+      });
   });
+
 
   // While working on the view/examples.
   grunt.registerTask('dist', [
@@ -134,11 +156,13 @@ module.exports = function (grunt) {
     'watch'
   ]);
 
+
   // Before push and for travis.
   grunt.registerTask('test', [
     'jshint:all',
     'mochaTest'
   ]);
+
 
   // All together.
   grunt.registerTask('default', [
