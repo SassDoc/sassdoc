@@ -5,8 +5,10 @@
   padding: 1em;
   background: color("pink");
   color: white;
-  margin-bottom: 2em;
-  border-bottom: 0.5em solid #f2d9e6;
+  
+  @include respond-to("medium") {
+    border-bottom: 0.5em solid color("light-grey");
+  }
 }
 
 /**

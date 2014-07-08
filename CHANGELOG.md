@@ -5,6 +5,7 @@
 * Fixed minor issues when parsing `@param`
 * Added language detection to `@example`
 * Slightly updated the view
+* Major style refacto
 
 ## 1.0.0-rc.11
 

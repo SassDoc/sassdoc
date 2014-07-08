@@ -1,7 +1,6 @@
+'use strict';
 
 module.exports = function (grunt) {
-
-  'use strict';
 
   // Load all grunt tasks matching the `grunt-*` pattern.
   require('load-grunt-tasks')(grunt);
@@ -105,10 +104,12 @@ module.exports = function (grunt) {
       cmd: 'bin/sassdoc',
       args: ['examples/stylesheets', 'examples/dist', '--verbose']
     },
+
     function (error, result) {
       if (error) {
         grunt.log.error(error);
       }
+
       if (result) {
         grunt.log.writeln(result);
       }

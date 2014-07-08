@@ -2,23 +2,49 @@
  * Doc map
  */
 .sassdoc__map {
+  background: color("dark-grey");
+  padding: 1em 0;
+  position: relative;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    background: color("dark-grey");
+    width: 1em;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+  }
+
+  &::before {
+    left: 100%;
+  }
+
   @include respond-to("medium") {
-    width: 27%;
+    width: 30%;
     float: left;
+    text-align: right;
+    padding: 3em 0;
+
+    &::before,
+    &::after {
+      content: none;
+    }
   }
 
   ul {
     list-style: none;
-    padding: 0 1.5em;
+    padding: 0;
   }
 
   li {
-    line-height: 1.5;
+    padding: 0 1.5em 0 .5em;
   }
 
   a {
     font-weight: 500;
-    color: lighten(color("dark-grey"), 15%);
+    color: darken(color("light-grey"), 15%);
     text-decoration: none;
 
     &:hover {
@@ -36,7 +62,6 @@
  */
 .sassdoc__map-container {
   padding: .5em 0;
-  background-color: color("light-grey");
   margin-bottom: 1em;
 }
 
@@ -44,18 +69,32 @@
  * Map heading
  */
 .sassdoc__map-heading {
-  color: color("dark-grey");
+  color: color("light-grey");
   font-size: 1.2em;
-  margin-top: 0;
+  margin: 0;
+  padding-right: 1.2em;
+  text-transform: uppercase;
   
 }
 
 /**
  * List item section
  */
-.sassdoc__map-section a {
-  font-weight: 500;
-  display: block;
-  color: color("pink");
+.sassdoc__map-section {
+  background: color("light-grey");
   margin-top: 1em;
+  margin-bottom: .5em;
+
+  a {
+    font-weight: 500;
+    display: block;
+    color: color("pink");
+    padding: .5em 0;
+    text-transform: uppercase;
+  }
+}
+
+.sassdoc__map-description {
+  color: color("light-grey");
+  padding-right: 1.5em;
 }

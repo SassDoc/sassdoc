@@ -47,5 +47,7 @@
 {% if package.description %}
 <h2 class="sassdoc__map-heading">{{ project_title }}</h2>
 
-{{ package.description | markdown }}
+<div class="sassdoc__map-description">
+  {{ package.description | markdown }}
+</div>
 {% endif %}

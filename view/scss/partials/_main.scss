@@ -2,10 +2,16 @@
  * Main wrapper
  */
 .sassdoc__container {
+  background: color("light-grey");
+  position: relative;
+  padding-bottom: 3em;
+
   @include respond-to("medium") {
+    padding-left: 2em;
     width: 70%;
     float: right;
-    margin-top: 1.25em;
+    box-shadow: -.5em 0 0 color("light-grey");
+    border-left: .5em solid color("dark-grey");
   }
 }
 
@@ -14,18 +20,16 @@
  */
 .sassdoc__section {
   color: color("dark-grey");
-  background-color: color("light-grey");
-  padding: 1em;
+  padding: 1em 0;
   text-transform: uppercase;
-  counter-increment: sections;
   border-bottom: .3em solid color("pink");
-
-  &::before {
-    content: counter(sections) '. ';
-  }
 
   &.no-counter::before {
     content: none;
+  }
+
+  @include respond-to("medium") {
+    padding: 1em;
   }
 }
 
@@ -55,15 +59,18 @@
  * Anchor
  */
 .sassdoc__item-anchor {
-  opacity: 0;
-  position: absolute;
-  right: 101%;
-  bottom: .25em;
   font-size: .6em;
   color: lighten(color("pink"), 20%);
 
-  .sassdoc__item:hover & {
-    opacity: 1;
+  @include respond-to("medium") {
+    opacity: 0;
+    position: absolute;
+    right: 101%;
+    bottom: .25em;
+
+    .sassdoc__item:hover & {
+      opacity: 1;
+    }
   }
 }
 

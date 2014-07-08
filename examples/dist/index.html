@@ -60,15 +60,6 @@
       
         
           
-        
-      
-        
-          
-          
-        
-      
-        
-          
           
         
       
@@ -107,7 +98,6 @@
       
         
           
-          
         
       
         
@@ -127,10 +117,20 @@
       
         
           
+          
         
       
         
           
+          
+        
+      
+        
+          
+          
+        
+      
+        
           
         
       
@@ -480,45 +480,6 @@
           
           
           <li>
-            <a href="#function-sl-comma-list">sl-comma-list</a> 
-            
-            
-          </li>
-
-        
-
-      
-
-        
-        
-
-          
-          
-          
-          
-          <li>
-            <a href="#function-sl-contain">sl-contain</a> 
-            
-            
-          </li>
-
-        
-
-      
-
-        
-        
-
-      
-
-        
-        
-
-          
-          
-          
-          
-          <li>
             <a href="#function-sl-count-values">sl-count-values</a> 
             
             
@@ -536,7 +497,7 @@
           
           
           <li>
-            <a href="#function-sl-debug">sl-debug</a> 
+            <a href="#function-sl-comma-list">sl-comma-list</a> 
             
             
           </li>
@@ -570,11 +531,50 @@
           
           
           <li>
+            <a href="#function-sl-debug">sl-debug</a> 
+            
+            
+          </li>
+
+        
+
+      
+
+        
+        
+
+          
+          
+          
+          
+          <li>
             <a href="#function-sl-explode">sl-explode</a> 
             
             
           </li>
 
+        
+
+      
+
+        
+        
+
+          
+          
+          
+          
+          <li>
+            <a href="#function-sl-contain">sl-contain</a> 
+            
+            
+          </li>
+
+        
+
+      
+
+        
         
 
       
@@ -648,7 +648,7 @@
           
           
           <li>
-            <a href="#function-sl-has-values">sl-has-values</a> 
+            <a href="#function-sl-insert-nth">sl-insert-nth</a> 
             
             
           </li>
@@ -665,7 +665,7 @@
           
           
           <li>
-            <a href="#function-sl-insert-nth">sl-insert-nth</a> 
+            <a href="#function-sl-has-values">sl-has-values</a> 
             
             
           </li>
@@ -699,28 +699,6 @@
           
           
           <li>
-            <a href="#function-sl-is-empty">sl-is-empty</a> 
-            
-            
-          </li>
-
-        
-
-      
-
-        
-        
-
-      
-
-        
-        
-
-          
-          
-          
-          
-          <li>
             <a href="#function-sl-is-single">sl-is-single</a> 
             
             
@@ -739,6 +717,28 @@
           
           <li>
             <a href="#function-sl-is-symmetrical">sl-is-symmetrical</a> 
+            
+            
+          </li>
+
+        
+
+      
+
+        
+        
+
+      
+
+        
+        
+
+          
+          
+          
+          
+          <li>
+            <a href="#function-sl-is-empty">sl-is-empty</a> 
             
             
           </li>
@@ -1043,7 +1043,7 @@
           
           
           <li>
-            <a href="#function-sl-slice">sl-slice</a> 
+            <a href="#function-sl-some">sl-some</a> 
             
             
           </li>
@@ -1060,7 +1060,7 @@
           
           
           <li>
-            <a href="#function-sl-some">sl-some</a> 
+            <a href="#function-sl-slice">sl-slice</a> 
             
             
           </li>
@@ -1265,23 +1265,6 @@
           
           
           <li>
-            <a href="#function-sl-missing-dependencies">sl-missing-dependencies</a> 
-            <span class="annotation">private</span>
-            
-          </li>
-
-        
-
-      
-
-        
-        
-
-          
-          
-          
-          
-          <li>
             <a href="#function-sl-str-compare">sl-str-compare</a> 
             <span class="annotation">private</span>
             
@@ -1300,6 +1283,23 @@
           
           <li>
             <a href="#function-sl-is-true">sl-is-true</a> 
+            <span class="annotation">private</span>
+            
+          </li>
+
+        
+
+      
+
+        
+        
+
+          
+          
+          
+          
+          <li>
+            <a href="#function-sl-missing-dependencies">sl-missing-dependencies</a> 
             <span class="annotation">private</span>
             
           </li>
@@ -1345,7 +1345,9 @@
 
 <h2 class="sassdoc__map-heading">SassDoc</h2>
 
-<p>Like JSDoc but for Sass files.</p>
+<div class="sassdoc__map-description">
+  <p>Like JSDoc but for Sass files.</p>
+</div>
 
 
       </aside>
@@ -1461,7 +1463,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/_variables.scss</code></p>
+  <p><code>examples/stylesheets//_variables.scss</code></p>
 
 
 
@@ -1544,7 +1546,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/_variables.scss</code></p>
+  <p><code>examples/stylesheets//_variables.scss</code></p>
 
 
 
@@ -1626,7 +1628,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/_variables.scss</code></p>
+  <p><code>examples/stylesheets//_variables.scss</code></p>
 
 
 
@@ -1696,7 +1698,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-chunk ($list, $) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-chunk ($list, $size) { ... }</code></pre>
 
 
 
@@ -1739,11 +1741,11 @@
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{Number|String} $size - length of lists</p></td>
+          <td data-label="name"><code>$size</code></td>
+          <td data-label="desc"><p>length of lists</p></td>
           <td data-label="type">
           
-            
+            Number, String
           
           </td>
           <td data-label="default">
@@ -1822,293 +1824,13 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_chunk.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_chunk.scss</code></p>
 
 
 
 
           </section>
 
-        
-
-      
-
-        
-        
-
-          
-          
-        
-          
-          
-          
-          <section class="sassdoc__item" id="function-sl-comma-list">
-            <h2 class="sassdoc__item-name">
-  <a class="sassdoc__item-anchor" href="#function-sl-comma-list">#</a>
-
-  
-
-  <code>sl-comma-list</code>
-
-  
-
-  
-
-  
-    <span class="sassdoc__item-since">Since 2.2.0</span>
-  
-</h2>
-
-
-
-
-
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-comma-list () { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3>Description</h3>
-  
-  <p class="sassdoc__item-description"><p>Initialize an empty comma-separated list.</p></p>
-
-
-  <h3>Parameters</h3>
-
-
-
-  <p>None.</p>
-
-
-
-  
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    List
-  
-  </p>
-
-
-  
-  <h3>Example</h3>
-
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-comma-list()
-// ()</code></pre>
-  
-
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3>Found at</h3>
-
-  <p><code>examples/stylesheets/SassyLists/_comma-list.scss</code></p>
-
-
-
-
-          </section>
-
-        
-
-      
-
-        
-        
-
-          
-          
-        
-          
-          
-          
-          <section class="sassdoc__item" id="function-sl-contain">
-            <h2 class="sassdoc__item-name">
-  <a class="sassdoc__item-anchor" href="#function-sl-contain">#</a>
-
-  
-
-  <code>sl-contain</code>
-
-  
-
-  
-
-  
-    <span class="sassdoc__item-since">Since 0.3.0</span>
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-contain ($list, $) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3>Description</h3>
-  
-  <p class="sassdoc__item-description"><p>Returns whether <code>$list</code> contains <code>$value</code>.</p></p>
-
-
-  <h3>Parameters</h3>
-
-
-
-  <table class="sassdoc__item-parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$list</code></td>
-          <td data-label="desc"><p>list to check</p></td>
-          <td data-label="type">
-          
-            List
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}       $value - value to look for</p></td>
-          <td data-label="type">
-          
-            
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Bool
-  
-  </p>
-
-
-  
-  <h3>Example</h3>
-
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-contain(a b c, a)
-// true</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-contain(a b c, z)
-// false</code></pre>
-  
-
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3>Found at</h3>
-
-  <p><code>examples/stylesheets/SassyLists/_contain.scss</code></p>
-
-
-
-
-          </section>
-
-        
-
-      
-
-        
         
 
       
@@ -2240,7 +1962,320 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_count-values.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_count-values.scss</code></p>
+
+
+
+
+          </section>
+
+        
+
+      
+
+        
+        
+
+          
+          
+        
+          
+          
+          
+          <section class="sassdoc__item" id="function-sl-comma-list">
+            <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#function-sl-comma-list">#</a>
+
+  
+
+  <code>sl-comma-list</code>
+
+  
+
+  
+
+  
+    <span class="sassdoc__item-since">Since 2.2.0</span>
+  
+</h2>
+
+
+
+
+
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-comma-list () { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3>Description</h3>
+  
+  <p class="sassdoc__item-description"><p>Initialize an empty comma-separated list.</p></p>
+
+
+  <h3>Parameters</h3>
+
+
+
+  <p>None.</p>
+
+
+
+  
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    List
+  
+  </p>
+
+
+  
+  <h3>Example</h3>
+
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-comma-list()
+// ()</code></pre>
+  
+
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3>Found at</h3>
+
+  <p><code>examples/stylesheets//SassyLists/_comma-list.scss</code></p>
+
+
+
+
+          </section>
+
+        
+
+      
+
+        
+        
+
+          
+          
+        
+          
+          
+          
+          <section class="sassdoc__item" id="function-sl-every">
+            <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#function-sl-every">#</a>
+
+  
+
+  <code>sl-every</code>
+
+  
+
+  
+
+  
+    <span class="sassdoc__item-since">Since 2.0.0</span>
+  
+</h2>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-every ($list, $function, $args...) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3>Description</h3>
+  
+  <p class="sassdoc__item-description"><p>Tests whether all items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></p>
+
+
+  <h3>Parameters</h3>
+
+
+
+  <table class="sassdoc__item-parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$list</code></td>
+          <td data-label="desc"><p>list to run test against</p></td>
+          <td data-label="type">
+          
+            List
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$function</code></td>
+          <td data-label="desc"><p>function to run against every item from list</p></td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$args</code></td>
+          <td data-label="desc"><p>extra arguments to pass to the function</p></td>
+          <td data-label="type">
+          
+            Arglist
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Bool
+  
+  </p>
+
+
+  
+  <h3>Example</h3>
+
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-every(1 2 3, unitless)
+// true</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-every(1 2 3px, unitless)
+// false</code></pre>
+  
+
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3>Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#function-sl-sum"><code>sl-sum</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3>Found at</h3>
+
+  <p><code>examples/stylesheets//SassyLists/_every.scss</code></p>
 
 
 
@@ -2477,217 +2512,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_debug.scss</code></p>
-
-
-
-
-          </section>
-
-        
-
-      
-
-        
-        
-
-          
-          
-        
-          
-          
-          
-          <section class="sassdoc__item" id="function-sl-every">
-            <h2 class="sassdoc__item-name">
-  <a class="sassdoc__item-anchor" href="#function-sl-every">#</a>
-
-  
-
-  <code>sl-every</code>
-
-  
-
-  
-
-  
-    <span class="sassdoc__item-since">Since 2.0.0</span>
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-    
-  
-
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-every ($list, $function, $args...) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3>Description</h3>
-  
-  <p class="sassdoc__item-description"><p>Tests whether all items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></p>
-
-
-  <h3>Parameters</h3>
-
-
-
-  <table class="sassdoc__item-parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$list</code></td>
-          <td data-label="desc"><p>list to run test against</p></td>
-          <td data-label="type">
-          
-            List
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$function</code></td>
-          <td data-label="desc"><p>function to run against every item from list</p></td>
-          <td data-label="type">
-          
-            String
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$args</code></td>
-          <td data-label="desc"><p>extra arguments to pass to the function</p></td>
-          <td data-label="type">
-          
-            Arglist
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Bool
-  
-  </p>
-
-
-  
-  <h3>Example</h3>
-
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-every(1 2 3, unitless)
-// true</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-every(1 2 3px, unitless)
-// false</code></pre>
-  
-
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-  
-  
-    
-      
-      <h3>Used by</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#function-sl-sum"><code>sl-sum</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3>Found at</h3>
-
-  <p><code>examples/stylesheets/SassyLists/_every.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_debug.scss</code></p>
 
 
 
@@ -2892,13 +2717,190 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_explode.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_explode.scss</code></p>
 
 
 
 
           </section>
 
+        
+
+      
+
+        
+        
+
+          
+          
+        
+          
+          
+          
+          <section class="sassdoc__item" id="function-sl-contain">
+            <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#function-sl-contain">#</a>
+
+  
+
+  <code>sl-contain</code>
+
+  
+
+  
+
+  
+    <span class="sassdoc__item-since">Since 0.3.0</span>
+  
+</h2>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-contain ($list, $value) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3>Description</h3>
+  
+  <p class="sassdoc__item-description"><p>Returns whether <code>$list</code> contains <code>$value</code>.</p></p>
+
+
+  <h3>Parameters</h3>
+
+
+
+  <table class="sassdoc__item-parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$list</code></td>
+          <td data-label="desc"><p>list to check</p></td>
+          <td data-label="type">
+          
+            List
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>value to look for</p></td>
+          <td data-label="type">
+          
+            Any
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Bool
+  
+  </p>
+
+
+  
+  <h3>Example</h3>
+
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-contain(a b c, a)
+// true</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-contain(a b c, z)
+// false</code></pre>
+  
+
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3>Found at</h3>
+
+  <p><code>examples/stylesheets//SassyLists/_contain.scss</code></p>
+
+
+
+
+          </section>
+
+        
+
+      
+
+        
         
 
       
@@ -3062,7 +3064,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_first.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_first.scss</code></p>
 
 
 
@@ -3240,7 +3242,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_flatten.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_flatten.scss</code></p>
 
 
 
@@ -3439,7 +3441,225 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_has-multiple-values.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_has-multiple-values.scss</code></p>
+
+
+
+
+          </section>
+
+        
+
+      
+
+        
+        
+
+          
+          
+        
+          
+          
+          
+          <section class="sassdoc__item" id="function-sl-insert-nth">
+            <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#function-sl-insert-nth">#</a>
+
+  
+
+  <code>sl-insert-nth</code>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-insert-nth ($list, $index, $value) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3>Description</h3>
+  
+  <p class="sassdoc__item-description"><p>Adds <code>$value</code> at <code>$index</code> in <code>$list</code>.</p></p>
+
+
+  <h3>Parameters</h3>
+
+
+
+  <table class="sassdoc__item-parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$list</code></td>
+          <td data-label="desc"><p>list to update</p></td>
+          <td data-label="type">
+          
+            List
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$index</code></td>
+          <td data-label="desc"><p>index to add</p></td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>value to add</p></td>
+          <td data-label="type">
+          
+            Any
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    List, Null
+  
+  </p>
+
+
+  
+  <h3>Example</h3>
+
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-insert-nth(a b c, 2, z)
+// a z b c</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-insert-nth(a b c, 42, z)
+// a b c z</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-insert-nth(a b c, -42, z)
+// null</code></pre>
+  
+
+
+  
+  <h3>Throws</h3>
+
+  <ul class="list-unstyled">
+    
+      <li><p>List index $index is not a number for <code>sl-insert-nth</code>.</p></li>
+    
+      <li><p>List index $index must be a non-zero integer for <code>sl-insert-nth</code>.</p></li>
+    
+  </ul>
+
+
+  
+
+
+  
+    
+      
+      <h3>Requires</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#function-sl-is-true"><code>sl-is-true</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  
+
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3>Found at</h3>
+
+  <p><code>examples/stylesheets//SassyLists/_insert-nth.scss</code></p>
 
 
 
@@ -3582,225 +3802,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_has-values.scss</code></p>
-
-
-
-
-          </section>
-
-        
-
-      
-
-        
-        
-
-          
-          
-        
-          
-          
-          
-          <section class="sassdoc__item" id="function-sl-insert-nth">
-            <h2 class="sassdoc__item-name">
-  <a class="sassdoc__item-anchor" href="#function-sl-insert-nth">#</a>
-
-  
-
-  <code>sl-insert-nth</code>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-insert-nth ($list, $index, $) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3>Description</h3>
-  
-  <p class="sassdoc__item-description"><p>Adds <code>$value</code> at <code>$index</code> in <code>$list</code>.</p></p>
-
-
-  <h3>Parameters</h3>
-
-
-
-  <table class="sassdoc__item-parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$list</code></td>
-          <td data-label="desc"><p>list to update</p></td>
-          <td data-label="type">
-          
-            List
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$index</code></td>
-          <td data-label="desc"><p>index to add</p></td>
-          <td data-label="type">
-          
-            Number
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}       $value - value to add</p></td>
-          <td data-label="type">
-          
-            
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    List, Null
-  
-  </p>
-
-
-  
-  <h3>Example</h3>
-
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-insert-nth(a b c, 2, z)
-// a z b c</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-insert-nth(a b c, 42, z)
-// a b c z</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-insert-nth(a b c, -42, z)
-// null</code></pre>
-  
-
-
-  
-  <h3>Throws</h3>
-
-  <ul class="list-unstyled">
-    
-      <li><p>List index $index is not a number for <code>sl-insert-nth</code>.</p></li>
-    
-      <li><p>List index $index must be a non-zero integer for <code>sl-insert-nth</code>.</p></li>
-    
-  </ul>
-
-
-  
-
-
-  
-    
-      
-      <h3>Requires</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#function-sl-is-true"><code>sl-is-true</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  
-
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3>Found at</h3>
-
-  <p><code>examples/stylesheets/SassyLists/_insert-nth.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_has-values.scss</code></p>
 
 
 
@@ -3989,13 +3991,339 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_intersection.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_intersection.scss</code></p>
 
 
 
 
           </section>
 
+        
+
+      
+
+        
+        
+
+          
+          
+        
+          
+          
+          
+          <section class="sassdoc__item" id="function-sl-is-single">
+            <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#function-sl-is-single">#</a>
+
+  
+
+  <code>sl-is-single</code>
+
+  
+
+  
+
+  
+    <span class="sassdoc__item-since">Since 2.2.0</span>
+  
+</h2>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-single ($list) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3>Description</h3>
+  
+  <p class="sassdoc__item-description"><p>Tests whether <code>$list</code> has a single item.</p></p>
+
+
+  <h3>Parameters</h3>
+
+
+
+  <table class="sassdoc__item-parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$list</code></td>
+          <td data-label="desc"><p>list to run test against</p></td>
+          <td data-label="type">
+          
+            List
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Bool
+  
+  </p>
+
+
+  
+  <h3>Example</h3>
+
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-single(())
+// false</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-single(a)
+// true</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-single(a b)
+// false</code></pre>
+  
+
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3>Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#function-sl-debug"><code>sl-debug</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3>Found at</h3>
+
+  <p><code>examples/stylesheets//SassyLists/_is-single.scss</code></p>
+
+
+
+
+          </section>
+
+        
+
+      
+
+        
+        
+
+          
+          
+        
+          
+          
+          
+          <section class="sassdoc__item" id="function-sl-is-symmetrical">
+            <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#function-sl-is-symmetrical">#</a>
+
+  
+
+  <code>sl-is-symmetrical</code>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-symmetrical ($list) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3>Description</h3>
+  
+  <p class="sassdoc__item-description"><p>Checks whether <code>$list</code> is symmetrical.</p></p>
+
+
+  <h3>Parameters</h3>
+
+
+
+  <table class="sassdoc__item-parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$list</code></td>
+          <td data-label="desc"><p>list to check</p></td>
+          <td data-label="type">
+          
+            List
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Bool
+  
+  </p>
+
+
+  
+  <h3>Example</h3>
+
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-symmetrical(a b c)
+// false
+</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-symmetrical(a b a)
+// true</code></pre>
+  
+
+
+  
+
+  
+
+
+  
+    
+      
+      <h3>Requires</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#function-sl-reverse"><code>sl-reverse</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3>Found at</h3>
+
+  <p><code>examples/stylesheets//SassyLists/_is-symmetrical.scss</code></p>
+
+
+
+
+          </section>
+
+        
+
+      
+
+        
         
 
       
@@ -4187,333 +4515,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_is-empty.scss</code></p>
-
-
-
-
-          </section>
-
-        
-
-      
-
-        
-        
-
-      
-
-        
-        
-
-          
-          
-        
-          
-          
-          
-          <section class="sassdoc__item" id="function-sl-is-single">
-            <h2 class="sassdoc__item-name">
-  <a class="sassdoc__item-anchor" href="#function-sl-is-single">#</a>
-
-  
-
-  <code>sl-is-single</code>
-
-  
-
-  
-
-  
-    <span class="sassdoc__item-since">Since 2.2.0</span>
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-single ($list) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3>Description</h3>
-  
-  <p class="sassdoc__item-description"><p>Tests whether <code>$list</code> has a single item.</p></p>
-
-
-  <h3>Parameters</h3>
-
-
-
-  <table class="sassdoc__item-parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$list</code></td>
-          <td data-label="desc"><p>list to run test against</p></td>
-          <td data-label="type">
-          
-            List
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Bool
-  
-  </p>
-
-
-  
-  <h3>Example</h3>
-
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-single(())
-// false</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-single(a)
-// true</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-single(a b)
-// false</code></pre>
-  
-
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-  
-  
-    
-      
-      <h3>Used by</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#function-sl-debug"><code>sl-debug</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3>Found at</h3>
-
-  <p><code>examples/stylesheets/SassyLists/_is-single.scss</code></p>
-
-
-
-
-          </section>
-
-        
-
-      
-
-        
-        
-
-          
-          
-        
-          
-          
-          
-          <section class="sassdoc__item" id="function-sl-is-symmetrical">
-            <h2 class="sassdoc__item-name">
-  <a class="sassdoc__item-anchor" href="#function-sl-is-symmetrical">#</a>
-
-  
-
-  <code>sl-is-symmetrical</code>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-symmetrical ($list) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3>Description</h3>
-  
-  <p class="sassdoc__item-description"><p>Checks whether <code>$list</code> is symmetrical.</p></p>
-
-
-  <h3>Parameters</h3>
-
-
-
-  <table class="sassdoc__item-parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$list</code></td>
-          <td data-label="desc"><p>list to check</p></td>
-          <td data-label="type">
-          
-            List
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Bool
-  
-  </p>
-
-
-  
-  <h3>Example</h3>
-
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-symmetrical(a b c)
-// false
-</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-is-symmetrical(a b a)
-// true</code></pre>
-  
-
-
-  
-
-  
-
-
-  
-    
-      
-      <h3>Requires</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#function-sl-reverse"><code>sl-reverse</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3>Found at</h3>
-
-  <p><code>examples/stylesheets/SassyLists/_is-symmetrical.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_is-empty.scss</code></p>
 
 
 
@@ -4577,7 +4579,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-last-index ($list, $) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-last-index ($list, $value) { ... }</code></pre>
 
 
 
@@ -4620,11 +4622,11 @@
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}    $value - value to be searched for</p></td>
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>value to be searched for</p></td>
           <td data-label="type">
           
-            
+            Any
           
           </td>
           <td data-label="default">
@@ -4684,7 +4686,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_last-index.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_last-index.scss</code></p>
 
 
 
@@ -4865,7 +4867,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_last.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_last.scss</code></p>
 
 
 
@@ -5067,7 +5069,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_loop.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_loop.scss</code></p>
 
 
 
@@ -5131,7 +5133,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-prepend ($list, $) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-prepend ($list, $value) { ... }</code></pre>
 
 
 
@@ -5174,11 +5176,11 @@
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}    $value - value to prepend to the list</p></td>
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>value to prepend to the list</p></td>
           <td data-label="type">
           
-            
+            Any
           
           </td>
           <td data-label="default">
@@ -5257,7 +5259,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_prepend.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_prepend.scss</code></p>
 
 
 
@@ -5445,7 +5447,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_purge.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_purge.scss</code></p>
 
 
 
@@ -5620,7 +5622,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_random-value.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_random-value.scss</code></p>
 
 
 
@@ -5803,7 +5805,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_range.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_range.scss</code></p>
 
 
 
@@ -5983,7 +5985,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_remove-duplicates.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_remove-duplicates.scss</code></p>
 
 
 
@@ -6172,7 +6174,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_remove-nth.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_remove-nth.scss</code></p>
 
 
 
@@ -6246,7 +6248,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-remove ($list, $, $recursive) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-remove ($list, $value, $recursive) { ... }</code></pre>
 
 
 
@@ -6289,11 +6291,11 @@
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}       $value     - value to remove</p></td>
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>value to remove</p></td>
           <td data-label="type">
           
-            
+            Any
           
           </td>
           <td data-label="default">
@@ -6383,7 +6385,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_remove.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_remove.scss</code></p>
 
 
 
@@ -6457,7 +6459,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-replace-nth ($list, $index, $) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-replace-nth ($list, $index, $value) { ... }</code></pre>
 
 
 
@@ -6515,11 +6517,11 @@
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}      $value - new value for index</p></td>
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>new value for index</p></td>
           <td data-label="type">
           
-            
+            Any
           
           </td>
           <td data-label="default">
@@ -6632,7 +6634,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_replace-nth.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_replace-nth.scss</code></p>
 
 
 
@@ -6701,7 +6703,7 @@
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-replace ($list, $, $) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-replace ($list, $old, $value) { ... }</code></pre>
 
 
 
@@ -6744,11 +6746,11 @@
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}       $old   - value to replace</p></td>
+          <td data-label="name"><code>$old</code></td>
+          <td data-label="desc"><p>value to replace</p></td>
           <td data-label="type">
           
-            
+            Any
           
           </td>
           <td data-label="default">
@@ -6759,11 +6761,11 @@
         </tr>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}       $value - new value for $old</p></td>
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>new value for $old</p></td>
           <td data-label="type">
           
-            
+            Any
           
           </td>
           <td data-label="default">
@@ -6868,7 +6870,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_replace.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_replace.scss</code></p>
 
 
 
@@ -7039,7 +7041,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_reverse.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_reverse.scss</code></p>
 
 
 
@@ -7202,7 +7204,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_shuffle.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_shuffle.scss</code></p>
 
 
 
@@ -7214,6 +7216,204 @@
       
 
         
+        
+
+      
+
+        
+        
+
+          
+          
+        
+          
+          
+          
+          <section class="sassdoc__item" id="function-sl-some">
+            <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#function-sl-some">#</a>
+
+  
+
+  <code>sl-some</code>
+
+  
+
+  
+
+  
+    <span class="sassdoc__item-since">Since 2.0.0</span>
+  
+</h2>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-some ($list, $function, $args...) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3>Description</h3>
+  
+  <p class="sassdoc__item-description"><p>Tests whether some items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></p>
+
+
+  <h3>Parameters</h3>
+
+
+
+  <table class="sassdoc__item-parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$list</code></td>
+          <td data-label="desc"><p>list to run test against</p></td>
+          <td data-label="type">
+          
+            List
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$function</code></td>
+          <td data-label="desc"><p>function to run against every item from list</p></td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$args</code></td>
+          <td data-label="desc"><p>extra arguments to pass to the function</p></td>
+          <td data-label="type">
+          
+            Arglist
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Bool
+  
+  </p>
+
+
+  
+  <h3>Example</h3>
+
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-some(1 2 3, unitless)
+// true</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-some(1 2 3px, unitless)
+// true</code></pre>
+  
+    <pre class="sassdoc__item-code"><code class="language-scss">sl-some(1px 2px 3px, unitless)
+// false</code></pre>
+  
+
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3>Found at</h3>
+
+  <p><code>examples/stylesheets//SassyLists/_some.scss</code></p>
+
+
+
+
+          </section>
+
         
 
       
@@ -7439,205 +7639,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_slice.scss</code></p>
-
-
-
-
-          </section>
-
-        
-
-      
-
-        
-        
-
-          
-          
-        
-          
-          
-          
-          <section class="sassdoc__item" id="function-sl-some">
-            <h2 class="sassdoc__item-name">
-  <a class="sassdoc__item-anchor" href="#function-sl-some">#</a>
-
-  
-
-  <code>sl-some</code>
-
-  
-
-  
-
-  
-    <span class="sassdoc__item-since">Since 2.0.0</span>
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-    
-  
-
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-some ($list, $function, $args...) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3>Description</h3>
-  
-  <p class="sassdoc__item-description"><p>Tests whether some items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></p>
-
-
-  <h3>Parameters</h3>
-
-
-
-  <table class="sassdoc__item-parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$list</code></td>
-          <td data-label="desc"><p>list to run test against</p></td>
-          <td data-label="type">
-          
-            List
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$function</code></td>
-          <td data-label="desc"><p>function to run against every item from list</p></td>
-          <td data-label="type">
-          
-            String
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$args</code></td>
-          <td data-label="desc"><p>extra arguments to pass to the function</p></td>
-          <td data-label="type">
-          
-            Arglist
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Bool
-  
-  </p>
-
-
-  
-  <h3>Example</h3>
-
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-some(1 2 3, unitless)
-// true</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-some(1 2 3px, unitless)
-// true</code></pre>
-  
-    <pre class="sassdoc__item-code"><code class="language-scss">sl-some(1px 2px 3px, unitless)
-// false</code></pre>
-  
-
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3>Found at</h3>
-
-  <p><code>examples/stylesheets/SassyLists/_some.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_slice.scss</code></p>
 
 
 
@@ -7837,7 +7839,7 @@
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_sort.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_sort.scss</code></p>
 
 
 
@@ -8043,7 +8045,7 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_sum.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_sum.scss</code></p>
 
 
 
@@ -8201,7 +8203,7 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_tail.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_tail.scss</code></p>
 
 
 
@@ -8269,7 +8271,7 @@ null</code></pre>
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-to-list ($, $separator: space) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-to-list ($value, $separator: space) { ... }</code></pre>
 
 
 
@@ -8297,11 +8299,11 @@ null</code></pre>
     <tbody>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*} $value - value to cast to list</p></td>
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>value to cast to list</p></td>
           <td data-label="type">
           
-            
+            Any
           
           </td>
           <td data-label="default">
@@ -8482,7 +8484,7 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_to-list.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_to-list.scss</code></p>
 
 
 
@@ -8690,7 +8692,7 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_to-map.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_to-map.scss</code></p>
 
 
 
@@ -8894,7 +8896,7 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_to-string.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_to-string.scss</code></p>
 
 
 
@@ -9067,7 +9069,7 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_union.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_union.scss</code></p>
 
 
 
@@ -9294,7 +9296,7 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_walk.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_walk.scss</code></p>
 
 
 
@@ -9345,7 +9347,7 @@ null</code></pre>
     
   
 
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-number ($) { ... }</code></pre>
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-number ($value) { ... }</code></pre>
 
 
 
@@ -9373,11 +9375,11 @@ null</code></pre>
     <tbody>
       
         <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*} $value - value to run test against</p></td>
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>value to run test against</p></td>
           <td data-label="type">
           
-            
+            Any
           
           </td>
           <td data-label="default">
@@ -9442,7 +9444,389 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/helpers/_is-number.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/helpers/_is-number.scss</code></p>
+
+
+
+
+          </section>
+
+        
+
+      
+
+        
+        
+
+          
+          
+        
+          
+          
+          
+          <section class="sassdoc__item" id="function-sl-str-compare">
+            <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#function-sl-str-compare">#</a>
+
+  
+    <span class="sassdoc__item-access">[private]</span>
+  
+
+  <code>sl-str-compare</code>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-str-compare ($a, $b, $matrix) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3>Description</h3>
+  
+  <p class="sassdoc__item-description"><p>Compares <code>$a</code> and <code>$b</code> based on <code>$order</code>.</p></p>
+
+
+  <h3>Parameters</h3>
+
+
+
+  <table class="sassdoc__item-parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$a</code></td>
+          <td data-label="desc"><p>first value</p></td>
+          <td data-label="type">
+          
+            Any
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$b</code></td>
+          <td data-label="desc"><p>second value</p></td>
+          <td data-label="type">
+          
+            Any
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$matrix</code></td>
+          <td data-label="desc"><p>alphabetical order</p></td>
+          <td data-label="type">
+          
+            List
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Bool
+  
+  </p>
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3>Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#function-sl-sort"><code>sl-sort</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3>Found at</h3>
+
+  <p><code>examples/stylesheets//SassyLists/helpers/_str-compare.scss</code></p>
+
+
+
+
+          </section>
+
+        
+
+      
+
+        
+        
+
+          
+          
+        
+          
+          
+          
+          <section class="sassdoc__item" id="function-sl-is-true">
+            <h2 class="sassdoc__item-name">
+  <a class="sassdoc__item-anchor" href="#function-sl-is-true">#</a>
+
+  
+    <span class="sassdoc__item-access">[private]</span>
+  
+
+  <code>sl-is-true</code>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-true ($value) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3>Description</h3>
+  
+  <p class="sassdoc__item-description"><p>Returns truthiness of <code>$value</code>.</p></p>
+
+
+  <h3>Parameters</h3>
+
+
+
+  <table class="sassdoc__item-parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="sassdoc__item-parameter">
+          <td data-label="name"><code>$value</code></td>
+          <td data-label="desc"><p>value to check</p></td>
+          <td data-label="type">
+          
+            Any
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3>Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Bool
+  
+  </p>
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3>Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#function-sl-insert-nth"><code>sl-insert-nth</code></a></li>
+  
+
+
+
+  
+  
+    
+
+    <li><a href="#function-sl-prepend"><code>sl-prepend</code></a></li>
+  
+
+
+
+  
+  
+    
+
+    <li><a href="#function-sl-purge"><code>sl-purge</code></a></li>
+  
+
+
+
+  
+  
+    
+
+    <li><a href="#function-sl-replace-nth"><code>sl-replace-nth</code></a></li>
+  
+
+
+
+  
+  
+    
+
+    <li><a href="#function-sl-replace"><code>sl-replace</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3>Found at</h3>
+
+  <p><code>examples/stylesheets//SassyLists/helpers/_true.scss</code></p>
 
 
 
@@ -9577,389 +9961,7 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/helpers/_missing-dependencies.scss</code></p>
-
-
-
-
-          </section>
-
-        
-
-      
-
-        
-        
-
-          
-          
-        
-          
-          
-          
-          <section class="sassdoc__item" id="function-sl-str-compare">
-            <h2 class="sassdoc__item-name">
-  <a class="sassdoc__item-anchor" href="#function-sl-str-compare">#</a>
-
-  
-    <span class="sassdoc__item-access">[private]</span>
-  
-
-  <code>sl-str-compare</code>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-str-compare ($, $, $matrix) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3>Description</h3>
-  
-  <p class="sassdoc__item-description"><p>Compares <code>$a</code> and <code>$b</code> based on <code>$order</code>.</p></p>
-
-
-  <h3>Parameters</h3>
-
-
-
-  <table class="sassdoc__item-parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}       $a      - first value</p></td>
-          <td data-label="type">
-          
-            
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*}       $b      - second value</p></td>
-          <td data-label="type">
-          
-            
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$matrix</code></td>
-          <td data-label="desc"><p>alphabetical order</p></td>
-          <td data-label="type">
-          
-            List
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Bool
-  
-  </p>
-
-
-  
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-  
-  
-    
-      
-      <h3>Used by</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#function-sl-sort"><code>sl-sort</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3>Found at</h3>
-
-  <p><code>examples/stylesheets/SassyLists/helpers/_str-compare.scss</code></p>
-
-
-
-
-          </section>
-
-        
-
-      
-
-        
-        
-
-          
-          
-        
-          
-          
-          
-          <section class="sassdoc__item" id="function-sl-is-true">
-            <h2 class="sassdoc__item-name">
-  <a class="sassdoc__item-anchor" href="#function-sl-is-true">#</a>
-
-  
-    <span class="sassdoc__item-access">[private]</span>
-  
-
-  <code>sl-is-true</code>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-<pre class="sassdoc__item-code  language-scss"><code>@function sl-is-true ($) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3>Description</h3>
-  
-  <p class="sassdoc__item-description"><p>Returns truthiness of <code>$value</code>.</p></p>
-
-
-  <h3>Parameters</h3>
-
-
-
-  <table class="sassdoc__item-parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="sassdoc__item-parameter">
-          <td data-label="name"><code>$</code></td>
-          <td data-label="desc"><p>{*} $value - value to check</p></td>
-          <td data-label="type">
-          
-            
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3>Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Bool
-  
-  </p>
-
-
-  
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-  
-  
-    
-      
-      <h3>Used by</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#function-sl-insert-nth"><code>sl-insert-nth</code></a></li>
-  
-
-
-
-  
-  
-    
-
-    <li><a href="#function-sl-prepend"><code>sl-prepend</code></a></li>
-  
-
-
-
-  
-  
-    
-
-    <li><a href="#function-sl-purge"><code>sl-purge</code></a></li>
-  
-
-
-
-  
-  
-    
-
-    <li><a href="#function-sl-replace-nth"><code>sl-replace-nth</code></a></li>
-  
-
-
-
-  
-  
-    
-
-    <li><a href="#function-sl-replace"><code>sl-replace</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3>Found at</h3>
-
-  <p><code>examples/stylesheets/SassyLists/helpers/_true.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/helpers/_missing-dependencies.scss</code></p>
 
 
 
@@ -10110,7 +10112,7 @@ null</code></pre>
   
   <h3>Found at</h3>
 
-  <p><code>examples/stylesheets/SassyLists/_debug.scss</code></p>
+  <p><code>examples/stylesheets//SassyLists/_debug.scss</code></p>
 
 
 
