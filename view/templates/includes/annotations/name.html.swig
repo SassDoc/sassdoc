@@ -1,11 +1,9 @@
 <h2 class="item__heading">
-  <a class="item__anchor" href="#{{ item.context.type }}-{{ item.context.name }}">#</a>
-
   {% if item.access[0] != "public" %}
     <span class="item__access">[{{ item.access[0] }}]</span>
   {% endif %}
 
-  <code>{{ item.context.name }}</code>
+  <a class="item__name" href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a>
 
   {% if display.alias and item.aliased.length > 0 %}
     <span class="item__aliased">(aliased as

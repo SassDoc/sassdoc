@@ -8,11 +8,10 @@
 
   @include respond-to("medium") {
     padding-left: 2em;
-    width: 70%;
+    width: 75%;
     float: right;
-    box-shadow: -.5em 0 0 color("light-grey");
-    border-left: .5em solid color("dark-grey");
     padding-top: .9em;
+    min-height: 45em;
   }
 }
 
@@ -22,9 +21,10 @@
 .main__heading {
   color: color("dark-grey");
   padding: .5em;
+  margin-top: 0;
   text-transform: uppercase;
   border-bottom: .3em solid color("pink");
-  font-size: 1.5em;
+  font-size: 2em;
 
   @include respond-to("medium") {
     padding: .5em 0;

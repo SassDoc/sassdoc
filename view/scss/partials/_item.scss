@@ -11,6 +11,13 @@
   }
 }
 
+/**
+ * Name
+ */
+.item__name {
+  color: color("dark-grey")
+}
+
 
 /**
  * Code blocks
@@ -69,6 +76,7 @@
 .item__sub-heading {
   color: color("green");
   margin-bottom: .5em;
+  margin-top: 1em;
   text-transform: uppercase;
   font-size: 1em;
   border-bottom: 1px solid #ededed;
@@ -78,7 +86,7 @@
  * Function name
  */
 .item__heading {
-  color: color("green");
+  color: color("dark-grey");
   font-size: 2.2em;
   margin: 0 0 .5em 0;
   font-weight: normal;
@@ -115,6 +123,10 @@
   .item__parameters td,
   .item__parameters th {
     border-top: 1px solid color("medium-grey");
+    
+    &:first-of-type {
+      padding-left: 0;
+    }
   }
 }
 

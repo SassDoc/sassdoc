@@ -15,10 +15,10 @@ module.exports = function (grunt) {
   var dirs = {
     cwd: '.',
     base: 'examples/dist', // Server base.
+    dist: 'examples/dist',
     scss: 'view/scss',
     css: 'view/assets/css',
     tpl: 'view/templates',
-    dist: 'examples/dist',
     src: 'src',
     test: 'src/annotation/annotations/test'
   };
@@ -102,7 +102,7 @@ module.exports = function (grunt) {
 
     grunt.util.spawn({
       cmd: 'bin/sassdoc',
-      args: ['examples/stylesheets', 'examples/dist', '--verbose']
+      args: ['view/scss/utils', 'examples/dist', '--verbose']
     },
 
     function (error, result) {

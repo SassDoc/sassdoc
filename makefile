@@ -2,7 +2,7 @@ lint:
 		./node_modules/jshint/bin/jshint ./src/
 
 compile:
-		bin/sassdoc examples/stylesheets examples/dist --verbose
+		bin/sassdoc view/scss/utils examples/dist --verbose
 
 scss:
 		sass --update view/scss:view/assets/css --style compressed

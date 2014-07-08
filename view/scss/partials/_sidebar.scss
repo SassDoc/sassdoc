@@ -19,10 +19,10 @@
   }
 
   @include respond-to("medium") {
-    width: 30%;
+    width: 25%;
     float: left;
     text-align: right;
-    padding: 3em 0;
+    padding: 2.5em 0;
 
     &::before,
     &::after {
@@ -46,7 +46,8 @@
   margin-bottom: 1em;
 
   li {
-    padding: 0 1.5em 0 .5em;
+    padding: 0 2em 0 .5em;
+    color: color("light-grey");
   }
 
   a {
@@ -66,7 +67,7 @@
   color: color("light-grey");
   font-size: 1.2em;
   margin: 0;
-  padding-right: 1.2em;
+  padding-right: 1.6em;
   text-transform: uppercase;
 }
 
@@ -75,8 +76,16 @@
  */
 .sidebar__sub-heading {
   background: color("light-grey");
-  margin-top: 1em;
-  margin-bottom: .5em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  position: relative;
+  
+  &::before {
+    content: '';
+    @include absolute(right 100% top 0 bottom 0);
+    width: 100em;
+    background: inherit;
+  }
 
   a {
     display: block;
@@ -91,5 +100,5 @@
  */
 .sidebar__description {
   color: color("light-grey");
-  padding-right: 1.5em;
+  padding-right: 2em;
 }
