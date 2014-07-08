@@ -1,8 +1,8 @@
-# SassDoc
+# SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/HugoGiraudel/SassDoc.svg?branch=master)](https://travis-ci.org/HugoGiraudel/SassDoc)
 
 Like JSDoc, but for Sass files.
 
-Currently only work for `.scss` files.  
+Currently only work for `.scss` files.
 Also, inline comments are not parsed (`//`).
 
 ## Example
@@ -33,13 +33,13 @@ Also, inline comments are not parsed (`//`).
 
 /**
  * Defines whether the lib should support legacy browsers (e.g. `IE 8`).
- * 
+ *
  * @since 1.3.37
- * 
+ *
  * @todo Nothing. It's awesome.
- * 
+ *
  * @link https://github.com/HugoGiraudel/SassDoc SassDoc
- * 
+ *
  * @type Bool
  */
 $legacy-support: true !global;
@@ -99,7 +99,7 @@ See [Wiki](https://github.com/HugoGiraudel/SassDoc/wiki/Documentation).
 
 ## Pass extra variables to the view
 
-With the `-c` or `--config` flag, you can set the path to a JSON file containing variables to be passed to the view so the latter is a little more customized than the default documentation. 
+With the `-c` or `--config` flag, you can set the path to a JSON file containing variables to be passed to the view so the latter is a little more customized than the default documentation.
 
 Default path leads to `view/view.json`. You can update this file or make your own.
 
