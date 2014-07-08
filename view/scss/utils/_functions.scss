@@ -56,9 +56,11 @@
  * Helper to manage `z-index`. 
  * Tries to fetch the z-index mapped to `$layer` in `$z-indexes` map.
  * If found, returns it, else returns `null`.
- * See `_variables.scss` -> `$z-indexes` map.
  *
  * @requires {variable} z-indexes
+ *
+ * @example scss
+ * z-index: z("default")
  * 
  * @param {String} $layer - Layer
  *
