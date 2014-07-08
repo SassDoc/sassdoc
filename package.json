@@ -27,6 +27,9 @@
     "url": "https://github.com/HugoGiraudel/SassDoc/issues"
   },
   "main": "src/api.js",
+  "bin": {
+    "sassdoc": "./bin/sassdoc"
+  },
   "dependencies": {
     "swig": "~1.3.2",
     "q": "^1.0.1",
@@ -36,10 +39,18 @@
     "ncp": "^0.5.1",
     "scsscommentparser": "0.0.17"
   },
-  "bin": {
-    "sassdoc": "./bin/sassdoc"
-  },
   "devDependencies": {
-    "assert": "^1.1.1"
+    "assert": "^1.1.1",
+    "grunt": "^0.4.5",
+    "grunt-browser-sync": "^1.1.2",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-test": "^0.11.0",
+    "load-grunt-tasks": "^0.6.0",
+    "time-grunt": "^0.3.2"
+  },
+  "scripts": {
+    "test": "grunt test"
   }
 }
