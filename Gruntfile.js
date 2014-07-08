@@ -1,5 +1,9 @@
 'use strict';
 
+var sdfs = require('./src/file');
+var spawn = require('win-spawn');
+var chalk = require('chalk');
+
 module.exports = function (grunt) {
 
   // Load all grunt tasks matching the `grunt-*` pattern.
@@ -8,17 +12,13 @@ module.exports = function (grunt) {
   // Time how long tasks take.
   require('time-grunt')(grunt);
 
-  // Require SassDoc file utils.
-  var sdfs = require('./src/file');
-
   // Project specific paths.
   var dirs = {
-    cwd: '.',
-    base: 'examples/dist', // Server base.
-    dist: 'examples/dist',
+    cwd: __dirname,
     scss: 'view/scss',
     css: 'view/assets/css',
     tpl: 'view/templates',
+    dist: 'examples/dist',
     src: 'src',
     test: 'src/annotation/annotations/test'
   };
@@ -34,7 +34,7 @@ module.exports = function (grunt) {
       options: {
         style: 'compressed'
       },
-      view: {
+      dist: {
         files: [{
           expand: true,
           cwd: '<%= dirs.scss %>',
@@ -67,7 +67,7 @@ module.exports = function (grunt) {
     watch: {
       scss: {
         files: ['<%= dirs.scss %>/**/*.scss'],
-        tasks: ['sass:view']
+        tasks: ['sass:dist']
       },
       tpl: {
         files: ['<%= dirs.tpl %>/**/*.swig'],
@@ -87,7 +87,7 @@ module.exports = function (grunt) {
         options: {
           watchTask: true,
           server: {
-            baseDir: '<%= dirs.base %>'
+            baseDir: '<%= dirs.dist %>'
           }
         }
       }
@@ -100,20 +100,22 @@ module.exports = function (grunt) {
   grunt.registerTask('compile', 'Generates documentation', function () {
     var done = this.async();
 
-    grunt.util.spawn({
-      cmd: 'bin/sassdoc',
-      args: ['view/scss/utils', 'examples/dist', '--verbose']
-    },
+    // Temporary fix for #73
+    var src = dirs.scss + '/utils';
+    var args = [src, dirs.dist, '--verbose'];
 
-    function (error, result) {
-      if (error) {
-        grunt.log.error(error);
+    var cp = spawn('./bin/sassdoc', args, {stdio: 'inherit'});
+
+    cp.on('error', function (err) {
+      grunt.warn(err);
+    });
+
+    cp.on('close', function (code) {
+      if (code > 0) {
+        return grunt.warn('Exited with error code ' + code);
       }
 
-      if (result) {
-        grunt.log.writeln(result);
-      }
-
+      grunt.log.writeln('File ' + chalk.cyan(dirs.dist) + ' created.');
       done();
     });
   });
@@ -126,7 +128,7 @@ module.exports = function (grunt) {
     }
   });
 
-  // While working on the view.
+  // While working on the view/examples.
   grunt.registerTask('dist', [
     'browserSync:dist',
     'watch'
