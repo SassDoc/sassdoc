@@ -14,26 +14,31 @@
     {# Loop over data #}
     {% for type, obj in data %}
 
-      {# Group items from object by display type and only keep `true` #}
-      {% set obj = (obj | groupby('display'))['true'] %}
+      {# In case something goes wrong, skip #}
+      {% if type != "unknown" and type != "undefined" %}
 
-      {# If there is at least one item to display, go #}
-      {% if obj.length > 0 %}
-        <section class="main__section">
-          <h1 class="main__heading" id="{{ type }}">{{ (type + 's') | capitalize }}</h1>
+        {# Group items from object by display type and only keep `true` #}
+        {% set obj = (obj | groupby('display'))['true'] %}
 
-          {# Loop over items in current group #}
-          {% for item in obj %}
+        {# If there is at least one item to display, go #}
+        {% if obj.length > 0 %}
+          <section class="main__section">
+            <h1 class="main__heading" id="{{ type }}">{{ (type + 's') | capitalize }}</h1>
 
-            {# Display item #}
-            {% set partial = "../includes/items/" + type + ".html.swig" %}
-            
-            <section class="main__item  item{% if item.alias %}  item--alias{% endif %}{% if item.deprecated %}  item--deprecated{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
-              {% include partial with { item: item, display: display } %}
-            </section>
+            {# Loop over items in current group #}
+            {% for item in obj %}
 
-          {% endfor %}
-        </section>
+              {# Display item #}
+              {% set partial = "../includes/items/" + type + ".html.swig" %}
+              
+              <section class="main__item  item{% if item.alias %}  item--alias{% endif %}{% if item.deprecated %}  item--deprecated{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
+                {% include partial with { item: item, display: display } %}
+              </section>
+
+            {% endfor %}
+          </section>
+
+        {% endif %}
 
       {% endif %}
 

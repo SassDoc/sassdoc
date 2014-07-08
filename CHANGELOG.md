@@ -3,11 +3,15 @@
 ## 1.0.0-rc.12
 
 * Fixed minor issues when parsing `@param`
+* Fixed an issue with `@import` being parsed
 * Added language detection to `@example`
 * Major style changes
 * Improved view structure
 * Improved DOM structure
 * Improved SCSS structure
+* Added Grunt
+* Removed Makefile
+* Added Travis
 
 ## 1.0.0-rc.11
 

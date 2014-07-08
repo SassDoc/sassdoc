@@ -115,7 +115,7 @@ module.exports = function (grunt) {
     var done = this.async();
 
     // Temporary fix for #73
-    var src = dirs.scss + '/utils';
+    var src = dirs.scss;
     var args = [src, dirs.dist, '--verbose'];
 
     var cp = spawn('./bin/sassdoc', args, {stdio: 'inherit'});
