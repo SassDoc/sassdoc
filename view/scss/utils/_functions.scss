@@ -3,7 +3,12 @@
  *
  * @requires {variable} $colors
  * 
+ * @example scss
+ * color: color("pink");
+ * 
  * @param {String} $color - Color to fetch
+ *
+ * @throws Unfortunately, no color could be retrieved from `$color`. Please make sure it is defined in `$colors` map.
  *
  * @return {Color | Null}
  */
@@ -21,7 +26,15 @@
  *
  * @requires {variable} $breakpoints
  * 
- * @param {String} $name - Breakpoint
+ * @param {String} $breakpoint - Breakpoint
+ *
+ * @example scss
+ * @include respond-to("small") {}
+ *
+ * @example css
+ * @media (max-width: 600px) {}
+ * 
+ * @throws Unfortunately, no value could be retrieved from `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
  */
 @mixin respond-to($breakpoint) {
   // If the key exists in the map

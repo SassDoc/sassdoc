@@ -4,7 +4,7 @@
 .header {
   padding: 1em;
   background: color("pink");
-  color: white;
+  color: color("light-grey");
   
   @include respond-to("medium") {
     border-bottom: 0.5em solid color("light-grey");
@@ -21,11 +21,7 @@
   font-weight: 500;
 
   a {
-    color: white;
-
-    &:hover {
-      color: color("light-grey");
-    }
+    color: color("light-grey");
   }
 }
 

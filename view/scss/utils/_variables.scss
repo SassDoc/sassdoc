@@ -1,13 +1,26 @@
+/**
+ * Map of colors for quick grabbing.
+ *
+ * @type Map
+ */
 $colors: (
   "pink":         #c6538c,
-  "green":        #699,
+  
   "light-purple": #e9e4f1,
   "purple":       #998099,
+  
+  "green":        #699,
+
   "light-grey":   #f7f5fa,
   "medium-grey":  #ddd,
   "dark-grey":    #444
 ) !global;
 
+/**
+ * Map of breakpoints for responsive design.
+ *
+ * @type Map
+ */
 $breakpoints: (
   "small":  (max-width: 600px),
   "medium": (min-width: 601px)

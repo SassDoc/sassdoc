@@ -59,27 +59,26 @@ a {
     display: none;
   }
 
-  td::before {
-    content: attr(data-label) ': ';
-    text-transform: capitalize;
-    font-weight: bold;
-  }
-
-  td p {
-    display: inline;
-  }
-
-  td {
-    padding-left: 0 !important;
-  }
-
   tr {
     padding-bottom: 1em;
     margin-bottom: 1em;
     border-bottom: 2px solid color("medium-grey");
   }
-}
 
+  td {
+    padding-left: 0 !important;
+
+    &::before {
+      content: attr(data-label) ': ';
+      text-transform: capitalize;
+      font-weight: bold;
+    }
+
+    p {
+      display: inline;
+    }
+  }
+}
 
 /**
  * Lists
@@ -94,8 +93,8 @@ a {
  */
 .container {
   @extend %clearfix;
+  max-width: 100%;
   width: 1170px;
   margin: 0 auto;
   padding: 0 1em;
-  max-width: 100%;
 }
