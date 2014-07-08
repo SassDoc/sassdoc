@@ -47,7 +47,7 @@ $legacy-support: true !global;
 
 ### Preview
 
-![SassDoc](http://i.imgur.com/4z3Bt8H.png)
+![SassDoc](http://i.imgur.com/5i8QYB8.png)
 
 
 ## Installation
