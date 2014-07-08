@@ -55,29 +55,4 @@ exports = module.exports = {
   isset: function (value) {
     return typeof value !== 'undefined';
   }
-
-};
-
-/**
- * Extend String primitive to add a repeat function
- * @param  {integer} times - number of times to repeat string
- * @return {string}          final string
- */
-String.prototype.repeat = function (times) {
-   return (new Array(times + 1)).join(this);
-};
-
-/**
- * Extend String primitive to add a trim function
- * @return {string} trimed string
- */
-String.prototype.trim = function () {
-  return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');
-};
-
-/**
- * Extend String primitive to add a capitalize function
- */
-String.prototype.capitalize = function () {
-  return this.charAt(0).toUpperCase() + this.slice(1);
 };
