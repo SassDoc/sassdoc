@@ -51,7 +51,7 @@
   }
 
   a {
-    color: darken(color("light-grey"), 15%);
+    color: color("light-grey");
     text-decoration: none;
 
     &:hover {
@@ -89,7 +89,7 @@
 
   a {
     display: block;
-    color: color("pink");
+    color: color("dark-grey");
     padding: .5em 0;
     text-transform: uppercase;
   }
