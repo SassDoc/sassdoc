@@ -4,8 +4,10 @@
 
 * Fixed minor issues when parsing `@param`
 * Added language detection to `@example`
-* Slightly updated the view
-* Major style refacto
+* Major style changes
+* Improved view structure
+* Improved DOM structure
+* Improved SCSS structure
 
 ## 1.0.0-rc.11
 

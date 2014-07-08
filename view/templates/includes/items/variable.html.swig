@@ -2,7 +2,7 @@
 
 {% include '../annotations/deprecated.html.swig' %}
 
-<pre class="sassdoc__item-code  language-scss"><code>${{ item.context.name }}: {{ item.context.value | safe }}{% if item.context.scope !== "private" %} !{{ item.context.scope }}{% endif %};</code></pre>
+<pre class="item__code"><code class="language-scss">${{ item.context.name }}: {{ item.context.value | safe }}{% if item.context.scope !== "private" %} !{{ item.context.scope }}{% endif %};</code></pre>
 
 {% if not item.alias %}  
 

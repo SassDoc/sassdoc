@@ -6,7 +6,7 @@
   
     {% if not title_displayed %}
       {% set title_displayed = true %}
-      <h3>Used by</h3>
+      <h3 class="item__sub-heading">Used by</h3>
       <ul class="list-unstyled">
     {% endif %}
 

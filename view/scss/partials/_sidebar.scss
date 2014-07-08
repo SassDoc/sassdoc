@@ -1,7 +1,7 @@
 /**
- * Doc map
+ * Sidebar
  */
-.sassdoc__map {
+.sidebar {
   background: color("dark-grey");
   padding: 1em 0;
   position: relative;
@@ -32,18 +32,27 @@
       content: none;
     }
   }
+}
 
-  ul {
-    list-style: none;
-    padding: 0;
-  }
+/**
+ * Private and alias annotations
+ */
+.sidebar__annotation {
+  color: color("purple");
+}
+
+/**
+ * Map main wrapper
+ */
+.sidebar__body {
+  padding: .5em 0;
+  margin-bottom: 1em;
 
   li {
     padding: 0 1.5em 0 .5em;
   }
 
   a {
-    font-weight: 500;
     color: darken(color("light-grey"), 15%);
     text-decoration: none;
 
@@ -51,42 +60,28 @@
       color: color("green");
     }
   }
-
-  .annotation {
-    color: color("purple");
-  }
-}  
-
-/**
- * Map main wrapper
- */
-.sassdoc__map-container {
-  padding: .5em 0;
-  margin-bottom: 1em;
 }
 
 /**
- * Map heading
+ * Sidebar heading
  */
-.sassdoc__map-heading {
+.sidebar__heading {
   color: color("light-grey");
   font-size: 1.2em;
   margin: 0;
   padding-right: 1.2em;
   text-transform: uppercase;
-  
 }
 
 /**
- * List item section
+ * List item heading
  */
-.sassdoc__map-section {
+.sidebar__sub-heading {
   background: color("light-grey");
   margin-top: 1em;
   margin-bottom: .5em;
 
   a {
-    font-weight: 500;
     display: block;
     color: color("pink");
     padding: .5em 0;
@@ -94,7 +89,10 @@
   }
 }
 
-.sassdoc__map-description {
+/**
+ * Project description
+ */
+.sidebar__description {
   color: color("light-grey");
   padding-right: 1.5em;
 }

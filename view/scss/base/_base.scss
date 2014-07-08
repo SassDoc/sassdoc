@@ -7,17 +7,10 @@
 }
 
 /**
- * Base font size
- */
-html {
-  font-size: 62.5%;
-}
-
-/**
  * Body rules
  */
 body {
-  font: 1.6em/1.35 'Ubuntu', 'Helvetica', sans-serif;
+  font: 1em/1.35 'Ubuntu', 'Helvetica', sans-serif;
   overflow: auto;
   margin: 0;
   background-color: color("light-grey");
@@ -40,4 +33,69 @@ a {
       color: color("dark-grey");
     }
   }
+}
+
+/**
+ * Code
+ */
+:not(pre) > code {
+  padding: 2px 4px;
+  color: color("pink");
+  background-color: color("light-purple");
+  white-space: nowrap;
+  border-radius: 3px;
+  border: solid 1px #DAD3D6;
+}
+
+/**
+ * Tables
+ */
+@include respond-to("small") {
+  table, tbody, tr, td, th {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  td::before {
+    content: attr(data-label) ': ';
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+
+  td p {
+    display: inline;
+  }
+
+  td {
+    padding-left: 0 !important;
+  }
+
+  tr {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid color("medium-grey");
+  }
+}
+
+
+/**
+ * Lists
+ */
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+/**
+ * Main container
+ */
+.container {
+  @extend %clearfix;
+  width: 1170px;
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: 100%;
 }

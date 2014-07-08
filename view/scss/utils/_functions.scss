@@ -1,16 +1,33 @@
+/**
+ * Color getter.
+ *
+ * @requires {variable} $colors
+ * 
+ * @param {String} $color - Color to fetch
+ *
+ * @return {Color | Null}
+ */
 @function color($color) {
   @if not map-has-key($colors, $color) {
-    @warn "Unknown color `#{$color}`.";
+    @warn "Unfortunately, no color could be retrieved from `#{$color}`. "
+        + "Please make sure it is defined in `$colors` map.";
   }
 
   @return map-get($colors, $color);
 }
 
-@mixin respond-to($name) {
+/**
+ * Responsive manager.
+ *
+ * @requires {variable} $breakpoints
+ * 
+ * @param {String} $name - Breakpoint
+ */
+@mixin respond-to($breakpoint) {
   // If the key exists in the map
-  @if map-has-key($breakpoints, $name) {
+  @if map-has-key($breakpoints, $breakpoint) {
     // Prints a media query based on the value
-    @media #{inspect(map-get($breakpoints, $name))} {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
       @content;
     }
   }

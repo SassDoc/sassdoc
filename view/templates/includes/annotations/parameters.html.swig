@@ -1,8 +1,8 @@
-<h3>Parameters</h3>
+<h3 class="item__sub-heading">Parameters</h3>
 
 {% if item.parameters.length > 0 %}
 
-  <table class="sassdoc__item-parameters">
+  <table class="item__parameters">
     <thead>
       <tr>
         <th>Name</th>
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       {% for parameter in item.parameters %}
-        <tr class="sassdoc__item-parameter">
+        <tr class="item__parameter">
           <td data-label="name"><code>${{ parameter.name }}</code></td>
           <td data-label="desc">{{ parameter.description | markdown | default('&mdash;') | safe }}</td>
           <td data-label="type">

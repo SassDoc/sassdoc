@@ -4,7 +4,7 @@
   {% if (display.access.indexOf(require.access[0]) != -1) and not (not display.alias and require.alias[0]) %}
     {% if not title_displayed %}
       {% set title_displayed = true %}
-      <h3>Requires</h3>
+      <h3 class="item__sub-heading">Requires</h3>
       <ul class="list-unstyled">
     {% endif %}
 

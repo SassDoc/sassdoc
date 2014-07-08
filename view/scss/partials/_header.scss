@@ -1,7 +1,7 @@
 /**
  * Header
  */
-.sassdoc__header {
+.header {
   padding: 1em;
   background: color("pink");
   color: white;
@@ -14,10 +14,11 @@
 /**
  * Main title
  */
-.sassdoc__title {
+.header__title {
   font-size: 1em;
   margin: 0;
   float: left;
+  font-weight: 500;
 
   a {
     color: white;
@@ -31,7 +32,7 @@
 /**
  * Item count
  */
-.sassdoc__count {
+.header__item-count {
   float: right;
   margin: 0;
 }

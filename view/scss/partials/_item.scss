@@ -1,0 +1,141 @@
+/**
+ * Item
+ */
+.item {
+  & + & {
+    margin: 4em 0;
+  }
+
+  p {
+    margin: 0 0 .5em 0;
+  }
+}
+
+
+/**
+ * Code blocks
+ */
+.item__code {
+  border-left: .3em solid color("pink");
+  display: block;
+  word-wrap: break-word;
+  margin-top: 1em !important;
+  line-height: 1.42;
+}
+
+/**
+ * Anchor
+ */
+.item__anchor {
+  font-size: .6em;
+  color: lighten(color("pink"), 20%);
+
+  @include respond-to("medium") {
+    opacity: 0;
+    position: absolute;
+    right: 101%;
+    bottom: .25em;
+
+    .item:hover & {
+      opacity: 1;
+    }
+  }
+}
+
+/**
+ * Deprecated flag
+ */
+.item__deprecated strong {
+  color: darken(red, 10%);
+  text-transform: uppercase;
+}
+
+/**
+ * Type
+ */
+.item__type {
+  color: color("medium-grey");
+  text-transform: capitalize;
+  font-size: .75em;
+}
+
+/**
+ * Aliases
+ */ 
+.item__alias,
+.item__aliased {
+  color: color("medium-grey");
+  font-size: .8em;
+}
+
+
+.item__sub-heading {
+  color: color("green");
+  margin-bottom: .5em;
+  text-transform: uppercase;
+  font-size: 1em;
+  border-bottom: 1px solid #ededed;
+}
+
+/**
+ * Function name
+ */
+.item__heading {
+  color: color("green");
+  font-size: 2.2em;
+  margin: 0 0 .5em 0;
+  font-weight: normal;
+  position: relative;
+}
+
+
+/**
+ * Parameters table
+ */
+.item__parameters {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+
+  > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid color("medium-grey");
+    border-top: none;
+    text-align: left;
+  }
+
+  td, th {
+    padding: .5em;
+    vertical-align: top;
+  }
+}
+
+@include respond-to("medium") {
+  tbody > .item__parameter:first-of-type > td {
+    border-top: none;
+  }
+
+  .item__parameters td,
+  .item__parameters th {
+    border-top: 1px solid color("medium-grey");
+  }
+}
+
+/**
+ * Scope/access
+ */ 
+.item__access {
+  text-transform: capitalize;
+  color: color("purple");
+  font-size: .8em;
+}
+
+/**
+ * Since
+ */
+.item__since {
+  float: right;
+  font-size: .5em;
+  padding-top: .9em;
+  color: darken(color("medium-grey"), 10%);
+}

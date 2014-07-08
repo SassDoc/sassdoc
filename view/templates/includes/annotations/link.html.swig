@@ -1,5 +1,5 @@
 {% if item.link.length > 0 %}
-  <h3>Links</h3>
+  <h3 class="item__sub-heading">Links</h3>
 
   <ul class="list-unstyled">
   {% for link in item.link %}

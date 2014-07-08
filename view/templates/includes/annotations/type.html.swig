@@ -1,5 +1,5 @@
 {% if item.type %}
-  <h3>Type</h3>
+  <h3 class="item__sub-heading">Type</h3>
 
   <p>
   {% if item.type[0] == "*" %}

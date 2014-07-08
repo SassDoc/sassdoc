@@ -16,6 +16,7 @@ extras.useFilter(swig, 'markdown');
 extras.useFilter(swig, 'nl2br');
 extras.useFilter(swig, 'split');
 extras.useFilter(swig, 'trim');
+extras.useFilter(swig, 'groupby');
 swig.setFilter('push', function (arr, val) { 
   return arr.push(val);
 });
@@ -190,7 +191,7 @@ exports = module.exports = {
    * @param {Object} options
    */
   generate: function (data, destination, options) {
-    var template = swig.compileFile(__dirname + '/../view/templates/docs.html.swig');
+    var template = swig.compileFile(__dirname + '/../view/templates/documentation/index.html.swig');
 
     options.data = data;
 

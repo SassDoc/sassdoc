@@ -1,7 +1,7 @@
 /**
  * Main wrapper
  */
-.sassdoc__container {
+.main {
   background: color("light-grey");
   position: relative;
   padding-bottom: 3em;
@@ -12,224 +12,21 @@
     float: right;
     box-shadow: -.5em 0 0 color("light-grey");
     border-left: .5em solid color("dark-grey");
+    padding-top: .9em;
   }
 }
 
 /**
  * Main titles
  */
-.sassdoc__section {
+.main__heading {
   color: color("dark-grey");
-  padding: 1em;
+  padding: .5em;
   text-transform: uppercase;
   border-bottom: .3em solid color("pink");
-
-  &.no-counter::before {
-    content: none;
-  }
+  font-size: 1.5em;
 
   @include respond-to("medium") {
-    padding: 1em 0;
+    padding: .5em 0;
   }
 }
-
-/**
- * Main container
- */
-.container {
-  @extend %clearfix;
-  width: 1170px;
-  margin: 0 auto;
-  padding: 0 1em;
-  max-width: 100%;
-}
-
-/**
- * Code blocks
- */
-.sassdoc__item-code {
-  border-left: .3em solid color("pink");
-  display: block;
-  word-wrap: break-word;
-  margin-top: 1em !important;
-  line-height: 1.42;
-}
-
-/**
- * Anchor
- */
-.sassdoc__item-anchor {
-  font-size: .6em;
-  color: lighten(color("pink"), 20%);
-
-  @include respond-to("medium") {
-    opacity: 0;
-    position: absolute;
-    right: 101%;
-    bottom: .25em;
-
-    .sassdoc__item:hover & {
-      opacity: 1;
-    }
-  }
-}
-
-/**
- * Inline code
- */
-.sassdoc :not(pre) > code {
-  padding: 2px 4px;
-  font-size: 90%;
-  color: color("pink");
-  background-color: color("light-grey");
-  white-space: nowrap;
-  border-radius: 4px;
-}
-
-/**
- * Deprecated flag
- */
-.sassdoc__deprecated strong {
-  color: darken(red, 10%);
-  text-transform: uppercase;
-}
-
-/**
- * Type
- */
-.sassdoc__item-type {
-  color: color("medium-grey");
-  text-transform: capitalize;
-  font-size: .75em;
-}
-
-/**
- * Aliases
- */ 
-.sassdoc__item-alias {
-  color: color("medium-grey");
-  font-size: .8em;
-}
-
-/**
- * Subtitles
- */
-.sassdoc__item {
-  & + & {
-    margin: 4em 0;
-  }
-
-  h3 {
-    color: color("green");
-    margin-bottom: .5em;
-    text-transform: uppercase;
-    font-size: 1em;
-  }
-
-  p {
-    margin: 0 0 .5em 0;
-  }
-}
-
-/**
- * Function name
- */
-.sassdoc__item-name {
-  color: color("green");
-  font-size: 2.2em;
-  margin: 0 0 .5em 0;
-  font-weight: normal;
-  position: relative;
-}
-
-
-/**
- * Parameters table
- */
-@include respond-to("small") {
-  table, tbody, tr, td, th {
-    display: block;
-  }
-
-  thead {
-    display: none;
-  }
-
-  td::before {
-    content: attr(data-label) ': ';
-    text-transform: capitalize;
-    font-weight: bold;
-  }
-
-  td p {
-    display: inline;
-  }
-
-  td {
-    padding-left: 0 !important;
-  }
-
-  tr {
-    padding-bottom: 1em;
-    margin-bottom: 1em;
-    border-bottom: 2px solid color("medium-grey");
-  }
-}
-
-.sassdoc__item-parameters {
-  width: 100%;
-  margin-bottom: 1em;
-  border-collapse: collapse;
-
-  > thead > tr > th {
-    vertical-align: bottom;
-    border-bottom: 2px solid color("medium-grey");
-    border-top: none;
-    text-align: left;
-  }
-
-  td, th {
-    padding: .5em;
-    vertical-align: top;
-  }
-}
-
-@include respond-to("medium") {
-  .sassdoc__item-parameters > tbody > tr:first-of-type > td {
-    border-top: none;
-  }
-
-  .sassdoc__item-parameters td,
-  .sassdoc__item-parameters th {
-    border-top: 1px solid color("medium-grey");
-  }
-}
-
-/**
- * Scope/access
- */ 
-.sassdoc__item-access {
-  text-transform: capitalize;
-  color: color("purple");
-  font-size: .8em;
-}
-
-/**
- * Since
- */
-
-.sassdoc__item-since {
-  float: right;
-  font-size: .5em;
-  padding-top: .9em;
-  color: color("medium-grey");
-}
-
-/**
- * Lists
- */
-.list-unstyled {
-  padding-left: 0;
-  list-style: none;
-}
-

@@ -1,5 +1,5 @@
 {% if item.description %}
-  <h3>Description</h3>
+  <h3 class="item__sub-heading">Description</h3>
   
-  <p class="sassdoc__item-description">{{ item.description | markdown | nl2br }}</p>
+  <p class="item__description">{{ item.description | markdown | nl2br }}</p>
 {% endif %}

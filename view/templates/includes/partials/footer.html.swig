@@ -1,8 +1,8 @@
 {% if project_title or display.watermark %}
-  <footer class="sassdoc__footer" role="contentinfo">
+  <footer class="footer" role="contentinfo">
     <div class="container">
       {% if project_title %}
-        <div class="sassdoc__footer-project  project-info">
+        <div class="footer__project-info  project-info">
           <!-- Name and URL -->
           {% if package.homepage %}
             <a class="project-info__name" href="{{ package.homepage }}">{{ project_title }}</a>
@@ -31,7 +31,7 @@
       {% endif %}
 
       {% if display.watermark %}
-        <span class="sassdoc__footer-watermark">Built with <a href="https://github.com/HugoGiraudel/SassDoc">SassDoc</a>.</span>
+        <span class="footer__watermark">Built with <a href="https://github.com/HugoGiraudel/SassDoc">SassDoc</a>.</span>
       {% endif %}
     </div>
   </footer>

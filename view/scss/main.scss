@@ -1,9 +1,25 @@
+/**
+ * Sass utils
+ */
 @import "utils/variables";
 @import "utils/functions";
 @import "utils/helpers";
+
+/**
+ * Vendors
+ */
 @import "vendors/prism";
+
+/**
+ * Base stuff
+ */
 @import "base/base";
+
+/**
+ * Partials
+ */
 @import "partials/header";
-@import "partials/map";
+@import "partials/sidebar";
 @import "partials/main";
 @import "partials/footer";
+@import "partials/item";
