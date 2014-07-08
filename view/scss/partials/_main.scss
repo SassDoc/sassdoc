@@ -20,7 +20,7 @@
  */
 .sassdoc__section {
   color: color("dark-grey");
-  padding: 1em 0;
+  padding: 1em;
   text-transform: uppercase;
   border-bottom: .3em solid color("pink");
 
@@ -29,7 +29,7 @@
   }
 
   @include respond-to("medium") {
-    padding: 1em;
+    padding: 1em 0;
   }
 }
 
