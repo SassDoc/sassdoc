@@ -26,7 +26,7 @@
 .project-info__name,
 .project-info__version,
 .project-info__license {
-  display: inline-block;
+  @include inline-block;
 }
 
 /**

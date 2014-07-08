@@ -2,8 +2,7 @@
  * Univeral box-sizing reset
  */
 * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  @include prefixer(box-sizing, border-box, webkit);
 }
 
 /**
@@ -92,7 +91,7 @@ a {
  * Main container
  */
 .container {
-  @extend %clearfix;
+  @include clearfix;
   max-width: 100%;
   width: 1170px;
   margin: 0 auto;

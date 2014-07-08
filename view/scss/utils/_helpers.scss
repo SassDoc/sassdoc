@@ -1,7 +1,23 @@
-%clearfix {
-  &::after {
-    content: '';
-    display: table;
-    clear: both;
+/**
+ * Float clearing helper.
+ *
+ * @param {Bool} $extend (true) - Whether or not extend a placeholder.
+ */
+
+@mixin clearfix($extend: true) {
+  @if $extend {
+    @extend %clearfix;
   }
+
+  @else {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+%clearfix {
+  @include clearfix($extend: false);
 }

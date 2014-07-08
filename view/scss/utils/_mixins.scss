@@ -1,0 +1,223 @@
+/**
+ * Mixin to size elements.
+ *
+ * @param {Number} $width           - Width
+ * @param {Number} $height ($width) - Height
+ */
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+
+/**
+ * Shorthand for positioning.
+ * @link http://hugogiraudel.com/2013/08/05/offsets-sass-mixin/ Documentation
+ * 
+ * @access private
+ * 
+ * @requires is-valid-length
+ * 
+ * @param {String} $position      - Position type (either `absolute`, `fixed` or `relative`)
+ * @param {List}   $args     (()) - List of offsets and values
+ *
+ * @throws Invalid value `$next` for offset `$offset`.
+ */
+@mixin position($position: null, $args: ()) {
+  $offsets: top right bottom left;
+  position: $position;
+
+  @each $offset in $offsets {
+    $index: index($args, $offset);
+
+    @if $index {
+      @if $index == length($args) {
+        #{$offset}: 0;
+      }
+
+      @else {
+        $next: nth($args, $index + 1);
+
+        @if is-valid-length($next) {
+          #{$offset}: $next;
+        }
+
+        @else if index($offsets, $next) {
+          #{$offset}: 0;
+        }
+
+        @else {
+          @warn "Invalid value `#{$next}` for offset `#{$offset}`.";
+        }
+      }
+    }
+  }
+}
+
+
+/**
+ * Shorthand for absolute positioning.
+ * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+ * 
+ * @requires {mixin} position
+ * 
+ * @param {List} $args - List of offsets and values
+ */
+@mixin absolute($args) {
+  @include position(absolute, $args);
+}
+
+
+/**
+ * Shorthand for relative positioning.
+ * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+ * 
+ * @requires {mixin} position
+ * 
+ * @param {List} $args - List of offsets and values
+ */
+@mixin relative($args) {
+  @include position(relative, $args);
+}
+
+
+/**
+ * Shorthand for fixed positioning.
+ * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+ * 
+ * @requires {mixin} position
+ * 
+ * @param {List} $args - List of offsets and values
+ */
+@mixin fixed($args) {
+  @include position(fixed, $args);
+}
+
+
+/**
+ * Responsive manager.
+ *
+ * @requires {variable} breakpoints
+ * 
+ * @param {String} $breakpoint - Breakpoint
+ *
+ * @throws No value found for `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
+ */
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+ 
+  // If the key doesn't exist in the map
+  @else {
+    @warn "No value found for `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+
+/**
+ * Mixin to fake CSS triangles with border hacks.
+ * 
+ * @requires {mixin} absolute
+ * @requires {mixin} size
+ * @requires {function} opposite-direction
+ * @requires {function} z
+ * 
+ * @param {String} $direction                - Triangle direction
+ * @param {List}   $position                 - Triangle position
+ * @param {Color}  $color     (currentcolor) - Triangle color
+ * @param {Number} $size      (1em)          - Triangle size
+ *
+ * @throws Direction must be one of top, right, bottom or left.
+ */
+@mixin triangle($direction, $position, $color: currentColor, $size: 1em) {
+  $border: $size solid transparent;
+
+  @if not index(top right bottom left, $direction) {
+    @warn "Direction must be one of top, right, bottom or left.";
+  }
+
+  @else {
+    @include absolute($position);
+    @include size(0);
+    content: "";
+    z-index: z("default") + 1;
+    border-#{opposite-direction($direction)}: ($size * 1.5) solid $color;
+
+    @if $direction == top or $direction == bottom {
+      border-left: $border;
+      border-right: $border;
+    }
+
+    @else if $direction == right or $direction == left {
+      border-bottom: $border;
+      border-top: $border;
+    }
+  }
+}
+
+
+/**
+ * Mixin to handle cross browser keyframes for CSS animations.
+ * 
+ * @param {String} $name - Animation name
+ */
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+
+/**
+ * Mixin to prefix properties that are not prefixed by Compass
+ * 
+ * @param {String} $property                   - Property to prefix
+ * @param {*}      $value                      - Value for property
+ * @param {List}   $vendors  (webkit moz ms o) - Vendor prefixes to output
+ */
+@mixin prefixer($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+
+  #{$property}: #{$value};
+}
+
+
+/**
+ * Mixin for cross-browser opacity (IE 8).
+ * Clamps the value between 0 and 1.
+ * 
+ * @requires {function} clamp
+ * 
+ * @param {Number} $opacity - Opacity level, between 0 and 1
+ */
+@mixin opacity($opacity) {
+  $opacity: clamp($opacity, 0, 1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity * 100})";
+  opacity: $opacity;
+}
+
+
+/*
+ * Mixin handling inline-block and vertical-align at once. 
+ * If no align is specified, then the `vertical-align` property won't be output.
+ * 
+ * @param {String} $align (null) - Vertical align
+ */
+@mixin inline-block($align: null) {
+  display: inline-block;
+  vertical-align: $align;
+}

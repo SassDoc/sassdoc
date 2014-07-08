@@ -1,5 +1,6 @@
 /**
  * Map of colors for quick grabbing.
+ * See `_functions.scss` -> `color()` function.
  *
  * @type Map
  */
@@ -18,10 +19,27 @@ $colors: (
 
 /**
  * Map of breakpoints for responsive design.
+ * See `_functions.scss` -> `respond-to()` function.
  *
  * @type Map
  */
 $breakpoints: (
   "small":  (max-width: 600px),
   "medium": (min-width: 601px)
+) !global;
+
+
+/** 
+ * Z-indexes layers.
+ * See `_functions.scss` -> `z()` function.
+ * 
+ * @type Map
+ */
+$z-indexes: (
+  "goku"       9001,
+  "modal"      5000,
+  "dropdown"   4000,
+  "social"     3000,
+  "default"       1,
+  "below"        -1
 ) !global;

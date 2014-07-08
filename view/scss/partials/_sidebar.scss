@@ -8,13 +8,10 @@
 
   &::after,
   &::before {
+    @include absolute(top 0 bottom 0 right 100%);
     content: '';
-    position: absolute;
     background: color("dark-grey");
     width: 1em;
-    top: 0;
-    bottom: 0;
-    right: 100%;
   }
 
   &::before {

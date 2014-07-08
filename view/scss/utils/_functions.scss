@@ -1,53 +1,111 @@
 /**
+ * Returns the opposite direction of every direction in `$directions`.
+ * 
+ * @param {List} $directions - Positions to revert
+ *
+ * @throws No opposite direction found for `$direction`.
+ * 
+ * @return {List | Null}
+ */
+@function opposite-direction($directions) {
+  $opposite-directions: ();
+  $direction-map: (
+    "top"    "bottom",
+    "right"    "left",
+    "bottom"    "top",
+    "left"    "right",
+    "ltr"       "rtl",
+    "rtl"       "ltr"
+  );
+
+  @each $direction in $directions {
+    @if not map-has-key($direction-map, $direction) {
+      @warn "No opposite direction found for `#{$direction}`.";
+      @return null;
+    }
+
+    $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
+  }
+
+  @return $opposite-directions;
+}
+
+
+/**
+ * Clamp `$value` between `$min` and `$max`.
+ * 
+ * @param {Number} $value - Value to clamp between `$min` and `$max`
+ * @param {Number} $min   - Minimum value
+ * @param {Number} $max   - Maximum value
+ *
+ * @throws All parameters must be numbers for `clamp`.
+ * 
+ * @return {Number | Null}
+ */
+@function clamp($value, $min, $max) {
+  @if type-of($value) != "number" or type-of($min) != "number" or type-of($max) != "number" {
+    @warn "All parameters must be numbers for `clamp`.";
+    @return null;
+  }
+
+  @return if($value > $max, $max, if($value < $min, $min, $value));
+}
+
+
+/**
+ * Helper to manage `z-index`. 
+ * Tries to fetch the z-index mapped to `$layer` in `$z-indexes` map.
+ * If found, returns it, else returns `null`.
+ * See `_variables.scss` -> `$z-indexes` map.
+ *
+ * @requires {variable} z-indexes
+ * 
+ * @param {String} $layer - Layer
+ *
+ * @throws No z-index found for `$layer`.
+ * 
+ * @return {Number | Null}
+ */
+@function z($layer) {
+  @if not map-has-key($z-indexes, $layer) {
+    @warn "No z-index found for `#{$layer}`.";
+  }
+
+  @return map-get($z-indexes, $layer);
+}
+
+
+/**
  * Color getter.
  *
- * @requires {variable} $colors
+ * @requires {variable} colors
  * 
  * @example scss
  * color: color("pink");
  * 
  * @param {String} $color - Color to fetch
  *
- * @throws Unfortunately, no color could be retrieved from `$color`. Please make sure it is defined in `$colors` map.
+ * @throws No color found for `$color`. Please make sure it is defined in `$colors` map.
  *
  * @return {Color | Null}
  */
 @function color($color) {
   @if not map-has-key($colors, $color) {
-    @warn "Unfortunately, no color could be retrieved from `#{$color}`. "
+    @warn "No color found for `#{$color}`. "
         + "Please make sure it is defined in `$colors` map.";
   }
 
   @return map-get($colors, $color);
 }
 
+
 /**
- * Responsive manager.
- *
- * @requires {variable} $breakpoints
+ * Tests whether the value is a valid length.
  * 
- * @param {String} $breakpoint - Breakpoint
- *
- * @example scss
- * @include respond-to("small") {}
- *
- * @example css
- * @media (max-width: 600px) {}
+ * @param {*} $value - Value to test
  * 
- * @throws Unfortunately, no value could be retrieved from `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
+ * @return {Bool}
  */
-@mixin respond-to($breakpoint) {
-  // If the key exists in the map
-  @if map-has-key($breakpoints, $breakpoint) {
-    // Prints a media query based on the value
-    @media #{inspect(map-get($breakpoints, $breakpoint))} {
-      @content;
-    }
-  }
- 
-  // If the key doesn't exist in the map
-  @else {
-    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-        + "Please make sure it is defined in `$breakpoints` map.";
-  }
+@function is-valid-length($value) {
+  @return (type-of($value) == "number" and not unitless($value)) or index("auto" "initial" "inherit" 0, $value);
 }
