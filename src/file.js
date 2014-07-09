@@ -17,7 +17,7 @@ extras.useFilter(swig, 'nl2br');
 extras.useFilter(swig, 'split');
 extras.useFilter(swig, 'trim');
 extras.useFilter(swig, 'groupby');
-swig.setFilter('push', function (arr, val) { 
+swig.setFilter('push', function (arr, val) {
   return arr.push(val);
 });
 
@@ -213,6 +213,10 @@ exports = module.exports = {
 
       response.forEach(function (obj) {
         Object.keys(obj).forEach(function (key) {
+          if ( key === 'unknown') { // ingore
+            return;
+          }
+
           if (typeof result[key] === 'undefined' ) {
             result[key] = [];
           }
@@ -223,6 +227,8 @@ exports = module.exports = {
           });
         });
       });
+
+      console.log(result);
 
       // Resovle alias and requires
       Object.keys(index).forEach(function (key) {
