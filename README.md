@@ -1,4 +1,4 @@
-# SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/HugoGiraudel/SassDoc.svg?branch=master)](https://travis-ci.org/HugoGiraudel/SassDoc)
+# SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/SassDoc/SassDoc.svg?branch=master)](https://travis-ci.org/SassDoc/SassDoc)
 
 Like JSDoc, but for Sass files.
 
