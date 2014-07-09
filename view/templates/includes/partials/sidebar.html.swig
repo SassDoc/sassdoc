@@ -12,33 +12,28 @@
     {# Loop over data #}
     {% for type, obj in data %}
 
-      {# In case something goes wrong, skip #}
-      {% if type != "unknown" and type != "undefined" %}
-
       {# Group items from object by display type and only keep `true` #}
       {% set obj = (obj | groupby('display'))['true'] %}
 
-        {# If there is at least one item to display, go #}
-        {% if obj.length > 0 %}
+      {# If there is at least one item to display, go #}
+      {% if obj.length > 0 %}
 
-          <li class="sidebar__sub-heading"><a href="#{{ type }}">{{ (type + 's') | capitalize }}</a></li>
-            
-          {# Loop over items in current group #}
-          {% for item in obj %}
+        <li class="sidebar__sub-heading"><a href="#{{ type }}">{{ (type + 's') | capitalize }}</a></li>
+          
+        {# Loop over items in current group #}
+        {% for item in obj %}
 
-            {# Display item #}
-            <li>
-              <a href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a> 
-              {% if item.access[0] == "private" %}<span class="sidebar__annotation  sidebar__annotation--private">private</span>{% endif %}
-              {% if item.alias != false %}<span class="sidebar__annotation  sidebar__annotation--alias">alias</span>{% endif %}
-            </li>
+          {# Display item #}
+          <li>
+            <a href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a> 
+            {% if item.access[0] == "private" %}<span class="sidebar__annotation  sidebar__annotation--private">private</span>{% endif %}
+            {% if item.alias != false %}<span class="sidebar__annotation  sidebar__annotation--alias">alias</span>{% endif %}
+          </li>
 
-          {% endfor %}
-
-        {% endif %}
+        {% endfor %}
 
       {% endif %}
-      
+
     {% endfor %}
 
   {% endif %}
