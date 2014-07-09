@@ -40,6 +40,8 @@
 
   {% include '../annotations/usedby.html.swig' %}
 
+  {% include '../annotations/see.html.swig' %}
+
   {% include '../annotations/todo.html.swig' %}
 
   {% include '../annotations/link.html.swig' %}

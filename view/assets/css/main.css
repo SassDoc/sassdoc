@@ -3,19 +3,34 @@
  */
 /**
  * Map of colors for quick grabbing.
+<<<<<<< HEAD
  * See `_functions.scss` -> `color()` function.
+=======
+ *
+ * @see {function} color
+>>>>>>> Implemented see annotation. Not convinced.
  *
  * @type Map
  */
 /**
  * Map of breakpoints for responsive design.
+<<<<<<< HEAD
  * See `_functions.scss` -> `respond-to()` function.
+=======
+ *
+ * @see {function} respond-to
+>>>>>>> Implemented see annotation. Not convinced.
  *
  * @type Map
  */
 /** 
  * Z-indexes layers.
+<<<<<<< HEAD
  * See `_functions.scss` -> `z()` function.
+=======
+ *
+ * @see {function} z
+>>>>>>> Implemented see annotation. Not convinced.
  * 
  * @type Map
  */
@@ -85,11 +100,19 @@
 /**
  * Shorthand for positioning.
  * @link http://hugogiraudel.com/2013/08/05/offsets-sass-mixin/ Documentation
+<<<<<<< HEAD
  *
  * @access private
  *
  * @requires is-valid-length
  *
+=======
+ * 
+ * @access private
+ * 
+ * @requires is-valid-length
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @param {String} $position      - Position type (either `absolute`, `fixed` or `relative`)
  * @param {List}   $args     (()) - List of offsets and values
  *
@@ -99,46 +122,76 @@
  * Shorthand for absolute positioning.
  *
  * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+<<<<<<< HEAD
  *
  * @requires {mixin} position
  *
+=======
+ * 
+ * @requires {mixin} position
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @param {List} $args - List of offsets and values
  */
 /**
  * Shorthand for relative positioning.
  *
  * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+<<<<<<< HEAD
  *
  * @requires {mixin} position
  *
+=======
+ * 
+ * @requires {mixin} position
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @param {List} $args - List of offsets and values
  */
 /**
  * Shorthand for fixed positioning.
  *
  * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
+<<<<<<< HEAD
  *
  * @requires {mixin} position
  *
+=======
+ * 
+ * @requires {mixin} position
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @param {List} $args - List of offsets and values
  */
 /**
  * Responsive manager.
  *
  * @requires {variable} breakpoints
+<<<<<<< HEAD
  *
+=======
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @param {String} $breakpoint - Breakpoint
  *
  * @throws No value found for `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
  */
 /**
  * Mixin to fake CSS triangles with border hacks.
+<<<<<<< HEAD
  *
+=======
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @requires {mixin} absolute
  * @requires {mixin} size
  * @requires {function} opposite-direction
  * @requires {function} z
+<<<<<<< HEAD
  *
+=======
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @param {String} $direction                - Triangle direction
  * @param {List}   $position                 - Triangle position
  * @param {Color}  $color     (currentcolor) - Triangle color
@@ -148,15 +201,23 @@
  */
 /**
  * Mixin to handle cross browser keyframes for CSS animations.
+<<<<<<< HEAD
  *
+=======
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @param {String} $name - Animation name
  */
 /**
  * Mixin to prefix properties that are not prefixed by Compass
+<<<<<<< HEAD
  *
  * @example
  *  @include prefixer('transform', 'translate(10px)');
  *
+=======
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @param {String} $property                   - Property to prefix
  * @param {*}      $value                      - Value for property
  * @param {List}   $vendors  (webkit moz ms o) - Vendor prefixes to output
@@ -164,6 +225,7 @@
 /**
  * Mixin for cross-browser opacity (IE 8).
  * Clamps the value between 0 and 1.
+<<<<<<< HEAD
  *
  * @requires {function} clamp
  *
@@ -173,6 +235,17 @@
  * Mixin handling inline-block and vertical-align at once.
  * If no align is specified, then the `vertical-align` property won't be output.
  *
+=======
+ * 
+ * @requires {function} clamp
+ * 
+ * @param {Number} $opacity - Opacity level, between 0 and 1
+ */
+/*
+ * Mixin handling inline-block and vertical-align at once. 
+ * If no align is specified, then the `vertical-align` property won't be output.
+ * 
+>>>>>>> Implemented see annotation. Not convinced.
  * @param {String} $align (null) - Vertical align
  */
 /**
@@ -187,6 +260,7 @@
 }
 
 /**
+<<<<<<< HEAD
  * Accessibility hiding helper.
  *
  * @param {Bool} $extend (true) - Whether or not extend a placeholder.
@@ -205,6 +279,8 @@
 }
 
 /**
+=======
+>>>>>>> Implemented see annotation. Not convinced.
  * Vendors
  */
 /* http://prismjs.com/download.html?themes=prism&languages=css+scss */
@@ -389,6 +465,7 @@ a:hover, a:hover code {
   }
 
   thead {
+<<<<<<< HEAD
     width: 1px;
     height: 1px;
     position: absolute;
@@ -397,6 +474,9 @@ a:hover, a:hover code {
     overflow: hidden;
     clip: rect(0 0 0 0);
     border: 0;
+=======
+    display: none;
+>>>>>>> Implemented see annotation. Not convinced.
   }
 
   tr {
@@ -405,15 +485,26 @@ a:hover, a:hover code {
     border-bottom: 2px solid #dddddd;
   }
 
+<<<<<<< HEAD
   td, th {
     padding-left: 0 !important;
   }
   td::before, th::before {
+=======
+  td {
+    padding-left: 0 !important;
+  }
+  td::before {
+>>>>>>> Implemented see annotation. Not convinced.
     content: attr(data-label) ": ";
     text-transform: capitalize;
     font-weight: bold;
   }
+<<<<<<< HEAD
   td p, th p {
+=======
+  td p {
+>>>>>>> Implemented see annotation. Not convinced.
     display: inline;
   }
 }
@@ -436,9 +527,12 @@ a:hover, a:hover code {
 }
 
 /**
+<<<<<<< HEAD
  * Visually-hidden
  */
 /**
+=======
+>>>>>>> Implemented see annotation. Not convinced.
  * Partials
  */
 /**
@@ -521,6 +615,7 @@ a:hover, a:hover code {
 .sidebar__body {
   padding: .5em 0;
   margin-bottom: 1em;
+<<<<<<< HEAD
   color: #f7f5fa;
 }
 .sidebar__body li {
@@ -544,6 +639,12 @@ a:hover, a:hover code {
 }
 .sidebar__body li:hover {
   background: #4a4a4a;
+=======
+}
+.sidebar__body li {
+  padding: 0 2em 0 .5em;
+  color: #f7f5fa;
+>>>>>>> Implemented see annotation. Not convinced.
 }
 .sidebar__body a {
   color: #f7f5fa;
@@ -567,6 +668,7 @@ a:hover, a:hover code {
 /**
  * List item heading
  */
+<<<<<<< HEAD
 li.sidebar__sub-heading {
   background: #f7f5fa;
   position: relative;
@@ -577,6 +679,27 @@ li.sidebar__sub-heading:hover {
 }
 li.sidebar__sub-heading a {
   color: #444444;
+=======
+.sidebar__sub-heading {
+  background: #f7f5fa;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  position: relative;
+}
+.sidebar__sub-heading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  width: 100em;
+  background: inherit;
+}
+.sidebar__sub-heading a {
+  display: block;
+  color: #444444;
+  padding: .5em 0;
+>>>>>>> Implemented see annotation. Not convinced.
   text-transform: uppercase;
 }
 
@@ -770,15 +893,22 @@ li.sidebar__sub-heading a {
   margin-bottom: 1em;
   border-collapse: collapse;
 }
+<<<<<<< HEAD
 .item__parameters thead th {
+=======
+.item__parameters > thead > tr > th {
+>>>>>>> Implemented see annotation. Not convinced.
   vertical-align: bottom;
   border-bottom: 2px solid #dddddd;
   border-top: none;
   text-align: left;
 }
+<<<<<<< HEAD
 .item__parameters tbody th {
   text-align: left;
 }
+=======
+>>>>>>> Implemented see annotation. Not convinced.
 .item__parameters td, .item__parameters th {
   padding: .5em;
   vertical-align: top;

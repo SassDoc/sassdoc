@@ -287,6 +287,23 @@ exports = module.exports = {
             return typeof item !== 'undefined';
           });
         }
+
+        // See
+        if (utils.isset(item.see)) {
+          item.see = item.see.map(function (see) {
+            var lookupKey = see.type + '_' + see.name;
+            
+            if (utils.isset(index[lookupKey])) {
+              return index[lookupKey];
+            }
+
+            else {
+              logger.log('Item `' + item.context.name + '` refers to `' + see.name + '` from type `' + see.type + '` but this item doesn\'t exist.');
+            }
+          }).filter(function (item) {
+            return typeof item !== 'undefined';
+          });
+        }
       });
 
       // Item count
