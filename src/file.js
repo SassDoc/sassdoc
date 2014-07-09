@@ -1,6 +1,7 @@
 'use strict';
 
 var fs     = require('fs');          // File system
+var mkdirp = require('mkdirp');      // mkdir -p
 var rimraf = require('rimraf');      // rm -rf
 var ncp    = require('ncp');         // cp -r
 var swig   = require('swig');        // Templating
@@ -38,10 +39,10 @@ exports = module.exports = {
 
     /**
      * Create a folder
-     * @see {@link http://nodejs.org/api/fs.html#fs_fs_mkdir_path_mode_callback}
+     * @see {@link https://github.com/substack/node-mkdirp}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
-    create: Q.denodeify(fs.mkdir),
+    create: Q.denodeify(mkdirp),
 
     /**
      * Copy a folder
