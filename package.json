@@ -15,9 +15,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/HugoGiraudel/SassDoc"
+    "url": "https://github.com/SassDoc/SassDoc"
   },
-  "homepage": "https://github.com/HugoGiraudel/SassDoc",
+  "homepage": "https://github.com/SassDoc/SassDoc",
   "keywords": [
     "sass",
     "scss",
@@ -25,7 +25,7 @@
     "jsdoc"
   ],
   "bugs": {
-    "url": "https://github.com/HugoGiraudel/SassDoc/issues"
+    "url": "https://github.com/SassDoc/SassDoc/issues"
   },
   "main": "src/api.js",
   "bin": {
