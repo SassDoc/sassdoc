@@ -45,6 +45,11 @@ exports = module.exports = {
    */
   parse: function (source) {
     return fs.getData(source);
-  }
+  },
 
+  /**
+   * Expose the logger used by sassdoc
+   * @return {Logger}
+   */
+  logger : logger
 };
