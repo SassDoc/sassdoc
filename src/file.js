@@ -228,7 +228,6 @@ exports = module.exports = {
         });
       });
 
-      console.log(result);
 
       // Resovle alias and requires
       Object.keys(index).forEach(function (key) {
