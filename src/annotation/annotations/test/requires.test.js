@@ -6,7 +6,8 @@ var assert = require('assert');
 describe('#requires', function(){
   var requires  = require('../requires.js');
   it('should default to function', function(){
-    assert.deepEqual(requires('name'), { type : 'function', name : 'name'});
+    assert.deepEqual(requires('name - description'), { type : 'function', name : 'name', description : 'description'});
+    assert.deepEqual(requires('name description'), { type : 'function', name : 'name', description : 'description'});
   });
 
   it('should work for variables with with or without $', function(){
