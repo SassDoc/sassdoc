@@ -4,6 +4,13 @@ var fs     = require('./file');
 var logger = require('./log');
 
 exports = module.exports = {
+
+  /**
+   * Expose the version.
+   * @reaturn {String} Version number
+   */
+  version : require('../package.json').version,
+
   /**
    * Main API function, running the whole thing
    * @param {String} source - Source folder
