@@ -15,7 +15,7 @@
 
           <!-- License -->
           {% if package.license %}
-          <span class="project-info__license">, under 
+          <span class="project-info__license">, under
             {% if package.license.type %}
               {% if package.license.url %}
                 <a href="{{ package.license.url }}">{{ package.license.type }}</a>
@@ -31,7 +31,7 @@
       {% endif %}
 
       {% if display.watermark %}
-        <span class="footer__watermark">Built with <a href="https://github.com/HugoGiraudel/SassDoc">SassDoc</a>.</span>
+        <span class="footer__watermark">Built with <a href="https://github.com/SassDoc/sassdoc">SassDoc</a>.</span>
       {% endif %}
     </div>
   </footer>

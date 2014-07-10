@@ -1,4 +1,4 @@
-# SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/SassDoc/SassDoc.svg?branch=master)](https://travis-ci.org/SassDoc/SassDoc)
+# SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)
 
 Like JSDoc, but for Sass files.
 
@@ -38,7 +38,7 @@ Also, inline comments are not parsed (`//`).
  *
  * @todo Nothing. It's awesome.
  *
- * @link https://github.com/HugoGiraudel/SassDoc SassDoc
+ * @link https://github.com/SassDoc/sassdoc SassDoc
  *
  * @type Bool
  */
@@ -60,7 +60,7 @@ npm install -g sassdoc-cli
 
 ### Grunt
 
-See [grunt-sassdoc](https://github.com/pascalduez/grunt-sassdoc).
+See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).
 
 ## Usage
 
@@ -120,7 +120,7 @@ sassdoc.documentize(source, dest, config);
 
 ## Documentation
 
-See [Wiki](https://github.com/HugoGiraudel/SassDoc/wiki/Documentation).
+See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documentation).
 
 ## Pass extra variables to the view
 

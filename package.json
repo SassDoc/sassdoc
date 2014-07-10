@@ -14,9 +14,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SassDoc/SassDoc"
+    "url": "https://github.com/SassDoc/sassdoc"
   },
-  "homepage": "https://github.com/SassDoc/SassDoc",
+  "homepage": "https://github.com/SassDoc/sassdoc",
   "keywords": [
     "sass",
     "scss",
@@ -24,7 +24,7 @@
     "jsdoc"
   ],
   "bugs": {
-    "url": "https://github.com/SassDoc/SassDoc/issues"
+    "url": "https://github.com/SassDoc/sassdoc/issues"
   },
   "main": "src/api.js",
   "dependencies": {

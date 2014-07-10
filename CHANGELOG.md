@@ -6,22 +6,22 @@
 
 ## 1.0.0-rc.13
 
-* Fixed an issue with empty documented items ([#84](https://github.com/SassDoc/SassDoc/issues/84))
-* Normalized description in annotations ([#81](https://github.com/SassDoc/SassDoc/issues/81))
-* Made requiring a variable less error-prone ([#74](https://github.com/SassDoc/SassDoc/issues/74))
+* Fixed an issue with empty documented items ([#84](https://github.com/SassDoc/sassdoc/issues/84))
+* Normalized description in annotations ([#81](https://github.com/SassDoc/sassdoc/issues/81))
+* Made requiring a variable less error-prone ([#74](https://github.com/SassDoc/sassdoc/issues/74))
 
 ## 1.0.0-rc.12
 
-* Fixed minor issues when parsing `@param` ([#59](https://github.com/SassDoc/SassDoc/issues/59), [#60](https://github.com/SassDoc/SassDoc/issues/60), [#62](https://github.com/SassDoc/SassDoc/issues/62))
-* Fixed an issue with `@import` being parsed ([#73](https://github.com/SassDoc/SassDoc/issues/73))
-* Added language detection to `@example` ([#54](https://github.com/SassDoc/SassDoc/issues/54))
-* Major style changes ([#65](https://github.com/SassDoc/SassDoc/issues/65))
-* Improved view structure 
+* Fixed minor issues when parsing `@param` ([#59](https://github.com/SassDoc/sassdoc/issues/59), [#60](https://github.com/SassDoc/sassdoc/issues/60), [#62](https://github.com/SassDoc/sassdoc/issues/62))
+* Fixed an issue with `@import` being parsed ([#73](https://github.com/SassDoc/sassdoc/issues/73))
+* Added language detection to `@example` ([#54](https://github.com/SassDoc/sassdoc/issues/54))
+* Major style changes ([#65](https://github.com/SassDoc/sassdoc/issues/65))
+* Improved view structure
 * Improved DOM structure
 * Improved SCSS structure
-* Added Grunt ([#55](https://github.com/SassDoc/SassDoc/issues/55))
+* Added Grunt ([#55](https://github.com/SassDoc/sassdoc/issues/55))
 * Removed Makefile
-* Added Travis ([#63](https://github.com/SassDoc/SassDoc/issues/63))
+* Added Travis ([#63](https://github.com/SassDoc/sassdoc/issues/63))
 
 ## 1.0.0-rc.11
 
@@ -34,9 +34,9 @@
 
 ## 1.0.0-rc.10
 
-* Added a footer ([#57](https://github.com/SassDoc/SassDoc/issues/57))
+* Added a footer ([#57](https://github.com/SassDoc/sassdoc/issues/57))
 * Changed the structure of `view.json`
-* Added license (MIT) ([#58](https://github.com/SassDoc/SassDoc/issues/58))
+* Added license (MIT) ([#58](https://github.com/SassDoc/sassdoc/issues/58))
 
 ## 1.0.0-rc.9
 
@@ -45,7 +45,7 @@
 * Authorized markdown on `@author`
 * Added a favicon
 * Fixed tiny typo in console warning
-* Added anchor to each item ([#56](https://github.com/SassDoc/SassDoc/issues/56))
+* Added anchor to each item ([#56](https://github.com/SassDoc/sassdoc/issues/56))
 
 ## 1.0.0-rc.8
 
@@ -57,9 +57,9 @@
 ## 1.0.0-rc.7
 
 * Fixed an issue where links were not displayed
-* Added `--version` option ([#51](https://github.com/SassDoc/SassDoc/issues/51))
+* Added `--version` option ([#51](https://github.com/SassDoc/sassdoc/issues/51))
 * Improved Sass and Swig structure
-* Improved the way we display `@deprecated` ([#50](https://github.com/SassDoc/SassDoc/issues/50))
+* Improved the way we display `@deprecated` ([#50](https://github.com/SassDoc/sassdoc/issues/50))
 
 ## 1.0.0-rc.6
 
@@ -104,7 +104,7 @@
 
 ## 0.4.0
 
-* Added a way to impact the view with `view.json` 
+* Added a way to impact the view with `view.json`
 
 ## 0.3.9
 
