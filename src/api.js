@@ -7,9 +7,9 @@ exports = module.exports = {
 
   /**
    * Expose the version.
-   * @reaturn {String} Version number
+   * @return {String} Version number
    */
-  version : require('../package.json').version,
+  version: require('../package.json').version,
 
   /**
    * Main API function, running the whole thing
@@ -58,5 +58,5 @@ exports = module.exports = {
    * Expose the logger used by sassdoc
    * @return {Logger}
    */
-  logger : logger
+  logger: logger
 };

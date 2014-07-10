@@ -1,8 +1,14 @@
 # Changelog
 
+## 1.0.0-rc.15
+
+* Exposed the version number in `sassdoc.version` ([#91](https://github.com/SassDoc/sassdoc/pull/93))
+* Implemented `update-notifier` ([#92](https://github.com/SassDoc/sassdoc/issues/92))
+
 ## 1.0.0-rc.14
 
 * Made it possible for SassDoc to create nested folders ([#89](https://github.com/SassDoc/sassdoc/issues/89))
+* Renamed all repositories to follow strict guidelines ([#70](https://github.com/SassDoc/sassdoc/issues/70))
 
 ## 1.0.0-rc.13
 
