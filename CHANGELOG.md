@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-rc.14
+
+* Made it possible for SassDoc to create nested folders ([#89](https://github.com/SassDoc/sassdoc/issues/89))
+
 ## 1.0.0-rc.13
 
 * Fixed an issue with empty documented items ([#84](https://github.com/SassDoc/SassDoc/issues/84))
