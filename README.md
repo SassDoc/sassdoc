@@ -55,7 +55,7 @@ $legacy-support: true !global;
 ### npm
 
 ```sh
-npm install -g sassdoc
+npm install -g sassdoc-cli
 ```
 
 ### Grunt
@@ -85,12 +85,37 @@ sassdoc <src> <dest> [options]
 
 ### Node
 
+## Install
+
+```shell
+npm install sassdoc --save
+```
+
+### Use The Raw Data
+
 ```js
 var sassdoc = require('sassdoc');
 
 sassdoc.parse(__dirname + '/sass').then(function (items) {
   console.log(items);
 })
+```
+
+### Generate Documentation
+
+```js
+var config = {
+  "display": {
+    "access": ["public", "private"],
+    "alias": false,
+    "watermark": true
+  },
+
+  "package": "./package.json"
+}
+
+var sassdoc = require('sassdoc');
+sassdoc.documentize(source, dest, config);
 ```
 
 ## Documentation

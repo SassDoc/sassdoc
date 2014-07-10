@@ -1,8 +1,5 @@
 'use strict';
 
-var sdfs = require('./src/file');
-var spawn = require('win-spawn');
-var chalk = require('chalk');
 
 module.exports = function (grunt) {
 
@@ -112,32 +109,30 @@ module.exports = function (grunt) {
 
   // A custom task to compile through SassDoc cli.
   grunt.registerTask('compile', 'Generates documentation', function () {
-    var done = this.async();
+    var sassdoc = require('./src/api');
 
-    // Temporary fix for #73
-    var src = dirs.scss;
-    var args = [src, dirs.dist, '--verbose'];
+    var config = {
+      display: {
+        access: ['public', 'private'],
+        alias: false,
+        watermark: true
+      },
 
-    var cp = spawn('./bin/sassdoc', args, {stdio: 'inherit'});
+      package: './package.json'
+    };
 
-    cp.on('error', function (err) {
-      grunt.warn(err);
-    });
+    sassdoc.logger.enabled = true; // verbose
 
-    cp.on('close', function (code) {
-      if (code > 0) {
-        return grunt.warn('Exited with error code ' + code);
-      }
-
-      grunt.log.writeln('File ' + chalk.cyan(dirs.dist) + ' created.');
-      done();
-    });
+    sassdoc.documentize(dirs.scss, dirs.dist, config).then(this.async());
   });
 
 
   // Make the Sass dist action faster
   // by not requiring a full `compile`.
   grunt.registerTask('dumpCSS', 'Dump CSS to dist', function () {
+    var sdfs = require('./src/file');
+    var chalk = require('chalk');
+
     var done = this.async();
     var src = dirs.css;
     var dest = dirs.dist + '/assets/css';
