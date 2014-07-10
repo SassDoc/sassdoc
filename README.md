@@ -85,13 +85,13 @@ sassdoc <src> <dest> [options]
 
 ### Node
 
-## Install
+#### Install
 
 ```shell
 npm install sassdoc --save
 ```
 
-### Use The Raw Data
+#### Use The Raw Data
 
 ```js
 var sassdoc = require('sassdoc');
@@ -101,7 +101,7 @@ sassdoc.parse(__dirname + '/sass').then(function (items) {
 })
 ```
 
-### Generate Documentation
+#### Generate Documentation
 
 ```js
 var config = {
