@@ -13,11 +13,11 @@
 /**
  * Shorthand for positioning.
  * @link http://hugogiraudel.com/2013/08/05/offsets-sass-mixin/ Documentation
- * 
+ *
  * @access private
- * 
+ *
  * @requires is-valid-length
- * 
+ *
  * @param {String} $position      - Position type (either `absolute`, `fixed` or `relative`)
  * @param {List}   $args     (()) - List of offsets and values
  *
@@ -59,9 +59,9 @@
  * Shorthand for absolute positioning.
  *
  * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
- * 
+ *
  * @requires {mixin} position
- * 
+ *
  * @param {List} $args - List of offsets and values
  */
 @mixin absolute($args) {
@@ -73,9 +73,9 @@
  * Shorthand for relative positioning.
  *
  * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
- * 
+ *
  * @requires {mixin} position
- * 
+ *
  * @param {List} $args - List of offsets and values
  */
 @mixin relative($args) {
@@ -87,9 +87,9 @@
  * Shorthand for fixed positioning.
  *
  * @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Documentation
- * 
+ *
  * @requires {mixin} position
- * 
+ *
  * @param {List} $args - List of offsets and values
  */
 @mixin fixed($args) {
@@ -101,7 +101,7 @@
  * Responsive manager.
  *
  * @requires {variable} breakpoints
- * 
+ *
  * @param {String} $breakpoint - Breakpoint
  *
  * @throws No value found for `$breakpoint`. Please make sure it is defined in `$breakpoints` map.
@@ -114,7 +114,7 @@
       @content;
     }
   }
- 
+
   // If the key doesn't exist in the map
   @else {
     @warn "No value found for `#{$breakpoint}`. "
@@ -125,12 +125,12 @@
 
 /**
  * Mixin to fake CSS triangles with border hacks.
- * 
+ *
  * @requires {mixin} absolute
  * @requires {mixin} size
  * @requires {function} opposite-direction
  * @requires {function} z
- * 
+ *
  * @param {String} $direction                - Triangle direction
  * @param {List}   $position                 - Triangle position
  * @param {Color}  $color     (currentcolor) - Triangle color
@@ -167,7 +167,7 @@
 
 /**
  * Mixin to handle cross browser keyframes for CSS animations.
- * 
+ *
  * @param {String} $name - Animation name
  */
 @mixin keyframes($name) {
@@ -183,7 +183,10 @@
 
 /**
  * Mixin to prefix properties that are not prefixed by Compass
- * 
+ *
+ * @example
+ *  @include prefixer('transform', 'translate(10px)');
+ *
  * @param {String} $property                   - Property to prefix
  * @param {*}      $value                      - Value for property
  * @param {List}   $vendors  (webkit moz ms o) - Vendor prefixes to output
@@ -202,9 +205,9 @@
 /**
  * Mixin for cross-browser opacity (IE 8).
  * Clamps the value between 0 and 1.
- * 
+ *
  * @requires {function} clamp
- * 
+ *
  * @param {Number} $opacity - Opacity level, between 0 and 1
  */
 @mixin opacity($opacity) {
@@ -215,9 +218,9 @@
 
 
 /*
- * Mixin handling inline-block and vertical-align at once. 
+ * Mixin handling inline-block and vertical-align at once.
  * If no align is specified, then the `vertical-align` property won't be output.
- * 
+ *
  * @param {String} $align (null) - Vertical align
  */
 @mixin inline-block($align: null) {
