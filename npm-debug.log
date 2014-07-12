@@ -1,0 +1,318 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish', '--tag', 'rc.16' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/administrateur/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz',
+10 verbose tar pack   '.' ]
+11 verbose tarball /Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz
+12 verbose folder .
+13 info prepublish sassdoc@1.0.0-rc.15
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/administrateur/.npm/1f1177db-tar.lock
+16 silly lockFile f9041107-90364-0-8388416697271168-tmp-tgz tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz
+17 verbose lock tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz /Users/administrateur/.npm/f9041107-90364-0-8388416697271168-tmp-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile f9041107-90364-0-8388416697271168-tmp-tgz tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz
+21 silly lockFile f9041107-90364-0-8388416697271168-tmp-tgz tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz
+22 verbose tar unpack /Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz
+23 silly lockFile c9ccc044-90364-0-8388416697271168-package tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package
+24 verbose lock tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package /Users/administrateur/.npm/c9ccc044-90364-0-8388416697271168-package.lock
+25 silly lockFile f9041107-90364-0-8388416697271168-tmp-tgz tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz
+26 verbose lock tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz /Users/administrateur/.npm/f9041107-90364-0-8388416697271168-tmp-tgz.lock
+27 silly gunzTarPerm modes [ '755', '644' ]
+28 silly gunzTarPerm extractEntry package.json
+29 silly gunzTarPerm extractEntry .npmignore
+30 silly gunzTarPerm extractEntry README.md
+31 silly gunzTarPerm extractEntry Gruntfile.js
+32 silly gunzTarPerm extractEntry CHANGELOG.md
+33 silly gunzTarPerm extractEntry .gitattributes
+34 silly gunzTarPerm extractEntry LICENSE.md
+35 silly gunzTarPerm extractEntry .jshintrc
+36 silly gunzTarPerm extractEntry examples/node.js
+37 silly gunzTarPerm extractEntry examples/dist/assets/css/main.css
+38 silly gunzTarPerm extractEntry examples/dist/assets/js/prism.min.js
+39 silly gunzTarPerm extractEntry examples/dist/index.html
+40 silly gunzTarPerm extractEntry examples/empty/_empty.scss
+41 silly gunzTarPerm extractEntry src/api.js
+42 silly gunzTarPerm extractEntry src/file.js
+43 silly gunzTarPerm extractEntry src/log.js
+44 silly gunzTarPerm extractEntry src/parser.js
+45 silly gunzTarPerm extractEntry src/utils.js
+46 silly gunzTarPerm extractEntry src/annotation/index.js
+47 silly gunzTarPerm extractEntry src/annotation/annotations/access.js
+48 silly gunzTarPerm extractEntry src/annotation/annotations/deprecated.js
+49 silly gunzTarPerm extractEntry src/annotation/annotations/example.js
+50 silly gunzTarPerm extractEntry src/annotation/annotations/ignore.js
+51 silly gunzTarPerm extractEntry src/annotation/annotations/link.js
+52 silly gunzTarPerm extractEntry src/annotation/annotations/author.js
+53 silly gunzTarPerm extractEntry src/annotation/annotations/requires.js
+54 silly gunzTarPerm extractEntry src/annotation/annotations/returns.js
+55 silly gunzTarPerm extractEntry src/annotation/annotations/since.js
+56 silly gunzTarPerm extractEntry src/annotation/annotations/todos.js
+57 silly gunzTarPerm extractEntry src/annotation/annotations/throws.js
+58 silly gunzTarPerm extractEntry src/annotation/annotations/alias.js
+59 silly gunzTarPerm extractEntry src/annotation/annotations/type.js
+60 silly gunzTarPerm extractEntry src/annotation/annotations/parameters.js
+61 silly gunzTarPerm extractEntry src/annotation/annotations/test/access.test.js
+62 silly gunzTarPerm extractEntry src/annotation/annotations/test/deprecated.test.js
+63 silly gunzTarPerm extractEntry src/annotation/annotations/test/example.test.js
+64 silly gunzTarPerm extractEntry src/annotation/annotations/test/ignore.test.js
+65 silly gunzTarPerm extractEntry src/annotation/annotations/test/link.test.js
+66 silly gunzTarPerm extractEntry src/annotation/annotations/test/author.test.js
+67 silly gunzTarPerm extractEntry src/annotation/annotations/test/requires.test.js
+68 silly gunzTarPerm extractEntry src/annotation/annotations/test/returns.test.js
+69 silly gunzTarPerm extractEntry src/annotation/annotations/test/since.test.js
+70 silly gunzTarPerm extractEntry src/annotation/annotations/test/throws.test.js
+71 silly gunzTarPerm extractEntry src/annotation/annotations/test/todos.test.js
+72 silly gunzTarPerm extractEntry src/annotation/annotations/test/alias.test.js
+73 silly gunzTarPerm extractEntry src/annotation/annotations/test/type.test.js
+74 silly gunzTarPerm extractEntry src/annotation/annotations/test/parameters.test.js
+75 silly gunzTarPerm extractEntry .travis.yml
+76 silly gunzTarPerm extractEntry sache.json
+77 silly gunzTarPerm extractEntry view/assets/css/main.css
+78 silly gunzTarPerm extractEntry view/assets/js/prism.min.js
+79 silly gunzTarPerm extractEntry view/scss/base/_base.scss
+80 silly gunzTarPerm extractEntry view/scss/main.scss
+81 silly gunzTarPerm extractEntry view/scss/partials/_footer.scss
+82 silly gunzTarPerm extractEntry view/scss/partials/_header.scss
+83 silly gunzTarPerm extractEntry view/scss/partials/_item.scss
+84 silly gunzTarPerm extractEntry view/scss/partials/_main.scss
+85 silly gunzTarPerm extractEntry view/scss/partials/_sidebar.scss
+86 silly gunzTarPerm extractEntry view/scss/utils/_functions.scss
+87 silly gunzTarPerm extractEntry view/scss/utils/_helpers.scss
+88 silly gunzTarPerm extractEntry view/scss/utils/_mixins.scss
+89 silly gunzTarPerm extractEntry view/scss/utils/_variables.scss
+90 silly gunzTarPerm extractEntry view/scss/vendors/_prism.scss
+91 silly gunzTarPerm extractEntry view/templates/documentation/index.html.swig
+92 silly gunzTarPerm extractEntry view/templates/includes/annotations/parameters.html.swig
+93 silly gunzTarPerm extractEntry view/templates/includes/annotations/author.html.swig
+94 silly gunzTarPerm extractEntry view/templates/includes/annotations/description.html.swig
+95 silly gunzTarPerm extractEntry view/templates/includes/annotations/example.html.swig
+96 silly gunzTarPerm extractEntry view/templates/includes/annotations/link.html.swig
+97 silly gunzTarPerm extractEntry view/templates/includes/annotations/location.html.swig
+98 silly gunzTarPerm extractEntry view/templates/includes/annotations/name.html.swig
+99 silly gunzTarPerm extractEntry view/templates/includes/annotations/deprecated.html.swig
+100 silly gunzTarPerm extractEntry view/templates/includes/annotations/requires.html.swig
+101 silly gunzTarPerm extractEntry view/templates/includes/annotations/returns.html.swig
+102 silly gunzTarPerm extractEntry view/templates/includes/annotations/throws.html.swig
+103 silly gunzTarPerm extractEntry view/templates/includes/annotations/todo.html.swig
+104 silly gunzTarPerm extractEntry view/templates/includes/annotations/type.html.swig
+105 silly gunzTarPerm extractEntry view/templates/includes/annotations/usedby.html.swig
+106 silly gunzTarPerm extractEntry view/templates/includes/items/function.html.swig
+107 silly gunzTarPerm extractEntry view/templates/includes/items/item.html.swig
+108 silly gunzTarPerm extractEntry view/templates/includes/items/mixin.html.swig
+109 silly gunzTarPerm extractEntry view/templates/includes/items/variable.html.swig
+110 silly gunzTarPerm extractEntry view/templates/includes/partials/footer.html.swig
+111 silly gunzTarPerm extractEntry view/templates/includes/partials/head.html.swig
+112 silly gunzTarPerm extractEntry view/templates/includes/partials/header.html.swig
+113 silly gunzTarPerm extractEntry view/templates/includes/partials/scripts.html.swig
+114 silly gunzTarPerm extractEntry view/templates/includes/partials/sidebar.html.swig
+115 silly gunzTarPerm extractEntry view/templates/layouts/base.html.swig
+116 silly lockFile c9ccc044-90364-0-8388416697271168-package tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package
+117 silly lockFile c9ccc044-90364-0-8388416697271168-package tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package
+118 silly lockFile f9041107-90364-0-8388416697271168-tmp-tgz tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz
+119 silly lockFile f9041107-90364-0-8388416697271168-tmp-tgz tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/tmp.tgz
+120 verbose tar pack [ '/Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz',
+120 verbose tar pack   '/Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package' ]
+121 verbose tarball /Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz
+122 verbose folder /Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package
+123 silly lockFile c9ccc044-90364-0-8388416697271168-package tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package
+124 verbose lock tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package /Users/administrateur/.npm/c9ccc044-90364-0-8388416697271168-package.lock
+125 silly lockFile f2ffeec2--sassdoc-1-0-0-rc-15-package-tgz tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz
+126 verbose lock tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz /Users/administrateur/.npm/f2ffeec2--sassdoc-1-0-0-rc-15-package-tgz.lock
+127 silly lockFile c9ccc044-90364-0-8388416697271168-package tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package
+128 silly lockFile c9ccc044-90364-0-8388416697271168-package tar:///Users/administrateur/tmp/npm-52525-L5EA5T6Q/1405171690364-0.8388416697271168/package
+129 silly lockFile f2ffeec2--sassdoc-1-0-0-rc-15-package-tgz tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz
+130 silly lockFile f2ffeec2--sassdoc-1-0-0-rc-15-package-tgz tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz
+131 silly lockFile 60116dc5--npm-sassdoc-1-0-0-rc-15-package /Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package
+132 verbose lock /Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package /Users/administrateur/.npm/60116dc5--npm-sassdoc-1-0-0-rc-15-package.lock
+133 silly lockFile 60116dc5--npm-sassdoc-1-0-0-rc-15-package /Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package
+134 silly lockFile 60116dc5--npm-sassdoc-1-0-0-rc-15-package /Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package
+135 verbose tar unpack /Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz
+136 silly lockFile 25e96869--npm-sassdoc-1-0-0-rc-15-package tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package
+137 verbose lock tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package /Users/administrateur/.npm/25e96869--npm-sassdoc-1-0-0-rc-15-package.lock
+138 silly lockFile f2ffeec2--sassdoc-1-0-0-rc-15-package-tgz tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz
+139 verbose lock tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz /Users/administrateur/.npm/f2ffeec2--sassdoc-1-0-0-rc-15-package-tgz.lock
+140 silly gunzTarPerm modes [ '755', '644' ]
+141 silly gunzTarPerm extractEntry package.json
+142 silly gunzTarPerm extractEntry .npmignore
+143 silly gunzTarPerm extractEntry README.md
+144 silly gunzTarPerm extractEntry Gruntfile.js
+145 silly gunzTarPerm extractEntry LICENSE.md
+146 silly gunzTarPerm extractEntry .gitattributes
+147 silly gunzTarPerm extractEntry .jshintrc
+148 silly gunzTarPerm extractEntry .travis.yml
+149 silly gunzTarPerm extractEntry examples/node.js
+150 silly gunzTarPerm extractEntry examples/dist/assets/css/main.css
+151 silly gunzTarPerm extractEntry examples/dist/assets/js/prism.min.js
+152 silly gunzTarPerm extractEntry examples/dist/index.html
+153 silly gunzTarPerm extractEntry examples/empty/_empty.scss
+154 silly gunzTarPerm extractEntry CHANGELOG.md
+155 silly gunzTarPerm extractEntry sache.json
+156 silly gunzTarPerm extractEntry src/api.js
+157 silly gunzTarPerm extractEntry src/file.js
+158 silly gunzTarPerm extractEntry src/log.js
+159 silly gunzTarPerm extractEntry src/parser.js
+160 silly gunzTarPerm extractEntry src/utils.js
+161 silly gunzTarPerm extractEntry src/annotation/index.js
+162 silly gunzTarPerm extractEntry src/annotation/annotations/access.js
+163 silly gunzTarPerm extractEntry src/annotation/annotations/deprecated.js
+164 silly gunzTarPerm extractEntry src/annotation/annotations/example.js
+165 silly gunzTarPerm extractEntry src/annotation/annotations/ignore.js
+166 silly gunzTarPerm extractEntry src/annotation/annotations/link.js
+167 silly gunzTarPerm extractEntry src/annotation/annotations/author.js
+168 silly gunzTarPerm extractEntry src/annotation/annotations/requires.js
+169 silly gunzTarPerm extractEntry src/annotation/annotations/returns.js
+170 silly gunzTarPerm extractEntry src/annotation/annotations/since.js
+171 silly gunzTarPerm extractEntry src/annotation/annotations/todos.js
+172 silly gunzTarPerm extractEntry src/annotation/annotations/throws.js
+173 silly gunzTarPerm extractEntry src/annotation/annotations/alias.js
+174 silly gunzTarPerm extractEntry src/annotation/annotations/type.js
+175 silly gunzTarPerm extractEntry src/annotation/annotations/parameters.js
+176 silly gunzTarPerm extractEntry src/annotation/annotations/test/access.test.js
+177 silly gunzTarPerm extractEntry src/annotation/annotations/test/deprecated.test.js
+178 silly gunzTarPerm extractEntry src/annotation/annotations/test/example.test.js
+179 silly gunzTarPerm extractEntry src/annotation/annotations/test/ignore.test.js
+180 silly gunzTarPerm extractEntry src/annotation/annotations/test/link.test.js
+181 silly gunzTarPerm extractEntry src/annotation/annotations/test/author.test.js
+182 silly gunzTarPerm extractEntry src/annotation/annotations/test/requires.test.js
+183 silly gunzTarPerm extractEntry src/annotation/annotations/test/returns.test.js
+184 silly gunzTarPerm extractEntry src/annotation/annotations/test/since.test.js
+185 silly gunzTarPerm extractEntry src/annotation/annotations/test/throws.test.js
+186 silly gunzTarPerm extractEntry src/annotation/annotations/test/todos.test.js
+187 silly gunzTarPerm extractEntry src/annotation/annotations/test/alias.test.js
+188 silly gunzTarPerm extractEntry src/annotation/annotations/test/type.test.js
+189 silly gunzTarPerm extractEntry src/annotation/annotations/test/parameters.test.js
+190 silly gunzTarPerm extractEntry view/assets/css/main.css
+191 silly gunzTarPerm extractEntry view/assets/js/prism.min.js
+192 silly gunzTarPerm extractEntry view/scss/base/_base.scss
+193 silly gunzTarPerm extractEntry view/scss/main.scss
+194 silly gunzTarPerm extractEntry view/scss/partials/_footer.scss
+195 silly gunzTarPerm extractEntry view/scss/partials/_header.scss
+196 silly gunzTarPerm extractEntry view/scss/partials/_item.scss
+197 silly gunzTarPerm extractEntry view/scss/partials/_main.scss
+198 silly gunzTarPerm extractEntry view/scss/partials/_sidebar.scss
+199 silly gunzTarPerm extractEntry view/scss/utils/_functions.scss
+200 silly gunzTarPerm extractEntry view/scss/utils/_helpers.scss
+201 silly gunzTarPerm extractEntry view/scss/utils/_mixins.scss
+202 silly gunzTarPerm extractEntry view/scss/utils/_variables.scss
+203 silly gunzTarPerm extractEntry view/scss/vendors/_prism.scss
+204 silly gunzTarPerm extractEntry view/templates/documentation/index.html.swig
+205 silly gunzTarPerm extractEntry view/templates/includes/annotations/parameters.html.swig
+206 silly gunzTarPerm extractEntry view/templates/includes/annotations/author.html.swig
+207 silly gunzTarPerm extractEntry view/templates/includes/annotations/description.html.swig
+208 silly gunzTarPerm extractEntry view/templates/includes/annotations/example.html.swig
+209 silly gunzTarPerm extractEntry view/templates/includes/annotations/link.html.swig
+210 silly gunzTarPerm extractEntry view/templates/includes/annotations/location.html.swig
+211 silly gunzTarPerm extractEntry view/templates/includes/annotations/name.html.swig
+212 silly gunzTarPerm extractEntry view/templates/includes/annotations/deprecated.html.swig
+213 silly gunzTarPerm extractEntry view/templates/includes/annotations/requires.html.swig
+214 silly gunzTarPerm extractEntry view/templates/includes/annotations/returns.html.swig
+215 silly gunzTarPerm extractEntry view/templates/includes/annotations/throws.html.swig
+216 silly gunzTarPerm extractEntry view/templates/includes/annotations/todo.html.swig
+217 silly gunzTarPerm extractEntry view/templates/includes/annotations/type.html.swig
+218 silly gunzTarPerm extractEntry view/templates/includes/annotations/usedby.html.swig
+219 silly gunzTarPerm extractEntry view/templates/includes/items/function.html.swig
+220 silly gunzTarPerm extractEntry view/templates/includes/items/item.html.swig
+221 silly gunzTarPerm extractEntry view/templates/includes/items/mixin.html.swig
+222 silly gunzTarPerm extractEntry view/templates/includes/items/variable.html.swig
+223 silly gunzTarPerm extractEntry view/templates/includes/partials/footer.html.swig
+224 silly gunzTarPerm extractEntry view/templates/includes/partials/head.html.swig
+225 silly gunzTarPerm extractEntry view/templates/includes/partials/header.html.swig
+226 silly gunzTarPerm extractEntry view/templates/includes/partials/scripts.html.swig
+227 silly gunzTarPerm extractEntry view/templates/includes/partials/sidebar.html.swig
+228 silly gunzTarPerm extractEntry view/templates/layouts/base.html.swig
+229 silly lockFile 25e96869--npm-sassdoc-1-0-0-rc-15-package tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package
+230 silly lockFile 25e96869--npm-sassdoc-1-0-0-rc-15-package tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package
+231 silly lockFile f2ffeec2--sassdoc-1-0-0-rc-15-package-tgz tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz
+232 silly lockFile f2ffeec2--sassdoc-1-0-0-rc-15-package-tgz tar:///Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz
+233 verbose chmod /Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz 644
+234 verbose chown /Users/administrateur/.npm/sassdoc/1.0.0-rc.15/package.tgz [ 501, 20 ]
+235 silly lockFile 3a52ce78- .
+236 silly lockFile 3a52ce78- .
+237 silly publish { name: 'sassdoc',
+237 silly publish   description: 'Like JSDoc but for Sass files.',
+237 silly publish   author: { name: 'Hugo Giraudel', email: 'hugo.giraudel@gmail.com' },
+237 silly publish   contributors:
+237 silly publish    [ { name: 'Fabrice Weinberg', email: 'Fabrice@weinberg.me' },
+237 silly publish      { name: 'Valérian Galliat' },
+237 silly publish      { name: 'Pascal Duez' } ],
+237 silly publish   version: '1.0.0-rc.15',
+237 silly publish   license: { type: 'MIT', url: 'http://opensource.org/licenses/MIT' },
+237 silly publish   repository: { type: 'git', url: 'https://github.com/SassDoc/sassdoc' },
+237 silly publish   homepage: 'https://github.com/SassDoc/sassdoc',
+237 silly publish   keywords: [ 'sass', 'scss', 'doc', 'jsdoc' ],
+237 silly publish   bugs: { url: 'https://github.com/SassDoc/sassdoc/issues' },
+237 silly publish   main: 'src/api.js',
+237 silly publish   dependencies:
+237 silly publish    { swig: '~1.3.2',
+237 silly publish      q: '^1.0.1',
+237 silly publish      rimraf: '~2.2.8',
+237 silly publish      'swig-extras': '0.0.1',
+237 silly publish      ncp: '^0.5.1',
+237 silly publish      'scss-comment-parser': '^0.1.2',
+237 silly publish      mkdirp: '^0.5.0' },
+237 silly publish   devDependencies:
+237 silly publish    { assert: '^1.1.1',
+237 silly publish      chalk: '^0.5.0',
+237 silly publish      grunt: '^0.4.5',
+237 silly publish      'grunt-autoprefixer': '^0.8.1',
+237 silly publish      'grunt-browser-sync': '^1.1.2',
+237 silly publish      'grunt-contrib-jshint': '^0.10.0',
+237 silly publish      'grunt-contrib-sass': '^0.7.3',
+237 silly publish      'grunt-contrib-watch': '^0.6.1',
+237 silly publish      'grunt-mocha-test': '^0.11.0',
+237 silly publish      'load-grunt-tasks': '^0.6.0',
+237 silly publish      'time-grunt': '^0.3.2' },
+237 silly publish   scripts: { test: 'grunt test' },
+237 silly publish   readme: '# SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)\n\nLike JSDoc, but for Sass files.\n\nCurrently only work for `.scss` files.\nAlso, inline comments are not parsed (`//`).\n\n## Example\n\n```scss\n/**\n * Adds `$value` at `$index` in `$list`.\n *\n * @author Hugo Giraudel\n *\n * @ignore Documentation: http://sassylists.com/documentation/#insert-nth\n *\n * @requires is-true\n *\n * @param {List}   $list  - list to update\n * @param {Number} $index - index to add\n * @param {*}      $value - value to add\n *\n * @throws List index $index is not a number for `insert-nth`.\n * @throws List index $index must be a non-zero integer for `insert-nth`.\n *\n * @return {List | Null}\n */\n\n@function insert-nth($list, $index, $value) {\n  // ...\n}\n\n/**\n * Defines whether the lib should support legacy browsers (e.g. `IE 8`).\n *\n * @since 1.3.37\n *\n * @todo Nothing. It\'s awesome.\n *\n * @link https://github.com/SassDoc/sassdoc SassDoc\n *\n * @type Bool\n */\n$legacy-support: true !global;\n```\n\n### Preview\n\n![SassDoc](http://i.imgur.com/5i8QYB8.png)\n\n\n## Installation\n\n### npm\n\n```sh\nnpm install -g sassdoc-cli\n```\n\n### Grunt\n\nSee [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).\n\n## Usage\n\n### Command line\n\n```sh\nsassdoc <src> <dest> [options]\n```\n\n**Arguments:**\n\n1. `<src>` Path to your Sass folder.\n1. `<dest>` Path to the destination folder.\n\n**Options:**\n\n* `-h, --help`: Bring help.\n* `--version`: Show version.\n* `-v, --verbose`: Run in verbose mode.\n* `-c, --config`: Path to JSON file containing variables to be passed\n                  to the view.\n\n### Node\n\n#### Install\n\n```shell\nnpm install sassdoc --save\n```\n\n#### Use The Raw Data\n\n```js\nvar sassdoc = require(\'sassdoc\');\n\nsassdoc.parse(__dirname + \'/sass\').then(function (items) {\n  console.log(items);\n})\n```\n\n#### Generate Documentation\n\n```js\nvar config = {\n  "display": {\n    "access": ["public", "private"],\n    "alias": false,\n    "watermark": true\n  },\n\n  "package": "./package.json"\n}\n\nvar sassdoc = require(\'sassdoc\');\nsassdoc.documentize(source, dest, config);\n```\n\n## Documentation\n\nSee [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documentation).\n\n## Pass extra variables to the view\n\nWith the `-c` or `--config` flag, you can set the path to a JSON file containing variables to be passed to the view so the latter is a little more customized than the default documentation.\n\nDefault path leads to `view/view.json`. You can update this file or make your own.\n\nAllowed variables:\n\n```json\n{\n  "display": {\n    "access": ["public", "private"],\n    "alias": false,\n    "watermark": true\n   },\n\n  "package": "./package.json"\n}\n```\n\n* (`Array`) `display.access`: access levels that should be displayed\n* (`Boolean`) `display.alias`: enable/disable display of alias items\n* (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool, leave it!)\n* (`String|Object`) `package`: path to a .json file (ideally your `package.json`) or directly an object\n\nThe package object (either direct or required) should ideally contain:\n\n* `title`: human name of your project\n* `name`: package name of your project (in case `title` is not defined)\n* `version`: your project\'s version\n* `license`: your project\'s license\n* `homepage`: URL to your project\'s homepage\n* `description`: description of your project\n\n## Built with SassDoc\n\n* [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez\n* [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez\n* [SassyLists](http://sassylists.com/documentation.html) from Hugo Giraudel\n\n## Credits\n\n* [Valérian Galliat](https://twitter.com/valeriangalliat)\n* [Fabrice Weinberg](https://twitter.com/fweinb)\n* [Hugo Giraudel](http://twitter.com/HugoGiraudel)\n\nWith huge contributions from:\n\n* [Pascal Duez](https://twitter.com/pascalduez)\n',
+237 silly publish   readmeFilename: 'README.md',
+237 silly publish   _id: 'sassdoc@1.0.0-rc.15',
+237 silly publish   dist: { shasum: '56dde372dbb4d34a383f374659f6675cb7d93ddc' },
+237 silly publish   _from: '.' }
+238 verbose url raw sassdoc
+239 verbose url resolving [ 'https://registry.npmjs.org/', './sassdoc' ]
+240 verbose url resolved https://registry.npmjs.org/sassdoc
+241 info trying registry request attempt 1 at 15:28:10
+242 http PUT https://registry.npmjs.org/sassdoc
+243 http 403 https://registry.npmjs.org/sassdoc
+244 error publish Failed PUT 403
+245 error Error: forbidden cannot modify pre-existing version: 1.0.0-rc.15
+245 error old={"name":"sassdoc","description":"Like JSDoc but for Sass files.","author":{"name":"Hugo Giraudel","email":"hugo.giraudel@gmail.com"},"contributors":[{"name":"Fabrice Weinberg","email":"Fabrice@weinberg.me"},{"name":"Valérian Galliat"},{"name":"Pascal Duez"}],"version":"1.0.0-rc.15","license":{"type":"MIT","url":"http://opensource.org/licenses/MIT"},"repository":{"type":"git","url":"https://github.com/SassDoc/sassdoc"},"homepage":"https://github.com/SassDoc/sassdoc","keywords":["sass","scss","doc","jsdoc"],"bugs":{"url":"https://github.com/SassDoc/sassdoc/issues"},"main":"src/api.js","dependencies":{"swig":"~1.3.2","q":"^1.0.1","rimraf":"~2.2.8","swig-extras":"0.0.1","ncp":"^0.5.1","scss-comment-parser":"0.1.0","mkdirp":"^0.5.0"},"devDependencies":{"assert":"^1.1.1","chalk":"^0.5.0","grunt":"^0.4.5","grunt-autoprefixer":"^0.8.1","grunt-browser-sync":"^1.1.2","grunt-contrib-jshint":"^0.10.0","grunt-contrib-sass":"^0.7.3","grunt-contrib-watch":"^0.6.1","grunt-mocha-test":"^0.11.0","load-grunt-tasks":"^0.6.0","time-grunt":"^0.3.2"},"scripts":{"test":"grunt test"},"_id":"sassdoc@1.0.0-rc.15","dist":{"shasum":"b57c17bb5dd9a0a0db41d1258d576d9488e1d7d7","tarball":"http://registry.npmjs.org/sassdoc/-/sassdoc-1.0.0-rc.15.tgz"},"_from":".","_npmVersion":"1.4.3","_npmUser":{"name":"hugogiraudel","email":"hugo.giraudel@gmail.com"},"maintainers":[{"name":"hugogiraudel","email":"hugo.giraudel@gmail.com"}]}
+245 error new={"name":"sassdoc","description":"Like JSDoc but for Sass files.","author":{"name":"Hugo Giraudel","email":"hugo.giraudel@gmail.com"},"contributors":[{"name":"Fabrice Weinberg","email":"Fabrice@weinberg.me"},{"name":"Valérian Galliat"},{"name":"Pascal Duez"}],"version":"1.0.0-rc.15","license":{"type":"MIT","url":"http://opensource.org/licenses/MIT"},"repository":{"type":"git","url":"https://github.com/SassDoc/sassdoc"},"homepage":"https://github.com/SassDoc/sassdoc","keywords":["sass","scss","doc","jsdoc"],"bugs":{"url":"https://github.com/SassDoc/sassdoc/issues"},"main":"src/api.js","dependencies":{"swig":"~1.3.2","q":"^1.0.1","rimraf":"~2.2.8","swig-extras":"0.0.1","ncp":"^0.5.1","scss-comment-parser":"^0.1.2","mkdirp":"^0.5.0"},"devDependencies":{"assert":"^1.1.1","chalk":"^0.5.0","grunt":"^0.4.5","grunt-autoprefixer":"^0.8.1","grunt-browser-sync":"^1.1.2","grunt-contrib-jshint":"^0.10.0","grunt-contrib-sass":"^0.7.3","grunt-contrib-watch":"^0.6.1","grunt-mocha-test":"^0.11.0","load-grunt-tasks":"^0.6.0","time-grunt":"^0.3.2"},"scripts":{"test":"grunt test"},"readme":"# SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)\u000a\u000aLike JSDoc, but for Sass files.\u000a\u000aCurrently only work for `.scss` files.\u000aAlso, inline comments are not parsed (`//`).\u000a\u000a## Example\u000a\u000a```scss\u000a/**\u000a * Adds `$value` at `$index` in `$list`.\u000a *\u000a * @author Hugo Giraudel\u000a *\u000a * @ignore Documentation: http://sassylists.com/documentation/#insert-nth\u000a *\u000a * @requires is-true\u000a *\u000a * @param {List}   $list  - list to update\u000a * @param {Number} $index - index to add\u000a * @param {*}      $value - value to add\u000a *\u000a * @throws List index $index is not a number for `insert-nth`.\u000a * @throws List index $index must be a non-zero integer for `insert-nth`.\u000a *\u000a * @return {List | Null}\u000a */\u000a\u000a@function insert-nth($list, $index, $value) {\u000a  // ...\u000a}\u000a\u000a/**\u000a * Defines whether the lib should support legacy browsers (e.g. `IE 8`).\u000a *\u000a * @since 1.3.37\u000a *\u000a * @todo Nothing. It's awesome.\u000a *\u000a * @link https://github.com/SassDoc/sassdoc SassDoc\u000a *\u000a * @type Bool\u000a */\u000a$legacy-support: true !global;\u000a```\u000a\u000a### Preview\u000a\u000a![SassDoc](http://i.imgur.com/5i8QYB8.png)\u000a\u000a\u000a## Installation\u000a\u000a### npm\u000a\u000a```sh\u000anpm install -g sassdoc-cli\u000a```\u000a\u000a### Grunt\u000a\u000aSee [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).\u000a\u000a## Usage\u000a\u000a### Command line\u000a\u000a```sh\u000asassdoc <src> <dest> [options]\u000a```\u000a\u000a**Arguments:**\u000a\u000a1. `<src>` Path to your Sass folder.\u000a1. `<dest>` Path to the destination folder.\u000a\u000a**Options:**\u000a\u000a* `-h, --help`: Bring help.\u000a* `--version`: Show version.\u000a* `-v, --verbose`: Run in verbose mode.\u000a* `-c, --config`: Path to JSON file containing variables to be passed\u000a                  to the view.\u000a\u000a### Node\u000a\u000a#### Install\u000a\u000a```shell\u000anpm install sassdoc --save\u000a```\u000a\u000a#### Use The Raw Data\u000a\u000a```js\u000avar sassdoc = require('sassdoc');\u000a\u000asassdoc.parse(__dirname + '/sass').then(function (items) {\u000a  console.log(items);\u000a})\u000a```\u000a\u000a#### Generate Documentation\u000a\u000a```js\u000avar config = {\u000a  \"display\": {\u000a    \"access\": [\"public\", \"private\"],\u000a    \"alias\": false,\u000a    \"watermark\": true\u000a  },\u000a\u000a  \"package\": \"./package.json\"\u000a}\u000a\u000avar sassdoc = require('sassdoc');\u000asassdoc.documentize(source, dest, config);\u000a```\u000a\u000a## Documentation\u000a\u000aSee [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documentation).\u000a\u000a## Pass extra variables to the view\u000a\u000aWith the `-c` or `--config` flag, you can set the path to a JSON file containing variables to be passed to the view so the latter is a little more customized than the default documentation.\u000a\u000aDefault path leads to `view/view.json`. You can update this file or make your own.\u000a\u000aAllowed variables:\u000a\u000a```json\u000a{\u000a  \"display\": {\u000a    \"access\": [\"public\", \"private\"],\u000a    \"alias\": false,\u000a    \"watermark\": true\u000a   },\u000a\u000a  \"package\": \"./package.json\"\u000a}\u000a```\u000a\u000a* (`Array`) `display.access`: access levels that should be displayed\u000a* (`Boolean`) `display.alias`: enable/disable display of alias items\u000a* (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool, leave it!)\u000a* (`String|Object`) `package`: path to a .json file (ideally your `package.json`) or directly an object\u000a\u000aThe package object (either direct or required) should ideally contain:\u000a\u000a* `title`: human name of your project\u000a* `name`: package name of your project (in case `title` is not defined)\u000a* `version`: your project's version\u000a* `license`: your project's license\u000a* `homepage`: URL to your project's homepage\u000a* `description`: description of your project\u000a\u000a## Built with SassDoc\u000a\u000a* [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez\u000a* [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez\u000a* [SassyLists](http://sassylists.com/documentation.html) from Hugo Giraudel\u000a\u000a## Credits\u000a\u000a* [Valérian Galliat](https://twitter.com/valeriangalliat)\u000a* [Fabrice Weinberg](https://twitter.com/fweinb)\u000a* [Hugo Giraudel](http://twitter.com/HugoGiraudel)\u000a\u000aWith huge contributions from:\u000a\u000a* [Pascal Duez](https://twitter.com/pascalduez)\u000a","readmeFilename":"README.md","_id":"sassdoc@1.0.0-rc.15","dist":{"shasum":"56dde372dbb4d34a383f374659f6675cb7d93ddc","tarball":"http://registry.npmjs.org/sassdoc/-/sassdoc-1.0.0-rc.15.tgz"},"_from":".","_npmVersion":"1.4.3","_npmUser":{"name":"hugogiraudel","email":"hugo.giraudel@gmail.com"},"maintainers":[{"name":"hugogiraudel","email":"hugo.giraudel@gmail.com"}]}: sassdoc
+245 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:237:14)
+245 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+245 error     at Request.EventEmitter.emit (events.js:98:17)
+245 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+245 error     at Request.EventEmitter.emit (events.js:117:20)
+245 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+245 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+245 error     at _stream_readable.js:920:16
+245 error     at process._tickCallback (node.js:415:13)
+246 error If you need help, you may report this *entire* log,
+246 error including the npm and node versions, at:
+246 error     <http://github.com/npm/npm/issues>
+247 error System Darwin 13.1.0
+248 error command "node" "/usr/local/bin/npm" "publish" "--tag" "rc.16"
+249 error cwd /Users/administrateur/Documents/SassDoc
+250 error node -v v0.10.26
+251 error npm -v 1.4.3
+252 verbose exit [ 1, true ]
