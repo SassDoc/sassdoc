@@ -12,6 +12,16 @@ exports = module.exports = {
   },
 
   /**
+   * Get file display path, relative to the project directory
+   * @param  {string} filePath - file path
+   * @param  {string} baseDir  - project base directory
+   * @return {string}            display path
+   */
+  getDisplayPath: function (filePath, baseDir) {
+    return filePath.substr(filePath.indexOf(baseDir));
+  },
+
+  /**
    * Get current date/time
    * @return {string} Stringified date time
    */
