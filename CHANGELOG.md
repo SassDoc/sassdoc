@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0-rc.16
+
+* Fixed a syntax highlighting issue with functions and mixins ([#99](https://github.com/SassDoc/sassdoc/pull/99))
+* Improved the way we deal with file path ([#98](https://github.com/SassDoc/sassdoc/pull/98))
+* Made it possible to use `@`-starting lines within `@example` as long as they are indented ([#96](https://github.com/SassDoc/sassdoc/pull/96))
+* Fixed a tiny parser issue ([#95](https://github.com/SassDoc/sassdoc/pull/95))
+
 ## 1.0.0-rc.15
 
 * Exposed the version number in `sassdoc.version` ([#91](https://github.com/SassDoc/sassdoc/pull/93))
