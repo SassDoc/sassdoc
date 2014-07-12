@@ -31,6 +31,11 @@ exports = module.exports = {
    */
   folder: {
     /**
+     * Store project base directory.
+     */
+    base: '',
+
+    /**
      * Read a folder
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_readdir_path_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
@@ -64,7 +69,7 @@ exports = module.exports = {
      * @return {Q.Promise}
      */
     refresh: function (folder) {
-      return exports.folder.remove(folder).then(function() {
+      return exports.folder.remove(folder).then(function () {
         logger.log('Folder `' + folder + '` successfully removed.');
         return exports.folder.create(folder);
       }, function () {
@@ -153,11 +158,11 @@ exports = module.exports = {
         var data = parser.parse(code);
 
         // Merge in from which file the comments where loaded.
-        Object.keys(data).forEach(function(key){
-          data[key].forEach(function(item){
+        Object.keys(data).forEach(function (key) {
+          data[key].forEach(function (item) {
             item.file = {
-              path : file,
-              name : path.basename(file, '.scss')
+              path: utils.getDisplayPath(file, exports.folder.base),
+              name: path.basename(file, '.scss')
             };
           });
         });
@@ -204,6 +209,8 @@ exports = module.exports = {
    * @param {String} folder - folder path
    */
   getData: function (folder) {
+    exports.folder.base = path.basename(folder);
+
     return exports.folder.parse(folder).then(function (response) {
       response = response || [];
 
@@ -214,11 +221,11 @@ exports = module.exports = {
 
       response.forEach(function (obj) {
         Object.keys(obj).forEach(function (key) {
-          if ( key === 'unknown') { // ingore
+          if (key === 'unknown') { // ignore
             return;
           }
 
-          if (typeof result[key] === 'undefined' ) {
+          if (typeof result[key] === 'undefined') {
             result[key] = [];
           }
 
