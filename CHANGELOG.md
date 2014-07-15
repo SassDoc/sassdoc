@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-rc.17
+
+* Fixed an issue with item count in console ([#102](https://github.com/SassDoc/sassdoc/issues/102))
+
 ## 1.0.0-rc.16
 
 * Fixed a syntax highlighting issue with functions and mixins ([#99](https://github.com/SassDoc/sassdoc/pull/99))

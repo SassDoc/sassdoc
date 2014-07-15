@@ -214,8 +214,8 @@ exports = module.exports = {
     return exports.folder.parse(folder).then(function (response) {
       response = response || [];
 
-      logger.log(response.length + ' item' + (response.length > 1 ? 's' : '') + ' documented.');
-
+      var key;
+      var itemCount = 0;
       var result = {};
       var index = {};
 
@@ -288,6 +288,13 @@ exports = module.exports = {
           });
         }
       });
+
+      // Item count
+      for (key in result) {
+        itemCount += result[key].length;
+      }
+
+      logger.log(itemCount + ' item' + (itemCount > 1 ? 's' : '') + ' documented.');
 
       return result;
     });
