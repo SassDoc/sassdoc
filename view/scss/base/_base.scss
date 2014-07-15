@@ -55,7 +55,7 @@ a {
   }
 
   thead {
-    display: none;
+    @include visually-hidden($extend: false);
   }
 
   tr {

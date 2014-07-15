@@ -51,47 +51,52 @@
       
     
   
-    
-      
-      
-    
-  
-    
-      
-      
-    
-  
-    
-      
-      
-    
-  
-    
-      
-      
-    
-  
-    
-      
-      
-    
-  
-    
-      
-      
-    
-  
-    
-      
-      
-    
-  
-    
-      
-      
-    
-  
 
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
   
     
       
@@ -139,7 +144,7 @@
         SassDoc
       
     </h1>
-    <p class="header__item-count">19 items documented</p>
+    <p class="header__item-count">20 items documented</p>
   </div>
 </header>
 
@@ -225,18 +230,51 @@
       
       
 
-        <li class="sidebar__sub-heading"><a href="#mixin">Mixins</a></li>
+        <li class="sidebar__sub-heading"><a href="#variable">Variables</a></li>
           
         
         
 
           
           <li>
-            <a href="#mixin-clearfix">clearfix</a> 
+            <a href="#variable-colors">colors</a> 
             
             
           </li>
 
+        
+
+          
+          <li>
+            <a href="#variable-breakpoints">breakpoints</a> 
+            
+            
+          </li>
+
+        
+
+          
+          <li>
+            <a href="#variable-z-indexes">z-indexes</a> 
+            
+            
+          </li>
+
+        
+
+      
+
+    
+
+      
+      
+
+      
+      
+
+        <li class="sidebar__sub-heading"><a href="#mixin">Mixins</a></li>
+          
+        
         
 
           
@@ -329,24 +367,9 @@
 
         
 
-      
-
-    
-
-      
-      
-
-      
-      
-
-        <li class="sidebar__sub-heading"><a href="#variable">Variables</a></li>
-          
-        
-        
-
           
           <li>
-            <a href="#variable-colors">colors</a> 
+            <a href="#mixin-clearfix">clearfix</a> 
             
             
           </li>
@@ -355,16 +378,7 @@
 
           
           <li>
-            <a href="#variable-breakpoints">breakpoints</a> 
-            
-            
-          </li>
-
-        
-
-          
-          <li>
-            <a href="#variable-z-indexes">z-indexes</a> 
+            <a href="#mixin-visually-hidden">visually-hidden</a> 
             
             
           </li>
@@ -1202,7 +1216,7 @@
       
       
         <section class="main__section">
-          <h1 class="main__heading" id="mixin">Mixins</h1>
+          <h1 class="main__heading" id="variable">Variables</h1>
 
           
           
@@ -1210,11 +1224,11 @@
             
             
             
-            <section class="main__item  item" id="mixin-clearfix">
+            <section class="main__item  item" id="variable-colors">
               <h2 class="item__heading">
   
 
-  <a class="item__name" href="#mixin-clearfix">clearfix</a>
+  <a class="item__name" href="#variable-colors">colors</a>
 
   
 
@@ -1225,83 +1239,62 @@
 
 
 
+<pre class="item__code"><code class="language-scss">$colors: (
+  "pink":         #c6538c,
+  
+  "light-purple": #e9e4f1,
+  "purple":       #998099,
+  
+  "green":        #699,
 
+  "light-grey":   #f7f5fa,
+  "medium-grey":  #ddd,
+  "dark-grey":    #444
+) !global;</code></pre>
 
   
 
-  
-    
-  
-
-  
-
-  
-    
-  
-
-<pre class="item__code"><code class="language-scss">@mixin clearfix($extend: true) { ... }</code></pre>
-
-
-
-  
-  
   
   <h3 class="item__sub-heading">Description</h3>
   
-  <div class="item__description"><p>Float clearing helper.</p></div>
+  <div class="item__description"><p>Map of colors for quick grabbing.<br>See <code>_functions.scss</code> -&gt; <code>color()</code> function.</p></div>
 
 
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+  <h3 class="item__sub-heading">Type</h3>
+
+  <p>
+  
+    <code>Map</code>
+  
+  </p>
+
+
+  
 
 
 
-  <table class="item__parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
+
+
+  
+
+
+
+  
+  
+    
       
-        <tr class="item__parameter">
-          <td data-label="name"><code>$extend</code></td>
-          <td data-label="desc"><p>Whether or not extend a placeholder.</p></td>
-          <td data-label="type">
-          
-            Bool
-          
-          </td>
-          <td data-label="default">
-          
-            <code>true</code>
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled">
+    
 
-
-
-  
-
-  
-
-  
-
+    <li><a href="#function-color"><code>color</code></a></li>
   
 
 
 
 
-
-  
-
-
-
+</ul>
 
 
 
@@ -1314,13 +1307,207 @@
   
   <h3 class="item__sub-heading">Found at</h3>
 
-  <p><code>scss/utils/_helpers.scss</code></p>
+  <p><code>scss/utils/_variables.scss</code></p>
 
 
 
 
             </section>
 
+          
+
+            
+            
+            
+            <section class="main__item  item" id="variable-breakpoints">
+              <h2 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-breakpoints">breakpoints</a>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+<pre class="item__code"><code class="language-scss">$breakpoints: (
+  "small":  (max-width: 600px),
+  "medium": (min-width: 601px)
+) !global;</code></pre>
+
+  
+
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Map of breakpoints for responsive design.<br>See <code>_functions.scss</code> -&gt; <code>respond-to()</code> function.</p></div>
+
+
+  
+  <h3 class="item__sub-heading">Type</h3>
+
+  <p>
+  
+    <code>Map</code>
+  
+  </p>
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#mixin-respond-to"><code>respond-to</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>scss/utils/_variables.scss</code></p>
+
+
+
+
+            </section>
+
+          
+
+            
+            
+            
+            <section class="main__item  item" id="variable-z-indexes">
+              <h2 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-z-indexes">z-indexes</a>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+<pre class="item__code"><code class="language-scss">$z-indexes: (
+  "goku"       9001,
+  "modal"      5000,
+  "dropdown"   4000,
+  "social"     3000,
+  "default"       1,
+  "below"        -1
+) !global;</code></pre>
+
+  
+
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Z-indexes layers.<br>See <code>_functions.scss</code> -&gt; <code>z()</code> function.</p></div>
+
+
+  
+  <h3 class="item__sub-heading">Type</h3>
+
+  <p>
+  
+    <code>Map</code>
+  
+  </p>
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#function-z"><code>z</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>scss/utils/_variables.scss</code></p>
+
+
+
+
+            </section>
+
+          
+        </section>
+
+      
+
+    
+
+      
+      
+
+      
+      
+        <section class="main__section">
+          <h1 class="main__heading" id="mixin">Mixins</h1>
+
+          
           
 
             
@@ -1452,6 +1639,15 @@
     
 
     <li><a href="#mixin-triangle"><code>triangle</code></a></li>
+  
+
+
+
+  
+  
+    
+
+    <li><a href="#mixin-visually-hidden"><code>visually-hidden</code></a></li>
   
 
 
@@ -2920,31 +3116,15 @@
             </section>
 
           
-        </section>
-
-      
-
-    
-
-      
-      
-
-      
-      
-        <section class="main__section">
-          <h1 class="main__heading" id="variable">Variables</h1>
-
-          
-          
 
             
             
             
-            <section class="main__item  item" id="variable-colors">
+            <section class="main__item  item" id="mixin-clearfix">
               <h2 class="item__heading">
   
 
-  <a class="item__name" href="#variable-colors">colors</a>
+  <a class="item__name" href="#mixin-clearfix">clearfix</a>
 
   
 
@@ -2955,62 +3135,83 @@
 
 
 
-<pre class="item__code"><code class="language-scss">$colors: (
-  "pink":         #c6538c,
-  
-  "light-purple": #e9e4f1,
-  "purple":       #998099,
-  
-  "green":        #699,
 
-  "light-grey":   #f7f5fa,
-  "medium-grey":  #ddd,
-  "dark-grey":    #444
-) !global;</code></pre>
 
   
 
+  
+    
+  
+
+  
+
+  
+    
+  
+
+<pre class="item__code"><code class="language-scss">@mixin clearfix($extend: true) { ... }</code></pre>
+
+
+
+  
+  
   
   <h3 class="item__sub-heading">Description</h3>
   
-  <div class="item__description"><p>Map of colors for quick grabbing.<br>See <code>_functions.scss</code> -&gt; <code>color()</code> function.</p></div>
+  <div class="item__description"><p>Float clearing helper.</p></div>
 
 
-  
-  <h3 class="item__sub-heading">Type</h3>
-
-  <p>
-  
-    <code>Map</code>
-  
-  </p>
-
-
-  
+  <h3 class="item__sub-heading">Parameters</h3>
 
 
 
-
-
-  
-
-
-
-  
-  
-    
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
       
-      <h3 class="item__sub-heading">Used by</h3>
-      <ul class="list-unstyled">
-    
+        <tr class="item__parameter">
+          <td data-label="name"><code>$extend</code></td>
+          <td data-label="desc"><p>Whether or not extend a placeholder.</p></td>
+          <td data-label="type">
+          
+            Bool
+          
+          </td>
+          <td data-label="default">
+          
+            <code>true</code>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
 
-    <li><a href="#function-color"><code>color</code></a></li>
+
+
+  
+
+  
+
+  
+
   
 
 
 
 
-</ul>
+
+  
+
+
+
 
 
 
@@ -3023,7 +3224,7 @@
   
   <h3 class="item__sub-heading">Found at</h3>
 
-  <p><code>scss/utils/_variables.scss</code></p>
+  <p><code>scss/utils/_helpers.scss</code></p>
 
 
 
@@ -3035,11 +3236,11 @@
             
             
             
-            <section class="main__item  item" id="variable-breakpoints">
+            <section class="main__item  item" id="mixin-visually-hidden">
               <h2 class="item__heading">
   
 
-  <a class="item__name" href="#variable-breakpoints">breakpoints</a>
+  <a class="item__name" href="#mixin-visually-hidden">visually-hidden</a>
 
   
 
@@ -3050,145 +3251,97 @@
 
 
 
-<pre class="item__code"><code class="language-scss">$breakpoints: (
-  "small":  (max-width: 600px),
-  "medium": (min-width: 601px)
-) !global;</code></pre>
+
 
   
 
+  
+    
+  
+
+  
+
+  
+    
+  
+
+<pre class="item__code"><code class="language-scss">@mixin visually-hidden($extend: true) { ... }</code></pre>
+
+
+
+  
+  
   
   <h3 class="item__sub-heading">Description</h3>
   
-  <div class="item__description"><p>Map of breakpoints for responsive design.<br>See <code>_functions.scss</code> -&gt; <code>respond-to()</code> function.</p></div>
+  <div class="item__description"><p>Accessibility hiding helper.</p></div>
 
 
-  
-  <h3 class="item__sub-heading">Type</h3>
-
-  <p>
-  
-    <code>Map</code>
-  
-  </p>
-
-
-  
+  <h3 class="item__sub-heading">Parameters</h3>
 
 
 
-
-
-  
-
-
-
-  
-  
-    
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
       
-      <h3 class="item__sub-heading">Used by</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#mixin-respond-to"><code>respond-to</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>scss/utils/_variables.scss</code></p>
-
-
-
-
-            </section>
-
+        <tr class="item__parameter">
+          <td data-label="name"><code>$extend</code></td>
+          <td data-label="desc"><p>Whether or not extend a placeholder.</p></td>
+          <td data-label="type">
           
-
-            
-            
-            
-            <section class="main__item  item" id="variable-z-indexes">
-              <h2 class="item__heading">
-  
-
-  <a class="item__name" href="#variable-z-indexes">z-indexes</a>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-<pre class="item__code"><code class="language-scss">$z-indexes: (
-  "goku"       9001,
-  "modal"      5000,
-  "dropdown"   4000,
-  "social"     3000,
-  "default"       1,
-  "below"        -1
-) !global;</code></pre>
-
-  
-
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Z-indexes layers.<br>See <code>_functions.scss</code> -&gt; <code>z()</code> function.</p></div>
-
-
-  
-  <h3 class="item__sub-heading">Type</h3>
-
-  <p>
-  
-    <code>Map</code>
-  
-  </p>
-
-
-  
-
-
+            Bool
+          
+          </td>
+          <td data-label="default">
+          
+            <code>true</code>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
 
 
 
   
 
-
+  
 
   
+
+  
+
+
   
     
       
-      <h3 class="item__sub-heading">Used by</h3>
+      <h3 class="item__sub-heading">Requires</h3>
       <ul class="list-unstyled">
     
 
-    <li><a href="#function-z"><code>z</code></a></li>
+    <li><a href="#mixin-size"><code>size</code></a></li>
   
 
 
 
 
 </ul>
+
+
+
+  
+
+
+
 
 
 
@@ -3201,7 +3354,7 @@
   
   <h3 class="item__sub-heading">Found at</h3>
 
-  <p><code>scss/utils/_variables.scss</code></p>
+  <p><code>scss/utils/_helpers.scss</code></p>
 
 
 

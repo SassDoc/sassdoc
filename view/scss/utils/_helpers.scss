@@ -21,3 +21,31 @@
 %clearfix {
   @include clearfix($extend: false);
 }
+
+/**
+ * Accessibility hiding helper.
+ *
+ * @param {Bool} $extend (true) - Whether or not extend a placeholder.
+ *
+ * @requires {mixin} size
+ */
+
+@mixin visually-hidden($extend: true) {
+  @if $extend {
+    @extend %visually-hidden;
+  }
+
+  @else {
+    @include size(1px);
+    position: absolute;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+  }
+}
+
+%visually-hidden {
+  @include visually-hidden($extend: false);
+}
