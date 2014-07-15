@@ -15,15 +15,15 @@
     {% for type, obj in data %}
 
       {# Group items from object by display type and only keep `true` #}
-      {% set obj = (obj | groupby('display'))['true'] %}
+      {% set object = (obj | groupby('display'))['true'] %}
 
       {# If there is at least one item to display, go #}
-      {% if obj.length > 0 %}
+      {% if object.length > 0 %}
         <section class="main__section">
           <h1 class="main__heading" id="{{ type }}">{{ (type + 's') | capitalize }}</h1>
 
           {# Loop over items in current group #}
-          {% for item in obj %}
+          {% for item in object %}
 
             {# Display item #}
             {% set partial = "../includes/items/" + type + ".html.swig" %}

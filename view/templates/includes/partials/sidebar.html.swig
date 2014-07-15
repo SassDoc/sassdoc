@@ -13,15 +13,15 @@
     {% for type, obj in data %}
 
       {# Group items from object by display type and only keep `true` #}
-      {% set obj = (obj | groupby('display'))['true'] %}
+      {% set object = (obj | groupby('display'))['true'] %}
 
       {# If there is at least one item to display, go #}
-      {% if obj.length > 0 %}
+      {% if object.length > 0 %}
 
         <li class="sidebar__sub-heading"><a href="#{{ type }}">{{ (type + 's') | capitalize }}</a></li>
           
         {# Loop over items in current group #}
-        {% for item in obj %}
+        {% for item in object %}
 
           {# Display item #}
           <li>
