@@ -114,6 +114,7 @@
 }
 
 @include respond-to("medium") {
+  tbody > .item__parameter:first-of-type > th,
   tbody > .item__parameter:first-of-type > td {
     border-top: none;
   }
