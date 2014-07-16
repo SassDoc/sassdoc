@@ -82,6 +82,7 @@ sassdoc <src> <dest> [options]
 * `-v, --verbose`: Run in verbose mode.
 * `-c, --config`: Path to JSON file containing variables to be passed
                   to the view.
+* ` --no-update-notifier`: Do not run the update notifier check.
 
 ### Node
 
