@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-rc.18
+
+* Merged `sassdoc-cli` back into the main repository
+
 ## 1.0.0-rc.17
 
 * Fixed an issue with item count in console ([#102](https://github.com/SassDoc/sassdoc/issues/102))

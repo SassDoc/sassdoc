@@ -86,17 +86,17 @@
       
     
   
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
 
-  
-    
-      
-      
-    
-  
-    
-      
-      
-    
   
     
       
@@ -293,48 +293,6 @@
       
       
 
-        <li class="sidebar__sub-heading"><a href="#variable">Variables</a></li>
-          
-        
-        
-
-          
-          <li>
-            <a href="#variable-colors">colors</a> 
-            
-            
-          </li>
-
-        
-
-          
-          <li>
-            <a href="#variable-breakpoints">breakpoints</a> 
-            
-            
-          </li>
-
-        
-
-          
-          <li>
-            <a href="#variable-z-indexes">z-indexes</a> 
-            
-            
-          </li>
-
-        
-
-      
-
-    
-
-      
-      
-
-      
-      
-
         <li class="sidebar__sub-heading"><a href="#function">Functions</a></li>
           
         
@@ -379,6 +337,48 @@
           
           <li>
             <a href="#function-is-valid-length">is-valid-length</a> 
+            
+            
+          </li>
+
+        
+
+      
+
+    
+
+      
+      
+
+      
+      
+
+        <li class="sidebar__sub-heading"><a href="#variable">Variables</a></li>
+          
+        
+        
+
+          
+          <li>
+            <a href="#variable-colors">colors</a> 
+            
+            
+          </li>
+
+        
+
+          
+          <li>
+            <a href="#variable-breakpoints">breakpoints</a> 
+            
+            
+          </li>
+
+        
+
+          
+          <li>
+            <a href="#variable-z-indexes">z-indexes</a> 
             
             
           </li>
@@ -2106,7 +2106,7 @@
   <h3 class="item__sub-heading">Example</h3>
 
   
-    <pre class="item__example"><code class="language-scss"></code></pre>
+    <pre class="item__example"><code class="language-scss"> @include prefixer(&#39;transform&#39;, &#39;translate(10px)&#39;);</code></pre>
   
 
 
@@ -2263,295 +2263,6 @@
   <h3 class="item__sub-heading">Found at</h3>
 
   <p><code>scss/utils/_mixins.scss</code></p>
-
-
-
-
-            </section>
-
-          
-        </section>
-
-      
-
-    
-
-      
-      
-
-      
-      
-        <section class="main__section">
-          <h1 class="main__heading" id="variable">Variables</h1>
-
-          
-          
-
-            
-            
-            
-            <section class="main__item  item" id="variable-colors">
-              <h2 class="item__heading">
-  
-
-  <a class="item__name" href="#variable-colors">colors</a>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-<pre class="item__code"><code class="language-scss">$colors: (
-  "pink":         #c6538c,
-  
-  "light-purple": #e9e4f1,
-  "purple":       #998099,
-  
-  "green":        #699,
-
-  "light-grey":   #f7f5fa,
-  "medium-grey":  #ddd,
-  "dark-grey":    #444
-) !global;</code></pre>
-
-  
-
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Map of colors for quick grabbing.<br>See <code>_functions.scss</code> -&gt; <code>color()</code> function.</p></div>
-
-
-  
-  <h3 class="item__sub-heading">Type</h3>
-
-  <p>
-  
-    <code>Map</code>
-  
-  </p>
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-  
-    
-      
-      <h3 class="item__sub-heading">Used by</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#function-color"><code>color</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>scss/utils/_variables.scss</code></p>
-
-
-
-
-            </section>
-
-          
-
-            
-            
-            
-            <section class="main__item  item" id="variable-breakpoints">
-              <h2 class="item__heading">
-  
-
-  <a class="item__name" href="#variable-breakpoints">breakpoints</a>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-<pre class="item__code"><code class="language-scss">$breakpoints: (
-  "small":  (max-width: 600px),
-  "medium": (min-width: 601px)
-) !global;</code></pre>
-
-  
-
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Map of breakpoints for responsive design.<br>See <code>_functions.scss</code> -&gt; <code>respond-to()</code> function.</p></div>
-
-
-  
-  <h3 class="item__sub-heading">Type</h3>
-
-  <p>
-  
-    <code>Map</code>
-  
-  </p>
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-  
-    
-      
-      <h3 class="item__sub-heading">Used by</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#mixin-respond-to"><code>respond-to</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>scss/utils/_variables.scss</code></p>
-
-
-
-
-            </section>
-
-          
-
-            
-            
-            
-            <section class="main__item  item" id="variable-z-indexes">
-              <h2 class="item__heading">
-  
-
-  <a class="item__name" href="#variable-z-indexes">z-indexes</a>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-<pre class="item__code"><code class="language-scss">$z-indexes: (
-  "goku"       9001,
-  "modal"      5000,
-  "dropdown"   4000,
-  "social"     3000,
-  "default"       1,
-  "below"        -1
-) !global;</code></pre>
-
-  
-
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Z-indexes layers.<br>See <code>_functions.scss</code> -&gt; <code>z()</code> function.</p></div>
-
-
-  
-  <h3 class="item__sub-heading">Type</h3>
-
-  <p>
-  
-    <code>Map</code>
-  
-  </p>
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-  
-    
-      
-      <h3 class="item__sub-heading">Used by</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#function-z"><code>z</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>scss/utils/_variables.scss</code></p>
 
 
 
@@ -3355,6 +3066,295 @@
   <h3 class="item__sub-heading">Found at</h3>
 
   <p><code>scss/utils/_functions.scss</code></p>
+
+
+
+
+            </section>
+
+          
+        </section>
+
+      
+
+    
+
+      
+      
+
+      
+      
+        <section class="main__section">
+          <h1 class="main__heading" id="variable">Variables</h1>
+
+          
+          
+
+            
+            
+            
+            <section class="main__item  item" id="variable-colors">
+              <h2 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-colors">colors</a>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+<pre class="item__code"><code class="language-scss">$colors: (
+  "pink":         #c6538c,
+  
+  "light-purple": #e9e4f1,
+  "purple":       #998099,
+  
+  "green":        #699,
+
+  "light-grey":   #f7f5fa,
+  "medium-grey":  #ddd,
+  "dark-grey":    #444
+) !global;</code></pre>
+
+  
+
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Map of colors for quick grabbing.<br>See <code>_functions.scss</code> -&gt; <code>color()</code> function.</p></div>
+
+
+  
+  <h3 class="item__sub-heading">Type</h3>
+
+  <p>
+  
+    <code>Map</code>
+  
+  </p>
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#function-color"><code>color</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>scss/utils/_variables.scss</code></p>
+
+
+
+
+            </section>
+
+          
+
+            
+            
+            
+            <section class="main__item  item" id="variable-breakpoints">
+              <h2 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-breakpoints">breakpoints</a>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+<pre class="item__code"><code class="language-scss">$breakpoints: (
+  "small":  (max-width: 600px),
+  "medium": (min-width: 601px)
+) !global;</code></pre>
+
+  
+
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Map of breakpoints for responsive design.<br>See <code>_functions.scss</code> -&gt; <code>respond-to()</code> function.</p></div>
+
+
+  
+  <h3 class="item__sub-heading">Type</h3>
+
+  <p>
+  
+    <code>Map</code>
+  
+  </p>
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#mixin-respond-to"><code>respond-to</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>scss/utils/_variables.scss</code></p>
+
+
+
+
+            </section>
+
+          
+
+            
+            
+            
+            <section class="main__item  item" id="variable-z-indexes">
+              <h2 class="item__heading">
+  
+
+  <a class="item__name" href="#variable-z-indexes">z-indexes</a>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+<pre class="item__code"><code class="language-scss">$z-indexes: (
+  "goku"       9001,
+  "modal"      5000,
+  "dropdown"   4000,
+  "social"     3000,
+  "default"       1,
+  "below"        -1
+) !global;</code></pre>
+
+  
+
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Z-indexes layers.<br>See <code>_functions.scss</code> -&gt; <code>z()</code> function.</p></div>
+
+
+  
+  <h3 class="item__sub-heading">Type</h3>
+
+  <p>
+  
+    <code>Map</code>
+  
+  </p>
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#function-z"><code>z</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>scss/utils/_variables.scss</code></p>
 
 
 
