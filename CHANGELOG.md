@@ -4,6 +4,7 @@
 
 * Fixed an issue with item count in console ([#102](https://github.com/SassDoc/sassdoc/issues/102))
 * Made parameters table headers WAI 2.0 compliant ([#101](https://github.com/SassDoc/sassdoc/pull/101))
+* Fixed a logic issue in the view
 
 ## 1.0.0-rc.16
 
