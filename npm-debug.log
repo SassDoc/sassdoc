@@ -1,0 +1,571 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish',
+1 verbose cli   '--tag',
+1 verbose cli   'rc.17' ]
+2 info using npm@1.3.8
+3 info using node@v0.10.18
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . C:\Users\DEV-07\AppData\Roaming\npm-cache\3a52ce78-.lock
+10 verbose tar pack [ 'C:\\Users\\DEV-07\\AppData\\Local\\Temp\\npm-1604-09dqMo1z\\1405494627572-0.10181975248269737\\tmp.tgz',
+10 verbose tar pack   '.' ]
+11 verbose tarball C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz
+12 verbose folder .
+13 silly lockFile 1f1177db-tar tar://.
+14 verbose lock tar://. C:\Users\DEV-07\AppData\Roaming\npm-cache\1f1177db-tar.lock
+15 silly lockFile e16bf3f9-7572-0-10181975248269737-tmp-tgz tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz
+16 verbose lock tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz C:\Users\DEV-07\AppData\Roaming\npm-cache\e16bf3f9-7572-0-10181975248269737-tmp-tgz.lock
+17 silly lockFile 1f1177db-tar tar://.
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile e16bf3f9-7572-0-10181975248269737-tmp-tgz tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz
+20 silly lockFile e16bf3f9-7572-0-10181975248269737-tmp-tgz tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz
+21 verbose tar unpack C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz
+22 silly lockFile 23998555-7572-0-10181975248269737-package tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\package
+23 verbose lock tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\package C:\Users\DEV-07\AppData\Roaming\npm-cache\23998555-7572-0-10181975248269737-package.lock
+24 silly lockFile e16bf3f9-7572-0-10181975248269737-tmp-tgz tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz
+25 verbose lock tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz C:\Users\DEV-07\AppData\Roaming\npm-cache\e16bf3f9-7572-0-10181975248269737-tmp-tgz.lock
+26 silly gunzTarPerm modes [ '755', '644' ]
+27 silly gunzTarPerm extractEntry package.json
+28 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+29 silly gunzTarPerm extractEntry .npmignore
+30 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+31 silly gunzTarPerm extractEntry README.md
+32 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+33 silly gunzTarPerm extractEntry Gruntfile.js
+34 silly gunzTarPerm modified mode [ 'Gruntfile.js', 438, 420 ]
+35 silly gunzTarPerm extractEntry LICENSE.md
+36 silly gunzTarPerm modified mode [ 'LICENSE.md', 438, 420 ]
+37 silly gunzTarPerm extractEntry examples/node.js
+38 silly gunzTarPerm modified mode [ 'examples/node.js', 438, 420 ]
+39 silly gunzTarPerm extractEntry examples/dist/assets/css/main.css
+40 silly gunzTarPerm modified mode [ 'examples/dist/assets/css/main.css', 438, 420 ]
+41 silly gunzTarPerm extractEntry examples/dist/assets/js/prism.min.js
+42 silly gunzTarPerm modified mode [ 'examples/dist/assets/js/prism.min.js', 438, 420 ]
+43 silly gunzTarPerm extractEntry examples/dist/index.html
+44 silly gunzTarPerm modified mode [ 'examples/dist/index.html', 438, 420 ]
+45 silly gunzTarPerm extractEntry examples/empty/_empty.scss
+46 silly gunzTarPerm modified mode [ 'examples/empty/_empty.scss', 438, 420 ]
+47 silly gunzTarPerm extractEntry .gitattributes
+48 silly gunzTarPerm modified mode [ '.gitattributes', 438, 420 ]
+49 silly gunzTarPerm extractEntry .jshintrc
+50 silly gunzTarPerm modified mode [ '.jshintrc', 438, 420 ]
+51 silly gunzTarPerm extractEntry src/api.js
+52 silly gunzTarPerm modified mode [ 'src/api.js', 438, 420 ]
+53 silly gunzTarPerm extractEntry src/file.js
+54 silly gunzTarPerm modified mode [ 'src/file.js', 438, 420 ]
+55 silly gunzTarPerm extractEntry src/log.js
+56 silly gunzTarPerm modified mode [ 'src/log.js', 438, 420 ]
+57 silly gunzTarPerm extractEntry src/parser.js
+58 silly gunzTarPerm modified mode [ 'src/parser.js', 438, 420 ]
+59 silly gunzTarPerm extractEntry src/utils.js
+60 silly gunzTarPerm modified mode [ 'src/utils.js', 438, 420 ]
+61 silly gunzTarPerm extractEntry src/annotation/index.js
+62 silly gunzTarPerm modified mode [ 'src/annotation/index.js', 438, 420 ]
+63 silly gunzTarPerm extractEntry src/annotation/annotations/access.js
+64 silly gunzTarPerm modified mode [ 'src/annotation/annotations/access.js', 438, 420 ]
+65 silly gunzTarPerm extractEntry src/annotation/annotations/deprecated.js
+66 silly gunzTarPerm modified mode [ 'src/annotation/annotations/deprecated.js', 438, 420 ]
+67 silly gunzTarPerm extractEntry src/annotation/annotations/example.js
+68 silly gunzTarPerm modified mode [ 'src/annotation/annotations/example.js', 438, 420 ]
+69 silly gunzTarPerm extractEntry src/annotation/annotations/ignore.js
+70 silly gunzTarPerm modified mode [ 'src/annotation/annotations/ignore.js', 438, 420 ]
+71 silly gunzTarPerm extractEntry src/annotation/annotations/link.js
+72 silly gunzTarPerm modified mode [ 'src/annotation/annotations/link.js', 438, 420 ]
+73 silly gunzTarPerm extractEntry src/annotation/annotations/author.js
+74 silly gunzTarPerm modified mode [ 'src/annotation/annotations/author.js', 438, 420 ]
+75 silly gunzTarPerm extractEntry src/annotation/annotations/requires.js
+76 silly gunzTarPerm modified mode [ 'src/annotation/annotations/requires.js', 438, 420 ]
+77 silly gunzTarPerm extractEntry src/annotation/annotations/returns.js
+78 silly gunzTarPerm modified mode [ 'src/annotation/annotations/returns.js', 438, 420 ]
+79 silly gunzTarPerm extractEntry src/annotation/annotations/since.js
+80 silly gunzTarPerm modified mode [ 'src/annotation/annotations/since.js', 438, 420 ]
+81 silly gunzTarPerm extractEntry src/annotation/annotations/todos.js
+82 silly gunzTarPerm modified mode [ 'src/annotation/annotations/todos.js', 438, 420 ]
+83 silly gunzTarPerm extractEntry src/annotation/annotations/throws.js
+84 silly gunzTarPerm modified mode [ 'src/annotation/annotations/throws.js', 438, 420 ]
+85 silly gunzTarPerm extractEntry src/annotation/annotations/alias.js
+86 silly gunzTarPerm modified mode [ 'src/annotation/annotations/alias.js', 438, 420 ]
+87 silly gunzTarPerm extractEntry src/annotation/annotations/type.js
+88 silly gunzTarPerm modified mode [ 'src/annotation/annotations/type.js', 438, 420 ]
+89 silly gunzTarPerm extractEntry src/annotation/annotations/parameters.js
+90 silly gunzTarPerm modified mode [ 'src/annotation/annotations/parameters.js', 438, 420 ]
+91 silly gunzTarPerm extractEntry src/annotation/annotations/test/access.test.js
+92 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/access.test.js', 438, 420 ]
+93 silly gunzTarPerm extractEntry src/annotation/annotations/test/deprecated.test.js
+94 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/deprecated.test.js',
+94 silly gunzTarPerm   438,
+94 silly gunzTarPerm   420 ]
+95 silly gunzTarPerm extractEntry src/annotation/annotations/test/example.test.js
+96 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/example.test.js', 438, 420 ]
+97 silly gunzTarPerm extractEntry src/annotation/annotations/test/ignore.test.js
+98 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/ignore.test.js', 438, 420 ]
+99 silly gunzTarPerm extractEntry src/annotation/annotations/test/link.test.js
+100 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/link.test.js', 438, 420 ]
+101 silly gunzTarPerm extractEntry src/annotation/annotations/test/author.test.js
+102 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/author.test.js', 438, 420 ]
+103 silly gunzTarPerm extractEntry src/annotation/annotations/test/requires.test.js
+104 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/requires.test.js', 438, 420 ]
+105 silly gunzTarPerm extractEntry src/annotation/annotations/test/returns.test.js
+106 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/returns.test.js', 438, 420 ]
+107 silly gunzTarPerm extractEntry src/annotation/annotations/test/since.test.js
+108 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/since.test.js', 438, 420 ]
+109 silly gunzTarPerm extractEntry src/annotation/annotations/test/throws.test.js
+110 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/throws.test.js', 438, 420 ]
+111 silly gunzTarPerm extractEntry src/annotation/annotations/test/todos.test.js
+112 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/todos.test.js', 438, 420 ]
+113 silly gunzTarPerm extractEntry src/annotation/annotations/test/alias.test.js
+114 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/alias.test.js', 438, 420 ]
+115 silly gunzTarPerm extractEntry src/annotation/annotations/test/type.test.js
+116 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/type.test.js', 438, 420 ]
+117 silly gunzTarPerm extractEntry src/annotation/annotations/test/parameters.test.js
+118 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/parameters.test.js',
+118 silly gunzTarPerm   438,
+118 silly gunzTarPerm   420 ]
+119 silly gunzTarPerm extractEntry .travis.yml
+120 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+121 silly gunzTarPerm extractEntry CHANGELOG.md
+122 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 438, 420 ]
+123 silly gunzTarPerm extractEntry sache.json
+124 silly gunzTarPerm modified mode [ 'sache.json', 438, 420 ]
+125 silly gunzTarPerm extractEntry view/assets/css/main.css
+126 silly gunzTarPerm modified mode [ 'view/assets/css/main.css', 438, 420 ]
+127 silly gunzTarPerm extractEntry view/assets/js/prism.min.js
+128 silly gunzTarPerm modified mode [ 'view/assets/js/prism.min.js', 438, 420 ]
+129 silly gunzTarPerm extractEntry view/scss/base/_base.scss
+130 silly gunzTarPerm modified mode [ 'view/scss/base/_base.scss', 438, 420 ]
+131 silly gunzTarPerm extractEntry view/scss/main.scss
+132 silly gunzTarPerm modified mode [ 'view/scss/main.scss', 438, 420 ]
+133 silly gunzTarPerm extractEntry view/scss/partials/_footer.scss
+134 silly gunzTarPerm modified mode [ 'view/scss/partials/_footer.scss', 438, 420 ]
+135 silly gunzTarPerm extractEntry view/scss/partials/_header.scss
+136 silly gunzTarPerm modified mode [ 'view/scss/partials/_header.scss', 438, 420 ]
+137 silly gunzTarPerm extractEntry view/scss/partials/_item.scss
+138 silly gunzTarPerm modified mode [ 'view/scss/partials/_item.scss', 438, 420 ]
+139 silly gunzTarPerm extractEntry view/scss/partials/_main.scss
+140 silly gunzTarPerm modified mode [ 'view/scss/partials/_main.scss', 438, 420 ]
+141 silly gunzTarPerm extractEntry view/scss/partials/_sidebar.scss
+142 silly gunzTarPerm modified mode [ 'view/scss/partials/_sidebar.scss', 438, 420 ]
+143 silly gunzTarPerm extractEntry view/scss/utils/_functions.scss
+144 silly gunzTarPerm modified mode [ 'view/scss/utils/_functions.scss', 438, 420 ]
+145 silly gunzTarPerm extractEntry view/scss/utils/_helpers.scss
+146 silly gunzTarPerm modified mode [ 'view/scss/utils/_helpers.scss', 438, 420 ]
+147 silly gunzTarPerm extractEntry view/scss/utils/_mixins.scss
+148 silly gunzTarPerm modified mode [ 'view/scss/utils/_mixins.scss', 438, 420 ]
+149 silly gunzTarPerm extractEntry view/scss/utils/_variables.scss
+150 silly gunzTarPerm modified mode [ 'view/scss/utils/_variables.scss', 438, 420 ]
+151 silly gunzTarPerm extractEntry view/scss/vendors/_prism.scss
+152 silly gunzTarPerm modified mode [ 'view/scss/vendors/_prism.scss', 438, 420 ]
+153 silly gunzTarPerm extractEntry view/templates/documentation/index.html.swig
+154 silly gunzTarPerm modified mode [ 'view/templates/documentation/index.html.swig', 438, 420 ]
+155 silly gunzTarPerm extractEntry view/templates/includes/annotations/parameters.html.swig
+156 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/parameters.html.swig',
+156 silly gunzTarPerm   438,
+156 silly gunzTarPerm   420 ]
+157 silly gunzTarPerm extractEntry view/templates/includes/annotations/author.html.swig
+158 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/author.html.swig',
+158 silly gunzTarPerm   438,
+158 silly gunzTarPerm   420 ]
+159 silly gunzTarPerm extractEntry view/templates/includes/annotations/description.html.swig
+160 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/description.html.swig',
+160 silly gunzTarPerm   438,
+160 silly gunzTarPerm   420 ]
+161 silly gunzTarPerm extractEntry view/templates/includes/annotations/example.html.swig
+162 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/example.html.swig',
+162 silly gunzTarPerm   438,
+162 silly gunzTarPerm   420 ]
+163 silly gunzTarPerm extractEntry view/templates/includes/annotations/link.html.swig
+164 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/link.html.swig',
+164 silly gunzTarPerm   438,
+164 silly gunzTarPerm   420 ]
+165 silly gunzTarPerm extractEntry view/templates/includes/annotations/location.html.swig
+166 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/location.html.swig',
+166 silly gunzTarPerm   438,
+166 silly gunzTarPerm   420 ]
+167 silly gunzTarPerm extractEntry view/templates/includes/annotations/name.html.swig
+168 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/name.html.swig',
+168 silly gunzTarPerm   438,
+168 silly gunzTarPerm   420 ]
+169 silly gunzTarPerm extractEntry view/templates/includes/annotations/deprecated.html.swig
+170 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/deprecated.html.swig',
+170 silly gunzTarPerm   438,
+170 silly gunzTarPerm   420 ]
+171 silly gunzTarPerm extractEntry view/templates/includes/annotations/requires.html.swig
+172 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/requires.html.swig',
+172 silly gunzTarPerm   438,
+172 silly gunzTarPerm   420 ]
+173 silly gunzTarPerm extractEntry view/templates/includes/annotations/returns.html.swig
+174 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/returns.html.swig',
+174 silly gunzTarPerm   438,
+174 silly gunzTarPerm   420 ]
+175 silly gunzTarPerm extractEntry view/templates/includes/annotations/throws.html.swig
+176 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/throws.html.swig',
+176 silly gunzTarPerm   438,
+176 silly gunzTarPerm   420 ]
+177 silly gunzTarPerm extractEntry view/templates/includes/annotations/todo.html.swig
+178 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/todo.html.swig',
+178 silly gunzTarPerm   438,
+178 silly gunzTarPerm   420 ]
+179 silly gunzTarPerm extractEntry view/templates/includes/annotations/type.html.swig
+180 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/type.html.swig',
+180 silly gunzTarPerm   438,
+180 silly gunzTarPerm   420 ]
+181 silly gunzTarPerm extractEntry view/templates/includes/annotations/usedby.html.swig
+182 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/usedby.html.swig',
+182 silly gunzTarPerm   438,
+182 silly gunzTarPerm   420 ]
+183 silly gunzTarPerm extractEntry view/templates/includes/items/function.html.swig
+184 silly gunzTarPerm modified mode [ 'view/templates/includes/items/function.html.swig', 438, 420 ]
+185 silly gunzTarPerm extractEntry view/templates/includes/items/item.html.swig
+186 silly gunzTarPerm modified mode [ 'view/templates/includes/items/item.html.swig', 438, 420 ]
+187 silly gunzTarPerm extractEntry view/templates/includes/items/mixin.html.swig
+188 silly gunzTarPerm modified mode [ 'view/templates/includes/items/mixin.html.swig', 438, 420 ]
+189 silly gunzTarPerm extractEntry view/templates/includes/items/variable.html.swig
+190 silly gunzTarPerm modified mode [ 'view/templates/includes/items/variable.html.swig', 438, 420 ]
+191 silly gunzTarPerm extractEntry view/templates/includes/partials/footer.html.swig
+192 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/footer.html.swig', 438, 420 ]
+193 silly gunzTarPerm extractEntry view/templates/includes/partials/head.html.swig
+194 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/head.html.swig', 438, 420 ]
+195 silly gunzTarPerm extractEntry view/templates/includes/partials/header.html.swig
+196 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/header.html.swig', 438, 420 ]
+197 silly gunzTarPerm extractEntry view/templates/includes/partials/scripts.html.swig
+198 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/scripts.html.swig',
+198 silly gunzTarPerm   438,
+198 silly gunzTarPerm   420 ]
+199 silly gunzTarPerm extractEntry view/templates/includes/partials/sidebar.html.swig
+200 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/sidebar.html.swig',
+200 silly gunzTarPerm   438,
+200 silly gunzTarPerm   420 ]
+201 silly gunzTarPerm extractEntry view/templates/layouts/base.html.swig
+202 silly gunzTarPerm modified mode [ 'view/templates/layouts/base.html.swig', 438, 420 ]
+203 silly lockFile 23998555-7572-0-10181975248269737-package tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\package
+204 silly lockFile 23998555-7572-0-10181975248269737-package tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\package
+205 silly lockFile e16bf3f9-7572-0-10181975248269737-tmp-tgz tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz
+206 silly lockFile e16bf3f9-7572-0-10181975248269737-tmp-tgz tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\tmp.tgz
+207 verbose tar pack [ 'C:\\Users\\DEV-07\\AppData\\Roaming\\npm-cache\\sassdoc\\1.0.0-rc.16\\package.tgz',
+207 verbose tar pack   'C:\\Users\\DEV-07\\AppData\\Local\\Temp\\npm-1604-09dqMo1z\\1405494627572-0.10181975248269737\\package' ]
+208 verbose tarball C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz
+209 verbose folder C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\package
+210 silly lockFile 23998555-7572-0-10181975248269737-package tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\package
+211 verbose lock tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\package C:\Users\DEV-07\AppData\Roaming\npm-cache\23998555-7572-0-10181975248269737-package.lock
+212 silly lockFile 67ddf306--sassdoc-1-0-0-rc-16-package-tgz tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz
+213 verbose lock tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz C:\Users\DEV-07\AppData\Roaming\npm-cache\67ddf306--sassdoc-1-0-0-rc-16-package-tgz.lock
+214 silly lockFile 23998555-7572-0-10181975248269737-package tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\package
+215 silly lockFile 23998555-7572-0-10181975248269737-package tar://C:\Users\DEV-07\AppData\Local\Temp\npm-1604-09dqMo1z\1405494627572-0.10181975248269737\package
+216 silly lockFile 67ddf306--sassdoc-1-0-0-rc-16-package-tgz tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz
+217 silly lockFile 67ddf306--sassdoc-1-0-0-rc-16-package-tgz tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz
+218 silly lockFile f64094c5-ache-sassdoc-1-0-0-rc-16-package C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package
+219 verbose lock C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package C:\Users\DEV-07\AppData\Roaming\npm-cache\f64094c5-ache-sassdoc-1-0-0-rc-16-package.lock
+220 silly lockFile f64094c5-ache-sassdoc-1-0-0-rc-16-package C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package
+221 silly lockFile f64094c5-ache-sassdoc-1-0-0-rc-16-package C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package
+222 verbose tar unpack C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz
+223 silly lockFile 6da4688f-ache-sassdoc-1-0-0-rc-16-package tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package
+224 verbose lock tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package C:\Users\DEV-07\AppData\Roaming\npm-cache\6da4688f-ache-sassdoc-1-0-0-rc-16-package.lock
+225 silly lockFile 67ddf306--sassdoc-1-0-0-rc-16-package-tgz tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz
+226 verbose lock tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz C:\Users\DEV-07\AppData\Roaming\npm-cache\67ddf306--sassdoc-1-0-0-rc-16-package-tgz.lock
+227 silly gunzTarPerm modes [ '755', '644' ]
+228 silly gunzTarPerm extractEntry package.json
+229 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+230 silly gunzTarPerm extractEntry .npmignore
+231 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+232 silly gunzTarPerm extractEntry README.md
+233 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+234 silly gunzTarPerm extractEntry Gruntfile.js
+235 silly gunzTarPerm modified mode [ 'Gruntfile.js', 438, 420 ]
+236 silly gunzTarPerm extractEntry CHANGELOG.md
+237 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 438, 420 ]
+238 silly gunzTarPerm extractEntry examples/node.js
+239 silly gunzTarPerm modified mode [ 'examples/node.js', 438, 420 ]
+240 silly gunzTarPerm extractEntry examples/dist/assets/css/main.css
+241 silly gunzTarPerm modified mode [ 'examples/dist/assets/css/main.css', 438, 420 ]
+242 silly gunzTarPerm extractEntry examples/dist/assets/js/prism.min.js
+243 silly gunzTarPerm modified mode [ 'examples/dist/assets/js/prism.min.js', 438, 420 ]
+244 silly gunzTarPerm extractEntry examples/dist/index.html
+245 silly gunzTarPerm modified mode [ 'examples/dist/index.html', 438, 420 ]
+246 silly gunzTarPerm extractEntry examples/empty/_empty.scss
+247 silly gunzTarPerm modified mode [ 'examples/empty/_empty.scss', 438, 420 ]
+248 silly gunzTarPerm extractEntry .jshintrc
+249 silly gunzTarPerm modified mode [ '.jshintrc', 438, 420 ]
+250 silly gunzTarPerm extractEntry LICENSE.md
+251 silly gunzTarPerm modified mode [ 'LICENSE.md', 438, 420 ]
+252 silly gunzTarPerm extractEntry .gitattributes
+253 silly gunzTarPerm modified mode [ '.gitattributes', 438, 420 ]
+254 silly gunzTarPerm extractEntry .travis.yml
+255 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+256 silly gunzTarPerm extractEntry sache.json
+257 silly gunzTarPerm modified mode [ 'sache.json', 438, 420 ]
+258 silly gunzTarPerm extractEntry src/api.js
+259 silly gunzTarPerm modified mode [ 'src/api.js', 438, 420 ]
+260 silly gunzTarPerm extractEntry src/file.js
+261 silly gunzTarPerm modified mode [ 'src/file.js', 438, 420 ]
+262 silly gunzTarPerm extractEntry src/log.js
+263 silly gunzTarPerm modified mode [ 'src/log.js', 438, 420 ]
+264 silly gunzTarPerm extractEntry src/parser.js
+265 silly gunzTarPerm modified mode [ 'src/parser.js', 438, 420 ]
+266 silly gunzTarPerm extractEntry src/utils.js
+267 silly gunzTarPerm modified mode [ 'src/utils.js', 438, 420 ]
+268 silly gunzTarPerm extractEntry src/annotation/index.js
+269 silly gunzTarPerm modified mode [ 'src/annotation/index.js', 438, 420 ]
+270 silly gunzTarPerm extractEntry src/annotation/annotations/access.js
+271 silly gunzTarPerm modified mode [ 'src/annotation/annotations/access.js', 438, 420 ]
+272 silly gunzTarPerm extractEntry src/annotation/annotations/deprecated.js
+273 silly gunzTarPerm modified mode [ 'src/annotation/annotations/deprecated.js', 438, 420 ]
+274 silly gunzTarPerm extractEntry src/annotation/annotations/example.js
+275 silly gunzTarPerm modified mode [ 'src/annotation/annotations/example.js', 438, 420 ]
+276 silly gunzTarPerm extractEntry src/annotation/annotations/ignore.js
+277 silly gunzTarPerm modified mode [ 'src/annotation/annotations/ignore.js', 438, 420 ]
+278 silly gunzTarPerm extractEntry src/annotation/annotations/link.js
+279 silly gunzTarPerm modified mode [ 'src/annotation/annotations/link.js', 438, 420 ]
+280 silly gunzTarPerm extractEntry src/annotation/annotations/author.js
+281 silly gunzTarPerm modified mode [ 'src/annotation/annotations/author.js', 438, 420 ]
+282 silly gunzTarPerm extractEntry src/annotation/annotations/requires.js
+283 silly gunzTarPerm modified mode [ 'src/annotation/annotations/requires.js', 438, 420 ]
+284 silly gunzTarPerm extractEntry src/annotation/annotations/returns.js
+285 silly gunzTarPerm modified mode [ 'src/annotation/annotations/returns.js', 438, 420 ]
+286 silly gunzTarPerm extractEntry src/annotation/annotations/since.js
+287 silly gunzTarPerm modified mode [ 'src/annotation/annotations/since.js', 438, 420 ]
+288 silly gunzTarPerm extractEntry src/annotation/annotations/todos.js
+289 silly gunzTarPerm modified mode [ 'src/annotation/annotations/todos.js', 438, 420 ]
+290 silly gunzTarPerm extractEntry src/annotation/annotations/throws.js
+291 silly gunzTarPerm modified mode [ 'src/annotation/annotations/throws.js', 438, 420 ]
+292 silly gunzTarPerm extractEntry src/annotation/annotations/alias.js
+293 silly gunzTarPerm modified mode [ 'src/annotation/annotations/alias.js', 438, 420 ]
+294 silly gunzTarPerm extractEntry src/annotation/annotations/type.js
+295 silly gunzTarPerm modified mode [ 'src/annotation/annotations/type.js', 438, 420 ]
+296 silly gunzTarPerm extractEntry src/annotation/annotations/parameters.js
+297 silly gunzTarPerm modified mode [ 'src/annotation/annotations/parameters.js', 438, 420 ]
+298 silly gunzTarPerm extractEntry src/annotation/annotations/test/access.test.js
+299 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/access.test.js', 438, 420 ]
+300 silly gunzTarPerm extractEntry src/annotation/annotations/test/deprecated.test.js
+301 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/deprecated.test.js',
+301 silly gunzTarPerm   438,
+301 silly gunzTarPerm   420 ]
+302 silly gunzTarPerm extractEntry src/annotation/annotations/test/example.test.js
+303 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/example.test.js', 438, 420 ]
+304 silly gunzTarPerm extractEntry src/annotation/annotations/test/ignore.test.js
+305 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/ignore.test.js', 438, 420 ]
+306 silly gunzTarPerm extractEntry src/annotation/annotations/test/link.test.js
+307 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/link.test.js', 438, 420 ]
+308 silly gunzTarPerm extractEntry src/annotation/annotations/test/author.test.js
+309 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/author.test.js', 438, 420 ]
+310 silly gunzTarPerm extractEntry src/annotation/annotations/test/requires.test.js
+311 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/requires.test.js', 438, 420 ]
+312 silly gunzTarPerm extractEntry src/annotation/annotations/test/returns.test.js
+313 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/returns.test.js', 438, 420 ]
+314 silly gunzTarPerm extractEntry src/annotation/annotations/test/since.test.js
+315 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/since.test.js', 438, 420 ]
+316 silly gunzTarPerm extractEntry src/annotation/annotations/test/throws.test.js
+317 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/throws.test.js', 438, 420 ]
+318 silly gunzTarPerm extractEntry src/annotation/annotations/test/todos.test.js
+319 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/todos.test.js', 438, 420 ]
+320 silly gunzTarPerm extractEntry src/annotation/annotations/test/alias.test.js
+321 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/alias.test.js', 438, 420 ]
+322 silly gunzTarPerm extractEntry src/annotation/annotations/test/type.test.js
+323 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/type.test.js', 438, 420 ]
+324 silly gunzTarPerm extractEntry src/annotation/annotations/test/parameters.test.js
+325 silly gunzTarPerm modified mode [ 'src/annotation/annotations/test/parameters.test.js',
+325 silly gunzTarPerm   438,
+325 silly gunzTarPerm   420 ]
+326 silly gunzTarPerm extractEntry view/assets/css/main.css
+327 silly gunzTarPerm modified mode [ 'view/assets/css/main.css', 438, 420 ]
+328 silly gunzTarPerm extractEntry view/assets/js/prism.min.js
+329 silly gunzTarPerm modified mode [ 'view/assets/js/prism.min.js', 438, 420 ]
+330 silly gunzTarPerm extractEntry view/scss/base/_base.scss
+331 silly gunzTarPerm modified mode [ 'view/scss/base/_base.scss', 438, 420 ]
+332 silly gunzTarPerm extractEntry view/scss/main.scss
+333 silly gunzTarPerm modified mode [ 'view/scss/main.scss', 438, 420 ]
+334 silly gunzTarPerm extractEntry view/scss/partials/_footer.scss
+335 silly gunzTarPerm modified mode [ 'view/scss/partials/_footer.scss', 438, 420 ]
+336 silly gunzTarPerm extractEntry view/scss/partials/_header.scss
+337 silly gunzTarPerm modified mode [ 'view/scss/partials/_header.scss', 438, 420 ]
+338 silly gunzTarPerm extractEntry view/scss/partials/_item.scss
+339 silly gunzTarPerm modified mode [ 'view/scss/partials/_item.scss', 438, 420 ]
+340 silly gunzTarPerm extractEntry view/scss/partials/_main.scss
+341 silly gunzTarPerm modified mode [ 'view/scss/partials/_main.scss', 438, 420 ]
+342 silly gunzTarPerm extractEntry view/scss/partials/_sidebar.scss
+343 silly gunzTarPerm modified mode [ 'view/scss/partials/_sidebar.scss', 438, 420 ]
+344 silly gunzTarPerm extractEntry view/scss/utils/_functions.scss
+345 silly gunzTarPerm modified mode [ 'view/scss/utils/_functions.scss', 438, 420 ]
+346 silly gunzTarPerm extractEntry view/scss/utils/_helpers.scss
+347 silly gunzTarPerm modified mode [ 'view/scss/utils/_helpers.scss', 438, 420 ]
+348 silly gunzTarPerm extractEntry view/scss/utils/_mixins.scss
+349 silly gunzTarPerm modified mode [ 'view/scss/utils/_mixins.scss', 438, 420 ]
+350 silly gunzTarPerm extractEntry view/scss/utils/_variables.scss
+351 silly gunzTarPerm modified mode [ 'view/scss/utils/_variables.scss', 438, 420 ]
+352 silly gunzTarPerm extractEntry view/scss/vendors/_prism.scss
+353 silly gunzTarPerm modified mode [ 'view/scss/vendors/_prism.scss', 438, 420 ]
+354 silly gunzTarPerm extractEntry view/templates/documentation/index.html.swig
+355 silly gunzTarPerm modified mode [ 'view/templates/documentation/index.html.swig', 438, 420 ]
+356 silly gunzTarPerm extractEntry view/templates/includes/annotations/parameters.html.swig
+357 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/parameters.html.swig',
+357 silly gunzTarPerm   438,
+357 silly gunzTarPerm   420 ]
+358 silly gunzTarPerm extractEntry view/templates/includes/annotations/author.html.swig
+359 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/author.html.swig',
+359 silly gunzTarPerm   438,
+359 silly gunzTarPerm   420 ]
+360 silly gunzTarPerm extractEntry view/templates/includes/annotations/description.html.swig
+361 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/description.html.swig',
+361 silly gunzTarPerm   438,
+361 silly gunzTarPerm   420 ]
+362 silly gunzTarPerm extractEntry view/templates/includes/annotations/example.html.swig
+363 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/example.html.swig',
+363 silly gunzTarPerm   438,
+363 silly gunzTarPerm   420 ]
+364 silly gunzTarPerm extractEntry view/templates/includes/annotations/link.html.swig
+365 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/link.html.swig',
+365 silly gunzTarPerm   438,
+365 silly gunzTarPerm   420 ]
+366 silly gunzTarPerm extractEntry view/templates/includes/annotations/location.html.swig
+367 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/location.html.swig',
+367 silly gunzTarPerm   438,
+367 silly gunzTarPerm   420 ]
+368 silly gunzTarPerm extractEntry view/templates/includes/annotations/name.html.swig
+369 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/name.html.swig',
+369 silly gunzTarPerm   438,
+369 silly gunzTarPerm   420 ]
+370 silly gunzTarPerm extractEntry view/templates/includes/annotations/deprecated.html.swig
+371 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/deprecated.html.swig',
+371 silly gunzTarPerm   438,
+371 silly gunzTarPerm   420 ]
+372 silly gunzTarPerm extractEntry view/templates/includes/annotations/requires.html.swig
+373 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/requires.html.swig',
+373 silly gunzTarPerm   438,
+373 silly gunzTarPerm   420 ]
+374 silly gunzTarPerm extractEntry view/templates/includes/annotations/returns.html.swig
+375 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/returns.html.swig',
+375 silly gunzTarPerm   438,
+375 silly gunzTarPerm   420 ]
+376 silly gunzTarPerm extractEntry view/templates/includes/annotations/throws.html.swig
+377 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/throws.html.swig',
+377 silly gunzTarPerm   438,
+377 silly gunzTarPerm   420 ]
+378 silly gunzTarPerm extractEntry view/templates/includes/annotations/todo.html.swig
+379 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/todo.html.swig',
+379 silly gunzTarPerm   438,
+379 silly gunzTarPerm   420 ]
+380 silly gunzTarPerm extractEntry view/templates/includes/annotations/type.html.swig
+381 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/type.html.swig',
+381 silly gunzTarPerm   438,
+381 silly gunzTarPerm   420 ]
+382 silly gunzTarPerm extractEntry view/templates/includes/annotations/usedby.html.swig
+383 silly gunzTarPerm modified mode [ 'view/templates/includes/annotations/usedby.html.swig',
+383 silly gunzTarPerm   438,
+383 silly gunzTarPerm   420 ]
+384 silly gunzTarPerm extractEntry view/templates/includes/items/function.html.swig
+385 silly gunzTarPerm modified mode [ 'view/templates/includes/items/function.html.swig', 438, 420 ]
+386 silly gunzTarPerm extractEntry view/templates/includes/items/item.html.swig
+387 silly gunzTarPerm modified mode [ 'view/templates/includes/items/item.html.swig', 438, 420 ]
+388 silly gunzTarPerm extractEntry view/templates/includes/items/mixin.html.swig
+389 silly gunzTarPerm modified mode [ 'view/templates/includes/items/mixin.html.swig', 438, 420 ]
+390 silly gunzTarPerm extractEntry view/templates/includes/items/variable.html.swig
+391 silly gunzTarPerm modified mode [ 'view/templates/includes/items/variable.html.swig', 438, 420 ]
+392 silly gunzTarPerm extractEntry view/templates/includes/partials/footer.html.swig
+393 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/footer.html.swig', 438, 420 ]
+394 silly gunzTarPerm extractEntry view/templates/includes/partials/head.html.swig
+395 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/head.html.swig', 438, 420 ]
+396 silly gunzTarPerm extractEntry view/templates/includes/partials/header.html.swig
+397 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/header.html.swig', 438, 420 ]
+398 silly gunzTarPerm extractEntry view/templates/includes/partials/scripts.html.swig
+399 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/scripts.html.swig',
+399 silly gunzTarPerm   438,
+399 silly gunzTarPerm   420 ]
+400 silly gunzTarPerm extractEntry view/templates/includes/partials/sidebar.html.swig
+401 silly gunzTarPerm modified mode [ 'view/templates/includes/partials/sidebar.html.swig',
+401 silly gunzTarPerm   438,
+401 silly gunzTarPerm   420 ]
+402 silly gunzTarPerm extractEntry view/templates/layouts/base.html.swig
+403 silly gunzTarPerm modified mode [ 'view/templates/layouts/base.html.swig', 438, 420 ]
+404 silly lockFile 6da4688f-ache-sassdoc-1-0-0-rc-16-package tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package
+405 silly lockFile 6da4688f-ache-sassdoc-1-0-0-rc-16-package tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package
+406 silly lockFile 67ddf306--sassdoc-1-0-0-rc-16-package-tgz tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz
+407 silly lockFile 67ddf306--sassdoc-1-0-0-rc-16-package-tgz tar://C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz
+408 verbose chmod C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz 644
+409 silly chown skipping for windows C:\Users\DEV-07\AppData\Roaming\npm-cache\sassdoc\1.0.0-rc.16\package.tgz
+410 silly lockFile 3a52ce78- .
+411 silly lockFile 3a52ce78- .
+412 silly publish { name: 'sassdoc',
+412 silly publish   description: 'Like JSDoc but for Sass files.',
+412 silly publish   author: { name: 'Hugo Giraudel', email: 'hugo.giraudel@gmail.com' },
+412 silly publish   contributors:
+412 silly publish    [ { name: 'Fabrice Weinberg', email: 'Fabrice@weinberg.me' },
+412 silly publish      { name: 'Valérian Galliat' },
+412 silly publish      { name: 'Pascal Duez' } ],
+412 silly publish   version: '1.0.0-rc.16',
+412 silly publish   license: { type: 'MIT', url: 'http://opensource.org/licenses/MIT' },
+412 silly publish   repository: { type: 'git', url: 'https://github.com/SassDoc/sassdoc' },
+412 silly publish   homepage: 'https://github.com/SassDoc/sassdoc',
+412 silly publish   keywords: [ 'sass', 'scss', 'doc', 'jsdoc' ],
+412 silly publish   bugs: { url: 'https://github.com/SassDoc/sassdoc/issues' },
+412 silly publish   main: 'src/api.js',
+412 silly publish   dependencies:
+412 silly publish    { swig: '~1.3.2',
+412 silly publish      q: '^1.0.1',
+412 silly publish      rimraf: '~2.2.8',
+412 silly publish      'swig-extras': '0.0.1',
+412 silly publish      ncp: '^0.5.1',
+412 silly publish      'scss-comment-parser': '^0.1.2',
+412 silly publish      mkdirp: '^0.5.0' },
+412 silly publish   devDependencies:
+412 silly publish    { assert: '^1.1.1',
+412 silly publish      chalk: '^0.5.0',
+412 silly publish      grunt: '^0.4.5',
+412 silly publish      'grunt-autoprefixer': '^0.8.1',
+412 silly publish      'grunt-browser-sync': '^1.1.2',
+412 silly publish      'grunt-contrib-jshint': '^0.10.0',
+412 silly publish      'grunt-contrib-sass': '^0.7.3',
+412 silly publish      'grunt-contrib-watch': '^0.6.1',
+412 silly publish      'grunt-mocha-test': '^0.11.0',
+412 silly publish      'load-grunt-tasks': '^0.6.0',
+412 silly publish      'time-grunt': '^0.3.2' },
+412 silly publish   scripts: { test: 'grunt test' },
+412 silly publish   readme: '# SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)\n\nLike JSDoc, but for Sass files.\n\nCurrently only work for `.scss` files.\nAlso, inline comments are not parsed (`//`).\n\n## Example\n\n```scss\n/**\n * Adds `$value` at `$index` in `$list`.\n *\n * @author Hugo Giraudel\n *\n * @ignore Documentation: http://sassylists.com/documentation/#insert-nth\n *\n * @requires is-true\n *\n * @param {List}   $list  - list to update\n * @param {Number} $index - index to add\n * @param {*}      $value - value to add\n *\n * @throws List index $index is not a number for `insert-nth`.\n * @throws List index $index must be a non-zero integer for `insert-nth`.\n *\n * @return {List | Null}\n */\n\n@function insert-nth($list, $index, $value) {\n  // ...\n}\n\n/**\n * Defines whether the lib should support legacy browsers (e.g. `IE 8`).\n *\n * @since 1.3.37\n *\n * @todo Nothing. It\'s awesome.\n *\n * @link https://github.com/SassDoc/sassdoc SassDoc\n *\n * @type Bool\n */\n$legacy-support: true !global;\n```\n\n### Preview\n\n![SassDoc](http://i.imgur.com/5i8QYB8.png)\n\n\n## Installation\n\n### npm\n\n```sh\nnpm install -g sassdoc-cli\n```\n\n### Grunt\n\nSee [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).\n\n## Usage\n\n### Command line\n\n```sh\nsassdoc <src> <dest> [options]\n```\n\n**Arguments:**\n\n1. `<src>` Path to your Sass folder.\n1. `<dest>` Path to the destination folder.\n\n**Options:**\n\n* `-h, --help`: Bring help.\n* `--version`: Show version.\n* `-v, --verbose`: Run in verbose mode.\n* `-c, --config`: Path to JSON file containing variables to be passed\n                  to the view.\n\n### Node\n\n#### Install\n\n```shell\nnpm install sassdoc --save\n```\n\n#### Use The Raw Data\n\n```js\nvar sassdoc = require(\'sassdoc\');\n\nsassdoc.parse(__dirname + \'/sass\').then(function (items) {\n  console.log(items);\n})\n```\n\n#### Generate Documentation\n\n```js\nvar config = {\n  "display": {\n    "access": ["public", "private"],\n    "alias": false,\n    "watermark": true\n  },\n\n  "package": "./package.json"\n}\n\nvar sassdoc = require(\'sassdoc\');\nsassdoc.documentize(source, dest, config);\n```\n\n## Documentation\n\nSee [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documentation).\n\n## Pass extra variables to the view\n\nWith the `-c` or `--config` flag, you can set the path to a JSON file containing variables to be passed to the view so the latter is a little more customized than the default documentation.\n\nDefault path leads to `view/view.json`. You can update this file or make your own.\n\nAllowed variables:\n\n```json\n{\n  "display": {\n    "access": ["public", "private"],\n    "alias": false,\n    "watermark": true\n   },\n\n  "package": "./package.json"\n}\n```\n\n* (`Array`) `display.access`: access levels that should be displayed\n* (`Boolean`) `display.alias`: enable/disable display of alias items\n* (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool, leave it!)\n* (`String|Object`) `package`: path to a .json file (ideally your `package.json`) or directly an object\n\nThe package object (either direct or required) should ideally contain:\n\n* `title`: human name of your project\n* `name`: package name of your project (in case `title` is not defined)\n* `version`: your project\'s version\n* `license`: your project\'s license\n* `homepage`: URL to your project\'s homepage\n* `description`: description of your project\n\n## Built with SassDoc\n\n* [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez\n* [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez\n* [SassyLists](http://sassylists.com/documentation.html) from Hugo Giraudel\n\n## Credits\n\n* [Valérian Galliat](https://twitter.com/valeriangalliat)\n* [Fabrice Weinberg](https://twitter.com/fweinb)\n* [Hugo Giraudel](http://twitter.com/HugoGiraudel)\n\nWith huge contributions from:\n\n* [Pascal Duez](https://twitter.com/pascalduez)\n',
+412 silly publish   readmeFilename: 'README.md',
+412 silly publish   _id: 'sassdoc@1.0.0-rc.16',
+412 silly publish   dist: { shasum: '89ea1dfe3f1252bc3fddea683babf9c6c4645f5a' },
+412 silly publish   _from: '.' }
+413 verbose url raw sassdoc
+414 verbose url resolving [ 'https://registry.npmjs.org/', './sassdoc' ]
+415 verbose url resolved https://registry.npmjs.org/sassdoc
+416 info trying registry request attempt 1 at 09:10:28
+417 http PUT https://registry.npmjs.org/sassdoc
+418 http 403 https://registry.npmjs.org/sassdoc
+419 info trying registry request attempt 1 at 09:10:30
+420 http PUT https://registry.npmjs.org/sassdoc
+421 http 201 https://registry.npmjs.org/sassdoc
+422 verbose url raw sassdoc
+423 verbose url resolving [ 'https://registry.npmjs.org/', './sassdoc' ]
+424 verbose url resolved https://registry.npmjs.org/sassdoc
+425 info trying registry request attempt 1 at 09:10:31
+426 http GET https://registry.npmjs.org/sassdoc
+427 http 200 https://registry.npmjs.org/sassdoc
+428 error publish fail Cannot publish over existing version.
+428 error publish fail Update the 'version' field in package.json and try again.
+428 error publish fail
+428 error publish fail If the previous version was published in error, see:
+428 error publish fail     npm help unpublish
+428 error publish fail
+428 error publish fail To automatically increment version numbers, see:
+428 error publish fail     npm help version
+429 error System Windows_NT 6.1.7601
+430 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish" "--tag" "rc.17"
+431 error cwd c:\Users\DEV-07\Documents\Sources\SassDoc
+432 error node -v v0.10.18
+433 error npm -v 1.3.8
+434 error code EPUBLISHCONFLICT
+435 verbose exit [ 1, true ]
