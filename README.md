@@ -55,7 +55,7 @@ $legacy-support: true !global;
 ### npm
 
 ```sh
-npm install -g sassdoc-cli
+npm install -g sassdoc
 ```
 
 ### Grunt
@@ -125,9 +125,12 @@ See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documentation).
 
 ## Pass extra variables to the view
 
-With the `-c` or `--config` flag, you can set the path to a JSON file containing variables to be passed to the view so the latter is a little more customized than the default documentation.
+With the `-c` or `--config` flag, you can set the path to a JSON file
+containing variables to be passed to the view so the latter is a little
+more customized than the default documentation.
 
-Default path leads to `view/view.json`. You can update this file or make your own.
+Default path leads to `view/view.json`. You can update this file or make
+your own.
 
 Allowed variables:
 
@@ -145,8 +148,10 @@ Allowed variables:
 
 * (`Array`) `display.access`: access levels that should be displayed
 * (`Boolean`) `display.alias`: enable/disable display of alias items
-* (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool, leave it!)
-* (`String|Object`) `package`: path to a .json file (ideally your `package.json`) or directly an object
+* (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool,
+  leave it!)
+* (`String|Object`) `package`: path to a .json file (ideally your
+  `package.json`) or directly an object
 
 The package object (either direct or required) should ideally contain:
 
