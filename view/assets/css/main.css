@@ -193,6 +193,17 @@
  *
  * @requires {mixin} size
  */
+.visually-hidden {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
 /**
  * Vendors
  */
@@ -394,15 +405,15 @@ a:hover, a:hover code {
     border-bottom: 2px solid #dddddd;
   }
 
-  td {
+  td, th {
     padding-left: 0 !important;
   }
-  td::before {
+  td::before, th::before {
     content: attr(data-label) ": ";
     text-transform: capitalize;
     font-weight: bold;
   }
-  td p {
+  td p, th p {
     display: inline;
   }
 }
@@ -424,6 +435,9 @@ a:hover, a:hover code {
   padding: 0 1em;
 }
 
+/**
+ * Visually-hidden
+ */
 /**
  * Partials
  */
@@ -746,10 +760,13 @@ a:hover, a:hover code {
   margin-bottom: 1em;
   border-collapse: collapse;
 }
-.item__parameters > thead > tr > th {
+.item__parameters thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dddddd;
   border-top: none;
+  text-align: left;
+}
+.item__parameters tbody th {
   text-align: left;
 }
 .item__parameters td, .item__parameters th {

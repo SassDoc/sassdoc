@@ -5,17 +5,17 @@
   <table class="item__parameters">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
+        <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Default value</th>
       </tr>
     </thead>
     <tbody>
       {% for parameter in item.parameters %}
         <tr class="item__parameter">
-          <td data-label="name"><code>${{ parameter.name }}</code></td>
-          <td data-label="desc">{{ parameter.description | markdown | default('&mdash;') | safe }}</td>
+          <th scope="row" data-label="name"><code>${{ parameter.name }}</code></th>
+          <td data-label="desc">{{ parameter.description | markdown | default('&mdash;<span class="visually-hidden"> none</span>') | safe }}</td>
           <td data-label="type">
           {% if parameter.type == '*' %}
             Any
@@ -25,7 +25,7 @@
           </td>
           <td data-label="default">
           {% if not parameter.default %}
-            &mdash;
+            &mdash;<span class="visually-hidden"> none</span>
           {% else %}
             <code>{{ parameter.default }}</code>
           {% endif %}

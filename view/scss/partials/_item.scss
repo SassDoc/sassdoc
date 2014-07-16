@@ -100,10 +100,14 @@
   margin-bottom: 1em;
   border-collapse: collapse;
 
-  > thead > tr > th {
+  thead th {
     vertical-align: bottom;
     border-bottom: 2px solid color("medium-grey");
     border-top: none;
+    text-align: left;
+  }
+
+  tbody th {
     text-align: left;
   }
 

@@ -64,7 +64,7 @@ a {
     border-bottom: 2px solid color("medium-grey");
   }
 
-  td {
+  td, th {
     padding-left: 0 !important;
 
     &::before {
@@ -96,4 +96,11 @@ a {
   width: 1170px;
   margin: 0 auto;
   padding: 0 1em;
+}
+
+/**
+ * Visually-hidden
+ */
+.visually-hidden {
+  @include visually-hidden;
 }
