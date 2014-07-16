@@ -1,0 +1,88 @@
+#!/usr/bin/env node
+
+'use strict';
+
+/*
+Usage: sassdoc <src> <dest> [options]
+
+Arguments:
+  <src>   Path to your Sass folder.
+  <dest>  Path to the destination folder.
+
+Options:
+  -h, --help            Bring help.
+  --version             Show version.
+  -v, --verbose         Run in verbose mode.
+  -c, --config=<path>   Path to JSON file containing variable to be passed
+                        to the view.
+  --no-update-notifier  Do not rune the update notifier check.
+*/
+
+var fs = require('fs');
+var path = require('path');
+var sassdoc = require('../src/api');
+var docopt = require('docopt').docopt;
+var pkg = require('../package.json');
+var chalk = require('chalk');
+
+var doc = fs.readFileSync(__filename, 'utf-8')
+  .split('/*')[1]
+  .split('*/')[0];
+
+// Define version
+var options = docopt(doc, {version: pkg.version});
+
+// Run update notifier if not explicitely disabled
+if (!options['--no-update-notifier']) {
+  var notifier = require('update-notifier')({
+    packageName: pkg.name,
+    packageVersion: pkg.version,
+  });
+
+  if (notifier.update) {
+    var message = 'Update available: ' + chalk.yellow(update.latest) + ' ' +
+                  chalk.gray(' (current: ' + update.current + ')') + '\n' +
+                  'Run ' + chalk.blue('npm update -g ' + pkg.name) +
+                  'to update.';
+
+    console.log(message);
+  }
+}
+
+// Set verbose mode
+sassdoc.logger.enabled = options['--verbose'];
+
+var config;
+
+// Find configuration file
+if (options['--config']) {
+  // Require given config file
+
+  if (options['--config'][0] === '/') {
+    // Absolute
+    config = require(options['--config']);
+  } else {
+    // Relative
+    config = require(process.cwd() + '/' + options['--config']);
+  }
+} else {
+  try {
+    // Require default config file at project level
+    config = require(process.cwd() + '/' + './view.json');
+  } catch (e) {
+    // Require default config file at SassDoc's level
+    config = require('../view/view.json');
+  }
+}
+
+// Find package file
+if (typeof config.package === 'string') {
+  try {
+    config.package = require(process.cwd() + '/' + config.package);
+  } catch (e) {
+    var message = 'Can\'t find a package file at `' + config.package + '`.';
+    sassdoc.logger.log(chalk.yellow(message));
+  }
+}
+
+sassdoc.documentize(options['<src>'], options['<dest>'], config);
