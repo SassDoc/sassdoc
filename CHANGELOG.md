@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 (stable)
+
+* Fixed an issue with a missing dependency
+* Prevented a weird bug with require
+* Updated readme
+* Improved styles 
+
 ## 1.0.0-rc.19
 
 * Improved the way we deal with configuration resolving
