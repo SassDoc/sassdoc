@@ -1,6 +1,6 @@
 'use strict';
 
-var sassdoc = require('./api');
+var logger = require('./log');
 var path = require('path');
 var chalk = require('chalk');
 
@@ -52,8 +52,8 @@ module.exports = function (config) {
     config.package = require(packagePath);
   } catch (e) {
     var message = 'Can\'t find a package file at `' + packagePath+ '`.';
-    sassdoc.logger.log(chalk.yellow(message));
+    logger.log(chalk.yellow(message));
   }
-  
+
   return config;
 };
