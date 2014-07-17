@@ -142,7 +142,7 @@ Allowed variables:
     "watermark": true
    },
 
-  "package": "./package.json"
+  "package": "../package.json"
 }
 ```
 
@@ -150,8 +150,8 @@ Allowed variables:
 * (`Boolean`) `display.alias`: enable/disable display of alias items
 * (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool,
   leave it!)
-* (`String|Object`) `package`: path to a .json file (ideally your
-  `package.json`) or directly an object
+* (`String|Object`) `package`: path to a .json file relative to `view.json`
+  (ideally your `package.json`) or directly an object
 
 The package object (either direct or required) should ideally contain:
 
