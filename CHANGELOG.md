@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-rc.19
+
+* Improved the way we deal with configuration resolving
+* Added an option to prevent the notifier check from happening
+
 ## 1.0.0-rc.18
 
 * Merged `sassdoc-cli` back into the main repository
