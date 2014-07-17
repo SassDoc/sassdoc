@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.0.0 (stable)
+## 1.0.0
+
+* Worked around a npm bug
+
+## 1.0.0
 
 * Fixed an issue with a missing dependency
 * Prevented a weird bug with require
