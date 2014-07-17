@@ -39,11 +39,11 @@
     "scss-comment-parser": "^0.1.2",
     "mkdirp": "^0.5.0",
     "docopt": "^0.4.0",
-    "update-notifier": "^0.2.0"
+    "update-notifier": "^0.2.0",
+    "chalk": "^0.5.0"
   },
   "devDependencies": {
     "assert": "^1.1.1",
-    "chalk": "^0.5.0",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^0.8.1",
     "grunt-browser-sync": "^1.1.2",
