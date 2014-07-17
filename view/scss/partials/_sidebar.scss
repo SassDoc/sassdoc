@@ -44,10 +44,27 @@
 .sidebar__body {
   padding: .5em 0;
   margin-bottom: 1em;
+  color: color("light-grey");
 
   li {
-    padding: 0 2em 0 .5em;
-    color: color("light-grey");
+    background: color("dark-grey");
+    position: relative;
+    padding: .5em 2em .5em .5em;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #333;
+    transition: .15s;
+
+    &::before {
+      content: '';
+      @include absolute(right 100% top -1px bottom -1px);
+      width: 100em;
+      border: inherit;
+      background: inherit;
+    }
+
+    &:hover {
+      background: lighten(color("dark-grey"), 2.5%);
+    }
   }
 
   a {
@@ -74,23 +91,17 @@
 /**
  * List item heading
  */
-.sidebar__sub-heading {
+li.sidebar__sub-heading {
   background: color("light-grey");
-  margin-top: 2em;
-  margin-bottom: 2em;
   position: relative;
-  
-  &::before {
-    content: '';
-    @include absolute(right 100% top 0 bottom 0);
-    width: 100em;
-    background: inherit;
+  border-color: color("light-grey");
+
+  &:hover {
+    background: color("light-grey");
   }
 
   a {
-    display: block;
     color: color("dark-grey");
-    padding: .5em 0;
     text-transform: uppercase;
   }
 }

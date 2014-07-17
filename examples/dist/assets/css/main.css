@@ -521,10 +521,29 @@ a:hover, a:hover code {
 .sidebar__body {
   padding: .5em 0;
   margin-bottom: 1em;
+  color: #f7f5fa;
 }
 .sidebar__body li {
-  padding: 0 2em 0 .5em;
-  color: #f7f5fa;
+  background: #444444;
+  position: relative;
+  padding: .5em 2em .5em .5em;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #333;
+  -webkit-transition: .15s;
+          transition: .15s;
+}
+.sidebar__body li::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 100%;
+  bottom: -1px;
+  width: 100em;
+  border: inherit;
+  background: inherit;
+}
+.sidebar__body li:hover {
+  background: #4a4a4a;
 }
 .sidebar__body a {
   color: #f7f5fa;
@@ -548,25 +567,16 @@ a:hover, a:hover code {
 /**
  * List item heading
  */
-.sidebar__sub-heading {
+li.sidebar__sub-heading {
   background: #f7f5fa;
-  margin-top: 2em;
-  margin-bottom: 2em;
   position: relative;
+  border-color: #f7f5fa;
 }
-.sidebar__sub-heading::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 100%;
-  bottom: 0;
-  width: 100em;
-  background: inherit;
+li.sidebar__sub-heading:hover {
+  background: #f7f5fa;
 }
-.sidebar__sub-heading a {
-  display: block;
+li.sidebar__sub-heading a {
   color: #444444;
-  padding: .5em 0;
   text-transform: uppercase;
 }
 
