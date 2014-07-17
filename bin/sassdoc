@@ -24,6 +24,7 @@ var sassdoc = require('../src/api');
 var docopt = require('docopt').docopt;
 var pkg = require('../package.json');
 var chalk = require('chalk');
+var path = require('path');
 
 var doc = fs.readFileSync(__filename, 'utf-8')
   .split('/*')[1]
@@ -53,7 +54,7 @@ if (!options['--no-update-notifier']) {
 // Set verbose mode
 sassdoc.logger.enabled = options['--verbose'];
 
-var config;
+var configPath;
 
 // Find configuration file
 if (options['--config']) {
@@ -61,27 +62,31 @@ if (options['--config']) {
 
   if (options['--config'][0] === '/') {
     // Absolute
-    config = require(options['--config']);
+    configPath = options['--config'];
   } else {
     // Relative
-    config = require(process.cwd() + '/' + options['--config']);
+    configPath = process.cwd() + '/' + options['--config'];
   }
 } else {
   try {
     // Require default config file at project level
-    config = require(process.cwd() + '/' + './view.json');
+    configPath = process.cwd() + '/' + './view.json';
   } catch (e) {
     // Require default config file at SassDoc's level
-    config = require('../view/view.json');
+    configPath = '../view/view.json';
   }
 }
 
+var config = require(configPath);
+
 // Find package file
 if (typeof config.package === 'string') {
+  var packagePath = path.dirname(configPath) + '/' + config.package;
+
   try {
-    config.package = require(process.cwd() + '/' + config.package);
+    config.package = require(packagePath);
   } catch (e) {
-    var message = 'Can\'t find a package file at `' + config.package + '`.';
+    var message = 'Can\'t find a package file at `' + packagePath+ '`.';
     sassdoc.logger.log(chalk.yellow(message));
   }
 }
