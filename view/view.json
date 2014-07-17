@@ -5,5 +5,5 @@
     "watermark": true
   },
 
-  "package": "./package.json"
+  "package": "../package.json"
 }
