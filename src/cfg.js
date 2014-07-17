@@ -54,4 +54,6 @@ module.exports = function (config) {
     var message = 'Can\'t find a package file at `' + packagePath+ '`.';
     sassdoc.logger.log(chalk.yellow(message));
   }
+  
+  return config;
 };
