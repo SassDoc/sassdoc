@@ -2,6 +2,7 @@
 
 var sassdoc = require('./api');
 var path = require('path');
+var chalk = require('chalk');
 
 function resolveConfigPath(config) {
   // Find configuration file
@@ -33,7 +34,7 @@ module.exports = function (config) {
   if (typeof config === 'string') {
     // `package` is relative to config file
     dir = path.dirname(config);
-    config = require(resolveConfigPath(config);
+    config = require(resolveConfigPath(config));
   } else {
     // `package` is relative to CWD
     dir = process.cwd();
