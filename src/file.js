@@ -267,6 +267,9 @@ exports = module.exports = {
         // Requires
         if (utils.isset(item.requires)) {
           item.requires = item.requires.map(function (req) {
+            if ( req.external === true ) {
+              return req;
+            } // Just return itself
             var lookupKey = req.type + '_' + req.name;
             if (utils.isset(index[lookupKey])) {
               var reqItem = index[lookupKey];
@@ -276,7 +279,7 @@ exports = module.exports = {
               }
 
               reqItem.usedBy.push(item);
-
+              reqItem.external = req.external;
               return reqItem;
             }
 
@@ -292,7 +295,7 @@ exports = module.exports = {
         if (utils.isset(item.see)) {
           item.see = item.see.map(function (see) {
             var lookupKey = see.type + '_' + see.name;
-            
+
             if (utils.isset(index[lookupKey])) {
               return index[lookupKey];
             }

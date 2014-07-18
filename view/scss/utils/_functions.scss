@@ -1,10 +1,10 @@
 /**
  * Returns the opposite direction of every direction in `$directions`.
- * 
+ *
  * @param {List} $directions - Positions to revert
  *
  * @throws No opposite direction found for `$direction`.
- * 
+ *
  * @return {List | Null}
  */
 @function opposite-direction($directions) {
@@ -33,13 +33,13 @@
 
 /**
  * Clamp `$value` between `$min` and `$max`.
- * 
+ *
  * @param {Number} $value - Value to clamp between `$min` and `$max`
  * @param {Number} $min   - Minimum value
  * @param {Number} $max   - Maximum value
  *
  * @throws All parameters must be numbers for `clamp`.
- * 
+ *
  * @return {Number | Null}
  */
 @function clamp($value, $min, $max) {
@@ -53,7 +53,7 @@
 
 
 /**
- * Helper to manage `z-index`. 
+ * Helper to manage `z-index`.
  * Tries to fetch the z-index mapped to `$layer` in `$z-indexes` map.
  * If found, returns it, else returns `null`.
  *
@@ -61,11 +61,11 @@
  *
  * @example scss
  * z-index: z("default")
- * 
+ *
  * @param {String} $layer - Layer
  *
  * @throws No z-index found for `$layer`.
- * 
+ *
  * @return {Number | Null}
  */
 @function z($layer) {
@@ -81,10 +81,11 @@
  * Color getter.
  *
  * @requires {variable} colors
- * 
+ * @requires SassCore::map-has-key <http://sass-lang.com/documentation/Sass/Script/Functions.html#map_has_key-instance_method>
+ *
  * @example scss
  * color: color("pink");
- * 
+ *
  * @param {String} $color - Color to fetch
  *
  * @throws No color found for `$color`. Please make sure it is defined in `$colors` map.
@@ -103,9 +104,9 @@
 
 /**
  * Tests whether the value is a valid length.
- * 
+ *
  * @param {*} $value - Value to test
- * 
+ *
  * @return {Bool}
  */
 @function is-valid-length($value) {
