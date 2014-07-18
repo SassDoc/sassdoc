@@ -23,10 +23,10 @@
  * Code blocks
  */
 .item__code {
-  border-left: .3em solid color("pink");
   word-wrap: break-word;
   margin-top: 1em !important;
   line-height: 1.42;
+  @include card(1);
 }
 
 /**
