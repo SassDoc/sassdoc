@@ -270,7 +270,9 @@ exports = module.exports = {
             if ( req.external === true ) {
               return req;
             } // Just return itself
+
             var lookupKey = req.type + '_' + req.name;
+
             if (utils.isset(index[lookupKey])) {
               var reqItem = index[lookupKey];
 
@@ -279,13 +281,15 @@ exports = module.exports = {
               }
 
               reqItem.usedBy.push(item);
-              reqItem.external = req.external;
-              return reqItem;
+              req.item = reqItem;
             }
 
             else {
               logger.log('Item `' + item.context.name + '` requires `' + req.name + '` from type `' + req.type + '` but this item doesn\'t exist.');
             }
+
+            return req;
+
           }).filter(function (item) {
             return typeof item !== 'undefined';
           });
