@@ -31,7 +31,7 @@ describe('#requires', function(){
                     {'type': 'variable', 'name': 'extern::lib', 'external':true, 'description': 'description', 'url': 'http://url.com'});
   });
 
-  it.only('should work for name and url', function(){
+  it('should work for name and url', function(){
     assert.deepEqual(requires('SassCore::map-has-key <http://sass-lang.com/documentation/Sass/Script/Functions.html#map_has_key-instance_method>'),
                     {'type': 'function', 'name': 'SassCore::map-has-key', 'external':true, 'url': 'http://sass-lang.com/documentation/Sass/Script/Functions.html#map_has_key-instance_method'});
 
