@@ -32,13 +32,15 @@ var search = (function () {
   var searchSuggestions = document.querySelector('#js-search-suggestions');
 
   var currentSelection = -1;
-  var selected = undefined;
+  var selected;
   var suggestions = [];
 
   var fillSuggestions = function (items) {
     searchSuggestions.innerHTML = '';
     suggestions = items.slice(0, 10).map(function (item) {
       var li = document.createElement('li');
+          li.dataset.type = item.type;
+          li.dataset.name = item.name;
           li.innerHTML = '<a href="#' + item.type + '-' + item.name + '"><code>' + item.type.slice(0, 3) + '</code> ' + item.name + '</a>';
 
       searchSuggestions.appendChild(li);
@@ -51,6 +53,12 @@ var search = (function () {
     fillSuggestions(result);
   };
 
+  searchSuggestions.addEventListener('click', function(e){
+    if ( e.target.nodeName === 'A') {
+      searchInput.value = e.target.parentNode.dataset.name;
+      fillSuggestions([]);
+    }
+  });
 
   searchForm.addEventListener('keyup', function(e){
     e.preventDefault();
@@ -58,6 +66,8 @@ var search = (function () {
     // Enter
     if (e.keyCode === 13){
       if (selected){
+        fillSuggestions([]);
+        searchInput.value = selected.dataset.name;
         window.location = selected.childNodes[0].href;
       }
 
@@ -87,7 +97,7 @@ var search = (function () {
 
   searchInput.addEventListener('keyup', function (e) {
     if ( e.keyCode !== 40 && e.keyCode !== 38){
-      currentSelection = 0;
+      currentSelection = -1;
       performSearch(searchInput.value);
     } else {
       e.preventDefault();
