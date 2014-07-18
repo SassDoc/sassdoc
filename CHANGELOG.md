@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+* Fixed an issue with config path resolving to false
+
 ## 1.0.1
 
 * Worked around a npm bug
