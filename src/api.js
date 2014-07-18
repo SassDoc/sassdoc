@@ -36,10 +36,7 @@ exports = module.exports = {
         return theme(destination, config);
       })
       .then(function () {
-        logger.log('Documentation for folder `' + source + '` successfully generated.');
-        return fs.dumpAssets(destination);
-      })
-      .then(function () {
+        logger.log('Theme successfully rendered.');
         logger.log('Process over. Everything okay!');
       })
       .fail(function (err) {
