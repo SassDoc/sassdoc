@@ -4,26 +4,26 @@ var logger = require('./log');
 var path = require('path');
 var chalk = require('chalk');
 
-function resolveConfigPath(config) {
+function requireConfig(config) {
   // Find configuration file
   if (config) {
     // Require given config file
 
     if (config[0] === '/') {
       // Absolute
-      return config;
+      return require(config);
     }
 
     // Relative
-    return process.cwd() + '/' + config;
+    return require(process.cwd() + '/' + config);
   }
 
   try {
     // Require default config file at project level
-    return process.cwd() + '/' + './view.json';
+    return require(process.cwd() + '/' + './view.json');
   } catch (e) {
     // Require default config file at SassDoc's level
-    return '../view/view.json';
+    return require('../view/view.json');
   }
 }
 
@@ -31,10 +31,10 @@ module.exports = function (config) {
   // Relative directory for `package` file
   var dir;
 
-  if (typeof config === 'string') {
+  if (typeof config !== 'object') {
     // `package` is relative to config file
     dir = path.dirname(config);
-    config = require(resolveConfigPath(config));
+    config = requireConfig(config);
   } else {
     // `package` is relative to CWD
     dir = process.cwd();
