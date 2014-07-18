@@ -4,23 +4,12 @@ var fs     = require('fs');          // File system
 var mkdirp = require('mkdirp');      // mkdir -p
 var rimraf = require('rimraf');      // rm -rf
 var ncp    = require('ncp');         // cp -r
-var swig   = require('swig');        // Templating
-var extras = require('swig-extras'); // Moar templating
 var Q      = require('q');           // Promises
 var path   = require('path');        // Path
 
 var parser = require('./parser');
 var utils  = require('./utils');
 var logger = require('./log');
-
-extras.useFilter(swig, 'markdown');
-extras.useFilter(swig, 'nl2br');
-extras.useFilter(swig, 'split');
-extras.useFilter(swig, 'trim');
-extras.useFilter(swig, 'groupby');
-swig.setFilter('push', function (arr, val) {
-  return arr.push(val);
-});
 
 ncp.limit = 16;
 
@@ -188,20 +177,6 @@ exports = module.exports = {
    */
   dumpAssets: function (destination) {
     return exports.folder.copy(__dirname + '/../view/assets', destination + '/assets');
-  },
-
-  /**
-   * Generate a document
-   * @param {Array}  data
-   * @param {String} destination
-   * @param {Object} options
-   */
-  generate: function (data, destination, options) {
-    var template = swig.compileFile(__dirname + '/../view/templates/documentation/index.html.swig');
-
-    options.data = data;
-
-    return exports.file.create(destination, template(options));
   },
 
   /**
