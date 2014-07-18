@@ -13,9 +13,11 @@ $colors: (
   
   "green":        #699,
 
-  "light-grey":   #f7f5fa,
+  "light-grey":   #e0e0e0,
   "medium-grey":  #ddd,
-  "dark-grey":    #444
+  "dark-grey":    #444,
+
+  "white":        #f9f9f9
 ) !global;
 
 /**
@@ -46,3 +48,11 @@ $z-indexes: (
   "default"       1,
   "below"        -1
 ) !global;
+
+
+/**
+ * Sidebar width
+ *
+ * @type Number
+ */
+$sidebar-width: 250px;

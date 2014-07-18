@@ -27,26 +27,25 @@
 </head>
 <body>
 
-  {# Include top navbar #}
-  {% include "../includes/partials/header.html.swig" with project_title %}
+  {# Sidebar #}
+  <aside class="sidebar" role="nav">
+    {% block sidebar %}{% endblock %}
+  </aside>
 
-  {# Wrapper #}
-  <div class="container">
+  {# Main container #}
+  <article class="main" role="main">
 
-    {# Sidebar #}
-    <aside class="sidebar" role="nav">
-      {% block sidebar %}{% endblock %}
-    </aside>
+    {# Include top navbar #}
+    {% include "../includes/partials/header.html.swig" with project_title %}
 
-    {# Main container #}
-    <article class="main" role="main">
-      {% block content %}{% endblock %}
-    </article>
+    <div class="container">
+    {% block content %}{% endblock %}
+    </div>
 
-  </div>
+    {# Include footer #}
+    {% include "../includes/partials/footer.html.swig" with project_title %}
+  </article>
 
-  {# Include footer #}
-  {% include "../includes/partials/footer.html.swig" with project_title %}
 
   {# Include scripts #}
   {% include "../includes/partials/scripts.html.swig" %}

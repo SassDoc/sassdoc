@@ -15,7 +15,7 @@
  * Name
  */
 .item__name {
-  color: color("dark-grey")
+  color: color("dark-grey");
 }
 
 
@@ -76,7 +76,7 @@
 .item__sub-heading {
   color: color("green");
   margin-bottom: .5em;
-  margin-top: 1em;
+  margin-top: 1.5em;
   text-transform: uppercase;
   font-size: 1em;
 }
@@ -86,10 +86,10 @@
  */
 .item__heading {
   color: color("dark-grey");
-  font-size: 2.2em;
   margin: 0 0 .5em 0;
-  font-weight: normal;
   position: relative;
+  font-size: 1.5em;
+  font-weight: 500;
 }
 
 /**
@@ -120,6 +120,10 @@
 @include respond-to("medium") {
   tbody > .item__parameter:first-of-type > td {
     border-top: none;
+  }
+
+  th {
+    padding-left: 0 !important;
   }
 
   .item__parameters td,

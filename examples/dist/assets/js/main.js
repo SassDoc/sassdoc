@@ -2,7 +2,6 @@
 'use strict';
 
 var search = (function () {
-
   var getItems = function () {
     return Array.prototype.slice.call(document.querySelectorAll('.sassdoc__item')).map(function (item) {
       return {
@@ -26,7 +25,6 @@ var search = (function () {
 
 
 (function (search) {
-
   var searchForm = document.querySelector('#js-search');
   var searchInput = document.querySelector('#js-search-input');
   var searchSuggestions = document.querySelector('#js-search-suggestions');
@@ -39,9 +37,10 @@ var search = (function () {
     searchSuggestions.innerHTML = '';
     suggestions = items.slice(0, 10).map(function (item) {
       var li = document.createElement('li');
-          li.dataset.type = item.type;
-          li.dataset.name = item.name;
-          li.innerHTML = '<a href="#' + item.type + '-' + item.name + '"><code>' + item.type.slice(0, 3) + '</code> ' + item.name + '</a>';
+      
+      li.dataset.type = item.type;
+      li.dataset.name = item.name;
+      li.innerHTML = '<a href="#' + item.type + '-' + item.name + '"><code>' + item.type.slice(0, 3) + '</code> ' + item.name + '</a>';
 
       searchSuggestions.appendChild(li);
       return li;
@@ -53,19 +52,19 @@ var search = (function () {
     fillSuggestions(result);
   };
 
-  searchSuggestions.addEventListener('click', function(e){
-    if ( e.target.nodeName === 'A') {
+  searchSuggestions.addEventListener('click', function (e) {
+    if (e.target.nodeName === 'A') {
       searchInput.value = e.target.parentNode.dataset.name;
       fillSuggestions([]);
     }
   });
 
-  searchForm.addEventListener('keyup', function(e){
+  searchForm.addEventListener('keyup', function (e) {
     e.preventDefault();
 
     // Enter
-    if (e.keyCode === 13){
-      if (selected){
+    if (e.keyCode === 13) {
+      if (selected) {
         fillSuggestions([]);
         searchInput.value = selected.dataset.name;
         window.location = selected.childNodes[0].href;
@@ -75,20 +74,23 @@ var search = (function () {
     }
 
     // KeyDown
-    if ( e.keyCode === 40){
+    if (e.keyCode === 40) {
       currentSelection = (currentSelection + 1) % suggestions.length;
     }
 
     // KeyUp
-    if ( e.keyCode === 38){
+    if (e.keyCode === 38) {
       currentSelection = currentSelection - 1;
-      if ( currentSelection < 0){
+      if (currentSelection < 0) {
         currentSelection =  suggestions.length - 1;
       }
     }
 
-    if ( suggestions[currentSelection] ){
-      if (selected) { selected.classList.remove('selected'); }
+    if (suggestions[currentSelection]) {
+      if (selected) {
+        selected.classList.remove('selected');
+      }
+
       selected = suggestions[currentSelection];
       selected.classList.add('selected');
     }
@@ -96,10 +98,12 @@ var search = (function () {
   });
 
   searchInput.addEventListener('keyup', function (e) {
-    if ( e.keyCode !== 40 && e.keyCode !== 38){
+    if (e.keyCode !== 40 && e.keyCode !== 38) {
       currentSelection = -1;
       performSearch(searchInput.value);
-    } else {
+    } 
+
+    else {
       e.preventDefault();
     }
   });

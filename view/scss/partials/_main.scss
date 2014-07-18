@@ -2,15 +2,14 @@
  * Main wrapper
  */
 .main {
-  background: color("light-grey");
+  background: color("white");
   position: relative;
   padding-bottom: 3em;
 
   @include respond-to("medium") {
-    padding-left: 2em;
-    width: 75%;
-    float: right;
-    padding-top: .9em;
+    padding-left: $sidebar-width;
+    width: 100%;
+    float: left;
     min-height: 45em;
   }
 }
@@ -20,13 +19,12 @@
  */
 .main__heading {
   color: color("dark-grey");
-  padding: .5em;
+  padding: 1em .5em;
   margin-top: 0;
-  text-transform: uppercase;
-  border-bottom: .3em solid color("pink");
   font-size: 2em;
+  font-weight: 500;
 
   @include respond-to("medium") {
-    padding: .5em 0;
+    padding: 3em 0 0;
   }
 }
