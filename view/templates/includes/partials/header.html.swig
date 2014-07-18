@@ -14,6 +14,5 @@
          <ul class="searchbar__suggestions" id="js-search-suggestions"></ul>
        </div>
      </div>
-    <p class="header__item-count">{{ item_count }} item{% if item_count > 1 %}s{% endif %} documented</p>
   </div>
 </header>

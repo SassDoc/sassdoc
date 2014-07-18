@@ -1,4 +1,4 @@
-<h2 class="sidebar__heading">Documentation map</h2>
+<h2 class="sidebar__heading">Documentation ({{ item_count }})</h2>
 
 <div class="sidebar__body">
   <ul class="list-unstyled">

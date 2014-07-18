@@ -1,24 +1,20 @@
 .searchbar {
+  @include clearfix;
   display: inline-block;
-
-  &::after {
-  	content: '';
-  	display: table;
-  	clear: both;
-  }
+  float: right;
 
   label {
-  	float: left;
-  	padding: .25em .5em;
+    float: left;
+    padding: .25em .5em;
 
-  	@include respond-to(small) {
-  	  display: none;
-  	}
+    @include respond-to(small) {
+      @include visually-hidden($extend: false)
+    }
   }
 
   @include respond-to(small) {
-  	display: block;
-  	float: none;
+    display: block;
+    float: none;
   }
 }
 
@@ -27,7 +23,7 @@
   position: relative;
 
   @include respond-to(small) {
-  	float: none;
+    float: none;
   }
 }
 
@@ -58,22 +54,22 @@
   }
 
   li {
-   	border-bottom: 1px solid color("light-grey");
+    border-bottom: 1px solid color("light-grey");
 
-   	&:last-of-type {
-   	  border: none;
-   	}
+    &:last-of-type {
+      border: none;
+    }
   }
 
   a {
-  	display: block;
-  	padding: .25em .5em;
-  	font-size: .9em;
+    display: block;
+    padding: .25em .5em;
+    font-size: .9em;
 
-  	&:focus,
-  	&:active,
-  	&:hover {
-  	  background: color("light-grey");
-  	}
+    &:focus,
+    &:active,
+    &:hover {
+      background: color("light-grey");
+    }
   }
 }

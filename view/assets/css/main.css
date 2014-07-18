@@ -180,7 +180,7 @@
  *
  * @param {Bool} $extend (true) - Whether or not extend a placeholder.
  */
-.container:after {
+.container:after, .searchbar:after {
   content: "";
   display: table;
   clear: both;
@@ -459,13 +459,20 @@ a:hover, a:hover code {
  * Main title
  */
 .header__title {
-  font-size: 1em;
-  margin: 0;
-  float: left;
   font-weight: 500;
+  text-align: center;
+  margin: 0 0 .5em 0;
 }
 .header__title a {
   color: #f7f5fa;
+}
+@media (min-width: 601px) {
+  .header__title {
+    float: left;
+    font-size: 1em;
+    margin-top: .25em;
+    margin-bottom: 0;
+  }
 }
 
 /**
@@ -478,11 +485,7 @@ a:hover, a:hover code {
 
 .searchbar {
   display: inline-block;
-}
-.searchbar::after {
-  content: '';
-  display: table;
-  clear: both;
+  float: right;
 }
 .searchbar label {
   float: left;
@@ -490,7 +493,14 @@ a:hover, a:hover code {
 }
 @media (max-width: 600px) {
   .searchbar label {
-    display: none;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
   }
 }
 @media (max-width: 600px) {
