@@ -1,6 +1,7 @@
 /**
  * Map of colors for quick grabbing.
- * See `_functions.scss` -> `color()` function.
+ *
+ * @see {function} color
  *
  * @type Map
  */
@@ -19,7 +20,8 @@ $colors: (
 
 /**
  * Map of breakpoints for responsive design.
- * See `_functions.scss` -> `respond-to()` function.
+ *
+ * @see {function} respond-to
  *
  * @type Map
  */
@@ -31,7 +33,8 @@ $breakpoints: (
 
 /** 
  * Z-indexes layers.
- * See `_functions.scss` -> `z()` function.
+ *
+ * @see {function} z
  * 
  * @type Map
  */
