@@ -3,6 +3,7 @@
  */
 .sidebar {
   @include respond-to("medium") {
+    box-shadow: 1px 0 1.5px rgba(black, .12);
     overflow: auto;
     @include fixed(top 0 bottom 0 left 0);
     width: $sidebar-width;
@@ -58,13 +59,18 @@ li.sidebar__sub-heading {
   padding-right: 2em;
 }
 
-  
+/**
+ * Sidebar header with title
+ */
 .sidebar__header {
   border-bottom: 1px solid color("light-grey");
 }
 
+/**
+ * Sidebar main title 
+ */
 .sidebar__title {
   font-size: 1em;
   margin: 0;
-  padding: 1em;
+  padding: 1.45em;
 }

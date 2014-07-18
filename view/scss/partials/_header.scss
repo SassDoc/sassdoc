@@ -2,14 +2,10 @@
  * Header
  */
 .header {
-  padding: 1em;
+  @include clearfix;
+  padding: 1em 0;
   background: color("pink");
   color: color("light-grey");
-  @include clearfix;
-  
-  @include respond-to("medium") {
-    border-bottom: 0.5em solid color("light-grey");
-  }
 }
 
 /**
