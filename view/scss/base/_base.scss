@@ -12,11 +12,6 @@ body {
   font: 1em/1.35 'Roboto', 'Helvetica', sans-serif;
   overflow: auto;
   margin: 0;
-  background-color: color("light-grey");
-
-  @include respond-to("medium") {
-    background: linear-gradient(to right, color("dark-grey") 50%, color("light-grey") 50%);
-  }
 }
 
 /**

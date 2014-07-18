@@ -5,6 +5,7 @@
   padding: 1em;
   background: color("pink");
   color: color("light-grey");
+  @include clearfix;
   
   @include respond-to("medium") {
     border-bottom: 0.5em solid color("light-grey");
@@ -34,7 +35,11 @@
 /**
  * Item count
  */
-.header__item-count {
-  float: right;
-  margin: 0;
+.header__description {
+  float: left;
+  padding-top: .3em;
+
+  * {
+    margin: 0;
+  }
 }

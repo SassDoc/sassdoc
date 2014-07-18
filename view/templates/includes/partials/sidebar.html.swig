@@ -1,4 +1,12 @@
-<h2 class="sidebar__heading">Documentation ({{ item_count }})</h2>
+<div class="sidebar__header">
+  <h1 class="sidebar__title">
+    {% if package.homepage %}
+      <a href="{{ package.homepage }}">{{ project_title }}{% if package.version %} - v{{ package.version }}{% endif %}</a>
+    {% else %}
+      {{ project_title }}{% if version %} - {{ version }}{% endif %}
+    {% endif %}
+  </h1>
+</div>
 
 <div class="sidebar__body">
   <ul class="list-unstyled">
@@ -25,9 +33,10 @@
 
           {# Display item #}
           <li class="sassdoc__item" data-name="{{item.context.name}}" data-type="{{item.context.type}}">
-            <a href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}</a>
+            <a href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}
             {% if item.access[0] == "private" %}<span class="sidebar__annotation  sidebar__annotation--private">private</span>{% endif %}
             {% if item.alias != false %}<span class="sidebar__annotation  sidebar__annotation--alias">alias</span>{% endif %}
+            </a>
           </li>
 
         {% endfor %}
@@ -39,11 +48,3 @@
   {% endif %}
   </ul>
 </div>
-
-{% if package.description %}
-  <h2 class="sidebar__heading">{{ project_title }}</h2>
-
-  <div class="sidebar__description">
-    {{ package.description | markdown }}
-  </div>
-{% endif %}

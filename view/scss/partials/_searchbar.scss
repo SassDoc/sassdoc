@@ -3,15 +3,6 @@
   display: inline-block;
   float: right;
 
-  label {
-    float: left;
-    padding: .25em .5em;
-
-    @include respond-to(small) {
-      @include visually-hidden($extend: false)
-    }
-  }
-
   @include respond-to(small) {
     display: block;
     float: none;
@@ -25,14 +16,19 @@
   @include respond-to(small) {
     float: none;
   }
+
+  @include respond-to(medium) {
+    min-width: 15em;
+  }
 }
 
 .searchbar__field {
   border: none;
-  padding: .25em;
+  padding: .5em;
   font-size: 1em;
   margin: 0;
   width: 100%;
+  @include card(1);
 }
 
 .searchbar__suggestions {
