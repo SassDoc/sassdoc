@@ -27,17 +27,14 @@
   overflow: auto;
   font-size: .9em;
 
-  li {
-    padding: .5em 1em .5em 2em;
-  }
-
   a {
+    padding: .5em 1em .5em 2em;
     display: block;
     text-decoration: none;
     color: color("dark-grey");
 
     &:hover {
-      color: color("green");
+      background: color("light-grey");
     }
   }
 }
@@ -46,10 +43,9 @@
  * List item heading
  */
 li.sidebar__sub-heading {
-  padding: 1em 0 1em 1em;
 
   a {
-    color: color("dark-grey");
+    padding: 1em 0 1em 1em;
     font-weight: bold;
   }
 }
