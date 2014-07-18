@@ -21,10 +21,10 @@
   color: color("dark-grey");
   padding: 1em .5em;
   margin-top: 0;
-  font-size: 2em;
-  font-weight: 500;
+  font-size: 3em;
+  font-weight: 300;
 
   @include respond-to("medium") {
-    padding: 3em 0 0;
+    padding: 2em 0 0;
   }
 }

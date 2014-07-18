@@ -12,12 +12,22 @@
 }
 
 /**
+ * Function name
+ */
+.item__heading {
+  color: color("dark-grey");
+  margin: 0 0 .5em 0;
+  position: relative;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+/**
  * Name
  */
 .item__name {
   color: color("dark-grey");
 }
-
 
 /**
  * Code blocks
@@ -79,17 +89,6 @@
   margin-top: 1.5em;
   text-transform: uppercase;
   font-size: 1em;
-}
-
-/**
- * Function name
- */
-.item__heading {
-  color: color("dark-grey");
-  margin: 0 0 .5em 0;
-  position: relative;
-  font-size: 1.5em;
-  font-weight: 500;
 }
 
 /**

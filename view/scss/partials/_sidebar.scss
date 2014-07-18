@@ -3,8 +3,8 @@
  */
 .sidebar {
   @include respond-to("medium") {
-    box-shadow: 1px 0 1.5px rgba(black, .12);
     overflow: auto;
+    box-shadow: 1px 0 1.5px rgba(black, .12);
     @include fixed(top 0 bottom 0 left 0);
     width: $sidebar-width;
     z-index: z("default") + 1;
@@ -25,11 +25,10 @@
 .sidebar__body {
   padding: .5em 0;
   margin-bottom: 1em;
-  overflow: auto;
   font-size: .9em;
 
   a {
-    padding: .5em 1em .5em 2em;
+    padding: .5em 1em .5em 3em;
     display: block;
     text-decoration: none;
     color: color("dark-grey");
@@ -46,7 +45,7 @@
 li.sidebar__sub-heading {
 
   a {
-    padding: 1em 0 1em 1em;
+    padding: 1em 0 1em 1.5em;
     font-weight: bold;
   }
 }

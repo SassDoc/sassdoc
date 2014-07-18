@@ -1,8 +1,12 @@
 /**
  * Univeral box-sizing reset
  */
-* {
-  @include prefixer(box-sizing, border-box, webkit);
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
 }
 
 /**
