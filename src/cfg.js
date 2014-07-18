@@ -23,7 +23,7 @@ function requireConfig(config) {
     return require(process.cwd() + '/' + './view.json');
   } catch (e) {
     // Require default config file at SassDoc's level
-    return require('../view/view.json');
+    return require('../view.json');
   }
 }
 
