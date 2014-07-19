@@ -36,6 +36,8 @@ sassdoc <src> <dest> [options]
 * `-v, --verbose`: Run in verbose mode.
 * `-c, --config`: Path to JSON file containing variables to be passed
                   to the view.
+* `-t, --theme`: Theme to be required. It will override the
+                 configuration value.
 * ` --no-update-notifier`: Do not run the update notifier check.
 
 ### Node
@@ -60,14 +62,15 @@ sassdoc.parse(__dirname + '/sass').then(function (items) {
 
 ```js
 var config = {
-  "display": {
-    "access": ["public", "private"],
-    "alias": false,
-    "watermark": true
+  display: {
+    access: ['public', 'private'],
+    alias: false,
+    watermark: true,
   },
 
-  "package": "./package.json"
-}
+  package: 'path/to/package.json',
+  theme: 'theme-name',
+};
 
 var sassdoc = require('sassdoc');
 sassdoc.documentize(source, dest, config);
