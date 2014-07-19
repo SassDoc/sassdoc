@@ -6,6 +6,7 @@
 * Improved the `@requires` annotation to support external vendors, and custom URL
 * Added a search engine to the generated documentation
 * Fixed an issue with `@link` not working correctly
+* Added `examples` to `.gitignore`
 
 ## 1.0.2
 
