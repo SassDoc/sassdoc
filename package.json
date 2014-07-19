@@ -3,9 +3,19 @@
   "description": "Like JSDoc for your Sass files.",
   "author": "Hugo Giraudel <hugo.giraudel@gmail.com> (http://hugogiraudel.com)",
   "contributors": [
-    { "name": "Fabrice Weinberg", "url": "https://twitter.com/fweinb", "email": "fabrice@weinberg.me" },
-    { "name": "Valérian Galliat", "url": "https://twitter.com/valeriangalliat" },
-    { "name": "Pascal Duez", "url": "https://twitter.com/pascalduez" }
+    {
+      "name": "Fabrice Weinberg",
+      "url": "https://twitter.com/fweinb",
+      "email": "fabrice@weinberg.me"
+    },
+    {
+      "name": "Valérian Galliat",
+      "url": "https://twitter.com/valeriangalliat"
+    },
+    {
+      "name": "Pascal Duez",
+      "url": "https://twitter.com/pascalduez"
+    }
   ],
   "version": "1.1.0",
   "license": {
@@ -39,7 +49,8 @@
     "mkdirp": "^0.5.0",
     "docopt": "^0.4.0",
     "update-notifier": "^0.2.0",
-    "chalk": "^0.5.0"
+    "chalk": "^0.5.0",
+    "marked": "^0.3.2"
   },
   "devDependencies": {
     "assert": "^1.1.1",
