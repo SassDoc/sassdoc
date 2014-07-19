@@ -3,6 +3,7 @@
 var fs     = require('./file');
 var logger = require('./log');
 var cgf    = require('./cfg');
+var theme  = require('sassdoc-theme-default');
 
 exports = module.exports = {
 
@@ -31,13 +32,11 @@ exports = module.exports = {
       })
       .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
-        return fs.generate(data, destination + '/index.html', config);
+        config.data = data;
+        return theme(destination, config);
       })
       .then(function () {
-        logger.log('Documentation for folder `' + source + '` successfully generated.');
-        return fs.dumpAssets(destination);
-      })
-      .then(function () {
+        logger.log('Theme successfully rendered.');
         logger.log('Process over. Everything okay!');
       })
       .fail(function (err) {
