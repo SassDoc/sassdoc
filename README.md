@@ -2,50 +2,7 @@
 
 Like JSDoc for your Sass files.
 
-## Example
-
-```scss
-/**
- * Adds `$value` at `$index` in `$list`.
- *
- * @author Hugo Giraudel
- *
- * @ignore Documentation: http://sassylists.com/documentation/#insert-nth
- *
- * @requires is-true
- *
- * @param {List}   $list  - list to update
- * @param {Number} $index - index to add
- * @param {*}      $value - value to add
- *
- * @throws List index $index is not a number for `insert-nth`.
- * @throws List index $index must be a non-zero integer for `insert-nth`.
- *
- * @return {List | Null}
- */
-
-@function insert-nth($list, $index, $value) {
-  // ...
-}
-
-/**
- * Defines whether the lib should support legacy browsers (e.g. `IE 8`).
- *
- * @since 1.3.37
- *
- * @todo Nothing. It's awesome.
- *
- * @link https://github.com/SassDoc/sassdoc SassDoc
- *
- * @type Bool
- */
-$legacy-support: true !global;
-```
-
-### Preview
-
 ![SassDoc](http://i.imgur.com/nQoXn0W.png)
-
 
 ## Installation
 
@@ -123,6 +80,47 @@ See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documenting-your-items).
 ## Customising the view
 
 See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Customising-the-view).
+
+## Example
+
+```scss
+/**
+ * Adds `$value` at `$index` in `$list`.
+ *
+ * @author Hugo Giraudel
+ *
+ * @ignore Documentation: http://sassylists.com/documentation/#insert-nth
+ *
+ * @requires is-true
+ *
+ * @param {List}   $list  - list to update
+ * @param {Number} $index - index to add
+ * @param {*}      $value - value to add
+ *
+ * @throws List index $index is not a number for `insert-nth`.
+ * @throws List index $index must be a non-zero integer for `insert-nth`.
+ *
+ * @return {List | Null}
+ */
+
+@function insert-nth($list, $index, $value) {
+  // ...
+}
+
+/**
+ * Defines whether the lib should support legacy browsers (e.g. `IE 8`).
+ *
+ * @since 1.3.37
+ *
+ * @todo Nothing. It's awesome.
+ *
+ * @link https://github.com/SassDoc/sassdoc SassDoc
+ *
+ * @type Bool
+ */
+$legacy-support: true !global;
+```
+
 
 ## Built with SassDoc
 
