@@ -122,7 +122,7 @@ See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documenting-your-items).
 
 ## Customising the view
 
-See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Customizing-the-view).
+See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Customising-the-view).
 
 ## Built with SassDoc
 

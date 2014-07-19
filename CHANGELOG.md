@@ -3,9 +3,9 @@
 ## 1.1.0
 
 * New design
-* Moved to [Themeleon](https://github.com/valeriangalliat/themeleon) engine for theming
 * Improved the `@requires` annotation to support external vendors, and custom URL
 * Added a search engine to the generated documentation
+* Fixed an issue with `@link` not working correctly
 
 ## 1.0.2
 
