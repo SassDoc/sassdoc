@@ -4,35 +4,91 @@ var logger = require('./log');
 var path = require('path');
 var chalk = require('chalk');
 
-function requireConfig(config) {
-  // Find configuration file
-  if (config) {
-    // Require given config file
-
-    if (config[0] === '/') {
-      // Absolute
-      return require(config);
-    }
-
-    // Relative
-    return require(process.cwd() + '/' + config);
+/**
+ * Resolve and configuration file path.
+ *
+ * @param {string} config
+ * @return {string}
+ */
+function resolveConfig(config) {
+  if (config[0] === '/') {
+    // Absolute
+    return config;
   }
 
+  // Relative
+  return process.cwd() + '/' + config;
+}
+
+/**
+ * Resolve and require configuration value.
+ *
+ * @param {string|object} config
+ * @return {object}
+ */
+function requireConfig(config) {
+  if (typeof config === 'undefined') {
+    // Default value
+    config = 'view.json';
+  }
+
+  config = resolveConfig(config);
+
   try {
-    // Require default config file at project level
-    return require(process.cwd() + '/' + './view.json');
+    config = require(config);
   } catch (e) {
     // Require default config file at SassDoc's level
-    return require('../view.json');
+    config = require('../view.json');
   }
 }
 
+/**
+ * Resolve and require package value.
+ *
+ * @param {string|object} package
+ * @return {object}
+ */
+function requirePackage(dir, package) {
+  if (typeof package === 'undefined') {
+    logger.log(chalk.yellow('No package information.'));
+    return;
+  }
+
+  var path = dir + '/' + package;
+
+  try {
+    return require(path);
+  } catch (e) {
+    var message = 'Can\'t find a package file at `' + path + '`.';
+    logger.log(chalk.yellow(message));
+  }
+}
+
+/**
+ * Resolve and require theme value.
+ *
+ * @param {string} theme
+ * @return {function}
+ */
+function requireTheme(theme) {
+  if (typeof theme === 'undefined') {
+    theme = 'default';
+  }
+
+  return require('sassdoc-theme-' + theme;
+}
+
+/**
+ * Parse configuration.
+ *
+ * @param {string|object} config
+ * @return {object}
+ */
 module.exports = function (config) {
   // Relative directory for `package` file
   var dir;
 
   if (typeof config !== 'object') {
-    // `package` is relative to config file
     dir = path.dirname(config);
     config = requireConfig(config);
   } else {
@@ -40,19 +96,14 @@ module.exports = function (config) {
     dir = process.cwd();
   }
 
-  if (typeof config.package !== 'string') {
-    // Assume already an object
-    return config;
+  // Resolve package
+  if (typeof config.package !== 'object') {
+    config.package = requirePackage(dir, config.package);
   }
 
-  // Find package file
-  var packagePath = dir + '/' + config.package;
-
-  try {
-    config.package = require(packagePath);
-  } catch (e) {
-    var message = 'Can\'t find a package file at `' + packagePath+ '`.';
-    logger.log(chalk.yellow(message));
+  // Resolve theme
+  if (typeof config.theme !== 'function') {
+    config.theme = requireTheme(config.theme);
   }
 
   return config;
