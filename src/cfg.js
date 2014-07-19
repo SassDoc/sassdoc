@@ -3,6 +3,7 @@
 var logger = require('./log');
 var path = require('path');
 var chalk = require('chalk');
+var marked = require('marked');
 
 /**
  * Resolve and configuration file path.
@@ -99,6 +100,11 @@ module.exports = function (config) {
   // Resolve package
   if (typeof config.package !== 'object') {
     config.package = requirePackage(dir, config.package);
+
+    // Parse as markdown (as per #115)
+    if (config.package.description) {
+      config.package.description = marked(config.package.description);
+    }
   }
 
   // Resolve theme
