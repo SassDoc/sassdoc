@@ -68,8 +68,8 @@ var config = {
     watermark: true,
   },
 
-  package: 'path/to/package.json',
-  theme: 'theme-name',
+  package: 'path/to/package.json', // Defaults to `./package.json`
+  theme: 'theme-name', // Defaults to `default`
 };
 
 var sassdoc = require('sassdoc');
