@@ -1,9 +1,6 @@
 # SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)
 
-Like JSDoc, but for Sass files.
-
-Currently only work for `.scss` files.
-Also, inline comments are not parsed (`//`).
+Like JSDoc for your Sass files.
 
 ## Example
 
@@ -47,7 +44,7 @@ $legacy-support: true !global;
 
 ### Preview
 
-![SassDoc](http://i.imgur.com/AGZ6dIK.png)
+![SassDoc](http://i.imgur.com/nQoXn0W.png)
 
 
 ## Installation
@@ -119,48 +116,13 @@ var sassdoc = require('sassdoc');
 sassdoc.documentize(source, dest, config);
 ```
 
-## Documentation
+## Documentating your items
 
-See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documentation).
+See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documenting-your-items).
 
-## Pass extra variables to the view
+## Customising the view
 
-With the `-c` or `--config` flag, you can set the path to a JSON file
-containing variables to be passed to the view so the latter is a little
-more customized than the default documentation.
-
-Default path leads to `view/view.json`. You can update this file or make
-your own.
-
-Allowed variables:
-
-```json
-{
-  "display": {
-    "access": ["public", "private"],
-    "alias": false,
-    "watermark": true
-   },
-
-  "package": "../package.json"
-}
-```
-
-* (`Array`) `display.access`: access levels that should be displayed
-* (`Boolean`) `display.alias`: enable/disable display of alias items
-* (`Boolean`) `display.watermark`: mention to SassDoc in footer (be cool,
-  leave it!)
-* (`String|Object`) `package`: path to a .json file relative to `view.json`
-  (ideally your `package.json`) or directly an object
-
-The package object (either direct or required) should ideally contain:
-
-* `title`: human name of your project
-* `name`: package name of your project (in case `title` is not defined)
-* `version`: your project's version
-* `license`: your project's license
-* `homepage`: URL to your project's homepage
-* `description`: description of your project
+See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Customizing-the-view).
 
 ## Built with SassDoc
 
@@ -173,7 +135,4 @@ The package object (either direct or required) should ideally contain:
 * [Valérian Galliat](https://twitter.com/valeriangalliat)
 * [Fabrice Weinberg](https://twitter.com/fweinb)
 * [Hugo Giraudel](http://twitter.com/HugoGiraudel)
-
-With huge contributions from:
-
 * [Pascal Duez](https://twitter.com/pascalduez)
