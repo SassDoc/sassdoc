@@ -6,6 +6,7 @@ var rimraf = require('rimraf');      // rm -rf
 var ncp    = require('ncp');         // cp -r
 var Q      = require('q');           // Promises
 var path   = require('path');        // Path
+var marked = require('marked');      // Markdown parser
 
 var parser = require('./parser');
 var utils  = require('./utils');
@@ -205,6 +206,12 @@ exports = module.exports = {
           }
 
           obj[key].forEach(function (item) {
+
+            // Save raw description in rawDescription
+            // Parse the descriton as merkedown (as per #115)
+            item.rawDescription = item.description;
+            item.description = marked(item.description);
+
             index[item.context.type + '_' + item.context.name] = item;
             result[key].push(item);
           });
