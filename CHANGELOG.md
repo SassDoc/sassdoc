@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.0
+
+* New design
+* Moved to [Themeleon](https://github.com/valeriangalliat/themeleon) engine for theming
+* Improved the `@requires` annotation to support external vendors, and custom URL
+* Added a search engine to the generated documentation
+
+## 1.0.2
+
+* Fixed an issue with config path resolving to false
+
 ## 1.0.1
 
 * Worked around a npm bug
