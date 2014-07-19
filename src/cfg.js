@@ -46,6 +46,7 @@ function requireConfig(config) {
 /**
  * Resolve and require package value.
  *
+ * @param {string} dir
  * @param {string|object} package
  * @return {object}
  */
@@ -73,19 +74,24 @@ function requirePackage(dir, pkg) {
 /**
  * Resolve and require theme value.
  *
+ * @param {string} dir
  * @param {string} theme
  * @return {function}
  */
-function requireTheme(theme) {
+function requireTheme(dir, theme) {
   if (!theme) {
     theme = 'default';
   }
 
   try {
     return require('sassdoc-theme-' + theme);
-  } catch (e) {
-    return require(theme);
-  }
+  } catch (e) {}
+
+  try {
+    return require(dir + '/' + theme;
+  } catch (e) {}
+
+  return require(theme);
 }
 
 /**
@@ -118,7 +124,7 @@ module.exports = function (config) {
 
   // Resolve theme
   if (typeof config.theme !== 'function') {
-    config.theme = requireTheme(config.theme);
+    config.theme = requireTheme(dir, config.theme);
   }
 
   return config;
