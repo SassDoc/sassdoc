@@ -8,7 +8,7 @@ describe('#author', function(){
   it('should return the trimmed string', function(){
     assert.equal(author('   '), '');
     assert.equal(author('   '), '');
-    assert.equal(author('\ntest\t'), 'test');
-    assert.equal(author('\nte\nst\t'), 'te\nst');
+    assert.equal(author('\ntest\t'), '<p>test</p>\n');
+    assert.equal(author('\nte\nst\t'), '<p>te\nst</p>\n');
   });
 });
