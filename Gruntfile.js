@@ -14,6 +14,7 @@ module.exports = function (grunt) {
     cwd: __dirname,
     scss: 'view/scss',
     css: 'view/assets/css',
+    js: 'view/assets/js',
     tpl: 'view/templates',
     dist: 'examples/dist',
     src: 'src',
@@ -29,7 +30,7 @@ module.exports = function (grunt) {
 
     sass: {
       options: {
-        style: 'expanded'
+        style: 'compressed'
       },
       dist: {
         files: [{
@@ -65,6 +66,10 @@ module.exports = function (grunt) {
       scss: {
         files: ['<%= dirs.scss %>/**/*.scss'],
         tasks: ['sass:dist', 'autoprefixer:dist', 'dumpCSS']
+      },
+      js: {
+        files: ['<%= dirs.js %>/**/*.js'],
+        tasks: ['dumpJS']
       },
       tpl: {
         files: ['<%= dirs.tpl %>/**/*.swig'],
@@ -126,6 +131,20 @@ module.exports = function (grunt) {
     sassdoc.documentize(dirs.scss, dirs.dist, config).then(this.async());
   });
 
+  grunt.registerTask('dumpJS', 'Dump JS to dist', function () {
+    var sdfs = require('./src/file');
+    var chalk = require('chalk');
+
+    var done = this.async();
+    var src = dirs.js;
+    var dest = dirs.dist + '/assets/js';
+
+    sdfs.folder.copy(src, dest)
+      .then(function () {
+        grunt.log.writeln('JS ' + chalk.cyan(src) + ' copied to ' + chalk.cyan(dest) + '.');
+        done();
+      });
+  });
 
   // Make the Sass dist action faster
   // by not requiring a full `compile`.
@@ -139,7 +158,7 @@ module.exports = function (grunt) {
 
     sdfs.folder.copy(src, dest)
       .then(function () {
-        grunt.log.writeln('CSS' + chalk.cyan(src) + 'copied to ' + chalk.cyan(dest) + '.');
+        grunt.log.writeln('CSS ' + chalk.cyan(src) + ' copied to ' + chalk.cyan(dest) + '.');
         done();
       });
   });

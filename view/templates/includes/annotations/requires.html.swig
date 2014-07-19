@@ -1,14 +1,22 @@
 {% set title_displayed = false %}
-{% for require in item.requires %}
+{% for required in item.requires %}
 
-  {% if (display.access.indexOf(require.access[0]) != -1) and not (not display.alias and require.alias[0]) %}
+  {% if (display.access.indexOf(required.item.access[0]) != -1) and not (not display.alias and required.item.alias[0]) or required.external %}
     {% if not title_displayed %}
       {% set title_displayed = true %}
       <h3 class="item__sub-heading">Requires</h3>
       <ul class="list-unstyled">
     {% endif %}
 
-    <li><a href="#{{ require.context.type }}-{{ require.context.name }}"><code>{{ require.context.name }}</code></a></li>
+    {% if required.external %}
+      {% if required.url %}
+        <li><a href="{{ required.url}}"><code>{{ required.name }}</code></a> <div class="item__requires-description">{{ required.description | markdown | nl2br }}</div></li>
+      {% else %}
+        <li>{{ required.name }} <div class="item__requires-description">{{ required.description | markdown  | nl2br }}</div></li>
+      {% endif %}
+    {% else %}
+      <li><a href="#{{ required.item.context.type }}-{{ required.item.context.name }}"><code>{{ required.item.context.name }}</code></a>  <div class="item__requires-description">{{ required.description | markdown | nl2br }}</div></li>
+    {% endif %}
   {% endif %}
 
 {% endfor %}

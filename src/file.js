@@ -267,7 +267,12 @@ exports = module.exports = {
         // Requires
         if (utils.isset(item.requires)) {
           item.requires = item.requires.map(function (req) {
+            if ( req.external === true ) {
+              return req;
+            } // Just return itself
+
             var lookupKey = req.type + '_' + req.name;
+
             if (utils.isset(index[lookupKey])) {
               var reqItem = index[lookupKey];
 
@@ -276,12 +281,31 @@ exports = module.exports = {
               }
 
               reqItem.usedBy.push(item);
-
-              return reqItem;
+              req.item = reqItem;
             }
 
             else {
               logger.log('Item `' + item.context.name + '` requires `' + req.name + '` from type `' + req.type + '` but this item doesn\'t exist.');
+            }
+
+            return req;
+
+          }).filter(function (item) {
+            return typeof item !== 'undefined';
+          });
+        }
+
+        // See
+        if (utils.isset(item.see)) {
+          item.see = item.see.map(function (see) {
+            var lookupKey = see.type + '_' + see.name;
+
+            if (utils.isset(index[lookupKey])) {
+              return index[lookupKey];
+            }
+
+            else {
+              logger.log('Item `' + item.context.name + '` refers to `' + see.name + '` from type `' + see.type + '` but this item doesn\'t exist.');
             }
           }).filter(function (item) {
             return typeof item !== 'undefined';

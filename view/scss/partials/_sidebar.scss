@@ -2,32 +2,13 @@
  * Sidebar
  */
 .sidebar {
-  background: color("dark-grey");
-  padding: 1em 0;
-  position: relative;
-
-  &::after,
-  &::before {
-    @include absolute(top 0 bottom 0 right 100%);
-    content: '';
-    background: color("dark-grey");
-    width: 1em;
-  }
-
-  &::before {
-    left: 100%;
-  }
-
   @include respond-to("medium") {
-    width: 25%;
-    float: left;
-    text-align: right;
-    padding: 2.5em 0;
-
-    &::before,
-    &::after {
-      content: none;
-    }
+    overflow: auto;
+    box-shadow: 1px 0 1.5px rgba(black, .12);
+    @include fixed(top 0 bottom 0 left 0);
+    width: $sidebar-width;
+    z-index: z("default") + 1;
+    border-right: 1px solid color("light-grey");
   }
 }
 
@@ -44,65 +25,28 @@
 .sidebar__body {
   padding: .5em 0;
   margin-bottom: 1em;
-  color: color("light-grey");
-
-  li {
-    background: color("dark-grey");
-    position: relative;
-    padding: .5em 2em .5em .5em;
-    border-top: 1px solid #555;
-    border-bottom: 1px solid #333;
-    transition: .15s;
-
-    &::before {
-      content: '';
-      @include absolute(right 100% top -1px bottom -1px);
-      width: 100em;
-      border: inherit;
-      background: inherit;
-    }
-
-    &:hover {
-      background: lighten(color("dark-grey"), 2.5%);
-    }
-  }
-
-  a {
-    color: color("light-grey");
-    text-decoration: none;
-
-    &:hover {
-      color: color("green");
-    }
-  }
+  font-size: .9em;
 }
 
-/**
- * Sidebar heading
- */
-.sidebar__heading {
-  color: color("light-grey");
-  font-size: 1.2em;
-  margin: 0;
-  padding-right: 1.6em;
-  text-transform: uppercase;
+.sidebar__link {
+  padding: .5em 1em .5em 3em;
+  display: block;
+  text-decoration: none;
+  color: color("dark-grey");
+
+  &:hover {
+    background: color("light-grey");
+  }
 }
 
 /**
  * List item heading
  */
 li.sidebar__sub-heading {
-  background: color("light-grey");
-  position: relative;
-  border-color: color("light-grey");
-
-  &:hover {
-    background: color("light-grey");
-  }
 
   a {
-    color: color("dark-grey");
-    text-transform: uppercase;
+    padding: 1em 0 1em 1.5em;
+    font-weight: bold;
   }
 }
 
@@ -112,4 +56,20 @@ li.sidebar__sub-heading {
 .sidebar__description {
   color: color("light-grey");
   padding-right: 2em;
+}
+
+/**
+ * Sidebar header with title
+ */
+.sidebar__header {
+  border-bottom: 1px solid color("light-grey");
+}
+
+/**
+ * Sidebar main title 
+ */
+.sidebar__title {
+  font-size: 1em;
+  margin: 0;
+  padding: 1.45em;
 }

@@ -16,7 +16,7 @@
  *
  * @access private
  *
- * @requires is-valid-length
+ * @requires {function} is-valid-length
  *
  * @param {String} $position      - Position type (either `absolute`, `fixed` or `relative`)
  * @param {List}   $args     (()) - List of offsets and values
@@ -217,7 +217,7 @@
 }
 
 
-/*
+/**
  * Mixin handling inline-block and vertical-align at once.
  * If no align is specified, then the `vertical-align` property won't be output.
  *
@@ -226,4 +226,23 @@
 @mixin inline-block($align: null) {
   display: inline-block;
   vertical-align: $align;
+}
+
+
+/**
+ * Gives a card depth effect.
+ *
+ * @param {Number} $depth - depth level (between 1 and 5)
+ *
+ * @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
+ * 
+ * @requires {function} clamp
+ * @requires {function} color
+ * @requires {function} top-shadow
+ * @requires {function} bottom-shadow
+ */
+@mixin card($depth) {
+  $depth: clamp($depth, 1, 5);
+  box-shadow: bottom-shadow($depth), top-shadow($depth);
+  border: 1px solid color("light-grey");
 }

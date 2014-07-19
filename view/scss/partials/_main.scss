@@ -2,16 +2,14 @@
  * Main wrapper
  */
 .main {
-  background: color("light-grey");
+  background: color("white");
   position: relative;
-  padding-bottom: 3em;
 
   @include respond-to("medium") {
-    padding-left: 2em;
-    width: 75%;
-    float: right;
-    padding-top: .9em;
-    min-height: 45em;
+    padding-bottom: 7em;
+    width: 100%;
+    min-height: 100%;
+    padding-left: $sidebar-width;
   }
 }
 
@@ -20,13 +18,12 @@
  */
 .main__heading {
   color: color("dark-grey");
-  padding: .5em;
+  padding: 1em .5em;
   margin-top: 0;
-  text-transform: uppercase;
-  border-bottom: .3em solid color("pink");
-  font-size: 2em;
+  font-size: 3em;
+  font-weight: 300;
 
   @include respond-to("medium") {
-    padding: .5em 0;
+    padding: 2em 0 0;
   }
 }

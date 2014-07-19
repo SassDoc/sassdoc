@@ -1,4 +1,4 @@
-<h2 class="item__heading">
+<h3 class="item__heading">
   {% if item.access[0] != "public" %}
     <span class="item__access">[{{ item.access[0] }}]</span>
   {% endif %}
@@ -20,4 +20,4 @@
   {% if item.since %}
     <span class="item__since">Since {{ item.since[0] }}</span>
   {% endif %}
-</h2>
+</h3>

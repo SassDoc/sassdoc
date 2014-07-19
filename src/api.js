@@ -41,7 +41,7 @@ exports = module.exports = {
         logger.log('Process over. Everything okay!');
       })
       .fail(function (err) {
-        console.log(err);
+        console.log(err.stack);
         throw new Error(err);
       });
   },

@@ -12,21 +12,32 @@
 }
 
 /**
+ * Function name
+ */
+.item__heading {
+  color: color("dark-grey");
+  margin: 0 0 .5em 0;
+  position: relative;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+/**
  * Name
  */
 .item__name {
-  color: color("dark-grey")
+  color: color("dark-grey");
 }
-
 
 /**
  * Code blocks
  */
+.item__example,
 .item__code {
-  border-left: .3em solid color("pink");
   word-wrap: break-word;
   margin-top: 1em !important;
   line-height: 1.42;
+  @include card(1);
 }
 
 /**
@@ -76,20 +87,9 @@
 .item__sub-heading {
   color: color("green");
   margin-bottom: .5em;
-  margin-top: 1em;
+  margin-top: 1.5em;
   text-transform: uppercase;
   font-size: 1em;
-}
-
-/**
- * Function name
- */
-.item__heading {
-  color: color("dark-grey");
-  font-size: 2.2em;
-  margin: 0 0 .5em 0;
-  font-weight: normal;
-  position: relative;
 }
 
 /**
@@ -118,8 +118,16 @@
 }
 
 @include respond-to("medium") {
-  tbody > .item__parameter:first-of-type > td {
+  tbody > .item__parameter:first-of-type > * {
     border-top: none;
+  }
+
+  th code {
+    font-weight: normal;
+  }
+
+  th {
+    padding-left: 0 !important;
   }
 
   .item__parameters td,
@@ -149,4 +157,13 @@
   font-size: .5em;
   padding-top: .9em;
   color: darken(color("medium-grey"), 10%);
+}
+
+/**
+ * Require's description
+ */
+.item__requires-description {
+  &, * {
+    display: inline-block;
+  }
 }

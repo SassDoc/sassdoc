@@ -4,12 +4,16 @@
 .footer {
   background: color("light-grey");
   padding: 1em 0;
+  
+  @include respond-to("medium") {
+  	@include absolute(bottom 0 left $sidebar-width right 0);
+  }
 }
 
 /**
  * Project info
  */
-.footer__project-info {
+.footer__project-info { 
   float: left;
 }
 

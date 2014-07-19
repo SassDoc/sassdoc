@@ -5,7 +5,7 @@
   {# No item documented #}
   {% if item_count == 0 %}
     <section class="main__section">
-      <h1 class="main__heading">Seems like nothing has been documented yet!</h1>
+      <h2 class="main__heading">Seems like nothing has been documented yet!</h2>
     </section>
 
   {# Some items documented #}

@@ -1,13 +1,13 @@
 {
   "name": "sassdoc",
-  "description": "Like JSDoc but for Sass files.",
+  "description": "Like JSDoc for your Sass files.",
   "author": "Hugo Giraudel <hugo.giraudel@gmail.com> (http://hugogiraudel.com)",
   "contributors": [
     { "name": "Fabrice Weinberg", "url": "https://twitter.com/fweinb", "email": "fabrice@weinberg.me" },
     { "name": "Valérian Galliat", "url": "https://twitter.com/valeriangalliat" },
     { "name": "Pascal Duez", "url": "https://twitter.com/pascalduez" }
   ],
-  "version": "1.0.2",
+  "version": "1.1.0",
   "license": {
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"

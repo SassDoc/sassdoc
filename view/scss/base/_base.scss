@@ -1,22 +1,23 @@
 /**
  * Univeral box-sizing reset
  */
-* {
-  @include prefixer(box-sizing, border-box, webkit);
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
 }
 
 /**
  * Body rules
  */
 body {
-  font: 1em/1.35 'Ubuntu', 'Helvetica', sans-serif;
+  font: 1em/1.35 'Roboto', 'Helvetica', sans-serif;
   overflow: auto;
   margin: 0;
-  background-color: color("light-grey");
-
-  @include respond-to("medium") {
-    background: linear-gradient(to right, color("dark-grey") 50%, color("light-grey") 50%);
-  }
+  height: 100%;
 }
 
 /**
@@ -85,6 +86,7 @@ a {
 .list-unstyled {
   padding-left: 0;
   list-style: none;
+  line-height: 1.5;
 }
 
 /**
@@ -95,7 +97,7 @@ a {
   max-width: 100%;
   width: 1170px;
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 0 2em;
 }
 
 /**

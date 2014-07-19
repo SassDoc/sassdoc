@@ -1,6 +1,7 @@
 /**
  * Map of colors for quick grabbing.
- * See `_functions.scss` -> `color()` function.
+ *
+ * @see {function} color
  *
  * @type Map
  */
@@ -12,14 +13,17 @@ $colors: (
   
   "green":        #699,
 
-  "light-grey":   #f7f5fa,
+  "light-grey":   #e0e0e0,
   "medium-grey":  #ddd,
-  "dark-grey":    #444
+  "dark-grey":    #444,
+
+  "white":        #f9f9f9
 ) !global;
 
 /**
  * Map of breakpoints for responsive design.
- * See `_functions.scss` -> `respond-to()` function.
+ *
+ * @see {mixin} respond-to
  *
  * @type Map
  */
@@ -31,7 +35,8 @@ $breakpoints: (
 
 /** 
  * Z-indexes layers.
- * See `_functions.scss` -> `z()` function.
+ *
+ * @see {function} z
  * 
  * @type Map
  */
@@ -43,3 +48,11 @@ $z-indexes: (
   "default"       1,
   "below"        -1
 ) !global;
+
+
+/**
+ * Sidebar width
+ *
+ * @type Number
+ */
+$sidebar-width: 280px;
