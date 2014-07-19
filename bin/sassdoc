@@ -15,6 +15,8 @@ Options:
   -v, --verbose         Run in verbose mode.
   -c, --config=<path>   Path to JSON file containing variable to be passed
                         to the view.
+  -t, --theme=<name>    Theme to be required. It will override the
+                        configuration value.
   --no-update-notifier  Do not run the update notifier check.
 */
 
@@ -50,7 +52,13 @@ if (!options['--no-update-notifier']) {
   }
 }
 
+var config = options['--config'] || {};
+
+if (options['--theme']) {
+  config.theme = options['--theme'];
+}
+
 // Set verbose mode
 sassdoc.logger.enabled = options['--verbose'];
 
-sassdoc.documentize(options['<src>'], options['<dest>'], options['--config']);
+sassdoc.documentize(options['<src>'], options['<dest>'], config);
