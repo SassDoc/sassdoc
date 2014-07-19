@@ -88,7 +88,7 @@ function requireTheme(dir, theme) {
   } catch (e) {}
 
   try {
-    return require(dir + '/' + theme;
+    return require(dir + '/' + theme);
   } catch (e) {}
 
   return require(theme);
