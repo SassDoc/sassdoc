@@ -17,6 +17,11 @@ npm install -g sassdoc
 
 See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).
 
+### Gulp
+
+See [gulp-sassdoc](https://github.com/SassDoc/gulp-sassdoc).
+
+
 ## Usage
 
 ### Command line
