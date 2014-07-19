@@ -32,6 +32,7 @@
 /**
  * Code blocks
  */
+.item__example,
 .item__code {
   word-wrap: break-word;
   margin-top: 1em !important;
@@ -152,4 +153,13 @@
   font-size: .5em;
   padding-top: .9em;
   color: darken(color("medium-grey"), 10%);
+}
+
+/**
+ * Require's description
+ */
+.item__requires-description {
+  &, * {
+    display: inline-block;
+  }
 }

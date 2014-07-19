@@ -10,12 +10,12 @@
 
     {% if required.external %}
       {% if required.url %}
-        <li><a href="{{ required.url}}"><code>{{ required.name }}</code></a>  {{ required.description | markdown  | nl2br}}</li>
+        <li><a href="{{ required.url}}"><code>{{ required.name }}</code></a> <div class="item__requires-description">{{ required.description | markdown | nl2br }}</div></li>
       {% else %}
-        <li>{{ required.name }} {{ required.description | markdown  | nl2br}}</li>
+        <li>{{ required.name }} <div class="item__requires-description">{{ required.description | markdown  | nl2br }}</div></li>
       {% endif %}
     {% else %}
-      <li><a href="#{{ required.item.context.type }}-{{ required.item.context.name }}"><code>{{ required.item.context.name }}</code></a>  {{ required.description | markdown | nl2br}}</li>
+      <li><a href="#{{ required.item.context.type }}-{{ required.item.context.name }}"><code>{{ required.item.context.name }}</code></a>  <div class="item__requires-description">{{ required.description | markdown | nl2br }}</div></li>
     {% endif %}
   {% endif %}
 
