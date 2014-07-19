@@ -51,8 +51,13 @@ function requireConfig(config) {
  */
 function requirePackage(dir, pkg) {
   if (!pkg) {
-    logger.log(chalk.yellow('No package information.'));
-    return;
+    try {
+      // Try `package.json` in the same directory
+      return require(dir + '/package.json');
+    } catch (e) {
+      logger.log(chalk.yellow('No package information.'));
+      return;
+    }
   }
 
   var path = dir + '/' + pkg;
