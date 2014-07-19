@@ -7,9 +7,9 @@
   padding-bottom: 7em;
 
   @include respond-to("medium") {
-    @include size(100%);
+    width: 100%;
+    min-height: 100%;
     padding-left: $sidebar-width;
-    float: left;
   }
 }
 
