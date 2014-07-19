@@ -81,7 +81,11 @@ function requireTheme(theme) {
     theme = 'default';
   }
 
-  return require('sassdoc-theme-' + theme);
+  try {
+    return require('sassdoc-theme-' + theme);
+  } catch (e) {
+    return require(theme);
+  }
 }
 
 /**
