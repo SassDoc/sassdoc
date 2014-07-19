@@ -102,7 +102,7 @@ module.exports = function (config) {
     config.package = requirePackage(dir, config.package);
 
     // Parse as markdown (as per #115)
-    if (config.package.description) {
+    if (config.package && config.package.description) {
       config.package.description = marked(config.package.description);
     }
   }
