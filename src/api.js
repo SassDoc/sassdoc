@@ -3,7 +3,6 @@
 var fs     = require('./file');
 var logger = require('./log');
 var cgf    = require('./cfg');
-var theme  = require('sassdoc-theme-default');
 
 exports = module.exports = {
 
@@ -33,7 +32,7 @@ exports = module.exports = {
       .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
         config.data = data;
-        return theme(destination, config);
+        return config.theme(destination, config);
       })
       .then(function () {
         logger.log('Theme successfully rendered.');
