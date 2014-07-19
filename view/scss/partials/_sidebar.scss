@@ -26,16 +26,16 @@
   padding: .5em 0;
   margin-bottom: 1em;
   font-size: .9em;
+}
 
-  a {
-    padding: .5em 1em .5em 3em;
-    display: block;
-    text-decoration: none;
-    color: color("dark-grey");
+.sidebar__link {
+  padding: .5em 1em .5em 3em;
+  display: block;
+  text-decoration: none;
+  color: color("dark-grey");
 
-    &:hover {
-      background: color("light-grey");
-    }
+  &:hover {
+    background: color("light-grey");
   }
 }
 

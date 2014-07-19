@@ -4,13 +4,12 @@
 .main {
   background: color("white");
   position: relative;
-  padding-bottom: 3em;
+  padding-bottom: 7em;
 
   @include respond-to("medium") {
+    @include size(100%);
     padding-left: $sidebar-width;
-    width: 100%;
     float: left;
-    min-height: 45em;
   }
 }
 
