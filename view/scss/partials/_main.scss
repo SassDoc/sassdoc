@@ -4,9 +4,9 @@
 .main {
   background: color("white");
   position: relative;
-  padding-bottom: 7em;
 
   @include respond-to("medium") {
+    padding-bottom: 7em;
     width: 100%;
     min-height: 100%;
     padding-left: $sidebar-width;

@@ -118,8 +118,12 @@
 }
 
 @include respond-to("medium") {
-  tbody > .item__parameter:first-of-type > td {
+  tbody > .item__parameter:first-of-type > * {
     border-top: none;
+  }
+
+  th code {
+    font-weight: normal;
   }
 
   th {

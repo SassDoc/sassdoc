@@ -3,7 +3,7 @@
 
 var search = (function () {
   var getItems = function () {
-    return Array.prototype.slice.call(document.querySelectorAll('.sassdoc__item')).map(function (item) {
+    return Array.prototype.slice.call(document.querySelectorAll('.js-sassdoc__item')).map(function (item) {
       return {
         name: item.dataset.name,
         type: item.dataset.type,

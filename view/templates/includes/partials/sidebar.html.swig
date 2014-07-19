@@ -32,7 +32,7 @@
         {% for item in object %}
 
           {# Display item #}
-          <li class="sidebar__item" data-name="{{item.context.name}}" data-type="{{item.context.type}}">
+          <li class="sidebar__item  js-sassdoc__item" data-name="{{item.context.name}}" data-type="{{item.context.type}}">
             <a class="sidebar__link" href="#{{ item.context.type }}-{{ item.context.name }}">{{ item.context.name }}
             {% if item.access[0] == "private" %}<span class="sidebar__annotation  sidebar__annotation--private">private</span>{% endif %}
             {% if item.alias != false %}<span class="sidebar__annotation  sidebar__annotation--alias">alias</span>{% endif %}
