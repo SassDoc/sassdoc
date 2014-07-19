@@ -27,7 +27,7 @@ function resolveConfig(config) {
  * @return {object}
  */
 function requireConfig(config) {
-  if (typeof config === 'undefined') {
+  if (!config) {
     // Default value
     config = 'view.json';
   }
@@ -35,10 +35,10 @@ function requireConfig(config) {
   config = resolveConfig(config);
 
   try {
-    config = require(config);
+    return require(config);
   } catch (e) {
     // Require default config file at SassDoc's level
-    config = require('../view.json');
+    return require('../view.json');
   }
 }
 
@@ -48,13 +48,13 @@ function requireConfig(config) {
  * @param {string|object} package
  * @return {object}
  */
-function requirePackage(dir, package) {
-  if (typeof package === 'undefined') {
+function requirePackage(dir, pkg) {
+  if (!pkg) {
     logger.log(chalk.yellow('No package information.'));
     return;
   }
 
-  var path = dir + '/' + package;
+  var path = dir + '/' + pkg;
 
   try {
     return require(path);
@@ -71,11 +71,11 @@ function requirePackage(dir, package) {
  * @return {function}
  */
 function requireTheme(theme) {
-  if (typeof theme === 'undefined') {
+  if (!theme) {
     theme = 'default';
   }
 
-  return require('sassdoc-theme-' + theme;
+  return require('sassdoc-theme-' + theme);
 }
 
 /**
