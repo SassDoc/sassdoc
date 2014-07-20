@@ -2,7 +2,6 @@
 
 var logger = require('./log');
 var path = require('path');
-var chalk = require('chalk');
 var marked = require('marked');
 
 /**
@@ -78,10 +77,11 @@ function requirePackage(dir, pkg) {
  */
 function inspectTheme(theme) {
   var opt = Object.prototype.toString;
+  var message; // Error message helper variable
 
   if (typeof theme !== 'function') {
-    var message = 'Given theme is ' + opt.call(theme) + ', expected ' +
-                  opt.call(inspectTheme) + '.';
+    message = 'Given theme is ' + opt.call(theme) + ', expected ' +
+              opt.call(inspectTheme) + '.';
 
     logger.error(message);
 
@@ -89,8 +89,8 @@ function inspectTheme(theme) {
   }
 
   if (theme.length !== 2) {
-    var message = 'Given theme takes ' + theme.length + ' arguments, ' +
-                  'expected 2.';
+    message = 'Given theme takes ' + theme.length + ' arguments, ' +
+              'expected 2.';
 
     logger.warn(message);
   }
@@ -120,6 +120,9 @@ function requireRawTheme(dir, theme) {
 
   return require(theme);
 }
+
+// JSHint sometimes needs a little bit of shut the fuck up ;(
+var requireTheme;
 
 /**
  * Fallback to default theme, logging a message.
