@@ -32,15 +32,23 @@ exports = module.exports = {
       .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
         config.data = data;
-        return config.theme(destination, config);
+
+        var promise = config.theme(destination, config);
+
+        if (promise && typeof promise.then === 'function') {
+          return promise;
+        }
+
+        throw 'Theme didn\'t return a promise, got ' +
+              Object.prototype.toString.call(promise) + '.';
       })
       .then(function () {
         logger.log('Theme successfully rendered.');
         logger.log('Process over. Everything okay!');
       })
       .fail(function (err) {
-        console.log(err.stack);
-        throw new Error(err);
+        logger.error(err);
+        throw err;
       });
   },
 

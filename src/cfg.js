@@ -2,7 +2,6 @@
 
 var logger = require('./log');
 var path = require('path');
-var chalk = require('chalk');
 var marked = require('marked');
 
 /**
@@ -56,7 +55,7 @@ function requirePackage(dir, pkg) {
       // Try `package.json` in the same directory
       return require(dir + '/package.json');
     } catch (e) {
-      logger.log(chalk.yellow('No package information.'));
+      logger.warn('No package information.');
       return;
     }
   }
@@ -67,8 +66,36 @@ function requirePackage(dir, pkg) {
     return require(path);
   } catch (e) {
     var message = 'Can\'t find a package file at `' + path + '`.';
-    logger.log(chalk.yellow(message));
+    logger.warn(message);
   }
+}
+
+/**
+ * @param {*} theme
+ * @return {function}
+ * @throws If the theme is not a function.
+ */
+function inspectTheme(theme) {
+  var opt = Object.prototype.toString;
+  var message; // Error message helper variable
+
+  if (typeof theme !== 'function') {
+    message = 'Given theme is ' + opt.call(theme) + ', expected ' +
+              opt.call(inspectTheme) + '.';
+
+    logger.error(message);
+
+    throw message;
+  }
+
+  if (theme.length !== 2) {
+    message = 'Given theme takes ' + theme.length + ' arguments, ' +
+              'expected 2.';
+
+    logger.warn(message);
+  }
+
+  return theme;
 }
 
 /**
@@ -76,9 +103,9 @@ function requirePackage(dir, pkg) {
  *
  * @param {string} dir
  * @param {string} theme
- * @return {function}
+ * @return {*}
  */
-function requireTheme(dir, theme) {
+function requireRawTheme(dir, theme) {
   if (!theme) {
     theme = 'default';
   }
@@ -94,6 +121,42 @@ function requireTheme(dir, theme) {
   return require(theme);
 }
 
+// JSHint sometimes needs a little bit of shut the fuck up ;(
+var requireTheme;
+
+/**
+ * Fallback to default theme, logging a message.
+ *
+ * @param {string} dir
+ */
+function defaultTheme(dir) {
+  logger.warn('Falling back to default theme.');
+  return requireTheme(dir);
+}
+
+/**
+ * Resolve require and validate theme value.
+ *
+ * @param {string} dir
+ * @param {string} theme
+ * @return {function}
+ */
+function requireTheme(dir, theme) {
+  try {
+    theme = requireRawTheme(dir, theme);
+  } catch (e) {
+    logger.error('Theme `' + (theme || 'default') + '` not found.');
+    return defaultTheme(dir);
+  }
+
+  try {
+    // Already logs any error
+    return inspectTheme(theme);
+  } catch (e) {
+    return defaultTheme(dir);
+  }
+}
+
 /**
  * Parse configuration.
  *
@@ -105,7 +168,7 @@ module.exports = function (config) {
   var dir;
 
   if (typeof config !== 'object') {
-    dir = path.dirname(config);
+    dir = path.resolve(path.dirname(config));
     config = requireConfig(config);
   } else {
     // `package` is relative to CWD
