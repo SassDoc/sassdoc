@@ -1,16 +1,20 @@
 # Changelog
 
+## 1.1.1
+
+* Fixed a small issue with display path, sometimes adding an extra slash ([#68](https://github.com/SassDoc/sassdoc/issues/68))
+
 ## 1.1.0
 
 * New design
-* Improved the `@requires` annotation to support external vendors, and custom URL
-* Added a search engine to the generated documentation
-* Fixed an issue with `@link` not working correctly
+* Improved the `@requires` annotation to support external vendors, and custom URL ([#61](https://github.com/SassDoc/sassdoc/issues/61))
+* Added a search engine to the generated documentation ([#46](https://github.com/SassDoc/sassdoc/issues/46))
+* Fixed an issue with `@link` not working correctly ([#108](https://github.com/SassDoc/sassdoc/issues/108))
 * Added `examples` to `.gitignore`
 
 ## 1.0.2
 
-* Fixed an issue with config path resolving to false
+* Fixed an issue with config path resolving to false ([#68](https://github.com/SassDoc/sassdoc/issues/68))
 
 ## 1.0.1
 

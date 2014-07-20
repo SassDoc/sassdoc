@@ -1,5 +1,7 @@
 'use strict';
 
+var path = require('path');
+
 exports = module.exports = {
 
   /**
@@ -8,7 +10,7 @@ exports = module.exports = {
    * @return {string}            extension
    */
   getExtension: function (filename) {
-    return filename.split('.').pop().toLowerCase();
+    return path.extname(filename).substr(1);
   },
 
   /**
@@ -18,7 +20,7 @@ exports = module.exports = {
    * @return {string}            display path
    */
   getDisplayPath: function (filePath, baseDir) {
-    return filePath.substr(filePath.indexOf(baseDir));
+    return path.join(baseDir, filePath);
   },
 
   /**
@@ -46,15 +48,6 @@ exports = module.exports = {
    */
   pad: function (value) {
     return (value < 10 ? '0' : '') + value;
-  },
-
-  /**
-   * Remove leading comment symbols from a line
-   * @param  {string} line - line to be purged
-   * @return {string}        new line
-   */
-  uncomment: function (line) {
-    return line.trim().replace(/^\/{2,}/i, '').replace(/^\/?\*+\/?/i, '').trim();
   },
 
   /**
