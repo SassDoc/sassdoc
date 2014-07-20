@@ -89,7 +89,7 @@ exports = module.exports = {
    * @param {...*}
    */
   warn: function () {
-    console.log(chalk.yellow(flog('WARNING', arguments)));
+    console.warn(chalk.yellow(flog('WARNING', arguments)));
   },
 
   /**
