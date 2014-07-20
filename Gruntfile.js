@@ -12,7 +12,7 @@ module.exports = function (grunt) {
   // Project specific paths.
   var dirs = {
     cwd: __dirname,
-    scss: 'view/scss',
+    scss: 'node_modules/sassdoc-theme-default/node_modules/sassdoc-theme-light/scss',
     css: 'view/assets/css',
     js: 'view/assets/js',
     tpl: 'view/templates',
