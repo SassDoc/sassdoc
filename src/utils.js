@@ -1,5 +1,8 @@
 'use strict';
 
+var namespaceDelimiters = ['::', ':', '\\.', '/'];
+var namespaceDelimitersRegExp = new RegExp(namespaceDelimiters.join('|'), 'g');
+
 exports = module.exports = {
 
   /**
@@ -64,5 +67,14 @@ exports = module.exports = {
    */
   isset: function (value) {
     return typeof value !== 'undefined';
+  },
+
+  /**
+   * Split a string on possible namespace delimiters
+   * @param {String} value - value to split
+   * @return {Array}
+   */
+  splitNamespace: function (value) {
+    return value.split(namespaceDelimitersRegExp);
   }
 };

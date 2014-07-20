@@ -1,10 +1,7 @@
 'use strict';
 
 var reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
-
-function isExternal(name){
-  return name.indexOf('/') > -1 || name.indexOf(':') > -1 || name.indexOf('.') > -1;
-}
+var utils = require('../../utils');
 
 module.exports = function (text) {
   var match = reqRegEx.exec(text.trim());
@@ -14,7 +11,7 @@ module.exports = function (text) {
     name : match[2]
   };
 
-  obj.external = isExternal(obj.name);
+  obj.external = utils.splitNamespace(obj.name).length > 1;
 
   if (obj.name.indexOf('$') === 0){
     obj.type = 'variable';
