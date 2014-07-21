@@ -30,6 +30,7 @@ exports = module.exports = {
         return fs.getData(source);
       })
       .then(function (data) {
+        console.log(data);
         logger.log('Folder `' + source + '` successfully parsed.');
         config.data = data;
         return config.theme(destination, config);
