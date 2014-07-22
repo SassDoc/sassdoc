@@ -3,8 +3,16 @@
 ## 1.2.0
 
 * Improved the way `@since` is parsed ([#128](https://github.com/SassDoc/sassdoc/issues/128))
-* Moved theming to [Themeleon]() ([#69](https://github.com/SassDoc/sassdoc/issues/69))
+* Moved theming to [Themeleon](https://github.com/themeleon/themeleon) ([#69](https://github.com/SassDoc/sassdoc/issues/69))
 * Added a *view source* feature
+
+## 1.1.3
+
+* Removed a duplicated `deprecated` flag in the view
+
+## 1.1.2
+
+* Fixed a bug with relative path to `package.json` file
 
 ## 1.1.1
 
