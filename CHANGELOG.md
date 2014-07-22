@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.3
+
+* Removed a duplicated `deprecated` flag in the view
+
 ## 1.1.2
 
 * Fixed a bug with relative path to `package.json` file

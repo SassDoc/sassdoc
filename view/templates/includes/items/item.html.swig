@@ -24,8 +24,6 @@
 
 {% if not item.alias %}
 
-  {% include '../annotations/deprecated.html.swig' %}
-  
   {% include '../annotations/description.html.swig' %}
 
   {% include '../annotations/parameters.html.swig' %}
