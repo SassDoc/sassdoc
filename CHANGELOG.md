@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2
+
+* Fixed a bug with relative path to `package.json` file
+
 ## 1.1.1
 
 * Fixed a small issue with display path, sometimes adding an extra slash ([#68](https://github.com/SassDoc/sassdoc/issues/68))
@@ -25,7 +29,7 @@
 * Fixed an issue with a missing dependency
 * Prevented a weird bug with require
 * Updated readme
-* Improved styles 
+* Improved styles
 
 ## 1.0.0-rc.19
 

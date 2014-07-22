@@ -33,7 +33,7 @@ module.exports = function (config) {
 
   if (typeof config !== 'object') {
     // `package` is relative to config file
-    dir = path.dirname(config);
+    dir = path.resolve(path.dirname(config));
     config = requireConfig(config);
   } else {
     // `package` is relative to CWD
