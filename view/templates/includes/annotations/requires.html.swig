@@ -12,7 +12,7 @@
       {% if required.url %}
         <li><a href="{{ required.url}}"><code>{{ required.name }}</code></a> <div class="item__requires-description">{{ required.description | markdown | nl2br }}</div></li>
       {% else %}
-        <li>{{ required.name }} <div class="item__requires-description">{{ required.description | markdown  | nl2br }}</div></li>
+        <li><code>{{ required.name }}</code> <div class="item__requires-description">{{ required.description | markdown  | nl2br }}</div></li>
       {% endif %}
     {% else %}
       <li><a href="#{{ required.item.context.type }}-{{ required.item.context.name }}"><code>{{ required.item.context.name }}</code></a>  <div class="item__requires-description">{{ required.description | markdown | nl2br }}</div></li>
