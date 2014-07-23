@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.4
+
+* Fixed some visual issues with `@requires` ([#132](https://github.com/SassDoc/sassdoc/pull/132))
+
 ## 1.1.3
 
 * Removed a duplicated `deprecated` flag in the view
