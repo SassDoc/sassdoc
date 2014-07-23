@@ -206,7 +206,7 @@ exports = module.exports = {
             item.access = item.access || ['public'];
 
             // Add in default group
-            item.group = item.group || 'ungrouped';
+            item.group = item.group || ['ungrouped'];
 
             // Save raw description in rawDescription
             item.rawDescription = item.description;
@@ -295,24 +295,31 @@ exports = module.exports = {
         }
       });
 
-      var indexByType = _.groupBy(flat, function(item){
+      var groupByType = function(item){
         return item.context.type;
+      };
+
+      var byType = _.groupBy(flat, groupByType);
+
+      var byGroupAndType = _.mapValues(_.groupBy(flat, function(item){
+        return item.group[0]; // Just one layer for now.
+      }), function(items){
+        return _.groupBy(items, groupByType);
       });
 
-      var indexByGroup = _.groupBy(flat, function(item){
-        return item.group[0]; // Just one layer for now.
-      });
 
       var groups = _.uniq(_.map(flat, function(item){
         return item.group;
-      }));
+      })).sort(function(a, b){
+         if(a < b) { return -1; }
+         if(a > b) { return 1; }
+         return 0;
+      });
 
       return {
-        flat            : flat,
-        indexByTypeName : indexByTypeName,
-        indexByType     : indexByType,
-        indexByGroup    : indexByGroup,
-        groups          : groups
+        groups          : groups,
+        byType          : byType,
+        byGroupAndType  : byGroupAndType
       };
 
     });
