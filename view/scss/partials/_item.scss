@@ -166,4 +166,9 @@
   &, * {
     display: inline-block;
   }
+  p {
+    vertical-align: sub;
+    margin: 0;
+    padding 0 4px;
+  }
 }
