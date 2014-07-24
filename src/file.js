@@ -7,6 +7,7 @@ var ncp    = require('ncp');         // cp -r
 var Q      = require('q');           // Promises
 var path   = require('path');        // Path
 var marked = require('marked');      // Markdown parser
+var _      = require('lodash');      // Lo-Dash
 
 var parser = require('./parser');
 var utils  = require('./utils');
@@ -190,54 +191,53 @@ exports = module.exports = {
     return exports.folder.parse(folder).then(function (response) {
       response = response || [];
 
-      var key;
-      var itemCount = 0;
-      var result = {};
-      var index = {};
+      var indexByTypeName = {};
+      var flat = [];
 
-      response.forEach(function (obj) {
-        Object.keys(obj).forEach(function (key) {
-          if (key === 'unknown') { // ignore
-            return;
-          }
+      response.forEach(function(obj){
+        Object.keys(obj).forEach(function(type){
+          // Ignore unkown context
+          if ( type === 'unknown') { return; }
 
-          if (typeof result[key] === 'undefined') {
-            result[key] = [];
-          }
+          // Iterate over all items for this type
+          obj[type].forEach(function(item){
 
-          obj[key].forEach(function (item) {
+            // Add in default access
+            item.access = item.access || ['public'];
+
+            // Add in default group
+            item.group = item.group || ['ungrouped'];
 
             // Save raw description in rawDescription
-            // Parse the descriton as merkedown (as per #115)
             item.rawDescription = item.description;
+
+            // Parse the description as merkedown (as per #115)
             item.description = marked(item.description);
 
-            index[item.context.type + '_' + item.context.name] = item;
-            result[key].push(item);
+            // Build up an like `mixin_name`
+            indexByTypeName[item.context.type + '_' + item.context.name] = item;
+
+            flat.push(item);
           });
         });
       });
 
 
       // Resovle alias and requires
-      Object.keys(index).forEach(function (key) {
-        var item = index[key];
-
-        if (!utils.isset(item.access)) {
-          item.access = ['public'];
-        }
+      Object.keys(indexByTypeName).forEach(function (key) {
+        var item = indexByTypeName[key];
 
         // Alias
         if (utils.isset(item.alias)) {
           item.alias.forEach(function (alias) {
             var lookupKey = item.context.type + '_' + alias; // Alias has to be from same type
-            if (utils.isset(index[lookupKey])) {
+            if (utils.isset(indexByTypeName[lookupKey])) {
 
-              if (!Array.isArray(index[lookupKey].aliased)) {
-                index[lookupKey].aliased = [];
+              if (!Array.isArray(indexByTypeName[lookupKey].aliased)) {
+                indexByTypeName[lookupKey].aliased = [];
               }
 
-              index[lookupKey].aliased.push(item.context.name);
+              indexByTypeName[lookupKey].aliased.push(item.context.name);
             }
 
             else {
@@ -255,8 +255,8 @@ exports = module.exports = {
 
             var lookupKey = req.type + '_' + req.name;
 
-            if (utils.isset(index[lookupKey])) {
-              var reqItem = index[lookupKey];
+            if (utils.isset(indexByTypeName[lookupKey])) {
+              var reqItem = indexByTypeName[lookupKey];
 
               if (!Array.isArray(reqItem.usedBy)) {
                 reqItem.usedBy = [];
@@ -282,8 +282,8 @@ exports = module.exports = {
           item.see = item.see.map(function (see) {
             var lookupKey = see.type + '_' + see.name;
 
-            if (utils.isset(index[lookupKey])) {
-              return index[lookupKey];
+            if (utils.isset(indexByTypeName[lookupKey])) {
+              return indexByTypeName[lookupKey];
             }
 
             else {
@@ -295,14 +295,33 @@ exports = module.exports = {
         }
       });
 
-      // Item count
-      for (key in result) {
-        itemCount += result[key].length;
-      }
+      var groupByType = function(item){
+        return item.context.type;
+      };
 
-      logger.log(itemCount + ' item' + (itemCount > 1 ? 's' : '') + ' documented.');
+      var byType = _.groupBy(flat, groupByType);
 
-      return result;
+      var byGroupAndType = _.mapValues(_.groupBy(flat, function(item){
+        return item.group[0]; // Just one layer for now.
+      }), function(items){
+        return _.groupBy(items, groupByType);
+      });
+
+
+      var groups = _.uniq(_.map(flat, function(item){
+        return item.group;
+      })).sort(function(a, b){
+         if(a < b) { return -1; }
+         if(a > b) { return 1; }
+         return 0;
+      });
+
+      return {
+        groups          : groups,
+        byType          : byType,
+        byGroupAndType  : byGroupAndType
+      };
+
     });
   }
 };
