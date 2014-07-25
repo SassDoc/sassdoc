@@ -69,7 +69,7 @@ exports = module.exports = {
         logger.log('Process over. Everything okay!');
       })
       .fail(function (err) {
-        logger.error(err);
+        logger.error('stack' in err ? err.stack : err);
         throw err;
       });
   },
