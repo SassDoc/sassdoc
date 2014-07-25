@@ -194,13 +194,13 @@ exports = module.exports = {
       var indexByTypeName = {};
       var flat = [];
 
-      response.forEach(function(obj){
-        Object.keys(obj).forEach(function(type){
+      response.forEach(function (obj) {
+        Object.keys(obj).forEach(function (type) {
           // Ignore unkown context
-          if ( type === 'unknown') { return; }
+          if (type === 'unknown') { return; }
 
           // Iterate over all items for this type
-          obj[type].forEach(function(item){
+          obj[type].forEach(function (item) {
 
             // Add in default access
             item.access = item.access || ['public'];
@@ -273,7 +273,7 @@ exports = module.exports = {
             return req;
 
           }).filter(function (item) {
-            return typeof item !== 'undefined';
+            return utils.isset(item);
           });
         }
 
@@ -290,30 +290,34 @@ exports = module.exports = {
               logger.log('Item `' + item.context.name + '` refers to `' + see.name + '` from type `' + see.type + '` but this item doesn\'t exist.');
             }
           }).filter(function (item) {
-            return typeof item !== 'undefined';
+            return utils.isset(item);
           });
         }
       });
 
-      var groupByType = function(item){
+      var groupByType = function (item) {
         return item.context.type;
       };
 
       var byType = _.groupBy(flat, groupByType);
 
-      var byGroupAndType = _.mapValues(_.groupBy(flat, function(item){
+      var byGroupAndType = _.mapValues(_.groupBy(flat, function (item) {
         return item.group[0]; // Just one layer for now.
-      }), function(items){
+      }), function (items) {
         return _.groupBy(items, groupByType);
       });
 
 
-      var groups = _.uniq(_.map(flat, function(item){
+      var groups = _.uniq(_.map(flat, function (item) {
         return item.group;
-      })).sort(function(a, b){
-         if(a < b) { return -1; }
-         if(a > b) { return 1; }
-         return 0;
+      })).sort(function (a, b) {
+          if(a < b) {
+            return -1;
+          }
+          if(a > b) {
+            return 1;
+          }
+          return 0;
       });
 
       return {
