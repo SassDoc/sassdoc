@@ -160,24 +160,29 @@ function requireTheme(dir, theme) {
 /**
  * Parse configuration.
  *
- * @param {string|object} config
+ * @param {string|object} view
  * @return {object}
  */
-module.exports = function (config) {
+module.exports = function (view) {
   // Relative directory for `package` file
   var dir;
+  var config = {};
 
-  if (typeof config !== 'object') {
+  if (typeof view !== 'object') {
     dir = path.resolve(path.dirname(config));
-    config = requireConfig(config);
+    view = requireConfig(view);
   } else {
     // `package` is relative to CWD
     dir = process.cwd();
   }
 
+  config.view = view;
+
   // Resolve package
-  if (typeof config.package !== 'object') {
-    config.package = requirePackage(dir, config.package);
+  if (typeof view.package === 'object') {
+    config.package = view.package;
+  } else {
+    config.package = requirePackage(dir, view.package);
 
     // Parse as markdown (as per #115)
     if (config.package && config.package.description) {
@@ -186,8 +191,10 @@ module.exports = function (config) {
   }
 
   // Resolve theme
-  if (typeof config.theme !== 'function') {
-    config.theme = requireTheme(dir, config.theme);
+  if (typeof view.theme === 'function') {
+    config.theme = view.theme;
+  } else {
+    config.theme = requireTheme(dir, view.theme);
   }
 
   return config;
