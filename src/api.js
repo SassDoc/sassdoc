@@ -32,8 +32,14 @@ exports = module.exports = {
       .then(function (data) {
         var group, i;
         var count = 0;
+
         var shouldBeDisplayed = function (item) {
-          return (config.display.access.indexOf(item.access[0]) !== -1) && !(!config.display.alias && item.alias);
+          var displayItemAccess = config.display.access.indexOf(item.access[0]) !== -1;
+          var isAlias = item.alias;
+          var displayAlias = config.display.alias;
+
+          // TODO: simplify second part of expression
+          return displayItemAccess && !(isAlias && !displayAlias);
         };
 
         // Adding a `display` key to each item
