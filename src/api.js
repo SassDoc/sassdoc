@@ -30,34 +30,6 @@ exports = module.exports = {
         return fs.getData(source);
       })
       .then(function (data) {
-        var group, i;
-        var count = 0;
-
-        var shouldBeDisplayed = function (item) {
-          var displayItemAccess = config.display.access.indexOf(item.access[0]) !== -1;
-          var isAlias = item.alias;
-          var displayAlias = config.display.alias;
-
-          // TODO: simplify second part of expression
-          return displayItemAccess && !(isAlias && !displayAlias);
-        };
-
-        // Adding a `display` key to each item
-        for (group in data) {
-          for (i = 0; i < data[group].length; i++) {
-            data[group][i].display = shouldBeDisplayed(data[group][i]);
-
-            if (data[group][i].display === true) {
-              count++;
-            }
-          }
-        }
-
-        config.dataCount = count;
-
-        return data;
-      })
-      .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
         config.data = data;
 
