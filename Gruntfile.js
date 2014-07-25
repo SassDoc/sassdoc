@@ -1,5 +1,30 @@
 'use strict';
 
+var path = require('path');
+var chalk = require('chalk');
+var sassdoc = require('./src/api');
+var sdfs = require('./src/file');
+
+// Set development theme.
+var themePath = 'node_modules/sassdoc-theme-default/node_modules/sassdoc-theme-light';
+
+// Theme path helper.
+var theme = function () {
+  var args = Array.prototype.slice.call(arguments);
+  args.unshift(themePath);
+  return path.join.apply(path, args);
+};
+
+// Project specific paths.
+var dirs = {
+  scss: theme('scss'),
+  css: theme('assets/css'),
+  js: theme('assets/js'),
+  tpl: theme('views'),
+  develop: 'develop',
+  src: 'src',
+  test: 'src/annotation/annotations/test'
+};
 
 module.exports = function (grunt) {
 
@@ -8,18 +33,6 @@ module.exports = function (grunt) {
 
   // Time how long tasks take.
   require('time-grunt')(grunt);
-
-  // Project specific paths.
-  var dirs = {
-    cwd: __dirname,
-    scss: 'node_modules/sassdoc-theme-default/node_modules/sassdoc-theme-light/scss',
-    css: 'view/assets/css',
-    js: 'view/assets/js',
-    tpl: 'view/templates',
-    dist: 'examples/dist',
-    src: 'src',
-    test: 'src/annotation/annotations/test'
-  };
 
   grunt.initConfig({
 
@@ -32,7 +45,7 @@ module.exports = function (grunt) {
       options: {
         style: 'compressed'
       },
-      dist: {
+      develop: {
         files: [{
           expand: true,
           cwd: '<%= dirs.scss %>',
@@ -65,7 +78,7 @@ module.exports = function (grunt) {
     watch: {
       scss: {
         files: ['<%= dirs.scss %>/**/*.scss'],
-        tasks: ['sass:dist', 'autoprefixer:dist', 'dumpCSS']
+        tasks: ['sass:develop', 'autoprefixer:develop', 'dumpCSS']
       },
       js: {
         files: ['<%= dirs.js %>/**/*.js'],
@@ -78,18 +91,18 @@ module.exports = function (grunt) {
     },
 
     browserSync: {
-      dist: {
+      develop: {
         bsFiles: {
           src: [
-            '<%= dirs.dist %>/*.html',
-            '<%= dirs.dist %>/**/*.css',
-            '<%= dirs.dist %>/**/*.js'
+            '<%= dirs.develop %>/*.html',
+            '<%= dirs.develop %>/**/*.css',
+            '<%= dirs.develop %>/**/*.js'
           ]
         },
         options: {
           watchTask: true,
           server: {
-            baseDir: '<%= dirs.dist %>'
+            baseDir: '<%= dirs.develop %>'
           }
         }
       }
@@ -99,7 +112,7 @@ module.exports = function (grunt) {
       options: {
         browsers: ['last 2 version', '> 1%', 'ie 9']
       },
-      dist: {
+      develop: {
         files: [{
           expand: true,
           cwd: '<%= dirs.css %>',
@@ -112,10 +125,11 @@ module.exports = function (grunt) {
   });
 
 
-  // A custom task to compile through SassDoc cli.
+  // A custom task to compile through SassDoc API.
   grunt.registerTask('compile', 'Generates documentation', function () {
-    var sassdoc = require('./src/api');
+    var done = this.async();
 
+    // Use this to override the theme default config.
     var config = {
       display: {
         access: ['public', 'private'],
@@ -123,21 +137,25 @@ module.exports = function (grunt) {
         watermark: true
       },
 
-      package: './package.json'
+      package: theme('package.json'),
+      theme: 'sassdoc-theme-default'
     };
 
-    sassdoc.logger.enabled = true; // verbose
+    // Enable verbose.
+    sassdoc.logger.enabled = true;
 
-    sassdoc.documentize(dirs.scss, dirs.dist, config).then(this.async());
+    sassdoc
+      .documentize(dirs.scss, dirs.develop, config)
+      .then(done);
   });
 
-  grunt.registerTask('dumpJS', 'Dump JS to dist', function () {
-    var sdfs = require('./src/file');
-    var chalk = require('chalk');
 
+  // Dump js files from theme into `develop` whenever they get modified.
+  // Prevent requiring a full `compile`.
+  grunt.registerTask('dumpJS', 'Dump JS to develop', function () {
     var done = this.async();
     var src = dirs.js;
-    var dest = dirs.dist + '/assets/js';
+    var dest = path.join(dirs.develop, 'assets/js');
 
     sdfs.folder.copy(src, dest)
       .then(function () {
@@ -146,15 +164,13 @@ module.exports = function (grunt) {
       });
   });
 
-  // Make the Sass dist action faster
-  // by not requiring a full `compile`.
-  grunt.registerTask('dumpCSS', 'Dump CSS to dist', function () {
-    var sdfs = require('./src/file');
-    var chalk = require('chalk');
 
+  // Dump CSS files from theme into `develop` whenever they get modified.
+  // Prevent requiring a full `compile`.
+  grunt.registerTask('dumpCSS', 'Dump CSS to develop', function () {
     var done = this.async();
     var src = dirs.css;
-    var dest = dirs.dist + '/assets/css';
+    var dest = path.join(dirs.develop, 'assets/css');
 
     sdfs.folder.copy(src, dest)
       .then(function () {
@@ -164,23 +180,19 @@ module.exports = function (grunt) {
   });
 
 
-  // While working on the view/examples.
-  grunt.registerTask('dist', [
-    'browserSync:dist',
+  // Development task.
+  // While working on a theme.
+  grunt.registerTask('develop', [
+    'browserSync:develop',
     'watch'
   ]);
 
 
+  // Linting and unit tests task.
   // Before push and for travis.
   grunt.registerTask('test', [
     'jshint:all',
     'mochaTest'
-  ]);
-
-
-  // All together.
-  grunt.registerTask('default', [
-    // @todo: define needs.
   ]);
 
 };
