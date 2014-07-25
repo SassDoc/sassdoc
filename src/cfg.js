@@ -37,8 +37,8 @@ function requireConfig(config) {
   try {
     return require(config);
   } catch (e) {
-    // Require default config file at SassDoc's level
-    return require('../view.json');
+    // Empty view config, maybe the theme will set default values
+    return {};
   }
 }
 
