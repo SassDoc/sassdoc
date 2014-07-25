@@ -48,7 +48,7 @@ exports = module.exports = {
         }
 
         config.dataCount = count;
-        
+
         return data;
       })
       .then(function (data) {
