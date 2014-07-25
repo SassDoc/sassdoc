@@ -44,10 +44,12 @@ if (!options['--no-update-notifier']) {
   });
 
   if (notifier.update) {
+    var update = notifier.update;
+
     var message = 'Update available: ' + chalk.yellow(update.latest) + ' ' +
                   chalk.gray(' (current: ' + update.current + ')') + '\n' +
-                  'Run ' + chalk.blue('npm update -g ' + pkg.name) +
-                  'to update.';
+                  'Run ' + chalk.blue('npm update -g ' + pkg.name) + ' ' +
+                  'to update.\n';
 
     console.log(message);
   }
