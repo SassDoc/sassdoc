@@ -1,5 +1,10 @@
 'use strict';
 
-module.exports = function (text) {
-  return text.trim();
+module.exports = {
+  parse : function (text) {
+    return text.trim();
+  },
+  default : function(){
+    return 'public';
+  }
 };

@@ -7,6 +7,6 @@ describe('#see', function () {
   var requires = require('../../src/annotation').see;
 
   it('should default to function', function () {
-    assert.deepEqual(requires('name'), { type: 'function', name: 'name' });
+    assert.deepEqual(requires.parse('name'), { type: 'function', name: 'name' });
   });
 });

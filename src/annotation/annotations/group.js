@@ -1,4 +1,9 @@
 'use strict';
-module.exports = function (text) {
-  return [text.trim().toLowerCase()];
+module.exports = {
+  parse : function (text) {
+    return [text.trim().toLowerCase()];
+  },
+  default : function() {
+    return 'ungrouped';
+  }
 };
