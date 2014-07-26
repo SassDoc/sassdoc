@@ -3,10 +3,10 @@
 
 var assert = require('assert');
 
+describe('#throws', function () {
+  var todos = require('../../src/annotation').todos;
 
-describe('#throws', function(){
-  var todos  = require('../todos.js');
-  it('should return the trimmed string', function(){
+  it('should return the trimmed string', function () {
     assert.equal(todos('   '), '');
     assert.equal(todos('   '), '');
     assert.equal(todos('\ntest\t'), '<p>test</p>\n');

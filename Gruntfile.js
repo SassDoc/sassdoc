@@ -23,7 +23,7 @@ var dirs = {
   tpl: theme('views'),
   develop: 'develop',
   src: 'src',
-  test: 'src/annotation/annotations/test'
+  test: 'test'
 };
 
 module.exports = function (grunt) {
@@ -61,7 +61,7 @@ module.exports = function (grunt) {
         options: {
           reporter: 'spec'
         },
-        src: ['<%= dirs.test %>/*.js']
+        src: ['<%= dirs.test %>/**/*.js']
       }
     },
 
