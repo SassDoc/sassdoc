@@ -1,6 +1,8 @@
 'use strict';
 var marked = require('marked');
 
-module.exports = function (text) {
-  return marked(text.trim());
+module.exports = {
+  parse : function (text) {
+    return marked(text.trim());
+  }
 };

@@ -1,11 +1,21 @@
 'use strict';
 
 var path = require('path');
+var _ = require('lodash');
 
 var namespaceDelimiters = ['::', ':', '\\.', '/'];
 var namespaceDelimitersRegExp = new RegExp(namespaceDelimiters.join('|'), 'g');
 
 exports = module.exports = {
+
+
+  eachItem : function(byTypeAndName, callback){
+    _.each(byTypeAndName, function(typeObj){
+      _.each(typeObj, function(item){
+        callback(item);
+      });
+    });
+  },
 
   /**
    * Get file extension

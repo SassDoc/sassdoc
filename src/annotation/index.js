@@ -15,7 +15,7 @@ var endsWith = function(str, suffix) {
 
 // Read all files from the annoation folder and add it to the annotations map.
 fs.readdirSync(path.resolve(__dirname, './annotations')).forEach(function(file) {
-  if (!endsWith(file, '.js')) { 
+  if (!endsWith(file, '.js')) {
     return;
   }
 

@@ -7,9 +7,9 @@ describe('#author', function () {
   var author = require('../../src/annotation').author;
 
   it('should return the trimmed string', function () {
-    assert.equal(author('   '), '');
-    assert.equal(author('   '), '');
-    assert.equal(author('\ntest\t'), '<p>test</p>\n');
-    assert.equal(author('\nte\nst\t'), '<p>te\nst</p>\n');
+    assert.equal(author.parse('   '), '');
+    assert.equal(author.parse('   '), '');
+    assert.equal(author.parse('\ntest\t'), '<p>test</p>\n');
+    assert.equal(author.parse('\nte\nst\t'), '<p>te\nst</p>\n');
   });
 });
