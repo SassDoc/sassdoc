@@ -3,10 +3,10 @@
 
 var assert = require('assert');
 
+describe('#type', function () {
+  var type = require('../../src/annotation').type;
 
-describe('#type', function(){
-  var type  = require('../type.js');
-  it('should return the trimmed string', function(){
+  it('should return the trimmed string', function () {
     assert.equal(type('   '), '');
     assert.equal(type('   '), '');
     assert.equal(type('\ntest\t'), 'test');

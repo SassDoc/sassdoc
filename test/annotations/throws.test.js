@@ -3,10 +3,10 @@
 
 var assert = require('assert');
 
-
-describe('#throws', function(){
-  var _throws  = require('../throws.js');
-  it('should return the trimmed string', function(){
+describe('#throws', function () {
+  var _throws = require('../../src/annotation').throws;
+  
+  it('should return the trimmed string', function () {
     assert.equal(_throws('   '), '');
     assert.equal(_throws('   '), '');
     assert.equal(_throws('\ntest\t'), '<p>test</p>\n');
