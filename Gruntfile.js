@@ -86,7 +86,7 @@ module.exports = function (grunt) {
       },
       tpl: {
         files: ['<%= dirs.tpl %>/**/*.swig'],
-        tasks: ['compile']
+        tasks: ['compile:develop']
       }
     },
 
@@ -102,7 +102,7 @@ module.exports = function (grunt) {
         options: {
           watchTask: true,
           server: {
-            baseDir: '<%= dirs.develop %>'
+            baseDir: '<%= dirs.develop %>/docs'
           }
         }
       }
@@ -120,13 +120,28 @@ module.exports = function (grunt) {
           dest: '<%= dirs.css %>'
         }]
       }
+    },
+
+    compile: {
+      develop: {
+        src: '<%= dirs.scss %>',
+        dest: '<%= dirs.develop %>/docs',
+      },
+      empty: {
+        src: 'tmp/empty',
+        dest: '<%= dirs.develop %>/empty',
+      }
+    },
+
+    clean: {
+      empty: ['tmp']
     }
 
   });
 
 
   // A custom task to compile through SassDoc API.
-  grunt.registerTask('compile', 'Generates documentation', function () {
+  grunt.registerMultiTask('compile', 'Generates documentation', function (src, dest) {
     var done = this.async();
 
     // Use this to override the theme default config.
@@ -144,8 +159,11 @@ module.exports = function (grunt) {
     // Enable verbose.
     sassdoc.logger.enabled = true;
 
+    src = src || this.filesSrc[0];
+    dest = dest || this.files[0].dest;
+
     sassdoc
-      .documentize(dirs.scss, dirs.develop, config)
+      .documentize(src, dest, config)
       .then(done);
   });
 
@@ -155,7 +173,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dumpJS', 'Dump JS to develop', function () {
     var done = this.async();
     var src = dirs.js;
-    var dest = path.join(dirs.develop, 'assets/js');
+    var dest = path.join(dirs.develop, 'docs', 'assets/js');
 
     sdfs.folder.copy(src, dest)
       .then(function () {
@@ -170,13 +188,25 @@ module.exports = function (grunt) {
   grunt.registerTask('dumpCSS', 'Dump CSS to develop', function () {
     var done = this.async();
     var src = dirs.css;
-    var dest = path.join(dirs.develop, 'assets/css');
+    var dest = path.join(dirs.develop, 'docs', 'assets/css');
 
     sdfs.folder.copy(src, dest)
       .then(function () {
         grunt.log.writeln('CSS ' + chalk.cyan(src) + ' copied to ' + chalk.cyan(dest) + '.');
         done();
       });
+  });
+
+
+  // Test for empty docs.
+  grunt.registerTask('empty', 'Visualy check for empty docs behavior', function () {
+    var done = this.async();
+    var mkdirp = require('mkdirp');
+
+    mkdirp.sync('tmp/empty');
+    grunt.task.run(['compile:empty', 'clean:empty']);
+
+    done();
   });
 
 
