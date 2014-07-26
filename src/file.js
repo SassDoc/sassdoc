@@ -189,21 +189,22 @@ exports = module.exports = {
 
     // Parse the whole folder
     return exports.folder.parse(folder)
-
-    // Extract all items into a flat array
+    // Extract all items into a structure like https://gist.github.com/FWeinb/6b16c4fc85667ae6c1b5
     .then(function (data){
-      var flat = [];
+      var byTypeAndName = {};
       data.forEach(function (obj) {
         Object.keys(obj).forEach(function (type) {
-          // Ignore unkown context
+          // Ignore unkown type
           if (type === 'unknown') { return; }
-          // Iterate over all items for this type
+          if (!utils.isset(byTypeAndName[type])) {
+            byTypeAndName[type] = {};
+          }
           obj[type].forEach(function (item) {
-            flat.push(item);
+            byTypeAndName[type][item.context.name] = item;
           });
         });
       });
-      return flat;
+      return byTypeAndName;
     })
     // Run the postProcessor
     .then(parser.postProcess);

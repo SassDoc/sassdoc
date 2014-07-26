@@ -7,10 +7,9 @@ module.exports = {
     return text.trim();
   },
 
-  resolve : function (data) {
-    var byTypeAndName = utils.groupByTypeAndName(data);
+  resolve : function (byTypeAndName) {
 
-    data.forEach(function(item){
+    utils.eachItem(byTypeAndName, function (item){
       if (utils.isset(item.alias)) {
         item.alias.forEach(function (alias) {
           if (utils.isset(byTypeAndName[alias.type]) &&

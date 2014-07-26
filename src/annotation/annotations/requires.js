@@ -32,10 +32,9 @@ module.exports = {
     return obj;
   },
 
-  resolve : function (data) {
-    var byTypeAndName = utils.groupByTypeAndName(data);
+  resolve : function (byTypeAndName) {
 
-    data.forEach(function (item){
+    utils.eachItem(byTypeAndName, function (item){
       if (utils.isset(item.requires)) {
         item.requires = item.requires.map(function (req) {
           if ( req.external === true ) { return req; }
@@ -59,5 +58,6 @@ module.exports = {
         });
       }
     });
+
   }
 };

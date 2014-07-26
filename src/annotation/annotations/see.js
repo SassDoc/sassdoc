@@ -13,10 +13,8 @@ module.exports = {
     };
   },
 
-  resolve : function(data){
-    var byTypeAndName = utils.groupByTypeAndName(data);
-
-    data.forEach(function(item){
+  resolve : function(byTypeAndName){
+    utils.eachItem(byTypeAndName, function (item){
       if (utils.isset(item.see)) {
         item.see = item.see.map(function (see) {
           if (utils.isset(byTypeAndName[see.type]) &&
