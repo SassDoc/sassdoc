@@ -1,11 +1,23 @@
 'use strict';
 
 var path = require('path');
+var _ = require('lodash');
 
 var namespaceDelimiters = ['::', ':', '\\.', '/'];
 var namespaceDelimitersRegExp = new RegExp(namespaceDelimiters.join('|'), 'g');
 
 exports = module.exports = {
+
+  // Should be an sassdoc-indexer!!!
+  groupByTypeAndName : function(data){
+    return _.mapValues(_.groupBy(data, function (item) {
+      return item.context.type; // Just one layer for now.
+    }), function (items) {
+      return _.groupBy(items, function(item){
+        return item.context.name;
+      });
+    });
+  },
 
   /**
    * Get file extension
