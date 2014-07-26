@@ -309,7 +309,7 @@ exports = module.exports = {
 
 
       var groups = _.uniq(_.map(flat, function (item) {
-        return item.group;
+        return item.group[0]; // Just one layer for now.
       })).sort(function (a, b) {
           if(a < b) {
             return -1;
