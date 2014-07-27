@@ -128,13 +128,16 @@ module.exports = function (grunt) {
         dest: '<%= dirs.develop %>/docs',
       },
       empty: {
-        src: 'tmp/empty',
-        dest: '<%= dirs.develop %>/empty',
+        src: '<%= dirs.develop %>/empty',
+        dest: '<%= dirs.develop %>/docs-empty',
       }
     },
 
     clean: {
-      empty: ['tmp']
+      empty: [
+        '<%= dirs.develop %>/empty',
+        '<%= dirs.develop %>/docs-empty'
+      ]
     }
 
   });
@@ -158,6 +161,12 @@ module.exports = function (grunt) {
 
     // Enable verbose.
     sassdoc.logger.enabled = true;
+
+    // Visualy check for empty docs behavior.
+    if (this.target === 'empty') {
+      var mkdirp = require('mkdirp');
+      mkdirp.sync('develop/empty');
+    }
 
     src = src || this.filesSrc[0];
     dest = dest || this.files[0].dest;
@@ -195,18 +204,6 @@ module.exports = function (grunt) {
         grunt.log.writeln('CSS ' + chalk.cyan(src) + ' copied to ' + chalk.cyan(dest) + '.');
         done();
       });
-  });
-
-
-  // Test for empty docs.
-  grunt.registerTask('empty', 'Visualy check for empty docs behavior', function () {
-    var done = this.async();
-    var mkdirp = require('mkdirp');
-
-    mkdirp.sync('tmp/empty');
-    grunt.task.run(['compile:empty', 'clean:empty']);
-
-    done();
   });
 
 
