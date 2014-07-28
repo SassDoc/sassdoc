@@ -1,0 +1,24 @@
+{
+  "function": {
+    "test-function-throws": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-throws"
+      },
+      "throws": [
+        "<p>Error warn you on wrong argument type</p>\n"
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "function": {
+    "test-function-link": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-link"
+      },
+      "link": [
+        {
+          "url": "http://sassdoc.com",
+          "caption": "A nifty project"
+        }
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

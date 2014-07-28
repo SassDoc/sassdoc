@@ -1,0 +1,27 @@
+{
+  "function": {
+    "test-function-example": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-example"
+      },
+      "example": [
+        {
+          "type": "scss",
+          "code": "$foo: test-function-example($bar);"
+        }
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

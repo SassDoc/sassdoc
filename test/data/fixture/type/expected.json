@@ -1,0 +1,26 @@
+{
+  "variable": {
+    "test-variable-type": {
+      "description": "",
+      "context": {
+        "type": "variable",
+        "name": "test-variable-type",
+        "value": "()",
+        "scope": "private"
+      },
+      "type": [
+        "Map"
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

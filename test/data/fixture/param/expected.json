@@ -1,0 +1,33 @@
+{
+  "function": {
+    "test-function-param": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-param"
+      },
+      "parameters": [
+        {
+          "type": "String",
+          "name": "foo",
+          "description": "<p>the foo parameter</p>\n"
+        },
+        {
+          "type": "Map | Arglist",
+          "name": "bar",
+          "description": "<p>the bar parameter</p>\n"
+        }
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}
