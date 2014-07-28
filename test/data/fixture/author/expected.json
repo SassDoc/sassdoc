@@ -1,0 +1,24 @@
+{
+  "function": {
+    "test-function-description": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-description"
+      },
+      "author": [
+        "<p>Hugo Giraudel</p>\n"
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

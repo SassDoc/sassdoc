@@ -2,6 +2,8 @@
 
 var path = require('path');
 var chalk = require('chalk');
+var mkdirp = require('mkdirp');
+var fs = require('fs');
 var sassdoc = require('./src/api');
 var sdfs = require('./src/file');
 
@@ -22,6 +24,7 @@ var dirs = {
   js: theme('assets/js'),
   tpl: theme('views'),
   develop: 'develop',
+  docs: 'develop/docs',
   src: 'src',
   test: 'test'
 };
@@ -94,15 +97,15 @@ module.exports = function (grunt) {
       develop: {
         bsFiles: {
           src: [
-            '<%= dirs.develop %>/*.html',
-            '<%= dirs.develop %>/**/*.css',
-            '<%= dirs.develop %>/**/*.js'
+            '<%= dirs.docs %>/*.html',
+            '<%= dirs.docs %>/**/*.css',
+            '<%= dirs.docs %>/**/*.js'
           ]
         },
         options: {
           watchTask: true,
           server: {
-            baseDir: '<%= dirs.develop %>/docs'
+            baseDir: '<%= dirs.docs %>'
           }
         }
       }
@@ -125,16 +128,19 @@ module.exports = function (grunt) {
     compile: {
       develop: {
         src: '<%= dirs.scss %>',
-        dest: '<%= dirs.develop %>/docs',
+        dest: '<%= dirs.docs %>',
       },
       empty: {
-        src: 'tmp/empty',
-        dest: '<%= dirs.develop %>/empty',
+        src: '<%= dirs.develop %>/empty',
+        dest: '<%= dirs.develop %>/docs-empty',
       }
     },
 
     clean: {
-      empty: ['tmp']
+      empty: [
+        '<%= dirs.develop %>/empty',
+        '<%= dirs.develop %>/docs-empty'
+      ]
     }
 
   });
@@ -159,6 +165,11 @@ module.exports = function (grunt) {
     // Enable verbose.
     sassdoc.logger.enabled = true;
 
+    // Visualy check for empty docs behavior.
+    if (this.target === 'empty') {
+      mkdirp.sync('develop/empty');
+    }
+
     src = src || this.filesSrc[0];
     dest = dest || this.files[0].dest;
 
@@ -173,7 +184,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dumpJS', 'Dump JS to develop', function () {
     var done = this.async();
     var src = dirs.js;
-    var dest = path.join(dirs.develop, 'docs', 'assets/js');
+    var dest = path.join(dirs.docs, 'assets/js');
 
     sdfs.folder.copy(src, dest)
       .then(function () {
@@ -188,7 +199,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dumpCSS', 'Dump CSS to develop', function () {
     var done = this.async();
     var src = dirs.css;
-    var dest = path.join(dirs.develop, 'docs', 'assets/css');
+    var dest = path.join(dirs.docs, 'assets/css');
 
     sdfs.folder.copy(src, dest)
       .then(function () {
@@ -198,24 +209,19 @@ module.exports = function (grunt) {
   });
 
 
-  // Test for empty docs.
-  grunt.registerTask('empty', 'Visualy check for empty docs behavior', function () {
-    var done = this.async();
-    var mkdirp = require('mkdirp');
-
-    mkdirp.sync('tmp/empty');
-    grunt.task.run(['compile:empty', 'clean:empty']);
-
-    done();
-  });
-
-
   // Development task.
   // While working on a theme.
-  grunt.registerTask('develop', [
-    'browserSync:develop',
-    'watch'
-  ]);
+  grunt.registerTask('develop', 'Development task', function () {
+    var tasks = ['browserSync:develop', 'watch'];
+    var docs = fs.existsSync(dirs.docs);
+
+    if (!docs) {
+      grunt.log.writeln('Running initial compile: ' + chalk.cyan(dirs.docs) + '.');
+      tasks.unshift('compile:develop');
+    }
+
+    grunt.task.run(tasks);
+  });
 
 
   // Linting and unit tests task.

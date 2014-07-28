@@ -1,0 +1,21 @@
+{
+  "function": {
+    "test-function-access": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-access"
+      },
+      "access": [
+        "private"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

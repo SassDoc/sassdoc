@@ -1,0 +1,21 @@
+{
+  "function": {
+    "test-function-description": {
+      "description": "Test: description.\n",
+      "context": {
+        "type": "function",
+        "name": "test-function-description"
+      },
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

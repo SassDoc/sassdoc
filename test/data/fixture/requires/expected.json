@@ -1,0 +1,28 @@
+{
+  "function": {
+    "test-function-requires": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-requires"
+      },
+      "requires": [
+        {
+          "type": "function",
+          "name": "test-function-required",
+          "external": false
+        }
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

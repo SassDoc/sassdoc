@@ -1,0 +1,27 @@
+{
+  "function": {
+    "test-function-returns": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-returns"
+      },
+      "returns": [
+        {
+          "type": "String",
+          "description": "<p>A description fo returns</p>\n"
+        }
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

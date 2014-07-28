@@ -1,0 +1,27 @@
+{
+  "function": {
+    "test-function-since": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-since"
+      },
+      "since": [
+        {
+          "version": "v1.2.0",
+          "description": "A cool new feature"
+        }
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        "ungrouped"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}

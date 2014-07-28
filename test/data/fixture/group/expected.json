@@ -1,0 +1,23 @@
+{
+  "function": {
+    "test-function-group": {
+      "description": "",
+      "context": {
+        "type": "function",
+        "name": "test-function-group"
+      },
+      "group": [
+        [
+          "test-functions"
+        ]
+      ],
+      "access": [
+        "public"
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}
