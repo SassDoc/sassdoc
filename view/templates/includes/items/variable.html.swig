@@ -12,6 +12,8 @@
 
   {% include '../annotations/requires.html.swig' %}
 
+  {% include '../annotations/example.html.swig' %}
+
   {% include '../annotations/usedby.html.swig' %}
 
   {% include '../annotations/see.html.swig' %}
