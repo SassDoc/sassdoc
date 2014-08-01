@@ -54,6 +54,8 @@ function requirePackage(dir, pkg) {
       // Try `package.json` in the same directory
       return require(dir + '/package.json');
     } catch (e) {
+      if (e.code !== 'MODULE_NOT_FOUND') throw e;
+
       logger.warn('No package information.');
       return;
     }
@@ -64,6 +66,8 @@ function requirePackage(dir, pkg) {
   try {
     return require(path);
   } catch (e) {
+    if (e.code !== 'MODULE_NOT_FOUND') throw e;
+
     var message = 'Can\'t find a package file at `' + path + '`.';
     logger.warn(message);
   }
@@ -111,11 +115,15 @@ function requireRawTheme(dir, theme) {
 
   try {
     return require('sassdoc-theme-' + theme);
-  } catch (e) {}
+  } catch (e) {
+    if (e.code !== 'MODULE_NOT_FOUND') throw e;
+  }
 
   try {
     return require(dir + '/' + theme);
-  } catch (e) {}
+  } catch (e) {
+    if (e.code !== 'MODULE_NOT_FOUND') throw e;
+  }
 
   return require(theme);
 }
@@ -144,6 +152,8 @@ function requireTheme(dir, theme) {
   try {
     theme = requireRawTheme(dir, theme);
   } catch (e) {
+    if (e.code !== 'MODULE_NOT_FOUND') throw e;
+
     logger.error('Theme `' + (theme || 'default') + '` not found.');
     return defaultTheme(dir);
   }
