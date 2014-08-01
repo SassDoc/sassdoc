@@ -133,6 +133,9 @@ $legacy-support: true !global;
 * [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez
 * [SassyLists](http://sassylists.com/documentation) from Hugo Giraudel
 * [Kittn](http://wirepa.onjumpstarter.io/sassdoc/) from Sascha Fuchs
+* [yy](http://astina.github.io/yy/) from Astina
+* [Sassy Starter](http://minamarkham.github.io/sassy-starter/docs/) from archermalmo
+* 
 
 ## Credits
 
