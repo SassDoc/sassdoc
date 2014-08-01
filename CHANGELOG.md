@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.5
+
+* Fixed `@example` not being printed for variables ([#146](https://github.com/SassDoc/sassdoc/pull/146))
+
 ## 1.1.4
 
 * Fixed some visual issues with `@requires` ([#132](https://github.com/SassDoc/sassdoc/pull/132))
