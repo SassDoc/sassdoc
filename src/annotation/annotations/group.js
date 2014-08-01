@@ -4,6 +4,6 @@ module.exports = {
     return [text.trim().toLowerCase()];
   },
   default : function() {
-    return 'ungrouped';
+    return 'undefined';
   }
 };
