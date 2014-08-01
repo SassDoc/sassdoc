@@ -2,7 +2,6 @@
 
 var logger = require('./log');
 var path = require('path');
-var marked = require('marked');
 
 /**
  * Resolve and configuration file path.
@@ -183,11 +182,6 @@ module.exports = function (view) {
     config.package = view.package;
   } else {
     config.package = requirePackage(dir, view.package);
-
-    // Parse as markdown (as per #115)
-    if (config.package && config.package.description) {
-      config.package.description = marked(config.package.description);
-    }
   }
 
   // Resolve theme

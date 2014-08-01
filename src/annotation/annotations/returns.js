@@ -1,7 +1,5 @@
 'use strict';
 
-var marked = require('marked');
-
 var typeRegEx =  /^\s*(?:\{(.*)\})?\s*(?:\$([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*(.*))?/;
 
 module.exports = {
@@ -22,7 +20,7 @@ module.exports = {
     }
 
     if (parsed[4]) {
-      obj.description = marked(parsed[4]);
+      obj.description = parsed[4];
     }
 
     return obj;
