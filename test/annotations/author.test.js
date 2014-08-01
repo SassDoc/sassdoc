@@ -9,7 +9,7 @@ describe('#author', function () {
   it('should return the trimmed string', function () {
     assert.equal(author.parse('   '), '');
     assert.equal(author.parse('   '), '');
-    assert.equal(author.parse('\ntest\t'), '<p>test</p>\n');
-    assert.equal(author.parse('\nte\nst\t'), '<p>te\nst</p>\n');
+    assert.equal(author.parse('\ntest\t'), 'test');
+    assert.equal(author.parse('\nte\nst\t'), 'te\nst');
   });
 });

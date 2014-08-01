@@ -7,7 +7,7 @@
         "name": "test-function-throws"
       },
       "throws": [
-        "<p>Error warn you on wrong argument type</p>\n"
+        "Error warn you on wrong argument type"
       ],
       "access": [
         "public"

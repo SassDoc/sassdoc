@@ -7,7 +7,7 @@
         "name": "test-function-description"
       },
       "author": [
-        "<p>Hugo Giraudel</p>\n"
+        "Hugo Giraudel"
       ],
       "access": [
         "public"

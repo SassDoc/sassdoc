@@ -9,7 +9,7 @@
       "returns": [
         {
           "type": "String",
-          "description": "<p>A description fo returns</p>\n"
+          "description": "A description fo returns"
         }
       ],
       "access": [

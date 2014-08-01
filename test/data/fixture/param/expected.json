@@ -10,12 +10,12 @@
         {
           "type": "String",
           "name": "foo",
-          "description": "<p>the foo parameter</p>\n"
+          "description": "the foo parameter"
         },
         {
           "type": "Map | Arglist",
           "name": "bar",
-          "description": "<p>the bar parameter</p>\n"
+          "description": "the bar parameter"
         }
       ],
       "access": [

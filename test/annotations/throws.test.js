@@ -9,7 +9,7 @@ describe('#throws', function () {
   it('should return the trimmed string', function () {
     assert.equal(_throws.parse('   '), '');
     assert.equal(_throws.parse('   '), '');
-    assert.equal(_throws.parse('\ntest\t'), '<p>test</p>\n');
-    assert.equal(_throws.parse('\nte\nst\t'), '<p>te\nst</p>\n');
+    assert.equal(_throws.parse('\ntest\t'), 'test');
+    assert.equal(_throws.parse('\nte\nst\t'), 'te\nst');
   });
 });

@@ -7,7 +7,7 @@
         "name": "test-function-todo"
       },
       "todos": [
-        "<p>Improve that function</p>\n"
+        "Improve that function"
       ],
       "access": [
         "public"
