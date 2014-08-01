@@ -36,6 +36,10 @@ function requireConfig(config) {
   try {
     return require(config);
   } catch (e) {
+    if (e.code !== 'MODULE_NOT_FOUND') {
+      throw e;
+    }
+
     // Empty view config, maybe the theme will set default values
     return {};
   }
