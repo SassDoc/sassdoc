@@ -1,5 +1,27 @@
 {
   "function": {
+    "test-function-aliased": {
+      "description": "An aliased function\n",
+      "context": {
+        "type": "function",
+        "name": "test-function-aliased"
+      },
+      "access": [
+        "public"
+      ],
+      "group": [
+        [
+          "undefined"
+        ]
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      },
+      "aliased": [
+        "test-function-alias"
+      ]
+    },
     "test-function-alias": {
       "description": "",
       "context": {
@@ -13,7 +35,9 @@
         "public"
       ],
       "group": [
-        "undefined"
+        [
+          "undefined"
+        ]
       ],
       "file": {
         "path": "input.scss",
