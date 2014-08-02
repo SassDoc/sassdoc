@@ -13,7 +13,12 @@ There are many things you can do to contribute SassDoc:
 
 Please, do not open an issue only to ask a question; it is not the best place for this. First, make sure your question is not already answered in the [wiki](https://github.com/SassDoc/sassdoc/wiki/), especially in the [Frequently Asked Questions](https://github.com/SassDoc/sassdoc/wiki/Frequently-Asked-Questions) section. 
 
-If it's not, try getting in touch with us on Twitter when possible: 
+If it's not, you can leave your question on:
+
+* [tlk.io/sassdoc](http://tlk.io/sassdoc)
+* [#sassdoc on freenode](http://webchat.freenode.net/)
+
+If you need a quick reply or don't feel really comfortable with asking on a public channel, try getting in touch with us on Twitter when possible: 
 
 * [@HugoGiraudel](https://twitter.com/hugogiraudel) for anything related to the goal, objectives or future of SassDoc; 
 * [@Fweinb](https://twitter.com/fweinb) and [@valeriangalliat](https://twitter.com/valeriagalliat) for any technical stuff;
