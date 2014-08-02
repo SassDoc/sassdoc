@@ -10,7 +10,9 @@
         "private"
       ],
       "group": [
-        "undefined"
+        [
+          "undefined"
+        ]
       ],
       "file": {
         "path": "input.scss",
