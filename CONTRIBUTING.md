@@ -11,16 +11,16 @@ There are many things you can do to contribute SassDoc:
 
 ## Asking a question
 
-Please, do not open an issue only to ask a question; it is not the best place for this. First, make sure your question is not already answered in the [wiki](https://github.com/SassDoc/sassdoc/wiki/), especially in the [Frequently Asked Questions](https://github.com/SassDoc/sassdoc/wiki/Frequently-Asked-Questions) section. 
+Please, do not open an issue only to ask a question; it is not the best place for this. First, make sure your question is not already answered in the [wiki](https://github.com/SassDoc/sassdoc/wiki/), especially in the [Frequently Asked Questions](https://github.com/SassDoc/sassdoc/wiki/Frequently-Asked-Questions) section.
 
 If it's not, you can leave your question on:
 
 * [tlk.io/sassdoc](http://tlk.io/sassdoc)
 * [#sassdoc on freenode](http://webchat.freenode.net/)
 
-If you need a quick reply or don't feel really comfortable with asking on a public channel, try getting in touch with us on Twitter when possible: 
+If you need a quick reply or don't feel really comfortable with asking on a public channel, try getting in touch with us on Twitter when possible:
 
-* [@HugoGiraudel](https://twitter.com/hugogiraudel) for anything related to the goal, objectives or future of SassDoc; 
+* [@HugoGiraudel](https://twitter.com/hugogiraudel) for anything related to the goal, objectives or future of SassDoc;
 * [@Fweinb](https://twitter.com/fweinb) and [@valeriangalliat](https://twitter.com/valeriagalliat) for any technical stuff;
 * [@pascalduez](https://twitter.com/pascalduez) for SassDoc's integration, especially with Grunt and Gulp.
 
@@ -29,9 +29,9 @@ If you need a quick reply or don't feel really comfortable with asking on a publ
 So you think you've found a bug? Likely. We're all humans after all! Before even opening an issue, you have to know how SassDoc is architectured so you can submit an issue in the accurate repository:
 
 * [Core](https://github.com/sassdoc/sassdoc): API (you're here)
-* [Theme](https://github.com/sassdoc/sassdoc-theme-light): theme, templates and styles
+* [Theme](https://github.com/sassdoc/sassdoc-theme-light): Theme, templates and styles
 * [Filter](https://github.com/sassdoc/sassdoc-filter): Markdown, display, groups...
-* [Indexer](https://github.com/sassdoc/sassdoc-indexer): data structure
+* [Indexer](https://github.com/sassdoc/sassdoc-indexer): Data structure
 * [Grunt plugin](https://github.com/sassdoc/grunt-sassdoc): Grunt integration
 * [Gulp plugin](https://github.com/sassdoc/gulp-sassdoc): Gulp integration
 
@@ -43,7 +43,7 @@ Similarly, be as descriptive as possible within your description. If you have a 
 
 ## Submitting a pull request
 
-Want to contribute? Awesome! 
+Want to contribute? Awesome!
 
 If it's a little something like typo, styles or wording, feel free to jump on it and submit a pull request; chances are high it will be quickly merged.
 
