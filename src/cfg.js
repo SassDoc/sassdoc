@@ -199,7 +199,12 @@ module.exports = function (view) {
     dir = process.cwd();
   }
 
-  config.view = view;
+  if (!('view' in view)) {
+    config.view = view;
+  } else {
+    // Already processed
+    config = view;
+  }
 
   // Resolve package
   if (typeof view.package === 'object') {
