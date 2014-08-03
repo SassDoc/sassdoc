@@ -135,7 +135,6 @@ $legacy-support: true !global;
 * [Kittn](http://wirepa.onjumpstarter.io/sassdoc/) from Sascha Fuchs
 * [yy](http://astina.github.io/yy/) from Astina
 * [Sassy Starter](http://minamarkham.github.io/sassy-starter/docs/) from archermalmo
-* 
 
 ## Credits
 
@@ -143,3 +142,4 @@ $legacy-support: true !global;
 * [Fabrice Weinberg](https://twitter.com/fweinb)
 * [Hugo Giraudel](http://twitter.com/HugoGiraudel)
 * [Pascal Duez](https://twitter.com/pascalduez)
+* [Callum Jefferies](https://twitter.com/callumj_)
