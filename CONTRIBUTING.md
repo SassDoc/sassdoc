@@ -50,4 +50,6 @@ If it's a little something like typo, styles or wording, feel free to jump on it
 
 If you are thinking of something a bit more complex, be sure to talk with someone from the team before even starting coding in order to avoid any useless work.
 
+New features or sizeable refactors should be based on the `develop` branch.
+
 Anyway, thank you very much for contributing!

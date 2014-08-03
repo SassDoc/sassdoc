@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.6
+
+* Backport, fixed `found-at` with absolute path ([#156](https://github.com/SassDoc/sassdoc/pull/156))
+
 ## 1.1.5
 
 * Fixed `@example` not being printed for variables ([#146](https://github.com/SassDoc/sassdoc/pull/146))
