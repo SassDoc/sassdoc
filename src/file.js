@@ -161,7 +161,7 @@ exports = module.exports = {
         Object.keys(data).forEach(function (key) {
           data[key].forEach(function (item) {
             item.file = {
-              path: utils.getDisplayPath(file, exports.folder.base),
+              path: path.relative(exports.folder.base, file),
               name: path.basename(file, '.scss')
             };
           });
@@ -209,7 +209,7 @@ exports = module.exports = {
    * @param {String} folder - folder path
    */
   getData: function (folder) {
-    exports.folder.base = path.basename(folder);
+    exports.folder.base = folder;
 
     return exports.folder.parse(folder).then(function (response) {
       response = response || [];
