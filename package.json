@@ -8,7 +8,7 @@
     { "name": "Pascal Duez", "url": "https://twitter.com/pascalduez" },
     { "name": "Callum Jefferies", "url": "https://twitter.com/callumj_" }
   ],
-  "version": "1.1.6",
+  "version": "1.1.5",
   "license": {
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
@@ -37,7 +37,7 @@
     "rimraf": "~2.2.8",
     "swig-extras": "0.0.1",
     "ncp": "^0.5.1",
-    "scss-comment-parser": "^0.1.2",
+    "scss-comment-parser": "callum/scss-comment-parser",
     "mkdirp": "^0.5.0",
     "docopt": "^0.4.0",
     "update-notifier": "^0.2.0",
