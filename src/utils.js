@@ -7,20 +7,10 @@ exports = module.exports = {
   /**
    * Get file extension
    * @param  {string} filename - filename to retrieve extension from
-   * @return {string}            extension
+   * @return {string} extension
    */
   getExtension: function (filename) {
     return path.extname(filename).substr(1);
-  },
-
-  /**
-   * Get file display path, relative to the project directory
-   * @param  {string} filePath - file path
-   * @param  {string} baseDir  - project base directory
-   * @return {string}            display path
-   */
-  getDisplayPath: function (filePath, baseDir) {
-    return path.join(baseDir, filePath);
   },
 
   /**
