@@ -1,32 +1,37 @@
 'use strict';
+
 var utils = require('../../utils');
 var logger = require('../../log');
 
 module.exports = {
-  parse : function (text) {
+
+  parse: function (text) {
     return text.trim();
   },
 
-  resolve : function (byTypeAndName) {
-
-    utils.eachItem(byTypeAndName, function (item){
+  resolve: function (byTypeAndName) {
+    utils.eachItem(byTypeAndName, function (item) {
       if (utils.isset(item.alias)) {
         item.alias.forEach(function (alias) {
-          if (utils.isset(byTypeAndName[alias.type]) &&
-              utils.isset(byTypeAndName[alias.type][alias.name])) {
 
-            if (!Array.isArray(byTypeAndName[alias.type][alias.name].aliased)) {
-             byTypeAndName[alias.type][alias.name].aliased = [];
+          var type = item.context.type;
+          var name = item.context.name;
+
+          if (utils.isset(byTypeAndName[type]) &&
+              utils.isset(byTypeAndName[type][alias])) {
+
+            if (!Array.isArray(byTypeAndName[type][alias].aliased)) {
+              byTypeAndName[type][alias].aliased = [];
             }
 
-            byTypeAndName[alias.type][alias.name].aliased.push(item.context.name);
+            byTypeAndName[type][alias].aliased.push(name);
 
-          } else {
-            logger.log('Item `' + item.context.name + '` is an alias of `' + alias + '` but this item doesn\'t exist.');
+          }
+          else {
+            logger.log('Item `' + name + '` is an alias of `' + alias + '` but this item doesn\'t exist.');
           }
         });
       }
     });
-
   }
 };
