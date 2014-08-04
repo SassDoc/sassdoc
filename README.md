@@ -1,24 +1,27 @@
-# SassDoc [![NPM version](https://badge.fury.io/js/sassdoc.svg)](http://badge.fury.io/js/sassdoc) [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)
+# SassDoc
 
 Like JSDoc for your Sass files.
 
 ![SassDoc](http://i.imgur.com/nQoXn0W.png)
+---
 
-## Installation
+master: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)
+develop: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=develop)](https://travis-ci.org/SassDoc/sassdoc)
 
-### npm
+[![NPM](https://nodei.co/npm/sassdoc.png?downloads=true)](https://nodei.co/npm/sassdoc/)
+
+
+## Usage
+
+### Command line
+
+#### Install
 
 ```sh
 npm install -g sassdoc
 ```
 
-### Grunt
-
-See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).
-
-## Usage
-
-### Command line
+#### Generate Documentation
 
 ```sh
 sassdoc <src> <dest> [options]
@@ -34,11 +37,10 @@ sassdoc <src> <dest> [options]
 * `-h, --help`: Bring help.
 * `--version`: Show version.
 * `-v, --verbose`: Run in verbose mode.
-* `-c, --config`: Path to JSON file containing variables to be passed
-                  to the view.
-* `-t, --theme`: Theme to be required. It will override the
-                 configuration value.
-* ` --no-update-notifier`: Do not run the update notifier check.
+* `-c, --config`: Path to JSON file containing variables to be passed to the view.
+* `-t, --theme`: Theme to be required. It will override the configuration value.
+* `--no-update-notifier`: Do not run the update notifier check.
+
 
 ### Node
 
@@ -47,7 +49,6 @@ sassdoc <src> <dest> [options]
 ```shell
 npm install sassdoc --save
 ```
-
 #### Use The Raw Data
 
 ```js
@@ -76,13 +77,27 @@ var sassdoc = require('sassdoc');
 sassdoc.documentize(source, dest, config);
 ```
 
+#### Grunt
+
+See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).
+
+#### Gulp
+
+See [gulp-sassdoc](https://github.com/SassDoc/gulp-sassdoc).
+
+
+
 ## Documentating your items
 
 See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documenting-your-items).
 
+
+
 ## Customising the view
 
 See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Customising-the-view).
+
+
 
 ## Example
 
@@ -129,7 +144,12 @@ $legacy-support: true !global;
 
 * [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez
 * [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez
-* [SassyLists](http://sassylists.com/documentation.html) from Hugo Giraudel
+* [SassyLists](http://sassylists.com/documentation) from Hugo Giraudel
+* [Kittn](http://wirepa.onjumpstarter.io/sassdoc/) from Sascha Fuchs
+* [yy](http://astina.github.io/yy/) from Astina
+* [Sassy Starter](http://minamarkham.github.io/sassy-starter/docs/) from archermalmo
+
+
 
 ## Credits
 
