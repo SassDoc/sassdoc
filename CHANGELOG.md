@@ -1,10 +1,12 @@
 # Changelog
 
-## 1.2.0
+## 1.2.0-rc.1
 
 * Improved the way `@since` is parsed ([#128](https://github.com/SassDoc/sassdoc/issues/128))
 * Moved theming to [Themeleon](https://github.com/themeleon/themeleon) ([#69](https://github.com/SassDoc/sassdoc/issues/69))
-* Added a *view source* feature
+* Added a *view source* feature ([#117](https://github.com/SassDoc/sassdoc/issues/117))
+* Added the `@group` annotation, as well as a way to alias groups in order to have friendly names ([#29](https://github.com/SassDoc/sassdoc/issues/29))
+* Added moar tests ([#138](https://github.com/SassDoc/sassdoc/issues/138))
 
 ## 1.1.3
 
