@@ -13,8 +13,6 @@ describe('#ignore', function () {
   before(function (done) {
     return getData(input).then(function (res) {
       data = res;
-      // Quick and dirty fix for JSON Transformation.
-      data['function']['test-function-ignore']['ignore'] = [null];
       done();
     });
   });

@@ -6,9 +6,7 @@
         "type": "function",
         "name": "test-function-ignore"
       },
-      "ignore": [
-        null
-      ],
+      "ignore": [],
       "access": [
         "public"
       ],
