@@ -152,11 +152,11 @@ module.exports = function (grunt) {
 
     // Use this to override the theme default config.
     var config = {
-      "basePath": 'http://github.com/sassdoc/sassdoc-theme-light/tree/master/scss',
-      "package": theme('package.json'),
-      "theme": 'sassdoc-theme-default',
-      "groups": {
-        "undefined": "General"
+      'basePath': 'http://github.com/sassdoc/sassdoc-theme-light/tree/master/scss',
+      'package': theme('package.json'),
+      'theme': 'sassdoc-theme-default',
+      'groups': {
+        'undefined': 'General'
       }
     };
 
