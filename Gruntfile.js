@@ -152,14 +152,12 @@ module.exports = function (grunt) {
 
     // Use this to override the theme default config.
     var config = {
-      display: {
-        access: ['public', 'private'],
-        alias: false,
-        watermark: true
-      },
-
-      package: theme('package.json'),
-      theme: 'sassdoc-theme-default'
+      "basePath": 'http://github.com/sassdoc/sassdoc-theme-light/tree/master/scss',
+      "package": theme('package.json'),
+      "theme": 'sassdoc-theme-default',
+      "groups": {
+        "undefined": "General"
+      }
     };
 
     // Enable verbose.
