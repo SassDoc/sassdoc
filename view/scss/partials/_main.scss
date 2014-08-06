@@ -7,9 +7,8 @@
 
   @include respond-to("medium") {
     padding-bottom: 7em;
-    width: 100%;
     min-height: 100%;
-    padding-left: $sidebar-width;
+    margin-left: $sidebar-width;
   }
 }
 
