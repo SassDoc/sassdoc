@@ -29,6 +29,122 @@ var dirs = {
   test: 'test'
 };
 
+// Tasks configs.
+var config = {
+
+  dirs: dirs,
+
+  sass: {
+    options: {
+      style: 'compressed'
+    },
+    develop: {
+      files: [{
+        expand: true,
+        cwd: '<%= dirs.scss %>',
+        src: ['*.scss'],
+        dest: '<%= dirs.css %>',
+        ext: '.css'
+      }]
+    }
+  },
+
+  mochaTest: {
+    test: {
+      options: {
+        reporter: 'spec'
+      },
+      src: ['<%= dirs.test %>/**/*.test.js']
+    }
+  },
+
+  jshint: {
+    options: {
+      jshintrc: '.jshintrc'
+    },
+    all: [
+      'Gruntfile.js',
+      '<%= dirs.src %>/**/*.js'
+    ]
+  },
+
+  watch: {
+    scss: {
+      files: ['<%= dirs.scss %>/**/*.scss'],
+      tasks: ['sass:develop', 'autoprefixer:develop', 'dumpCSS']
+    },
+    js: {
+      files: ['<%= dirs.js %>/**/*.js'],
+      tasks: ['dumpJS']
+    },
+    tpl: {
+      files: ['<%= dirs.tpl %>/**/*.swig'],
+      tasks: ['compile:develop']
+    }
+  },
+
+  browserSync: {
+    develop: {
+      bsFiles: {
+        src: [
+          '<%= dirs.docs %>/*.html',
+          '<%= dirs.docs %>/**/*.css',
+          '<%= dirs.docs %>/**/*.js'
+        ]
+      },
+      options: {
+        watchTask: true,
+        server: {
+          baseDir: '<%= dirs.docs %>'
+        }
+      }
+    }
+  },
+
+  autoprefixer: {
+    options: {
+      browsers: ['last 2 version', '> 1%', 'ie 9']
+    },
+    develop: {
+      files: [{
+        expand: true,
+        cwd: '<%= dirs.css %>',
+        src: '{,*/}*.css',
+        dest: '<%= dirs.css %>'
+      }]
+    }
+  },
+
+  clean: {
+    empty: [
+      '<%= dirs.develop %>/empty',
+      '<%= dirs.develop %>/docs-empty'
+    ]
+  },
+
+  // SassDoc compilation (documentize).
+  compile: {
+    options: {
+      'basePath': 'http://github.com/sassdoc/sassdoc-theme-light/tree/master/scss',
+      'package': theme('package.json'),
+      'theme': 'sassdoc-theme-default',
+      'groups': {
+        'undefined': 'General'
+      }
+    },
+    develop: {
+      src: '<%= dirs.scss %>',
+      dest: '<%= dirs.docs %>',
+    },
+    empty: {
+      src: '<%= dirs.develop %>/empty',
+      dest: '<%= dirs.develop %>/docs-empty',
+    }
+  }
+
+};
+
+
 module.exports = function (grunt) {
 
   // Load all grunt tasks matching the `grunt-*` pattern.
@@ -37,139 +153,25 @@ module.exports = function (grunt) {
   // Time how long tasks take.
   require('time-grunt')(grunt);
 
-  grunt.initConfig({
 
-    // Load package Object.
-    // pkg: grunt.file.readJSON('package.json'),
-
-    dirs: dirs,
-
-    sass: {
-      options: {
-        style: 'compressed'
-      },
-      develop: {
-        files: [{
-          expand: true,
-          cwd: '<%= dirs.scss %>',
-          src: ['*.scss'],
-          dest: '<%= dirs.css %>',
-          ext: '.css'
-        }]
-      }
-    },
-
-    mochaTest: {
-      test: {
-        options: {
-          reporter: 'spec'
-        },
-        src: ['<%= dirs.test %>/**/*.test.js']
-      }
-    },
-
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc'
-      },
-      all: [
-        'Gruntfile.js',
-        '<%= dirs.src %>/**/*.js'
-      ]
-    },
-
-    watch: {
-      scss: {
-        files: ['<%= dirs.scss %>/**/*.scss'],
-        tasks: ['sass:develop', 'autoprefixer:develop', 'dumpCSS']
-      },
-      js: {
-        files: ['<%= dirs.js %>/**/*.js'],
-        tasks: ['dumpJS']
-      },
-      tpl: {
-        files: ['<%= dirs.tpl %>/**/*.swig'],
-        tasks: ['compile:develop']
-      }
-    },
-
-    browserSync: {
-      develop: {
-        bsFiles: {
-          src: [
-            '<%= dirs.docs %>/*.html',
-            '<%= dirs.docs %>/**/*.css',
-            '<%= dirs.docs %>/**/*.js'
-          ]
-        },
-        options: {
-          watchTask: true,
-          server: {
-            baseDir: '<%= dirs.docs %>'
-          }
-        }
-      }
-    },
-
-    autoprefixer: {
-      options: {
-        browsers: ['last 2 version', '> 1%', 'ie 9']
-      },
-      develop: {
-        files: [{
-          expand: true,
-          cwd: '<%= dirs.css %>',
-          src: '{,*/}*.css',
-          dest: '<%= dirs.css %>'
-        }]
-      }
-    },
-
-    compile: {
-      develop: {
-        src: '<%= dirs.scss %>',
-        dest: '<%= dirs.docs %>',
-      },
-      empty: {
-        src: '<%= dirs.develop %>/empty',
-        dest: '<%= dirs.develop %>/docs-empty',
-      }
-    },
-
-    clean: {
-      empty: [
-        '<%= dirs.develop %>/empty',
-        '<%= dirs.develop %>/docs-empty'
-      ]
-    }
-
-  });
+  grunt.initConfig(config);
 
 
   // A custom task to compile through SassDoc API.
-  grunt.registerMultiTask('compile', 'Generates documentation', function (src, dest) {
+  grunt.registerMultiTask('compile', 'Generates documentation', function () {
     var done = this.async();
-
-    // Use this to override the theme default config.
-    var config = {
-      'basePath': 'http://github.com/sassdoc/sassdoc-theme-light/tree/master/scss',
-      'package': theme('package.json'),
-      'theme': 'sassdoc-theme-default',
-      'groups': {
-        'undefined': 'General'
-      }
-    };
-
-    // Enable verbose.
-    sassdoc.logger.enabled = true;
+    var config = this.options({});
 
     // Visualy check for empty docs behavior.
     if (this.target === 'empty') {
       mkdirp.sync('develop/empty');
     }
 
-    src = src || this.filesSrc[0];
-    dest = dest || this.files[0].dest;
+    // Enable verbose.
+    sassdoc.logger.enabled = true;
+
+    var src = this.filesSrc[0];
+    var dest = this.files[0].dest;
 
     sassdoc
       .documentize(src, dest, config)
