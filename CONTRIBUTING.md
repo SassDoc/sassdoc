@@ -22,7 +22,7 @@ If you need a quick reply or don't feel really comfortable with asking on a publ
 
 * [@HugoGiraudel](https://twitter.com/hugogiraudel) for anything related to the goal, objectives or future of SassDoc;
 * [@Fweinb](https://twitter.com/fweinb) and [@valeriangalliat](https://twitter.com/valeriagalliat) for any technical stuff;
-* [@pascalduez](https://twitter.com/pascalduez) for SassDoc's integration, especially with Grunt and Gulp.
+* [@pascalduez](https://twitter.com/pascalduez) for SassDoc's integration, especially with Grunt, Gulp, Broccoli.
 
 ## Filling a bug
 
@@ -34,6 +34,7 @@ So you think you've found a bug? Likely. We're all humans after all! Before even
 * [Indexer](https://github.com/sassdoc/sassdoc-indexer): Data structure
 * [Grunt plugin](https://github.com/sassdoc/grunt-sassdoc): Grunt integration
 * [Gulp plugin](https://github.com/sassdoc/gulp-sassdoc): Gulp integration
+* [Broccoli plugin](https://github.com/sassdoc/broccoli-sassdoc): Broccoli integration
 * [Site](https://github.com/SassDoc/sassdoc.github.io): SassDoc's site
 
 Please give GitHub's search a try first, to make sure someone didn't already submit something similar. If what you've found seems unique, be sure to open an issue in the appropriate repository with a clear title and a description as complete as possible.

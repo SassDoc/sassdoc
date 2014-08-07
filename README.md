@@ -13,13 +13,11 @@ Like JSDoc for your Sass files.
 npm install -g sassdoc
 ```
 
-### Grunt
+### Grunt, Gulp, Broccoli
 
-See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).
-
-### Gulp
-
-See [gulp-sassdoc](https://github.com/SassDoc/gulp-sassdoc).
+See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc),
+[gulp-sassdoc](https://github.com/SassDoc/gulp-sassdoc),
+[broccoli-sassdoc](https://github.com/SassDoc/broccoli-sassdoc).
 
 
 ## Usage
@@ -135,7 +133,6 @@ $legacy-support: true !global;
 * [Kittn](http://wirepa.onjumpstarter.io/sassdoc/) from Sascha Fuchs
 * [yy](http://astina.github.io/yy/) from Astina
 * [Sassy Starter](http://minamarkham.github.io/sassy-starter/docs/) from archermalmo
-* 
 
 ## Credits
 
