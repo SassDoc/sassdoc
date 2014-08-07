@@ -6,7 +6,7 @@
   padding: 1em 0;
   
   @include respond-to("medium") {
-  	@include absolute(bottom 0 left $sidebar-width right 0);
+  	@include absolute(bottom 0 left 0 right 0);
   }
 }
 
