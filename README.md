@@ -81,7 +81,7 @@ sassdoc.documentize(source, dest, config);
 
 See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc),
 [gulp-sassdoc](https://github.com/SassDoc/gulp-sassdoc),
-[gulp-sassdoc](https://github.com/SassDoc/broccoli-sassdoc).
+[broccoli-sassdoc](https://github.com/SassDoc/broccoli-sassdoc).
 
 
 
