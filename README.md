@@ -77,13 +77,11 @@ var sassdoc = require('sassdoc');
 sassdoc.documentize(source, dest, config);
 ```
 
-#### Grunt
+### Grunt, Gulp, Broccoli
 
-See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc).
-
-#### Gulp
-
-See [gulp-sassdoc](https://github.com/SassDoc/gulp-sassdoc).
+See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc),
+[gulp-sassdoc](https://github.com/SassDoc/gulp-sassdoc),
+[gulp-sassdoc](https://github.com/SassDoc/broccoli-sassdoc).
 
 
 
