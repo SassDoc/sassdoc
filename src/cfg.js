@@ -4,6 +4,42 @@ var logger = require('./log');
 var path = require('path');
 
 /**
+ * Tests given exception to see if the code is `MODULE_NOT_FOUND` and
+ * if the exception text matches the module name.
+ *
+ * @param {string} name Module name to check in exception.
+ * @param {object} e Exception.
+ * @return {boolean}
+ */
+function isModuleNotFound(name, e) {
+  if (e.code !== 'MODULE_NOT_FOUND') {
+    return false;
+  }
+
+  return e.message.split('\'')[1].split('\'')[0] === name;
+}
+
+// Object identifier for module not found exception
+var MODULE_NOT_FOUND = {};
+
+/**
+ * Wrapper for `require` that will throw above `MODULE_NOT_FOUND` object
+ * reference if the very module `name` was not found. If `name` is found
+ * but an inner `require` fails, the normal exception will be thrown.
+ */
+function requireNotFound(name) {
+  try {
+    return require(name);
+  } catch (e) {
+    if (isModuleNotFound(name, e)) {
+      throw MODULE_NOT_FOUND;
+    }
+
+    throw e;
+  }
+}
+
+/**
  * Resolve and configuration file path.
  *
  * @param {string} config
@@ -34,9 +70,9 @@ function requireConfig(config) {
   config = resolveConfig(config);
 
   try {
-    return require(config);
+    return requireNotFound(config);
   } catch (e) {
-    if (e.code !== 'MODULE_NOT_FOUND') {
+    if (e !== MODULE_NOT_FOUND) {
       throw e;
     }
 
@@ -56,9 +92,9 @@ function requirePackage(dir, pkg) {
   if (!pkg) {
     try {
       // Try `package.json` in the same directory
-      return require(dir + '/package.json');
+      return requireNotFound(dir + '/package.json');
     } catch (e) {
-      if (e.code !== 'MODULE_NOT_FOUND') {
+      if (e !== MODULE_NOT_FOUND) {
         throw e;
       }
 
@@ -70,9 +106,9 @@ function requirePackage(dir, pkg) {
   var path = dir + '/' + pkg;
 
   try {
-    return require(path);
+    return requireNotFound(path);
   } catch (e) {
-    if (e.code !== 'MODULE_NOT_FOUND') {
+    if (e !== MODULE_NOT_FOUND) {
       throw e;
     }
 
@@ -112,6 +148,8 @@ function inspectTheme(theme) {
 /**
  * Resolve and require theme value.
  *
+ * `MODULE_NOT_FOUND` reference is thrown if nothing at all is found.
+ *
  * @param {string} dir
  * @param {string} theme
  * @return {*}
@@ -122,22 +160,22 @@ function requireRawTheme(dir, theme) {
   }
 
   try {
-    return require('sassdoc-theme-' + theme);
+    return requireNotFound('sassdoc-theme-' + theme);
   } catch (e) {
-    if (e.code !== 'MODULE_NOT_FOUND') {
+    if (e !== MODULE_NOT_FOUND) {
       throw e;
     }
   }
 
   try {
-    return require(dir + '/' + theme);
+    return requireNotFound(dir + '/' + theme);
   } catch (e) {
-    if (e.code !== 'MODULE_NOT_FOUND') {
+    if (e !== MODULE_NOT_FOUND) {
       throw e;
     }
   }
 
-  return require(theme);
+  return requireNotFound(theme);
 }
 
 // JSHint sometimes needs a little bit of shut the fuck up ;(
@@ -164,7 +202,7 @@ function requireTheme(dir, theme) {
   try {
     theme = requireRawTheme(dir, theme);
   } catch (e) {
-    if (e.code !== 'MODULE_NOT_FOUND') {
+    if (e !== MODULE_NOT_FOUND) {
       throw e;
     }
 
