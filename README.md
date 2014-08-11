@@ -143,7 +143,7 @@ $legacy-support: true !global;
 * [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez
 * [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez
 * [SassyLists](http://sassylists.com/documentation) from Hugo Giraudel
-* [Kittn](http://wirepa.onjumpstarter.io/sassdoc/) from Sascha Fuchs
+* [css-patterns](http://madebymany.github.io/css-patterns/) from madebymany
 * [yy](http://astina.github.io/yy/) from Astina
 * [Sassy Starter](http://minamarkham.github.io/sassy-starter/docs/) from archermalmo
 
