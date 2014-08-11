@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+
+* Same as 1.2.0-rc.1 but stable
+
 ## 1.2.0-rc.1
 
 * Improved the way `@since` is parsed ([#128](https://github.com/SassDoc/sassdoc/issues/128))
@@ -7,6 +11,18 @@
 * Added a *view source* feature ([#117](https://github.com/SassDoc/sassdoc/issues/117))
 * Added the `@group` annotation, as well as a way to alias groups in order to have friendly names ([#29](https://github.com/SassDoc/sassdoc/issues/29))
 * Added moar tests ([#138](https://github.com/SassDoc/sassdoc/issues/138))
+
+## 1.1.6
+
+* Backport, fixed `found-at` with absolute path ([#156](https://github.com/SassDoc/sassdoc/pull/156))
+
+## 1.1.5
+
+* Fixed `@example` not being printed for variables ([#146](https://github.com/SassDoc/sassdoc/pull/146))
+
+## 1.1.4
+
+* Fixed some visual issues with `@requires` ([#132](https://github.com/SassDoc/sassdoc/pull/132))
 
 ## 1.1.3
 
