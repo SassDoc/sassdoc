@@ -1,0 +1,26 @@
+{
+  "mixin": {
+    "test-mixin-output": {
+      "description": "",
+      "context": {
+        "type": "mixin",
+        "name": "test-mixin-output"
+      },
+      "output": [ 
+        "A description of output" 
+      ],
+      "access": [
+        "public"
+      ],
+      "group": [
+        [
+          "undefined"
+        ]
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      }
+    }
+  }
+}
