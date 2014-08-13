@@ -4,7 +4,8 @@
       "description": "",
       "context": {
         "type": "function",
-        "name": "test-function-ignore"
+        "name": "test-function-ignore",
+        "code": ""
       },
       "ignore": [],
       "access": [
