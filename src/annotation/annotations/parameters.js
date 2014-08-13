@@ -3,7 +3,7 @@
 var typeRegEx =  /^\s*(?:\{(.*)\})?\s*(?:\$([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*(.*))?/;
 
 module.exports = {
-  parse : function( text ){
+  parse: function (text) {
     var parsed = typeRegEx.exec(text);
     var obj = {};
 
@@ -12,7 +12,7 @@ module.exports = {
     }
 
     if (parsed[2]) {
-      obj.name  = parsed[2];
+      obj.name = parsed[2];
     }
 
     if (parsed[3]) {
