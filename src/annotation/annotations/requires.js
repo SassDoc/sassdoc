@@ -6,38 +6,41 @@ var utils = require('../../utils');
 var logger = require('../../log');
 
 module.exports = {
-  parse : function (text) {
+
+  parse: function (text) {
     var match = reqRegEx.exec(text.trim());
 
     var obj = {
-      type : match[1] || 'function',
-      name : match[2]
+      type: match[1] || 'function',
+      name: match[2]
     };
 
     obj.external = utils.splitNamespace(obj.name).length > 1;
 
-    if (obj.name.indexOf('$') === 0){
+    if (obj.name.indexOf('$') === 0) {
       obj.type = 'variable';
       obj.name = obj.name.slice(1);
     }
 
-    if (match[4]){
+    if (match[4]) {
       obj.description = match[4].trim();
     }
 
-    if (match[5]){
+    if (match[5]) {
       obj.url = match[5];
     }
 
     return obj;
   },
 
-  resolve : function (byTypeAndName) {
+  resolve: function (byTypeAndName) {
 
-    utils.eachItem(byTypeAndName, function (item){
+    utils.eachItem(byTypeAndName, function (item) {
       if (utils.isset(item.requires)) {
         item.requires = item.requires.map(function (req) {
-          if ( req.external === true ) { return req; }
+          if (req.external === true) {
+            return req;
+          }
 
           if (utils.isset(byTypeAndName[req.type]) &&
               utils.isset(byTypeAndName[req.type][req.name])) {
@@ -51,7 +54,9 @@ module.exports = {
             req.item = reqItem;
 
           } else {
-            logger.log('Item `' + item.context.name + '` requires `' + req.name + '` from type `' + req.type + '` but this item doesn\'t exist.');
+            logger.log('Item `' + item.context.name +
+              '` requires `' + req.name + '` from type `' + req.type +
+              '` but this item doesn\'t exist.');
           }
 
           return req;

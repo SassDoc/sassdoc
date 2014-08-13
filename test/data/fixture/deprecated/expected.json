@@ -4,7 +4,8 @@
       "description": "",
       "context": {
         "type": "function",
-        "name": "test-function-deprecated"
+        "name": "test-function-deprecated",
+        "code": ""
       },
       "deprecated": [
         "This is a deprecated function"

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  parse : function (text) {
+  parse: function (text) {
     return text.trim();
   }
 };

@@ -4,7 +4,8 @@
       "description": "",
       "context": {
         "type": "function",
-        "name": "test-function-access"
+        "name": "test-function-access",
+        "code": ""
       },
       "access": [
         "private"

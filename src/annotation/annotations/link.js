@@ -3,7 +3,7 @@
 var linkRegex = /\s*([^:]+\:\/\/[^\s]*)?\s*(.*?)$/;
 
 module.exports = {
-  parse : function (text) {
+  parse: function (text) {
     var parsed = linkRegex.exec(text.trim());
 
     return {

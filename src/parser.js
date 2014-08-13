@@ -7,17 +7,17 @@ var parser = new ScssCommentParser(annotations);
 
 module.exports = {
 
-  parse : parser.parse.bind(parser),
+  parse: parser.parse.bind(parser),
 
   /**
-   * Invoke the `resolve` function of an annotation if present
-   * Called with all found annotations excluding them from "unkown" type
+   * Invoke the `resolve` function of an annotation if present.
+   * Called with all found annotations excluding them from "unkown" type.
    */
-  postProcess : function(data){
+  postProcess: function (data) {
 
-    Object.keys(annotations).forEach(function (key){
+    Object.keys(annotations).forEach(function (key) {
       var annotation = annotations[key];
-      if (annotation.resolve){
+      if (annotation.resolve) {
         annotation.resolve(data);
       }
     });

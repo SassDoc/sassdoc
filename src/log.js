@@ -8,8 +8,8 @@ var arr = Array.prototype.slice.call.bind(Array.prototype.slice);
 /**
  * Add brackets around given string.
  *
- * @param {string} str
- * @return {string}
+ * @param {String} str
+ * @return {String}
  */
 function br(str) {
   return '[' + str + ']';
@@ -19,34 +19,34 @@ function br(str) {
  * Prepends given argument to given array.
  *
  * @param {*} arg
- * @param {array} arr
- * @return {array}
+ * @param {Array} arr
+ * @return {Array}
  */
 function prepend(arg, arr) {
   return [arg].concat(arr);
 }
 
 /**
- * @param {string} arg
- * @param {array} arr
- * @return {array}
+ * @param {String} arg
+ * @param {Array} arr
+ * @return {Array}
  */
 function prependBr(arg, arr) {
   return prepend(br(arg), arr);
 }
 
 /**
- * @param {array} args
- * @return {array}
+ * @param {Array} args
+ * @return {Array}
  */
 function date(args) {
   return prependBr(utils.getDateTime(), args);
 }
 
 /**
- * @param {string} name
- * @param {array} args
- * @return {array}
+ * @param {String} name
+ * @param {Array} args
+ * @return {Array}
  */
 function flag(name, args) {
   return prependBr(name, args);
@@ -54,16 +54,16 @@ function flag(name, args) {
 
 /**
  * @param {arguments} args
- * @return {string}
+ * @return {String}
  */
 function log(args) {
   return date(arr(args)).join(' ');
 }
 
 /**
- * @param {string} name
+ * @param {String} name
  * @param {arguments} args
- * @return {string}
+ * @return {String}
  */
 function flog(name, args) {
   return log(flag(name, arr(args)));
@@ -99,5 +99,5 @@ exports = module.exports = {
    */
   error: function () {
     console.error(chalk.red(flog('ERROR', arguments)));
-  },
+  }
 };

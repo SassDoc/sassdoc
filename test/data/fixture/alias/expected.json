@@ -4,7 +4,8 @@
       "description": "An aliased function\n",
       "context": {
         "type": "function",
-        "name": "test-function-aliased"
+        "name": "test-function-aliased",
+        "code": ""
       },
       "access": [
         "public"
@@ -26,7 +27,8 @@
       "description": "",
       "context": {
         "type": "function",
-        "name": "test-function-alias"
+        "name": "test-function-alias",
+        "code": ""
       },
       "alias": [
         "test-function-aliased"

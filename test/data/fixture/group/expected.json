@@ -4,7 +4,8 @@
       "description": "",
       "context": {
         "type": "function",
-        "name": "test-function-group"
+        "name": "test-function-group",
+        "code": ""
       },
       "group": [
         [

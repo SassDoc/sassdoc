@@ -16,7 +16,10 @@ describe('#example', function () {
     assert.deepEqual(example.parse('\nsome code\n'), { type: 'scss', code: 'some code' });
   });
 
-  it('should use first line as type', function () {
+  it('should extract type and description from first line', function () {
     assert.deepEqual(example.parse('type\nsome code'), { type: 'type', code: 'some code' });
+    assert.deepEqual(example.parse('type - description\nsome code'), { type: 'type', description: 'description', code: 'some code' });
+    assert.deepEqual(example.parse('type description\nsome code'), { type: 'type', description: 'description', code: 'some code' });
   });
+
 });

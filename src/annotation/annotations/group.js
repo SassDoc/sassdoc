@@ -1,9 +1,10 @@
 'use strict';
+
 module.exports = {
-  parse : function (text) {
+  parse: function (text) {
     return [text.trim().toLowerCase()];
   },
-  default : function() {
+  default: function () {
     return ['undefined'];
   }
 };
