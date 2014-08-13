@@ -176,7 +176,8 @@ exports = module.exports = {
    * @return {Q.Promise}
    */
   dumpAssets: function (destination) {
-    return exports.folder.copy(__dirname + '/../view/assets', destination + '/assets');
+    var assetsPath = path.join(__dirname, '../view/assets', destination, 'assets');
+    return exports.folder.copy(assetsPath);
   },
 
   /**
