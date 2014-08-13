@@ -178,8 +178,8 @@ function requireRawTheme(dir, theme) {
   return requireNotFound(theme);
 }
 
-// JSHint sometimes needs a little bit of shut the fuck up ;(
-var requireTheme;
+/*global requireTheme:true */
+/*eslint no-use-before-define: 0 */
 
 /**
  * Fallback to default theme, logging a message.
