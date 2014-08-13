@@ -4,7 +4,8 @@
       "description": "",
       "context": {
         "type": "function",
-        "name": "test-function-throws"
+        "name": "test-function-throws",
+        "code": ""
       },
       "throws": [
         "Error warn you on wrong argument type"

@@ -4,7 +4,8 @@
       "description": "",
       "context": {
         "type": "function",
-        "name": "test-function-since"
+        "name": "test-function-since",
+        "code": ""
       },
       "since": [
         {
