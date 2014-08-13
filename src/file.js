@@ -73,23 +73,23 @@ exports = module.exports = {
      */
     parse: function (folder) {
       return exports.folder.read(folder).then(function (files) {
-        var path;
+        var filePath;
         var promises = [];
         var data = [];
 
         files.forEach(function (file) {
-          path = folder + '/' + file;
+          filePath = folder + '/' + file;
 
           // Folder
-          if (exports.isDirectory(path)) {
-            promises.push(exports.folder.parse(path).then(function (response) {
+          if (exports.isDirectory(filePath)) {
+            promises.push(exports.folder.parse(filePath).then(function (response) {
               data = data.concat(response);
             }));
           }
 
           // SCSS file
-          else if (utils.getExtension(path) === 'scss') {
-            promises.push(exports.file.process(path).then(function (response) {
+          else if (utils.getExtension(filePath) === 'scss') {
+            promises.push(exports.file.process(filePath).then(function (response) {
               if (Object.keys(response).length > 0) {
                 data = data.concat(response);
               }
@@ -98,7 +98,7 @@ exports = module.exports = {
 
           // Ignored file
           else {
-            logger.log('File `' + path + '` is not a `.scss` file. Omitted.');
+            logger.log('File `' + filePath + '` is not a `.scss` file. Omitted.');
           }
         });
 

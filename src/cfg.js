@@ -103,16 +103,16 @@ function requirePackage(dir, pkg) {
     }
   }
 
-  var path = dir + '/' + pkg;
+  var pkgPath = dir + '/' + pkg;
 
   try {
-    return requireNotFound(path);
+    return requireNotFound(pkgPath);
   } catch (e) {
     if (e !== MODULE_NOT_FOUND) {
       throw e;
     }
 
-    var message = 'Can\'t find a package file at `' + path + '`.';
+    var message = 'Can\'t find a package file at `' + pkgPath + '`.';
     logger.warn(message);
   }
 }
