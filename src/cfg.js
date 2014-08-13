@@ -179,7 +179,6 @@ function requireRawTheme(dir, theme) {
 }
 
 /*global requireTheme:true */
-/*eslint no-use-before-define: 0 */
 
 /**
  * Fallback to default theme, logging a message.

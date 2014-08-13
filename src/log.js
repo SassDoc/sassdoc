@@ -53,7 +53,7 @@ function flag(name, args) {
 }
 
 /**
- * @param {Arguments} args
+ * @param {arguments} args
  * @return {String}
  */
 function log(args) {
@@ -62,7 +62,7 @@ function log(args) {
 
 /**
  * @param {String} name
- * @param {Arguments} args
+ * @param {arguments} args
  * @return {String}
  */
 function flog(name, args) {

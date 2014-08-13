@@ -9,7 +9,7 @@ var namespaceDelimitersRegExp = new RegExp(namespaceDelimiters.join('|'), 'g');
 exports = module.exports = {
 
   eachItem: function (byTypeAndName, callback) {
-    _.each(byTypeAndName, function(typeObj) {
+    _.each(byTypeAndName, function (typeObj) {
       _.each(typeObj, function (item) {
         callback(item);
       });
@@ -55,7 +55,7 @@ exports = module.exports = {
   /**
    * Returns whether a value is set or not
    * @param {*} value - value to check
-   * @return {Bool}
+   * @return {Boolean}
    */
   isset: function (value) {
     return typeof value !== 'undefined';

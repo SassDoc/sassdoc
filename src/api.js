@@ -19,7 +19,7 @@ exports = module.exports = {
    * @param {Object} config - Configuration from `view.json`
    * @example
    * documentize('examples/sass', 'examples/dist', config)
-   * @return {Q.promise}
+   * @return {Q.Promise}
    */
   documentize: function (source, destination, config) {
     config = cgf(config);
@@ -57,7 +57,7 @@ exports = module.exports = {
    * @param {String} source - Source folder
    * @example
    * sassdoc.parse('examples/sass')
-   * @return {Q.promise}
+   * @return {Q.Promise}
    */
   parse: function (source) {
     return fs.getData(source);
@@ -65,7 +65,7 @@ exports = module.exports = {
 
   /**
    * Expose the logger used by sassdoc.
-   * @return {Logger}
+   * @return {logger}
    */
   logger: logger
 };
