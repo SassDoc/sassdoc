@@ -13,7 +13,7 @@ exports = module.exports = {
   version: require('../package.json').version,
 
   /**
-   * Main API function, running the whole thing
+   * Main API function, running the whole thing.
    * @param {String} source - Source folder
    * @param {String} destination - Destination folder
    * @param {Object} config - Configuration from `view.json`
@@ -53,7 +53,7 @@ exports = module.exports = {
   },
 
   /**
-   * Parse a folder and returns a promise yielding an array of documented items
+   * Parse a folder and returns a promise yielding an array of documented items.
    * @param {String} source - Source folder
    * @example
    * sassdoc.parse('examples/sass')
@@ -64,7 +64,7 @@ exports = module.exports = {
   },
 
   /**
-   * Expose the logger used by sassdoc
+   * Expose the logger used by sassdoc.
    * @return {Logger}
    */
   logger: logger

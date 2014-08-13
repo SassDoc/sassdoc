@@ -3,7 +3,7 @@
 var sinceRegEx = /\s*([^\s]*)\s*(?:-?\s*(.*))?\s*$/;
 
 module.exports = {
-  parse : function (text) {
+  parse: function (text) {
     var parsed = sinceRegEx.exec(text);
     var obj = {};
 

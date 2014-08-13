@@ -6,7 +6,6 @@ var rimraf = require('rimraf');      // rm -rf
 var ncp    = require('ncp');         // cp -r
 var Q      = require('q');           // Promises
 var path   = require('path');        // Path
-//var _      = require('lodash');      // Lo-Dash
 
 var parser = require('./parser');
 var utils  = require('./utils');
@@ -26,35 +25,35 @@ exports = module.exports = {
     base: '',
 
     /**
-     * Read a folder
+     * Read a folder.
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_readdir_path_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     read: Q.denodeify(fs.readdir),
 
     /**
-     * Create a folder
+     * Create a folder.
      * @see {@link https://github.com/substack/node-mkdirp}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     create: Q.denodeify(mkdirp),
 
     /**
-     * Copy a folder
+     * Copy a folder.
      * @see {@link https://github.com/AvianFlu/ncp}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     copy: Q.denodeify(ncp),
 
     /**
-     * Remove a folder
+     * Remove a folder.
      * @see {@link https://github.com/isaacs/rimraf}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     remove: Q.denodeify(rimraf),
 
     /**
-     * Remove then create a folder
+     * Remove then create a folder.
      * @param  {String} folder
      * @return {Q.Promise}
      */
@@ -68,15 +67,15 @@ exports = module.exports = {
     },
 
     /**
-     * Parse a folder
+     * Parse a folder.
      * @param  {String} folder
      * @return {Q.Promise}
      */
     parse: function (folder) {
       return exports.folder.read(folder).then(function (files) {
-        var path,
-            promises = [],
-            data = [];
+        var path;
+        var promises = [];
+        var data = [];
 
         files.forEach(function (file) {
           path = folder + '/' + file;
@@ -97,7 +96,7 @@ exports = module.exports = {
             }));
           }
 
-          // Else
+          // Ignored file
           else {
             logger.log('File `' + path + '` is not a `.scss` file. Omitted.');
           }
@@ -118,28 +117,28 @@ exports = module.exports = {
    */
   file: {
     /**
-     * Read a file
+     * Read a file.
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_readfile_filename_options_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     read: Q.denodeify(fs.readFile),
 
     /**
-     * Create a file
+     * Create a file.
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_writefile_filename_data_options_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     create: Q.denodeify(fs.writeFile),
 
     /**
-     * Remove a file
+     * Remove a file.
      * @see {@link http://nodejs.org/api/fs.html#fs_fs_unlink_path_callback}
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     remove: Q.denodeify(fs.unlink),
 
     /**
-     * Process a file
+     * Process a file.
      * @param  {String} file
      * @return {Q.Promise}
      */
@@ -163,7 +162,7 @@ exports = module.exports = {
   },
 
   /**
-   * Test if path is a directory
+   * Test if path is a directory.
    * @param  {String}  path
    * @return {Boolean}
    */
@@ -172,7 +171,7 @@ exports = module.exports = {
   },
 
   /**
-   * Dump CSS
+   * Dump assets (CSS, JS, ...).
    * @param  {String} destination
    * @return {Q.Promise}
    */
@@ -181,32 +180,35 @@ exports = module.exports = {
   },
 
   /**
-   * Get data
+   * Get data.
    * @param {String} folder - folder path
    */
   getData: function (folder) {
     exports.folder.base = folder;
 
-    // Parse the whole folder
+    // Parse the whole folder.
     return exports.folder.parse(folder)
-    // Extract all items into a structure like https://gist.github.com/FWeinb/6b16c4fc85667ae6c1b5
-    .then(function (data){
-      var byTypeAndName = {};
-      data.forEach(function (obj) {
-        Object.keys(obj).forEach(function (type) {
-          // Ignore unkown type
-          if (type === 'unknown') { return; }
-          if (!utils.isset(byTypeAndName[type])) {
-            byTypeAndName[type] = {};
-          }
-          obj[type].forEach(function (item) {
-            byTypeAndName[type][item.context.name] = item;
+      // Extract all items into a structure like https://gist.github.com/FWeinb/6b16c4fc85667ae6c1b5
+      .then(function (data) {
+        var byTypeAndName = {};
+
+        data.forEach(function (obj) {
+          Object.keys(obj).forEach(function (type) {
+            // Ignore unkown type
+            if (type === 'unknown') {
+              return;
+            }
+            if (!utils.isset(byTypeAndName[type])) {
+              byTypeAndName[type] = {};
+            }
+            obj[type].forEach(function (item) {
+              byTypeAndName[type][item.context.name] = item;
+            });
           });
         });
-      });
-      return byTypeAndName;
-    })
-    // Run the postProcessor
-    .then(parser.postProcess);
+        return byTypeAndName;
+      })
+      // Run the postProcessor
+      .then(parser.postProcess);
   }
 };

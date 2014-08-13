@@ -7,9 +7,9 @@ var path = require('path');
  * Tests given exception to see if the code is `MODULE_NOT_FOUND` and
  * if the exception text matches the module name.
  *
- * @param {string} name Module name to check in exception.
- * @param {object} e Exception.
- * @return {boolean}
+ * @param {String} name Module name to check in exception.
+ * @param {Object} e Exception.
+ * @return {Boolean}
  */
 function isModuleNotFound(name, e) {
   if (e.code !== 'MODULE_NOT_FOUND') {
@@ -19,7 +19,7 @@ function isModuleNotFound(name, e) {
   return e.message.split('\'')[1].split('\'')[0] === name;
 }
 
-// Object identifier for module not found exception
+// Object identifier for module not found exception.
 var MODULE_NOT_FOUND = {};
 
 /**
@@ -42,8 +42,8 @@ function requireNotFound(name) {
 /**
  * Resolve and configuration file path.
  *
- * @param {string} config
- * @return {string}
+ * @param {String} config
+ * @return {String}
  */
 function resolveConfig(config) {
   if (config[0] === '/') {
@@ -58,8 +58,8 @@ function resolveConfig(config) {
 /**
  * Resolve and require configuration value.
  *
- * @param {string|object} config
- * @return {object}
+ * @param {String|Object} config
+ * @return {Object}
  */
 function requireConfig(config) {
   if (!config) {
@@ -76,7 +76,7 @@ function requireConfig(config) {
       throw e;
     }
 
-    // Empty view config, maybe the theme will set default values
+    // Empty view config, maybe the theme will set default values.
     return {};
   }
 }
@@ -84,14 +84,14 @@ function requireConfig(config) {
 /**
  * Resolve and require package value.
  *
- * @param {string} dir
- * @param {string|object} package
- * @return {object}
+ * @param {String} dir
+ * @param {String|Object} package
+ * @return {Object}
  */
 function requirePackage(dir, pkg) {
   if (!pkg) {
     try {
-      // Try `package.json` in the same directory
+      // Try `package.json` in the same directory.
       return requireNotFound(dir + '/package.json');
     } catch (e) {
       if (e !== MODULE_NOT_FOUND) {
@@ -119,7 +119,7 @@ function requirePackage(dir, pkg) {
 
 /**
  * @param {*} theme
- * @return {function}
+ * @return {Function}
  * @throws If the theme is not a function.
  */
 function inspectTheme(theme) {
@@ -150,8 +150,8 @@ function inspectTheme(theme) {
  *
  * `MODULE_NOT_FOUND` reference is thrown if nothing at all is found.
  *
- * @param {string} dir
- * @param {string} theme
+ * @param {String} dir
+ * @param {String} theme
  * @return {*}
  */
 function requireRawTheme(dir, theme) {
@@ -184,7 +184,7 @@ var requireTheme;
 /**
  * Fallback to default theme, logging a message.
  *
- * @param {string} dir
+ * @param {String} dir
  */
 function defaultTheme(dir) {
   logger.warn('Falling back to default theme.');
@@ -194,9 +194,9 @@ function defaultTheme(dir) {
 /**
  * Resolve require and validate theme value.
  *
- * @param {string} dir
- * @param {string} theme
- * @return {function}
+ * @param {String} dir
+ * @param {String} theme
+ * @return {Function}
  */
 function requireTheme(dir, theme) {
   try {
@@ -221,8 +221,8 @@ function requireTheme(dir, theme) {
 /**
  * Parse configuration.
  *
- * @param {string|object} view
- * @return {object}
+ * @param {String|Object} view
+ * @return {Object}
  */
 module.exports = function (view) {
   // Relative directory for `package` file
