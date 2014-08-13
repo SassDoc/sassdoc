@@ -99,7 +99,7 @@ function requirePackage(dir, pkg) {
       }
 
       logger.warn('No package information.');
-      return;
+      return null;
     }
   }
 
