@@ -9,7 +9,8 @@
       "example": [
         {
           "type": "scss",
-          "code": "$foo: test-function-example($bar);"
+          "code": "$foo: test-function-example($bar);",
+          "description": "How to use this function"
         }
       ],
       "access": [
