@@ -4,10 +4,11 @@
       "description": "",
       "context": {
         "type": "mixin",
-        "name": "test-mixin-output"
+        "name": "test-mixin-output",
+        "code": ""
       },
-      "output": [ 
-        "A description of output" 
+      "output": [
+        "A description of output"
       ],
       "access": [
         "public"

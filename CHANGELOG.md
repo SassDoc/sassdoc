@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.2
+
+* Fixed a broken test
+
 ## 1.3.1
 
 * Merged a branch that needed to be merged
