@@ -53,8 +53,7 @@ module.exports = {
             reqItem.usedBy.push(item);
             req.item = reqItem;
 
-            return reqItem;
-          } else {
+          } else {
             logger.log('Item `' + item.context.name +
               '` requires `' + req.name + '` from type `' + req.type +
               '` but this item doesn\'t exist.');
