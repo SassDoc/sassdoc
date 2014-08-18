@@ -66,6 +66,7 @@
     "time-grunt": "^0.4.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "rebuild": "rm -rf node_modules && npm install"
   }
 }
