@@ -2,7 +2,7 @@
 
 Like JSDoc for your Sass files.
 
-![SassDoc](http://i.imgur.com/nQoXn0W.png)
+![SassDoc](http://i.imgur.com/zN7UPua.png)
 ---
 
 master: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)
