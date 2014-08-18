@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+* Added `@output` as an equivalent for `@return` for mixins ([#133](https://github.com/SassDoc/sassdoc/issues/133))
+* Added the ability to add a title to `@example` ([#145](https://github.com/SassDoc/sassdoc/issues/145))
+* Added the ability to preview the code of an item when clicking on it ([#124](https://github.com/SassDoc/sassdoc/issues/124))
+
 ## 1.2.0
 
 * Same as 1.2.0-rc.1 but stable
@@ -57,7 +63,7 @@
 * Fixed an issue with a missing dependency
 * Prevented a weird bug with require
 * Updated readme
-* Improved styles 
+* Improved styles
 
 ## 1.0.0-rc.19
 

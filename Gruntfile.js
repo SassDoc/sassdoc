@@ -129,7 +129,8 @@ var config = {
       'package': theme('package.json'),
       'theme': 'sassdoc-theme-default',
       'groups': {
-        'undefined': 'General'
+        'undefined': 'General',
+        'cross-browser-support': 'Cross Browser Support'
       }
     },
     develop: {
