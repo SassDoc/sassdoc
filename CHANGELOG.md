@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+* Merged a branch that needed to be merged
+
 ## 1.3.0
 
 * Added `@output` as an equivalent for `@return` for mixins ([#133](https://github.com/SassDoc/sassdoc/issues/133))
