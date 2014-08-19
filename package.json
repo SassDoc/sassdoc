@@ -63,7 +63,9 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha-test": "^0.11.0",
     "load-grunt-tasks": "^0.6.0",
-    "time-grunt": "^0.4.0"
+    "time-grunt": "^0.4.0",
+    "atom-screenshot": "^0.1.2",
+    "grunt-gh-pages": "^0.9.1"
   },
   "scripts": {
     "test": "grunt test",
