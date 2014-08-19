@@ -84,6 +84,12 @@ var config = {
   },
 
   browserSync: {
+    options: {
+      watchTask: true,
+      server: {
+        baseDir: '<%= dirs.docs %>'
+      }
+    },
     develop: {
       bsFiles: {
         src: [
@@ -91,12 +97,20 @@ var config = {
           '<%= dirs.docs %>/**/*.css',
           '<%= dirs.docs %>/**/*.js'
         ]
+      }
+    },
+    screenshot: {
+      options : {
+        port: 3001,
+        open: false,
+        notify: false
       },
-      options: {
-        watchTask: true,
-        server: {
-          baseDir: '<%= dirs.docs %>'
-        }
+      bsFiles: {
+        src: [
+          '<%= dirs.docs %>/*.html',
+          '<%= dirs.docs %>/**/*.css',
+          '<%= dirs.docs %>/**/*.js'
+        ]
       }
     }
   },
@@ -140,6 +154,20 @@ var config = {
     empty: {
       src: '<%= dirs.develop %>/empty',
       dest: '<%= dirs.develop %>/docs-empty',
+    }
+  },
+
+  'gh-pages': {
+    options: {
+      repo: 'https://github.com/SassDoc/sassdoc.github.io',
+      base: 'tmp'
+    },
+    screenshot: {
+      options: {
+        message: 'Update preview image',
+        add: true
+      },
+      src: '*.png'
     }
   }
 
@@ -209,6 +237,20 @@ module.exports = function (grunt) {
       });
   });
 
+  grunt.registerTask('take-screenshot', 'Take a screenshot of the latest compile', function(){
+
+    var done = this.async();
+
+    require('atom-screenshot')({ url : 'http://localhost:3001', width : 1024, height : 768 })
+    .then(function(buffer){
+      mkdirp.sync(__dirname + '/.grunt');
+      fs.writeFileSync(__dirname + '/.grunt/preview-image.png', buffer);
+      done();
+    });
+
+  });
+
+  grunt.registerTask('update-image', ['browserSync:screenshot', 'compile', 'take-screenshot', 'gh-pages:screenshot']);
 
   // Development task.
   // While working on a theme.
