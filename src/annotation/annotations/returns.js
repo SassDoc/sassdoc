@@ -24,7 +24,6 @@ module.exports = {
     }
 
     return obj;
-  }
+  },
+  alias : ['return']
 };
-
-module.exports.alias = ['return'];

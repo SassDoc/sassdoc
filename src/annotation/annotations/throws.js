@@ -3,7 +3,6 @@
 module.exports = {
   parse: function (text) {
     return text.trim();
-  }
+  },
+  alias : ['throw', 'exception']
 };
-
-module.exports.alias = ['throw', 'exception'];
