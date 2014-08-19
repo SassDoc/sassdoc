@@ -10,5 +10,6 @@ module.exports = {
       url: parsed[1] || '',
       caption: parsed[2] || ''
     };
-  }
+  },
+  alias : ['source']
 };
