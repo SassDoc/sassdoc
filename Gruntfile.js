@@ -159,8 +159,9 @@ var config = {
 
   'gh-pages': {
     options: {
+      branch: 'master',
       repo: 'https://github.com/SassDoc/sassdoc.github.io',
-      base: 'tmp'
+      base: '.grunt'
     },
     screenshot: {
       options: {
