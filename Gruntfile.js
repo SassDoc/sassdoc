@@ -160,7 +160,7 @@ var config = {
   'gh-pages': {
     options: {
       branch: 'master',
-      repo: 'https://github.com/SassDoc/sassdoc.github.io',
+      repo: 'git@github.com:SassDoc/sassdoc.github.io.git',
       base: '.grunt'
     },
     screenshot: {
@@ -238,20 +238,34 @@ module.exports = function (grunt) {
       });
   });
 
-  grunt.registerTask('take-screenshot', 'Take a screenshot of the latest compile', function(){
 
+  // Take a screenshot of the latest compile.
+  grunt.registerTask('take-screenshot', 'Take a screenshot of the latest compile', function () {
     var done = this.async();
 
-    require('atom-screenshot')({ url : 'http://localhost:3001', width : 1024, height : 768 })
-    .then(function(buffer){
-      mkdirp.sync(__dirname + '/.grunt');
-      fs.writeFileSync(__dirname + '/.grunt/preview-image.png', buffer);
-      done();
-    });
+    var options = {
+      url: 'http://localhost:3001',
+      width: 1024,
+      height: 768
+    };
 
+    require('atom-screenshot')(options)
+      .then(function (buffer) {
+        mkdirp.sync(path.join(__dirname, '.grunt'));
+        fs.writeFileSync(path.join(__dirname, '.grunt/preview-image.png'), buffer);
+        done();
+      });
   });
 
-  grunt.registerTask('update-image', ['browserSync:screenshot', 'compile', 'take-screenshot', 'gh-pages:screenshot']);
+
+  // Update screenshot in Readme.
+  grunt.registerTask('update-image', [
+    'browserSync:screenshot',
+    'compile:develop',
+    'take-screenshot',
+    'gh-pages:screenshot'
+  ]);
+
 
   // Development task.
   // While working on a theme.
