@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+
+* Same as 1.4.0-rc.3 but stable
+
 ## 1.4.0-rc.3
 
 * Updated favicon from theme to prevent 404
