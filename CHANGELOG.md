@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.1
+
+* Fixed a broken test
+
 ## 1.4.0
 
 * Same as 1.4.0-rc.3 but stable
