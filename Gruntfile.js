@@ -129,6 +129,19 @@ var config = {
     }
   },
 
+  uglify: {
+    options: {
+      compress: {
+        drop_console: true
+      }
+    },
+    develop: {
+      files: {
+        '<%= dirs.js %>/main.min.js': ['<%= dirs.js %>/main.js']
+      }
+    }
+  },
+
   clean: {
     empty: [
       '<%= dirs.develop %>/empty',
