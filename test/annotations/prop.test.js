@@ -12,10 +12,9 @@ describe('#prop', function () {
       path : 'base'
     });
 
-    assert.deepEqual(prop.parse('{Function} base.default - description'), {
+    assert.deepEqual(prop.parse('{Function} base.default'), {
       type : 'Function',
-      path : 'base.default',
-      description : 'description'
+      path : 'base.default'
     });
 
     assert.deepEqual(prop.parse('{Function} base.default - description'), {
