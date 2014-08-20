@@ -1,10 +1,18 @@
 # Changelog
 
+## 1.4.0-rc.3
+
+* Updated favicon from theme to prevent 404
+
+## 1.4.0-rc.2
+
+* Changed a dependency
+
 ## 1.4.0-rc.1
 
 * Added placeholder support ([#154](https://github.com/SassDoc/sassdoc/issues/154))
 * Prevented a crash when using invalid annotations; throwing a warning instead
-* Added `@source` as an alias for `@link` to provide more semantic
+* Added `@source` as an alias for `@link` to carry more semantic ([#170](https://github.com/SassDoc/sassdoc/issues/170))
 
 ## 1.3.2
 
