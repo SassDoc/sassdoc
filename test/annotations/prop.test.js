@@ -23,5 +23,12 @@ describe('#prop', function () {
       path : 'base.default',
       description : 'description'
     });
+
+    assert.deepEqual(prop.parse('{Function} base.default (default) - description'), {
+      type : 'Function',
+      path : 'base.default',
+      default : 'default',
+      description : 'description'
+    });
   });
 });
