@@ -3,7 +3,13 @@
 var ScssCommentParser = require('scss-comment-parser');
 var annotations = require('./annotation');
 
+var logger = require('./log');
+
 var parser = new ScssCommentParser(annotations);
+
+parser.commentParser.on('warning', function(warning){
+  logger.warn(warning);
+});
 
 module.exports = {
 
