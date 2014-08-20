@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0-rc.1
+
+* Added placeholder support ([#154](https://github.com/SassDoc/sassdoc/issues/154))
+* Prevented a crash when using invalid annotations; throwing a warning instead
+* Added `@source` as an alias for `@link` to provide more semantic
+
 ## 1.3.2
 
 * Fixed a broken test
