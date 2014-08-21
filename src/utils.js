@@ -8,6 +8,11 @@ var namespaceDelimitersRegExp = new RegExp(namespaceDelimiters.join('|'), 'g');
 
 exports = module.exports = {
 
+  mapArray : function(array, callback){
+    var copy = array.slice();
+    return copy.map(callback);
+  },
+
   eachItem: function (byTypeAndName, callback) {
     _.each(byTypeAndName, function (typeObj) {
       _.each(typeObj, function (item) {

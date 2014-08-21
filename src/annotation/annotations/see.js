@@ -30,6 +30,13 @@ module.exports = {
         }).filter(function (item) {
           return utils.isset(item);
         });
+
+        item.see.toJSON = utils.mapArray.bind(null, item.see, function(item){
+          return {
+            description : item.description,
+            context : item.context
+          };
+        });
       }
     });
   }
