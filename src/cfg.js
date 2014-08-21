@@ -257,5 +257,8 @@ module.exports = function (view) {
     config.theme = requireTheme(dir, view.theme);
   }
 
+  // Expose the relative path base
+  config.dir = dir;
+
   return config;
 };
