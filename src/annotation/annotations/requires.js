@@ -49,6 +49,12 @@ module.exports = {
 
             if (!Array.isArray(reqItem.usedBy)) {
               reqItem.usedBy = [];
+              reqItem.usedBy.toJSON = utils.mapArray.bind(null, reqItem.usedBy, function(item){
+                return {
+                  description : item.description,
+                  context : item.context
+                };
+              });
             }
             reqItem.usedBy.push(item);
             req.item = reqItem;
@@ -60,6 +66,20 @@ module.exports = {
           }
 
           return req;
+        });
+
+        item.requires.toJSON = utils.mapArray.bind(null, item.requires, function(item){
+          var obj = {
+            external : item.external
+          };
+          if ( item.external ){
+            obj.type = item.type;
+            obj.name = item.name;
+            obj.url  = item.url;
+          } else {
+            obj.description = item.description;
+            obj.context = item.context;
+          }
         });
       }
     });
