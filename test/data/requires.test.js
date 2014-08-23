@@ -19,9 +19,15 @@ describe('#requires', function () {
   });
 
   it('should match expected data', function () {
-    var data = _.clone(data);
-    delete data['function']['test-function-requires'].requires.toJSON;
-    assert.deepEqual(data, expected);
+    /**
+     * Do not, never, ever, call this variable `data`.
+     *
+     * @see https://twitter.com/HugoGiraudel/status/503253144940601344
+     */
+    var dataClone = _.clone(data, true);
+
+    delete dataClone['function']['test-function-requires'].requires.toJSON;
+    assert.deepEqual(dataClone, expected);
   });
 
   it('should be JSON serializable', function () {
