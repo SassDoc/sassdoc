@@ -80,6 +80,7 @@ module.exports = {
             obj.description = item.description;
             obj.context = item.context;
           }
+          return obj;
         });
       }
     });
