@@ -18,7 +18,11 @@ describe('#requires', function () {
   });
 
   it('should match expected data', function () {
+    delete data['function']['test-function-requires'].requires.toJSON;
     assert.deepEqual(data, expected);
   });
 
+  it('should be JSON serializable', function () {
+    assert.equal(JSON.stringify(data), JSON.stringify(expected));
+  });
 });
