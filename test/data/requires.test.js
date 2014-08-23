@@ -2,6 +2,7 @@
 'use strict';
 
 var assert = require('assert');
+var _ = require('lodash');
 
 describe('#requires', function () {
   var getData = require('../../src/file').getData;
@@ -18,11 +19,12 @@ describe('#requires', function () {
   });
 
   it('should match expected data', function () {
+    var data = _.clone(data);
     delete data['function']['test-function-requires'].requires.toJSON;
     assert.deepEqual(data, expected);
   });
 
   it('should be JSON serializable', function () {
-    assert.equal(JSON.stringify(data), JSON.stringify(expected));
+    assert.equal(JSON.stringify(data, null, '  '), JSON.stringify(expected, null, '  '));
   });
 });
