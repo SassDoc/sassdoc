@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.0
+
+* Added `@prop` to allow deeper documentation for maps ([#25](https://github.com/SassDoc/sassdoc/issues/25))
+* Fixed circular JSON dependencies when using raw data ([#181](https://github.com/SassDoc/sassdoc/issues/181))
+* Added an option to provide a custom shortcut icon to the view ([#178](https://github.com/SassDoc/sassdoc/issues/178))
+
 ## 1.4.1
 
 * Fixed a broken test
