@@ -9,30 +9,30 @@ describe('#prop', function () {
   it('should parse the prop annotation', function () {
     assert.deepEqual(prop.parse('base'), {
       type : 'Map',
-      path : 'base'
+      name : 'base'
     });
 
     assert.deepEqual(prop.parse('{Function} base.default'), {
       type : 'Function',
-      path : 'base.default'
+      name : 'base.default'
     });
 
     assert.deepEqual(prop.parse('{Function} base.default - description'), {
       type : 'Function',
-      path : 'base.default',
+      name : 'base.default',
       description : 'description'
     });
 
     assert.deepEqual(prop.parse('{Function} base.default (default) - description'), {
       type : 'Function',
-      path : 'base.default',
+      name : 'base.default',
       default : 'default',
       description : 'description'
     });
 
     assert.deepEqual(prop.parse('{Function} base.default (default) - description (with parens)'), {
       type : 'Function',
-      path : 'base.default',
+      name : 'base.default',
       default : 'default',
       description : 'description (with parens)'
     });
