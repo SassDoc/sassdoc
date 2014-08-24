@@ -12,7 +12,7 @@ module.exports = {
     };
 
     if (match[2]){
-      obj.path = match[2];
+      obj.name = match[2];
     }
 
     if (match[3]){
