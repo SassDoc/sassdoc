@@ -45,8 +45,7 @@ exports = module.exports = {
       .then(function () {
         logger.log('Theme successfully rendered.');
         logger.log('Process over. Everything okay!');
-      })
-      .fail(function (err) {
+      }, function (err) {
         logger.error('stack' in err ? err.stack : err);
         throw err;
       });
