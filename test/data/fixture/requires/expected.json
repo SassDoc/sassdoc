@@ -26,6 +26,36 @@
         "path": "input.scss",
         "name": "input"
       }
+    },
+    "test-function-required": {
+      "description": "Test.\n",
+      "context": {
+        "type": "function",
+        "name": "test-function-required",
+        "code": ""
+      },
+      "access": [
+        "public"
+      ],
+      "group": [
+        [
+          "undefined"
+        ]
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      },
+      "usedBy": [
+        {
+          "description": "",
+          "context": {
+            "type": "function",
+            "name": "test-function-requires",
+            "code": ""
+          }
+        }
+      ]
     }
   }
 }
