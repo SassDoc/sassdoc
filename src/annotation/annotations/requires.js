@@ -70,11 +70,11 @@ module.exports = {
 
         item.requires.toJSON = utils.mapArray.bind(null, item.requires, function(item){
           var obj = {
-            external : item.external
+            type : item.type,
+            name : item.name,
+            external : item.external,
           };
           if ( item.external ){
-            obj.type = item.type;
-            obj.name = item.name;
             obj.url  = item.url;
           } else {
             obj.description = item.description;
