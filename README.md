@@ -2,6 +2,12 @@
 
 Like JSDoc for your Sass files.
 
+* Usable out of the box.
+* Highly customisable.
+* Reasonably fast.
+* Fully themable.
+* Integrated with Grunt/Gulp/Broccoli or directly Node.
+
 ![SassDoc](http://sassdoc.com/preview-image.png)
 ---
 
@@ -10,6 +16,9 @@ develop: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=devel
 
 [![NPM](https://nodei.co/npm/sassdoc.png?downloads=true)](https://nodei.co/npm/sassdoc/)
 
+## How does it work?
+
+[SassDoc](http://github.com/sassdoc/sassdoc) parses your source folder to grab documentation-specific comments. From there, it builds a data tree, that gets [enhanced](http://github.com/sassdoc/sassdoc-indexer) and [filtered](http://github.com/sassdoc/sassdic-filter) before being passed to the [view](http://github.com/sassdoc/sassdoc-theme-light). So you end up with a fully styled HTML document located at your destination folder.
 
 ## Usage
 
@@ -34,13 +43,12 @@ sassdoc <src> <dest> [options]
 
 **Options:**
 
-* `-h, --help`: Bring help.
 * `--version`: Show version.
+* `-h, --help`: Bring help.
 * `-v, --verbose`: Run in verbose mode.
 * `-c, --config`: Path to JSON file containing variables to be passed to the view.
 * `-t, --theme`: Theme to be required. It will override the configuration value.
 * `--no-update-notifier`: Do not run the update notifier check.
-
 
 ### Node
 
@@ -105,16 +113,13 @@ See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Customising-the-view).
  *
  * @author Hugo Giraudel
  *
- * @ignore Documentation: http://sassylists.com/documentation/#insert-nth
- *
- * @requires is-true
+ * @requires {function} is-true
  *
  * @param {List}   $list  - list to update
  * @param {Number} $index - index to add
  * @param {*}      $value - value to add
  *
  * @throws List index $index is not a number for `insert-nth`.
- * @throws List index $index must be a non-zero integer for `insert-nth`.
  *
  * @return {List | Null}
  */
@@ -140,6 +145,7 @@ $legacy-support: true !global;
 
 ## Built with SassDoc
 
+* [GUSS](http://www.kaelig.fr/gu/guss-sassdoc/) from The Guardian
 * [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez
 * [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez
 * [SassyLists](http://sassylists.com/documentation) from Hugo Giraudel
@@ -148,10 +154,10 @@ $legacy-support: true !global;
 * [Sassy Starter](http://minamarkham.github.io/sassy-starter/docs/) from archermalmo
 
 
-
 ## Credits
 
 * [Valérian Galliat](https://twitter.com/valeriangalliat)
 * [Fabrice Weinberg](https://twitter.com/fweinb)
-* [Hugo Giraudel](http://twitter.com/HugoGiraudel)
 * [Pascal Duez](https://twitter.com/pascalduez)
+* [Hugo Giraudel](http://twitter.com/HugoGiraudel)
+
