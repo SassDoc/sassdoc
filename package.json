@@ -41,16 +41,17 @@
     "sassdoc": "bin/sassdoc"
   },
   "dependencies": {
-    "sassdoc-theme-default": "^1.4.0",
+    "chalk": "^0.5.0",
+    "docopt": "^0.4.0",
+    "js-yaml": "^3.2.1",
+    "lodash": "^2.4.1",
+    "mkdirp": "^0.5.0",
+    "ncp": "^0.6.0",
     "q": "^1.0.1",
     "rimraf": "~2.2.8",
-    "ncp": "^0.6.0",
+    "sassdoc-theme-default": "^1.4.0",
     "scss-comment-parser": "^0.3.2",
-    "mkdirp": "^0.5.0",
-    "docopt": "^0.4.0",
-    "update-notifier": "^0.2.0",
-    "chalk": "^0.5.0",
-    "lodash": "^2.4.1"
+    "update-notifier": "^0.2.0"
   },
   "devDependencies": {
     "assert": "^1.1.1",

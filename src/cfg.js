@@ -2,6 +2,8 @@
 
 var logger = require('./log');
 var path = require('path');
+var fs = require('fs');
+var yaml = require('js-yaml');
 
 /**
  * Tests given exception to see if the code is `MODULE_NOT_FOUND` and
@@ -21,6 +23,9 @@ function isModuleNotFound(name, e) {
 
 // Object identifier for module not found exception.
 var MODULE_NOT_FOUND = {};
+
+// Illegal type exception
+var ILLEGAL_TYPE = {};
 
 /**
  * Wrapper for `require` that will throw above `MODULE_NOT_FOUND` object
@@ -46,13 +51,53 @@ function requireNotFound(name) {
  * @return {String}
  */
 function resolveConfig(config) {
-  if (config[0] === '/') {
-    // Absolute
-    return config;
+  return path.resolve(process.cwd(),  config);
+}
+
+/**
+ * Read a config file according to its extension.
+ *
+ * @param {String} file
+ */
+function readConfig(file) {
+  var data = fs.readFileSync(file, 'utf-8');
+  var ext = path.extname(file);
+
+  switch (ext) {
+    case '.json':
+      return JSON.parse(data);
+    case '.yaml':
+    case '.yml':
+      return yaml.safeLoad(data);
   }
 
-  // Relative
-  return process.cwd() + '/' + config;
+  logger.error(
+    'Sorry, I don\'t know how to handle `' + ext +
+    '` files, please use `.yaml` or `.json`.'
+  );
+
+  throw ILLEGAL_TYPE;
+}
+
+/**
+ * Try an array of config files until one is actually found, or
+ * return empty object.
+ *
+ * @param {String[]} configs
+ */
+function tryConfigs(configs) {
+  for (var i = 0, length = configs.length; i < length; i++) {
+    try {
+      return readConfig(resolveConfig(configs[i]));
+    } catch (e) {
+      if (e !== ILLEGAL_TYPE && e.code !== 'ENOENT') {
+        throw e;
+      }
+    }
+  }
+
+  // Empty view config, maybe the theme will set default values.
+  return {};
 }
 
 /**
@@ -62,23 +107,23 @@ function resolveConfig(config) {
  * @return {Object}
  */
 function requireConfig(config) {
-  if (!config) {
-    // Default value
-    config = 'view.json';
-  }
+  if (config) {
+    try {
+      return readConfig(resolveConfig(config));
+    } catch (e) {
+      if (e === ILLEGAL_TYPE) {
+        // Already logged
+      } else if (e.code === 'ENOENT') {
+        logger.error('Config file `' + config + '` not found.');
+      } else {
+        throw e;
+      }
 
-  config = resolveConfig(config);
-
-  try {
-    return requireNotFound(config);
-  } catch (e) {
-    if (e !== MODULE_NOT_FOUND) {
-      throw e;
+      logger.warn('Falling back to default config.');
     }
-
-    // Empty view config, maybe the theme will set default values.
-    return {};
   }
+
+  return tryConfigs(['view.json', 'view.yaml', 'view.yml']);
 }
 
 /**
