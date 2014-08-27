@@ -250,7 +250,12 @@ function requireTheme(dir, theme) {
       throw e;
     }
 
-    logger.error('Theme `' + (theme || 'default') + '` not found.');
+    if (!theme) {
+      // Default theme was not found? WTF!
+      throw 'Holy shit, the default theme was not found!';
+    }
+
+    logger.error('Theme `' + theme + '` not found.');
     return defaultTheme(dir);
   }
 
