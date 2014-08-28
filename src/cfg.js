@@ -4,6 +4,7 @@ var logger = require('./log');
 var path = require('path');
 var fs = require('fs');
 var yaml = require('js-yaml');
+var chalk = require('chalk');
 
 /**
  * Tests given exception to see if the code is `MODULE_NOT_FOUND` and
@@ -106,6 +107,14 @@ function requireConfig(config) {
       logger.warn('Falling back to default config.');
     }
   }
+
+  logger.warn(
+    'Starting SassDoc ' + chalk.grey('v2.0') + ', the default ' +
+    'configuration file will be named ' + chalk.grey('.sassdocrc') + ' ' +
+    'rather than ' + chalk.grey('view.{json,yaml,yml}') +
+    '. Please consider using the ' + chalk.grey('--config') +
+    ' option right now to specify your own file.'
+  );
 
   return tryConfigs(['view.json', 'view.yaml', 'view.yml']);
 }
