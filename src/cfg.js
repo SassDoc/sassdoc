@@ -60,23 +60,7 @@ function resolveConfig(config) {
  * @param {String} file
  */
 function readConfig(file) {
-  var data = fs.readFileSync(file, 'utf-8');
-  var ext = path.extname(file);
-
-  switch (ext) {
-    case '.json':
-      return JSON.parse(data);
-    case '.yaml':
-    case '.yml':
-      return yaml.safeLoad(data);
-  }
-
-  logger.error(
-    'Sorry, I don\'t know how to handle `' + ext +
-    '` files, please use `.yaml` or `.json`.'
-  );
-
-  throw ILLEGAL_TYPE;
+  return yaml.safeLoad(fs.readFileSync(file, 'utf-8'));
 }
 
 /**
