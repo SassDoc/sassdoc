@@ -167,7 +167,7 @@ exports = module.exports = {
    * @return {Boolean}
    */
   isDirectory: function (path) {
-    return fs.lstatSync(path).isDirectory();
+    return fs.statSync(path).isDirectory();
   },
 
   /**
