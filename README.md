@@ -146,6 +146,7 @@ $legacy-support: true !global;
 ## Built with SassDoc
 
 * [GUSS](http://www.kaelig.fr/gu/guss-sassdoc/) from The Guardian
+* [Valo](https://vaadin.com/api/valo/) from Vaadin
 * [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez
 * [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez
 * [SassyLists](http://sassylists.com/documentation) from Hugo Giraudel
