@@ -22,6 +22,11 @@ module.exports = {
       obj.name = obj.name.slice(1);
     }
 
+    if (obj.name.indexOf('%') === 0) {
+      obj.type = 'placeholder';
+      obj.name = obj.name.slice(1);
+    }
+
     if (match[4]) {
       obj.description = match[4].trim();
     }
