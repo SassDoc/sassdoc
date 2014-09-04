@@ -1,0 +1,13 @@
+
+/**
+ * Test: variable prop
+ *
+ * @type Map
+ *
+ * @prop {String} foo ('bar') - description
+ * @prop {String} baz ('quux') - description
+ */
+$test-variable-prop: (
+  foo: 'bar',
+  baz: 'quux'
+);
