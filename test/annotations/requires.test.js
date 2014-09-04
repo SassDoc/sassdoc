@@ -11,7 +11,7 @@ describe('#requires', function () {
     assert.deepEqual(requires.parse('name description'), { type: 'function', name: 'name', description: 'description', 'external': false });
   });
 
-  it('should work for variables with with or without $', function () {
+  it('should work for variables with or without $', function () {
     assert.deepEqual(requires.parse('{variable} $my-variable'), { type: 'variable', name: 'my-variable', 'external': false });
     assert.deepEqual(requires.parse('{variable} my-variable'),  { type: 'variable', name: 'my-variable', 'external': false });
   });
@@ -19,6 +19,16 @@ describe('#requires', function () {
   it('should work with optional variable type if $ is used', function () {
     assert.deepEqual(requires.parse('{variable} my-variable'), { type: 'variable', name: 'my-variable', 'external': false });
     assert.deepEqual(requires.parse('$my-variable'), { type: 'variable', name: 'my-variable', 'external': false });
+  });
+
+  it('should work for placeholders with or without %', function () {
+    assert.deepEqual(requires.parse('{placeholder} %my-placeholder'), { type: 'placeholder', name: 'my-placeholder', 'external': false });
+    assert.deepEqual(requires.parse('{placeholder} my-placeholder'),  { type: 'placeholder', name: 'my-placeholder', 'external': false });
+  });
+
+  it('should work with optional placeholder type if % is used', function () {
+    assert.deepEqual(requires.parse('{placeholder} my-placeholder'), { type: 'placeholder', name: 'my-placeholder', 'external': false });
+    assert.deepEqual(requires.parse('%my-placeholder'), { type: 'placeholder', name: 'my-placeholder', 'external': false });
   });
 
   it('should work for external requires', function () {
