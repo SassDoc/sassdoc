@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.2
+
+* fix: add implicit type for required placeholders ([#197](https://github.com/SassDoc/sassdoc/issues/197))
+
+## 1.5.1
+
+* Use `stat` instead of `lstat` to support symlinks ([22a9b79](https://github.com/SassDoc/sassdoc/commit/22a9b7986e1eef2bf962bb9b1a48467d257ee398))
+
 ## 1.5.0
 
 * Added `@prop` to allow deeper documentation for maps ([#25](https://github.com/SassDoc/sassdoc/issues/25))
