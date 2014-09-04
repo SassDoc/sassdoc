@@ -1,14 +1,14 @@
 'use strict';
 
-var fs     = require('fs');          // File system
-var mkdirp = require('mkdirp');      // mkdir -p
-var rimraf = require('rimraf');      // rm -rf
-var ncp    = require('ncp');         // cp -r
-var Q      = require('q');           // Promises
-var path   = require('path');        // Path
+var fs = require('fs');          // File system
+var mkdirp = require('mkdirp');  // mkdir -p
+var rimraf = require('rimraf');  // rm -rf
+var ncp = require('ncp');        // cp -r
+var Q = require('q');            // Promises
+var path = require('path');      // Path
 
 var parser = require('./parser');
-var utils  = require('./utils');
+var utils = require('./utils');
 var logger = require('./log');
 
 ncp.limit = 16;

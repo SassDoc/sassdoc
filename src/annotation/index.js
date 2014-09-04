@@ -30,7 +30,7 @@ fs.readdirSync(path.resolve(__dirname, './annotations')).forEach(function (file)
     });
   }
 
-  annotations[name] =  annotation;
+  annotations[name] = annotation;
 });
 
 // Export the annotations and the alias map.

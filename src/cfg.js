@@ -52,7 +52,7 @@ function requireNotFound(name) {
  * @return {String}
  */
 function resolveConfig(config) {
-  return path.resolve(process.cwd(),  config);
+  return path.resolve(process.cwd(), config);
 }
 
 /**
@@ -68,7 +68,7 @@ function readConfig(file) {
  * Try an array of config files until one is actually found, or
  * return empty object.
  *
- * @param {String[]} configs
+ * @param {Array} configs
  */
 function tryConfigs(configs) {
   for (var i = 0, length = configs.length; i < length; i++) {

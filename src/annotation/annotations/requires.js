@@ -54,17 +54,20 @@ module.exports = {
 
             if (!Array.isArray(reqItem.usedBy)) {
               reqItem.usedBy = [];
-              reqItem.usedBy.toJSON = utils.mapArray.bind(null, reqItem.usedBy, function(item){
-                return {
-                  description : item.description,
-                  context : item.context
-                };
-              });
+              reqItem.usedBy.toJSON = utils.mapArray.bind(null, reqItem.usedBy,
+                function (item) {
+                  return {
+                    description: item.description,
+                    context: item.context
+                  };
+                }
+              );
             }
             reqItem.usedBy.push(item);
             req.item = reqItem;
 
-          } else {
+          }
+          else {
             logger.log('Item `' + item.context.name +
               '` requires `' + req.name + '` from type `' + req.type +
               '` but this item doesn\'t exist.');
@@ -73,20 +76,23 @@ module.exports = {
           return req;
         });
 
-        item.requires.toJSON = utils.mapArray.bind(null, item.requires, function(item){
-          var obj = {
-            type : item.type,
-            name : item.name,
-            external : item.external,
-          };
-          if ( item.external ){
-            obj.url  = item.url;
-          } else {
-            obj.description = item.description;
-            obj.context = item.context;
+        item.requires.toJSON = utils.mapArray.bind(null, item.requires,
+          function (item) {
+            var obj = {
+              type: item.type,
+              name: item.name,
+              external : item.external,
+            };
+            if (item.external) {
+              obj.url = item.url;
+            }
+            else {
+              obj.description = item.description;
+              obj.context = item.context;
+            }
+            return obj;
           }
-          return obj;
-        });
+        );
       }
     });
 

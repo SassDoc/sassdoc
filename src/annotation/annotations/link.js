@@ -11,5 +11,5 @@ module.exports = {
       caption: parsed[2] || ''
     };
   },
-  alias : ['source']
+  alias: ['source']
 };

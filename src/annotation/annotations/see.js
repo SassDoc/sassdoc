@@ -22,7 +22,8 @@ module.exports = {
           if (utils.isset(byTypeAndName[see.type]) &&
               utils.isset(byTypeAndName[see.type][see.name])) {
             return byTypeAndName[see.type][see.name];
-          } else {
+          }
+          else {
             logger.log('Item `' + item.context.name +
               '` refers to `' + see.name + '` from type `' + see.type +
               '` but this item doesn\'t exist.');
@@ -31,10 +32,10 @@ module.exports = {
           return utils.isset(item);
         });
 
-        item.see.toJSON = utils.mapArray.bind(null, item.see, function(item){
+        item.see.toJSON = utils.mapArray.bind(null, item.see, function (item) {
           return {
-            description : item.description,
-            context : item.context
+            description: item.description,
+            context: item.context
           };
         });
       }

@@ -1,8 +1,8 @@
 'use strict';
 
-var fs     = require('./file');
+var fs = require('./file');
 var logger = require('./log');
-var cgf    = require('./cfg');
+var cgf = require('./cfg');
 
 exports = module.exports = {
 
