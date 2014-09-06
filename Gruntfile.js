@@ -5,8 +5,11 @@ var path = require('path');
 var chalk = require('chalk');
 var mkdirp = require('mkdirp');
 var fs = require('fs');
+var fse = require('fs-extra');
+var q = require('q');
 var sassdoc = require('./src/api');
-var sdfs = require('./src/file');
+
+var copy = q.denodeify(fse.copy);
 
 // Set development theme.
 var themePath = 'node_modules/sassdoc-theme-default/node_modules/sassdoc-theme-light';
@@ -230,7 +233,7 @@ module.exports = function (grunt) {
     var src = dirs.js;
     var dest = path.join(dirs.docs, 'assets/js');
 
-    sdfs.folder.copy(src, dest)
+    copy(src, dest)
       .then(function () {
         grunt.log.writeln('JS ' + chalk.cyan(src) + ' copied to ' + chalk.cyan(dest) + '.');
         done();
@@ -245,7 +248,7 @@ module.exports = function (grunt) {
     var src = dirs.css;
     var dest = path.join(dirs.docs, 'assets/css');
 
-    sdfs.folder.copy(src, dest)
+    copy(src, dest)
       .then(function () {
         grunt.log.writeln('CSS ' + chalk.cyan(src) + ' copied to ' + chalk.cyan(dest) + '.');
         done();
