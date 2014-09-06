@@ -3,15 +3,12 @@
 var fs = require('fs');          // File system
 var mkdirp = require('mkdirp');  // mkdir -p
 var rimraf = require('rimraf');  // rm -rf
-var ncp = require('ncp');        // cp -r
 var Q = require('q');            // Promises
 var path = require('path');      // Path
 
 var parser = require('./parser');
 var utils = require('./utils');
 var logger = require('./log');
-
-ncp.limit = 16;
 
 exports = module.exports = {
 
@@ -37,13 +34,6 @@ exports = module.exports = {
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     create: Q.denodeify(mkdirp),
-
-    /**
-     * Copy a folder.
-     * @see {@link https://github.com/AvianFlu/ncp}
-     * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
-     */
-    copy: Q.denodeify(ncp),
 
     /**
      * Remove a folder.
@@ -168,16 +158,6 @@ exports = module.exports = {
    */
   isDirectory: function (path) {
     return fs.statSync(path).isDirectory();
-  },
-
-  /**
-   * Dump assets (CSS, JS, ...).
-   * @param  {String} destination
-   * @return {Q.Promise}
-   */
-  dumpAssets: function (destination) {
-    var assetsPath = path.join(__dirname, '../view/assets', destination, 'assets');
-    return exports.folder.copy(assetsPath);
   },
 
   /**
