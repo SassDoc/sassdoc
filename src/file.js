@@ -114,20 +114,6 @@ exports = module.exports = {
     read: Q.denodeify(fs.readFile),
 
     /**
-     * Create a file.
-     * @see {@link http://nodejs.org/api/fs.html#fs_fs_writefile_filename_data_options_callback}
-     * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
-     */
-    create: Q.denodeify(fs.writeFile),
-
-    /**
-     * Remove a file.
-     * @see {@link http://nodejs.org/api/fs.html#fs_fs_unlink_path_callback}
-     * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
-     */
-    remove: Q.denodeify(fs.unlink),
-
-    /**
      * Process a file.
      * @param  {String} file
      * @return {Q.Promise}
