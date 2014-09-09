@@ -1,12 +1,20 @@
 # Changelog
 
+## 1.6.0
+
+* Added a [Yeoman Generator](https://github.com/SassDoc/generator-sassdoc-theme) to make it easier to build themes ([#185](https://github.com/SassDoc/sassdoc/issues/185))
+* Added YAML support for configuration files; default configuration file name is still `view`, either as `.json`, `.yaml` or `.yml` ([#184](https://github.com/SassDoc/sassdoc/issues/184))
+* Added a message to warn against relying on the default configuration file name (`view.{json,yaml,yml}`) since it will break in version 2.0.0 in favor of `.sassdocrc` (which will support both format at once while being more semantic, less confusing and less likely to conflict with other projects) ([#194](https://github.com/SassDoc/sassdoc/issues/194))
+* Fixed an issue when variable items' value contains a semi-colon ([#191](https://github.com/SassDoc/sassdoc/issues/191))
+* Improved the light theme (better sidebar toggle with states stored in localStorage, better code toggle, better JavaScript structure, and better performance)
+
 ## 1.5.2
 
-* fix: add implicit type for required placeholders ([#197](https://github.com/SassDoc/sassdoc/issues/197))
+* Added implicit type for required placeholders ([#197](https://github.com/SassDoc/sassdoc/issues/197))
 
 ## 1.5.1
 
-* Use `stat` instead of `lstat` to support symlinks ([22a9b79](https://github.com/SassDoc/sassdoc/commit/22a9b7986e1eef2bf962bb9b1a48467d257ee398))
+* Used `stat` instead of `lstat` to support symlinks ([22a9b79](https://github.com/SassDoc/sassdoc/commit/22a9b7986e1eef2bf962bb9b1a48467d257ee398))
 
 ## 1.5.0
 
