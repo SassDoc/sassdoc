@@ -18,7 +18,7 @@ develop: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=devel
 
 ## How does it work?
 
-[SassDoc](http://github.com/sassdoc/sassdoc) parses your source folder to grab documentation-specific comments. From there, it builds a data tree, that gets [enhanced](http://github.com/sassdoc/sassdoc-indexer) and [filtered](http://github.com/sassdoc/sassdic-filter) before being passed to the [view](http://github.com/sassdoc/sassdoc-theme-light). So you end up with a fully styled HTML document located at your destination folder.
+[SassDoc](http://github.com/sassdoc/sassdoc) parses your source folder to grab documentation-specific comments. From there, it builds a data tree, that gets [enhanced](http://github.com/sassdoc/sassdoc-indexer) and [filtered](http://github.com/sassdoc/sassdoc-filter) before being passed to the [view](http://github.com/sassdoc/sassdoc-theme-light). So you end up with a fully styled HTML document located at your destination folder.
 
 ## Usage
 
