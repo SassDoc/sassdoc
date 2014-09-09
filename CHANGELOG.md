@@ -7,6 +7,7 @@
 * Added a message to warn against relying on the default configuration file name (`view.{json,yaml,yml}`) since it will break in version 2.0.0 in favor of `.sassdocrc` (which will support both format at once while being more semantic, less confusing and less likely to conflict with other projects) ([#194](https://github.com/SassDoc/sassdoc/issues/194))
 * Fixed an issue when variable items' value contains a semi-colon ([#191](https://github.com/SassDoc/sassdoc/issues/191))
 * Improved the light theme (better sidebar toggle with states stored in localStorage, better code toggle, better JavaScript structure, and better performance)
+* Added a `byType` key to sassdoc-indexer to help building themes
 
 ## 1.5.2
 
