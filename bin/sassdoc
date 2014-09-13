@@ -17,6 +17,8 @@ Options:
                         to the view.
   -t, --theme=<name>    Theme to be required. It will override the
                         configuration value.
+  --convert             Perform a sass to scss syntax convertion prior to
+                        run SassDoc.
   --no-update-notifier  Do not run the update notifier check.
 */
 
@@ -63,5 +65,9 @@ if (options['--theme']) {
 
 // Set verbose mode
 sassdoc.logger.enabled = options['--verbose'];
+
+if (options['--convert']) {
+  sassdoc = require('../src/convert')(sassdoc);
+}
 
 sassdoc.documentize(options['<src>'], options['<dest>'], config);
