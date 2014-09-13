@@ -14,8 +14,8 @@ var rmdir = Q.denodeify(rimraf);
  * @param  {Object} options
  * @return {Q.Promise}
  */
-function exec(command, options) {
-  var args = Array.prototype.slice.call(arguments, 0);
+function exec(command) {
+  var args = Array.prototype.slice.call(arguments);
   var deferred = Q.defer();
   var childProcess;
 
