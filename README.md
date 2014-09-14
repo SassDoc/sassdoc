@@ -48,6 +48,7 @@ sassdoc <src> <dest> [options]
 * `-v, --verbose`: Run in verbose mode.
 * `-c, --config`: Path to JSON file containing variables to be passed to the view.
 * `-t, --theme`: Theme to be required. It will override the configuration value.
+* `--sass-convert`: Perform a Sass to SCSS syntax conversion prior to run SassDoc.
 * `--no-update-notifier`: Do not run the update notifier check.
 
 ### Node
@@ -160,4 +161,3 @@ $legacy-support: true !global;
 * [Fabrice Weinberg](https://twitter.com/fweinb)
 * [Pascal Duez](https://twitter.com/pascalduez)
 * [Hugo Giraudel](http://twitter.com/HugoGiraudel)
-
