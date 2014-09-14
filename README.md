@@ -150,6 +150,7 @@ $legacy-support: true !global;
 * [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez
 * [SassyLists](http://sassylists.com/documentation) from Hugo Giraudel
 * [css-patterns](http://madebymany.github.io/css-patterns/) from madebymany
+* [scss-components](http://scss-components.com/sassdoc/) from Tim Hartmann
 * [yy](http://astina.github.io/yy/) from Astina
 * [Sassy Starter](http://minamarkham.github.io/sassy-starter/docs/) from archermalmo
 
