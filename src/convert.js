@@ -3,7 +3,6 @@
 var path = require('path');
 var cp = require('child_process');
 var Q = require('q');
-
 var which = Q.denodeify(require('which'));
 var rmdir = Q.denodeify(require('rimraf'));
 
@@ -75,8 +74,8 @@ Converter.prototype.checkBinary = function (bin) {
         });
     })
     .catch(function (err) {
-      err.message = 'SassDoc could not find any executable for "' +
-                    bin + '". Operation Aborted.';
+      err.message = 'SassDoc could not find any executable for `' +
+                    bin + '`. Operation Aborted.';
       throw err;
     });
 };
@@ -120,7 +119,7 @@ Converter.prototype.documentize = function (src, dest, config) {
 
   return self.checkBinary('sass-convert')
     .then(function () {
-      rmdir(self.tmpDir);
+      return rmdir(self.tmpDir);
     })
     .then(function () {
       sassdoc.logger.log('Converting sass into scss syntax.');
