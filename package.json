@@ -50,7 +50,8 @@
     "rimraf": "~2.2.8",
     "sassdoc-theme-default": "^1.4.0",
     "scss-comment-parser": "^0.3.2",
-    "update-notifier": "^0.2.0"
+    "update-notifier": "^0.2.0",
+    "which": "^1.0.5"
   },
   "devDependencies": {
     "assert": "^1.1.1",
