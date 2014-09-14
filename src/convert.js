@@ -122,10 +122,11 @@ Converter.prototype.documentize = function (src, dest, config) {
       return rmdir(self.tmpDir);
     })
     .then(function () {
-      sassdoc.logger.log('Converting sass into scss syntax.');
+      sassdoc.logger.log('Converting folder `' + src + '` into SCSS syntax.');
       return exec(self.convertCommand());
     })
     .then(function () {
+      sassdoc.logger.log('Folder `' + src + '` successfully converted from Sass to SCSS.');
       return sassdoc.documentize(self.tmpDir, dest, config);
     })
     .then(function () {
