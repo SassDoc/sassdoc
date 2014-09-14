@@ -72,11 +72,11 @@ Converter.prototype.checkBinary = function (bin) {
           // `sassdoc-convert` is not a gem.
           var command = 'bundle exec ' + bin + ' -v';
           return exec(command);
-        })
+        });
     })
     .catch(function (err) {
       err.message = 'SassDoc could not find any executable for "' +
-                    bin + '". Operation Aborted.'
+                    bin + '". Operation Aborted.';
       throw err;
     });
 };
@@ -102,7 +102,7 @@ Converter.prototype.convertCommand = function () {
   }
 
   return command.join(' ');
-}
+};
 
 /**
  * Perform a sass to scss syntax convertion
@@ -136,7 +136,7 @@ Converter.prototype.documentize = function (src, dest, config) {
       sassdoc.logger.enabled = true;
       sassdoc.logger.error(err);
     });
-}
+};
 
 module.exports = function (sassdoc) {
   sassdoc = sassdoc || require('./api');
