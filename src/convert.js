@@ -81,12 +81,11 @@ Converter.prototype.checkBinary = function (bin) {
 };
 
 /**
- * Format the `sass-convert command string.
+ * Format the `sass-convert` command string.
  *
- * @param  {Boolean} bundler
  * @return {String}
  */
-Converter.prototype.convertCommand = function () {
+Converter.prototype.command = function () {
   var command = [
     'sass-convert',
     '-R',
@@ -104,6 +103,31 @@ Converter.prototype.convertCommand = function () {
 };
 
 /**
+ * Perform a Sass to SCSS syntax convertion.
+ *
+ * @return {Q.Promise}
+ */
+Converter.prototype.convert = function () {
+  var self = this;
+
+  return self.checkBinary('sass-convert')
+    .then(function () {
+      return rmdir(self.tmpDir);
+    })
+    .then(function () {
+      self.api.logger.log(
+        'Converting folder `' + self.src + '` into SCSS syntax.'
+      );
+      return exec(self.command());
+    })
+    .then(function () {
+      self.api.logger.log(
+        'Folder `' + self.src + '` successfully converted from Sass to SCSS.'
+      );
+    });
+};
+
+/**
  * Perform a sass to scss syntax convertion
  * and run SassDoc against the resulting files.
  *
@@ -114,27 +138,18 @@ Converter.prototype.convertCommand = function () {
  */
 Converter.prototype.documentize = function (src, dest, config) {
   var self = this;
-  var sassdoc = self.api;
   self.src = src;
 
-  return self.checkBinary('sass-convert')
+  return self.convert()
     .then(function () {
-      return rmdir(self.tmpDir);
-    })
-    .then(function () {
-      sassdoc.logger.log('Converting folder `' + src + '` into SCSS syntax.');
-      return exec(self.convertCommand());
-    })
-    .then(function () {
-      sassdoc.logger.log('Folder `' + src + '` successfully converted from Sass to SCSS.');
-      return sassdoc.documentize(self.tmpDir, dest, config);
+      return self.api.documentize(self.tmpDir, dest, config);
     })
     .then(function () {
       return rmdir(self.tmpDir);
     })
     .catch(function (err) {
-      sassdoc.logger.enabled = true;
-      sassdoc.logger.error(err);
+      self.api.logger.enabled = true;
+      self.api.logger.error(err);
     });
 };
 
