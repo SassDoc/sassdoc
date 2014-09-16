@@ -5,6 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var yaml = require('js-yaml');
 var chalk = require('chalk');
+var _ = require('lodash');
 
 /**
  * Tests given exception to see if the code is `MODULE_NOT_FOUND` and
@@ -264,9 +265,10 @@ function requireTheme(dir, theme) {
  * Parse configuration.
  *
  * @param {String|Object} view
+ * @param {Object} override Object that will override view properties.
  * @return {Object}
  */
-module.exports = function (view) {
+module.exports = function (view, override) {
   // Relative directory for `package` file
   var dir;
   var config = {};
@@ -285,6 +287,8 @@ module.exports = function (view) {
     // Already processed
     config = view;
   }
+
+  config.view = view = _.merge({}, config.view, override);
 
   // Resolve package
   if (typeof view.package === 'object') {
