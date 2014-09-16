@@ -39,8 +39,8 @@ exports = module.exports = {
           return promise;
         }
 
-        throw 'Theme didn\'t return a promise, got ' +
-              Object.prototype.toString.call(promise) + '.';
+        throw new Error('Theme didn\'t return a promise, got ' +
+                        Object.prototype.toString.call(promise) + '.');
       })
       .then(function () {
         logger.log('Theme successfully rendered.');

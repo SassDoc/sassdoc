@@ -245,7 +245,7 @@ function requireTheme(dir, theme) {
 
     if (!theme) {
       // Default theme was not found? WTF!
-      throw 'Holy shit, the default theme was not found!';
+      throw new Error('Holy shit, the default theme was not found!');
     }
 
     logger.error('Theme `' + theme + '` not found.');
