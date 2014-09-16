@@ -16,7 +16,7 @@ exports = module.exports = {
    * Main API function, running the whole thing.
    * @param {String} source - Source folder
    * @param {String} destination - Destination folder
-   * @param {Object} config - Configuration from `view.json` or `cfg` output.
+   * @param {Object} config - `.sassdocrc` path (or parsed content) or `cfg` output
    * @example
    * documentize('examples/sass', 'examples/dist', config)
    * @return {Q.Promise}

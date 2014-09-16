@@ -58,6 +58,7 @@ if (!options['--no-update-notifier']) {
 // Set verbose mode
 sassdoc.logger.enabled = options['--verbose'];
 
+// Resolve config and ensure the theme option
 var config = cfg(options['--config'], {theme: options['--theme']});
 
 sassdoc.documentize(options['<src>'], options['<dest>'], config);
