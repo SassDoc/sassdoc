@@ -271,7 +271,7 @@ function requireTheme(dir, theme) {
 module.exports = function (view, override) {
   // Relative directory for `package` file
   var dir;
-  var config = {};
+  var config = {__sassdoc__: true};
 
   if (typeof view !== 'object') {
     dir = path.resolve(path.dirname(config));
