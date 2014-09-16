@@ -222,7 +222,11 @@ module.exports = function (grunt) {
 
     sassdoc
       .documentize(src, dest, config)
-      .then(done);
+      .then(done)
+      .catch(function (err) {
+        grunt.log.error(err);
+        grunt.fail.warn('SassDoc documentation failed.');
+      });
   });
 
 
