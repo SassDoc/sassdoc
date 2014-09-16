@@ -43,7 +43,11 @@ exports = module.exports = {
               Object.prototype.toString.call(promise) + '.';
       })
       .then(function () {
-        logger.log('Theme successfully rendered.');
+        var themeLog = config.themeName ?
+          'Theme `' + config.themeName + '` successfully rendered.' :
+          'Anonymous theme successfully rendered.';
+
+        logger.log(themeLog);
         logger.log('Process over. Everything okay!');
       }, function (err) {
         logger.error('stack' in err ? err.stack : err);
