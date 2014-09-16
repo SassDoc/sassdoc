@@ -281,14 +281,7 @@ module.exports = function (view, override) {
     dir = process.cwd();
   }
 
-  if (!('view' in view)) {
-    config.view = view;
-  } else {
-    // Already processed
-    config = view;
-  }
-
-  config.view = view = _.merge({}, config.view, override);
+  config.view = view = _.merge({}, view, override);
 
   // Resolve package
   if (typeof view.package === 'object') {
