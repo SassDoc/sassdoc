@@ -1,4 +1,3 @@
-/*jshint camelcase:false */
 'use strict';
 
 var path = require('path');
@@ -130,19 +129,6 @@ var config = {
         src: '{,*/}*.css',
         dest: '<%= dirs.css %>'
       }]
-    }
-  },
-
-  uglify: {
-    options: {
-      compress: {
-        drop_console: true
-      }
-    },
-    develop: {
-      files: {
-        '<%= dirs.js %>/main.min.js': ['<%= dirs.js %>/main.js']
-      }
     }
   },
 
