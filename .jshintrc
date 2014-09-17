@@ -27,5 +27,6 @@
   "trailing"     : true,
   "undef"        : true,
   "unused"       : true,
-  "node"         : true
+  "node"         : true,
+  "expr"         : true
 }

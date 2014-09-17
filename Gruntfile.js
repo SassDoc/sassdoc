@@ -251,14 +251,18 @@ module.exports = function (grunt) {
     var npm = require('npm');
 
     npm.load({}, function (err) {
-      if (err) throw err;
+      if (err) {
+        throw err;
+      }
 
       console.log(chalk.red(
         '>> Installing npm packages `' + pkgs.join(', ') + '`'
       ));
 
-      npm.commands.install(pkgs, function (err, data) {
-        if (err) throw err;
+      npm.commands.install(pkgs, function (err) {
+        if (err) {
+          throw err;
+        }
         cb();
       });
 
