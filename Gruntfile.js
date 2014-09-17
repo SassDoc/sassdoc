@@ -246,6 +246,45 @@ module.exports = function (grunt) {
   });
 
 
+  // Programmatically install npm packages.
+  function npmInstall(pkgs, cb) {
+    var npm = require('npm');
+
+    npm.load({}, function (err) {
+      if (err) throw err;
+
+      console.log(chalk.red(
+        '>> Installing npm packages `' + pkgs.join(', ') + '`'
+      ));
+
+      npm.commands.install(pkgs, function (err, data) {
+        if (err) throw err;
+        cb();
+      });
+
+      npm.on('log', console.log);
+    });
+  }
+
+
+  // Check whether `atom-screenshot` is installed,
+  // and install if need be.
+  grunt.registerTask('install-screenshot', 'Check and install screenshot deps', function () {
+    var done = this.async();
+    var atomScreenshot;
+
+    try {
+      atomScreenshot = require('atom-screenshot');
+    }
+    catch (err) {
+      npmInstall(['atom-screenshot'], done);
+    }
+    finally {
+      atomScreenshot && done();
+    }
+  });
+
+
   // Take a screenshot of the latest compile.
   grunt.registerTask('take-screenshot', 'Take a screenshot of the latest compile', function () {
     var done = this.async();
@@ -267,6 +306,7 @@ module.exports = function (grunt) {
 
   // Update screenshot in Readme.
   grunt.registerTask('update-image', [
+    'install-screenshot',
     'browserSync:screenshot',
     'compile:develop',
     'take-screenshot',

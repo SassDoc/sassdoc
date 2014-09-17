@@ -54,7 +54,6 @@
   },
   "devDependencies": {
     "assert": "^1.1.1",
-    "atom-screenshot": "^0.1.2",
     "fs-extra": "^0.11.1",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^1.0.0",
