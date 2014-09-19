@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.1
+
+* Fixed a bug where some descriptions didn't allow line breaks ([#209](https://github.com/SassDoc/sassdoc/issues/209))
+
 ## 1.6.0
 
 * Added a [Yeoman Generator](https://github.com/SassDoc/generator-sassdoc-theme) to make it easier to build themes ([#185](https://github.com/SassDoc/sassdoc/issues/185))
