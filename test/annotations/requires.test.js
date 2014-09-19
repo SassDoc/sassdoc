@@ -47,4 +47,9 @@ describe('#requires', function () {
                     { type: 'function', name: 'SassCore::map-has-key', 'external': true, 'url': 'http://sass-lang.com/documentation/Sass/Script/Functions.html#map_has_key-instance_method' });
 
   });
+
+  it('should work for multiline description', function () {
+    assert.deepEqual(requires.parse('name - description\nmore\nthan\none\nline'), { type: 'function', name: 'name', description: 'description\nmore\nthan\none\nline', 'external': false });
+   });
+
 });

@@ -16,4 +16,8 @@ describe('#parameters', function () {
     assert.deepEqual(returns.parse('{*} $name - description'), { type: '*', name: 'name', description: 'description' });
     assert.deepEqual(returns.parse('{type|other} $name - description'), { type: 'type|other', name: 'name', description: 'description' });
   });
+
+  it('should work for multiline description', function () {
+    assert.deepEqual(returns.parse('{type} $hyphenated-name (default) - description\nmore\nthan\none\nline'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description\nmore\nthan\none\nline' });
+  });
 });

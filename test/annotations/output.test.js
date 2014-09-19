@@ -9,4 +9,9 @@ describe('#output', function () {
   it('should parse an output description', function () {
     assert.deepEqual(output.parse('position'), 'position');
   });
+
+  it('should parse include linebreaks', function () {
+    assert.deepEqual(output.parse('one\ntwo\nthree'), 'one\ntwo\nthree');
+  });
+
 });
