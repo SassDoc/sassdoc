@@ -7,6 +7,7 @@ var Q = require('q');            // Promises
 var path = require('path');      // Path
 
 var parser = require('./parser');
+var sorter = require('./sorter');
 var utils = require('./utils');
 var logger = require('./log');
 
@@ -180,6 +181,7 @@ exports = module.exports = {
         return byTypeAndName;
       })
       // Run the postProcessor
-      .then(parser.postProcess);
+      .then(parser.postProcess)
+      .then(sorter.postProcess);
   }
 };
