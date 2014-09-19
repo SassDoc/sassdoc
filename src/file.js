@@ -122,6 +122,8 @@ exports = module.exports = {
       return exports.file.read(file, 'utf-8').then(function (code) {
         var data = parser.parse(code);
 
+        var i = 0;
+
         // Merge in from which file the comments where loaded.
         Object.keys(data).forEach(function (key) {
           data[key].forEach(function (item) {
@@ -129,6 +131,8 @@ exports = module.exports = {
               path: path.relative(exports.folder.base, file),
               name: path.basename(file, '.scss')
             };
+
+            item.index = i++;
           });
         });
 
