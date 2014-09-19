@@ -36,6 +36,14 @@ describe('#prop', function () {
       default: 'default',
       description: 'description (with parens)'
     });
+  });
 
+  it('should work for multiline description', function(){
+    assert.deepEqual(prop.parse('{Function} base.default (default) - description\nmore\nthan\none\nline'), {
+      type: 'Function',
+      name: 'base.default',
+      default: 'default',
+      description: 'description\nmore\nthan\none\nline'
+    });
   });
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-var sinceRegEx = /\s*([^\s]*)\s*(?:-?\s*(.*))?\s*$/;
+var sinceRegEx = /\s*([^\s]*)\s*(?:-?\s*([\s\S]*))?\s*$/;
 
 module.exports = {
   parse: function (text) {
