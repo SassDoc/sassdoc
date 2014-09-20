@@ -3,12 +3,12 @@ language: node_js
 node_js:
   - '0.10'
 
-# env:
-#   - SASS_VERSION=3.4.5
-#
-# before_install:
-# - gem update --system
-# - gem install sass -v $SASS_VERSION
+env:
+  - SASS_VERSION=3.4.5
+
+before_install:
+- gem update --system
+- gem install sass -v $SASS_VERSION
 
 before_script:
   - npm install -g grunt-cli
