@@ -1,0 +1,27 @@
+/**
+ * @access private
+ * @group foo
+ * @author Jules Verne
+ * @since v1.5.0
+ **/
+
+/**
+ * Such function, very inherit. Wow.
+ */
+@function test-function-file-inherit() {}
+
+/**
+ * Such function, very override all. Wow.
+ * @access public
+ * @group bar
+ * @author Hugo Giraudel
+ * @since v1.2.0
+ */
+@function test-function-file-override-all() {}
+
+/**
+ * Such function, very override some. Wow.
+ * @access public
+ * @group baz
+ */
+@function test-function-file-override-some() {}
