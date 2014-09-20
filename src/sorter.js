@@ -14,25 +14,26 @@ function compare(a, b) {
 
 module.exports = {
   postProcess: function (data) {
-    var flat = [];
+    var sorted = {};
 
-    Object.keys(data).forEach(function (type) {
-      Object.keys(data[type]).forEach(function (name) {
-        flat.push(data[type][name]);
-      });
+    Object.keys(data).sort().forEach(function (type) {
+      sorted[type] = {};
+
+      Object.keys(data[type])
+        .map(function (name) {
+          return data[type][name];
+        })
+        .sort(function (a, b) {
+          return compare(a.group[0][0].toLowerCase(), b.group[0][0].toLowerCase()) ||
+                 compare(a.file.path, b.file.path) ||
+                 compare(a.index, b.index);
+
+        })
+        .forEach(function (item) {
+          sorted[type][item.context.name] = item;
+        });
     });
 
-    flat.sort(function (a, b) {
-      return compare(a.group[0][0].toLowerCase(), b.group[0][0].toLowerCase()) ||
-             compare(a.context.type, b.context.type) ||
-             compare(a.file.path, b.file.path) ||
-             compare(a.index, b.index);
-    });
-
-    flat.forEach(function (item) {
-      console.log(item.group[0][0].toLowerCase(), item.context.type, item.file.path, item.index);
-    });
-
-    return data;
+    return sorted;
   },
 };
