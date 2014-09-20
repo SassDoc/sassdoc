@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.7.0
+
+* Added a `--sass-convert` option, to perform Sass to SCSS convertion before running SassDoc.
+([#183](https://github.com/SassDoc/sassdoc/issues/183#issuecomment-56262743), [#205](https://github.com/SassDoc/sassdoc/pull/205))
+
 ## 1.6.0
 
 * Added a [Yeoman Generator](https://github.com/SassDoc/generator-sassdoc-theme) to make it easier to build themes ([#185](https://github.com/SassDoc/sassdoc/issues/185))
