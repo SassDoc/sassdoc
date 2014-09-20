@@ -2,8 +2,12 @@
 
 ## 1.7.0
 
-* Added a `--sass-convert` option, to perform Sass to SCSS convertion before running SassDoc.
+* Added a `--sass-convert` option to perform Sass to SCSS conversion before running SassDoc
 ([#183](https://github.com/SassDoc/sassdoc/issues/183#issuecomment-56262743))
+* Added the ability to define annotations at a file-level ([#190](https://github.com/SassDoc/sassdoc/issues/190))
+* Improved SassDoc's behaviour when default theme is missing ([#207](https://github.com/SassDoc/sassdoc/pull/207))
+* Slightly improved our logging message regarding the theme being used ([#206](https://github.com/SassDoc/sassdoc/issues/206))
+* Moved some logic out of the theme's templates right into the index.js from the theme ([#40](https://github.com/SassDoc/sassdoc-theme-light/issues/40))
 
 ## 1.6.1
 
