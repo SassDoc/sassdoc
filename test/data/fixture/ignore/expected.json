@@ -19,7 +19,8 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      }
+      },
+      "index": 0
     }
   }
 }

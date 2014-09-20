@@ -19,6 +19,7 @@
         "path": "input.scss",
         "name": "input"
       },
+      "index": 0,
       "aliased": [
         "test-function-alias"
       ]
@@ -44,7 +45,8 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      }
+      },
+      "index": 1
     }
   }
 }

@@ -1,33 +1,5 @@
 {
   "function": {
-    "test-function-file-inherit": {
-      "description": "Such function, very inherit. Wow.\n",
-      "context": {
-        "type": "function",
-        "name": "test-function-file-inherit",
-        "code": ""
-      },
-      "access": [
-        "private"
-      ],
-      "group": [
-        [
-          "foo"
-        ]
-      ],
-      "author": [
-        "Jules Verne"
-      ],
-      "since": [
-        {
-          "version": "v1.5.0"
-        }
-      ],
-      "file": {
-        "path": "input.scss",
-        "name": "input"
-      }
-    },
     "test-function-file-override-all": {
       "description": "Such function, very override all. Wow.\n",
       "context": {
@@ -54,7 +26,8 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      }
+      },
+      "index": 1
     },
     "test-function-file-override-some": {
       "description": "Such function, very override some. Wow.\n",
@@ -82,7 +55,37 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      }
+      },
+      "index": 2
+    },
+    "test-function-file-inherit": {
+      "description": "Such function, very inherit. Wow.\n",
+      "context": {
+        "type": "function",
+        "name": "test-function-file-inherit",
+        "code": ""
+      },
+      "access": [
+        "private"
+      ],
+      "group": [
+        [
+          "foo"
+        ]
+      ],
+      "author": [
+        "Jules Verne"
+      ],
+      "since": [
+        {
+          "version": "v1.5.0"
+        }
+      ],
+      "file": {
+        "path": "input.scss",
+        "name": "input"
+      },
+      "index": 0
     }
   }
 }
