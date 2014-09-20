@@ -2,6 +2,8 @@
 
 var path = require('path');
 var cp = require('child_process');
+var semver = require('semver');
+var semverRegex = require('semver-regex');
 var Q = require('q');
 var which = Q.denodeify(require('which'));
 var rmdir = Q.denodeify(require('rimraf'));
@@ -44,6 +46,31 @@ function exec(command) {
 }
 
 /**
+ * Custom error object for binary check.
+ *
+ * @param {String} message
+ */
+function BinaryError(message) {
+  this.name = 'BinaryError';
+  this.message = message || 'SassDoc could not find any executable for ' +
+                            '`sass-convert`. Operation Aborted.';
+}
+BinaryError.prototype = new Error();
+BinaryError.prototype.constructor = BinaryError;
+
+/**
+ * Custom error object for version check.
+ *
+ * @param {String} message
+ */
+function VersionError(message) {
+  this.name = 'VersionError';
+  this.message = message || 'Invalid `sass-convert` version, must be >=3.4.5';
+}
+VersionError.prototype = new Error();
+VersionError.prototype.constructor = VersionError;
+
+/**
  * SassDoc converter constructor.
  */
 function Converter(api) {
@@ -62,21 +89,63 @@ function Converter(api) {
 Converter.prototype.checkBinary = function (bin) {
   var self = this;
 
-  return which(bin)
-    .then(null, function () {
-      return which('bundle')
-        .then(function () {
-          self.useBundler = true;
-          // `bundle show bin` was more adapted but
-          // `sassdoc-convert` is not a gem.
-          var command = 'bundle exec ' + bin + ' -v';
-          return exec(command);
-        });
-    })
-    .catch(function (err) {
-      err.message = 'SassDoc could not find any executable for `' +
-                    bin + '`. Operation Aborted.';
-      throw err;
+  /**
+   * Check for `sass-convert` version.
+   *
+   * @param  {String} str
+   * @return {Boolean}
+   */
+  function checkVersion(str) {
+    var version = str.match(semverRegex())[0];
+    return semver.satisfies(version, '>=3.4.5');
+  }
+
+  /**
+   * Check for global `sass-convert` binary and version.
+   *
+   * @param  {String} bin
+   * @return {Q.promise}
+   */
+  function checkGlobal(bin) {
+    return which(bin)
+      .fail(function () {
+        throw new BinaryError();
+      })
+      .then(function () {
+        return exec(bin + ' -v');
+      })
+      .then(function (res) {
+        if (!checkVersion(res.stdout)) {
+          throw new VersionError();
+        }
+      });
+  }
+
+  /**
+   * Check for bundled `sass-convert` binary and version.
+   *
+   * @param  {String} bin
+   * @return {Q.promise}
+   */
+  function checkBundle(bin) {
+    return which('bundle')
+      .then(function () {
+        self.useBundler = true;
+        return exec('bundle exec ' + bin + ' -v');
+      })
+      .fail(function () {
+        throw new BinaryError();
+      })
+      .then(function (res) {
+        if (!checkVersion(res.stdout)) {
+          throw new VersionError();
+        }
+      });
+  }
+
+  return checkGlobal(bin)
+    .fail(function () {
+      return checkBundle(bin);
     });
 };
 
@@ -148,8 +217,7 @@ Converter.prototype.documentize = function (src, dest, config) {
       return rmdir(self.tmpDir);
     })
     .catch(function (err) {
-      self.api.logger.enabled = true;
-      self.api.logger.error(err);
+      self.api.logger.error(err.message);
     });
 };
 
