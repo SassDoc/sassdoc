@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.7.0
+
+* Added a `--sass-convert` option, to perform Sass to SCSS convertion before running SassDoc.
+([#183](https://github.com/SassDoc/sassdoc/issues/183#issuecomment-56262743))
+
 ## 1.6.1
 
 * Fixed a bug where some descriptions didn't allow line breaks ([#209](https://github.com/SassDoc/sassdoc/issues/209))

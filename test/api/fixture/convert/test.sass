@@ -1,0 +1,160 @@
+
+/**
+ * Test: variable public.
+ * ---
+ * @type Map
+ */
+$test-var-public: ( key: 'val' )
+
+
+/**
+ * Test: variable private.
+ * ---
+ * @access private
+ * ---
+ * @type Map
+ */
+$test-var-private: ( key: 'val' )
+
+
+/**
+ * Test: function public.
+ * ---
+ * @param {String} $one - Param one description
+ * @param {String} $two - Param two description
+ * ---
+ * @returns {*}
+ */
+@function test-func-public($one, $two)
+
+
+/**
+ * Test: function private.
+ * ---
+ * @access private
+ * ---
+ * @param {String} $one - Param one description
+ * @param {String} $two - Param two description
+ * ---
+ * @returns {*}
+ */
+@function test-func-private($one, $two)
+
+
+/**
+ * Test: function alias.
+ * ---
+ * @alias test-func-public
+ * ---
+ * @param {String} $one - Param one description
+ * @param {String} $two - Param two description
+ * ---
+ * @returns {*}
+ */
+@function test-func-alias($one, $two)
+
+
+/**
+ * Test: mixin public.
+ * ---
+ * @param {String} $one - Param one description
+ * @param {String} $two - Param two description
+ */
+=test-mix-public($one, $two)
+
+
+/**
+ * Test: mixin private.
+ * ---
+ * @access private
+ * ---
+ * @param {String} $one - Param one description
+ * @param {String} $two - Param two description
+ */
+=test-mix-private($one, $two)
+
+/**
+ * Test: function private.
+ * ---
+ * @access private
+ * ---
+ * @param {String} $one - Param one description
+ * @param {String} $two - Param two description
+ * ---
+ * @returns {*}
+ */
+@function test-func-private($one, $two)
+
+
+//
+// Groups
+//
+
+
+/**
+ * Test: var group foo.
+ * ---
+ * @group foo
+ */
+$test-var-group-foo: ()
+
+
+/**
+ * Test: function group foo.
+ * ---
+ * @group foo
+ */
+@function test-func-group-foo()
+
+
+/**
+ * Test: mixin group foo.
+ * ---
+ * @group foo
+ */
+=test-mix-group-foo()
+
+
+/**
+ * Test: var group bar.
+ * ---
+ * @group bar
+ */
+$test-var-group-bar: ()
+
+
+/**
+ * Test: function group bar.
+ * ---
+ * @group bar
+ */
+@function test-func-group-bar()
+
+
+/**
+ * Test: mixin group bar.
+ * ---
+ * @group bar
+ */
+=test-mix-group-bar()
+
+
+//
+// Filters
+//
+
+/**
+ * Test: function public.
+ * ---
+ * @author Hugo Giraudel
+ * ---
+ * @todo todo description
+ * ---
+ * @param {String} $one - Param one description
+ * @param {String} $two - Param two description
+ * ---
+ * @throws throws description
+ * ---
+ * @returns {*} returns description
+ */
+@function test-func-markdown($one, $two)
