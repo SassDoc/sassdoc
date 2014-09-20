@@ -16,13 +16,15 @@ exports = module.exports = {
    * Main API function, running the whole thing.
    * @param {String} source - Source folder
    * @param {String} destination - Destination folder
-   * @param {Object} config - Configuration from `view.json`
+   * @param {Object} config - `.sassdocrc` path (or parsed content) or `cfg` output
    * @example
    * documentize('examples/sass', 'examples/dist', config)
    * @return {Q.Promise}
    */
   documentize: function (source, destination, config) {
-    config = cgf(config);
+    if (!config || !('__sassdoc__' in config)) {
+      config = cgf(config);
+    }
 
     return fs.folder.refresh(destination)
       .then(function () {
@@ -39,8 +41,8 @@ exports = module.exports = {
           return promise;
         }
 
-        throw 'Theme didn\'t return a promise, got ' +
-              Object.prototype.toString.call(promise) + '.';
+        throw new Error('Theme didn\'t return a promise, got ' +
+                        Object.prototype.toString.call(promise) + '.');
       })
       .then(function () {
         var themeLog = config.themeName ?
