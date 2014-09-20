@@ -81,7 +81,8 @@ function Converter(api) {
 }
 
 /**
- * Check whether passed binary (Gem) is in $PATH.
+ * Check whether passed binary (Gem) is in $PATH,
+ * and check its version.
  *
  * @param  {String} bin
  * @return {Q.Promise}

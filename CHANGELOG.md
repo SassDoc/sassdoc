@@ -3,7 +3,7 @@
 ## 1.7.0
 
 * Added a `--sass-convert` option, to perform Sass to SCSS convertion before running SassDoc.
-([#183](https://github.com/SassDoc/sassdoc/issues/183#issuecomment-56262743), [#205](https://github.com/SassDoc/sassdoc/pull/205))
+([#183](https://github.com/SassDoc/sassdoc/issues/183#issuecomment-56262743))
 
 ## 1.6.0
 
