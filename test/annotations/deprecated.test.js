@@ -4,7 +4,7 @@
 var assert = require('assert');
 
 describe('#deprecated', function () {
-  var deprecated = require('../../src/annotation').deprecated;
+  var deprecated = (new (require('../../src/annotation'))()).list.deprecated;
 
   it('should return the trimmed string', function () {
     assert.equal(deprecated.parse('   '), '');

@@ -4,7 +4,7 @@
 var assert = require('assert');
 
 describe('#see', function () {
-  var see = require('../../src/annotation').see;
+  var see = (new (require('../../src/annotation'))()).list.see;
 
   it('should default to function', function () {
     assert.deepEqual(see.parse('name'), { type: 'function', name: 'name' });

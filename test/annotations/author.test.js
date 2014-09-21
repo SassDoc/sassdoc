@@ -4,7 +4,7 @@
 var assert = require('assert');
 
 describe('#author', function () {
-  var author = require('../../src/annotation').author;
+  var author = (new (require('../../src/annotation'))()).list.author;
 
   it('should return the trimmed string', function () {
     assert.equal(author.parse('   '), '');
