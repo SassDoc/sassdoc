@@ -29,7 +29,7 @@ exports = module.exports = {
     return fs.folder.refresh(destination)
       .then(function () {
         logger.log('Folder `' + destination + '` successfully generated.');
-        return fs.getData(source);
+        return fs.getData(source, config.theme.annotations);
       })
       .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
