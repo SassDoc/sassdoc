@@ -1,33 +1,39 @@
 'use strict';
 
-var ScssCommentParser = require('scss-comment-parser');
-var annotations = require('./annotation');
-
 var logger = require('./log');
 
-var parser = new ScssCommentParser(annotations);
+var AnnotationApi = require('./annotation');
+var ScssCommentParser = require('scss-comment-parser');
 
-parser.commentParser.on('warning', function (warning) {
-  logger.warn(warning);
-});
+var Parser = function(){
+  this.annotations = new AnnotationApi();
+  this.scssParser = new ScssCommentParser(this.annotations.list);
 
-module.exports = {
+  this.scssParser.commentParser.on('warning', function (warning) {
+    logger.warn(warning);
+  });
+};
 
-  parse: parser.parse.bind(parser),
+Parser.prototype = {
+
+  parse: function(){
+    return this.scssParser.parse.apply(this.scssParser, arguments);
+  },
 
   /**
    * Invoke the `resolve` function of an annotation if present.
-   * Called with all found annotations excluding them from "unkown" type.
+   * Called with all found annotations except with type "unkown".
    */
-  postProcess: function (data) {
-
-    Object.keys(annotations).forEach(function (key) {
-      var annotation = annotations[key];
+  postProcess: function(data){
+    Object.keys(this.annotations.list).forEach(function (key) {
+      var annotation = this.annotations.list[key];
       if (annotation.resolve) {
         annotation.resolve(data);
       }
-    });
+    }, this);
 
     return data;
   }
 };
+
+module.exports = Parser;
