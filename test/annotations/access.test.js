@@ -2,10 +2,8 @@
 'use strict';
 
 var assert = require('assert');
-
 describe('#access', function () {
-  var access = require('../../src/annotation').access;
-
+  var access = (new (require('../../src/annotation'))()).list.access;
   it('should return the trimmed string', function () {
     assert.equal(access.parse('   '), '');
     assert.equal(access.parse('   '), '');

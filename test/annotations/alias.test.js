@@ -4,7 +4,7 @@
 var assert = require('assert');
 
 describe('#alias', function () {
-  var alias = require('../../src/annotation').alias;
+  var alias = (new (require('../../src/annotation'))()).list.alias;
 
   it('should return the trimmed string', function () {
     assert.equal(alias.parse('   '), '');

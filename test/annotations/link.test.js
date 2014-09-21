@@ -4,7 +4,7 @@
 var assert = require('assert');
 
 describe('#link', function () {
-  var link = require('../../src/annotation').link;
+  var link = (new (require('../../src/annotation'))()).list.link;
 
   it('should return an object', function () {
     assert.deepEqual(link.parse(''), { url: '', caption: '' });

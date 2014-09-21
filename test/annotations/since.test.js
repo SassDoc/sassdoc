@@ -4,7 +4,7 @@
 var assert = require('assert');
 
 describe('#since', function () {
-  var since = require('../../src/annotation').since;
+  var since = (new (require('../../src/annotation'))()).list.since;
 
   it('should return an object', function () {
     assert.deepEqual(since.parse('   '), {});
