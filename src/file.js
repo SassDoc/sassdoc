@@ -6,7 +6,8 @@ var rimraf = require('rimraf');  // rm -rf
 var Q = require('q');            // Promises
 var path = require('path');      // Path
 
-var parser = require('./parser');
+var Parser = require('./parser');
+
 var sorter = require('./sorter');
 var utils = require('./utils');
 var logger = require('./log');
@@ -60,9 +61,10 @@ exports = module.exports = {
     /**
      * Parse a folder.
      * @param  {String} folder
+     * @param  {Object} parser
      * @return {Q.Promise}
      */
-    parse: function (folder) {
+    parse: function (folder, parser) {
       return exports.folder.read(folder).then(function (files) {
         var filePath;
         var promises = [];
@@ -73,14 +75,14 @@ exports = module.exports = {
 
           // Folder
           if (exports.isDirectory(filePath)) {
-            promises.push(exports.folder.parse(filePath).then(function (response) {
+            promises.push(exports.folder.parse(filePath, parser).then(function (response) {
               data = data.concat(response);
             }));
           }
 
           // SCSS file
           else if (utils.getExtension(filePath) === 'scss') {
-            promises.push(exports.file.process(filePath).then(function (response) {
+            promises.push(exports.file.process(filePath, parser).then(function (response) {
               if (Object.keys(response).length > 0) {
                 data = data.concat(response);
               }
@@ -117,12 +119,12 @@ exports = module.exports = {
     /**
      * Process a file.
      * @param  {String} file
+     * @param  {Object} parser
      * @return {Q.Promise}
      */
-    process: function (file) {
+    process: function (file, parser) {
       return exports.file.read(file, 'utf-8').then(function (code) {
         var data = parser.parse(code);
-
         var i = 0;
 
         // Merge in from which file the comments where loaded.
@@ -154,12 +156,16 @@ exports = module.exports = {
   /**
    * Get data.
    * @param {String} folder - folder path
+   * @param {Array} annotations - Additional annotations to use
    */
-  getData: function (folder) {
+  getData: function (folder, annotations) {
+    var parser = new Parser();
+        parser.annotations.addAnnotations(annotations);
+
     exports.folder.base = folder;
 
     // Parse the whole folder.
-    return exports.folder.parse(folder)
+    return exports.folder.parse(folder, parser)
       // Extract all items into a structure like https://gist.github.com/FWeinb/6b16c4fc85667ae6c1b5
       .then(function (data) {
         var byTypeAndName = {};
@@ -181,7 +187,7 @@ exports = module.exports = {
         return byTypeAndName;
       })
       // Run the postProcessor
-      .then(parser.postProcess)
+      .then(parser.postProcess.bind(parser))
       .then(sorter.postProcess);
   }
 };
