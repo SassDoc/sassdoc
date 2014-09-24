@@ -26,7 +26,7 @@ module.exports = {
         .sort(function (a, b) {
           return compare(a.group[0][0].toLowerCase(), b.group[0][0].toLowerCase()) ||
                  compare(a.file.path, b.file.path) ||
-                 compare(a.index, b.index);
+                 compare(a.context.line.start, b.context.line.start);
 
         })
         .forEach(function (item) {
