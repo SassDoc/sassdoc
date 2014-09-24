@@ -30,7 +30,7 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
+      }
     },
     "test-function-file-override-some": {
       "description": "Such function, very override some. Wow.\n",
@@ -62,7 +62,7 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
+      }
     },
     "test-function-file-inherit": {
       "description": "Such function, very inherit. Wow.\n",
@@ -94,7 +94,7 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
+      }
     }
   }
 }
