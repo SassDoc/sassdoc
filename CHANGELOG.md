@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.8.0
+
+* Added ability to add your own annotations to your theme ([#203](https://github.com/SassDoc/sassdoc/issues/203))
+* Fixed an issue with items being randomly ordered ([#208](https://github.com/SassDoc/sassdoc/issues/208))
+* Greatly improved sidebar from the theme
+
 ## 1.7.0
 
 * Added a `--sass-convert` option to perform Sass to SCSS conversion before running SassDoc
