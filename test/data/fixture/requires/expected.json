@@ -29,8 +29,7 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
-      "index": 0
+      }
     },
     "test-function-required": {
       "description": "Test.\n",
@@ -55,7 +54,6 @@
         "path": "input.scss",
         "name": "input"
       },
-      "index": 1,
       "usedBy": [
         {
           "description": "",
