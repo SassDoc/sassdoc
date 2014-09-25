@@ -6,7 +6,11 @@
         "type": "variable",
         "name": "test-variable-type",
         "value": "()",
-        "scope": "private"
+        "scope": "private",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "type": [
         "Map"

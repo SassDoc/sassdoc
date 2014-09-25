@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-description",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "author": [
         "Hugo Giraudel"

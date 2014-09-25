@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-param",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 6,
+          "end": 6
+        }
       },
       "parameters": [
         {

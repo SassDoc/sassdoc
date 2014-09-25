@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-aliased",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "access": [
         "public"
@@ -29,7 +33,11 @@
       "context": {
         "type": "function",
         "name": "test-function-alias",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 10,
+          "end": 10
+        }
       },
       "alias": [
         "test-function-aliased"

@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-deprecated",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "deprecated": [
         "This is a deprecated function"

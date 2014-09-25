@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-access",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "access": [
         "private"

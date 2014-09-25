@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-throws",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "throws": [
         "Error warn you on wrong argument type"

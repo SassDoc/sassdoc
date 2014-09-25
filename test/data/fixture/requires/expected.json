@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-requires",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "requires": [
         {
@@ -33,7 +37,11 @@
       "context": {
         "type": "function",
         "name": "test-function-required",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 10,
+          "end": 10
+        }
       },
       "access": [
         "public"
@@ -54,7 +62,11 @@
           "context": {
             "type": "function",
             "name": "test-function-requires",
-            "code": ""
+            "code": "",
+            "line": {
+              "start": 5,
+              "end": 5
+            }
           }
         }
       ]

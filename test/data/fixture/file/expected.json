@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-file-override-all",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 20,
+          "end": 20
+        }
       },
       "access": [
         "public"
@@ -34,7 +38,11 @@
       "context": {
         "type": "function",
         "name": "test-function-file-override-some",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 27,
+          "end": 27
+        }
       },
       "access": [
         "public"
@@ -63,7 +71,11 @@
       "context": {
         "type": "function",
         "name": "test-function-file-inherit",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 11,
+          "end": 11
+        }
       },
       "access": [
         "private"
