@@ -24,6 +24,8 @@ module.exports = {
     }
 
     return obj;
-  }
+  },
+
+  alias: ['property']
 
 };

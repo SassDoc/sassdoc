@@ -96,5 +96,7 @@ module.exports = {
       }
     });
 
-  }
+  },
+
+  alias: ['require']
 };
