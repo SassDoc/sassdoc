@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-file-override-all",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 20,
+          "end": 20
+        }
       },
       "access": [
         "public"
@@ -26,15 +30,18 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
-      "index": 1
+      }
     },
     "test-function-file-override-some": {
       "description": "Such function, very override some. Wow.\n",
       "context": {
         "type": "function",
         "name": "test-function-file-override-some",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 27,
+          "end": 27
+        }
       },
       "access": [
         "public"
@@ -55,15 +62,18 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
-      "index": 2
+      }
     },
     "test-function-file-inherit": {
       "description": "Such function, very inherit. Wow.\n",
       "context": {
         "type": "function",
         "name": "test-function-file-inherit",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 11,
+          "end": 11
+        }
       },
       "access": [
         "private"
@@ -84,8 +94,7 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
-      "index": 0
+      }
     }
   }
 }

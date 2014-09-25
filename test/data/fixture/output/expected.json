@@ -5,7 +5,11 @@
       "context": {
         "type": "mixin",
         "name": "test-mixin-output",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "output": [
         "A description of output"
@@ -21,8 +25,7 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
-      "index": 0
+      }
     }
   }
 }

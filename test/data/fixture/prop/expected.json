@@ -6,7 +6,11 @@
         "type": "variable",
         "name": "test-variable-prop",
         "value": "(\n  foo: 'bar',\n  baz: 'quux'\n)",
-        "scope": "private"
+        "scope": "private",
+        "line": {
+          "start": 10,
+          "end": 13
+        }
       },
       "type": [
         "Map"
@@ -36,8 +40,7 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
-      "index": 0
+      }
     }
   }
 }

@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-aliased",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 5,
+          "end": 5
+        }
       },
       "access": [
         "public"
@@ -19,7 +23,6 @@
         "path": "input.scss",
         "name": "input"
       },
-      "index": 0,
       "aliased": [
         "test-function-alias"
       ]
@@ -29,7 +32,11 @@
       "context": {
         "type": "function",
         "name": "test-function-alias",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 10,
+          "end": 10
+        }
       },
       "alias": [
         "test-function-aliased"
@@ -45,8 +52,7 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
-      "index": 1
+      }
     }
   }
 }

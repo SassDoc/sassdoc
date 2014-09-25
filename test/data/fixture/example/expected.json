@@ -5,7 +5,11 @@
       "context": {
         "type": "function",
         "name": "test-function-example",
-        "code": ""
+        "code": "",
+        "line": {
+          "start": 6,
+          "end": 6
+        }
       },
       "example": [
         {
@@ -25,8 +29,7 @@
       "file": {
         "path": "input.scss",
         "name": "input"
-      },
-      "index": 0
+      }
     }
   }
 }
