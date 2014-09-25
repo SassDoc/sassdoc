@@ -19,6 +19,10 @@ describe('#parameters', function () {
 
   it('should work for multiline description', function () {
     assert.deepEqual(param.parse('{type} $hyphenated-name (default) - description\nmore\nthan\none\nline'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description\nmore\nthan\none\nline' });
-   });
+  });
+
+  it('should work without the $', function () {
+    assert.deepEqual(param.parse('{type} hyphenated-name (default) - description\nmore\nthan\none\nline'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description\nmore\nthan\none\nline' });
+  });
 
 });
