@@ -28,7 +28,7 @@ describe('#content', function () {
           context : {
             code : '@content'
           }
-          // content : {} should be added
+          // content : [{}] should be added
         },
         'testMixinUserAdded' : {
           context : {
