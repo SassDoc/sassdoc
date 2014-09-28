@@ -28,5 +28,5 @@ module.exports = {
 
   alias: ['return'],
 
-  allowedOnType : ['function', 'mixin']
+  allowedOn : ['function']
 };
