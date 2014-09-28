@@ -25,5 +25,8 @@ module.exports = {
 
     return obj;
   },
-  alias: ['return']
+
+  alias: ['return'],
+
+  allowedOn : ['function']
 };

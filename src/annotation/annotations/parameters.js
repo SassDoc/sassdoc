@@ -25,5 +25,7 @@ module.exports = {
 
     return obj;
   },
-  alias: ['arg', 'arguments', 'param']
+  alias: ['arg', 'arguments', 'param'],
+
+  allowedOn : ['function', 'mixin']
 };
