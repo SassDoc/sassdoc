@@ -50,6 +50,7 @@ sassdoc <src> <dest> [options]
 * `-t, --theme`: Theme to be required. It will override the configuration value.
 * `--sass-convert`: Perform a Sass to SCSS syntax conversion prior to run SassDoc.
 * `--no-update-notifier`: Do not run the update notifier check.
+* `--no-prompt`: Do not prompt with destination folder check warnings.
 
 ### Node
 
