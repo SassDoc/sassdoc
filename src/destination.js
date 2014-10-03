@@ -47,13 +47,13 @@ function isParent(src, dest) {
  */
 function isEmpty(dest) {
   return Q.nfcall(fs.readdir, dest)
-    .then(function (items) {
-      return items.filter(function (item) {
-        return ['.', '..', '.DS_Store', 'Thumbs.db'].indexOf(item) === -1;
+    .then(function (files) {
+      return files.filter(function (file) {
+        return ['.DS_Store', 'Thumbs.db'].indexOf(file) === -1;
       });
     })
-    .then(function (items) {
-      return !items || !items.length;
+    .then(function (files) {
+      return !files || !files.length;
     })
     .catch(function (err) {
       if (err.code === 'ENOENT') {
@@ -78,11 +78,10 @@ exports = module.exports = {
     var deferred = Q.defer();
 
     if (isParent(src, dest)) {
-      var err = new Error(
+      deferred.reject(new Error(
         'Source folder seems to be contained by destination folder.' + '\n' +
         'Let\'s not wipe everything out.'
-      );
-      deferred.reject(err);
+      ));
     }
     else {
       deferred.resolve();
@@ -110,10 +109,9 @@ exports = module.exports = {
               var proceed = /^y(es)?/i.test(answer);
 
               if (!proceed) {
-                var err = new Error(
+                deferred.reject(new Error(
                   'Destination folder not empty, aborting'
-                );
-                deferred.reject(err);
+                ));
               }
               else {
                 deferred.resolve();
