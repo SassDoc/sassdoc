@@ -49,7 +49,7 @@ function isEmpty(dest) {
   return Q.nfcall(fs.readdir, dest)
     .then(function (items) {
       return items.filter(function (item) {
-        return item.indexOf('.') !== 0;
+        return ['.', '..', '.DS_Store', 'Thumbs.db'].indexOf(item) === -1;
       });
     })
     .then(function (items) {
