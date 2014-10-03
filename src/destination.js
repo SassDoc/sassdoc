@@ -4,7 +4,6 @@ var fs = require('fs');
 var path = require('path');
 var readline = require('readline');
 var Q = require('q');
-var logger = require('./api').logger;
 
 /**
  * Prompt user with a question and listen to reply.
@@ -27,7 +26,7 @@ function prompt(question) {
   });
 
   return deferred.promise;
-};
+}
 
 /**
  * Check whether dest is a parent of src, or identical.
@@ -64,7 +63,7 @@ function isEmpty(dest) {
         throw err;
       }
     });
-};
+}
 
 exports = module.exports = {
 
