@@ -8,7 +8,7 @@ Like JSDoc for your Sass files.
 * Fully themable.
 * Integrated with Grunt/Gulp/Broccoli or directly Node.
 
-![SassDoc](http://sassdoc.com/preview-image.png)
+![SassDoc](http://sassdoc.com/assets/images/preview-image.png)
 
 ---
 

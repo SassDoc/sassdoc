@@ -6,7 +6,7 @@
 * Added some safeguards when wiping the destination folder to avoid accidents ([#220](https://github.com/SassDoc/sassdoc/issues/220))
 * Added `@content` annotation, which is auto-filled when `@content` Sass directive is being found in a mixin ([#226](https://github.com/SassDoc/sassdoc/issues/226))
 * Added `@require` alias for `@requires` ([#221](https://github.com/SassDoc/sassdoc/issues/221))
-* Added `@property` for `@prop` ([#221](https://github.com/SassDoc/sassdoc/issues/221))
+* Added `@property` alias for `@prop` ([#221](https://github.com/SassDoc/sassdoc/issues/221))
 * Made the `$` sign optional when writing the parameter name in `@param` ([#222](https://github.com/SassDoc/sassdoc/issues/222))
 * Annotations that should not be associated to certain types (for instance `@param` for a variable) now emit a warning and are properly discarded by the parser ([CDocParser#4](https://github.com/FWeinb/CDocParser/issues/4))
 
