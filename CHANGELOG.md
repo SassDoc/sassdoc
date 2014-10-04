@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.9.0
+
+* Added ability to use inline comments with `///` ([#143](https://github.com/SassDoc/sassdoc/issues/143))
+* Added some safeguards when wiping the destination folder to avoid accidents ([#220](https://github.com/SassDoc/sassdoc/issues/220))
+* Added `@content` annotation, which is auto-filled when `@content` Sass directive is being found in a mixin ([#226](https://github.com/SassDoc/sassdoc/issues/226))
+* Added `@require` alias for `@requires` ([#221](https://github.com/SassDoc/sassdoc/issues/221))
+* Added `@property` for `@prop` ([#221](https://github.com/SassDoc/sassdoc/issues/221))
+* Made the `$` sign optional when writing the parameter name in `@param` ([#222](https://github.com/SassDoc/sassdoc/issues/222))
+* Annotations that should not be associated to certain types (for instance `@param` for a variable) now emit a warning and are properly discarded by the parser ([CDocParser#4](https://github.com/FWeinb/CDocParser/issues/4))
+
 ## 1.8.0
 
 * Added ability to add your own annotations to your theme ([#203](https://github.com/SassDoc/sassdoc/issues/203))
@@ -13,7 +23,7 @@
 * Added the ability to define annotations at a file-level ([#190](https://github.com/SassDoc/sassdoc/issues/190))
 * Improved SassDoc's behaviour when default theme is missing ([#207](https://github.com/SassDoc/sassdoc/pull/207))
 * Slightly improved our logging message regarding the theme being used ([#206](https://github.com/SassDoc/sassdoc/issues/206))
-* Moved some logic out of the theme's templates right into the index.js from the theme ([#40](https://github.com/SassDoc/sassdoc-theme-light/issues/40))
+* Moved some logic out of the theme's templates right into the index.js from the theme ([sassdoc-theme-light#40](https://github.com/SassDoc/sassdoc-theme-light/issues/40))
 
 ## 1.6.1
 

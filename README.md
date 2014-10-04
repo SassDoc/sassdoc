@@ -9,6 +9,7 @@ Like JSDoc for your Sass files.
 * Integrated with Grunt/Gulp/Broccoli or directly Node.
 
 ![SassDoc](http://sassdoc.com/preview-image.png)
+
 ---
 
 master: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)
@@ -20,142 +21,34 @@ develop: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=devel
 
 [SassDoc](http://github.com/sassdoc/sassdoc) parses your source folder to grab documentation-specific comments. From there, it builds a data tree, that gets [enhanced](http://github.com/sassdoc/sassdoc-indexer) and [filtered](http://github.com/sassdoc/sassdoc-filter) before being passed to the [view](http://github.com/sassdoc/sassdoc-theme-light). So you end up with a fully styled HTML document located at your destination folder.
 
-## Usage
+## Getting started
 
-### Command line
+* [Getting Started](http://sassdoc.com/getting-started/)
+* [Documenting Your Items](http://sassdoc.com/documenting-your-items/)
+* [File-level Annotations](http://sassdoc.com/file-level-annotations/)
+* [Customising The View](http://sassdoc.com/customising-the-view/)
 
-#### Install
+## Using a custom theme
 
-```sh
-npm install -g sassdoc
-```
+* [Using Your Own Theme](http://sassdoc.com/using-your-own-theme/)
+* [Theme Context](http://sassdoc.com/theme-context/)
+* [Extending SassDoc](http://sassdoc.com/extending-sassdoc/)
+* [Data Interface](http://sassdoc.com/data-interface/)
+* [Theme Generator](http://sassdoc.com/theme-generator/)
 
-#### Generate Documentation
+## Alternative usages
 
-```sh
-sassdoc <src> <dest> [options]
-```
+* [Node](http://sassdoc.com/node/)
+* [Grunt](http://sassdoc.com/grunt/)
+* [Gulp](http://sassdoc.com/gulp/)
+* [Broccoli](http://sassdoc.com/broccoli/)
 
-**Arguments:**
+## Extra
 
-1. `<src>` Path to your Sass folder.
-1. `<dest>` Path to the destination folder.
-
-**Options:**
-
-* `--version`: Show version.
-* `-h, --help`: Bring help.
-* `-v, --verbose`: Run in verbose mode.
-* `-c, --config`: Path to JSON file containing variables to be passed to the view.
-* `-t, --theme`: Theme to be required. It will override the configuration value.
-* `--sass-convert`: Perform a Sass to SCSS syntax conversion prior to run SassDoc.
-* `--no-update-notifier`: Do not run the update notifier check.
-* `--no-prompt`: Do not prompt with destination folder check warnings.
-
-### Node
-
-#### Install
-
-```shell
-npm install sassdoc --save
-```
-#### Use The Raw Data
-
-```js
-var sassdoc = require('sassdoc');
-
-sassdoc.parse(__dirname + '/sass').then(function (items) {
-  console.log(items);
-})
-```
-
-#### Generate Documentation
-
-```js
-var config = {
-  display: {
-    access: ['public', 'private'],
-    alias: false,
-    watermark: true,
-  },
-
-  package: 'path/to/package.json', // Defaults to `./package.json`
-  theme: 'theme-name', // Defaults to `default`
-};
-
-var sassdoc = require('sassdoc');
-sassdoc.documentize(source, dest, config);
-```
-
-### Grunt, Gulp, Broccoli
-
-See [grunt-sassdoc](https://github.com/SassDoc/grunt-sassdoc),
-[gulp-sassdoc](https://github.com/SassDoc/gulp-sassdoc),
-[broccoli-sassdoc](https://github.com/SassDoc/broccoli-sassdoc).
-
-
-
-## Documentating your items
-
-See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Documenting-your-items).
-
-
-
-## Customising the view
-
-See [Wiki](https://github.com/SassDoc/sassdoc/wiki/Customising-the-view).
-
-
-
-## Example
-
-```scss
-/**
- * Adds `$value` at `$index` in `$list`.
- *
- * @author Hugo Giraudel
- *
- * @requires {function} is-true
- *
- * @param {List}   $list  - list to update
- * @param {Number} $index - index to add
- * @param {*}      $value - value to add
- *
- * @throws List index $index is not a number for `insert-nth`.
- *
- * @return {List | Null}
- */
-
-@function insert-nth($list, $index, $value) {
-  // ...
-}
-
-/**
- * Defines whether the lib should support legacy browsers (e.g. `IE 8`).
- *
- * @since 1.3.37
- *
- * @todo Nothing. It's awesome.
- *
- * @link https://github.com/SassDoc/sassdoc SassDoc
- *
- * @type Bool
- */
-$legacy-support: true !global;
-```
-
-
-## Built with SassDoc
-
-* [GUSS](http://www.kaelig.fr/gu/guss-sassdoc/) from The Guardian
-* [SassyIcons](http://pascalduez.github.io/SassyIcons/docs/) from Pascal Duez
-* [SassyFilters](http://pascalduez.github.io/SassyFilters/docs/) from Pascal Duez
-* [SassyLists](http://sassylists.com/documentation) from Hugo Giraudel
-* [css-patterns](http://madebymany.github.io/css-patterns/) from madebymany
-* [scss-components](http://scss-components.com/sassdoc/) from Tim Hartmann
-* [yy](http://astina.github.io/yy/) from Astina
-* [Sassy Starter](http://minamarkham.github.io/sassy-starter/docs/) from archermalmo
-
+* [About](http://sassdoc.com/about/)
+* [Frequently Asked Questions](http://sassdoc.com/frequently-asked-questions/)
+* [Contributing](http://sassdoc.com/contributinh/)
+* [Built With SassDoc](http://sassdoc.com/built-with-sassdoc/)
 
 ## Credits
 
