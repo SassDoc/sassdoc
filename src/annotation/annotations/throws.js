@@ -12,8 +12,10 @@ module.exports = {
     while ( (match = autoParserError.exec(item.context.code)) ) {
       throwing.push(match[1]);
     }
-    // Workaround till `default` API is updated!
-    item['throws'] = throwing;
+    // Workaround till `default API is updated!
+    if (throwing.length > 0){
+      item['throws'] = throwing;
+    }
   },
   alias: ['throw', 'exception'],
   allowedOn: ['function', 'mixin', 'placeholder']
