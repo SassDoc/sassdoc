@@ -5,6 +5,37 @@ var reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*(
 var utils = require('../../utils');
 var logger = require('../../log');
 
+
+var searchForMatches = function(code, regex, index){
+  var match;
+  var matches = [];
+  while ( (match = regex.exec(code)) ) {
+    matches.push(match[index || 1]);
+  }
+  return matches;
+};
+
+
+var typeNameObject = function(type){
+  return function(name){
+    return {
+      type : type,
+      name : name,
+      autofill : true
+    };
+  };
+};
+
+var compareBefore = function(code, str, index){
+  for (var i=index-str.length,b=0;i<index;i++){
+    if (code[i] !== str[b]){
+      return false;
+    }
+    b++;
+  }
+  return true;
+};
+
 module.exports = {
 
   parse: function (text) {
@@ -38,6 +69,48 @@ module.exports = {
     return obj;
   },
 
+  default: function(item){
+    var type = item.context.type;
+    if (type === 'mixin' || type === 'placeholder') {
+
+      // Searching for mixins and functions
+      var mixins = [];
+      var functions = [];
+      var mixinFunctionRegex = /\s*([\w\d_-]*)\(/g;
+      var match;
+      while ( (match = mixinFunctionRegex.exec(item.context.code)) ){
+        // Try if this is a mixin or function
+        if (compareBefore(item.context.code, '@include', match.index)){
+          mixins.push(match[1]);
+        } else {
+          functions.push(match[1]);
+        }
+      }
+
+      var placeholders = searchForMatches(item.context.code, /@extend\s+%([^;\s]+)/ig);
+      var variables    = searchForMatches(item.context.code, /$([^;\s]+)/ig);
+
+      // Create object for each required item.
+      mixins       = mixins.map(typeNameObject('mixin'));
+      functions    = functions.map(typeNameObject('function'));
+      placeholders = placeholders.map(typeNameObject('placeholder'));
+      variables    = variables.map(typeNameObject('variable'));
+
+
+      // Merge all arrays
+      var all = [];
+          all = all.concat(mixins);
+          all = all.concat(functions);
+          all = all.concat(placeholders);
+          all = all.concat(variables);
+
+      // Workaround till `default API is updated!
+      if (all.length > 0){
+        item['requires'] = all;
+      }
+    }
+  },
+
   resolve: function (byTypeAndName) {
 
     utils.eachItem(byTypeAndName, function (item) {
@@ -67,7 +140,7 @@ module.exports = {
             req.item = reqItem;
 
           }
-          else {
+          else if (req.autofill !== true) {
             logger.log('Item `' + item.context.name +
               '` requires `' + req.name + '` from type `' + req.type +
               '` but this item doesn\'t exist.');
