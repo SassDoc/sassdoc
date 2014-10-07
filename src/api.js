@@ -3,6 +3,7 @@
 var fs = require('./file');
 var logger = require('./log');
 var cgf = require('./cfg');
+var safeWipe = require('safe-wipe');
 
 exports = module.exports = {
 
@@ -26,7 +27,14 @@ exports = module.exports = {
       config = cgf(config);
     }
 
-    return fs.folder.refresh(destination)
+    return safeWipe(destination, {
+      interactive: config.interactive || false,
+      parent: source,
+      silent: true,
+    })
+      .then(function () {
+        return fs.folder.create(destination);
+      })
       .then(function () {
         logger.log('Folder `' + destination + '` successfully generated.');
         return fs.getData(source, config.theme.annotations);
