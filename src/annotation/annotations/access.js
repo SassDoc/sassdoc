@@ -5,6 +5,6 @@ module.exports = {
     return text.trim();
   },
   default: function () {
-    return 'public';
+    return ['public'];
   }
 };
