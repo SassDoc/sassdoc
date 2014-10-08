@@ -64,5 +64,6 @@ if (options['--sass-convert']) {
 // Resolve config and ensure the theme option
 var config = cfg(options['--config'], {theme: options['--theme']});
 config.interactive = true;
+config.force = options['--no-prompt'];
 
 sassdoc.documentize(options['<src>'], options['<dest>'], config);

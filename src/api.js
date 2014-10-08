@@ -31,6 +31,7 @@ exports = module.exports = {
       interactive: config.interactive || false,
       parent: source,
       silent: true,
+      force: config.force
     })
       .then(function () {
         return fs.folder.create(destination);
