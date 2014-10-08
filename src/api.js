@@ -34,6 +34,10 @@ exports = module.exports = {
     })
       .then(function () {
         return fs.folder.create(destination);
+      }, function (err) {
+        logger.error(err.message);
+        err.silent = true;
+        throw err;
       })
       .then(function () {
         logger.log('Folder `' + destination + '` successfully generated.');
@@ -60,7 +64,9 @@ exports = module.exports = {
         logger.log(themeLog);
         logger.log('Process over. Everything okay!');
       }, function (err) {
-        logger.error('stack' in err ? err.stack : err);
+        if (!err.silent) {
+          logger.error('stack' in err ? err.stack : err);
+        }
         throw err;
       });
   },
