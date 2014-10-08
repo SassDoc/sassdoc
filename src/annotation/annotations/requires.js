@@ -4,6 +4,7 @@ var reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*(
 
 var utils = require('../../utils');
 var logger = require('../../log');
+var uniq = require('lodash').uniq;
 
 
 var searchForMatches = function(code, regex, index){
@@ -12,7 +13,7 @@ var searchForMatches = function(code, regex, index){
   while ( (match = regex.exec(code)) ) {
     matches.push(match[index || 1]);
   }
-  return matches;
+  return uniq(matches);
 };
 
 
@@ -69,9 +70,9 @@ module.exports = {
     return obj;
   },
 
-  default: function(item){
+  extend: function(item){
     var type = item.context.type;
-    if (type === 'mixin' || type === 'placeholder') {
+    if (type === 'mixin' || type === 'placeholder' || type === 'function') {
 
       // Searching for mixins and functions
       var mixins = [];
@@ -88,7 +89,7 @@ module.exports = {
       }
 
       var placeholders = searchForMatches(item.context.code, /@extend\s+%([^;\s]+)/ig);
-      var variables    = searchForMatches(item.context.code, /$([^;\s]+)/ig);
+      var variables    = searchForMatches(item.context.code, /\$([a-z0-9_-]+)/ig);
 
       // Create object for each required item.
       mixins       = mixins.map(typeNameObject('mixin'));
@@ -104,15 +105,18 @@ module.exports = {
           all = all.concat(placeholders);
           all = all.concat(variables);
 
-      // Workaround till `default API is updated!
+      // Merge in user supplyed requires if there are any
+      if (item.requires && item.requires.length > 0){
+        all = all.concat(item.requires);
+      }
+
       if (all.length > 0){
-        item['requires'] = all;
+        return all;
       }
     }
   },
 
   resolve: function (byTypeAndName) {
-
     utils.eachItem(byTypeAndName, function (item) {
       if (utils.isset(item.requires)) {
         item.requires = item.requires.map(function (req) {
