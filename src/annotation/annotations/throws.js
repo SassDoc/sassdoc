@@ -6,7 +6,7 @@ module.exports = {
   parse: function (text) {
     return text.trim();
   },
-  extend : function(item){
+  autofill: function(item){
     var match;
     var throwing = item['throws'] || [];
     while ( (match = autoParserError.exec(item.context.code)) ) {

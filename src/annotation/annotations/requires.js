@@ -70,7 +70,7 @@ module.exports = {
     return obj;
   },
 
-  extend: function(item){
+  autofill: function(item){
     var type = item.context.type;
     if (type === 'mixin' || type === 'placeholder' || type === 'function') {
 
