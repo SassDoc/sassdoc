@@ -154,9 +154,10 @@ exports = module.exports = {
    * Get data.
    * @param {String} folder - folder path
    * @param {Array} annotations - Additional annotations to use
+   * @param {Object} view - view configuration
    */
-  getData: function (folder, annotations) {
-    var parser = new Parser();
+  getData: function (folder, annotations, view) {
+    var parser = new Parser(view);
         parser.annotations.addAnnotations(annotations);
 
     exports.folder.base = folder;
