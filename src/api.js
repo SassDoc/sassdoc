@@ -63,8 +63,8 @@ exports = module.exports = {
    * sassdoc.parse('examples/sass')
    * @return {Q.Promise}
    */
-  parse: function (source) {
-    return fs.getData(source);
+  parse: function (source, annotations, view) {
+    return fs.getData(source, annotations, view);
   },
 
   /**
