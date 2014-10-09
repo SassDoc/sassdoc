@@ -4,6 +4,38 @@ var reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*(
 
 var utils = require('../../utils');
 var logger = require('../../log');
+var uniq = require('lodash').uniq;
+
+
+var searchForMatches = function(code, regex, index){
+  var match;
+  var matches = [];
+  while ( (match = regex.exec(code)) ) {
+    matches.push(match[index || 1]);
+  }
+  return uniq(matches);
+};
+
+
+var typeNameObject = function(type){
+  return function(name){
+    return {
+      type : type,
+      name : name,
+      autofill : true
+    };
+  };
+};
+
+var compareBefore = function(code, str, index){
+  for (var i=index-str.length,b=0;i<index;i++){
+    if (code[i] !== str[b]){
+      return false;
+    }
+    b++;
+  }
+  return true;
+};
 
 module.exports = {
 
@@ -38,8 +70,53 @@ module.exports = {
     return obj;
   },
 
-  resolve: function (byTypeAndName) {
+  autofill: function(item){
+    var type = item.context.type;
+    if (type === 'mixin' || type === 'placeholder' || type === 'function') {
 
+      // Searching for mixins and functions
+      var mixins = [];
+      var functions = [];
+      var mixinFunctionRegex = /\s*([\w\d_-]*)\(/g;
+      var match;
+      while ( (match = mixinFunctionRegex.exec(item.context.code)) ){
+        // Try if this is a mixin or function
+        if (compareBefore(item.context.code, '@include', match.index)){
+          mixins.push(match[1]);
+        } else {
+          functions.push(match[1]);
+        }
+      }
+
+      var placeholders = searchForMatches(item.context.code, /@extend\s+%([^;\s]+)/ig);
+      var variables    = searchForMatches(item.context.code, /\$([a-z0-9_-]+)/ig);
+
+      // Create object for each required item.
+      mixins       = mixins.map(typeNameObject('mixin'));
+      functions    = functions.map(typeNameObject('function'));
+      placeholders = placeholders.map(typeNameObject('placeholder'));
+      variables    = variables.map(typeNameObject('variable'));
+
+
+      // Merge all arrays
+      var all = [];
+          all = all.concat(mixins);
+          all = all.concat(functions);
+          all = all.concat(placeholders);
+          all = all.concat(variables);
+
+      // Merge in user supplyed requires if there are any
+      if (item.requires && item.requires.length > 0){
+        all = all.concat(item.requires);
+      }
+
+      if (all.length > 0){
+        return all;
+      }
+    }
+  },
+
+  resolve: function (byTypeAndName) {
     utils.eachItem(byTypeAndName, function (item) {
       if (utils.isset(item.requires)) {
         item.requires = item.requires.map(function (req) {
@@ -67,7 +144,7 @@ module.exports = {
             req.item = reqItem;
 
           }
-          else {
+          else if (req.autofill !== true) {
             logger.log('Item `' + item.context.name +
               '` requires `' + req.name + '` from type `' + req.type +
               '` but this item doesn\'t exist.');

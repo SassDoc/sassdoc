@@ -25,11 +25,10 @@ exports = module.exports = {
     if (!config || !('__sassdoc__' in config)) {
       config = cgf(config);
     }
-
     return fs.folder.refresh(destination)
       .then(function () {
         logger.log('Folder `' + destination + '` successfully generated.');
-        return fs.getData(source, config.theme.annotations);
+        return fs.getData(source, config.theme.annotations, config.view);
       })
       .then(function (data) {
         logger.log('Folder `' + source + '` successfully parsed.');
@@ -64,8 +63,8 @@ exports = module.exports = {
    * sassdoc.parse('examples/sass')
    * @return {Q.Promise}
    */
-  parse: function (source) {
-    return fs.getData(source);
+  parse: function (source, annotations, view) {
+    return fs.getData(source, annotations, view);
   },
 
   /**

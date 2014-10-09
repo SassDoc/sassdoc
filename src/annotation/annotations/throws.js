@@ -6,15 +6,14 @@ module.exports = {
   parse: function (text) {
     return text.trim();
   },
-  default : function(item){
+  autofill: function(item){
     var match;
-    var throwing = [];
+    var throwing = item['throws'] || [];
     while ( (match = autoParserError.exec(item.context.code)) ) {
       throwing.push(match[1]);
     }
-    // Workaround till `default API is updated!
-    if (throwing.length > 0){
-      item['throws'] = throwing;
+    if (throwing.length > 0) {
+      return throwing;
     }
   },
   alias: ['throw', 'exception'],

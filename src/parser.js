@@ -5,9 +5,9 @@ var logger = require('./log');
 var AnnotationApi = require('./annotation');
 var ScssCommentParser = require('scss-comment-parser');
 
-var Parser = function(){
+var Parser = function(config){
   this.annotations = new AnnotationApi();
-  this.scssParser = new ScssCommentParser(this.annotations.list);
+  this.scssParser = new ScssCommentParser(this.annotations.list, config);
 
   this.scssParser.commentParser.on('warning', function (warning) {
     logger.warn(warning);
