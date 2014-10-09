@@ -48,6 +48,7 @@
     "mkdirp": "^0.5.0",
     "q": "^1.0.1",
     "rimraf": "~2.2.8",
+    "safe-wipe": "0.*",
     "sassdoc-theme-default": "^1.6.0",
     "scss-comment-parser": "0.5.0-rc4",
     "semver": "^3.0.1",

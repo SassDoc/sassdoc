@@ -3,6 +3,7 @@
 var fs = require('./file');
 var logger = require('./log');
 var cgf = require('./cfg');
+var safeWipe = require('safe-wipe');
 
 exports = module.exports = {
 
@@ -25,7 +26,20 @@ exports = module.exports = {
     if (!config || !('__sassdoc__' in config)) {
       config = cgf(config);
     }
-    return fs.folder.refresh(destination)
+
+    return safeWipe(destination, {
+      interactive: config.interactive || false,
+      parent: source,
+      silent: true,
+      force: config.force
+    })
+      .then(function () {
+        return fs.folder.create(destination);
+      }, function (err) {
+        logger.error(err.message);
+        err.silent = true;
+        throw err;
+      })
       .then(function () {
         logger.log('Folder `' + destination + '` successfully generated.');
         return fs.getData(source, config.theme.annotations, config.view);
@@ -51,7 +65,9 @@ exports = module.exports = {
         logger.log(themeLog);
         logger.log('Process over. Everything okay!');
       }, function (err) {
-        logger.error('stack' in err ? err.stack : err);
+        if (!err.silent) {
+          logger.error('stack' in err ? err.stack : err);
+        }
         throw err;
       });
   },

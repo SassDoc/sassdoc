@@ -30,7 +30,6 @@ var docopt = require('fdocopt')();
 var pkg = require('../package.json');
 var chalk = require('chalk');
 var cfg = require('../src/cfg');
-var destination = require('../src/destination');
 
 // Define version
 var options = docopt(__filename, {version: pkg.version});
@@ -64,14 +63,7 @@ if (options['--sass-convert']) {
 
 // Resolve config and ensure the theme option
 var config = cfg(options['--config'], {theme: options['--theme']});
+config.interactive = true;
+config.force = options['--no-prompt'];
 
-// Check dest.
-destination.check(options)
-  .then(function () {
-    // All under control, run SassDoc.
-    sassdoc.documentize(options['<src>'], options['<dest>'], config);
-  })
-  .catch(function (err) {
-    sassdoc.logger.error(err.message);
-    process.exit(0);
-  });
+sassdoc.documentize(options['<src>'], options['<dest>'], config);

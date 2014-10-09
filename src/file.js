@@ -2,7 +2,6 @@
 
 var fs = require('fs');          // File system
 var mkdirp = require('mkdirp');  // mkdir -p
-var rimraf = require('rimraf');  // rm -rf
 var Q = require('q');            // Promises
 var path = require('path');      // Path
 
@@ -36,27 +35,6 @@ exports = module.exports = {
      * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
      */
     create: Q.denodeify(mkdirp),
-
-    /**
-     * Remove a folder.
-     * @see {@link https://github.com/isaacs/rimraf}
-     * @see {@link https://github.com/kriskowal/q/wiki/API-Reference#interfacing-with-nodejs-callbacks}
-     */
-    remove: Q.denodeify(rimraf),
-
-    /**
-     * Remove then create a folder.
-     * @param  {String} folder
-     * @return {Q.Promise}
-     */
-    refresh: function (folder) {
-      return exports.folder.remove(folder).then(function () {
-        logger.log('Folder `' + folder + '` successfully removed.');
-        return exports.folder.create(folder);
-      }, function () {
-        return exports.folder.create(folder);
-      });
-    },
 
     /**
      * Parse a folder.
