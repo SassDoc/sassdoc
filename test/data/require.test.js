@@ -4,11 +4,11 @@
 var assert = require('assert');
 var _ = require('lodash');
 
-describe('#requires', function () {
+describe('#require', function () {
   var getData = require('../../src/file').getData;
 
-  var expected = require('./fixture/requires/expected');
-  var input = 'test/data/fixture/requires';
+  var expected = require('./fixture/require/expected');
+  var input = 'test/data/fixture/require';
   var data;
 
   before(function (done) {
@@ -30,12 +30,12 @@ describe('#requires', function () {
     var requires = dataClone['function']['test-function-requires'];
     var required = dataClone['function']['test-function-required'];
 
-    assert.equal(requires.requires[0].item, required);
+    assert.equal(requires.require[0].item, required);
     assert.equal(required.usedBy[0], requires);
 
     // Remove circular structure from the clone
-    delete requires.requires.toJSON;
-    delete requires.requires[0].item;
+    delete requires.require.toJSON;
+    delete requires.require[0].item;
     delete required.usedBy.toJSON;
 
     // Include the reference

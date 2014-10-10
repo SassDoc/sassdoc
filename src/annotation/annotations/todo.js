@@ -4,5 +4,5 @@ module.exports = {
   parse: function (text) {
     return text.trim();
   },
-  alias: ['todo']
+  alias: ['todos']
 };
