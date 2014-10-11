@@ -34,8 +34,28 @@ var cfg = require('../src/cfg');
 // Define version
 var options = docopt(__filename, {version: pkg.version});
 
+// Set verbose mode
+sassdoc.logger.enabled = options['--verbose'];
+
+// Resolve config and ensure the theme option
+var config = cfg(options['--config'], {
+  theme: options['--theme'],
+
+  // Cast `false` values to undefined to not override config values
+  sassConvert: options['--sass-convert'] || void 0,
+  noUpdateNotifier: options['--no-update-notifier'] || void 0,
+  force: options['--no-prompt'] || void 0,
+
+  interactive: true
+});
+
+// Perform a sass to scss syntax convertion.
+if (config.sassConvert) {
+  sassdoc = require('../src/convert')(sassdoc);
+}
+
 // Run update notifier if not explicitely disabled
-if (!options['--no-update-notifier']) {
+if (!config.noUpdateNotifier) {
   var notifier = require('update-notifier')({
     packageName: pkg.name,
     packageVersion: pkg.version,
@@ -52,18 +72,5 @@ if (!options['--no-update-notifier']) {
     console.log(message);
   }
 }
-
-// Set verbose mode
-sassdoc.logger.enabled = options['--verbose'];
-
-// Perform a sass to scss syntax convertion.
-if (options['--sass-convert']) {
-  sassdoc = require('../src/convert')(sassdoc);
-}
-
-// Resolve config and ensure the theme option
-var config = cfg(options['--config'], {theme: options['--theme']});
-config.interactive = true;
-config.force = options['--no-prompt'];
 
 sassdoc.documentize(options['<src>'], options['<dest>'], config);
