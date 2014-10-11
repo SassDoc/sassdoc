@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.10.0
+
+* Made annotations `@throws`, `@requires` and `@content` fill themselves so you don't have to, unless told otherwise through the [`autofill` option](http://sassdoc.com/configuration/#autofill) ([#232](https://github.com/SassDoc/sassdoc/issues/232), [#238](https://github.com/SassDoc/sassdoc/issues/238))
+* Added the ability to define `--sass-convert`, `--no-update-identifier` and `--no-prompt` options within the configuration file instead of CLI only ([#247](https://github.com/SassDoc/sassdoc/issues/247))
+* Merged [sassdoc-filter](https://github.com/sassdoc/sassdoc-filter) and [sassdoc-indexer](https://github.com/sassdoc/sassdoc-indexer) into [sassdoc-extras](https://github.com/sassdoc/sassdoc-extras); theme authors are asked to use the new repository
+
 ## 1.9.0
 
 * Added ability to use inline comments with `///` ([#143](https://github.com/SassDoc/sassdoc/issues/143))

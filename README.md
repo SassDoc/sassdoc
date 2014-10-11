@@ -19,22 +19,24 @@ develop: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=devel
 
 ## How does it work?
 
-[SassDoc](http://github.com/sassdoc/sassdoc) parses your source folder to grab documentation-specific comments. From there, it builds a data tree, that gets [enhanced](http://github.com/sassdoc/sassdoc-indexer) and [filtered](http://github.com/sassdoc/sassdoc-filter) before being passed to the [view](http://github.com/sassdoc/sassdoc-theme-light). So you end up with a fully styled HTML document located at your destination folder.
+[SassDoc](http://github.com/sassdoc/sassdoc) parses your source folder to grab [documentation-specific comments](/annotations/). From there, it builds a [data tree](/data-interface/), that gets [enhanced and filtered](/extra-tools/) before being passed to the [view](/customising-the-view/). So you end up with a fully styled HTML document located at your destination folder.
 
 ## Getting started
 
 * [Getting Started](http://sassdoc.com/getting-started/)
-* [Documenting Your Items](http://sassdoc.com/documenting-your-items/)
+* [Configuration](http://sassdoc.com/configuration/)
+* [Annotations](http://sassdoc.com/annotations/)
 * [File-level Annotations](http://sassdoc.com/file-level-annotations/)
 * [Customising The View](http://sassdoc.com/customising-the-view/)
 
 ## Using a custom theme
 
 * [Using Your Own Theme](http://sassdoc.com/using-your-own-theme/)
-* [Theme Context](http://sassdoc.com/theme-context/)
-* [Extending SassDoc](http://sassdoc.com/extending-sassdoc/)
 * [Data Interface](http://sassdoc.com/data-interface/)
+* [Extending SassDoc](http://sassdoc.com/extending-sassdoc/)
+* [Extra Tools](http://sassdoc.com/extra-tools/)
 * [Theme Generator](http://sassdoc.com/theme-generator/)
+* [Theme Gallery](http://sassdoc.com/theme-gallery/)
 
 ## Alternative usages
 
@@ -45,6 +47,7 @@ develop: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=devel
 
 ## Extra
 
+* [Changelog](http://sassdoc.com/changelog/)
 * [About](http://sassdoc.com/about/)
 * [Frequently Asked Questions](http://sassdoc.com/frequently-asked-questions/)
 * [Contributing](http://sassdoc.com/contributinh/)

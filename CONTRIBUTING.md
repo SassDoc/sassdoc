@@ -26,8 +26,7 @@ So you think you've found a bug? Likely. We're all humans after all! Before even
 
 * [Core](https://github.com/sassdoc/sassdoc): API (you're here)
 * [Theme](https://github.com/sassdoc/sassdoc-theme-light): Theme, templates and styles
-* [Filter](https://github.com/sassdoc/sassdoc-filter): Markdown, display, groups...
-* [Indexer](https://github.com/sassdoc/sassdoc-indexer): Data structure
+* [Extras](https://github.com/sassdoc/sassdoc-extras): Extra tools for theme authors
 * [Grunt plugin](https://github.com/sassdoc/grunt-sassdoc): Grunt integration
 * [Gulp plugin](https://github.com/sassdoc/gulp-sassdoc): Gulp integration
 * [Broccoli plugin](https://github.com/sassdoc/broccoli-sassdoc): Broccoli integration
