@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.1
+
+* Updated a dependency in order to use new version of sassdoc-theme-default
+
 ## 1.10.0
 
 * Made annotations `@throws`, `@requires` and `@content` fill themselves so you don't have to, unless told otherwise through the [`autofill` option](http://sassdoc.com/configuration/#autofill) ([#232](https://github.com/SassDoc/sassdoc/issues/232), [#238](https://github.com/SassDoc/sassdoc/issues/238))
