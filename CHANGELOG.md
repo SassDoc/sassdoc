@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.2
+
+* Fixed an issue with the folder wiping safeguard always aborting if folder is not empty without even prompting
+
 ## 1.10.1
 
 * Updated a dependency in order to use new version of sassdoc-theme-default

@@ -1,6 +1,6 @@
 {
   "name": "sassdoc",
-  "description": "Like JSDoc for your Sass files.",
+  "description": "Release the docs!",
   "author": "Hugo Giraudel <hugo.giraudel@gmail.com> (http://hugogiraudel.com)",
   "contributors": [
     {
@@ -17,7 +17,7 @@
       "url": "https://twitter.com/pascalduez"
     }
   ],
-  "version": "1.10.1",
+  "version": "1.10.2",
   "license": {
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
