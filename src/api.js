@@ -28,10 +28,10 @@ exports = module.exports = {
     }
 
     return safeWipe(destination, {
-      interactive: config.interactive || false,
+      interactive: config.view.interactive || false,
       parent: source,
       silent: true,
-      force: config.force
+      force: config.view.force
     })
       .then(function () {
         return fs.folder.create(destination);

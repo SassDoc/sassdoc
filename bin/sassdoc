@@ -50,12 +50,12 @@ var config = cfg(options['--config'], {
 });
 
 // Perform a sass to scss syntax convertion.
-if (config.sassConvert) {
+if (config.view.sassConvert) {
   sassdoc = require('../src/convert')(sassdoc);
 }
 
 // Run update notifier if not explicitely disabled
-if (!config.noUpdateNotifier) {
+if (!config.view.noUpdateNotifier) {
   var notifier = require('update-notifier')({
     packageName: pkg.name,
     packageVersion: pkg.version,
