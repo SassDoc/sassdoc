@@ -29,9 +29,9 @@ exports = module.exports = {
 
     return safeWipe(destination, {
       interactive: config.view.interactive || false,
+      force: config.view.force || false,
       parent: source,
-      silent: true,
-      force: config.view.force
+      silent: true
     })
       .then(function () {
         return fs.folder.create(destination);
