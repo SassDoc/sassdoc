@@ -16,6 +16,6 @@ module.exports = {
       return throwing;
     }
   },
-  alias: ['throws', 'exception'],
+  alias: ['throw', 'exception'],
   allowedOn: ['function', 'mixin', 'placeholder']
 };

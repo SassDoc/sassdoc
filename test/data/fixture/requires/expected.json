@@ -11,7 +11,7 @@
           "end": 5
         }
       },
-      "require": [
+      "requires": [
         {
           "type": "function",
           "name": "test-function-required",

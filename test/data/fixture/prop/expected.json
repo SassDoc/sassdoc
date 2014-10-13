@@ -15,7 +15,7 @@
       "type": [
         "Map"
       ],
-      "property": [
+      "prop": [
         {
           "type": "String",
           "name": "foo",

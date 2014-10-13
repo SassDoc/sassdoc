@@ -3,8 +3,8 @@
 
 var assert = require('assert');
 
-describe('#parameter', function () {
-  var param = (new (require('../../src/annotation'))()).list.parameter;
+describe('#parameters', function () {
+  var param = (new (require('../../src/annotation'))()).list.parameters;
 
   it('should return an object', function () {
     assert.deepEqual(param.parse('{type} $hyphenated-name (default) - description'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description' });
