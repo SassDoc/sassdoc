@@ -17,5 +17,7 @@ module.exports = {
     }
   },
 
-  allowedOn : ['mixin']
+  allowedOn : ['mixin'],
+
+  multiple : false
 };

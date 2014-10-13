@@ -3,5 +3,6 @@
 module.exports = {
   parse: function (text) {
     return text.trim();
-  }
+  },
+  multiple : false
 };

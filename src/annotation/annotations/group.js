@@ -6,5 +6,6 @@ module.exports = {
   },
   default: function () {
     return [['undefined']];
-  }
+  },
+  multiple : false
 };

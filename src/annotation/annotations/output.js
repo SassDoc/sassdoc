@@ -7,5 +7,7 @@ module.exports = {
 
   alias: ['outputs'],
 
-  allowedOn : ['mixin']
+  allowedOn : ['mixin'],
+
+  multiple : false
 };
