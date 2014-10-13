@@ -3,11 +3,11 @@
 
 var assert = require('assert');
 
-describe('#throws', function () {
+describe('#returns', function () {
   var getData = require('../../src/file').getData;
 
-  var expected = require('./fixture/throws/expected');
-  var input = 'test/data/fixture/throws';
+  var expected = require('./fixture/return/expected');
+  var input = 'test/data/fixture/return';
   var data;
 
   before(function (done) {

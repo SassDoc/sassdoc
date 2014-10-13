@@ -3,8 +3,8 @@
 
 var assert = require('assert');
 
-describe('#requires', function () {
-  var requires = (new (require('../../src/annotation'))()).list.requires;
+describe('#require', function () {
+  var requires = (new (require('../../src/annotation'))()).list.require;
 
   it('should default to function', function () {
     assert.deepEqual(requires.parse('name - description'), { type: 'function', name: 'name', description: 'description', 'external': false });
