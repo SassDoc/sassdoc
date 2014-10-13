@@ -2,7 +2,7 @@
 
 ## 1.10.3
 
-* Prevent `@requires` to autofill dependency twice. 
+* Prevented `@requires` to autofill dependency twice
 
 ## 1.10.2
 
