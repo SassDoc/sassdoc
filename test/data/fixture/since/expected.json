@@ -17,13 +17,9 @@
           "description": "A cool new feature"
         }
       ],
-      "access": [
-        "public"
-      ],
+      "access":  "public",
       "group": [
-        [
-          "undefined"
-        ]
+        "undefined"
       ],
       "file": {
         "path": "input.scss",

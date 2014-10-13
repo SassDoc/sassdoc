@@ -11,7 +11,7 @@ var sassdoc = require('./src/api');
 var copy = q.denodeify(fse.copy);
 
 // Set development theme.
-var themePath = 'node_modules/sassdoc-theme-default/node_modules/sassdoc-theme-light';
+var themePath = process.env.SASSDOC_THEME || './node_modules/sassdoc-theme-default';
 
 // Theme path helper.
 var theme = function () {
@@ -144,7 +144,8 @@ var config = {
     options: {
       'basePath': 'http://github.com/sassdoc/sassdoc-theme-light/tree/master/scss',
       'package': theme('package.json'),
-      'theme': 'sassdoc-theme-default',
+      'theme': process.env.SASSDOC_THEME || 'sassdoc-theme-default',
+      'force': true,
       'groups': {
         'undefined': 'General',
         'cross-browser-support': 'Cross Browser Support'

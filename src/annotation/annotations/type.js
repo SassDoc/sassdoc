@@ -5,5 +5,7 @@ module.exports = {
     return text.trim();
   },
 
-  allowedOn : ['variable']
+  allowedOn : ['variable'],
+
+  multiple : false
 };

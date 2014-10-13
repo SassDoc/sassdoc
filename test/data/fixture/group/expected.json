@@ -12,13 +12,9 @@
         }
       },
       "group": [
-        [
           "test-functions"
-        ]
       ],
-      "access": [
-        "public"
-      ],
+      "access": "public",
       "file": {
         "path": "input.scss",
         "name": "input"

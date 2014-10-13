@@ -5,6 +5,7 @@ module.exports = {
     return [text.trim().toLowerCase()];
   },
   default: function () {
-    return [['undefined']];
-  }
+    return ['undefined'];
+  },
+  multiple : false
 };

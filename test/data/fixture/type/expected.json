@@ -12,16 +12,10 @@
           "end": 5
         }
       },
-      "type": [
-        "Map"
-      ],
-      "access": [
-        "public"
-      ],
+      "type": "Map",
+      "access": "public",
       "group": [
-        [
-          "undefined"
-        ]
+        "undefined"
       ],
       "file": {
         "path": "input.scss",

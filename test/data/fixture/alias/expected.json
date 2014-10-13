@@ -11,13 +11,9 @@
           "end": 5
         }
       },
-      "access": [
-        "public"
-      ],
+      "access": "public",
       "group": [
-        [
           "undefined"
-        ]
       ],
       "file": {
         "path": "input.scss",
@@ -38,16 +34,10 @@
           "end": 10
         }
       },
-      "alias": [
-        "test-function-aliased"
-      ],
-      "access": [
-        "public"
-      ],
+      "alias": "test-function-aliased",
+      "access": "public",
       "group": [
-        [
           "undefined"
-        ]
       ],
       "file": {
         "path": "input.scss",

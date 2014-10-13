@@ -14,13 +14,9 @@
       "throw": [
         "Error warn you on wrong argument type"
       ],
-      "access": [
-        "public"
-      ],
+      "access": "public",
       "group": [
-        [
-          "undefined"
-        ]
+        "undefined"
       ],
       "file": {
         "path": "input.scss",

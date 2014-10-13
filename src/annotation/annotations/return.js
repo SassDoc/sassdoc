@@ -28,5 +28,7 @@ module.exports = {
 
   alias: ['returns'],
 
-  allowedOn : ['function']
+  allowedOn : ['function'],
+
+  multiple : false
 };

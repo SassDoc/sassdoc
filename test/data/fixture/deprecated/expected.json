@@ -11,16 +11,10 @@
           "end": 5
         }
       },
-      "deprecated": [
-        "This is a deprecated function"
-      ],
-      "access": [
-        "public"
-      ],
+      "deprecated": "This is a deprecated function",
+      "access": "public",
       "group": [
-        [
           "undefined"
-        ]
       ],
       "file": {
         "path": "input.scss",
