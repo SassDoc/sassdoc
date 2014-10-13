@@ -1,100 +1,88 @@
 {
-  "function": {
-    "test-function-file-override-all": {
-      "description": "Such function, very override all. Wow.\n",
-      "context": {
-        "type": "function",
-        "name": "test-function-file-override-all",
-        "code": "",
-        "line": {
-          "start": 20,
-          "end": 20
-        }
+   "function":{
+      "test-function-file-override-all":{
+         "description":"Such function, very override all. Wow.\n",
+         "context":{
+            "type":"function",
+            "name":"test-function-file-override-all",
+            "code":"",
+            "line":{
+               "start":20,
+               "end":20
+            }
+         },
+         "access":"public",
+         "group":[
+            "bar"
+         ],
+         "author":[
+            "Hugo Giraudel"
+         ],
+         "since":[
+            {
+               "version":"v1.2.0"
+            }
+         ],
+         "file":{
+            "path":"input.scss",
+            "name":"input"
+         }
       },
-      "access": [
-        "public"
-      ],
-      "group": [
-        [
-          "bar"
-        ]
-      ],
-      "author": [
-        "Hugo Giraudel"
-      ],
-      "since": [
-        {
-          "version": "v1.2.0"
-        }
-      ],
-      "file": {
-        "path": "input.scss",
-        "name": "input"
-      }
-    },
-    "test-function-file-override-some": {
-      "description": "Such function, very override some. Wow.\n",
-      "context": {
-        "type": "function",
-        "name": "test-function-file-override-some",
-        "code": "",
-        "line": {
-          "start": 27,
-          "end": 27
-        }
+      "test-function-file-override-some":{
+         "description":"Such function, very override some. Wow.\n",
+         "context":{
+            "type":"function",
+            "name":"test-function-file-override-some",
+            "code":"",
+            "line":{
+               "start":27,
+               "end":27
+            }
+         },
+         "access":"public",
+         "group":[
+            "baz"
+         ],
+         "author":[
+            "Jules Verne"
+         ],
+         "since":[
+            {
+               "version":"v1.5.0"
+            }
+         ],
+         "file":{
+            "path":"input.scss",
+            "name":"input"
+         }
       },
-      "access": [
-        "public"
-      ],
-      "group": [
-        [
-          "baz"
-        ]
-      ],
-      "author": [
-        "Jules Verne"
-      ],
-      "since": [
-        {
-          "version": "v1.5.0"
-        }
-      ],
-      "file": {
-        "path": "input.scss",
-        "name": "input"
+      "test-function-file-inherit":{
+         "description":"Such function, very inherit. Wow.\n",
+         "context":{
+            "type":"function",
+            "name":"test-function-file-inherit",
+            "code":"",
+            "line":{
+               "start":11,
+               "end":11
+            }
+         },
+         "access":"private",
+         "group":[
+            "foo"
+         ],
+         "author":[
+            "Jules Verne"
+         ],
+         "since":[
+            {
+               "version":"v1.5.0"
+            }
+         ],
+         "file":{
+            "path":"input.scss",
+            "name":"input"
+         }
       }
-    },
-    "test-function-file-inherit": {
-      "description": "Such function, very inherit. Wow.\n",
-      "context": {
-        "type": "function",
-        "name": "test-function-file-inherit",
-        "code": "",
-        "line": {
-          "start": 11,
-          "end": 11
-        }
-      },
-      "access": [
-        "private"
-      ],
-      "group": [
-        [
-          "foo"
-        ]
-      ],
-      "author": [
-        "Jules Verne"
-      ],
-      "since": [
-        {
-          "version": "v1.5.0"
-        }
-      ],
-      "file": {
-        "path": "input.scss",
-        "name": "input"
-      }
-    }
-  }
+   }
 }

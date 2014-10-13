@@ -11,16 +11,10 @@
           "end": 5
         }
       },
-      "output": [
-        "A description of output"
-      ],
-      "access": [
-        "public"
-      ],
+      "output": "A description of output",
+      "access": "public",
       "group": [
-        [
-          "undefined"
-        ]
+        "undefined"
       ],
       "file": {
         "path": "input.scss",

@@ -11,19 +11,13 @@
           "end": 5
         }
       },
-      "return": [
-        {
-          "type": "String",
-          "description": "A description fo returns"
-        }
-      ],
-      "access": [
-        "public"
-      ],
+      "return": {
+        "type": "String",
+        "description": "A description fo returns"
+      },
+      "access": "public",
       "group": [
-        [
-          "undefined"
-        ]
+        "undefined"
       ],
       "file": {
         "path": "input.scss",

@@ -14,13 +14,9 @@
       "author": [
         "Hugo Giraudel"
       ],
-      "access": [
-        "public"
-      ],
+      "access": "public",
       "group": [
-        [
           "undefined"
-        ]
       ],
       "file": {
         "path": "input.scss",

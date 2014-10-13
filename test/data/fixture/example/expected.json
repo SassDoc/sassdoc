@@ -18,13 +18,9 @@
           "description": "How to use this function"
         }
       ],
-      "access": [
-        "public"
-      ],
+      "access": "public",
       "group": [
-        [
           "undefined"
-        ]
       ],
       "file": {
         "path": "input.scss",

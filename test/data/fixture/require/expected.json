@@ -18,13 +18,9 @@
           "external": false
         }
       ],
-      "access": [
-        "public"
-      ],
+      "access": "public",
       "group": [
-        [
-          "undefined"
-        ]
+        "undefined"
       ],
       "file": {
         "path": "input.scss",
@@ -42,13 +38,9 @@
           "end": 10
         }
       },
-      "access": [
-        "public"
-      ],
+      "access": "public",
       "group": [
-        [
-          "undefined"
-        ]
+        "undefined"
       ],
       "file": {
         "path": "input.scss",

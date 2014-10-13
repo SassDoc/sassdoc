@@ -12,9 +12,7 @@
           "end": 13
         }
       },
-      "type": [
-        "Map"
-      ],
+      "type": "Map",
       "property": [
         {
           "type": "String",
@@ -29,13 +27,9 @@
           "description": "description"
         }
       ],
-      "access": [
-        "public"
-      ],
+      "access": "public",
       "group": [
-        [
-          "undefined"
-        ]
+        "undefined"
       ],
       "file": {
         "path": "input.scss",

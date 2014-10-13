@@ -14,13 +14,9 @@
       "todo": [
         "Improve that function"
       ],
-      "access": [
-        "public"
-      ],
+      "access": "public",
       "group": [
-        [
-          "undefined"
-        ]
+        "undefined"
       ],
       "file": {
         "path": "input.scss",
