@@ -3,8 +3,8 @@
 
 var assert = require('assert');
 
-describe('#prop', function () {
-  var prop = (new (require('../../src/annotation'))()).list.prop;
+describe('#property', function () {
+  var prop = (new (require('../../src/annotation'))()).list.property;
 
   it('should parse the prop annotation', function () {
     assert.deepEqual(prop.parse('base'), {

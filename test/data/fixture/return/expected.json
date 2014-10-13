@@ -11,7 +11,7 @@
           "end": 5
         }
       },
-      "returns": [
+      "return": [
         {
           "type": "String",
           "description": "A description fo returns"

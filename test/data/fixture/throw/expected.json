@@ -11,7 +11,7 @@
           "end": 5
         }
       },
-      "throws": [
+      "throw": [
         "Error warn you on wrong argument type"
       ],
       "access": [

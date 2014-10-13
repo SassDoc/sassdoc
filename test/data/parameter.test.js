@@ -3,15 +3,15 @@
 
 var assert = require('assert');
 
-describe('#prop', function () {
+describe('#parameter', function () {
   var getData = require('../../src/file').getData;
 
-  var expected = require('./fixture/prop/expected');
-  var input = 'test/data/fixture/prop';
+  var expected = require('./fixture/parameter/expected');
+  var input = 'test/data/fixture/parameter';
   var data;
 
   before(function (done) {
-    getData(input).then(function (res) {
+    return getData(input).then(function (res) {
       data = res;
       done();
     });
