@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.3
+
+* Prevent `@requires` to autofill dependency twice. 
+
 ## 1.10.2
 
 * Fixed an issue with the folder wiping safeguard always aborting if folder is not empty without even prompting
