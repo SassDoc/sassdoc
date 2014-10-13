@@ -84,7 +84,7 @@ module.exports = {
   autofill: function(item){
     var type = item.context.type;
     if (type === 'mixin' || type === 'placeholder' || type === 'function') {
-      var handWritten = undefined;
+      var handWritten;
 
       if (item.require){
         handWritten = {};
