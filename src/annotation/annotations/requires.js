@@ -106,8 +106,8 @@ module.exports = {
           all = all.concat(variables);
 
       // Merge in user supplyed requires if there are any
-      if (item.require && item.require.length > 0){
-        all = all.concat(item.require);
+      if (item.requires && item.requires.length > 0){
+        all = all.concat(item.requires);
       }
 
       if (all.length > 0){
@@ -118,8 +118,8 @@ module.exports = {
 
   resolve: function (byTypeAndName) {
     utils.eachItem(byTypeAndName, function (item) {
-      if (utils.isset(item.require)) {
-        item.require = item.require.map(function (req) {
+      if (utils.isset(item.requires)) {
+        item.requires = item.requires.map(function (req) {
           if (req.external === true) {
             return req;
           }
@@ -153,7 +153,7 @@ module.exports = {
           return req;
         });
 
-        item.require.toJSON = utils.mapArray.bind(null, item.require,
+        item.requires.toJSON = utils.mapArray.bind(null, item.requires,
           function (item) {
             var obj = {
               type: item.type,
@@ -175,5 +175,5 @@ module.exports = {
 
   },
 
-  alias: ['requires']
+  alias: ['require']
 };

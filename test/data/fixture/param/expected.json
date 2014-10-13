@@ -11,7 +11,7 @@
           "end": 6
         }
       },
-      "parameter": [
+      "parameters": [
         {
           "type": "String",
           "name": "foo",

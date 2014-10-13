@@ -26,7 +26,7 @@ module.exports = {
     return obj;
   },
 
-  alias: ['prop'],
+  alias: ['property'],
 
   allowedOn: ['variable']
 };
