@@ -34,9 +34,7 @@
           "end": 10
         }
       },
-      "alias": [
-        "test-function-aliased"
-      ],
+      "alias": "test-function-aliased",
       "access": "public",
       "group": [
           "undefined"
