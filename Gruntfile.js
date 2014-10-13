@@ -158,21 +158,6 @@ var config = {
       src: '<%= dirs.develop %>/empty',
       dest: '<%= dirs.develop %>/docs-empty',
     }
-  },
-
-  'gh-pages': {
-    options: {
-      branch: 'master',
-      repo: 'git@github.com:SassDoc/sassdoc.github.io.git',
-      base: '.grunt'
-    },
-    screenshot: {
-      options: {
-        message: 'Update preview image',
-        add: true
-      },
-      src: '*.png'
-    }
   }
 
 };
@@ -289,32 +274,11 @@ module.exports = function (grunt) {
   });
 
 
-  // Take a screenshot of the latest compile.
-  grunt.registerTask('take-screenshot', 'Take a screenshot of the latest compile', function () {
-    var done = this.async();
-
-    var options = {
-      url: 'http://localhost:3001',
-      width: 1024,
-      height: 768
-    };
-
-    require('atom-screenshot')(options)
-      .then(function (buffer) {
-        mkdirp.sync(path.join(__dirname, '.grunt'));
-        fs.writeFileSync(path.join(__dirname, '.grunt/preview-image.png'), buffer);
-        done();
-      });
-  });
-
-
   // Update screenshot in Readme.
   grunt.registerTask('update-image', [
     'install-screenshot',
     'browserSync:screenshot',
-    'compile:develop',
-    'take-screenshot',
-    'gh-pages:screenshot'
+    'compile:develop'
   ]);
 
 
