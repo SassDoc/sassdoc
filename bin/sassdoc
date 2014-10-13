@@ -12,17 +12,14 @@ Arguments:
 Options:
   -h, --help            Bring help.
   --version             Show version.
-  -v, --verbose         Run in verbose mode.
+  -v, --verbose         Enable verbose mode.
   -i, --interactive     Prompt to remove an existing destination directory.
   -f, --force           Always remove an existing destination directory
                         without asking.
-  -c, --config=<path>   Path to JSON file containing variable to be passed
-                        to the view.
-  -t, --theme=<name>    Theme to be required. It will override the
-                        configuration value.
-  --sass-convert        Perform a Sass to SCSS syntax conversion prior to
-                        run SassDoc.
-  --no-update-notifier  Do not run the update notifier check.
+  -c, --config=<path>   Path to JSON/YAML configuration file.
+  -t, --theme=<name>    Theme to use.
+  --sass-convert        Use if syntax is `.sass`.
+  --no-update-notifier  Disable update notifier check.
 */
 
 var fs = require('fs');
