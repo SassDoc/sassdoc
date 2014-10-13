@@ -12,6 +12,7 @@ module.exports = {
   resolve: function (byTypeAndName) {
     utils.eachItem(byTypeAndName, function (item) {
       if (utils.isset(item.alias)) {
+        var alias = item.alias;
         var type = item.context.type;
         var name = item.context.name;
 
@@ -31,6 +32,8 @@ module.exports = {
       }
     });
   },
+
+  allowedOn : ['function', 'mixin', 'variable'],
 
   multiple : false
 };
