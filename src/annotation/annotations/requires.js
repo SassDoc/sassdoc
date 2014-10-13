@@ -7,11 +7,20 @@ var logger = require('../../log');
 var uniq = require('lodash').uniq;
 
 
-var searchForMatches = function(code, regex, index){
+var isAnnotatedByHand = function(handWritten, type, name){
+  if (type && name && handWritten){
+    return handWritten[type + '-' + name];
+  }
+  return false;
+};
+
+var searchForMatches = function(code, regex, isAnnotatedByHand){
   var match;
   var matches = [];
   while ( (match = regex.exec(code)) ) {
-    matches.push(match[index || 1]);
+    if (!isAnnotatedByHand(match[1])){
+      matches.push(match[1]);
+    }
   }
   return uniq(matches);
 };
@@ -19,11 +28,13 @@ var searchForMatches = function(code, regex, index){
 
 var typeNameObject = function(type){
   return function(name){
-    return {
-      type : type,
-      name : name,
-      autofill : true
-    };
+    if (name.length > 0) {
+      return {
+        type : type,
+        name : name,
+        autofill : true
+      };
+    }
   };
 };
 
@@ -73,6 +84,14 @@ module.exports = {
   autofill: function(item){
     var type = item.context.type;
     if (type === 'mixin' || type === 'placeholder' || type === 'function') {
+      var handWritten;
+
+      if (item.requires){
+        handWritten = {};
+        item.requires.forEach(function(reqObj){
+          handWritten[reqObj.type+'-'+reqObj.name] = true;
+        });
+      }
 
       // Searching for mixins and functions
       var mixins = [];
@@ -82,14 +101,18 @@ module.exports = {
       while ( (match = mixinFunctionRegex.exec(item.context.code)) ){
         // Try if this is a mixin or function
         if (compareBefore(item.context.code, '@include', match.index)){
-          mixins.push(match[1]);
+          if (!isAnnotatedByHand(handWritten, 'mixin', match[1])) {
+            mixins.push(match[1]);
+          }
         } else {
-          functions.push(match[1]);
+          if (!isAnnotatedByHand(handWritten, 'function', match[1])) {
+            functions.push(match[1]);
+          }
         }
       }
 
-      var placeholders = searchForMatches(item.context.code, /@extend\s+%([^;\s]+)/ig);
-      var variables    = searchForMatches(item.context.code, /\$([a-z0-9_-]+)/ig);
+      var placeholders = searchForMatches(item.context.code, /@extend\s+%([^;\s]+)/ig, isAnnotatedByHand.bind(null, handWritten, 'mixin'));
+      var variables    = searchForMatches(item.context.code, /\$([a-z0-9_-]+)/ig, isAnnotatedByHand.bind(null, handWritten, 'variable'));
 
       // Create object for each required item.
       mixins       = mixins.map(typeNameObject('mixin'));
@@ -104,6 +127,11 @@ module.exports = {
           all = all.concat(functions);
           all = all.concat(placeholders);
           all = all.concat(variables);
+
+      // Filter empty values.
+      all = all.filter(function(item){
+        return item !== undefined;
+      });
 
       // Merge in user supplyed requires if there are any
       if (item.requires && item.requires.length > 0){
@@ -143,33 +171,38 @@ module.exports = {
             reqItem.usedBy.push(item);
             req.item = reqItem;
 
-          }
-          else if (req.autofill !== true) {
+          } else if (req.autofill !== true) {
             logger.log('Item `' + item.context.name +
               '` requires `' + req.name + '` from type `' + req.type +
               '` but this item doesn\'t exist.');
+          } else {
+            return undefined;
           }
 
           return req;
+        }).filter(function(item){
+          return item !== undefined;
         });
 
-        item.requires.toJSON = utils.mapArray.bind(null, item.requires,
-          function (item) {
-            var obj = {
-              type: item.type,
-              name: item.name,
-              external : item.external,
-            };
-            if (item.external) {
-              obj.url = item.url;
+        if (item.requires.length > 0) {
+          item.requires.toJSON = utils.mapArray.bind(null, item.requires,
+            function (item) {
+              var obj = {
+                type: item.type,
+                name: item.name,
+                external : item.external,
+              };
+              if (item.external) {
+                obj.url = item.url;
+              }
+              else {
+                obj.description = item.description;
+                obj.context = item.context;
+              }
+              return obj;
             }
-            else {
-              obj.description = item.description;
-              obj.context = item.context;
-            }
-            return obj;
-          }
-        );
+          );
+        }
       }
     });
 
