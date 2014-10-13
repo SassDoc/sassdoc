@@ -16,6 +16,5 @@ module.exports = {
     }
 
     return obj;
-  },
-  multiple : false
+  }
 };
