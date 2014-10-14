@@ -286,7 +286,7 @@ module.exports = function (view, override) {
     config.theme = view.theme;
   } else {
     config.theme = requireTheme(dir, view.theme);
-    config.themeName = view.theme;
+    config.themeName = view.theme || 'default';
   }
 
   // Expose the relative path base
