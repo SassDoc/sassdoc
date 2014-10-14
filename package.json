@@ -1,7 +1,11 @@
 {
   "name": "sassdoc",
-  "description": "Like JSDoc for your Sass files.",
-  "author": "Hugo Giraudel <hugo.giraudel@gmail.com> (http://hugogiraudel.com)",
+  "description": "Release the docs!",
+  "author": {
+    "name": "Hugo Giraudel",
+    "url": "http://hugogiraudel.com",
+    "email": "hugo.giraudel@gmail.com"
+  },
   "contributors": [
     {
       "name": "Fabrice Weinberg",
@@ -26,12 +30,14 @@
     "type": "git",
     "url": "https://github.com/SassDoc/sassdoc"
   },
-  "homepage": "https://github.com/SassDoc/sassdoc",
+  "homepage": "http://sassdoc.com",
   "keywords": [
     "sass",
     "scss",
     "doc",
-    "jsdoc"
+    "documentation",
+    "comments",
+    "theme"
   ],
   "bugs": {
     "url": "https://github.com/SassDoc/sassdoc/issues"
