@@ -2,6 +2,10 @@
   "variable": {
     "test-variable-type": {
       "description": "",
+      "commentRange": {
+        "start":2,
+        "end":4
+      },
       "context": {
         "type": "variable",
         "name": "test-variable-type",

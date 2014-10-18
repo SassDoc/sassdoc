@@ -2,6 +2,10 @@
   "mixin": {
     "test-mixin-output": {
       "description": "",
+      "commentRange": {
+        "start":2,
+        "end":4
+      },
       "context": {
         "type": "mixin",
         "name": "test-mixin-output",

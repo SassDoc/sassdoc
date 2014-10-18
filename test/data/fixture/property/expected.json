@@ -2,6 +2,10 @@
   "variable": {
     "test-variable-prop": {
       "description": "Test: variable prop\n\n",
+      "commentRange": {
+        "start":2,
+        "end":9
+      },
       "context": {
         "type": "variable",
         "name": "test-variable-prop",
