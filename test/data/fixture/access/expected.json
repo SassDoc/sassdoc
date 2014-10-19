@@ -2,6 +2,10 @@
   "function": {
     "test-function-access": {
       "description": "",
+      "commentRange": {
+        "start":2,
+        "end":4
+      },
       "context": {
         "type": "function",
         "name": "test-function-access",

@@ -2,6 +2,10 @@
   "function": {
     "test-function-example": {
       "description": "",
+      "commentRange": {
+        "start":2,
+        "end":5
+      },
       "context": {
         "type": "function",
         "name": "test-function-example",

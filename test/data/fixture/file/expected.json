@@ -2,6 +2,10 @@
    "function":{
       "test-function-file-override-all":{
          "description":"Such function, very override all. Wow.\n",
+          "commentRange": {
+            "start":13,
+            "end":19
+          },
          "context":{
             "type":"function",
             "name":"test-function-file-override-all",
@@ -30,6 +34,10 @@
       },
       "test-function-file-override-some":{
          "description":"Such function, very override some. Wow.\n",
+          "commentRange": {
+            "start":22,
+            "end":26
+          },
          "context":{
             "type":"function",
             "name":"test-function-file-override-some",
@@ -58,6 +66,10 @@
       },
       "test-function-file-inherit":{
          "description":"Such function, very inherit. Wow.\n",
+          "commentRange": {
+            "start":8,
+            "end":10
+          },
          "context":{
             "type":"function",
             "name":"test-function-file-inherit",
