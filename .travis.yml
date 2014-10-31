@@ -7,6 +7,7 @@ env:
   - SASS_VERSION=3.4.5
 
 before_install:
+- npm install -g npm
 - gem update --system
 - gem install sass -v $SASS_VERSION
 
