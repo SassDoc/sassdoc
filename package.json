@@ -59,8 +59,10 @@
     "scss-comment-parser": "0.5.1-rc.2",
     "semver": "^3.0.1",
     "semver-regex": "^1.0.0",
+    "through2": "^0.6.3",
     "traceur": "0.0.74",
     "update-notifier": "^0.2.0",
+    "vinyl-fs": "^0.3.11",
     "which": "^1.0.5"
   },
   "devDependencies": {
