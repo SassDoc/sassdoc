@@ -1,6 +1,8 @@
-export function resolveConfig(path=null) {
+import cli from './cli';
+export { cli };
 
-}
+import cfg from './cfg';
+export { cfg };
 
 export function refresh(dest) {
 
