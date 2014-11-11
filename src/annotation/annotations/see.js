@@ -32,12 +32,14 @@ module.exports = {
           return utils.isset(item);
         });
 
-        item.see.toJSON = utils.mapArray.bind(null, item.see, function (item) {
-          return {
-            description: item.description,
-            context: item.context
-          };
-        });
+        item.see.toJSON = function () {
+          return item.see.map(function (item) {
+            return {
+              description: item.description,
+              context: item.context
+            };
+          });
+        };
       }
     });
   }

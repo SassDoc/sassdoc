@@ -159,14 +159,14 @@ module.exports = {
 
             if (!Array.isArray(reqItem.usedBy)) {
               reqItem.usedBy = [];
-              reqItem.usedBy.toJSON = utils.mapArray.bind(null, reqItem.usedBy,
-                function (item) {
+              reqItem.usedBy.toJSON = function () {
+                return reqItem.usedBy.map(function (item) {
                   return {
                     description: item.description,
                     context: item.context
                   };
-                }
-              );
+                });
+              };
             }
             reqItem.usedBy.push(item);
             req.item = reqItem;
@@ -185,8 +185,8 @@ module.exports = {
         });
 
         if (item.require.length > 0) {
-          item.require.toJSON = utils.mapArray.bind(null, item.require,
-            function (item) {
+          item.require.toJSON = function () {
+            return item.require.map(function (item) {
               var obj = {
                 type: item.type,
                 name: item.name,
@@ -200,8 +200,8 @@ module.exports = {
                 obj.context = item.context;
               }
               return obj;
-            }
-          );
+            });
+          };
         }
       }
     });
