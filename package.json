@@ -42,7 +42,6 @@
   "bugs": {
     "url": "https://github.com/SassDoc/sassdoc/issues"
   },
-  "main": "src/api.js",
   "bin": {
     "sassdoc": "bin/sassdoc"
   },
