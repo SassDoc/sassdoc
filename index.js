@@ -14,5 +14,4 @@ require('traceur').require.makeDefault(function (filename) {
   return filename.indexOf('node_modules') === -1;
 });
 
-//module.exports = require('./bundle');
 module.exports = require('./src/sassdoc');
