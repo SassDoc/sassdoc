@@ -2,6 +2,7 @@ let fs = require('fs');
 let path = require('path');
 let yaml = require('js-yaml');
 import * as log from './log';
+import theme from './theme';
 
 /**
  * See both `pre` and `post`.
@@ -56,9 +57,8 @@ export function pre(file, logger=log.empty) {
  * The `package` key is ensured to be an object. If it's a string, it's
  * required as JSON, relative to the configuration file directory.
  *
- * The `theme` key, si present, and is a file (understand, containing at
- * least one `/`, will be resolved as an absolute path, relative to the
- * configuration file directory).
+ * The `theme` key, if present and not already a function, will be resolved to
+ * the actual theme function.
  *
  * @param {Object} config
  * @param {Logger} logger
@@ -82,9 +82,8 @@ export function post(config, logger=log.empty) {
     });
   }
 
-  // Theme is a path
-  if (typeof config.theme === 'string' && config.theme.indexOf('/') !== -1) {
-    config.theme = path.resolve(config.dir, config.theme);
+  if (typeof config.theme !== 'function') {
+    config.theme = theme(config.theme, config.dir, logger);
   }
 }
 
