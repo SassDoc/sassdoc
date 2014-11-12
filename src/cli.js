@@ -28,6 +28,7 @@ import * as cfg from './cfg';
 import log from './log';
 import notifier from './notifier';
 //import convert from './convert';
+import sassdoc from './sassdoc';
 
 export default (argv=process.argv) => {
   let options = docopt(__filename, {version: pkg.version, argv: argv});
@@ -58,10 +59,10 @@ export default (argv=process.argv) => {
     //sassdoc = convert(sassdoc);
   }
 
-  console.log(config);
-  return;
+  // Pass the logger
+  config.logger = logger;
 
-  sassdoc.documentize(options['<src>'], options['<dest>'], config);
+  sassdoc(options['<src>'], options['<dest>'], config);
 };
 
 /**
