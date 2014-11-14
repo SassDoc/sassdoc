@@ -25,7 +25,7 @@ let pkg = require('../package.json');
 let chalk = require('chalk');
 let _ = require('lodash');
 import * as cfg from './cfg';
-import Logger from './log';
+import Logger from './logger';
 import notifier from './notifier';
 //import convert from './convert';
 import sassdoc from './sassdoc';

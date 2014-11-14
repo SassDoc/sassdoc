@@ -9,7 +9,7 @@ let flag = (name, arr) => prepend(br(name), arr);        // Prepend flag
 let log = arr => date(arr).join(' ');                    // Log
 let flog = (name, arr) => log(flag(name, arr));          // Log with flag
 
-export default class {
+export default class Logger {
   constructor(verbose = false) {
     this.verbose = verbose;
   }

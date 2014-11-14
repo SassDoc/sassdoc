@@ -1,4 +1,4 @@
-import * as log from './log';
+import * as log from './logger';
 
 // Forced to hook in `$traceurRuntine` to get original `resolve`
 let resolve = $traceurRuntime.require.resolve;
@@ -12,7 +12,7 @@ let resolve = $traceurRuntime.require.resolve;
  * Otherwise, it's required as a `sassdoc-theme-*` module, and in all
  * cases, if not found, the default theme is returned.
  */
-export default (theme, dir, logger=log.empty) => {
+export default (theme, dir, logger = log.empty) => {
   if (theme == undefined) {
     return def();
   }

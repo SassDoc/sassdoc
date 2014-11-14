@@ -1,7 +1,7 @@
 let fs = require('fs');
 let path = require('path');
 let yaml = require('js-yaml');
-import * as log from './log';
+import * as log from './logger';
 import theme from './theme';
 
 /**
@@ -11,7 +11,7 @@ import theme from './theme';
  * @param {Logger} logger
  * @return {Object}
  */
-export default (file, logger=log.empty) => {
+export default (file, logger = log.empty) => {
   return post(pre(file, logger), logger);
 };
 
@@ -27,7 +27,7 @@ export default (file, logger=log.empty) => {
  * @param {Logger} logger
  * @return {Object}
  */
-export function pre(file, logger=log.empty) {
+export function pre(file, logger = log.empty) {
   file = resolve(process.cwd(), file);
 
   let config = maybe(file, () => {
@@ -64,7 +64,7 @@ export function pre(file, logger=log.empty) {
  * @param {Logger} logger
  * @return {Object}
  */
-export function post(config, logger=log.empty) {
+export function post(config, logger = log.empty) {
   if (typeof config.package !== 'object') {
     let file = resolve(config.dir, config.package);
 

@@ -3,10 +3,10 @@ let mkdir = Q.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let through = require('through2');
 let vinyl = require('vinyl-fs');
-import log from './log';
+import Logger from './logger';
 
 export default function (src, dest, config) {
-  let logger = config.logger || log();
+  let logger = config.logger || new Logger();
 
   return refresh(dest, {
     interactive: config.interactive || false,
