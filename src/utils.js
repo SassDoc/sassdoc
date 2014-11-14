@@ -19,7 +19,7 @@ export var getExtension = ext; // BC
  * @param {Date} date
  * @return {String} Stringified date time.
  */
-export function getDateTime(date=new Date()) {
+export function getDateTime(date = new Date()) {
   let y, m, d, h, i, s;
 
   y = date.getFullYear();

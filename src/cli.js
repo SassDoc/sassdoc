@@ -25,14 +25,14 @@ let pkg = require('../package.json');
 let chalk = require('chalk');
 let _ = require('lodash');
 import * as cfg from './cfg';
-import log from './log';
+import Logger from './log';
 import notifier from './notifier';
 //import convert from './convert';
 import sassdoc from './sassdoc';
 
-export default (argv=process.argv) => {
-  let options = docopt(__filename, {version: pkg.version, argv: argv});
-  let logger = log(options['--verbose']);
+export default function (argv = process.argv) {
+  let options = docopt(__filename, { version: pkg.version, argv: argv });
+  let logger = new Logger(options['--verbose']);
 
   // Load raw configuration
   let config = cfg.pre(options['--config'] || undefined, logger);
