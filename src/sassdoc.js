@@ -95,8 +95,6 @@ export function parse(parser) {
   return [deferred, through.obj(transform, flush)];
 }
 
-import cli from './cli';
-export { cli };
-
-import cfg from './cfg';
-export { cfg };
+// Re-export
+export { default as cli } from './cli';
+export { default as cfg } from './cfg';
