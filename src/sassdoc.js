@@ -4,6 +4,8 @@ let safeWipe = require('safe-wipe');
 let through = require('through2');
 let vinyl = require('vinyl-fs');
 import Logger from './logger';
+import Parser from './parser';
+
 
 export default function (src, dest, config) {
   let logger = config.logger || new Logger();
