@@ -1,5 +1,6 @@
-'use strict';
 
-module.exports = {
-  parse: function () {}
+export default {
+
+  parse() {}
+
 };

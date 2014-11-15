@@ -1,11 +1,14 @@
-'use strict';
 
-module.exports = {
-  parse: function (text) {
+export default {
+
+  parse(text) {
     return [text.trim().toLowerCase()];
   },
-  default: function () {
+
+  default() {
     return ['undefined'];
   },
-  multiple : false
+
+  multiple: false
+
 };

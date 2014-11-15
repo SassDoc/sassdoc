@@ -1,11 +1,10 @@
-'use strict';
+let sinceRegEx = /\s*([^\s]*)\s*(?:-?\s*([\s\S]*))?\s*$/;
 
-var sinceRegEx = /\s*([^\s]*)\s*(?:-?\s*([\s\S]*))?\s*$/;
+export default {
 
-module.exports = {
-  parse: function (text) {
-    var parsed = sinceRegEx.exec(text);
-    var obj = {};
+  parse(text) {
+    let parsed = sinceRegEx.exec(text);
+    let obj = {};
 
     if (parsed[1]) {
       obj.version = parsed[1];
@@ -17,4 +16,5 @@ module.exports = {
 
     return obj;
   }
+
 };

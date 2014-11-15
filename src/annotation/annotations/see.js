@@ -1,13 +1,13 @@
-'use strict';
+import * as utils from '../../utils';
+import Logger from '../../logger';
+let logger = new Logger();
 
-var utils = require('../../utils');
-var logger = require('../../log');
+let seeRegEx = /\s*(?:\{([\w-_]+)\}\s*)?(.*)/;
 
-var seeRegEx = /\s*(?:\{([\w-_]+)\}\s*)?(.*)/;
+export default {
 
-module.exports = {
-  parse: function (text) {
-    var match = seeRegEx.exec(text);
+  parse(text) {
+    let match = seeRegEx.exec(text);
 
     return {
       type: match[1] || 'function',
@@ -15,25 +15,24 @@ module.exports = {
     };
   },
 
-  resolve: function (byTypeAndName) {
-    utils.eachItem(byTypeAndName, function (item) {
+  resolve(byTypeAndName) {
+    utils.eachItem(byTypeAndName, item => {
       if (utils.isset(item.see)) {
-        item.see = item.see.map(function (see) {
+        item.see = item.see.map(see => {
           if (utils.isset(byTypeAndName[see.type]) &&
               utils.isset(byTypeAndName[see.type][see.name])) {
             return byTypeAndName[see.type][see.name];
           }
           else {
-            logger.log('Item `' + item.context.name +
-              '` refers to `' + see.name + '` from type `' + see.type +
-              '` but this item doesn\'t exist.');
+            logger.log(
+              `Item \`${item.context.name}\` refers to \`${see.name}\` from type \`${see.type}\` but this item doesn't exist.`
+            );
           }
-        }).filter(function (item) {
-          return utils.isset(item);
-        });
+        })
+        .filter(utils.isset);
 
         item.see.toJSON = function () {
-          return item.see.map(function (item) {
+          return item.see.map(item => {
             return {
               description: item.description,
               context: item.context

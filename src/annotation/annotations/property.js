@@ -1,13 +1,11 @@
-'use strict';
+let reqRegEx = /\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\(([^\)]*)\))?\s*(?:-?\s*([\s\S]*))\s*$/;
 
-var reqRegEx = /\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\(([^\)]*)\))?\s*(?:-?\s*([\s\S]*))\s*$/;
+export default {
 
-module.exports = {
+  parse(text) {
+    let match = reqRegEx.exec(text.trim());
 
-  parse: function (text) {
-    var match = reqRegEx.exec(text.trim());
-
-    var obj = {
+    let obj = {
       type: match[1] || 'Map'
     };
 
@@ -29,4 +27,5 @@ module.exports = {
   alias: ['prop'],
 
   allowedOn: ['variable']
+  
 };

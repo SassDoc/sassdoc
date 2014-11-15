@@ -1,4 +1,3 @@
-'use strict';
 
 /**
  * `@example` is a multiline annotation.
@@ -8,20 +7,21 @@
  * <div></div>
  */
 
-var descRegEx = /(\w+)\s*(?:-?\s*(.*))/;
+let descRegEx = /(\w+)\s*(?:-?\s*(.*))/;
 
-module.exports = {
-  parse: function (text) {
-    var example = {
+export default {
+
+  parse(text) {
+    let example = {
       type: 'scss', // Default to scss
       code: text
     };
 
     // Get the optional type info.
-    var optionalType = text.substr(0, text.indexOf('\n'));
+    let optionalType = text.substr(0, text.indexOf('\n'));
 
     if (optionalType.trim().length !== 0) {
-      var typeDesc = descRegEx.exec(optionalType);
+      let typeDesc = descRegEx.exec(optionalType);
       example.type = typeDesc[1];
       if (typeDesc[2].length !== 0) {
         example.description = typeDesc[2];
@@ -31,6 +31,8 @@ module.exports = {
 
     // Remove all leading/trailing line breaks.
     example.code = example.code.replace(/^\n|\n$/g, '');
+    
     return example;
   }
+
 };

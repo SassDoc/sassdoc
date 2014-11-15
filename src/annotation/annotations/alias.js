@@ -1,20 +1,19 @@
-'use strict';
+import * as utils from '../../utils';
+import Logger from '../../logger';
+let logger = new Logger();
 
-var utils = require('../../utils');
-var logger = require('../../log');
+export default {
 
-module.exports = {
-
-  parse: function (text) {
+  parse(text) {
     return text.trim();
   },
 
-  resolve: function (byTypeAndName) {
-    utils.eachItem(byTypeAndName, function (item) {
+  resolve(byTypeAndName) {
+    utils.eachItem(byTypeAndName, item => {
       if (utils.isset(item.alias)) {
-        var alias = item.alias;
-        var type = item.context.type;
-        var name = item.context.name;
+        let alias = item.alias;
+        let type = item.context.type;
+        let name = item.context.name;
 
         if (utils.isset(byTypeAndName[type]) &&
             utils.isset(byTypeAndName[type][alias])) {
@@ -27,13 +26,14 @@ module.exports = {
 
         }
         else {
-          logger.log('Item `' + name + '` is an alias of `' + alias + '` but this item doesn\'t exist.');
+          logger.log(`Item \`${name}\` is an alias of \`${alias}\` but this item doesn't exist.`);
         }
       }
     });
   },
 
-  allowedOn : ['function', 'mixin', 'variable'],
+  allowedOn: ['function', 'mixin', 'variable'],
 
-  multiple : false
+  multiple: false
+
 };

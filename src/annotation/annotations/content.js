@@ -1,18 +1,18 @@
-'use strict';
 
-module.exports = {
+export default {
 
-  parse: function (text) {
+  parse(text) {
     return text.trim();
   },
 
-  autofill: function(item){
-    if (item.context.code.indexOf('@content') > -1){
-     return '';
+  autofill(item) {
+    if (item.context.code.indexOf('@content') > -1) {
+      return '';
     }
   },
 
-  allowedOn : ['mixin'],
+  allowedOn: ['mixin'],
 
-  multiple : false
+  multiple: false
+
 };

@@ -1,11 +1,14 @@
-'use strict';
 
-module.exports = {
-  parse: function (text) {
+export default {
+
+  parse(text) {
     return text.trim();
   },
-  default: function () {
+
+  default() {
     return 'public';
   },
-  multiple : false
+
+  multiple: false
+
 };

@@ -1,13 +1,14 @@
-'use strict';
 
-module.exports = {
-  parse: function (text) {
+export default {
+
+  parse(text) {
     return text.trim();
   },
 
   alias: ['outputs'],
 
-  allowedOn : ['mixin'],
+  allowedOn: ['mixin'],
 
-  multiple : false
+  multiple: false
+  
 };

@@ -1,59 +1,63 @@
-'use strict';
+import * as utils from '../../utils';
+import Logger from '../../logger';
+let logger = new Logger();
 
-var reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
+let uniq = require('lodash').uniq;
 
-var utils = require('../../utils');
-var logger = require('../../log');
-var uniq = require('lodash').uniq;
+let reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
 
-
-var isAnnotatedByHand = function(handWritten, type, name){
-  if (type && name && handWritten){
+let isAnnotatedByHand = function (handWritten, type, name) {
+  if (type && name && handWritten) {
     return handWritten[type + '-' + name];
   }
+
   return false;
 };
 
-var searchForMatches = function(code, regex, isAnnotatedByHand){
-  var match;
-  var matches = [];
-  while ( (match = regex.exec(code)) ) {
-    if (!isAnnotatedByHand(match[1])){
+let searchForMatches = function (code, regex, isAnnotatedByHand) {
+  let match;
+  let matches = [];
+
+  while ((match = regex.exec(code))) {
+    if (!isAnnotatedByHand(match[1])) {
       matches.push(match[1]);
     }
   }
+
   return uniq(matches);
 };
 
-
-var typeNameObject = function(type){
-  return function(name){
+let typeNameObject = function (type) {
+  return function (name) {
     if (name.length > 0) {
       return {
-        type : type,
-        name : name,
-        autofill : true
+        type: type,
+        name: name,
+        autofill: true
       };
     }
   };
 };
 
-var compareBefore = function(code, str, index){
-  for (var i=index-str.length,b=0;i<index;i++){
-    if (code[i] !== str[b]){
+let compareBefore = function (code, str, index) {
+  for (let i = index - str.length, b = 0; i < index; i++) {
+    if (code[i] !== str[b]) {
       return false;
     }
+
     b++;
   }
+
   return true;
 };
 
-module.exports = {
 
-  parse: function (text) {
-    var match = reqRegEx.exec(text.trim());
+export default {
 
-    var obj = {
+  parse(text) {
+    let match = reqRegEx.exec(text.trim());
+
+    let obj = {
       type: match[1] || 'function',
       name: match[2]
     };
@@ -81,38 +85,49 @@ module.exports = {
     return obj;
   },
 
-  autofill: function(item){
-    var type = item.context.type;
-    if (type === 'mixin' || type === 'placeholder' || type === 'function') {
-      var handWritten;
+  autofill(item) {
+    let type = item.context.type;
 
-      if (item.require){
+    if (type === 'mixin' || type === 'placeholder' || type === 'function') {
+      let handWritten;
+
+      if (item.require) {
         handWritten = {};
-        item.require.forEach(function(reqObj){
-          handWritten[reqObj.type+'-'+reqObj.name] = true;
+        item.require.forEach(reqObj => {
+          handWritten[reqObj.type + '-' + reqObj.name] = true;
         });
       }
 
       // Searching for mixins and functions
-      var mixins = [];
-      var functions = [];
-      var mixinFunctionRegex = /\s*([\w\d_-]*)\(/g;
-      var match;
-      while ( (match = mixinFunctionRegex.exec(item.context.code)) ){
+      let mixins = [];
+      let functions = [];
+      let mixinFunctionRegex = /\s*([\w\d_-]*)\(/g;
+      let match;
+
+      while ((match = mixinFunctionRegex.exec(item.context.code))) {
         // Try if this is a mixin or function
-        if (compareBefore(item.context.code, '@include', match.index)){
+        if (compareBefore(item.context.code, '@include', match.index)) {
           if (!isAnnotatedByHand(handWritten, 'mixin', match[1])) {
             mixins.push(match[1]);
           }
-        } else {
+        }
+        else {
           if (!isAnnotatedByHand(handWritten, 'function', match[1])) {
             functions.push(match[1]);
           }
         }
       }
 
-      var placeholders = searchForMatches(item.context.code, /@extend\s+%([^;\s]+)/ig, isAnnotatedByHand.bind(null, handWritten, 'mixin'));
-      var variables    = searchForMatches(item.context.code, /\$([a-z0-9_-]+)/ig, isAnnotatedByHand.bind(null, handWritten, 'variable'));
+      let placeholders = searchForMatches(
+        item.context.code,
+        /@extend\s+%([^;\s]+)/ig,
+        isAnnotatedByHand.bind(null, handWritten, 'mixin')
+      );
+      let variables = searchForMatches(
+        item.context.code,
+        /\$([a-z0-9_-]+)/ig,
+        isAnnotatedByHand.bind(null, handWritten, 'variable')
+      );
 
       // Create object for each required item.
       mixins       = mixins.map(typeNameObject('mixin'));
@@ -120,34 +135,31 @@ module.exports = {
       placeholders = placeholders.map(typeNameObject('placeholder'));
       variables    = variables.map(typeNameObject('variable'));
 
-
       // Merge all arrays
-      var all = [];
-          all = all.concat(mixins);
-          all = all.concat(functions);
-          all = all.concat(placeholders);
-          all = all.concat(variables);
+      let all = [];
+      all = all.concat(mixins);
+      all = all.concat(functions);
+      all = all.concat(placeholders);
+      all = all.concat(variables);
 
       // Filter empty values.
-      all = all.filter(function(item){
-        return item !== undefined;
-      });
+      all = all.filter(utils.isset);
 
-      // Merge in user supplyed requires if there are any
-      if (item.require && item.require.length > 0){
+      // Merge in user supplyed requires if there are any.
+      if (item.require && item.require.length > 0) {
         all = all.concat(item.require);
       }
 
-      if (all.length > 0){
+      if (all.length > 0) {
         return all;
       }
     }
   },
 
-  resolve: function (byTypeAndName) {
-    utils.eachItem(byTypeAndName, function (item) {
+  resolve(byTypeAndName) {
+    utils.eachItem(byTypeAndName, item => {
       if (utils.isset(item.require)) {
-        item.require = item.require.map(function (req) {
+        item.require = item.require.map(req => {
           if (req.external === true) {
             return req;
           }
@@ -155,12 +167,12 @@ module.exports = {
           if (utils.isset(byTypeAndName[req.type]) &&
               utils.isset(byTypeAndName[req.type][req.name])) {
 
-            var reqItem = byTypeAndName[req.type][req.name];
+            let reqItem = byTypeAndName[req.type][req.name];
 
             if (!Array.isArray(reqItem.usedBy)) {
               reqItem.usedBy = [];
               reqItem.usedBy.toJSON = function () {
-                return reqItem.usedBy.map(function (item) {
+                return reqItem.usedBy.map(item => {
                   return {
                     description: item.description,
                     context: item.context
@@ -171,27 +183,30 @@ module.exports = {
             reqItem.usedBy.push(item);
             req.item = reqItem;
 
-          } else if (req.autofill !== true) {
-            logger.log('Item `' + item.context.name +
-              '` requires `' + req.name + '` from type `' + req.type +
-              '` but this item doesn\'t exist.');
-          } else {
+          }
+          else if (req.autofill !== true) {
+            logger.log(
+              `Item \`${item.context.name}\` requires \`${req.name }\` from type \`${req.type}\` but this item doesn't exist.`
+            );
+          }
+          else {
             return undefined;
           }
 
           return req;
-        }).filter(function(item){
-          return item !== undefined;
-        });
+
+        })
+        .filter(utils.isset);
 
         if (item.require.length > 0) {
           item.require.toJSON = function () {
-            return item.require.map(function (item) {
-              var obj = {
+            return item.require.map(item => {
+              let obj = {
                 type: item.type,
                 name: item.name,
-                external : item.external,
+                external: item.external,
               };
+
               if (item.external) {
                 obj.url = item.url;
               }
@@ -199,6 +214,7 @@ module.exports = {
                 obj.description = item.description;
                 obj.context = item.context;
               }
+
               return obj;
             });
           };
