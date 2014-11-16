@@ -224,6 +224,6 @@ export default function (config) {
     },
 
     alias: ['requires']
-  }
+  };
 
-};
+}

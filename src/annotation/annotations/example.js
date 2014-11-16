@@ -8,7 +8,7 @@
 
 let descRegEx = /(\w+)\s*(?:-?\s*(.*))/;
 
-export default function (config) {
+export default function () {
 
   return {
     name: 'example',
@@ -36,6 +36,6 @@ export default function (config) {
 
       return example;
     }
-  }
+  };
 
-};
+}

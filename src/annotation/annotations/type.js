@@ -1,5 +1,5 @@
 
-export default function (config) {
+export default function () {
 
   return {
     name: 'type',
@@ -11,6 +11,6 @@ export default function (config) {
     allowedOn: ['variable'],
 
     multiple: false
-  }
+  };
 
-};
+}

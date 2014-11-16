@@ -1,6 +1,6 @@
 let reqRegEx = /\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\(([^\)]*)\))?\s*(?:-?\s*([\s\S]*))\s*$/;
 
-export default function (config) {
+export default function () {
 
   return {
     name: 'property',
@@ -30,6 +30,6 @@ export default function (config) {
     alias: ['prop'],
 
     allowedOn: ['variable']
-  }
+  };
 
-};
+}

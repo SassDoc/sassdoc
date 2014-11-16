@@ -1,5 +1,5 @@
 
-export default function (config) {
+export default function () {
 
   return {
     name: 'author',
@@ -7,6 +7,6 @@ export default function (config) {
     parse(text) {
       return text.trim();
     }
-  }
+  };
 
-};
+}

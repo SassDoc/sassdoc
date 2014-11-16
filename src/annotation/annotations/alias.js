@@ -36,6 +36,6 @@ export default function (config) {
     allowedOn: ['function', 'mixin', 'variable'],
 
     multiple: false
-  }
+  };
 
-};
+}

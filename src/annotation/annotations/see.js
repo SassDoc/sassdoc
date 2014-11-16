@@ -43,6 +43,6 @@ export default function (config) {
         }
       });
     }
-  }
+  };
 
-};
+}

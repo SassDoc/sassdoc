@@ -1,5 +1,5 @@
 
-export default function (config) {
+export default function () {
 
   return {
     name: 'content',
@@ -17,6 +17,6 @@ export default function (config) {
     allowedOn: ['mixin'],
 
     multiple: false
-  }
+  };
 
-};
+}

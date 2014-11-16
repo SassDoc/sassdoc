@@ -1,5 +1,5 @@
 
-export default function (config) {
+export default function () {
 
   return {
     name: 'deprecated',
@@ -9,6 +9,6 @@ export default function (config) {
     },
 
     multiple: false
-  }
+  };
 
-};
+}

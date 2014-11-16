@@ -1,5 +1,5 @@
 
-export default function (config) {
+export default function () {
 
   return {
     name: 'group',
@@ -13,6 +13,6 @@ export default function (config) {
     },
 
     multiple: false
-  }
+  };
 
-};
+}

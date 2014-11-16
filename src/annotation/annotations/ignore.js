@@ -1,10 +1,10 @@
 
-export default function (config) {
+export default function () {
 
   return {
     name: 'ignore',
 
     parse() {}
-  }
+  };
 
-};
+}

@@ -1,6 +1,6 @@
 let autoParserError = /@error\s+(?:'|")([^'"]+)/g;
 
-export default function (config) {
+export default function () {
 
   return {
     name: 'throw',
@@ -24,6 +24,6 @@ export default function (config) {
     alias: ['throws', 'exception'],
 
     allowedOn: ['function', 'mixin', 'placeholder']
-  }
+  };
 
-};
+}
