@@ -4,9 +4,8 @@ let path = require('path');
 let safeWipe = require('safe-wipe');
 let through = require('through2');
 let vinyl = require('vinyl-fs');
-import Logger from './logger';
-import Parser from './parser';
-
+let Logger = require('./logger').default;
+let Parser = require('./parser').default;
 
 export default function (src, dest, config) {
   let logger = config.logger || new Logger();
@@ -73,8 +72,14 @@ export function parse(parser) {
   function transform(file, enc, cb) {
     if (file.isDirectory()) {
       let [promise, stream] = parse(parser);
+
       read(path.resolve(file.path, '**/*.scss')).pipe(stream);
-      promise.then(cb);
+
+      promise.then(data => {
+        console.log(data);
+        cb();
+      });
+
       return;
     }
 
@@ -102,13 +107,3 @@ export function parse(parser) {
 
   return [deferred.promise, through.obj(transform, flush)];
 }
-
-// JSHint currently don't like the following
-//export { default as cli } from './cli';
-//export { default as cfg } from './cfg';
-
-import cli from './cli';
-export { cli };
-
-import cfg from './cfg';
-export { cfg };

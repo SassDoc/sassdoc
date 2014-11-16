@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "chalk": "^0.5.0",
-    "fdocopt": "0.*",
+    "docopt": "^0.4.1",
     "js-yaml": "^3.2.1",
     "lodash": "^2.4.1",
     "mkdirp": "^0.5.0",
@@ -59,13 +59,14 @@
     "semver": "^4.1.0",
     "semver-regex": "^1.0.0",
     "through2": "^0.6.3",
-    "traceur": "0.0.74",
+    "traceur-runtime": "0.0.59",
     "update-notifier": "^0.2.0",
     "vinyl-fs": "^0.3.11",
     "which": "^1.0.5"
   },
   "devDependencies": {
     "assert": "^1.1.1",
+    "traceur": "0.0.74",
     "fs-extra": "^0.12.0",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^1.0.0",

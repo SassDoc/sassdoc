@@ -1,8 +1,5 @@
 let path = require('path');
-import * as log from './logger';
-
-// Forced to hook in `$traceurRuntine` to get original `resolve`
-let resolve = $traceurRuntime.require.resolve;
+let log = require('./logger');
 
 /**
  * Return the actual theme function for given theme.
@@ -33,7 +30,7 @@ export default function (theme, dir, logger = log.empty) {
  */
 function maybe(module, name, logger) {
   try {
-    module = resolve(module);
+    module = require.resolve(module);
   } catch (e) {
     logger.error(`Theme "${name}" not found.`);
     logger.warn('Falling back to default theme.');
@@ -60,7 +57,7 @@ function maybe(module, name, logger) {
  */
 function def() {
   try {
-    resolve('sassdoc-theme-default');
+    require.resolve('sassdoc-theme-default');
   } catch (e) {
     throw new Error('Holy shit, the default theme was not found!');
   }

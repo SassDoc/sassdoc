@@ -1,8 +1,8 @@
 let fs = require('fs');
 let path = require('path');
 let yaml = require('js-yaml');
-import * as log from './logger';
-import theme from './theme';
+let log = require('./logger');
+let theme = require('./theme').default;
 
 /**
  * See both `pre` and `post`.

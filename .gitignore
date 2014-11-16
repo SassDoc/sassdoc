@@ -1,6 +1,7 @@
-node_modules
+/node_modules
+/develop
+/dist
 .DS_Store
 .sass-cache
 .grunt
 npm-debug.log
-develop

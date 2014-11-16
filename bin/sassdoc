@@ -2,4 +2,5 @@
 
 'use strict';
 
-require('..').cli(process.argv.slice(2));
+require('traceur-runtime');
+require('../dist/cli').default(process.argv.slice(2));

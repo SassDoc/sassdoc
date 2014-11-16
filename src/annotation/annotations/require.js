@@ -1,5 +1,4 @@
-import * as utils from '../../utils';
-
+let utils = require('../../utils');
 let uniq = require('lodash').uniq;
 
 let reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;

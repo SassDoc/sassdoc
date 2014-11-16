@@ -1,4 +1,4 @@
-/*
+let doc = `
 Usage: sassdoc <src> <dest> [options]
 
 Arguments:
@@ -14,20 +14,18 @@ Options:
                         without asking.
   -c, --config=<path>   Path to JSON/YAML configuration file.
   -t, --theme=<name>    Theme to use.
-  --sass-convert        Use if syntax is `.sass`.
+  --sass-convert        Use if syntax is ".sass".
   --no-update-notifier  Disable update notifier check.
-*/
+`;
 
-let docopt = require('fdocopt')();
+let docopt = require('docopt').docopt;
 let pkg = require('../package.json');
-import * as cfg from './cfg';
-import Logger from './logger';
-import notifier from './notifier';
-//import convert from './convert';
-import sassdoc from './sassdoc';
+let cfg = require('./cfg');
+let Logger = require('./logger').default;
+let sassdoc = require('./sassdoc').default;
 
 export default function (argv = process.argv) {
-  let options = docopt(__filename, { version: pkg.version, argv: argv });
+  let options = docopt(doc, { version: pkg.version, argv: argv });
   let logger = new Logger(options['--verbose']);
 
   // Load raw configuration
@@ -49,12 +47,12 @@ export default function (argv = process.argv) {
 
   // Run update notifier if not explicitely disabled
   if (!config.noUpdateNotifier) {
-    notifier(pkg);
+    require('./notifier').default(pkg);
   }
 
   // Perform a Sass to SCSS syntax convertion
   //if (config.sassConvert) {
-    //sassdoc = convert(sassdoc);
+    //let convert = require('./convert').default;
   //}
 
   sassdoc(options['<src>'], options['<dest>'], config);

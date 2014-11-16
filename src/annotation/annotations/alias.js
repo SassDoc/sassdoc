@@ -1,4 +1,4 @@
-import * as utils from '../../utils';
+let utils = require('../../utils');
 
 export default function (config) {
 

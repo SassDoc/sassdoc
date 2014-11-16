@@ -1,5 +1,5 @@
 let chalk = require('chalk');
-import { getDateTime } from './utils';
+let getDateTime = require('./utils').getDateTime;
 
 // Helpers
 let br = str => `[${str}]`;                              // Wrap in brackets

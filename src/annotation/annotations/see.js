@@ -1,4 +1,4 @@
-import * as utils from '../../utils';
+let utils = require('../../utils');
 
 let seeRegEx = /\s*(?:\{([\w-_]+)\}\s*)?(.*)/;
 
