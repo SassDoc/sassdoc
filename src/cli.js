@@ -43,7 +43,7 @@ export default function (argv = process.argv) {
   });
 
   // Post process configuration
-  cfg.post(config, logger);
+  cfg.post(config);
 
   // Run update notifier if not explicitely disabled
   if (!config.noUpdateNotifier) {
@@ -54,9 +54,6 @@ export default function (argv = process.argv) {
   //if (config.sassConvert) {
     //sassdoc = convert(sassdoc);
   //}
-
-  // Pass the logger
-  config.logger = logger;
 
   sassdoc(options['<src>'], options['<dest>'], config);
 }

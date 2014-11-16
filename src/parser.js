@@ -1,6 +1,3 @@
-import Logger from './logger';
-let logger = new Logger();
-
 let AnnotationApi = require('./annotation');
 let ScssCommentParser = require('scss-comment-parser');
 
@@ -10,7 +7,7 @@ export default class Parser {
     this.scssParser = new ScssCommentParser(this.annotations.list, config);
 
     this.scssParser.commentParser.on('warning', (warning) => {
-      logger.warn(warning);
+      config.logger.warn(warning);
     });
   }
 

@@ -12,7 +12,7 @@ import theme from './theme';
  * @return {Object}
  */
 export default function (file, logger = log.empty) {
-  return post(pre(file, logger), logger);
+  return post(pre(file, logger));
 }
 
 /**
@@ -22,6 +22,9 @@ export default function (file, logger = log.empty) {
  * The `dir` property will be the directory of the given file or the CWD
  * if no file is given. The configuration paths should be relative to
  * it.
+ *
+ * The given logger will be injected in the configuration object for
+ * further usage.
  *
  * @param {String} file
  * @param {Logger} logger
@@ -37,9 +40,11 @@ export function pre(file, logger = log.empty) {
     }
 
     return maybe('.sassdocrc', () => {
-      return {};
+      return {logger};
     });
   });
+
+  config.logger = logger;
 
   if (file === undefined) {
     config.dir = process.cwd();
@@ -61,30 +66,30 @@ export function pre(file, logger = log.empty) {
  * the actual theme function.
  *
  * @param {Object} config
- * @param {Logger} logger
  * @return {Object}
  */
-export function post(config, logger = log.empty) {
+export function post(config) {
   if (typeof config.package !== 'object') {
     let file = resolve(config.dir, config.package);
 
     config.package = maybe(file, () => {
       if (config.package !== undefined) {
-        logger.error(`Package file "${file}" not found.`);
-        logger.warn('Falling back to "package.json".');
+        config.logger.error(`Package file "${file}" not found.`);
+        config.logger.warn('Falling back to "package.json".');
       }
 
       let file = path.resolve(config.dir, 'package.json');
 
       return maybe(file, () => {
-        logger.warn('No package information.');
+        config.logger.warn('No package information.');
       });
     });
   }
 
   if (typeof config.theme !== 'function') {
-    config.theme = theme(config.theme, config.dir, logger);
+    config.theme = theme(config.theme, config.dir, config.logger);
   }
+
 }
 
 /**
