@@ -71,9 +71,10 @@ export function parse(parser) {
   let deferred = Q.defer();
 
   function transform(file, enc, cb) {
-    // TODO: what if `file` is a directory?
     if (file.isDirectory()) {
-      cb();
+      let [promise, stream] = parse(parser);
+      read(path.resolve(file.path, '**/*.scss')).pipe(stream);
+      promise.then(cb);
       return;
     }
 
