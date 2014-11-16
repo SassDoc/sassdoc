@@ -1,5 +1,6 @@
 let Q = require('q');
 let mkdir = Q.denodeify(require('mkdirp'));
+let path = require('path');
 let safeWipe = require('safe-wipe');
 let through = require('through2');
 let vinyl = require('vinyl-fs');
@@ -18,7 +19,7 @@ export default function (src, dest, config) {
   })
 
     .then(() => {
-      logger.log(`Folder \`${dest}\` successfully refreshed.`);
+      logger.log(`Folder "${dest}" successfully refreshed.`);
 
       let parser = new Parser(config, config.theme.annotations);
       let [promise, stream] = parse(parser);
@@ -29,7 +30,7 @@ export default function (src, dest, config) {
     })
 
     .then(data => {
-      logger.log(`Folder \`${src}\` successfully parsed.`);
+      logger.log(`Folder "${src}" successfully parsed.`);
       config.data = data;
 
       let promise = config.theme(dest, config);
@@ -44,7 +45,7 @@ export default function (src, dest, config) {
 
     .then(() => {
       if (config.themeName) {
-        logger.log(`theme \`${config.themeName}\` successfully rendered.`);
+        logger.log(`theme "${config.themeName}" successfully rendered.`);
       } else {
         logger.log('Anonymous theme successfully rendered.');
       }
@@ -54,7 +55,7 @@ export default function (src, dest, config) {
       logger.error('stack' in err ? err.stack : err);
       throw err;
     });
-};
+}
 
 export function refresh(dest, config) {
   return safeWipe(dest, config)
@@ -72,7 +73,7 @@ export function parse(parser) {
   function transform(file, enc, cb) {
     // TODO: what if `file` is a directory?
 
-    let fileData = parser.parse(file.contents.toString(enc))
+    let fileData = parser.parse(file.contents.toString(enc));
 
     // Add file metadata
     Object.keys(fileData).forEach(type => {
@@ -97,6 +98,12 @@ export function parse(parser) {
   return [deferred, through.obj(transform, flush)];
 }
 
-// Re-export
-export { default as cli } from './cli';
-export { default as cfg } from './cfg';
+// JSHint currently don't like the following
+//export { default as cli } from './cli';
+//export { default as cfg } from './cfg';
+
+import cli from './cli';
+export { cli };
+
+import cfg from './cfg';
+export { cfg };

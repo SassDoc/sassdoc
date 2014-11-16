@@ -1,3 +1,4 @@
+let path = require('path');
 import * as log from './logger';
 
 // Forced to hook in `$traceurRuntine` to get original `resolve`
@@ -12,8 +13,8 @@ let resolve = $traceurRuntime.require.resolve;
  * Otherwise, it's required as a `sassdoc-theme-*` module, and in all
  * cases, if not found, the default theme is returned.
  */
-export default (theme, dir, logger = log.empty) => {
-  if (theme == undefined) {
+export default function (theme, dir, logger = log.empty) {
+  if (theme === undefined) {
     return def();
   }
 
@@ -22,7 +23,7 @@ export default (theme, dir, logger = log.empty) => {
   }
 
   return maybe(path.resolve(dir, theme), theme, logger);
-};
+}
 
 /**
  * Try to require given module, and inspect the returned value.
@@ -34,7 +35,7 @@ function maybe(module, name, logger) {
   try {
     module = resolve(module);
   } catch (e) {
-    logger.error(`Theme \`${name}\` not found.`);
+    logger.error(`Theme "${name}" not found.`);
     logger.warn('Falling back to default theme.');
     return def();
   }

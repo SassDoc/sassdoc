@@ -36,4 +36,4 @@ export var empty = {
   log: () => {},
   warn: () => {},
   error: () => {},
-}
+};

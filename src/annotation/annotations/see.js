@@ -10,7 +10,7 @@ export default {
     let match = seeRegEx.exec(text);
 
     return {
-      type: match[1] || 'function',
+      type: match[1] || 'function',
       name: match[2]
     };
   },
@@ -25,7 +25,7 @@ export default {
           }
           else {
             logger.log(
-              `Item \`${item.context.name}\` refers to \`${see.name}\` from type \`${see.type}\` but this item doesn't exist.`
+              `Item "${item.context.name}" refers to "${see.name}" from type "${see.type}" but this item doesn't exist.`
             );
           }
         })

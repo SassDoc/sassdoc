@@ -7,7 +7,7 @@ export default {
 
     return {
       url: parsed[1] || '',
-      caption: parsed[2] || ''
+      caption: parsed[2] || ''
     };
   },
 

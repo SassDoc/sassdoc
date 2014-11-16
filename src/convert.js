@@ -53,7 +53,7 @@ function exec(command) {
 function BinaryError(message) {
   this.name = 'BinaryError';
   this.message = message || 'SassDoc could not find any executable for ' +
-                            '`sass-convert`. Operation Aborted.';
+                            '"sass-convert". Operation Aborted.';
 }
 BinaryError.prototype = new Error();
 BinaryError.prototype.constructor = BinaryError;
@@ -65,7 +65,7 @@ BinaryError.prototype.constructor = BinaryError;
  */
 function VersionError(message) {
   this.name = 'VersionError';
-  this.message = message || 'Invalid `sass-convert` version, must be >=3.4.5';
+  this.message = message || 'Invalid "sass-convert" version, must be >=3.4.5';
 }
 VersionError.prototype = new Error();
 VersionError.prototype.constructor = VersionError;
@@ -186,13 +186,13 @@ Converter.prototype.convert = function () {
     })
     .then(function () {
       self.api.logger.log(
-        'Converting folder `' + self.src + '` into SCSS syntax.'
+        'Converting folder "' + self.src + '" into SCSS syntax.'
       );
       return exec(self.command());
     })
     .then(function () {
       self.api.logger.log(
-        'Folder `' + self.src + '` successfully converted from Sass to SCSS.'
+        'Folder "' + self.src + '" successfully converted from Sass to SCSS.'
       );
     });
 };

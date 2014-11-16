@@ -29,7 +29,7 @@ let searchForMatches = function (code, regex, isAnnotatedByHand) {
 
 let typeNameObject = function (type) {
   return function (name) {
-    if (name.length > 0) {
+    if (name.length > 0) {
       return {
         type: type,
         name: name,
@@ -88,7 +88,7 @@ export default {
   autofill(item) {
     let type = item.context.type;
 
-    if (type === 'mixin' || type === 'placeholder' || type === 'function') {
+    if (type === 'mixin' || type === 'placeholder' || type === 'function') {
       let handWritten;
 
       if (item.require) {
@@ -186,7 +186,7 @@ export default {
           }
           else if (req.autofill !== true) {
             logger.log(
-              `Item \`${item.context.name}\` requires \`${req.name }\` from type \`${req.type}\` but this item doesn't exist.`
+              `Item "${item.context.name}" requires "${req.name}" from type "${req.type}" but this item doesn't exist.`
             );
           }
           else {

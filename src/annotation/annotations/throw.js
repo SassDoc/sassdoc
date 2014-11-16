@@ -8,7 +8,7 @@ export default {
 
   autofill(item) {
     let match;
-    let throwing = item['throws'] || [];
+    let throwing = item.throws || [];
 
     while ((match = autoParserError.exec(item.context.code))) {
       throwing.push(match[1]);

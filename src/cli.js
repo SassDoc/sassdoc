@@ -18,12 +18,8 @@ Options:
   --no-update-notifier  Disable update notifier check.
 */
 
-let fs = require('fs');
-let path = require('path');
 let docopt = require('fdocopt')();
 let pkg = require('../package.json');
-let chalk = require('chalk');
-let _ = require('lodash');
 import * as cfg from './cfg';
 import Logger from './logger';
 import notifier from './notifier';
@@ -55,15 +51,15 @@ export default function (argv = process.argv) {
   }
 
   // Perform a Sass to SCSS syntax convertion
-  if (config.sassConvert) {
+  //if (config.sassConvert) {
     //sassdoc = convert(sassdoc);
-  }
+  //}
 
   // Pass the logger
   config.logger = logger;
 
   sassdoc(options['<src>'], options['<dest>'], config);
-};
+}
 
 /**
  * Ensure that CLI options take precedence over configuration values.

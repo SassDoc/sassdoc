@@ -26,7 +26,7 @@ export default {
 
         }
         else {
-          logger.log(`Item \`${name}\` is an alias of \`${alias}\` but this item doesn't exist.`);
+          logger.log(`Item "${name}" is an alias of "${alias}" but this item doesn't exist.`);
         }
       }
     });

@@ -11,9 +11,9 @@ import theme from './theme';
  * @param {Logger} logger
  * @return {Object}
  */
-export default (file, logger = log.empty) => {
+export default function (file, logger = log.empty) {
   return post(pre(file, logger), logger);
-};
+}
 
 /**
  * Get the configuration object from given file of `.sassdocrc` if not
@@ -31,9 +31,9 @@ export function pre(file, logger = log.empty) {
   file = resolve(process.cwd(), file);
 
   let config = maybe(file, () => {
-    if (file != undefined) {
-      logger.error(`Config file \`${file}\` not found.`);
-      logger.warn('Falling back to `.sassdocrc`.');
+    if (file !== undefined) {
+      logger.error(`Config file "${file}" not found.`);
+      logger.warn('Falling back to ".sassdocrc".');
     }
 
     return maybe('.sassdocrc', () => {
@@ -41,7 +41,7 @@ export function pre(file, logger = log.empty) {
     });
   });
 
-  if (file == undefined) {
+  if (file === undefined) {
     config.dir = process.cwd();
   } else {
     config.dir = path.resolve(path.dirname(file));
@@ -69,9 +69,9 @@ export function post(config, logger = log.empty) {
     let file = resolve(config.dir, config.package);
 
     config.package = maybe(file, () => {
-      if (config.package != undefined) {
-        logger.error(`Package file \`${file}\` not found.`);
-        logger.warn('Falling back to `package.json`.');
+      if (config.package !== undefined) {
+        logger.error(`Package file "${file}" not found.`);
+        logger.warn('Falling back to "package.json".');
       }
 
       let file = path.resolve(config.dir, 'package.json');
@@ -95,7 +95,7 @@ export function post(config, logger = log.empty) {
  * @return {String}
  */
 function resolve(dir, file) {
-  if (file != undefined) {
+  if (file !== undefined) {
     return path.resolve(dir, file);
   }
 }
@@ -112,7 +112,7 @@ function resolve(dir, file) {
  * @return {Object}
  */
 function maybe(file, fallback=() => {}) {
-  if (file == undefined) {
+  if (file === undefined) {
     return fallback();
   }
 
