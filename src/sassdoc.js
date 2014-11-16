@@ -98,7 +98,7 @@ export function parse(parser) {
     cb();
   }
 
-  return [deferred, through.obj(transform, flush)];
+  return [deferred.promise, through.obj(transform, flush)];
 }
 
 // JSHint currently don't like the following
