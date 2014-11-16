@@ -1,5 +1,5 @@
-let Q = require('q');
-let mkdir = Q.denodeify(require('mkdirp'));
+let utils = require('./utils');
+let mkdir = utils.denodeify(require('mkdirp'));
 let path = require('path');
 let safeWipe = require('safe-wipe');
 let through = require('through2');
@@ -67,7 +67,7 @@ export function read(src) {
 
 export function parse(parser) {
   let data = {};
-  let deferred = Q.defer();
+  let deferred = utils.defer();
 
   function transform(file, enc, cb) {
     if (file.isDirectory()) {

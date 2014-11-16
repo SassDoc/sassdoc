@@ -43,3 +43,33 @@ let ns = new RegExp(nsDelimiters.join('|'), 'g');
 
 // Split a namespace on possible namespace delimiters
 export var splitNamespace = value => value.split(ns);
+
+export function denodeify(fn) {
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      fn(...args, (err, ...args) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        resolve(...args);
+      });
+    });
+  };
+}
+
+export function defer() {
+  let resolve, reject;
+
+  let promise = new Promise(function (resolve_, reject_) {
+    resolve = resolve_;
+    reject = reject_;
+  });
+
+  return {
+    promise,
+    resolve,
+    reject,
+  };
+}
