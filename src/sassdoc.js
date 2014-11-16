@@ -66,7 +66,7 @@ export function read(src) {
 }
 
 export function parse(parser) {
-  let data = [];
+  let data = {};
   let deferred = Q.defer();
 
   function transform(file, enc, cb) {
@@ -75,8 +75,21 @@ export function parse(parser) {
 
       read(path.resolve(file.path, '**/*.scss')).pipe(stream);
 
-      promise.then(data => {
-        console.log(data);
+      promise.then(subData => {
+        Object.keys(subData).forEach(type => {
+          if (!(type in data)) {
+            data[type] = {};
+          }
+
+          Object.keys(subData[type]).forEach(name => {
+            data[type][name] = subData[type][name];
+          });
+        });
+
+        deferred.resolve(data);
+        cb();
+      }, e => {
+        deferred.reject(e);
         cb();
       });
 
@@ -87,11 +100,17 @@ export function parse(parser) {
 
     // Add file metadata
     Object.keys(fileData).forEach(type => {
+      if (!(type in data)) {
+        data[type] = {};
+      }
+
       fileData[type].forEach(item => {
         item.file = {
           path: file.relative,
           name: path.basename(file),
         };
+
+        data[type][item.context.name] = item;
       });
     });
 
