@@ -1,14 +1,10 @@
 let fs = require('fs');
 let path = require('path');
 
-let endsWith = function (str, suffix) {
-  return str.indexOf(suffix, str.length - suffix.length) !== -1;
-};
-
 export default class AnnotationsApi {
-  constructor () {
+  constructor() {
     this.list = {
-      _ : { alias : {} }
+      _ : { alias: {} }
     };
 
     // Read all files from the annoation folder and add it to the annotations map.
@@ -53,4 +49,8 @@ export default class AnnotationsApi {
       });
     }
   }
+}
+
+function endsWith(str, suffix) {
+  return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
