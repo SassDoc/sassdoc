@@ -59,13 +59,11 @@ function maybe(module, name, logger) {
  * Require default theme or throw an exception.
  */
 function def() {
-  let theme;
-
   try {
-    theme = resolve('sassdoc-theme-default');
+    resolve('sassdoc-theme-default');
   } catch (e) {
     throw new Error('Holy shit, the default theme was not found!');
   }
 
-  return require(theme);
+  return require('sassdoc-theme-default');
 }
