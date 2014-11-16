@@ -14,7 +14,7 @@ export default class AnnotationsApi {
         return;
       }
 
-      var annotation = require(path.resolve(__dirname, 'annotations', file));
+      var annotation = require(path.resolve(__dirname, 'annotations', file)).default;
       var name = path.basename(file, '.js');
 
       this.addAnnotation(name, annotation);
