@@ -10,7 +10,7 @@ import link from './annotations/link';
 import output from './annotations/output';
 import parameter from './annotations/parameter';
 import property from './annotations/property';
-import require from './annotations/require';
+import require_ from './annotations/require';
 import return_ from './annotations/return';
 import see from './annotations/see';
 import since from './annotations/since';
@@ -36,7 +36,7 @@ export default class AnnotationsApi {
     this.addAnnotation('output', output);
     this.addAnnotation('parameter', parameter);
     this.addAnnotation('property', property);
-    this.addAnnotation('require', require);
+    this.addAnnotation('require', require_);
     this.addAnnotation('return_', return_);
     this.addAnnotation('see', see);
     this.addAnnotation('since', since);
