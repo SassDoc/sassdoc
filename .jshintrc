@@ -27,6 +27,8 @@
   "esnext": true,
   "node": true,
   "globals": {
-    "$traceurRuntime": true
+    "$traceurRuntime": true,
+    "before": true,
+    "after": true
   }
 }

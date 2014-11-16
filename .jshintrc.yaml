@@ -28,4 +28,6 @@ esnext:        true  # ES6
 node:          true  # Node.js
 
 globals: # Global variables
-    '$traceurRuntime': true # Traceur
+    $traceurRuntime: true
+    before:          true
+    after:           true

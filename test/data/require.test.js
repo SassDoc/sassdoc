@@ -45,8 +45,6 @@ describe('#require', function () {
   });
 
   it('should be JSON serializable', function () {
-    var dataClone = _.clone(data, true);
-
     assert.equal(JSON.stringify(data, null, '  '), JSON.stringify(expected, null, '  '));
   });
 });

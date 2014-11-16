@@ -4,7 +4,7 @@ JSHINT = node_modules/jshint/bin/jshint
 all: lint
 
 lint: .jshintrc
-	$(JSHINT) bin/sassdoc index.js src
+	$(JSHINT) bin/sassdoc index.js src test
 
 .jshintrc: .jshintrc.yaml
 	$(YAML) $< > $@
