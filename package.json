@@ -81,7 +81,7 @@
     "time-grunt": "^1.0.0"
   },
   "scripts": {
-    "test": "make test",
+    "test": "make dist lint test",
     "rebuild": "rm -rf node_modules && npm install"
   }
 }
