@@ -87,6 +87,7 @@ export function post(config) {
   }
 
   if (typeof config.theme !== 'function') {
+    config.themeName = config.theme || 'default';
     config.theme = theme(config.theme, config.dir, config.logger);
   }
 
