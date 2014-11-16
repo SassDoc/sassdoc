@@ -2,6 +2,8 @@
 export default function (config) {
 
   return {
+    name: 'content',
+
     parse(text) {
       return text.trim();
     },

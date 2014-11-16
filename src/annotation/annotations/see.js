@@ -5,6 +5,8 @@ let seeRegEx = /\s*(?:\{([\w-_]+)\}\s*)?(.*)/;
 export default function (config) {
 
   return {
+    name: 'see',
+
     parse(text) {
       let match = seeRegEx.exec(text);
 

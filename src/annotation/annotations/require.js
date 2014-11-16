@@ -53,6 +53,8 @@ let compareBefore = function (code, str, index) {
 export default function (config) {
 
   return {
+    name: 'require',
+
     parse(text) {
       let match = reqRegEx.exec(text.trim());
 

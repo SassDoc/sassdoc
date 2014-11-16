@@ -3,6 +3,8 @@ let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*(
 export default function (config) {
 
   return {
+    name: 'return',
+
     parse(text) {
       let parsed = typeRegEx.exec(text);
       let obj = {};

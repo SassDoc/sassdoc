@@ -3,6 +3,8 @@ import * as utils from '../../utils';
 export default function (config) {
 
   return {
+    name: 'alias',
+
     parse(text) {
       return text.trim();
     },

@@ -3,6 +3,8 @@ let sinceRegEx = /\s*([^\s]*)\s*(?:-?\s*([\s\S]*))?\s*$/;
 export default function (config) {
 
   return {
+    name: 'since',
+
     parse(text) {
       let parsed = sinceRegEx.exec(text);
       let obj = {};

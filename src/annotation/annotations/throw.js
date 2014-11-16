@@ -3,6 +3,8 @@ let autoParserError = /@error\s+(?:'|")([^'"]+)/g;
 export default function (config) {
 
   return {
+    name: 'throw',
+
     parse(text) {
       return text.trim();
     },

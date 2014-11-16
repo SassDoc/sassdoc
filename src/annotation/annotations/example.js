@@ -11,6 +11,8 @@ let descRegEx = /(\w+)\s*(?:-?\s*(.*))/;
 export default function (config) {
 
   return {
+    name: 'example',
+
     parse(text) {
       let example = {
         type: 'scss', // Default to scss

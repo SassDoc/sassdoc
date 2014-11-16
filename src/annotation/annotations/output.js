@@ -2,6 +2,8 @@
 export default function (config) {
 
   return {
+    name: 'output',
+
     parse(text) {
       return text.trim();
     },
@@ -12,5 +14,5 @@ export default function (config) {
 
     multiple: false
   }
-  
+
 };

@@ -3,6 +3,8 @@ let reqRegEx = /\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\(([^\)]*)\))?\s*(?:-?\
 export default function (config) {
 
   return {
+    name: 'property',
+
     parse(text) {
       let match = reqRegEx.exec(text.trim());
 
@@ -29,5 +31,5 @@ export default function (config) {
 
     allowedOn: ['variable']
   }
-  
+
 };

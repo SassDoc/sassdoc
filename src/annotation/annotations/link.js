@@ -3,6 +3,8 @@ let linkRegex = /\s*([^:]+\:\/\/[^\s]*)?\s*(.*?)$/;
 export default function (config) {
 
   return {
+    name: 'link',
+
     parse(text) {
       let parsed = linkRegex.exec(text.trim());
 

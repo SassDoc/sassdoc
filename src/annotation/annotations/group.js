@@ -2,6 +2,8 @@
 export default function (config) {
 
   return {
+    name: 'group',
+
     parse(text) {
       return [text.trim().toLowerCase()];
     },
