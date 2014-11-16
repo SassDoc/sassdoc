@@ -10,7 +10,7 @@ export default class AnnotationsApi {
 
     // Read all files from the annoation folder and add it to the annotations map.
     fs.readdirSync(path.resolve(__dirname, './annotations')).forEach(file => {
-      if (!endsWith(file, '.js')) {
+      if (!file.endsWith('.js')) {
         return;
       }
 
