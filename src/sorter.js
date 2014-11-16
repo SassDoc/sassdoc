@@ -1,20 +1,18 @@
-export default data => {
-  var sorted = {};
+export default function sorter(data) {
+  let sorted = {};
 
-  Object.keys(data).sort().forEach(function (type) {
+  Object.keys(data).sort().forEach(type => {
     sorted[type] = {};
 
     Object.keys(data[type])
-      .map(function (name) {
-        return data[type][name];
-      })
-      .sort(function (a, b) {
+      .map(name => data[type][name])
+      .sort((a, b) => {
         return compare(a.group[0][0].toLowerCase(), b.group[0][0].toLowerCase()) ||
                compare(a.file.path, b.file.path) ||
                compare(a.context.line.start, b.context.line.start);
 
       })
-      .forEach(function (item) {
+      .forEach(item => {
         sorted[type][item.context.name] = item;
       });
   });
