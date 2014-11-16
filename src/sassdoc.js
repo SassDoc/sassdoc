@@ -1,11 +1,10 @@
 let utils = require('./utils');
 let mkdir = utils.denodeify(require('mkdirp'));
-let path = require('path');
 let safeWipe = require('safe-wipe');
-let through = require('through2');
-let vinyl = require('vinyl-fs');
 let Logger = require('./logger').default;
 let Parser = require('./parser').default;
+let sorter = require('./sorter').default;
+let stream = require('./stream');
 
 export default function (src, dest, config) {
   let logger = config.logger || new Logger();
@@ -21,16 +20,16 @@ export default function (src, dest, config) {
       logger.log(`Folder "${dest}" successfully refreshed.`);
 
       let parser = new Parser(config, config.theme.annotations);
-      let [promise, stream] = parse(parser);
+      let filter = parse(parser);
 
-      read(src).pipe(stream);
+      stream.read(src).pipe(filter);
 
-      return promise;
+      return filter.promise;
     })
 
     .then(data => {
       logger.log(`Folder "${src}" successfully parsed.`);
-      config.data = data;
+      config.data = index(data);
 
       let promise = config.theme(dest, config);
 
@@ -61,68 +60,30 @@ export function refresh(dest, config) {
     .then(() => mkdir(dest));
 }
 
-export function read(src) {
-  return vinyl.src(src);
+export function parse(parser) {
+  let filter = stream.default(parser);
+
+  filter.promise = filter.promise.then(data => {
+    data = data.filter(item => item.context.type !== 'unknown');
+    data = parser.postProcess(data); // TODO: this is not flat yet
+    data = sorter(data);
+
+    return data;
+  });
+
+  return filter;
 }
 
-export function parse(parser) {
-  let data = {};
-  let deferred = utils.defer();
+export function index(data) {
+  let obj = {};
 
-  function transform(file, enc, cb) {
-    if (file.isDirectory()) {
-      let [promise, stream] = parse(parser);
-
-      read(path.resolve(file.path, '**/*.scss')).pipe(stream);
-
-      promise.then(subData => {
-        Object.keys(subData).forEach(type => {
-          if (!(type in data)) {
-            data[type] = {};
-          }
-
-          Object.keys(subData[type]).forEach(name => {
-            data[type][name] = subData[type][name];
-          });
-        });
-
-        deferred.resolve(data);
-        cb();
-      }, e => {
-        deferred.reject(e);
-        cb();
-      });
-
-      return;
+  data.forEach(item => {
+    if (!(item.context.type in obj)) {
+      obj[item.context.type] = {};
     }
 
-    let fileData = parser.parse(file.contents.toString(enc));
+    obj[item.context.type][item.context.name] = item;
+  });
 
-    // Add file metadata
-    Object.keys(fileData).forEach(type => {
-      if (!(type in data)) {
-        data[type] = {};
-      }
-
-      fileData[type].forEach(item => {
-        item.file = {
-          path: file.relative,
-          name: path.basename(file),
-        };
-
-        data[type][item.context.name] = item;
-      });
-    });
-
-    cb();
-  }
-
-  function flush(cb) {
-    // End, data is full
-    parser.postProcess(data);
-    deferred.resolve(data);
-    cb();
-  }
-
-  return [deferred.promise, through.obj(transform, flush)];
+  return obj;
 }
