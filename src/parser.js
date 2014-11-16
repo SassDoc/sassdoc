@@ -11,8 +11,8 @@ export default class Parser {
     });
   }
 
-  parse(...args) {
-    return this.scssParser.parse(args);
+  parse(code) {
+    return this.scssParser.parse(code);
   }
 
   /**
