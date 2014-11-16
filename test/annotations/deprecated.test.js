@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#deprecated', function () {
-  var deprecated = (new (require('../../src/annotation'))()).list.deprecated;
+  var deprecated = (new (require('../../dist/annotation').default)()).list.deprecated;
 
   it('should return the trimmed string', function () {
     assert.equal(deprecated.parse('   '), '');

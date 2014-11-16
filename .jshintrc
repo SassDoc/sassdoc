@@ -29,6 +29,8 @@
   "globals": {
     "$traceurRuntime": true,
     "before": true,
-    "after": true
+    "after": true,
+    "describe": true,
+    "it": true
   }
 }

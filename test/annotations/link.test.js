@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#link', function () {
-  var link = (new (require('../../src/annotation'))()).list.link;
+  var link = (new (require('../../dist/annotation').default)()).list.link;
 
   it('should return an object', function () {
     assert.deepEqual(link.parse(''), { url: '', caption: '' });

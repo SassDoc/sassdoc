@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#content', function () {
-  var content = (new (require('../../src/annotation'))()).list.content;
+  var content = (new (require('../../dist/annotation').default)()).list.content;
 
   it('should return object', function () {
     assert.deepEqual(content.parse('Test'), 'Test');
