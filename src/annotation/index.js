@@ -1,5 +1,22 @@
-let fs = require('fs');
-let path = require('path');
+import access from './annotations/access';
+import alias from './annotations/alias';
+import author from './annotations/author';
+import content from './annotations/content';
+import deprecated from './annotations/deprecated';
+import example from './annotations/example';
+import group from './annotations/group';
+import ignore from './annotations/ignore';
+import link from './annotations/link';
+import output from './annotations/output';
+import parameter from './annotations/parameter';
+import property from './annotations/property';
+import require from './annotations/require';
+import return_ from './annotations/return';
+import see from './annotations/see';
+import since from './annotations/since';
+import throw_ from './annotations/throw';
+import todo from './annotations/todo';
+import type from './annotations/type';
 
 export default class AnnotationsApi {
   constructor() {
@@ -7,17 +24,25 @@ export default class AnnotationsApi {
       _ : { alias: {} }
     };
 
-    // Read all files from the annoation folder and add it to the annotations map.
-    fs.readdirSync(path.resolve(__dirname, './annotations')).forEach(file => {
-      if (!endsWith(file, '.js')) {
-        return;
-      }
-
-      var annotation = require(path.resolve(__dirname, 'annotations', file));
-      var name = path.basename(file, '.js');
-
-      this.addAnnotation(name, annotation);
-    });
+    this.addAnnotation('access', access);
+    this.addAnnotation('alias', alias);
+    this.addAnnotation('author', author);
+    this.addAnnotation('content', content);
+    this.addAnnotation('deprecated', deprecated);
+    this.addAnnotation('example', example);
+    this.addAnnotation('group', group);
+    this.addAnnotation('ignore', ignore);
+    this.addAnnotation('link', link);
+    this.addAnnotation('output', output);
+    this.addAnnotation('parameter', parameter);
+    this.addAnnotation('property', property);
+    this.addAnnotation('require', require);
+    this.addAnnotation('return_', return_);
+    this.addAnnotation('see', see);
+    this.addAnnotation('since', since);
+    this.addAnnotation('throw_', throw_);
+    this.addAnnotation('todo', todo);
+    this.addAnnotation('type', type);
   }
 
   /**
