@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+'use strict';
+
+require('../init');
+
+var path = require('path');
+var sassdoc = require('../../dist/sassdoc');
+var stream = require('../../dist/stream');
+var Logger = require('../../dist/logger').default;
+var Parser = require('../../dist/parser').default;
+
+var parser = new Parser({logger: new Logger()});
+
+var filter = sassdoc.parse(parser);
+
+filter.promise.then(function (data) {
+  console.log(JSON.stringify(data, undefined, 2));
+});
+
+stream.read(path.resolve(__dirname, 'test.scss')).pipe(filter);

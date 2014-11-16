@@ -24,6 +24,7 @@ lint: .jshintrc
 
 test: force
 	$(MOCHA) test/annotations/*.test.js
+	test/data/dump | diff - test/data/expected.json
 
 .jshintrc: .jshintrc.yaml
 	$(YAML) $< > $@
