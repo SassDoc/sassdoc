@@ -37,10 +37,10 @@ export default class AnnotationsApi {
     this.addAnnotation('parameter', parameter);
     this.addAnnotation('property', property);
     this.addAnnotation('require', require_);
-    this.addAnnotation('return_', return_);
+    this.addAnnotation('return', return_);
     this.addAnnotation('see', see);
     this.addAnnotation('since', since);
-    this.addAnnotation('throw_', throw_);
+    this.addAnnotation('throw', throw_);
     this.addAnnotation('todo', todo);
     this.addAnnotation('type', type);
   }
