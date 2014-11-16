@@ -47,6 +47,7 @@ export function read(src) {
 }
 
 function parseDir(dir, parser) {
+  /* global stream */
   let filter = stream(parser);
   read(path.resolve(dir.path, '**/*.scss')).pipe(filter);
   return filter.promise;
