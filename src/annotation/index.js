@@ -19,9 +19,10 @@ import todo from './annotations/todo';
 import type from './annotations/type';
 
 export default class AnnotationsApi {
-  constructor() {
+  constructor(config) {
+    this.config = config;
     this.list = {
-      _ : { alias: {} }
+      _: { alias: {} }
     };
 
     this.addAnnotation('access', access);
@@ -51,6 +52,8 @@ export default class AnnotationsApi {
    * @param {Object} annotation - Annotation object
    */
   addAnnotation(name, annotation) {
+    annotation = annotation(this.config);
+
     this.list._.alias[name] = name;
 
     if (Array.isArray(annotation.alias)) {
@@ -63,8 +66,8 @@ export default class AnnotationsApi {
   }
 
   /**
-   * Add an array of annotations. The name of the annoations must be
-   * in the `name` key of the annoation.
+   * Add an array of annotations. The name of the annotations must be
+   * in the `name` key of the annotation.
    * @param {Array} annotations - Annotation objects
    */
   addAnnotations(annotations) {

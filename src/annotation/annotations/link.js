@@ -1,16 +1,18 @@
 let linkRegex = /\s*([^:]+\:\/\/[^\s]*)?\s*(.*?)$/;
 
-export default {
+export default function (config) {
 
-  parse(text) {
-    let parsed = linkRegex.exec(text.trim());
+  return {
+    parse(text) {
+      let parsed = linkRegex.exec(text.trim());
 
-    return {
-      url: parsed[1] || '',
-      caption: parsed[2] || ''
-    };
-  },
+      return {
+        url: parsed[1] || '',
+        caption: parsed[2] || ''
+      };
+    },
 
-  alias: ['source']
+    alias: ['source']
+  }
 
 };

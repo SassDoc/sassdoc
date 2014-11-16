@@ -1,14 +1,16 @@
 
-export default {
+export default function (config) {
 
-  parse(text) {
-    return text.trim();
-  },
+  return {
+    parse(text) {
+      return text.trim();
+    },
 
-  alias: ['outputs'],
+    alias: ['outputs'],
 
-  allowedOn: ['mixin'],
+    allowedOn: ['mixin'],
 
-  multiple: false
+    multiple: false
+  }
   
 };

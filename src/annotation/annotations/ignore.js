@@ -1,6 +1,8 @@
 
-export default {
+export default function (config) {
 
-  parse() {}
+  return {
+    parse() {}
+  }
 
 };

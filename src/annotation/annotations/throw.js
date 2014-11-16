@@ -1,25 +1,27 @@
 let autoParserError = /@error\s+(?:'|")([^'"]+)/g;
 
-export default {
+export default function (config) {
 
-  parse(text) {
-    return text.trim();
-  },
+  return {
+    parse(text) {
+      return text.trim();
+    },
 
-  autofill(item) {
-    let match;
-    let throwing = item.throws || [];
+    autofill(item) {
+      let match;
+      let throwing = item.throws || [];
 
-    while ((match = autoParserError.exec(item.context.code))) {
-      throwing.push(match[1]);
-    }
-    if (throwing.length > 0) {
-      return throwing;
-    }
-  },
+      while ((match = autoParserError.exec(item.context.code))) {
+        throwing.push(match[1]);
+      }
+      if (throwing.length > 0) {
+        return throwing;
+      }
+    },
 
-  alias: ['throws', 'exception'],
+    alias: ['throws', 'exception'],
 
-  allowedOn: ['function', 'mixin', 'placeholder']
+    allowedOn: ['function', 'mixin', 'placeholder']
+  }
 
 };

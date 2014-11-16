@@ -1,14 +1,16 @@
 
-export default {
+export default function (config) {
 
-  parse(text) {
-    return [text.trim().toLowerCase()];
-  },
+  return {
+    parse(text) {
+      return [text.trim().toLowerCase()];
+    },
 
-  default() {
-    return ['undefined'];
-  },
+    default() {
+      return ['undefined'];
+    },
 
-  multiple: false
+    multiple: false
+  }
 
 };

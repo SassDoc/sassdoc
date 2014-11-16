@@ -1,18 +1,20 @@
 
-export default {
+export default function (config) {
 
-  parse(text) {
-    return text.trim();
-  },
+  return {
+    parse(text) {
+      return text.trim();
+    },
 
-  autofill(item) {
-    if (item.context.code.indexOf('@content') > -1) {
-      return '';
-    }
-  },
+    autofill(item) {
+      if (item.context.code.indexOf('@content') > -1) {
+        return '';
+      }
+    },
 
-  allowedOn: ['mixin'],
+    allowedOn: ['mixin'],
 
-  multiple: false
+    multiple: false
+  }
 
 };

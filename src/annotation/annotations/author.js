@@ -1,8 +1,10 @@
 
-export default {
+export default function (config) {
 
-  parse(text) {
-    return text.trim();
+  return {
+    parse(text) {
+      return text.trim();
+    }
   }
 
 };

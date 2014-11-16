@@ -1,12 +1,14 @@
 
-export default {
+export default function (config) {
 
-  parse(text) {
-    return text.trim();
-  },
+  return {
+    parse(text) {
+      return text.trim();
+    },
 
-  allowedOn: ['variable'],
+    allowedOn: ['variable'],
 
-  multiple: false
+    multiple: false
+  }
 
 };
