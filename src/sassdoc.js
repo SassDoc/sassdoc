@@ -72,6 +72,9 @@ export function parse(parser) {
 
   function transform(file, enc, cb) {
     // TODO: what if `file` is a directory?
+    if (file.isDirectory()) {
+      return;
+    }
 
     let fileData = parser.parse(file.contents.toString(enc));
 
