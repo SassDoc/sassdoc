@@ -1,4 +1,4 @@
-let AnnotationApi = require('./annotation');
+import AnnotationApi from './annotation';
 let ScssCommentParser = require('scss-comment-parser');
 
 export default class Parser {
