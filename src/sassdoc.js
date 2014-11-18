@@ -6,7 +6,7 @@ let Parser = require('./parser').default;
 let sorter = require('./sorter').default;
 let stream = require('./stream');
 
-export default function (src, dest, config) {
+export default function sassdoc(src, dest, config) {
   let logger = config.logger || new Logger();
 
   return refresh(dest, {
