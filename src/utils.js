@@ -62,7 +62,7 @@ export function denodeify(fn) {
 export function defer() {
   let resolve, reject;
 
-  let promise = new Promise(function (resolve_, reject_) {
+  let promise = new Promise((resolve_, reject_) => {
     resolve = resolve_;
     reject = reject_;
   });

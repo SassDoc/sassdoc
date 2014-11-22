@@ -2,6 +2,7 @@ let utils = require('./utils');
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let Logger = require('./logger').default;
+// let Converter = require('./converter').default;
 let Parser = require('./parser').default;
 let sorter = require('./sorter').default;
 let stream = require('./stream');
@@ -19,10 +20,19 @@ export default function sassdoc(src, dest, config) {
     .then(() => {
       logger.log(`Folder "${dest}" successfully refreshed.`);
 
+      let recurse = stream.recurse();
+      // let converter = new Converter(config).stream();
+
       let parser = new Parser(config, config.theme.annotations);
       let filter = parse(parser);
 
-      stream.read(src).pipe(filter);
+      stream.read(src)
+        .pipe(recurse)
+        // .pipe(converter)
+        .pipe(filter)
+        .on('error', err => {
+          throw err;
+        });
 
       return filter.promise;
     })
