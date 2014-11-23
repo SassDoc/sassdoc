@@ -5,7 +5,7 @@ let Logger = require('./logger').default;
 let Converter = require('./converter').default;
 let Parser = require('./parser').default;
 let sort = require('./sorter').default;
-let stream = require('./stream');
+let recurse = require('./recurse').default;
 
 export default function sassdoc(src, dest, config) {
   let logger = config.logger || new Logger();
@@ -20,23 +20,21 @@ export default function sassdoc(src, dest, config) {
     .then(() => {
       logger.log(`Folder "${dest}" successfully refreshed.`);
 
-      let recurse = stream.recurse();
       let converter = Converter(config);
-
       let parser = new Parser(config, config.theme.annotations);
-      let filter = parse(parser);
+      let parseFilter = parser.stream();
 
       stream.read(src)
-        .pipe(recurse)
+        .pipe(recurse())
         .pipe(converter)
-        .pipe(filter);
+        .pipe(parseFilter);
 
-      return filter.promise;
+      return parseFilter.promise;
     })
 
     .then(data => {
       logger.log(`Folder "${src}" successfully parsed.`);
-      config.data = data;
+      config.data = sort(data);
 
       let promise = config.theme(dest, config);
 
@@ -65,18 +63,4 @@ export default function sassdoc(src, dest, config) {
 export function refresh(dest, config) {
   return safeWipe(dest, config)
     .then(() => mkdir(dest));
-}
-
-export function parse(parser) {
-  let filter = stream.default(parser);
-
-  filter.promise = filter.promise.then(data => {
-    data = data.filter(item => item.context.type !== 'unknown');
-    data = parser.postProcess(data);
-    data = sort(data);
-
-    return data;
-  });
-
-  return filter;
 }

@@ -118,7 +118,7 @@
     ],
     "file": {
       "path": "test.scss",
-      "name": "[object Object]"
+      "name": "test.scss"
     }
   },
   {
@@ -162,7 +162,7 @@
     "access": "private",
     "file": {
       "path": "test.scss",
-      "name": "[object Object]"
+      "name": "test.scss"
     },
     "usedBy": [
       {
@@ -230,7 +230,7 @@
     "access": "private",
     "file": {
       "path": "test.scss",
-      "name": "[object Object]"
+      "name": "test.scss"
     },
     "usedBy": [
       {
@@ -284,7 +284,7 @@
     "access": "private",
     "file": {
       "path": "test.scss",
-      "name": "[object Object]"
+      "name": "test.scss"
     },
     "usedBy": [
       {
@@ -337,7 +337,7 @@
     "access": "private",
     "file": {
       "path": "test.scss",
-      "name": "[object Object]"
+      "name": "test.scss"
     },
     "usedBy": [
       {
@@ -405,7 +405,7 @@
     ],
     "file": {
       "path": "test.scss",
-      "name": "[object Object]"
+      "name": "test.scss"
     }
   }
 ]
