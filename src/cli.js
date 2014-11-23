@@ -14,7 +14,6 @@ Options:
                         without asking.
   -c, --config=<path>   Path to JSON/YAML configuration file.
   -t, --theme=<name>    Theme to use.
-  --sass-convert        Use if syntax is ".sass".
   --no-update-notifier  Disable update notifier check.
 `;
 
@@ -36,7 +35,6 @@ export default function (argv = process.argv) {
     theme: '--theme',
     interactive: '--interactive',
     force: '--force',
-    sassConvert: '--sass-convert',
     noUpdateNotifier: '--no-update-notifier',
   });
 
