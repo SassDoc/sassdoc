@@ -4,7 +4,7 @@ let safeWipe = require('safe-wipe');
 let Logger = require('./logger').default;
 // let Converter = require('./converter').default;
 let Parser = require('./parser').default;
-let sorter = require('./sorter').default;
+let sort = require('./sorter').default;
 let stream = require('./stream');
 
 export default function sassdoc(src, dest, config) {
@@ -76,7 +76,7 @@ export function parse(parser) {
   filter.promise = filter.promise.then(data => {
     data = data.filter(item => item.context.type !== 'unknown');
     data = parser.postProcess(data); // TODO: this is not flat yet
-    data = sorter(data);
+    data = sort(data);
 
     return data;
   });

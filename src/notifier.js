@@ -1,6 +1,6 @@
 let chalk = require('chalk');
 
-export default pkg => {
+export default function notify(pkg) {
   let notifier = require('update-notifier')({
     packageName: pkg.name,
     packageVersion: pkg.version,
@@ -16,4 +16,4 @@ export default pkg => {
 
   console.log(`Update available: ${latest} ${current}`);
   console.log(`Run ${command} to update.`);
-};
+}

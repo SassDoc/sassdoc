@@ -9,9 +9,8 @@ export function eachItem(byTypeAndName, cb) {
   });
 }
 
-// Get file extension
+// Get file extension.
 export var ext = file => path.extname(file).substr(1);
-export var getExtension = ext; // BC
 
 /**
  * Get current date/time.
@@ -32,16 +31,16 @@ export function getDateTime(date = new Date()) {
   return `${y}-${m}-${d} ${h}:${i}:${s}`;
 }
 
-// Pad a number with a leading 0 if inferior to 10
+// Pad a number with a leading 0 if inferior to 10.
 export var pad = value => (value < 10 ? '0' : '') + value;
 
 export var isset = value => typeof value !== 'undefined'; // BC
 
-// Namespace
+// Namespace delimiters.
 let nsDelimiters = ['::', ':', '\\.', '/'];
 let ns = new RegExp(nsDelimiters.join('|'), 'g');
 
-// Split a namespace on possible namespace delimiters
+// Split a namespace on possible namespace delimiters.
 export var splitNamespace = value => value.split(ns);
 
 export function denodeify(fn) {

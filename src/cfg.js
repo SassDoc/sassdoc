@@ -117,7 +117,7 @@ function resolve(dir, file) {
  * @param {Function} fallback
  * @return {Object}
  */
-function maybe(file, fallback=() => {}) {
+function maybe(file, fallback = () => {}) {
   if (file === undefined) {
     return fallback();
   }
