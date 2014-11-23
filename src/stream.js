@@ -4,9 +4,16 @@ let vfs = require('vinyl-fs');
 let utils = require('./utils');
 
 /**
+ * Return a transform stream meant to be piped in a stream of SCSS
+ * files. Each file will be passed-through as-is, but they are all
+ * parsed to generate a SassDoc data array.
  *
+ * The returned stream has an additional `promise` property, containing
+ * a `Promise` object that will be resolved when the stream is done and
+ * the data is fulfiled.
  *
  * @param {Object} parser
+ * @return {Object}
  */
 export default function stream(parser) {
   let data = [];
@@ -33,17 +40,21 @@ export default function stream(parser) {
 }
 
 /**
- * Read source directory.
- * Returns a Readable/Writable stream of vinyl File objects.
+ * Return a transform stream of vinyl `File` objects matching given
+ * `src` pattern.
  *
  * @param {String} src
+ * @return {Object}
  */
 export function read(src) {
   return vfs.src(src);
 }
 
 /**
- * Recurse through source directory.
+ * Return a transform stream recursing through directory to yield
+ * Sass/SCSS files instead.
+ *
+ * @return {Object}
  */
 export function recurse() {
   return through.obj(function (chunk, enc, cb) {
@@ -91,11 +102,12 @@ function globSass(dir, callback) {
 }
 
 /**
- * Parse a single file.
+ * Parse a single file and return the SassDoc data array.
  *
  * @param {Buffer} file
  * @param {String} enc
  * @param {Object} parser
+ * @return {Array}
  */
 function parseFile(file, enc, parser) {
   let fileData = parser.parse(file.contents.toString(enc));
