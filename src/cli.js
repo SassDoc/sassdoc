@@ -50,11 +50,6 @@ export default function (argv = process.argv) {
     require('./notifier').default(pkg);
   }
 
-  // Perform a Sass to SCSS syntax convertion
-  //if (config.sassConvert) {
-    //let convert = require('./convert').default;
-  //}
-
   sassdoc(options['<src>'], options['<dest>'], config);
 }
 
