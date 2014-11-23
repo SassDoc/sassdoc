@@ -59,18 +59,6 @@ f({
 });
 ```
 
-## Inline documentation
-
-Every function should be documented using [JSDoc](). Annotations should not be aligned in order not to have to update alignment whever a longer line is added.
-
-```js
-/**
- * @param {String} foo
- * @return {Boolean}
- * @see something
- */
-```
-
 ## Variable declaration
 
 Variable declarations, no matter with `var` or `let` should not be aligned.
@@ -96,3 +84,31 @@ Equal symbol (`=`) should always be surrounded by spaces when defining default v
 function foo(bar = 'baz') {}
 ```
 
+## Inline documentation
+
+Every function should be documented using [JSDoc](). Annotations should not be aligned in order not to have to update alignment whever a longer line is added.
+
+```js
+/**
+ * @param {String} foo
+ * @return {Boolean}
+ * @see something
+ */
+```
+
+## Comments
+
+All comments, both inline and multiline should be written in proper English, starting with a cap, ending with a full stop. Inline comments (`//`) are used when the comment holds on a single line (<80 characters). Multiline C-style comments (`/** */`) are used when the comment is splitted across several lines.
+
+```js
+// Post process configuration.
+cfg.post(config);
+
+config.view = config; // Backward compatibility.
+
+/**
+ * This is an extra long comment that does not fit on a single line because it 
+ * is longer than 80 characters. Because of this, it it splitted across several
+ * lines.
+ */
+```
