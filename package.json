@@ -74,7 +74,6 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-sass": "^0.8.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-gh-pages": "^0.9.1",
     "grunt-mocha-test": "^0.12.0",
     "jshint": "^2.5.10",
     "load-grunt-tasks": "^1.0.0",
