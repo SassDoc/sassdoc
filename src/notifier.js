@@ -1,6 +1,12 @@
 let chalk = require('chalk');
 
-export default function notify(pkg) {
+/**
+ * Sometimes check for update and notify the user.
+ *
+ * @param {Object} pkg Package definition.
+ * @param {Logger} logger
+ */
+export default function notify(pkg, logger) {
   let notifier = require('update-notifier')({
     packageName: pkg.name,
     packageVersion: pkg.version,
@@ -14,6 +20,6 @@ export default function notify(pkg) {
   let current = chalk.grey(`(current: ${notifier.update.current})`);
   let command = chalk.blue(`npm update -g ${pkg.name}`);
 
-  console.log(`Update available: ${latest} ${current}`);
-  console.log(`Run ${command} to update.`);
+  logger.log(`Update available: ${latest} ${current}`);
+  logger.log(`Run ${command} to update.`);
 }

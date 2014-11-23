@@ -47,7 +47,7 @@ export default function (argv = process.argv) {
 
   // Run update notifier if not explicitely disabled
   if (!config.noUpdateNotifier) {
-    require('./notifier').default(pkg);
+    require('./notifier').default(pkg, logger);
   }
 
   sassdoc(options['<src>'], options['<dest>'], config);
