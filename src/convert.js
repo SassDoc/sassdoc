@@ -31,7 +31,7 @@ function exec(command) {
       deferred.resolve({
         childProcess: childProcess,
         stdout: stdout,
-        stderr: stderr
+        stderr: stderr,
       });
     }
   });

@@ -9,7 +9,7 @@ export default function see(config) {
 
       return {
         type: match[1] || 'function',
-        name: match[2]
+        name: match[2],
       };
     },
 
@@ -34,7 +34,7 @@ export default function see(config) {
           return item.see.map(item => {
             return {
               description: item.description,
-              context: item.context
+              context: item.context,
             };
           });
         };

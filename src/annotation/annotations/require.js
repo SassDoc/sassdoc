@@ -140,7 +140,7 @@ export default function (config) {
               return reqItem.usedBy.map(item => {
                 return {
                   description: item.description,
-                  context: item.context
+                  context: item.context,
                 };
               });
             };

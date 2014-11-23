@@ -41,8 +41,6 @@ export default function (argv = process.argv) {
   // Post process configuration.
   cfg.post(config);
 
-  config.view = config; // Backward compatibility.
-
   // Run update notifier if not explicitely disabled.
   if (!config.noUpdateNotifier) {
     require('./notifier').default(pkg, logger);

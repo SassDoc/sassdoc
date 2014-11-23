@@ -16,7 +16,7 @@ export default function example() {
     parse(text) {
       let example = {
         type: 'scss', // Default to `scss`.
-        code: text
+        code: text,
       };
 
       // Get the optional type info.

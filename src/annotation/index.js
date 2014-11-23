@@ -4,8 +4,9 @@ let path = require('path');
 export default class AnnotationsApi {
   constructor(config) {
     this.config = config;
+
     this.list = {
-      _: { alias: {} }
+      _: { alias: {} },
     };
 
     // Read all files from the annoation folder and add it to the annotations map.

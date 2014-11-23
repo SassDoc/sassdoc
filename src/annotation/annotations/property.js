@@ -8,7 +8,7 @@ export default function property() {
       let match = reqRegEx.exec(text.trim());
 
       let obj = {
-        type: match[1] || 'Map'
+        type: match[1] || 'Map',
       };
 
       if (match[2]) {
