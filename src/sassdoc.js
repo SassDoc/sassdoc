@@ -1,6 +1,7 @@
 let utils = require('./utils');
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
+let vfs = require('vinyl-fs');
 let Logger = require('./logger').default;
 let Converter = require('./converter').default;
 let Parser = require('./parser').default;
@@ -24,7 +25,7 @@ export default function sassdoc(src, dest, config) {
       let parser = new Parser(config, config.theme.annotations);
       let parseFilter = parser.stream();
 
-      stream.read(src)
+      vfs.src(src)
         .pipe(recurse())
         .pipe(converter)
         .pipe(parseFilter);
