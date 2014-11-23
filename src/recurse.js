@@ -23,15 +23,14 @@ export default function recurse() {
     // It's a directory, find inner Sass/SCSS files.
     let pattern = path.resolve(chunk.path, '**/*.+(sass|scss)');
 
-    vfs.src(pattern).pipe(through.obj((chunk, enc, cb) => {
-      // Pass-through.
-      cb(null, chunk);
-
-      // Append to "parent" stream.
-      this.push(chunk);
-    }, () => {
-      // All done.
-      cb();
-    }));
+    vfs.src(pattern)
+      .pipe(through.obj((chunk, enc, cb) => {
+        // Append to "parent" stream.
+        this.push(chunk);
+        cb();
+      }, () => {
+        // All done.
+        cb();
+      }));
   });
 }
