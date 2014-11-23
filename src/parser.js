@@ -22,6 +22,7 @@ export default class Parser {
   postProcess(data) {
     Object.keys(this.annotations.list).forEach(key => {
       let annotation = this.annotations.list[key];
+
       if (annotation.resolve) {
         annotation.resolve(data);
       }
