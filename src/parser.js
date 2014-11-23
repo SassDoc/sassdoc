@@ -2,8 +2,10 @@ let AnnotationsApi = require('./annotation').default;
 let ScssCommentParser = require('scss-comment-parser');
 
 export default class Parser {
-  constructor (config) {
-    this.annotations = new AnnotationApi(config);
+  constructor(config, additionalAnnotations) {
+    console.log(AnnotationsApi);
+    this.annotations = new AnnotationsApi(config);
+    this.annotations.addAnnotations(additionalAnnotations);
     this.scssParser = new ScssCommentParser(this.annotations.list, config);
 
     this.scssParser.commentParser.on('warning', warning => {
