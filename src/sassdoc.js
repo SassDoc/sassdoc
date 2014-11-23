@@ -29,10 +29,7 @@ export default function sassdoc(src, dest, config) {
       stream.read(src)
         .pipe(recurse)
         // .pipe(converter)
-        .pipe(filter)
-        .on('error', err => {
-          throw err;
-        });
+        .pipe(filter);
 
       return filter.promise;
     })
