@@ -6,7 +6,7 @@ export default class Parser {
     this.annotations = new AnnotationApi(config);
     this.scssParser = new ScssCommentParser(this.annotations.list, config);
 
-    this.scssParser.commentParser.on('warning', (warning) => {
+    this.scssParser.commentParser.on('warning', warning => {
       config.logger.warn(warning);
     });
   }
