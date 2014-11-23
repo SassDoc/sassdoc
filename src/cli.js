@@ -27,10 +27,10 @@ export default function (argv = process.argv) {
   let options = docopt(doc, { version: pkg.version, argv: argv });
   let logger = new Logger(options['--verbose']);
 
-  // Load raw configuration
+  // Load raw configuration.
   let config = cfg.pre(options['--config'] || undefined, logger);
 
-  // Ensure CLI options
+  // Ensure CLI options.
   ensure(config, options, {
     theme: '--theme',
     interactive: '--interactive',
@@ -38,12 +38,12 @@ export default function (argv = process.argv) {
     noUpdateNotifier: '--no-update-notifier',
   });
 
-  // Post process configuration
+  // Post process configuration.
   cfg.post(config);
 
-  config.view = config; // Backward compatibility
+  config.view = config; // Backward compatibility.
 
-  // Run update notifier if not explicitely disabled
+  // Run update notifier if not explicitely disabled.
   if (!config.noUpdateNotifier) {
     require('./notifier').default(pkg, logger);
   }
