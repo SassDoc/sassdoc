@@ -84,6 +84,22 @@ Equal symbol (`=`) should always be surrounded by spaces when defining default v
 function foo(bar = 'baz') {}
 ```
 
+## Conditional statements
+
+Whenever writing an `if`/`else` statement, the `else` keyword should directly follow the closing curly brace from the `if` statement. No line break between the closing brace and the keyword should exist. 
+
+Also, there should always be a single space between the `if` keyword and the condition.
+
+```js
+if (condition) {
+  // ...
+} else if (condition) {
+  // ...
+} else {
+  // ...
+}
+```
+
 ## Inline documentation
 
 Every function should be documented using [JSDoc](). Annotations should not be aligned in order not to have to update alignment whever a longer line is added.
