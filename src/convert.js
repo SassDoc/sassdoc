@@ -27,8 +27,7 @@ function exec(command) {
       err.stdout = stdout;
       err.stderr = stderr;
       deferred.reject(err);
-    }
-    else {
+    } else {
       deferred.resolve({
         childProcess: childProcess,
         stdout: stdout,

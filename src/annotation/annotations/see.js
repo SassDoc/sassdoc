@@ -18,19 +18,20 @@ export default function (config) {
 
     resolve(byTypeAndName) {
       utils.eachItem(byTypeAndName, item => {
-        if (utils.isset(item.see)) {
+        if (item.see !== undefined) {
           item.see = item.see.map(see => {
-            if (utils.isset(byTypeAndName[see.type]) &&
-                utils.isset(byTypeAndName[see.type][see.name])) {
+            if (
+              byTypeAndName[see.type] !== undefined &&
+              byTypeAndName[see.type][see.name] !== undefined
+            ) {
               return byTypeAndName[see.type][see.name];
-            }
-            else {
+            } else {
               config.logger.log(
                 `Item "${item.context.name}" refers to "${see.name}" from type "${see.type}" but this item doesn't exist.`
               );
             }
           })
-          .filter(utils.isset);
+          .filter(x => x !== undefined);
 
           item.see.toJSON = function () {
             return item.see.map(item => {

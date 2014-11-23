@@ -11,22 +11,22 @@ export default function (config) {
 
     resolve(byTypeAndName) {
       utils.eachItem(byTypeAndName, item => {
-        if (utils.isset(item.alias)) {
+        if (item.alias !== undefined) {
           let alias = item.alias;
           let type = item.context.type;
           let name = item.context.name;
 
-          if (utils.isset(byTypeAndName[type]) &&
-              utils.isset(byTypeAndName[type][alias])) {
-
+          if (
+            byTypeAndName[type] !== undefined &&
+            byTypeAndName[type][alias] !== undefined
+          ) {
             if (!Array.isArray(byTypeAndName[type][alias].aliased)) {
               byTypeAndName[type][alias].aliased = [];
             }
 
             byTypeAndName[type][alias].aliased.push(name);
 
-          }
-          else {
+          } else {
             config.logger.log(`Item "${name}" is an alias of "${alias}" but this item doesn't exist.`);
           }
         }

@@ -110,8 +110,7 @@ export default function (config) {
             if (!isAnnotatedByHand(handWritten, 'mixin', match[1])) {
               mixins.push(match[1]);
             }
-          }
-          else {
+          } else {
             if (!isAnnotatedByHand(handWritten, 'function', match[1])) {
               functions.push(match[1]);
             }
@@ -143,7 +142,7 @@ export default function (config) {
         all = all.concat(variables);
 
         // Filter empty values.
-        all = all.filter(utils.isset);
+        all = all.filter(x => x !== undefined);
 
         // Merge in user supplyed requires if there are any.
         if (item.require && item.require.length > 0) {
@@ -158,15 +157,16 @@ export default function (config) {
 
     resolve(byTypeAndName) {
       utils.eachItem(byTypeAndName, item => {
-        if (utils.isset(item.require)) {
+        if (item.require !== undefined) {
           item.require = item.require.map(req => {
             if (req.external === true) {
               return req;
             }
 
-            if (utils.isset(byTypeAndName[req.type]) &&
-                utils.isset(byTypeAndName[req.type][req.name])) {
-
+            if (
+              byTypeAndName[req.type] !== undefined &&
+              byTypeAndName[req.type][req.name] !== undefined
+            ) {
               let reqItem = byTypeAndName[req.type][req.name];
 
               if (!Array.isArray(reqItem.usedBy)) {
@@ -183,20 +183,18 @@ export default function (config) {
               reqItem.usedBy.push(item);
               req.item = reqItem;
 
-            }
-            else if (req.autofill !== true) {
+            } else if (req.autofill !== true) {
               config.logger.log(
                 `Item "${item.context.name}" requires "${req.name}" from type "${req.type}" but this item doesn't exist.`
               );
-            }
-            else {
+            } else {
               return undefined;
             }
 
             return req;
 
           })
-          .filter(utils.isset);
+          .filter(x => x !== undefined);
 
           if (item.require.length > 0) {
             item.require.toJSON = function () {
@@ -209,8 +207,7 @@ export default function (config) {
 
                 if (item.external) {
                   obj.url = item.url;
-                }
-                else {
+                } else {
                   obj.description = item.description;
                   obj.context = item.context;
                 }

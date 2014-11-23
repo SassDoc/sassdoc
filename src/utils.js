@@ -34,8 +34,6 @@ export function getDateTime(date = new Date()) {
 // Pad a number with a leading 0 if inferior to 10.
 export var pad = value => (value < 10 ? '0' : '') + value;
 
-export var isset = value => typeof value !== 'undefined'; // BC
-
 // Namespace delimiters.
 let nsDelimiters = ['::', ':', '\\.', '/'];
 let ns = new RegExp(nsDelimiters.join('|'), 'g');
