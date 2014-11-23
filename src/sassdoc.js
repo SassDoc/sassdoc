@@ -64,3 +64,6 @@ export function refresh(dest, config) {
   return safeWipe(dest, config)
     .then(() => mkdir(dest));
 }
+
+// Backward compability with v1.0 API.
+export var documentize = sassdoc;
