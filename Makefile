@@ -3,6 +3,10 @@ JSHINT = node_modules/jshint/bin/jshint
 MOCHA = node_modules/mocha/bin/mocha
 YAML = node_modules/js-yaml/bin/js-yaml.js
 
+DEVELOP = develop
+SASSDOC = bin/sassdoc
+SAMPLE = node_modules/sassdoc-theme-default/scss
+
 all: dist lint test
 
 # Compile ES6 from `src` to ES5 in `dist`
@@ -23,5 +27,13 @@ test: force
 
 .jshintrc: .jshintrc.yaml
 	$(YAML) $< > $@
+
+# Compile sample input in `develop`
+# =================================
+
+compile: develop
+
+develop: force
+	$(SASSDOC) $(SAMPLE) $@ -f
 
 force:
