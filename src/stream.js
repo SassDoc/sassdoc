@@ -60,45 +60,28 @@ export function recurse() {
   return through.obj(function (chunk, enc, cb) {
     if (chunk.isBuffer()) {
       // Pass-through.
-      cb(null, chunk);
+      return cb(null, chunk);
     }
 
     if (!chunk.isDirectory()) {
       // Don't know how to handle this object.
-      cb(new Error('Unsupported stream object.'));
+      return cb(new Error('Unsupported stream object.'));
     }
 
-    else {
-      globSass(chunk.path, all => {
-        all.forEach(file => {
-          this.push(file);
-        });
-        cb();
-      });
-    }
-  });
-}
+    // It's a directory, find inner Sass/SCSS files.
+    let pattern = path.resolve(chunk.path, '**/*.+(sass|scss)');
 
-/**
- * Match and stream Sass files from source directory.
- *
- * @param {String} dir
- * @param {Function} callback
- */
-function globSass(dir, callback) {
-  let pattern = path.resolve(dir, '**/*.+(sass|scss)');
-  let all = [];
-
-  vfs.src(pattern)
-    .pipe(through.obj((chunk, enc, cb) => {
+    vfs.src(pattern).pipe(through.obj((chunk, enc, cb) => {
+      // Pass-through.
       cb(null, chunk);
-    }))
-    .on('data', data => {
-      all.push(data);
-    })
-    .on('end', () => {
-      callback(all);
-    });
+
+      // Append to "parent" stream.
+      this.push(chunk);
+    }, () => {
+      // All done.
+      cb();
+    }));
+  });
 }
 
 /**
