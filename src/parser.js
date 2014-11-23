@@ -3,7 +3,6 @@ let ScssCommentParser = require('scss-comment-parser');
 
 export default class Parser {
   constructor(config, additionalAnnotations) {
-    console.log(AnnotationsApi);
     this.annotations = new AnnotationsApi(config);
     this.annotations.addAnnotations(additionalAnnotations);
     this.scssParser = new ScssCommentParser(this.annotations.list, config);
