@@ -96,15 +96,13 @@ function parseFile(file, enc, parser) {
   let fileData = parser.parse(file.contents.toString(enc));
   let data = [];
 
-  Object.keys(fileData).forEach(type => {
-    fileData[type].forEach(item => {
-      item.file = {
-        path: file.relative,
-        name: path.basename(file),
-      };
+  fileData.forEach(item => {
+    item.file = {
+      path: file.relative,
+      name: path.basename(file),
+    };
 
-      data.push(item);
-    });
+    data.push(item);
   });
 
   return data;
