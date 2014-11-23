@@ -1,6 +1,4 @@
-
-export default function () {
-
+export default function todo() {
   return {
     name: 'todo',
 
@@ -8,7 +6,6 @@ export default function () {
       return text.trim();
     },
 
-    alias: ['todos']
+    alias: ['todos'],
   };
-
 }

@@ -1,9 +1,6 @@
-let utils = require('../../utils');
-
 let seeRegEx = /\s*(?:\{([\w-_]+)\}\s*)?(.*)/;
 
-export default function (config) {
-
+export default function see(config) {
   return {
     name: 'see',
 
@@ -16,34 +13,32 @@ export default function (config) {
       };
     },
 
-    resolve(byTypeAndName) {
-      utils.eachItem(byTypeAndName, item => {
-        if (item.see !== undefined) {
-          item.see = item.see.map(see => {
-            if (
-              byTypeAndName[see.type] !== undefined &&
-              byTypeAndName[see.type][see.name] !== undefined
-            ) {
-              return byTypeAndName[see.type][see.name];
-            } else {
-              config.logger.log(
-                `Item "${item.context.name}" refers to "${see.name}" from type "${see.type}" but this item doesn't exist.`
-              );
-            }
-          })
+    resolve(data) {
+      data.forEach(item => {
+        if (item.see === undefined) {
+          return;
+        }
+
+        item.see = item.see.map(see => {
+          let seeItem = data.find(x => x.context.name === see.name);
+
+          if (seeItem !== undefined) {
+            return seeItem;
+          }
+
+          config.logger.log(`Item "${item.context.name}" refers to "${see.name}" from type "${see.type}" but this item doesn't exist.`);
+        })
           .filter(x => x !== undefined);
 
-          item.see.toJSON = function () {
-            return item.see.map(item => {
-              return {
-                description: item.description,
-                context: item.context
-              };
-            });
-          };
-        }
+        item.see.toJSON = function () {
+          return item.see.map(item => {
+            return {
+              description: item.description,
+              context: item.context
+            };
+          });
+        };
       });
-    }
+    },
   };
-
 }

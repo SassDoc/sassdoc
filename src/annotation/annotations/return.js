@@ -1,7 +1,6 @@
 let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([\s\S]*))?/;
 
-export default function () {
-
+export default function return_() {
   return {
     name: 'return',
 
@@ -32,7 +31,6 @@ export default function () {
 
     allowedOn: ['function'],
 
-    multiple: false
+    multiple: false,
   };
-
 }

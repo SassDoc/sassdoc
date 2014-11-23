@@ -3,54 +3,7 @@ let uniq = require('lodash').uniq;
 
 let reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
 
-let isAnnotatedByHand = function (handWritten, type, name) {
-  if (type && name && handWritten) {
-    return handWritten[type + '-' + name];
-  }
-
-  return false;
-};
-
-let searchForMatches = function (code, regex, isAnnotatedByHand) {
-  let match;
-  let matches = [];
-
-  while ((match = regex.exec(code))) {
-    if (!isAnnotatedByHand(match[1])) {
-      matches.push(match[1]);
-    }
-  }
-
-  return uniq(matches);
-};
-
-let typeNameObject = function (type) {
-  return function (name) {
-    if (name.length > 0) {
-      return {
-        type: type,
-        name: name,
-        autofill: true
-      };
-    }
-  };
-};
-
-let compareBefore = function (code, str, index) {
-  for (let i = index - str.length, b = 0; i < index; i++) {
-    if (code[i] !== str[b]) {
-      return false;
-    }
-
-    b++;
-  }
-
-  return true;
-};
-
-
 export default function (config) {
-
   return {
     name: 'require',
 
@@ -59,7 +12,7 @@ export default function (config) {
 
       let obj = {
         type: match[1] || 'function',
-        name: match[2]
+        name: match[2],
       };
 
       obj.external = utils.splitNamespace(obj.name).length > 1;
@@ -93,19 +46,20 @@ export default function (config) {
 
         if (item.require) {
           handWritten = {};
+
           item.require.forEach(reqObj => {
             handWritten[reqObj.type + '-' + reqObj.name] = true;
           });
         }
 
-        // Searching for mixins and functions
+        // Searching for mixins and functions.
         let mixins = [];
         let functions = [];
         let mixinFunctionRegex = /\s*([\w\d_-]*)\(/g;
         let match;
 
         while ((match = mixinFunctionRegex.exec(item.context.code))) {
-          // Try if this is a mixin or function
+          // Try if this is a mixin or functio.n
           if (compareBefore(item.context.code, '@include', match.index)) {
             if (!isAnnotatedByHand(handWritten, 'mixin', match[1])) {
               mixins.push(match[1]);
@@ -122,6 +76,7 @@ export default function (config) {
           /@extend\s+%([^;\s]+)/ig,
           isAnnotatedByHand.bind(null, handWritten, 'mixin')
         );
+
         let variables = searchForMatches(
           item.context.code,
           /\$([a-z0-9_-]+)/ig,
@@ -129,12 +84,12 @@ export default function (config) {
         );
 
         // Create object for each required item.
-        mixins       = mixins.map(typeNameObject('mixin'));
-        functions    = functions.map(typeNameObject('function'));
+        mixins = mixins.map(typeNameObject('mixin'));
+        functions = functions.map(typeNameObject('function'));
         placeholders = placeholders.map(typeNameObject('placeholder'));
-        variables    = variables.map(typeNameObject('variable'));
+        variables = variables.map(typeNameObject('variable'));
 
-        // Merge all arrays
+        // Merge all arrays.
         let all = [];
         all = all.concat(mixins);
         all = all.concat(functions);
@@ -155,72 +110,119 @@ export default function (config) {
       }
     },
 
-    resolve(byTypeAndName) {
-      utils.eachItem(byTypeAndName, item => {
-        if (item.require !== undefined) {
-          item.require = item.require.map(req => {
-            if (req.external === true) {
-              return req;
-            }
+    resolve(data) {
+      data.forEach(item => {
+        if (item.require === undefined) {
+          return;
+        }
 
-            if (
-              byTypeAndName[req.type] !== undefined &&
-              byTypeAndName[req.type][req.name] !== undefined
-            ) {
-              let reqItem = byTypeAndName[req.type][req.name];
+        item.require = item.require.map(req => {
+          if (req.external === true) {
+            return req;
+          }
 
-              if (!Array.isArray(reqItem.usedBy)) {
-                reqItem.usedBy = [];
-                reqItem.usedBy.toJSON = function () {
-                  return reqItem.usedBy.map(item => {
-                    return {
-                      description: item.description,
-                      context: item.context
-                    };
-                  });
-                };
-              }
-              reqItem.usedBy.push(item);
-              req.item = reqItem;
+          let reqItem = data.find(x => x.context.name === req.name);
 
-            } else if (req.autofill !== true) {
+          if (reqItem === undefined) {
+            if (!req.autofill) {
               config.logger.log(
                 `Item "${item.context.name}" requires "${req.name}" from type "${req.type}" but this item doesn't exist.`
               );
-            } else {
-              return undefined;
             }
 
-            return req;
+            return;
+          }
 
-          })
-          .filter(x => x !== undefined);
+          if (!Array.isArray(reqItem.usedBy)) {
+            reqItem.usedBy = [];
 
-          if (item.require.length > 0) {
-            item.require.toJSON = function () {
-              return item.require.map(item => {
-                let obj = {
-                  type: item.type,
-                  name: item.name,
-                  external: item.external,
+            reqItem.usedBy.toJSON = function () {
+              return reqItem.usedBy.map(item => {
+                return {
+                  description: item.description,
+                  context: item.context
                 };
-
-                if (item.external) {
-                  obj.url = item.url;
-                } else {
-                  obj.description = item.description;
-                  obj.context = item.context;
-                }
-
-                return obj;
               });
             };
           }
+
+          reqItem.usedBy.push(item);
+          req.item = reqItem;
+
+          return req;
+        })
+          .filter(x => x !== undefined);
+
+        if (item.require.length > 0) {
+          item.require.toJSON = function () {
+            return item.require.map(item => {
+              let obj = {
+                type: item.type,
+                name: item.name,
+                external: item.external,
+              };
+
+              if (item.external) {
+                obj.url = item.url;
+              } else {
+                obj.description = item.description;
+                obj.context = item.context;
+              }
+
+              return obj;
+            });
+          };
         }
       });
     },
 
-    alias: ['requires']
+    alias: ['requires'],
   };
-
 }
+
+function isAnnotatedByHand(handWritten, type, name) {
+  if (type && name && handWritten) {
+    return handWritten[type + '-' + name];
+  }
+
+  return false;
+}
+
+function searchForMatches(code, regex, isAnnotatedByHand) {
+  let match;
+  let matches = [];
+
+  while ((match = regex.exec(code))) {
+    if (!isAnnotatedByHand(match[1])) {
+      matches.push(match[1]);
+    }
+  }
+
+  return uniq(matches);
+}
+
+function typeNameObject(type) {
+  return function (name) {
+    if (name.length > 0) {
+      return {
+        type: type,
+        name: name,
+        autofill: true,
+      };
+    }
+  };
+}
+
+function compareBefore(code, str, index) {
+  for (let i = index - str.length, b = 0; i < index; i++) {
+    if (code[i] !== str[b]) {
+      return false;
+    }
+
+    b++;
+  }
+
+  return true;
+}
+
+

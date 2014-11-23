@@ -1,7 +1,6 @@
 let sinceRegEx = /\s*([^\s]*)\s*(?:-?\s*([\s\S]*))?\s*$/;
 
-export default function () {
-
+export default function since() {
   return {
     name: 'since',
 
@@ -18,7 +17,6 @@ export default function () {
       }
 
       return obj;
-    }
+    },
   };
-
 }

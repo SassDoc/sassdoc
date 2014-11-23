@@ -1,6 +1,4 @@
-
-export default function () {
-
+export default function access() {
   return {
     name: 'access',
 
@@ -12,7 +10,6 @@ export default function () {
       return 'public';
     },
 
-    multiple: false
+    multiple: false,
   };
-
 }

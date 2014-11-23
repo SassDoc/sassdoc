@@ -1,7 +1,6 @@
 let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$?([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([\s\S]*))?/;
 
-export default function () {
-
+export default function parameter() {
   return {
     name: 'parameter',
 
@@ -30,7 +29,6 @@ export default function () {
 
     alias: ['arg', 'arguments', 'param', 'parameters'],
 
-    allowedOn: ['function', 'mixin']
+    allowedOn: ['function', 'mixin'],
   };
-
 }

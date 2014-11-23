@@ -1,7 +1,6 @@
 let linkRegex = /\s*([^:]+\:\/\/[^\s]*)?\s*(.*?)$/;
 
-export default function () {
-
+export default function link() {
   return {
     name: 'link',
 
@@ -10,11 +9,10 @@ export default function () {
 
       return {
         url: parsed[1] || '',
-        caption: parsed[2] || ''
+        caption: parsed[2] || '',
       };
     },
 
-    alias: ['source']
+    alias: ['source'],
   };
-
 }

@@ -36,7 +36,7 @@ export default function sassdoc(src, dest, config) {
 
     .then(data => {
       logger.log(`Folder "${src}" successfully parsed.`);
-      config.data = index(data);
+      config.data = data;
 
       let promise = config.theme(dest, config);
 
@@ -72,25 +72,11 @@ export function parse(parser) {
 
   filter.promise = filter.promise.then(data => {
     data = data.filter(item => item.context.type !== 'unknown');
-    data = parser.postProcess(data); // TODO: this is not flat yet
+    data = parser.postProcess(data);
     data = sort(data);
 
     return data;
   });
 
   return filter;
-}
-
-export function index(data) {
-  let obj = {};
-
-  data.forEach(item => {
-    if (!(item.context.type in obj)) {
-      obj[item.context.type] = {};
-    }
-
-    obj[item.context.type][item.context.name] = item;
-  });
-
-  return obj;
 }

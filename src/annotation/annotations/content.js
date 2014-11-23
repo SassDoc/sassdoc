@@ -1,6 +1,4 @@
-
-export default function () {
-
+export default function content() {
   return {
     name: 'content',
 
@@ -16,7 +14,6 @@ export default function () {
 
     allowedOn: ['mixin'],
 
-    multiple: false
+    multiple: false,
   };
-
 }

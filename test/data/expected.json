@@ -70,44 +70,36 @@
       {
         "type": "function",
         "name": "this::is::an::external::dependancy",
-        "external": true,
-        "description": "External dependency with double colon http://github.com"
+        "external": true
       },
       {
         "type": "function",
         "name": "this:is:an:external:dependancy",
-        "external": true,
-        "description": "External dependency with single colon http://github.com"
+        "external": true
       },
       {
         "type": "function",
         "name": "this/is/an/external/dependancy",
-        "external": true,
-        "description": "External dependency with slash http://github.com"
+        "external": true
       },
       {
         "type": "function",
         "name": "this.is.an.external.dependancy",
-        "external": true,
-        "description": "External dependency with dot http://github.com"
+        "external": true
       }
     ],
     "see": [
       {
-        "type": "function",
-        "name": "function-specific-test"
-      },
-      {
-        "type": "mixin",
-        "name": "mixin-global-test"
-      },
-      {
-        "type": "function",
-        "name": "$variable-global-test"
-      },
-      {
-        "type": "function",
-        "name": "%placeholder-global-test"
+        "description": "This is a test function aiming at testing:\n- `@param`\n- `@return`\n- `@throw`\n\n",
+        "context": {
+          "type": "function",
+          "name": "function-specific-test",
+          "code": "",
+          "line": {
+            "start": 76,
+            "end": 76
+          }
+        }
       }
     ],
     "since": [
@@ -171,7 +163,33 @@
     "file": {
       "path": "test.scss",
       "name": "[object Object]"
-    }
+    },
+    "usedBy": [
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 61,
+            "end": 61
+          }
+        }
+      },
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 125,
+            "end": 134
+          }
+        }
+      }
+    ]
   },
   {
     "description": "This is a test mixin aiming at testing:\n- `@content`\n- `@param`\n- `@output`\n- `@throw`\n\n",
@@ -213,7 +231,21 @@
     "file": {
       "path": "test.scss",
       "name": "[object Object]"
-    }
+    },
+    "usedBy": [
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 61,
+            "end": 61
+          }
+        }
+      }
+    ]
   },
   {
     "description": "This is a test variable aiming at testing:\n- `@prop`\n- `@type`\n\n",
@@ -253,7 +285,33 @@
     "file": {
       "path": "test.scss",
       "name": "[object Object]"
-    }
+    },
+    "usedBy": [
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 61,
+            "end": 61
+          }
+        }
+      },
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 125,
+            "end": 134
+          }
+        }
+      }
+    ]
   },
   {
     "description": "This is a test placeholder aiming at testing:\n- `@throw`\n\n",
@@ -280,7 +338,33 @@
     "file": {
       "path": "test.scss",
       "name": "[object Object]"
-    }
+    },
+    "usedBy": [
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 61,
+            "end": 61
+          }
+        }
+      },
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 125,
+            "end": 134
+          }
+        }
+      }
+    ]
   },
   {
     "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
@@ -305,28 +389,15 @@
     "require": [
       {
         "type": "function",
-        "name": "function-specific-test",
-        "autofill": true
+        "name": "function-specific-test"
       },
       {
         "type": "placeholder",
-        "name": "placeholder-specific-test",
-        "autofill": true
+        "name": "placeholder-specific-test"
       },
       {
         "type": "variable",
-        "name": "call",
-        "autofill": true
-      },
-      {
-        "type": "variable",
-        "name": "use",
-        "autofill": true
-      },
-      {
-        "type": "variable",
-        "name": "variable-specific-test",
-        "autofill": true
+        "name": "variable-specific-test"
       }
     ],
     "throw": [

@@ -1,6 +1,4 @@
-
-export default function () {
-
+export default function output() {
   return {
     name: 'output',
 
@@ -12,7 +10,6 @@ export default function () {
 
     allowedOn: ['mixin'],
 
-    multiple: false
+    multiple: false,
   };
-
 }

@@ -1,6 +1,4 @@
-
-export default function () {
-
+export default function type() {
   return {
     name: 'type',
 
@@ -10,7 +8,6 @@ export default function () {
 
     allowedOn: ['variable'],
 
-    multiple: false
+    multiple: false,
   };
-
 }

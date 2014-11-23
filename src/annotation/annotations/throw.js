@@ -1,7 +1,6 @@
 let autoParserError = /@error\s+(?:'|")([^'"]+)/g;
 
-export default function () {
-
+export default function throw_() {
   return {
     name: 'throw',
 
@@ -16,6 +15,7 @@ export default function () {
       while ((match = autoParserError.exec(item.context.code))) {
         throwing.push(match[1]);
       }
+
       if (throwing.length > 0) {
         return throwing;
       }
@@ -23,7 +23,6 @@ export default function () {
 
     alias: ['throws', 'exception'],
 
-    allowedOn: ['function', 'mixin', 'placeholder']
+    allowedOn: ['function', 'mixin', 'placeholder'],
   };
-
 }

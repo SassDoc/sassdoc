@@ -1,6 +1,4 @@
-
-export default function () {
-
+export default function group() {
   return {
     name: 'group',
 
@@ -12,7 +10,6 @@ export default function () {
       return ['undefined'];
     },
 
-    multiple: false
+    multiple: false,
   };
-
 }

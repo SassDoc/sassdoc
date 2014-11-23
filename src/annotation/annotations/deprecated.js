@@ -1,5 +1,4 @@
-
-export default function () {
+export default function deprecated() {
 
   return {
     name: 'deprecated',
@@ -8,7 +7,6 @@ export default function () {
       return text.trim();
     },
 
-    multiple: false
+    multiple: false,
   };
-
 }

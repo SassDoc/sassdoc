@@ -1,7 +1,4 @@
-let utils = require('../../utils');
-
-export default function (config) {
-
+export default function alias(config) {
   return {
     name: 'alias',
 
@@ -9,33 +6,32 @@ export default function (config) {
       return text.trim();
     },
 
-    resolve(byTypeAndName) {
-      utils.eachItem(byTypeAndName, item => {
-        if (item.alias !== undefined) {
-          let alias = item.alias;
-          let type = item.context.type;
-          let name = item.context.name;
-
-          if (
-            byTypeAndName[type] !== undefined &&
-            byTypeAndName[type][alias] !== undefined
-          ) {
-            if (!Array.isArray(byTypeAndName[type][alias].aliased)) {
-              byTypeAndName[type][alias].aliased = [];
-            }
-
-            byTypeAndName[type][alias].aliased.push(name);
-
-          } else {
-            config.logger.log(`Item "${name}" is an alias of "${alias}" but this item doesn't exist.`);
-          }
+    resolve(data) {
+      data.forEach(item => {
+        if (item.alias === undefined) {
+          return;
         }
+
+        let alias = item.alias;
+        let name = item.context.name;
+
+        let aliasedItem = data.find(i => i.context.name === alias);
+
+        if (aliasedItem === undefined) {
+          config.logger.log(`Item "${name}" is an alias of "${alias}" but this item doesn't exist.`);
+          return;
+        }
+
+        if (!Array.isArray(aliasedItem.aliased)) {
+          aliasedItem.aliased = [];
+        }
+
+        aliasedItem.aliased.push(name);
       });
     },
 
     allowedOn: ['function', 'mixin', 'variable'],
 
-    multiple: false
+    multiple: false,
   };
-
 }

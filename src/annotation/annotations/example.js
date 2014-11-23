@@ -1,5 +1,6 @@
 /**
  * `@example` is a multiline annotation.
+ *
  * Check if there is something on the first line and use it as the type information.
  *
  * @example html - description
@@ -8,14 +9,13 @@
 
 let descRegEx = /(\w+)\s*(?:-?\s*(.*))/;
 
-export default function () {
-
+export default function example() {
   return {
     name: 'example',
 
     parse(text) {
       let example = {
-        type: 'scss', // Default to scss
+        type: 'scss', // Default to `scss`.
         code: text
       };
 
@@ -35,7 +35,6 @@ export default function () {
       example.code = example.code.replace(/^\n|\n$/g, '');
 
       return example;
-    }
+    },
   };
-
 }
