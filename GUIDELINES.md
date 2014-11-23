@@ -84,7 +84,7 @@ Equal symbol (`=`) should always be surrounded by spaces when defining default v
 function foo(bar = 'baz') {}
 ```
 
-## Conditional statements
+## Code blocks
 
 Whenever writing an `if`/`else` statement, the `else` keyword should directly follow the closing curly brace from the `if` statement. No line break between the closing brace and the keyword should exist. 
 
@@ -99,6 +99,8 @@ if (condition) {
   // ...
 }
 ```
+
+Same goes with do/while and try/catch.
 
 ## Inline documentation
 
