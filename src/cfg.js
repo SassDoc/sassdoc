@@ -90,7 +90,6 @@ export function post(config) {
     config.themeName = config.theme || 'default';
     config.theme = theme(config.theme, config.dir, config.logger);
   }
-
 }
 
 /**
