@@ -13,6 +13,7 @@ all: dist lint test
 # =======================================
 
 dist: force
+	rm -rf $@
 	$(TRACEUR) --modules=commonjs --dir src dist
 
 # Code quality
