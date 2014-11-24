@@ -9,8 +9,8 @@ let sort = require('./sorter').default;
 let recurse = require('./recurse').default;
 
 export default function sassdoc(src, dest, config = {}) {
-  config.logger = config.logger || new Logger();
-  config = cfg.post(config, logger);
+  let logger = config.logger = config.logger || new Logger();
+  config = cfg.post(config);
 
   return refresh(dest, {
     interactive: config.interactive || false,
