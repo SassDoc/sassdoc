@@ -9,6 +9,7 @@ let Logger = require('./logger').default;
 let Parser = require('./parser').default;
 let sort = require('./sorter').default;
 let recurse = require('./recurse').default;
+let exclude = require('./exclude').default;
 
 export default function sassdoc(src, dest, config = {}) {
   let logger = config.logger = config.logger || new Logger();
@@ -62,6 +63,7 @@ export function parse(src, config = {}) {
 
   vfs.src(src)
     .pipe(recurse())
+    .pipe(exclude(config.exclude || []))
     .pipe(parseFilter);
 
   return parseFilter.promise.then(data => sort(data));
