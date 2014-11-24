@@ -5,7 +5,7 @@
 require('../init');
 
 var path = require('path');
-var stream = require('../../dist/stream');
+var vfs = require('vinyl-fs');
 var Logger = require('../../dist/logger').default;
 var Parser = require('../../dist/parser').default;
 
@@ -16,4 +16,4 @@ parseFilter.promise.then(function (data) {
   console.log(JSON.stringify(data, undefined, 2));
 });
 
-stream.read(path.resolve(__dirname, 'test.scss')).pipe(parseFilter);
+vfs.src(path.resolve(__dirname, 'test.scss')).pipe(parseFilter);
