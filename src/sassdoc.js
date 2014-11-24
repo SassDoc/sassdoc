@@ -21,20 +21,12 @@ export default function sassdoc(src, dest, config = {}) {
 
     .then(() => {
       logger.log(`Folder "${dest}" successfully refreshed.`);
-
-      let parser = new Parser(config, config.theme.annotations);
-      let parseFilter = parser.stream();
-
-      vfs.src(src)
-        .pipe(recurse())
-        .pipe(parseFilter);
-
-      return parseFilter.promise;
+      return parse(src, config);
     })
 
     .then(data => {
       logger.log(`Folder "${src}" successfully parsed.`);
-      config.data = sort(data);
+      config.data = data;
 
       let promise = config.theme(dest, config);
 
@@ -58,6 +50,19 @@ export default function sassdoc(src, dest, config = {}) {
       logger.error('stack' in err ? err.stack : err);
       throw err;
     });
+}
+
+export function parse(src, config = {}) {
+  config = cfg.post(config);
+
+  let parser = new Parser(config, config.theme && config.theme.annotations);
+  let parseFilter = parser.stream();
+
+  vfs.src(src)
+    .pipe(recurse())
+    .pipe(parseFilter);
+
+  return parseFilter.promise.then(data => sort(data));
 }
 
 export function refresh(dest, config) {
