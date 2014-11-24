@@ -3,7 +3,6 @@ let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
 let Logger = require('./logger').default;
-let Converter = require('./converter').default;
 let Parser = require('./parser').default;
 let sort = require('./sorter').default;
 let recurse = require('./recurse').default;
@@ -21,13 +20,11 @@ export default function sassdoc(src, dest, config) {
     .then(() => {
       logger.log(`Folder "${dest}" successfully refreshed.`);
 
-      let converter = Converter(config);
       let parser = new Parser(config, config.theme.annotations);
       let parseFilter = parser.stream();
 
       vfs.src(src)
         .pipe(recurse())
-        .pipe(converter)
         .pipe(parseFilter);
 
       return parseFilter.promise;
@@ -70,5 +67,5 @@ export function refresh(dest, config) {
 export var documentize = sassdoc;
 
 // Re-export, expose API.
-export { Logger, Converter, Parser, sort };
+export { Logger, Parser, sort };
 export { default as cfg } from './cfg';
