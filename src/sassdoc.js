@@ -2,13 +2,15 @@ let utils = require('./utils');
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
+let cfg = require('./cfg');
 let Logger = require('./logger').default;
 let Parser = require('./parser').default;
 let sort = require('./sorter').default;
 let recurse = require('./recurse').default;
 
-export default function sassdoc(src, dest, config) {
-  let logger = config.logger || new Logger();
+export default function sassdoc(src, dest, config = {}) {
+  config.logger = config.logger || new Logger();
+  config = cfg.post(config, logger);
 
   return refresh(dest, {
     interactive: config.interactive || false,
@@ -68,5 +70,4 @@ export function refresh(dest, config) {
 export var documentize = sassdoc;
 
 // Re-export, expose API.
-export { Logger, Parser, sort };
-export { default as cfg } from './cfg';
+export { Logger, Parser, sort, cfg };
