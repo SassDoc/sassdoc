@@ -1,4 +1,5 @@
 let autoParserError = /@error\s+(?:'|")([^'"]+)/g;
+let uniq = require('lodash').uniq;
 
 export default function throw_() {
   return {
@@ -17,7 +18,7 @@ export default function throw_() {
       }
 
       if (throwing.length > 0) {
-        return throwing;
+        return uniq(throwing);
       }
     },
 
