@@ -70,5 +70,5 @@ export function refresh(dest, config) {
 export var documentize = sassdoc;
 
 // Re-export, expose API.
-export { Logger, Converter, Parser };
+export { Logger, Converter, Parser, sort };
 export { default as cfg } from './cfg';
