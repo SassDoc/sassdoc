@@ -11,7 +11,7 @@ let theme = require('./theme').default;
  * @param {Logger} logger
  * @return {Object}
  */
-export default function (file, logger = log.empty) {
+export default function cfg(file, logger = log.empty) {
   return post(pre(file, logger));
 }
 
