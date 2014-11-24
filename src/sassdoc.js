@@ -64,6 +64,7 @@ export function refresh(dest, config) {
 }
 
 // Backward compability with v1.0 API.
+/*global sassdoc: true */
 export var documentize = sassdoc;
 
 // Re-export, expose API.
