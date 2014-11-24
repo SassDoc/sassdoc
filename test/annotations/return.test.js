@@ -8,17 +8,15 @@ describe('#return', function () {
   var returns = (new (require('../../dist/annotation').default)()).list.return;
 
   it('should return an object', function () {
-    assert.deepEqual(returns.parse('{type} $hyphenated-name (default) - description'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description' });
-    assert.deepEqual(returns.parse('{type} $name (()) - description'), { type: 'type', name: 'name', default: '()', description: 'description' });
-    assert.deepEqual(returns.parse('{List} $list - list to check'), { type: 'List', name: 'list', description: 'list to check' });
+    assert.deepEqual(returns.parse('{List} - list to check'), { type: 'List', description: 'list to check' });
   });
 
   it('should parse all chars in type', function () {
-    assert.deepEqual(returns.parse('{*} $name - description'), { type: '*', name: 'name', description: 'description' });
-    assert.deepEqual(returns.parse('{type|other} $name - description'), { type: 'type|other', name: 'name', description: 'description' });
+    assert.deepEqual(returns.parse('{*} - description'), { type: '*', description: 'description' });
+    assert.deepEqual(returns.parse('{type|other} - description'), { type: 'type|other', description: 'description' });
   });
 
   it('should work for multiline description', function () {
-    assert.deepEqual(returns.parse('{type} $hyphenated-name (default) - description\nmore\nthan\none\nline'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description\nmore\nthan\none\nline' });
+    assert.deepEqual(returns.parse('{type} - description\nmore\nthan\none\nline'), { type: 'type', description: 'description\nmore\nthan\none\nline' });
   });
 });

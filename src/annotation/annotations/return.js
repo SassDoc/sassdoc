@@ -1,4 +1,4 @@
-let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([\s\S]*))?/;
+let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:-?\s*([\s\S]*))?/;
 
 export default function return_() {
   return {
@@ -13,15 +13,7 @@ export default function return_() {
       }
 
       if (parsed[2]) {
-        obj.name = parsed[2];
-      }
-
-      if (parsed[3]) {
-        obj.default = parsed[3];
-      }
-
-      if (parsed[4]) {
-        obj.description = parsed[4];
+	obj.description = parsed[2];
       }
 
       return obj;
