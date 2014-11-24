@@ -1,5 +1,7 @@
-'use strict';
+export default function ignore() {
+  return {
+    name: 'ignore',
 
-module.exports = {
-  parse: function () {}
-};
+    parse() {},
+  };
+}

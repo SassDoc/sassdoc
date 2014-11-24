@@ -1,8 +1,11 @@
-'use strict';
+export default function todo() {
+  return {
+    name: 'todo',
 
-module.exports = {
-  parse: function (text) {
-    return text.trim();
-  },
-  alias: ['todos']
-};
+    parse(text) {
+      return text.trim();
+    },
+
+    alias: ['todos'],
+  };
+}

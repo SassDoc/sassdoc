@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#group', function () {
-  var group = (new (require('../../src/annotation'))()).list.group;
+  var group = (new (require('../../dist/annotation').default)()).list.group;
 
   it('should parse a single group and ingore case', function () {
     assert.deepEqual(group.parse('group'), ['group']);

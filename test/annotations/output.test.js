@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#output', function () {
-  var output = (new (require('../../src/annotation'))()).list.output;
+  var output = (new (require('../../dist/annotation').default)()).list.output;
 
   it('should parse an output description', function () {
     assert.deepEqual(output.parse('position'), 'position');

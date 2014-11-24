@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#return', function () {
-  var returns = (new (require('../../src/annotation'))()).list.return;
+  var returns = (new (require('../../dist/annotation').default)()).list.return;
 
   it('should return an object', function () {
     assert.deepEqual(returns.parse('{type} $hyphenated-name (default) - description'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description' });

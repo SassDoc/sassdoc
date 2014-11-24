@@ -1,296 +1,151 @@
-'use strict';
-
-var logger = require('./log');
-var path = require('path');
-var fs = require('fs');
-var yaml = require('js-yaml');
-var _ = require('lodash');
+let fs = require('fs');
+let path = require('path');
+let yaml = require('js-yaml');
+let log = require('./logger');
+let theme = require('./theme').default;
 
 /**
- * Tests given exception to see if the code is `MODULE_NOT_FOUND` and
- * if the exception text matches the module name.
+ * See both `pre` and `post`.
  *
- * @param {String} name Module name to check in exception.
- * @param {Object} e Exception.
- * @return {Boolean}
+ * @param {Object|String} config
+ * @param {Logger} logger
+ * @return {Object}
  */
-function isModuleNotFound(name, e) {
-  if (e.code !== 'MODULE_NOT_FOUND') {
-    return false;
+export default function cfg(config, logger = log.empty) {
+  if (typeof config !== 'object') {
+    config = pre(config, logger);
   }
 
-  return e.message.split('\'')[1].split('\'')[0] === name;
-}
-
-// Object identifier for module not found exception.
-var MODULE_NOT_FOUND = {};
-
-// Illegal type exception
-var ILLEGAL_TYPE = {};
-
-/**
- * Wrapper for `require` that will throw above `MODULE_NOT_FOUND` object
- * reference if the very module `name` was not found. If `name` is found
- * but an inner `require` fails, the normal exception will be thrown.
- */
-function requireNotFound(name) {
-  try {
-    return require(name);
-  } catch (e) {
-    if (isModuleNotFound(name, e)) {
-      throw MODULE_NOT_FOUND;
-    }
-
-    throw e;
-  }
+  return post(config);
 }
 
 /**
- * Resolve and configuration file path.
+ * Get the configuration object from given file of `.sassdocrc` if not
+ * found.
  *
- * @param {String} config
- * @return {String}
- */
-function resolveConfig(config) {
-  return path.resolve(process.cwd(), config);
-}
-
-/**
- * Read a config file according to its extension.
+ * The `dir` property will be the directory of the given file or the CWD
+ * if no file is given. The configuration paths should be relative to
+ * it.
+ *
+ * The given logger will be injected in the configuration object for
+ * further usage.
  *
  * @param {String} file
- */
-function readConfig(file) {
-  return yaml.safeLoad(fs.readFileSync(file, 'utf-8'));
-}
-
-/**
- * Try an array of config files until one is actually found, or
- * return empty object.
- *
- * @param {Array} configs
- */
-function tryConfigs(configs) {
-  for (var i = 0, length = configs.length; i < length; i++) {
-    try {
-      return readConfig(resolveConfig(configs[i]));
-    } catch (e) {
-      if (e !== ILLEGAL_TYPE && e.code !== 'ENOENT') {
-        throw e;
-      }
-    }
-  }
-
-  // Empty view config, maybe the theme will set default values.
-  return {};
-}
-
-/**
- * Resolve and require configuration value.
- *
- * @param {String|Object} config
+ * @param {Logger} logger
  * @return {Object}
  */
-function requireConfig(config) {
-  if (config) {
-    try {
-      return readConfig(resolveConfig(config));
-    } catch (e) {
-      if (e === ILLEGAL_TYPE) {
-        // Already logged
-      } else if (e.code === 'ENOENT') {
-        logger.error('Config file `' + config + '` not found.');
-      } else {
-        throw e;
-      }
+export function pre(file, logger = log.empty) {
+  file = resolve(process.cwd(), file);
 
-      logger.warn('Falling back to default config.');
-    }
-  }
-
-  return tryConfigs(['.sassdocrc']);
-}
-
-/**
- * Resolve and require package value.
- *
- * @param {String} dir
- * @param {String|Object} package
- * @return {Object}
- */
-function requirePackage(dir, pkg) {
-  if (!pkg) {
-    try {
-      // Try `package.json` in the same directory.
-      return requireNotFound(dir + '/package.json');
-    } catch (e) {
-      if (e !== MODULE_NOT_FOUND) {
-        throw e;
-      }
-
-      logger.warn('No package information.');
-      return null;
-    }
-  }
-
-  var pkgPath = dir + '/' + pkg;
-
-  try {
-    return requireNotFound(pkgPath);
-  } catch (e) {
-    if (e !== MODULE_NOT_FOUND) {
-      throw e;
+  let config = maybe(file, () => {
+    if (file !== undefined) {
+      logger.error(`Config file "${file}" not found.`);
+      logger.warn('Falling back to ".sassdocrc".');
     }
 
-    var message = 'Can\'t find a package file at `' + pkgPath + '`.';
-    logger.warn(message);
+    return maybe('.sassdocrc', () => {
+      return {logger};
+    });
+  });
+
+  config.logger = logger;
+
+  if (file !== undefined) {
+    config.dir = path.resolve(path.dirname(file));
   }
-}
-
-/**
- * @param {*} theme
- * @return {Function}
- * @throws If the theme is not a function.
- */
-function inspectTheme(theme) {
-  var opt = Object.prototype.toString;
-  var message; // Error message helper variable
-
-  if (typeof theme !== 'function') {
-    message = 'Given theme is ' + opt.call(theme) + ', expected ' +
-              opt.call(inspectTheme) + '.';
-
-    logger.error(message);
-
-    throw message;
-  }
-
-  if (theme.length !== 2) {
-    message = 'Given theme takes ' + theme.length + ' arguments, ' +
-              'expected 2.';
-
-    logger.warn(message);
-  }
-
-  return theme;
-}
-
-/**
- * Resolve and require theme value.
- *
- * `MODULE_NOT_FOUND` reference is thrown if nothing at all is found.
- *
- * @param {String} dir
- * @param {String} theme
- * @return {*}
- */
-function requireRawTheme(dir, theme) {
-  if (!theme) {
-    theme = 'default';
-  }
-
-  try {
-    return requireNotFound('sassdoc-theme-' + theme);
-  } catch (e) {
-    if (e !== MODULE_NOT_FOUND) {
-      throw e;
-    }
-  }
-
-  try {
-    return requireNotFound(dir + '/' + theme);
-  } catch (e) {
-    if (e !== MODULE_NOT_FOUND) {
-      throw e;
-    }
-  }
-
-  return requireNotFound(theme);
-}
-
-/*global requireTheme:true */
-
-/**
- * Fallback to default theme, logging a message.
- *
- * @param {String} dir
- */
-function defaultTheme(dir) {
-  logger.warn('Falling back to default theme.');
-  return requireTheme(dir);
-}
-
-/**
- * Resolve require and validate theme value.
- *
- * @param {String} dir
- * @param {String} theme
- * @return {Function}
- */
-function requireTheme(dir, theme) {
-  try {
-    theme = requireRawTheme(dir, theme);
-  } catch (e) {
-    if (e !== MODULE_NOT_FOUND) {
-      throw e;
-    }
-
-    if (!theme) {
-      // Default theme was not found? WTF!
-      throw new Error('Holy shit, the default theme was not found!');
-    }
-
-    logger.error('Theme `' + theme + '` not found.');
-    return defaultTheme(dir);
-  }
-
-  try {
-    // Already logs any error
-    return inspectTheme(theme);
-  } catch (e) {
-    return defaultTheme(dir);
-  }
-}
-
-/**
- * Parse configuration.
- *
- * @param {String|Object} view
- * @param {Object} override Object that will override view properties.
- * @return {Object}
- */
-module.exports = function (view, override) {
-  // Relative directory for `package` file
-  var dir;
-  var config = {__sassdoc__: true};
-
-  if (typeof view !== 'object') {
-    dir = path.resolve(path.dirname(config));
-    view = requireConfig(view);
-  } else {
-    // `package` is relative to CWD
-    dir = process.cwd();
-  }
-
-  config.view = view = _.merge({}, view, override);
-
-  // Resolve package
-  if (typeof view.package === 'object') {
-    config.package = view.package;
-  } else {
-    config.package = requirePackage(dir, view.package);
-  }
-
-  // Resolve theme
-  if (typeof view.theme === 'function') {
-    config.theme = view.theme;
-  } else {
-    config.theme = requireTheme(dir, view.theme);
-    config.themeName = view.theme || 'default';
-  }
-
-  // Expose the relative path base
-  config.dir = dir;
 
   return config;
-};
+}
+
+/**
+ * Post process given configuration object to ensure `package` and
+ * `theme` are uniform values.
+ *
+ * The `package` key is ensured to be an object. If it's a string, it's
+ * required as JSON, relative to the configuration file directory.
+ *
+ * The `theme` key, if present and not already a function, will be resolved to
+ * the actual theme function.
+ *
+ * @param {Object} config
+ * @return {Object}
+ */
+export function post(config) {
+  if (config.dir === undefined) {
+    config.dir = process.cwd();
+  }
+
+  if (typeof config.package !== 'object') {
+    let file = resolve(config.dir, config.package);
+
+    config.package = maybe(file, () => {
+      if (config.package !== undefined) {
+        config.logger.error(`Package file "${file}" not found.`);
+        config.logger.warn('Falling back to "package.json".');
+      }
+
+      let file = path.resolve(config.dir, 'package.json');
+
+      return maybe(file, () => {
+        config.logger.warn('No package information.');
+      });
+    });
+  }
+
+  if (typeof config.theme !== 'function') {
+    config.themeName = config.theme || 'default';
+    config.theme = theme(config.theme, config.dir, config.logger);
+  }
+
+  return config;
+}
+
+/**
+ * If given file is not undefined, resolve it to given directory.
+ *
+ * @param {String} dir
+ * @param {String} file
+ * @return {String}
+ */
+function resolve(dir, file) {
+  if (file !== undefined) {
+    return path.resolve(dir, file);
+  }
+}
+
+/**
+ * Try `load` for given file but call given fallback if an exception
+ * with `ENOENT` code is thrown, or if the file is undefined.
+ *
+ * Other exceptions are not muted.
+ *
+ * @param {Function} loader
+ * @param {String} file
+ * @param {Function} fallback
+ * @return {Object}
+ */
+function maybe(file, fallback = () => {}) {
+  if (file === undefined) {
+    return fallback();
+  }
+
+  try {
+    return load(file);
+  } catch (e) {
+    if (e.code !== 'ENOENT') {
+      throw e;
+    }
+  }
+
+  return fallback();
+}
+
+/**
+ * Load YAML or JSON from given file path.
+ *
+ * @param {String} path
+ * @return {Object}
+ */
+function load(path) {
+  return yaml.safeLoad(fs.readFileSync(path, 'utf-8'));
+}

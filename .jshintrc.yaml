@@ -1,0 +1,37 @@
+bitwise:       true  # Prohibit bitwise operators
+camelcase:     true  # Force variables to be camel case
+curly:         true  # Always put curly braces arount blocks
+eqeqeq:        true  # Prohibit `==` and `!=`
+es3:           false # Ignore ES3
+forin:         true  # Safe `for in` loops
+freeze:        true  # Prohibit overwriting native prototypes
+immed:         true  # Always wrap IIFE in parentheses
+indent:        2     # Indent with two spaces
+latedef:       false # Allow to use functions before defined
+newcap:        true  # Capitalize names of constructors
+noarg:         true  # Prohibit `argument.caller` and friends
+noempty:       true  # Warn empty blocks
+nonbsp:        true  # Warn non-breaking spaces
+nonew:         false # Allow to use constructors
+plusplus:      false # Allow to use `++` and `--`
+quotmark:      true  # Consistent quotes
+undef:         true  # Prohibit use of undeclared variables
+unused:        true  # Warn for never used variables
+strict:        false # Not required in ES6 modules
+maxparams:     false # No maximum parameters
+maxdepth:      false # No maximum nesting
+maxstatements: false # No maximum statements
+maxcomplexity: 30    # Maximum cyclomatic complexity
+maxlen:        false # No maximum line length
+
+esnext:        true  # ES6
+node:          true  # Node.js
+
+globals: # Global variables
+    $traceurRuntime: true
+
+    # For tests only
+    before:          true
+    after:           true
+    describe:        true
+    it:              true

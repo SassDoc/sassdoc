@@ -1,18 +1,19 @@
-'use strict';
+export default function content() {
+  return {
+    name: 'content',
 
-module.exports = {
+    parse(text) {
+      return text.trim();
+    },
 
-  parse: function (text) {
-    return text.trim();
-  },
+    autofill(item) {
+      if (item.context.code.indexOf('@content') > -1) {
+        return '';
+      }
+    },
 
-  autofill: function(item){
-    if (item.context.code.indexOf('@content') > -1){
-     return '';
-    }
-  },
+    allowedOn: ['mixin'],
 
-  allowedOn : ['mixin'],
-
-  multiple : false
-};
+    multiple: false,
+  };
+}

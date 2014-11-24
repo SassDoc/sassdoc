@@ -1,21 +1,28 @@
-'use strict';
+let autoParserError = /@error\s+(?:'|")([^'"]+)/g;
 
-var autoParserError = /@error\s+(?:'|")([^'"]+)/g;
+export default function throw_() {
+  return {
+    name: 'throw',
 
-module.exports = {
-  parse: function (text) {
-    return text.trim();
-  },
-  autofill: function(item){
-    var match;
-    var throwing = item['throws'] || [];
-    while ( (match = autoParserError.exec(item.context.code)) ) {
-      throwing.push(match[1]);
-    }
-    if (throwing.length > 0) {
-      return throwing;
-    }
-  },
-  alias: ['throws', 'exception'],
-  allowedOn: ['function', 'mixin', 'placeholder']
-};
+    parse(text) {
+      return text.trim();
+    },
+
+    autofill(item) {
+      let match;
+      let throwing = item.throws || [];
+
+      while ((match = autoParserError.exec(item.context.code))) {
+        throwing.push(match[1]);
+      }
+
+      if (throwing.length > 0) {
+        return throwing;
+      }
+    },
+
+    alias: ['throws', 'exception'],
+
+    allowedOn: ['function', 'mixin', 'placeholder'],
+  };
+}

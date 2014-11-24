@@ -1,39 +1,37 @@
-'use strict';
+export default function alias(config) {
+  return {
+    name: 'alias',
 
-var utils = require('../../utils');
-var logger = require('../../log');
+    parse(text) {
+      return text.trim();
+    },
 
-module.exports = {
-
-  parse: function (text) {
-    return text.trim();
-  },
-
-  resolve: function (byTypeAndName) {
-    utils.eachItem(byTypeAndName, function (item) {
-      if (utils.isset(item.alias)) {
-        var alias = item.alias;
-        var type = item.context.type;
-        var name = item.context.name;
-
-        if (utils.isset(byTypeAndName[type]) &&
-            utils.isset(byTypeAndName[type][alias])) {
-
-          if (!Array.isArray(byTypeAndName[type][alias].aliased)) {
-            byTypeAndName[type][alias].aliased = [];
-          }
-
-          byTypeAndName[type][alias].aliased.push(name);
-
+    resolve(data) {
+      data.forEach(item => {
+        if (item.alias === undefined) {
+          return;
         }
-        else {
-          logger.log('Item `' + name + '` is an alias of `' + alias + '` but this item doesn\'t exist.');
+
+        let alias = item.alias;
+        let name = item.context.name;
+
+        let aliasedItem = data.find(i => i.context.name === alias);
+
+        if (aliasedItem === undefined) {
+          config.logger.log(`Item "${name}" is an alias of "${alias}" but this item doesn't exist.`);
+          return;
         }
-      }
-    });
-  },
 
-  allowedOn : ['function', 'mixin', 'variable'],
+        if (!Array.isArray(aliasedItem.aliased)) {
+          aliasedItem.aliased = [];
+        }
 
-  multiple : false
-};
+        aliasedItem.aliased.push(name);
+      });
+    },
+
+    allowedOn: ['function', 'mixin', 'variable'],
+
+    multiple: false,
+  };
+}

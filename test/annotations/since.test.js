@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#since', function () {
-  var since = (new (require('../../src/annotation'))()).list.since;
+  var since = (new (require('../../dist/annotation').default)()).list.since;
 
   it('should return an object', function () {
     assert.deepEqual(since.parse('   '), {});

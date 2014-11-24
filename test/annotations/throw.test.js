@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#throw', function () {
-  var _throw = (new (require('../../src/annotation'))()).list.throw;
+  var _throw = (new (require('../../dist/annotation').default)()).list.throw;
 
   it('should return the trimmed string', function () {
     assert.equal(_throw.parse('   '), '');

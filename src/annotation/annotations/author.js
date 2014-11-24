@@ -1,7 +1,9 @@
-'use strict';
+export default function author() {
+  return {
+    name: 'author',
 
-module.exports = {
-  parse: function (text) {
-    return text.trim();
-  }
-};
+    parse(text) {
+      return text.trim();
+    },
+  };
+}

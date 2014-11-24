@@ -1,11 +1,13 @@
-'use strict';
+export default function type() {
+  return {
+    name: 'type',
 
-module.exports = {
-  parse: function (text) {
-    return text.trim();
-  },
+    parse(text) {
+      return text.trim();
+    },
 
-  allowedOn : ['variable'],
+    allowedOn: ['variable'],
 
-  multiple : false
-};
+    multiple: false,
+  };
+}

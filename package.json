@@ -14,7 +14,7 @@
     },
     {
       "name": "Valérian Galliat",
-      "url": "https://twitter.com/valeriangalliat"
+      "url": "https://val.codejam.info/"
     },
     {
       "name": "Pascal Duez",
@@ -42,43 +42,31 @@
   "bugs": {
     "url": "https://github.com/SassDoc/sassdoc/issues"
   },
-  "main": "src/api.js",
   "bin": {
     "sassdoc": "bin/sassdoc"
   },
   "dependencies": {
     "chalk": "^0.5.0",
-    "fdocopt": "0.*",
+    "docopt": "^0.4.1",
     "js-yaml": "^3.2.1",
     "lodash": "^2.4.1",
     "mkdirp": "^0.5.0",
-    "q": "^1.0.1",
     "rimraf": "~2.2.8",
     "safe-wipe": "0.*",
-    "sassdoc-theme-default": "2.0.0-rc.2",
-    "scss-comment-parser": "0.5.1-rc.2",
-    "semver": "^3.0.1",
-    "semver-regex": "^1.0.0",
+    "sassdoc-theme-default": "2.0.0-rc.5",
+    "scss-comment-parser": "0.5.1-rc.3",
+    "through2": "^0.6.3",
+    "traceur-runtime": "0.0.59",
     "update-notifier": "^0.2.0",
-    "which": "^1.0.5"
+    "vinyl-fs": "^0.3.11"
   },
   "devDependencies": {
     "assert": "^1.1.1",
-    "fs-extra": "^0.11.1",
-    "grunt": "^0.4.5",
-    "grunt-autoprefixer": "^1.0.0",
-    "grunt-browser-sync": "^1.1.2",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-sass": "^0.8.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-gh-pages": "^0.9.1",
-    "grunt-mocha-test": "^0.12.0",
-    "load-grunt-tasks": "^0.6.0",
-    "time-grunt": "^1.0.0"
+    "traceur": "0.0.74",
+    "jshint": "^2.5.10"
   },
   "scripts": {
-    "test": "grunt test",
+    "test": "make dist lint test",
     "rebuild": "rm -rf node_modules && npm install"
   }
 }

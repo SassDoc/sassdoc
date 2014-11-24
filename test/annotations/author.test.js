@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#author', function () {
-  var author = (new (require('../../src/annotation'))()).list.author;
+  var author = (new (require('../../dist/annotation').default)()).list.author;
 
   it('should return the trimmed string', function () {
     assert.equal(author.parse('   '), '');

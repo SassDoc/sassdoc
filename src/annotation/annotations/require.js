@@ -1,212 +1,228 @@
-'use strict';
+let utils = require('../../utils');
+let uniq = require('lodash').uniq;
 
-var reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
+let reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
 
-var utils = require('../../utils');
-var logger = require('../../log');
-var uniq = require('lodash').uniq;
+export default function (config) {
+  return {
+    name: 'require',
 
+    parse(text) {
+      let match = reqRegEx.exec(text.trim());
 
-var isAnnotatedByHand = function(handWritten, type, name){
-  if (type && name && handWritten){
-    return handWritten[type + '-' + name];
-  }
-  return false;
-};
-
-var searchForMatches = function(code, regex, isAnnotatedByHand){
-  var match;
-  var matches = [];
-  while ( (match = regex.exec(code)) ) {
-    if (!isAnnotatedByHand(match[1])){
-      matches.push(match[1]);
-    }
-  }
-  return uniq(matches);
-};
-
-
-var typeNameObject = function(type){
-  return function(name){
-    if (name.length > 0) {
-      return {
-        type : type,
-        name : name,
-        autofill : true
+      let obj = {
+        type: match[1] || 'function',
+        name: match[2],
       };
-    }
-  };
-};
 
-var compareBefore = function(code, str, index){
-  for (var i=index-str.length,b=0;i<index;i++){
-    if (code[i] !== str[b]){
-      return false;
-    }
-    b++;
-  }
-  return true;
-};
+      obj.external = utils.splitNamespace(obj.name).length > 1;
 
-module.exports = {
-
-  parse: function (text) {
-    var match = reqRegEx.exec(text.trim());
-
-    var obj = {
-      type: match[1] || 'function',
-      name: match[2]
-    };
-
-    obj.external = utils.splitNamespace(obj.name).length > 1;
-
-    if (obj.name.indexOf('$') === 0) {
-      obj.type = 'variable';
-      obj.name = obj.name.slice(1);
-    }
-
-    if (obj.name.indexOf('%') === 0) {
-      obj.type = 'placeholder';
-      obj.name = obj.name.slice(1);
-    }
-
-    if (match[4]) {
-      obj.description = match[4].trim();
-    }
-
-    if (match[5]) {
-      obj.url = match[5];
-    }
-
-    return obj;
-  },
-
-  autofill: function(item){
-    var type = item.context.type;
-    if (type === 'mixin' || type === 'placeholder' || type === 'function') {
-      var handWritten;
-
-      if (item.require){
-        handWritten = {};
-        item.require.forEach(function(reqObj){
-          handWritten[reqObj.type+'-'+reqObj.name] = true;
-        });
+      if (obj.name.indexOf('$') === 0) {
+        obj.type = 'variable';
+        obj.name = obj.name.slice(1);
       }
 
-      // Searching for mixins and functions
-      var mixins = [];
-      var functions = [];
-      var mixinFunctionRegex = /\s*([\w\d_-]*)\(/g;
-      var match;
-      while ( (match = mixinFunctionRegex.exec(item.context.code)) ){
-        // Try if this is a mixin or function
-        if (compareBefore(item.context.code, '@include', match.index)){
-          if (!isAnnotatedByHand(handWritten, 'mixin', match[1])) {
-            mixins.push(match[1]);
-          }
-        } else {
-          if (!isAnnotatedByHand(handWritten, 'function', match[1])) {
-            functions.push(match[1]);
+      if (obj.name.indexOf('%') === 0) {
+        obj.type = 'placeholder';
+        obj.name = obj.name.slice(1);
+      }
+
+      if (match[4]) {
+        obj.description = match[4].trim();
+      }
+
+      if (match[5]) {
+        obj.url = match[5];
+      }
+
+      return obj;
+    },
+
+    autofill(item) {
+      let type = item.context.type;
+
+      if (type === 'mixin' || type === 'placeholder' || type === 'function') {
+        let handWritten;
+
+        if (item.require) {
+          handWritten = {};
+
+          item.require.forEach(reqObj => {
+            handWritten[reqObj.type + '-' + reqObj.name] = true;
+          });
+        }
+
+        // Searching for mixins and functions.
+        let mixins = [];
+        let functions = [];
+        let mixinFunctionRegex = /\s*([\w\d_-]*)\(/g;
+        let match;
+
+        while ((match = mixinFunctionRegex.exec(item.context.code))) {
+          // Try if this is a mixin or functio.n
+          if (compareBefore(item.context.code, '@include', match.index)) {
+            if (!isAnnotatedByHand(handWritten, 'mixin', match[1])) {
+              mixins.push(match[1]);
+            }
+          } else {
+            if (!isAnnotatedByHand(handWritten, 'function', match[1])) {
+              functions.push(match[1]);
+            }
           }
         }
+
+        let placeholders = searchForMatches(
+          item.context.code,
+          /@extend\s+%([^;\s]+)/ig,
+          isAnnotatedByHand.bind(null, handWritten, 'mixin')
+        );
+
+        let variables = searchForMatches(
+          item.context.code,
+          /\$([a-z0-9_-]+)/ig,
+          isAnnotatedByHand.bind(null, handWritten, 'variable')
+        );
+
+        // Create object for each required item.
+        mixins = mixins.map(typeNameObject('mixin'));
+        functions = functions.map(typeNameObject('function'));
+        placeholders = placeholders.map(typeNameObject('placeholder'));
+        variables = variables.map(typeNameObject('variable'));
+
+        // Merge all arrays.
+        let all = [];
+        all = all.concat(mixins);
+        all = all.concat(functions);
+        all = all.concat(placeholders);
+        all = all.concat(variables);
+
+        // Filter empty values.
+        all = all.filter(x => x !== undefined);
+
+        // Merge in user supplyed requires if there are any.
+        if (item.require && item.require.length > 0) {
+          all = all.concat(item.require);
+        }
+
+        if (all.length > 0) {
+          return all;
+        }
       }
+    },
 
-      var placeholders = searchForMatches(item.context.code, /@extend\s+%([^;\s]+)/ig, isAnnotatedByHand.bind(null, handWritten, 'mixin'));
-      var variables    = searchForMatches(item.context.code, /\$([a-z0-9_-]+)/ig, isAnnotatedByHand.bind(null, handWritten, 'variable'));
+    resolve(data) {
+      data.forEach(item => {
+        if (item.require === undefined) {
+          return;
+        }
 
-      // Create object for each required item.
-      mixins       = mixins.map(typeNameObject('mixin'));
-      functions    = functions.map(typeNameObject('function'));
-      placeholders = placeholders.map(typeNameObject('placeholder'));
-      variables    = variables.map(typeNameObject('variable'));
-
-
-      // Merge all arrays
-      var all = [];
-          all = all.concat(mixins);
-          all = all.concat(functions);
-          all = all.concat(placeholders);
-          all = all.concat(variables);
-
-      // Filter empty values.
-      all = all.filter(function(item){
-        return item !== undefined;
-      });
-
-      // Merge in user supplyed requires if there are any
-      if (item.require && item.require.length > 0){
-        all = all.concat(item.require);
-      }
-
-      if (all.length > 0){
-        return all;
-      }
-    }
-  },
-
-  resolve: function (byTypeAndName) {
-    utils.eachItem(byTypeAndName, function (item) {
-      if (utils.isset(item.require)) {
-        item.require = item.require.map(function (req) {
+        item.require = item.require.map(req => {
           if (req.external === true) {
             return req;
           }
 
-          if (utils.isset(byTypeAndName[req.type]) &&
-              utils.isset(byTypeAndName[req.type][req.name])) {
+          let reqItem = data.find(x => x.context.name === req.name);
 
-            var reqItem = byTypeAndName[req.type][req.name];
-
-            if (!Array.isArray(reqItem.usedBy)) {
-              reqItem.usedBy = [];
-              reqItem.usedBy.toJSON = utils.mapArray.bind(null, reqItem.usedBy,
-                function (item) {
-                  return {
-                    description: item.description,
-                    context: item.context
-                  };
-                }
+          if (reqItem === undefined) {
+            if (!req.autofill) {
+              config.logger.log(
+                `Item "${item.context.name}" requires "${req.name}" from type "${req.type}" but this item doesn't exist.`
               );
             }
-            reqItem.usedBy.push(item);
-            req.item = reqItem;
 
-          } else if (req.autofill !== true) {
-            logger.log('Item `' + item.context.name +
-              '` requires `' + req.name + '` from type `' + req.type +
-              '` but this item doesn\'t exist.');
-          } else {
-            return undefined;
+            return;
           }
 
+          if (!Array.isArray(reqItem.usedBy)) {
+            reqItem.usedBy = [];
+
+            reqItem.usedBy.toJSON = function () {
+              return reqItem.usedBy.map(item => {
+                return {
+                  description: item.description,
+                  context: item.context,
+                };
+              });
+            };
+          }
+
+          reqItem.usedBy.push(item);
+          req.item = reqItem;
+
           return req;
-        }).filter(function(item){
-          return item !== undefined;
-        });
+        })
+          .filter(x => x !== undefined);
 
         if (item.require.length > 0) {
-          item.require.toJSON = utils.mapArray.bind(null, item.require,
-            function (item) {
-              var obj = {
+          item.require.toJSON = function () {
+            return item.require.map(item => {
+              let obj = {
                 type: item.type,
                 name: item.name,
-                external : item.external,
+                external: item.external,
               };
+
               if (item.external) {
                 obj.url = item.url;
-              }
-              else {
+              } else {
                 obj.description = item.description;
                 obj.context = item.context;
               }
+
               return obj;
-            }
-          );
+            });
+          };
         }
-      }
-    });
+      });
+    },
 
-  },
+    alias: ['requires'],
+  };
+}
 
-  alias: ['requires']
-};
+function isAnnotatedByHand(handWritten, type, name) {
+  if (type && name && handWritten) {
+    return handWritten[type + '-' + name];
+  }
+
+  return false;
+}
+
+function searchForMatches(code, regex, isAnnotatedByHand) {
+  let match;
+  let matches = [];
+
+  while ((match = regex.exec(code))) {
+    if (!isAnnotatedByHand(match[1])) {
+      matches.push(match[1]);
+    }
+  }
+
+  return uniq(matches);
+}
+
+function typeNameObject(type) {
+  return function (name) {
+    if (name.length > 0) {
+      return {
+        type: type,
+        name: name,
+        autofill: true,
+      };
+    }
+  };
+}
+
+function compareBefore(code, str, index) {
+  for (let i = index - str.length, b = 0; i < index; i++) {
+    if (code[i] !== str[b]) {
+      return false;
+    }
+
+    b++;
+  }
+
+  return true;
+}
+
+

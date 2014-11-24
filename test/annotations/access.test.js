@@ -1,9 +1,10 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 describe('#access', function () {
-  var access = (new (require('../../src/annotation'))()).list.access;
+  var access = (new (require('../../dist/annotation').default)()).list.access;
   it('should return the trimmed string', function () {
     assert.equal(access.parse('   '), '');
     assert.equal(access.parse('   '), '');

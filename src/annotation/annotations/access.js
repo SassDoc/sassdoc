@@ -1,11 +1,15 @@
-'use strict';
+export default function access() {
+  return {
+    name: 'access',
 
-module.exports = {
-  parse: function (text) {
-    return text.trim();
-  },
-  default: function () {
-    return 'public';
-  },
-  multiple : false
-};
+    parse(text) {
+      return text.trim();
+    },
+
+    default() {
+      return 'public';
+    },
+
+    multiple: false,
+  };
+}

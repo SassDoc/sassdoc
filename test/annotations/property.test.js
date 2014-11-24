@@ -1,10 +1,11 @@
-/* global describe, it */
 'use strict';
+
+require('../init');
 
 var assert = require('assert');
 
 describe('#property', function () {
-  var prop = (new (require('../../src/annotation'))()).list.property;
+  var prop = (new (require('../../dist/annotation').default)()).list.property;
 
   it('should parse the prop annotation', function () {
     assert.deepEqual(prop.parse('base'), {

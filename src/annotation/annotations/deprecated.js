@@ -1,8 +1,12 @@
-'use strict';
+export default function deprecated() {
 
-module.exports = {
-  parse: function (text) {
-    return text.trim();
-  },
-  multiple : false
-};
+  return {
+    name: 'deprecated',
+
+    parse(text) {
+      return text.trim();
+    },
+
+    multiple: false,
+  };
+}

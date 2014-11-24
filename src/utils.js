@@ -1,77 +1,72 @@
-'use strict';
+let path = require('path');
+let _ = require('lodash');
 
-var path = require('path');
-var _ = require('lodash');
+export function eachItem(byTypeAndName, cb) {
+  _.each(byTypeAndName, function (typeObj) {
+    _.each(typeObj, function (item) {
+      cb(item);
+    });
+  });
+}
 
-var namespaceDelimiters = ['::', ':', '\\.', '/'];
-var namespaceDelimitersRegExp = new RegExp(namespaceDelimiters.join('|'), 'g');
+// Get file extension.
+export var ext = file => path.extname(file).substr(1);
 
-exports = module.exports = {
+/**
+ * Get current date/time.
+ *
+ * @param {Date} date
+ * @return {String} Stringified date time.
+ */
+export function getDateTime(date = new Date()) {
+  let y, m, d, h, i, s;
 
-  mapArray: function (array, callback) {
-    var copy = array.slice();
-    return copy.map(callback);
-  },
+  y = date.getFullYear();
+  m = exports.pad(date.getMonth() + 1);
+  d = exports.pad(date.getDate());
+  h = exports.pad(date.getHours());
+  i = exports.pad(date.getMinutes());
+  s = exports.pad(date.getSeconds());
 
-  eachItem: function (byTypeAndName, callback) {
-    _.each(byTypeAndName, function (typeObj) {
-      _.each(typeObj, function (item) {
-        callback(item);
+  return `${y}-${m}-${d} ${h}:${i}:${s}`;
+}
+
+// Pad a number with a leading 0 if inferior to 10.
+export var pad = value => (value < 10 ? '0' : '') + value;
+
+// Namespace delimiters.
+let nsDelimiters = ['::', ':', '\\.', '/'];
+let ns = new RegExp(nsDelimiters.join('|'), 'g');
+
+// Split a namespace on possible namespace delimiters.
+export var splitNamespace = value => value.split(ns);
+
+export function denodeify(fn) {
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      fn(...args, (err, ...args) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        resolve(...args);
       });
     });
-  },
+  };
+}
 
-  /**
-   * Get file extension
-   * @param  {String} filename - filename to retrieve extension from
-   * @return {String}            extension
-   */
-  getExtension: function (filename) {
-    return path.extname(filename).substr(1);
-  },
+export function defer() {
+  let resolve, reject;
 
-  /**
-   * Get current date/time
-   * @return {String} Stringified date time
-   */
-  getDateTime: function () {
-    var date = new Date();
-    var year, month, day, hour, min, sec;
+  let promise = new Promise((resolve_, reject_) => {
+    resolve = resolve_;
+    reject = reject_;
+  });
 
-    year  = date.getFullYear();
-    month = exports.pad(date.getMonth() + 1);
-    day   = exports.pad(date.getDate());
-    hour  = exports.pad(date.getHours());
-    min   = exports.pad(date.getMinutes());
-    sec   = exports.pad(date.getSeconds());
-
-    return year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec;
-  },
-
-  /**
-   * Pad a number with a leading 0 if inferior to 10
-   * @param  {Number} value - number to pad
-   * @return {String|Number}  padded number or initial number
-   */
-  pad: function (value) {
-    return (value < 10 ? '0' : '') + value;
-  },
-
-  /**
-   * Returns whether a value is set or not
-   * @param {*} value - value to check
-   * @return {Boolean}
-   */
-  isset: function (value) {
-    return typeof value !== 'undefined';
-  },
-
-  /**
-   * Split a string on possible namespace delimiters
-   * @param {String} value - value to split
-   * @return {Array}
-   */
-  splitNamespace: function (value) {
-    return value.split(namespaceDelimitersRegExp);
-  }
-};
+  return {
+    promise,
+    resolve,
+    reject,
+  };
+}

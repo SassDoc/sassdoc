@@ -1,32 +1,33 @@
-'use strict';
+let reqRegEx = /\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\(([^\)]*)\))?\s*(?:-?\s*([\s\S]*))\s*$/;
 
-var reqRegEx = /\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\(([^\)]*)\))?\s*(?:-?\s*([\s\S]*))\s*$/;
+export default function property() {
+  return {
+    name: 'property',
 
-module.exports = {
+    parse(text) {
+      let match = reqRegEx.exec(text.trim());
 
-  parse: function (text) {
-    var match = reqRegEx.exec(text.trim());
+      let obj = {
+        type: match[1] || 'Map',
+      };
 
-    var obj = {
-      type: match[1] || 'Map'
-    };
+      if (match[2]) {
+        obj.name = match[2];
+      }
 
-    if (match[2]) {
-      obj.name = match[2];
-    }
+      if (match[3]) {
+        obj.default = match[3];
+      }
 
-    if (match[3]) {
-      obj.default = match[3];
-    }
+      if (match[4]) {
+        obj.description = match[4];
+      }
 
-    if (match[4]) {
-      obj.description = match[4];
-    }
+      return obj;
+    },
 
-    return obj;
-  },
+    alias: ['prop'],
 
-  alias: ['prop'],
-
-  allowedOn: ['variable']
-};
+    allowedOn: ['variable'],
+  };
+}

@@ -1,11 +1,15 @@
-'use strict';
+export default function group() {
+  return {
+    name: 'group',
 
-module.exports = {
-  parse: function (text) {
-    return [text.trim().toLowerCase()];
-  },
-  default: function () {
-    return ['undefined'];
-  },
-  multiple : false
-};
+    parse(text) {
+      return [text.trim().toLowerCase()];
+    },
+
+    default() {
+      return ['undefined'];
+    },
+
+    multiple: false,
+  };
+}
