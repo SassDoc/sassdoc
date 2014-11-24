@@ -7,12 +7,16 @@ let theme = require('./theme').default;
 /**
  * See both `pre` and `post`.
  *
- * @param {String} file
+ * @param {Object|String} config
  * @param {Logger} logger
  * @return {Object}
  */
-export default function cfg(file, logger = log.empty) {
-  return post(pre(file, logger));
+export default function cfg(config, logger = log.empty) {
+  if (typeof config !== 'object') {
+    config = pre(config, logger);
+  }
+
+  return post(config);
 }
 
 /**
@@ -46,9 +50,7 @@ export function pre(file, logger = log.empty) {
 
   config.logger = logger;
 
-  if (file === undefined) {
-    config.dir = process.cwd();
-  } else {
+  if (file !== undefined) {
     config.dir = path.resolve(path.dirname(file));
   }
 
@@ -69,6 +71,10 @@ export function pre(file, logger = log.empty) {
  * @return {Object}
  */
 export function post(config) {
+  if (config.dir === undefined) {
+    config.dir = process.cwd();
+  }
+
   if (typeof config.package !== 'object') {
     let file = resolve(config.dir, config.package);
 
@@ -90,6 +96,8 @@ export function post(config) {
     config.themeName = config.theme || 'default';
     config.theme = theme(config.theme, config.dir, config.logger);
   }
+
+  return config;
 }
 
 /**
