@@ -46,6 +46,18 @@
 * `@since` description is now parsed as Markdown in the default theme ([sassdoc-extras@#8](https://github.com/SassDoc/sassdoc-extras/issues/8))
 * `@deprecated` description is now parsed as Markdown in the default theme ([sassdoc-extras@#7](https://github.com/SassDoc/sassdoc-extras/issues/7))
 
+## 1.10.3
+
+* Prevented `@requires` to autofill dependency twice
+
+## 1.10.2
+
+* Fixed an issue with the folder wiping safeguard always aborting if folder is not empty without even prompting
+
+## 1.10.1
+
+* Updated a dependency in order to use new version of sassdoc-theme-default
+
 ## 1.10.0
 
 * Made annotations `@throws`, `@requires` and `@content` fill themselves so you don't have to, unless told otherwise through the [`autofill` option](http://sassdoc.com/configuration/#autofill) ([#232](https://github.com/SassDoc/sassdoc/issues/232), [#238](https://github.com/SassDoc/sassdoc/issues/238))
