@@ -2,6 +2,8 @@ let utils = require('./utils');
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
+let glob2base = require('glob2base');
+let Glob = require('glob').Glob;
 let cfg = require('./cfg');
 let Logger = require('./logger').default;
 let Parser = require('./parser').default;
@@ -15,7 +17,7 @@ export default function sassdoc(src, dest, config = {}) {
   return refresh(dest, {
     interactive: config.interactive || false,
     force: config.force || false,
-    parent: src,
+    parent: g2b(src),
     silent: true,
   })
 
@@ -76,3 +78,15 @@ export var documentize = sassdoc;
 
 // Re-export, expose API.
 export { Logger, Parser, sort, cfg };
+
+/**
+ * Get the base directory of given glob pattern (see `glob2base`).
+ *
+ * If it's an array, take the first one.
+ *
+ * @param {Array|String} src Glob pattern or array of glob patterns.
+ * @return {String}
+ */
+function g2b(src) {
+  return glob2base(new Glob([].concat(src)[0]));
+}
