@@ -44,7 +44,7 @@ export function pre(file, logger = log.empty) {
     }
 
     return maybe('.sassdocrc', () => {
-      return {logger};
+      return {};
     });
   });
 
