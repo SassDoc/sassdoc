@@ -1,5 +1,6 @@
 let path = require('path');
 let log = require('./logger');
+let utils = require('./utils');
 
 /**
  * Return the actual theme function for given theme.
@@ -59,7 +60,7 @@ function def() {
   try {
     require.resolve('sassdoc-theme-default');
   } catch (e) {
-    throw new Error('Holy shit, the default theme was not found!');
+    throw new utils.SassDocError('Holy shit, the default theme was not found!');
   }
 
   return require('sassdoc-theme-default');

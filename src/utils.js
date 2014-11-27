@@ -70,3 +70,10 @@ export function defer() {
     reject,
   };
 }
+
+export class SassDocError extends Error {
+  constructor(message) {
+    super(message);
+    this.message = message;
+  }
+}

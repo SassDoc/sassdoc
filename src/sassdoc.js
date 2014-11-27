@@ -26,6 +26,9 @@ export default function sassdoc(src, dest, config = {}) {
     .then(() => {
       logger.log(`Folder "${dest}" successfully refreshed.`);
       return parse(src, config);
+    }, err => {
+      // Friendly error for already existing directory
+      throw new utils.SassDocError(err.message);
     })
 
     .then(data => {
@@ -51,7 +54,12 @@ export default function sassdoc(src, dest, config = {}) {
 
       logger.log('Process over. Everything okay!');
     }, err => {
-      logger.error('stack' in err ? err.stack : err);
+      if (err instanceof utils.SassDocError) {
+        logger.error(err.message);
+      } else {
+        logger.error('stack' in err ? err.stack : err);
+      }
+
       throw err;
     });
 }
