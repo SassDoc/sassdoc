@@ -52,6 +52,7 @@
     "glob2base": "0.0.12",
     "js-yaml": "^3.2.1",
     "lodash": "^2.4.1",
+    "minimatch": "^1.0.0",
     "mkdirp": "^0.5.0",
     "rimraf": "~2.2.8",
     "safe-wipe": "0.*",
