@@ -36,6 +36,7 @@
 * Default theme now has a `trackingCode` configuration accepting an arbitrary HTML snippet to be included before `</body>` ([sassdoc-theme-default#10](https://github.com/SassDoc/sassdoc-theme-default/pull/10))
 * `@content` annotation is now correctly output in default theme ([sassdoc-theme-default#15](https://github.com/SassDoc/sassdoc-theme-default/issues/15))
 * Default theme now displays the type as well as the name when cross-linking items (requirements, and so on...) ([sassdoc-theme-default#17](https://github.com/SassDoc/sassdoc-theme-default/issues/17))
+* Error messages should now be more explicit, providing a file name and a line ([#282](https://github.com/SassDoc/sassdoc/issues/282))
 
 ### Bug fixes
 
