@@ -15,8 +15,8 @@ export default class Parser {
     });
   }
 
-  parse(code) {
-    return this.scssParser.parse(code);
+  parse(code, id) {
+    return this.scssParser.parse(code, id);
   }
 
   /**
@@ -58,13 +58,13 @@ export default class Parser {
       if (!chunk.isBuffer()) {
         return;
       }
-
-      let fileData = this.parse(chunk.contents.toString(enc));
+      var name = path.basename(chunk.relative);
+      let fileData = this.parse(chunk.contents.toString(enc), name);
 
       fileData.forEach(item => {
         item.file = {
           path: chunk.relative,
-          name: path.basename(chunk.relative),
+          name: name,
         };
 
         data.push(item);
