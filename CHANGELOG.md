@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0
+## 2.0.0 &mdash; Shiny Streamy Octopus
 
 ### API breaks for users
 
