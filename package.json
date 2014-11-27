@@ -60,7 +60,6 @@
     "sassdoc-theme-default": "2.0.0-rc.7",
     "scss-comment-parser": "0.5.1-rc.4",
     "through2": "^0.6.3",
-    "traceur-runtime": "0.0.59",
     "update-notifier": "^0.2.0",
     "vinyl-fs": "^0.3.11"
   },
@@ -72,6 +71,7 @@
   },
   "scripts": {
     "test": "make dist lint test",
-    "rebuild": "rm -rf node_modules && npm install"
+    "rebuild": "rm -rf node_modules && npm install",
+    "prepublish": "make runtime"
   }
 }

@@ -12,9 +12,17 @@ all: dist lint test
 # Compile ES6 from `src` to ES5 in `dist`
 # =======================================
 
-dist: force
+dist: runtime force
 	rm -rf $@
 	$(TRACEUR) --modules=commonjs --dir src dist
+
+# Copy Traceur runtime locally
+# ============================
+
+runtime: bin/traceur-runtime.js
+
+bin/traceur-runtime.js:
+	cp node_modules/traceur/bin/traceur-runtime.js $@
 
 # Code quality
 # ============

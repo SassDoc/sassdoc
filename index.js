@@ -1,4 +1,4 @@
 'use strict';
 
-require('traceur-runtime');
+require('./bin/traceur-runtime');
 module.exports = require('./dist/sassdoc');

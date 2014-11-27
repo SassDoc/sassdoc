@@ -1,3 +1,3 @@
 'use strict';
 
-require('traceur-runtime');
+require('../bin/traceur-runtime');
