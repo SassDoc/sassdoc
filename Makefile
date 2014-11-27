@@ -22,7 +22,7 @@ dist: force
 lint: .jshintrc
 	$(JSHINT) bin/sassdoc index.js src test
 
-test: force
+test: force dist
 	$(MOCHA) test/annotations/*.test.js
 	test/data/dump | diff - test/data/expected.json
 
