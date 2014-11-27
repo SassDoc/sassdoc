@@ -21,7 +21,7 @@
       "url": "https://twitter.com/pascalduez"
     }
   ],
-  "version": "2.0.0-rc.1",
+  "version": "2.0.0-rc.2",
   "license": {
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
@@ -57,7 +57,7 @@
     "rimraf": "~2.2.8",
     "safe-wipe": "0.*",
     "sass-convert": "^0.1.0",
-    "sassdoc-theme-default": "2.0.0-rc.5",
+    "sassdoc-theme-default": "2.0.0-rc.6",
     "scss-comment-parser": "0.5.1-rc.4",
     "through2": "^0.6.3",
     "traceur-runtime": "0.0.59",
