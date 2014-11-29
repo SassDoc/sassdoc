@@ -55,7 +55,13 @@ export default function sassdoc(src, dest, config = {}) {
 
       logger.log('Process over. Everything okay!');
     }, err => {
-      if (err instanceof utils.SassDocError) {
+      let friendlyErrors = [
+        utils.SassDocError,
+        converter.BinaryError,
+        converter.VersionError,
+      ];
+
+      if (friendlyErrors.indexOf(err.constructor) !== -1) {
         logger.error(err.message);
       } else {
         logger.error('stack' in err ? err.stack : err);
