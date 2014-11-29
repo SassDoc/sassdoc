@@ -4,4 +4,5 @@
 .npmignore
 .travis.yml
 sache.json
+src
 test
