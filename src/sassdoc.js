@@ -73,7 +73,7 @@ export function parse(src, config = {}) {
   vfs.src(src)
     .pipe(recurse())
     .pipe(exclude(config.exclude || []))
-    .pipe(converter({ from: 'sass', to: 'scss', logger: config.logger }))
+    .pipe(converter({ from: 'sass', to: 'scss' }))
     .pipe(parseFilter);
 
   return parseFilter.promise.then(data => sort(data));
