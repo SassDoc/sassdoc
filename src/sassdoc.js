@@ -68,10 +68,10 @@ export default function sassdoc(src, dest, config = {}) {
 export function parse(src, config = {}) {
   config = cfg.post(config);
 
+  let deferred = utils.defer();
   let parser = new Parser(config, config.theme && config.theme.annotations);
   let parseFilter = parser.stream();
 
-  let source = vfs.src(src);
   let stream = pipe(
     recurse(),
     exclude(config.exclude || []),
@@ -79,11 +79,15 @@ export function parse(src, config = {}) {
     parseFilter
   );
 
-  source
+  vfs.src(src)
     .pipe(stream)
-    .on('error', err => {});
+    .on('error', deferred.reject);
 
-  return parseFilter.promise.then(data => sort(data));
+  parseFilter.promise
+    .then(data => sort(data))
+    .then(deferred.resolve, deferred.reject);
+
+  return deferred.promise;
 }
 
 export function refresh(dest, config) {

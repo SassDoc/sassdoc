@@ -58,6 +58,7 @@ export default class Parser {
       if (!chunk.isBuffer()) {
         return;
       }
+
       var name = path.basename(chunk.relative);
       let fileData = this.parse(chunk.contents.toString(enc), name);
 
