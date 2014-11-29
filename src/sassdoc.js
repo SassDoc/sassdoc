@@ -11,6 +11,7 @@ let sort = require('./sorter').default;
 let recurse = require('./recurse').default;
 let exclude = require('./exclude').default;
 let converter = require('sass-convert');
+let pipe = require('multipipe');
 
 export default function sassdoc(src, dest, config = {}) {
   let logger = config.logger = config.logger || new Logger();
@@ -70,11 +71,17 @@ export function parse(src, config = {}) {
   let parser = new Parser(config, config.theme && config.theme.annotations);
   let parseFilter = parser.stream();
 
-  vfs.src(src)
-    .pipe(recurse())
-    .pipe(exclude(config.exclude || []))
-    .pipe(converter({ from: 'sass', to: 'scss' }))
-    .pipe(parseFilter);
+  let source = vfs.src(src);
+  let stream = pipe(
+    recurse(),
+    exclude(config.exclude || []),
+    converter({ from: 'sass', to: 'scss' }),
+    parseFilter
+  );
+
+  source
+    .pipe(stream)
+    .on('error', err => {});
 
   return parseFilter.promise.then(data => sort(data));
 }
