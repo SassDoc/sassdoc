@@ -14,7 +14,7 @@ let converter = require('sass-convert');
 let pipe = require('multipipe');
 
 export default function sassdoc(src, dest, config = {}) {
-  let logger = config.logger = config.logger || new Logger();
+  let logger = config.logger = config.logger || new Logger(config.verbose);
   config = cfg.post(config);
 
   return refresh(dest, {
