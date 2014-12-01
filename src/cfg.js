@@ -84,7 +84,7 @@ export function post(config) {
         config.logger.warn('Falling back to "package.json".');
       }
 
-      let file = path.resolve(config.dir, 'package.json');
+      file = path.resolve(config.dir, 'package.json');
 
       return maybe(file, () => {
         config.logger.warn('No package information.');
