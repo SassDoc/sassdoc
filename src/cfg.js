@@ -88,6 +88,7 @@ export function post(config) {
 
       return maybe(file, () => {
         config.logger.warn('No package information.');
+        return {};
       });
     });
   }
