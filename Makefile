@@ -9,6 +9,13 @@ SAMPLE = node_modules/sassdoc-theme-default/scss
 
 all: dist lint test
 
+# Publish package to npm
+# @see npm/npm#3059
+# =======================
+
+publish: all
+	npm publish --tag beta
+
 # Compile ES6 from `src` to ES5 in `dist`
 # =======================================
 
