@@ -46,7 +46,8 @@ export default function (argv = process.argv) {
     require('./notifier').default(pkg, logger);
   }
 
-  sassdoc(options['<src>'], options['<dest>'], config);
+  sassdoc(options['<src>'], options['<dest>'], config)
+    .then(undefined, () => process.exit(1));
 }
 
 /**
