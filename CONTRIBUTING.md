@@ -22,7 +22,7 @@ If you need a quick reply or don't feel really comfortable with asking on a publ
 
 ## Filling a bug
 
-So you think you've found a bug? Likely. We're all humans after all! Before even opening an issue, you have to know how SassDoc is architectured so you can submit an issue in the accurate repository:
+So you think you've found a bug? Likely. We're all humans after all! Before even opening an issue, you have to know how SassDoc is architected so you can submit an issue in the accurate repository:
 
 * [Core](https://github.com/sassdoc/sassdoc): API (you're here)
 * [Theme](https://github.com/sassdoc/sassdoc-theme-light): Theme, templates and styles
@@ -38,6 +38,9 @@ Please give GitHub's search a try first, to make sure someone didn't already sub
 Avoid titles like "it doesn't work", "please help me", or "bug with sassdoc". It doesn't help much understanding the problem at first glance.
 
 Similarly, be as descriptive as possible within your description. If you have a stack trace, post it. If you can make a screenshot, even better! Explain the problem and how you got there so we can reproduce it. Only then we'll be able to investigate.
+
+Posting informations about your current environment and setup is always helpful.  
+As well as the results of: `node -v` `npm -v` `sassdoc -v`
 
 ## Submitting a pull request
 
