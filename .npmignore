@@ -1,9 +1,0 @@
-.editorconfig
-.gitattributes
-.jshintrc
-.npmignore
-.travis.yml
-Makefile
-sache.json
-src
-test

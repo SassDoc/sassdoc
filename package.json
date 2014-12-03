@@ -45,6 +45,14 @@
   "bin": {
     "sassdoc": "bin/sassdoc"
   },
+  "files": [
+    "bin",
+    "dist",
+    "index.js",
+    "CHANGELOG.md",
+    "LICENCE.md",
+    "README.md"
+  ],
   "dependencies": {
     "chalk": "^0.5.0",
     "docopt": "^0.4.1",
