@@ -71,6 +71,9 @@
     "load-grunt-tasks": "^0.6.0",
     "time-grunt": "^1.0.0"
   },
+  "engines": {
+    "npm": ">=2.0"
+  },
   "scripts": {
     "test": "grunt test",
     "rebuild": "rm -rf node_modules && npm install"
