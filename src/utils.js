@@ -1,5 +1,11 @@
 let path = require('path');
 let _ = require('lodash');
+let converter = require('sass-convert');
+
+let glob2base = require('glob2base');
+let Glob = require('glob').Glob;
+
+let errors = require('./errors');
 
 export function eachItem(byTypeAndName, cb) {
   _.each(byTypeAndName, function (typeObj) {
@@ -71,9 +77,14 @@ export function defer() {
   };
 }
 
-export class SassDocError extends Error {
-  constructor(message) {
-    super(message);
-    this.message = message;
-  }
+/**
+ * Get the base directory of given glob pattern (see `glob2base`).
+ *
+ * If it's an array, take the first one.
+ *
+ * @param {Array|String} src Glob pattern or array of glob patterns.
+ * @return {String}
+ */
+export function g2b(src) {
+  return glob2base(new Glob([].concat(src)[0]));
 }

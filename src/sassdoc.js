@@ -2,9 +2,7 @@ let utils = require('./utils');
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
-let glob2base = require('glob2base');
-let Glob = require('glob').Glob;
-let cfg = require('./cfg');
+let Environment = require('./environment').default;
 let Logger = require('./logger').default;
 let Parser = require('./parser').default;
 let sort = require('./sorter').default;
@@ -12,75 +10,77 @@ let recurse = require('./recurse').default;
 let exclude = require('./exclude').default;
 let converter = require('sass-convert');
 let pipe = require('multipipe');
+let errors = require('./errors');
 
-export default function sassdoc(src, dest, config = {}) {
-  let logger = config.logger = config.logger || new Logger(config.verbose);
-  config = cfg.post(config);
+export default function sassdoc(src, dest, env = {}) {
+  let logger, deferred = utils.defer();
 
-  return refresh(dest, {
-    interactive: config.interactive || false,
-    force: config.force || false,
-    parent: g2b(src),
+  if (env instanceof Environment) {
+    logger = env.logger;
+    env.on('error', deferred.reject);
+  } else {
+    let config = env;
+    logger = new Logger(config.verbose);
+    env = new Environment(logger, config.strict);
+    env.on('error', deferred.reject);
+    env.load(config);
+    env.postProcess();
+  }
+
+  refresh(dest, {
+    interactive: env.interactive || false,
+    force: env.force || false,
+    parent: utils.g2b(src),
     silent: true,
   })
 
     .then(() => {
       logger.log(`Folder "${dest}" successfully refreshed.`);
-      return parse(src, config);
-    }, err => {
+      return parse(src, env);
+    }, error => {
       // Friendly error for already existing directory
-      throw new utils.SassDocError(err.message);
+      throw new errors.Error(error.message);
     })
 
     .then(data => {
       logger.log(`Folder "${src}" successfully parsed.`);
-      config.data = data;
+      env.data = data;
 
-      let promise = config.theme(dest, config);
+      let promise = env.theme(dest, env);
 
       if (promise && typeof promise.then === 'function') {
         return promise;
       }
 
       let type = Object.prototype.toString.call(promise);
-      throw new Error(`Theme didn't return a promise, got ${type}.`);
+      throw new errors.Error(`Theme didn't return a promise, got ${type}.`);
     })
 
     .then(() => {
-      if (config.themeName) {
-        logger.log(`theme "${config.themeName}" successfully rendered.`);
+      if (env.themeName) {
+        logger.log(`Theme "${env.themeName}" successfully rendered.`);
       } else {
         logger.log('Anonymous theme successfully rendered.');
       }
 
       logger.log('Process over. Everything okay!');
-    }, err => {
-      let friendlyErrors = [
-        utils.SassDocError,
-        converter.BinaryError,
-        converter.VersionError,
-      ];
+    })
 
-      if (friendlyErrors.indexOf(err.constructor) !== -1) {
-        logger.error(err.message);
-      } else {
-        logger.error('stack' in err ? err.stack : err);
-      }
+    .then(deferred.resolve, error => env.emit('error', error));
 
-      throw err;
-    });
+  return deferred.promise;
 }
 
-export function parse(src, config = {}) {
-  config = cfg.post(config);
+export function parse(src, env = {}) {
+  //config = cfg.post(config);
 
   let deferred = utils.defer();
-  let parser = new Parser(config, config.theme && config.theme.annotations);
+  let parser = new Parser(env, env.theme && env.theme.annotations);
   let parseFilter = parser.stream();
 
   let stream = pipe(
     recurse(),
-    exclude(config.exclude || []),
+    exclude(env.exclude || []),
     converter({ from: 'sass', to: 'scss' }),
     parseFilter
   );
@@ -96,8 +96,8 @@ export function parse(src, config = {}) {
   return deferred.promise;
 }
 
-export function refresh(dest, config) {
-  return safeWipe(dest, config)
+export function refresh(dest, env) {
+  return safeWipe(dest, env)
     .then(() => mkdir(dest));
 }
 
@@ -107,15 +107,3 @@ export var documentize = sassdoc;
 
 // Re-export, expose API.
 export { Logger, Parser, sort, cfg };
-
-/**
- * Get the base directory of given glob pattern (see `glob2base`).
- *
- * If it's an array, take the first one.
- *
- * @param {Array|String} src Glob pattern or array of glob patterns.
- * @return {String}
- */
-function g2b(src) {
-  return glob2base(new Glob([].concat(src)[0]));
-}
