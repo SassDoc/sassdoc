@@ -74,9 +74,9 @@
   },
   "devDependencies": {
     "assert": "^1.1.1",
-    "traceur": "0.0.78",
     "jshint": "^2.5.10",
-    "mocha": "^2.0.1"
+    "mocha": "^2.0.1",
+    "traceur": "0.0.79"
   },
   "engines": {
     "npm": ">=2.0"
