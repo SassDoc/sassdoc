@@ -1,31 +1,23 @@
 let utils = require('./utils');
+let errors = require('./errors');
+
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
+
 let Environment = require('./environment').default;
 let Logger = require('./logger').default;
 let Parser = require('./parser').default;
-let sort = require('./sorter').default;
-let recurse = require('./recurse').default;
 let exclude = require('./exclude').default;
+let recurse = require('./recurse').default;
+let sort = require('./sorter').default;
+
 let converter = require('sass-convert');
 let pipe = require('multipipe');
-let errors = require('./errors');
 
 export default function sassdoc(src, dest, env = {}) {
   let logger, deferred = utils.defer();
-
-  if (env instanceof Environment) {
-    logger = env.logger;
-    env.on('error', deferred.reject);
-  } else {
-    let config = env;
-    logger = new Logger(config.verbose);
-    env = new Environment(logger, config.strict);
-    env.on('error', deferred.reject);
-    env.load(config);
-    env.postProcess();
-  }
+  env = ensureEnvironment(env, deferred.reject);
 
   refresh(dest, {
     interactive: env.interactive || false,
@@ -72,9 +64,9 @@ export default function sassdoc(src, dest, env = {}) {
 }
 
 export function parse(src, env = {}) {
-  //config = cfg.post(config);
-
   let deferred = utils.defer();
+  env = ensureEnvironment(env, deferred.reject);
+
   let parser = new Parser(env, env.theme && env.theme.annotations);
   let parseFilter = parser.stream();
 
@@ -101,9 +93,25 @@ export function refresh(dest, env) {
     .then(() => mkdir(dest));
 }
 
+export function ensureEnvironment(config, onError) {
+  if (config instanceof Environment) {
+    config.on('error', onError);
+    return config;
+  }
+
+  let logger = new Logger(config.verbose);
+  let env = new Environment(logger, config.strict);
+
+  env.on('error', onError);
+  env.load(config);
+  env.postProcess();
+
+  return env;
+}
+
 // Backward compability with v1.0 API.
 /*global sassdoc: true */
 export var documentize = sassdoc;
 
 // Re-export, expose API.
-export { Logger, Parser, sort, cfg };
+export { Environment, Logger, Parser, sort , recurse, exclude, errors };
