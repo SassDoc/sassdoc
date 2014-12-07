@@ -10,4 +10,8 @@ export class Warning extends Error {
     super(message);
     this.message = message;
   }
+
+  get name() {
+    return 'Warning';
+  }
 }
