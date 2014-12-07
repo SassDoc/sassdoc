@@ -1,11 +1,7 @@
 let path = require('path');
 let _ = require('lodash');
-let converter = require('sass-convert');
-
 let glob2base = require('glob2base');
 let Glob = require('glob').Glob;
-
-let errors = require('./errors');
 
 export function eachItem(byTypeAndName, cb) {
   _.each(byTypeAndName, function (typeObj) {
