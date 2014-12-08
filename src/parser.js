@@ -3,15 +3,16 @@ let ScssCommentParser = require('scss-comment-parser');
 let through = require('through2');
 let path = require('path');
 let utils = require('./utils');
+let errors = require('./errors');
 
 export default class Parser {
-  constructor(config, additionalAnnotations) {
-    this.annotations = new AnnotationsApi(config);
+  constructor(env, additionalAnnotations) {
+    this.annotations = new AnnotationsApi(env);
     this.annotations.addAnnotations(additionalAnnotations);
-    this.scssParser = new ScssCommentParser(this.annotations.list, config);
+    this.scssParser = new ScssCommentParser(this.annotations.list, env);
 
     this.scssParser.commentParser.on('warning', warning => {
-      config.logger.warn(warning);
+      env.emit('warning', new errors.Warning(warning.message));
     });
   }
 
