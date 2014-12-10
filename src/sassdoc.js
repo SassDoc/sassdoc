@@ -16,8 +16,9 @@ let converter = require('sass-convert');
 let pipe = require('multipipe');
 
 export default function sassdoc(src, dest, env = {}) {
-  let logger, deferred = utils.defer();
+  let deferred = utils.defer();
   env = ensureEnvironment(env, deferred.reject);
+  let logger = env.logger;
 
   refresh(dest, {
     interactive: env.interactive || false,
