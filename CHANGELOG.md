@@ -47,6 +47,10 @@
 * `@since` description is now parsed as Markdown in the default theme ([sassdoc-extras#8](https://github.com/SassDoc/sassdoc-extras/issues/8))
 * `@deprecated` description is now parsed as Markdown in the default theme ([sassdoc-extras#7](https://github.com/SassDoc/sassdoc-extras/issues/7))
 
+## 1.10.6
+
+* Ensure proper type checking for `@see` annotation ([#291](https://github.com/SassDoc/sassdoc/issues/232))
+
 ## 1.10.3
 
 * Prevented `@requires` to autofill dependency twice

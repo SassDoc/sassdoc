@@ -7,10 +7,22 @@ export default function see(config) {
     parse(text) {
       let match = seeRegEx.exec(text);
 
-      return {
+      let obj = {
         type: match[1] || 'function',
-        name: match[2],
+        name: match[2]
       };
+
+      if (obj.name.indexOf('$') === 0) {
+        obj.type = 'variable';
+        obj.name = obj.name.slice(1);
+      }
+
+      if (obj.name.indexOf('%') === 0) {
+        obj.type = 'placeholder';
+        obj.name = obj.name.slice(1);
+      }
+
+      return obj;
     },
 
     resolve(data) {
