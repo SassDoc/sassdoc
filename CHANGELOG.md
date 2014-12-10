@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.6
+
+* Ensure proper type checking for `@see` annotation ([#291](https://github.com/SassDoc/sassdoc/issues/232))
+
 ## 1.10.3
 
 * Prevented `@requires` to autofill dependency twice
