@@ -90,11 +90,7 @@ export default function (config) {
         variables = variables.map(typeNameObject('variable'));
 
         // Merge all arrays.
-        let all = [];
-        all = all.concat(mixins);
-        all = all.concat(functions);
-        all = all.concat(placeholders);
-        all = all.concat(variables);
+        let all = [].concat(mixins, functions, placeholders, variables);
 
         // Filter empty values.
         all = all.filter(x => x !== undefined);
@@ -224,5 +220,3 @@ function compareBefore(code, str, index) {
 
   return true;
 }
-
-
