@@ -8,8 +8,8 @@ let converter = require('sass-convert');
 export default class Environment extends EventEmitter {
 
   /**
-   * @param {Environment} env
-   * @param {String|Object} config
+   * @param {Logger} logger
+   * @param {Boolean} strict
    */
   constructor(logger, strict = false) {
     super();
@@ -51,7 +51,7 @@ export default class Environment extends EventEmitter {
     }
 
     if (typeof config === 'object') {
-      return this.load(config);
+      return this.loadObject(config);
     }
 
     this.emit('error', new errors.Error(
@@ -72,7 +72,7 @@ export default class Environment extends EventEmitter {
 
     for (let k of Object.keys(config)) {
       if (k in this) {
-        return this.env.emit('error', new Error(
+        return this.emit('error', new Error(
           `Reserved configuration key "${k}".`
         ));
       }
@@ -99,8 +99,8 @@ export default class Environment extends EventEmitter {
     this.file = file;
 
     if (!this.tryLoadCurrentFile()) {
-      this.env.emit('warning', new errors.Warning(`Config file "${file}" not found.`));
-      this.env.logger.warn('Falling back to `.sassdocrc`');
+      this.emit('warning', new errors.Warning(`Config file "${file}" not found.`));
+      this.logger.warn('Falling back to `.sassdocrc`');
       this.loadDefaultFile();
     }
   }
@@ -153,8 +153,8 @@ export default class Environment extends EventEmitter {
       return;
     }
 
-    this.env.emit('warning', new errors.Warning(`Package file "${file}" not found.`));
-    this.env.logger.warn('Falling back to `package.json`.');
+    this.emit('warning', new errors.Warning(`Package file "${file}" not found.`));
+    this.logger.warn('Falling back to `package.json`.');
 
     file = this.resolve('package.json');
     this.package = this.tryParseFile(file);
@@ -163,7 +163,7 @@ export default class Environment extends EventEmitter {
       return;
     }
 
-    this.env.logger.warn('No package information.');
+    this.logger.warn('No package information.');
     this.package = {};
   }
 
@@ -193,8 +193,8 @@ export default class Environment extends EventEmitter {
     try {
       require.resovle(module);
     } catch (err) {
-      this.env.emit('warning', new errors.Warning(`Theme "${this.theme}" not found.`));
-      this.env.logger.warn('Falling back to default theme.');
+      this.emit('warning', new errors.Warning(`Theme "${this.theme}" not found.`));
+      this.logger.warn('Falling back to default theme.');
       return this.defaultTheme();
     }
 
@@ -202,7 +202,7 @@ export default class Environment extends EventEmitter {
     let str = Object.prototype.toString;
 
     if (typeof this.theme !== 'function') {
-      this.env.emit('error', new errors.Error(
+      this.emit('error', new errors.Error(
         `Given theme is ${str(this.theme)}, expected ${str(str)}.`
       ));
 
@@ -210,7 +210,7 @@ export default class Environment extends EventEmitter {
     }
 
     if (this.theme.length !== 2) {
-      this.env.logger.warn(
+      this.logger.warn(
         `Given theme takes ${this.theme.length} arguments, expected 2.`
       );
     }
@@ -223,7 +223,7 @@ export default class Environment extends EventEmitter {
     try {
       require.resolve('sassdoc-theme-default');
     } catch (err) {
-      this.env.emit('error', new errors.Error(
+      this.emit('error', new errors.Error(
         'Holy shit, the default theme was not found!'
       ));
     }
@@ -244,6 +244,8 @@ export default class Environment extends EventEmitter {
     }
 
     this.load(config);
+
+    return true;
   }
 
   /**
