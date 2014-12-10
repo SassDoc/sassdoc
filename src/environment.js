@@ -191,7 +191,7 @@ export default class Environment extends EventEmitter {
    */
   tryTheme(module) {
     try {
-      require.resovle(module);
+      require.resolve(module);
     } catch (err) {
       this.emit('warning', new errors.Warning(`Theme "${this.theme}" not found.`));
       this.logger.warn('Falling back to default theme.');
