@@ -9,10 +9,22 @@ module.exports = {
   parse: function (text) {
     var match = seeRegEx.exec(text);
 
-    return {
-      type: match[1] || 'function',
+    var obj = {
+      type: match[1] || 'function',
       name: match[2]
     };
+
+    if (obj.name.indexOf('$') === 0) {
+      obj.type = 'variable';
+      obj.name = obj.name.slice(1);
+    }
+
+    if (obj.name.indexOf('%') === 0) {
+      obj.type = 'placeholder';
+      obj.name = obj.name.slice(1);
+    }
+
+    return obj;
   },
 
   resolve: function (byTypeAndName) {
