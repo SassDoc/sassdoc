@@ -74,6 +74,7 @@
   "engines": {
     "npm": ">=2.0"
   },
+  "engineStrict": true,
   "scripts": {
     "test": "grunt test",
     "rebuild": "rm -rf node_modules && npm install"
