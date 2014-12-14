@@ -81,6 +81,7 @@
   "engines": {
     "npm": ">=2.0"
   },
+  "engineStrict": true,
   "scripts": {
     "test": "make dist lint test",
     "rebuild": "rm -rf node_modules && npm install"
