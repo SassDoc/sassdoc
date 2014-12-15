@@ -40,6 +40,13 @@
   "bin": {
     "sassdoc": "bin/sassdoc"
   },
+  "files": [
+    "bin",
+    "src",
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md"
+  ],
   "dependencies": {
     "chalk": "^0.5.0",
     "fdocopt": "0.*",

@@ -1,8 +1,0 @@
-.editorconfig
-.gitattributes
-.jshintrc
-.npmignore
-.travis.yml
-Gruntfile.js
-sache.json
-test
