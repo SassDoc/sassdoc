@@ -1,8 +1,12 @@
 # Changelog
 
+## 1.10.9
+
+* Fix `@todo` annotation ([#293](https://github.com/SassDoc/sassdoc/issues/293))
+
 ## 1.10.6
 
-* Ensure proper type checking for `@see` annotation ([#291](https://github.com/SassDoc/sassdoc/issues/232))
+* Ensure proper type checking for `@see` annotation ([#291](https://github.com/SassDoc/sassdoc/issues/291))
 
 ## 1.10.3
 
