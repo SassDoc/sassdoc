@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.10
+
+* Ensure v1 compat for `@todo` annotation ([#293](https://github.com/SassDoc/sassdoc/issues/293))
+
 ## 1.10.9
 
 * Fix `@todo` annotation ([#293](https://github.com/SassDoc/sassdoc/issues/293))
