@@ -3,8 +3,8 @@
 
 var assert = require('assert');
 
-describe('#throws', function () {
-  var todos = (new (require('../../src/annotation'))()).list.todos;
+describe('#todo', function () {
+  var todos = (new (require('../../src/annotation'))()).list.todo;
 
   it('should return the trimmed string', function () {
     assert.equal(todos.parse('   '), '');
