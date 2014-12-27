@@ -52,20 +52,20 @@ export default class Parser {
     let data = [];
     let deferred = utils.defer();
 
-    let transform = (chunk, enc, cb) => {
+    let transform = (file, enc, cb) => {
       // Pass-through.
-      cb(null, chunk);
+      cb(null, file);
 
-      if (!chunk.isBuffer()) {
+      if (!file.isBuffer()) {
         return;
       }
 
-      var name = path.basename(chunk.relative);
-      let fileData = this.parse(chunk.contents.toString(enc), name);
+      var name = path.basename(file.relative);
+      let fileData = this.parse(file.contents.toString(enc), name);
 
       fileData.forEach(item => {
         item.file = {
-          path: chunk.relative,
+          path: file.relative,
           name: name,
         };
 

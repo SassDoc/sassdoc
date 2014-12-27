@@ -6,11 +6,11 @@ let minimatch = require('minimatch');
  * @return {Object}
  */
 export default function exclude(patterns) {
-  return through.obj((chunk, enc, cb) => {
-    if (patterns.find(x => minimatch(chunk.relative, x))) {
+  return through.obj((file, enc, cb) => {
+    if (patterns.find(x => minimatch(file.relative, x))) {
       return cb();
     }
 
-    cb(null, chunk);
+    cb(null, file);
   });
 }
