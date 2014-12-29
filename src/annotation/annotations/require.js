@@ -101,7 +101,7 @@ export default function (config) {
         }
 
         if (all.length > 0) {
-          return all;
+          return uniq(all, 'name');
         }
       }
     },
@@ -194,7 +194,7 @@ function searchForMatches(code, regex, isAnnotatedByHand) {
     }
   }
 
-  return uniq(matches);
+  return matches;
 }
 
 function typeNameObject(type) {
