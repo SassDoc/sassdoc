@@ -92,16 +92,25 @@ export default function (config) {
         // Merge all arrays.
         let all = [].concat(mixins, functions, placeholders, variables);
 
-        // Filter empty values.
-        all = all.filter(x => x !== undefined);
-
         // Merge in user supplyed requires if there are any.
         if (item.require && item.require.length > 0) {
           all = all.concat(item.require);
         }
 
+        // Filter empty values.
+        all = all.filter(x => {
+          return x !== undefined;
+        });
+
         if (all.length > 0) {
-          return uniq(all, 'name');
+          all = uniq(all, 'name');
+
+          // Filter the item itself.
+          all = all.filter(x => {
+            return !(x.name === item.context.name && x.type === item.context.type);
+          });
+
+          return all;
         }
       }
     },

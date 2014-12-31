@@ -182,10 +182,10 @@
         "context": {
           "type": "mixin",
           "name": "autofill-test",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @error \"This is an autofilled error\";\n",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
           "line": {
             "start": 125,
-            "end": 134
+            "end": 135
           }
         }
       }
@@ -304,10 +304,10 @@
         "context": {
           "type": "mixin",
           "name": "autofill-test",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @error \"This is an autofilled error\";\n",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
           "line": {
             "start": 125,
-            "end": 134
+            "end": 135
           }
         }
       }
@@ -357,10 +357,10 @@
         "context": {
           "type": "mixin",
           "name": "autofill-test",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @error \"This is an autofilled error\";\n",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
           "line": {
             "start": 125,
-            "end": 134
+            "end": 135
           }
         }
       }
@@ -375,10 +375,10 @@
     "context": {
       "type": "mixin",
       "name": "autofill-test",
-      "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @error \"This is an autofilled error\";\n",
+      "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
       "line": {
         "start": 125,
-        "end": 134
+        "end": 135
       }
     },
     "group": [

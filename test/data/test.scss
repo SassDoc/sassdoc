@@ -130,5 +130,6 @@ $variable-specific-test: ();
 
   @content;
 
+  @include autofill-test();
   @error "This is an autofilled error";
 }
