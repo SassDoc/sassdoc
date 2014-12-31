@@ -50,7 +50,6 @@
     "./dist/exclude.js" : false,
     "./dist/cli.js" : false,
     "./dist/recurse.js" : false,
-    "./dist/annotation/annotations.js" : "./dist/annotation/annotations-web.js",
     "vinyl-fs" : false,
     "glob2base" : false,
     "docopt" : false,
