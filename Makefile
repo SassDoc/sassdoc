@@ -29,7 +29,7 @@ dist: runtime force
 runtime: bin/traceur-runtime.js
 
 bin/traceur-runtime.js:
-	cp node_modules/traceur/bin/traceur-runtime.js $@
+	cp -u node_modules/traceur/bin/traceur-runtime.js $@
 
 # Code quality
 # ============
