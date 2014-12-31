@@ -86,7 +86,7 @@
     "rimraf": "^2.2.8",
     "safe-wipe": "0.*",
     "sass-convert": "^0.2.1",
-    "sassdoc-theme-default": "2.0.0-rc.9",
+    "sassdoc-theme-default": "2.0.0-rc.10",
     "scss-comment-parser": "0.5.1-rc.4",
     "through2": "^0.6.3",
     "update-notifier": "^0.2.0",
