@@ -71,15 +71,18 @@ export function parse(src, env = {}) {
   let parser = new Parser(env, env.theme && env.theme.annotations);
   let parseFilter = parser.stream();
 
-  let stream = pipe(
+  let pipeline = pipe(
     recurse(),
     exclude(env.exclude || []),
     converter({ from: 'sass', to: 'scss' }),
     parseFilter
   );
 
+  // Drain readable part of the streams.
+  pipeline.resume();
+
   vfs.src(src)
-    .pipe(stream)
+    .pipe(pipeline)
     .on('error', deferred.reject);
 
   parseFilter.promise
