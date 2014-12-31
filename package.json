@@ -45,6 +45,27 @@
   "bin": {
     "sassdoc": "bin/sassdoc"
   },
+  "browser": {
+    "./dist/notifier.js" : false,
+    "./dist/exclude.js" : false,
+    "./dist/cli.js" : false,
+    "./dist/recurse.js" : false,
+    "./dist/annotation/annotations.js" : "./dist/annotation/annotations-web.js",
+    "vinyl-fs" : false,
+    "glob2base" : false,
+    "docopt" : false,
+    "glob" : false,
+    "js-yaml" : false,
+    "minimatch" : false,
+    "mkdirp" : false,
+    "multipipe" : false,
+    "rimraf" : false,
+    "safe-wipe" : false,
+    "sass-convert" : false,
+    "sassdoc-theme-default" : false,
+    "update-notifier" : false,
+    "through2" : false
+  },
   "files": [
     "bin",
     "dist",
