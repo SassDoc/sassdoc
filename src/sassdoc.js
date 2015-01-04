@@ -15,23 +15,22 @@ let sort = require('./sorter').default;
 let converter = require('sass-convert');
 let pipe = require('multipipe');
 
-export default function sassdoc(src, dest, env = {}) {
+export default function sassdoc(src, env = {}) {
   let deferred = utils.defer();
   env = ensureEnvironment(env, deferred.reject);
   let logger = env.logger;
 
-  refresh(dest, {
-    interactive: env.interactive || false,
-    force: env.force || false,
+  refresh(env.dest, {
+    force: true,
     parent: utils.g2b(src),
     silent: true,
   })
 
     .then(() => {
-      logger.log(`Folder "${dest}" successfully refreshed.`);
+      logger.log(`Folder "${env.dest}" successfully refreshed.`);
       return parse(src, env);
     }, error => {
-      // Friendly error for already existing directory
+      // Friendly error for already existing directory.
       throw new errors.Error(error.message);
     })
 
@@ -39,7 +38,7 @@ export default function sassdoc(src, dest, env = {}) {
       logger.log(`Folder "${src}" successfully parsed.`);
       env.data = data;
 
-      let promise = env.theme(dest, env);
+      let promise = env.theme(env.dest, env);
 
       if (promise && typeof promise.then === 'function') {
         return promise;
