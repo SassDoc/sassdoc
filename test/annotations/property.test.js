@@ -24,23 +24,23 @@ describe('#property', function () {
       description: 'description'
     });
 
-    assert.deepEqual(prop.parse('{Function} base.default (default) - description'), {
+    assert.deepEqual(prop.parse('{Function} base.default [default] - description'), {
       type: 'Function',
       name: 'base.default',
       default: 'default',
       description: 'description'
     });
 
-    assert.deepEqual(prop.parse('{Function} base.default (default) - description (with parens)'), {
+    assert.deepEqual(prop.parse('{Function} base.default [default] - description [with brackets]'), {
       type: 'Function',
       name: 'base.default',
       default: 'default',
-      description: 'description (with parens)'
+      description: 'description [with brackets]'
     });
   });
 
   it('should work for multiline description', function(){
-    assert.deepEqual(prop.parse('{Function} base.default (default) - description\nmore\nthan\none\nline'), {
+    assert.deepEqual(prop.parse('{Function} base.default [default] - description\nmore\nthan\none\nline'), {
       type: 'Function',
       name: 'base.default',
       default: 'default',

@@ -1,4 +1,4 @@
-let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$?([^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([\s\S]*))?/;
+let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$?([^\s]+))?\s*(?:\[([^\]]*)\])?\s*(?:-?\s*([\s\S]*))?/;
 
 export default function parameter() {
   return {

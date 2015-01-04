@@ -67,7 +67,7 @@
  * - `@throw`
  *
  * @param {*} $arg - Whatever
- * @param {List} $extra-arguments (()) - Extra arguments
+ * @param {List} $extra-arguments [()] - Extra arguments
  *
  * @return {*} Anything
  *
@@ -85,7 +85,7 @@
  *
  * @content Content is parsed and whatever.
  *
- * @param {Number} $number (42) - Number
+ * @param {Number} $number [42] - Number
  * @param {Arglist} $extra-arguments - Extra arguments
  *
  * @output Nothing
@@ -100,8 +100,8 @@
  * - `@prop`
  * - `@type`
  *
- * @prop {String} base.first-key ("default") - Description
- * @prop {String} base.second-key (42) - Description
+ * @prop {String} base.first-key ["default"] - Description
+ * @prop {String} base.second-key [42] - Description
  *
  * @type {*}
  */
