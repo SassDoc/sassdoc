@@ -1,17 +1,14 @@
 let doc = `
-Usage: sassdoc <src> <dest> [options]
+Usage: sassdoc <src> [options]
 
 Arguments:
   <src>   Path to your Sass folder.
-  <dest>  Path to the destination folder.
 
 Options:
   -h, --help            Bring help.
   --version             Show version.
   -v, --verbose         Enable verbose mode.
-  -i, --interactive     Prompt to remove an existing destination directory.
-  -f, --force           Always remove an existing destination directory
-                        without asking.
+  -d, --dest=<dir>      Documentation folder [default: sassdoc].
   -c, --config=<path>   Path to JSON/YAML configuration file.
   -t, --theme=<name>    Theme to use.
   --no-update-notifier  Disable update notifier check.
@@ -42,9 +39,8 @@ export default function cli(argv = process.argv) {
 
   // Ensure CLI options.
   ensure(env, options, {
+    dest: '--dest',
     theme: '--theme',
-    interactive: '--interactive',
-    force: '--force',
     noUpdateNotifier: '--no-update-notifier',
   });
 
@@ -55,7 +51,7 @@ export default function cli(argv = process.argv) {
     require('./notifier').default(pkg, logger);
   }
 
-  sassdoc(options['<src>'], options['<dest>'], env);
+  sassdoc(options['<src>'], env);
 }
 
 /**
