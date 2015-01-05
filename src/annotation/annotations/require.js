@@ -3,7 +3,7 @@ let uniq = require('lodash').uniq;
 
 let reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\((.*)\))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
 
-export default function (config) {
+export default function (env) {
   return {
     name: 'require',
 
@@ -130,7 +130,7 @@ export default function (config) {
 
           if (reqItem === undefined) {
             if (!req.autofill) {
-              config.logger.log(
+              env.logger.log(
                 `Item "${item.context.name}" requires "${req.name}" from type "${req.type}" but this item doesn't exist.`
               );
             }

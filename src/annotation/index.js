@@ -1,8 +1,8 @@
 let annotations = require('./annotations.js');
 
 export default class AnnotationsApi {
-  constructor(config) {
-    this.config = config;
+  constructor(env) {
+    this.env = env;
 
     this.list = {
       _: { alias: {} },
@@ -17,7 +17,7 @@ export default class AnnotationsApi {
    * @param {Object} annotation - Annotation object
    */
   addAnnotation(name, annotation) {
-    annotation = annotation(this.config);
+    annotation = annotation(this.env);
 
     this.list._.alias[name] = name;
 

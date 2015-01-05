@@ -1,6 +1,6 @@
 let seeRegEx = /\s*(?:\{([\w-_]+)\}\s*)?(.*)/;
 
-export default function see(config) {
+export default function see(env) {
   return {
     name: 'see',
 
@@ -38,7 +38,7 @@ export default function see(config) {
             return seeItem;
           }
 
-          config.logger.log(`Item "${item.context.name}" refers to "${see.name}" from type "${see.type}" but this item doesn't exist.`);
+          env.logger.log(`Item "${item.context.name}" refers to "${see.name}" from type "${see.type}" but this item doesn't exist.`);
         })
           .filter(x => x !== undefined);
 

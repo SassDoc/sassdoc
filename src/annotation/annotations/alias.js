@@ -1,4 +1,4 @@
-export default function alias(config) {
+export default function alias(env) {
   return {
     name: 'alias',
 
@@ -18,7 +18,7 @@ export default function alias(config) {
         let aliasedItem = data.find(i => i.context.name === alias);
 
         if (aliasedItem === undefined) {
-          config.logger.log(`Item "${name}" is an alias of "${alias}" but this item doesn't exist.`);
+          env.logger.log(`Item "${name}" is an alias of "${alias}" but this item doesn't exist.`);
           return;
         }
 
