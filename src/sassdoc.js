@@ -1,5 +1,6 @@
 let utils = require('./utils');
 let errors = require('./errors');
+let is = utils.is;
 
 let Environment = require('./environment').default;
 let Logger = require('./logger').default;
@@ -37,16 +38,14 @@ export default class SassDoc {
    * Safely wipe and re-create the destination dir.
    */
   refresh() {
-    let self = this;
-
-    return safeWipe(self.dest, {
+    return safeWipe(this.dest, {
       force: true,
-      parent: utils.g2b(self.src),
+      parent: utils.g2b(this.src),
       silent: true,
     })
-      .then(() => mkdir(self.dest))
+      .then(() => mkdir(this.dest))
       .then(() => {
-        self.logger.log(`Folder "${self.dest}" successfully refreshed.`);
+        this.logger.log(`Folder "${this.dest}" successfully refreshed.`);
       })
       .catch(err => {
         // Friendly error for already existing directory.
@@ -60,17 +59,17 @@ export default class SassDoc {
   theme() {
     let promise = this.env.theme(this.dest, this.env);
 
-    if (utils.isPromise(promise)) {
-      return promise
-        .then(() => {
-          let themeName = this.env.themeName || 'anonymous';
-          this.logger.log(`Theme "${themeName}" successfully rendered.`);
-          this.logger.log('Process over. Everything okay!');
-        });
+    if (!is.promise(promise)) {
+      let type = Object.prototype.toString.call(promise);
+      throw new errors.Error(`Theme didn't return a promise, got ${type}.`);
     }
 
-    let type = Object.prototype.toString.call(promise);
-    throw new errors.Error(`Theme didn't return a promise, got ${type}.`);
+    return promise
+      .then(() => {
+        let themeName = this.env.themeName || 'anonymous';
+          this.logger.log(`Theme "${themeName}" successfully rendered.`);
+          this.logger.log('Process over. Everything okay!');
+      });
   }
 
   /**

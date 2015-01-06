@@ -85,6 +85,9 @@ export function g2b(src) {
   return glob2base(new Glob([].concat(src)[0]));
 }
 
-export var isUndef = arg => arg === void 0;
-export var isPromise = arg => arg && typeof arg.then === 'function';
-export var isStream = arg => arg && typeof arg.pipe === 'function';
+export const is = {
+  undef: arg => arg === void 0,
+  function: arg => typeof arg === 'function',
+  promise: arg => arg && is.function(arg.then),
+  stream: arg => arg && is.function(arg.pipe),
+}
