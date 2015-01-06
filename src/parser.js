@@ -60,13 +60,13 @@ export default class Parser {
         return;
       }
 
-      var name = path.basename(file.relative);
+      let name = path.basename(file.relative);
       let fileData = this.parse(file.contents.toString(enc), name);
 
       fileData.forEach(item => {
         item.file = {
           path: file.relative,
-          name: name,
+          name,
         };
 
         data.push(item);

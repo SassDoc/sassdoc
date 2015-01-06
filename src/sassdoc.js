@@ -1,10 +1,6 @@
 let utils = require('./utils');
 let errors = require('./errors');
 
-let mkdir = utils.denodeify(require('mkdirp'));
-let safeWipe = require('safe-wipe');
-let vfs = require('vinyl-fs');
-
 let Environment = require('./environment').default;
 let Logger = require('./logger').default;
 let Parser = require('./parser').default;
@@ -12,88 +8,148 @@ let exclude = require('./exclude').default;
 let recurse = require('./recurse').default;
 let sort = require('./sorter').default;
 
+let mkdir = utils.denodeify(require('mkdirp'));
+let safeWipe = require('safe-wipe');
+let vfs = require('vinyl-fs');
+let through = require('through2');
 let converter = require('sass-convert');
 let pipe = require('multipipe');
 
-export default function sassdoc(src, env = {}) {
-  let deferred = utils.defer();
-  env = ensureEnvironment(env, deferred.reject);
-  let logger = env.logger;
+export default class SassDoc {
 
-  refresh(env.dest, {
-    force: true,
-    parent: utils.g2b(src),
-    silent: true,
-  })
+  /**
+   * @param {String} src
+   * @param {Object} env
+   */
+  constructor(src, env = {}) {
+    if (!(this instanceof SassDoc)) {
+      return new SassDoc(src, env);
+    }
 
-    .then(() => {
-      logger.log(`Folder "${env.dest}" successfully refreshed.`);
-      return parse(src, env);
-    }, error => {
-      // Friendly error for already existing directory.
-      throw new errors.Error(error.message);
+    this.env = ensureEnvironment(env, Promise.reject);
+    this.logger = this.env.logger;
+    this.dest = this.env.dest || 'sassdoc';
+    this.src = src;
+    this.pipeline = through.obj();
+  }
+
+  /**
+   * Safely wipe and re-create the destination dir.
+   */
+  refresh() {
+    let self = this;
+
+    return safeWipe(self.dest, {
+      force: true,
+      parent: utils.g2b(self.src),
+      silent: true,
     })
+      .then(() => mkdir(self.dest))
+      .then(() => {
+        self.logger.log(`Folder "${self.dest}" successfully refreshed.`);
+      })
+      .catch(err => {
+        // Friendly error for already existing directory.
+        throw new errors.Error(err.message);
+      });
+  }
 
+  /**
+   * Render theme with parsed data.
+   */
+  theme() {
+    let promise = this.env.theme(this.dest, this.env);
+
+    if (utils.isPromise(promise)) {
+      return promise
+        .then(() => {
+          let themeName = this.env.themeName || 'anonymous';
+          this.logger.log(`Theme "${themeName}" successfully rendered.`);
+          this.logger.log('Process over. Everything okay!');
+        });
+    }
+
+    let type = Object.prototype.toString.call(promise);
+    throw new errors.Error(`Theme didn't return a promise, got ${type}.`);
+  }
+
+  /**
+   * Read, recurse, convert the source dir.
+   */
+  readSource() {
+    let deferred = utils.defer();
+
+    let streams = [
+      vfs.src(this.src),
+      recurse(),
+      exclude(this.env.exclude || []),
+      converter({ from: 'sass', to: 'scss' })
+    ];
+
+    this.pipeline = pipe(...streams, err => {
+      if (err) {
+        return deferred.reject(err);
+      }
+
+      deferred.resolve();
+    });
+
+    return deferred.promise;
+  }
+
+  /**
+   * Parse files and process the data.
+   */
+  parse() {
+    let filter = parseFilter(this.src, this.env);
+
+    this.pipeline.pipe(filter).resume();
+
+    return filter.promise
     .then(data => {
-      logger.log(`Folder "${src}" successfully parsed.`);
-      env.data = data;
+      this.logger.log(`Folder "${this.src}" successfully parsed.`);
+      this.env.data = data;
+    });
+  }
 
-      let promise = env.theme(env.dest, env);
+  /**
+   * All in one method.
+   */
+  documentize() {
+    return this.refresh()
+      .then(() => this.readSource())
+      .then(() => this.parse())
+      .then(() => this.theme())
+      .catch(err => {
+        this.env.emit('error', err);
+      });
+  }
 
-      if (promise && typeof promise.then === 'function') {
-        return promise;
-      }
+  /**
+   * Pipe SassDoc into Vinyl files pipelines.
+   */
+  stream() {
+    this.refresh()
+      .then(() => this.parse())
+      .then(() => this.theme())
+      .catch(err => {
+        this.env.emit('error', err);
+      });
 
-      let type = Object.prototype.toString.call(promise);
-      throw new errors.Error(`Theme didn't return a promise, got ${type}.`);
-    })
-
-    .then(() => {
-      if (env.themeName) {
-        logger.log(`Theme "${env.themeName}" successfully rendered.`);
-      } else {
-        logger.log('Anonymous theme successfully rendered.');
-      }
-
-      logger.log('Process over. Everything okay!');
-    })
-
-    .then(deferred.resolve, error => env.emit('error', error));
-
-  return deferred.promise;
+    return this.pipeline;
+  }
 }
 
-export function parse(src, env = {}) {
-  let deferred = utils.defer();
-  env = ensureEnvironment(env, deferred.reject);
+export function parseFilter(src, env = {}) {
+  env = ensureEnvironment(env, Promise.reject);
 
   let parser = new Parser(env, env.theme && env.theme.annotations);
-  let parseFilter = parser.stream();
+  let filter = parser.stream();
 
-  let pipeline = pipe(
-    recurse(),
-    exclude(env.exclude || []),
-    converter({ from: 'sass', to: 'scss' }),
-    parseFilter
-  );
+  filter.promise
+    .then(data => sort(data));
 
-  // Drain readable part of the streams.
-  pipeline.resume();
-
-  vfs.src(src)
-    .pipe(pipeline)
-    .on('error', deferred.reject);
-
-  parseFilter.promise
-    .then(data => sort(data))
-    .then(deferred.resolve, deferred.reject);
-
-  return deferred.promise;
-}
-
-export function refresh(dest, env) {
-  return safeWipe(dest, env)
-    .then(() => mkdir(dest));
+  return filter;
 }
 
 export function ensureEnvironment(config, onError) {
@@ -111,10 +167,3 @@ export function ensureEnvironment(config, onError) {
 
   return env;
 }
-
-// Backward compability with v1.0 API.
-/*global sassdoc: true */
-export var documentize = sassdoc;
-
-// Re-export, expose API.
-export { Environment, Logger, Parser, sort , recurse, exclude, errors };

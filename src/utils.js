@@ -84,3 +84,7 @@ export function defer() {
 export function g2b(src) {
   return glob2base(new Glob([].concat(src)[0]));
 }
+
+export var isUndef = arg => arg === void 0;
+export var isPromise = arg => arg && typeof arg.then === 'function';
+export var isStream = arg => arg && typeof arg.pipe === 'function';
