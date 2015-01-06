@@ -59,6 +59,7 @@ export function denodeify(fn) {
 }
 
 export function defer() {
+  /* jshint ignore:start */
   let resolve, reject;
 
   let promise = new Promise((resolve_, reject_) => {
@@ -71,6 +72,7 @@ export function defer() {
     resolve,
     reject,
   };
+  /* jshint ignore:end */
 }
 
 /**
@@ -92,4 +94,4 @@ export const is = {
   object: arg => typeof arg === 'object' && arg !== null,
   promise: arg => arg && is.function(arg.then),
   stream: arg => arg && is.function(arg.pipe),
-}
+};

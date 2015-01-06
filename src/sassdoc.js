@@ -23,9 +23,11 @@ export default class SassDoc {
    * @param {Object} env
    */
   constructor(...args) {
+    /* jshint ignore:start */
     if (!(this instanceof SassDoc)) {
       return new SassDoc(...args);
     }
+    /* jshint ignore:end */
 
     let src = args.find(e => is.string(e));
     let env = args.find(e => is.object(e));
@@ -60,6 +62,7 @@ export default class SassDoc {
    * Render theme with parsed data.
    */
   theme() {
+    /* jshint ignore:start */
     let promise = this.env.theme(this.dest, this.env);
 
     if (!is.promise(promise)) {
@@ -73,6 +76,7 @@ export default class SassDoc {
           this.logger.log(`Theme "${themeName}" successfully rendered.`);
           this.logger.log('Process over. Everything okay!');
       });
+    /* jshint ignore:end */
   }
 
   /**
@@ -119,6 +123,7 @@ export default class SassDoc {
   /**
    * All in one method.
    */
+  /* jshint ignore:start */
   async documentize() {
     try {
       await this.refresh();
@@ -129,6 +134,7 @@ export default class SassDoc {
       this.env.emit('error', err);
     }
   }
+  /* jshint ignore:end */
 
   /**
    * Pipe SassDoc into Vinyl files pipelines.
