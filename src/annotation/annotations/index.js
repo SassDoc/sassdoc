@@ -1,0 +1,21 @@
+module.exports = [
+  require('./access.js').default,
+  require('./alias.js').default,
+  require('./author.js').default,
+  require('./content.js').default,
+  require('./deprecated.js').default,
+  require('./example.js').default,
+  require('./group.js').default,
+  require('./ignore.js').default,
+  require('./link.js').default,
+  require('./output.js').default,
+  require('./parameter.js').default,
+  require('./property.js').default,
+  require('./require.js').default,
+  require('./return.js').default,
+  require('./see.js').default,
+  require('./since.js').default,
+  require('./throw.js').default,
+  require('./todo.js').default,
+  require('./type.js').default
+];
