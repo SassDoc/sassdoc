@@ -87,7 +87,9 @@ export function g2b(src) {
 
 export const is = {
   undef: arg => arg === void 0,
+  string: arg => typeof arg === 'string',
   function: arg => typeof arg === 'function',
+  object: arg => typeof arg === 'object' && arg !== null,
   promise: arg => arg && is.function(arg.then),
   stream: arg => arg && is.function(arg.pipe),
 }

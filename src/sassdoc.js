@@ -22,15 +22,18 @@ export default class SassDoc {
    * @param {String} src
    * @param {Object} env
    */
-  constructor(src, env = {}) {
+  constructor(...args) {
     if (!(this instanceof SassDoc)) {
-      return new SassDoc(src, env);
+      return new SassDoc(...args);
     }
 
-    this.env = ensureEnvironment(env, Promise.reject);
+    let src = args.find(e => is.string(e));
+    let env = args.find(e => is.object(e));
+
+    this.env = ensureEnvironment(env || {}, Promise.reject);
     this.logger = this.env.logger;
+    this.src = src || process.cwd();
     this.dest = this.env.dest || 'sassdoc';
-    this.src = src;
     this.pipeline = through.obj();
   }
 
