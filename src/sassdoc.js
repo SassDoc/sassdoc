@@ -93,6 +93,8 @@ export default class SassDoc {
       deferred.resolve();
     });
 
+    this.pipeline.resume();
+
     return deferred.promise;
   }
 
