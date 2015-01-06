@@ -167,3 +167,6 @@ export function ensureEnvironment(config, onError) {
 
   return env;
 }
+
+// Re-export, expose API.
+export { Environment, Logger, errors };
