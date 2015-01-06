@@ -21,7 +21,7 @@ publish: all
 
 dist: runtime force
 	rm -rf $@
-	$(TRACEUR) --modules=commonjs --dir src dist
+	$(TRACEUR) --modules=commonjs --experimental --dir src dist
 
 # Copy Traceur runtime locally
 # ============================

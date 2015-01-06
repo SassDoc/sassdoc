@@ -114,14 +114,15 @@ export default class SassDoc {
   /**
    * All in one method.
    */
-  documentize() {
-    return this.refresh()
-      .then(() => this.readSource())
-      .then(() => this.parse())
-      .then(() => this.theme())
-      .catch(err => {
-        this.env.emit('error', err);
-      });
+  async documentize() {
+    try {
+      await this.refresh();
+      await this.readSource();
+      await this.parse();
+      await this.theme();
+    } catch (err) {
+      this.env.emit('error', err);
+    }
   }
 
   /**
