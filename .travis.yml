@@ -5,3 +5,7 @@ node_js:
 
 before_install:
 - npm install -g npm
+
+notifications:
+  slack:
+    secure: BiCHWsLTzlEd6MjRZY27BgmtCA3DmBFo5jcSsjSqmInbgla0lzDAA40xfIKTswIwK0pzuQdVaanl5Jy78wul0lfxpa5LLWX/bQmR1LGrygphC5tFG7GDM9Hdjatce5XEYVsSAUddNFEVQtMEUuUkSOiUll7kRq4LQtvAiIy1isk=
