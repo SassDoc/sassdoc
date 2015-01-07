@@ -7,7 +7,7 @@ let Logger = require('./logger').default;
 let Parser = require('./parser').default;
 let exclude = require('./exclude').default;
 let recurse = require('./recurse').default;
-let sort = require('./sorter').default;
+let sorter = require('./sorter').default;
 
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
@@ -23,11 +23,9 @@ export default class SassDoc {
    * @param {Object} env
    */
   constructor(...args) {
-    /* jshint ignore:start */
     if (!(this instanceof SassDoc)) {
       return new SassDoc(...args);
     }
-    /* jshint ignore:end */
 
     let src = args.find(e => is.string(e));
     let env = args.find(e => is.object(e));
@@ -36,7 +34,6 @@ export default class SassDoc {
     this.logger = this.env.logger;
     this.src = src || process.cwd();
     this.dest = this.env.dest || 'sassdoc';
-    this.pipeline = through.obj();
   }
 
   /**
@@ -62,7 +59,6 @@ export default class SassDoc {
    * Render theme with parsed data.
    */
   theme() {
-    /* jshint ignore:start */
     let promise = this.env.theme(this.dest, this.env);
 
     if (!is.promise(promise)) {
@@ -73,84 +69,85 @@ export default class SassDoc {
     return promise
       .then(() => {
         let themeName = this.env.themeName || 'anonymous';
-          this.logger.log(`Theme "${themeName}" successfully rendered.`);
-          this.logger.log('Process over. Everything okay!');
+        this.logger.log(`Theme "${themeName}" successfully rendered.`);
+        this.logger.log('Process over. Everything okay!');
       });
-    /* jshint ignore:end */
   }
 
   /**
-   * Read, recurse, convert the source dir.
+   * All in one method.
+   * @return {Promise}
    */
-  readSource() {
-    let deferred = utils.defer();
+  async documentize() {
+    let filter = parseFilter(this.src, this.env);
+
+    filter.promise
+      .then(data => {
+        this.logger.log(`Folder "${this.src}" successfully parsed.`);
+        this.env.data = data;
+      });
 
     let streams = [
       vfs.src(this.src),
       recurse(),
       exclude(this.env.exclude || []),
-      converter({ from: 'sass', to: 'scss' })
+      converter({ from: 'sass', to: 'scss' }),
+      filter
     ];
 
-    this.pipeline = pipe(...streams, err => {
-      if (err) {
-        return deferred.reject(err);
-      }
+    let pipeline = () => {
+      return new Promise((resolve, reject) => {
+        pipe(...streams, err => {
+          err ? reject(err) : resolve();
+        })
+        .on('data', noop); // Drain.
+      });
+    };
 
-      deferred.resolve();
-    });
-
-    this.pipeline.resume();
-
-    return deferred.promise;
-  }
-
-  /**
-   * Parse files and process the data.
-   */
-  parse() {
-    let filter = parseFilter(this.src, this.env);
-
-    this.pipeline.pipe(filter).resume();
-
-    return filter.promise
-    .then(data => {
-      this.logger.log(`Folder "${this.src}" successfully parsed.`);
-      this.env.data = data;
-    });
-  }
-
-  /**
-   * All in one method.
-   */
-  /* jshint ignore:start */
-  async documentize() {
     try {
       await this.refresh();
-      await this.readSource();
-      await this.parse();
+      await pipeline();
       await this.theme();
     } catch (err) {
       this.env.emit('error', err);
     }
   }
-  /* jshint ignore:end */
 
   /**
-   * Pipe SassDoc into Vinyl files pipelines.
+   * Pipe SassDoc to Vinyl files streams.
+   * @return {Stream}
    */
   stream() {
-    this.refresh()
-      .then(() => this.parse())
-      .then(() => this.theme())
-      .catch(err => {
+    let filter = parseFilter(this.src, this.env);
+
+    let documentize = async () => {
+      try {
+        await this.refresh();
+        await filter.promise;
+        await this.theme();
+      } catch (err) {
         this.env.emit('error', err);
+      }
+    };
+
+    filter
+      .on('pipe', documentize)
+      .on('data', noop) // Drain.
+      .on('error', err => this.env.emit('error', err));
+
+    filter.promise
+      .then(data => {
+        this.logger.log('SCSS files successfully parsed.');
+        this.env.data = data;
       });
 
-    return this.pipeline;
+    return filter;
   }
 }
 
+/**
+ * @return {Stream}
+ */
 export function parseFilter(src, env = {}) {
   env = ensureEnvironment(env, Promise.reject);
 
@@ -158,11 +155,14 @@ export function parseFilter(src, env = {}) {
   let filter = parser.stream();
 
   filter.promise
-    .then(data => sort(data));
+    .then(data => sorter(data));
 
   return filter;
 }
 
+/**
+ * @return {Object}
+ */
 export function ensureEnvironment(config, onError) {
   if (config instanceof Environment) {
     config.on('error', onError);
@@ -179,5 +179,10 @@ export function ensureEnvironment(config, onError) {
   return env;
 }
 
-// Re-export, expose API.
-export { Environment, Logger, Parser, sort, errors };
+let noop = () => {};
+let passThrough = () => through.obj();
+
+/**
+* Re-export, expose API.
+*/
+export { Environment, Logger, Parser, sorter, errors };
