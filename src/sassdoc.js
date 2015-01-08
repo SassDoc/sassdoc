@@ -12,7 +12,6 @@ let sorter = require('./sorter').default;
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
-let through = require('through2');
 let converter = require('sass-convert');
 let pipe = require('multipipe');
 
@@ -100,7 +99,7 @@ export default class SassDoc {
         pipe(...streams, err => {
           err ? reject(err) : resolve();
         })
-        .on('data', noop); // Drain.
+        .resume(); // Drain.
       });
     };
 
@@ -132,8 +131,8 @@ export default class SassDoc {
 
     filter
       .on('pipe', documentize)
-      .on('data', noop) // Drain.
-      .on('error', err => this.env.emit('error', err));
+      .on('error', err => this.env.emit('error', err))
+      .resume(); // Drain.
 
     filter.promise
       .then(data => {
@@ -178,9 +177,6 @@ export function ensureEnvironment(config, onError) {
 
   return env;
 }
-
-let noop = () => {};
-let passThrough = () => through.obj();
 
 /**
 * Re-export, expose API.
