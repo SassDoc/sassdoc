@@ -15,7 +15,7 @@ let vfs = require('vinyl-fs');
 let converter = require('sass-convert');
 let pipe = require('multipipe');
 
-export default class SassDoc {
+class SassDoc {
 
   /**
    * @param {String} src
@@ -32,7 +32,13 @@ export default class SassDoc {
     this.env = ensureEnvironment(env || {}, Promise.reject);
     this.logger = this.env.logger;
     this.src = src || process.cwd();
-    this.dest = this.env.dest || 'sassdoc';
+    this.dest = this.env.dest || 'sassdoc';;
+
+    if (src) {
+      return this.documentize();
+    }
+
+    return this.stream();
   }
 
   /**
@@ -179,6 +185,10 @@ export function ensureEnvironment(config, onError) {
 }
 
 /**
-* Re-export, expose API.
+* Expose API.
 */
 export { Environment, Logger, Parser, sorter, errors };
+
+export function sassdoc(...args) {
+  return new SassDoc(...args);
+}

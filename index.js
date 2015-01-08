@@ -1,4 +1,12 @@
 'use strict';
 
 require('./bin/traceur-runtime');
-module.exports = require('./dist/sassdoc');
+
+var api = require('./dist/sassdoc');
+
+module.exports = api.sassdoc;
+module.exports.ensureEnvironment = api.ensureEnvironment;
+module.exports.Environment = api.Environment;
+module.exports.Logger = api.Logger;
+module.exports.Parser = api.Parser;
+module.exports.errors = api.errors;
