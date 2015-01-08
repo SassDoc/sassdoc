@@ -50,8 +50,8 @@ export function ensureEnvironment(config, onError = e => { throw e; }) {
 }
 
 /**
-* Expose API.
-*/
+ * Expose API.
+ */
 export { Environment, Logger, Parser, sorter, errors };
 
 /**
@@ -61,12 +61,13 @@ export { Environment, Logger, Parser, sorter, errors };
 export default function sassdoc(...args) {
   let src = args.find(is.string);
   let env = args.find(is.object);
+  let hasSrc = src;
 
   env = ensureEnvironment(env || {});
   src = src || process.cwd();
   env.dest = env.dest || 'sassdoc';
 
-  return src ? documentize() : stream();
+  return hasSrc ? documentize() : stream();
 
   /**
    * Safely wipe and re-create the destination dir.

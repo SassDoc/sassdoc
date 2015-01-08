@@ -23,13 +23,18 @@ function documentize() {
 }
 
 function stream() {
-  return vfs.src('./SassyStrings/**/*.scss')
+  return vfs.src('./test/data/**/*.scss')
     .pipe(sassdoc({ verbose: true }))
     .pipe(inspect())
     .on('data', () => {});
 }
 
 (async function () {
-  await documentize();
-  await stream();
+  try {
+    await documentize();
+    stream();
+  }
+  catch (err) {
+    console.error(err);
+  }
 }());
