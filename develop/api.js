@@ -1,7 +1,7 @@
 let path = require('path');
 let vfs = require('vinyl-fs');
 let through = require('through2');
-let sassdoc = require('../src/sassdoc').default;
+let sassdoc = require('../src/sassdoc').sassdoc;
 
 function inspect() {
   let count = 0;
@@ -16,19 +16,15 @@ function inspect() {
 }
 
 function documentize() {
-  let sd = sassdoc('./SassyStrings', { verbose: true });
-
-  return sd.documentize()
+  return sassdoc('./test/data', { verbose: true })
     .then(() => {
       console.log('yeah!');
     });
 }
 
 function stream() {
-  let sd = sassdoc({ verbose: true });
-
   return vfs.src('./SassyStrings/**/*.scss')
-    .pipe(sd.stream())
+    .pipe(sassdoc({ verbose: true }))
     .pipe(inspect())
     .on('data', () => {});
 }
