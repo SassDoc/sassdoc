@@ -46,24 +46,24 @@
     "sassdoc": "bin/sassdoc"
   },
   "browser": {
-    "./dist/notifier.js" : false,
-    "./dist/exclude.js" : false,
-    "./dist/cli.js" : false,
-    "./dist/recurse.js" : false,
-    "vinyl-fs" : false,
-    "glob2base" : false,
-    "docopt" : false,
-    "glob" : false,
-    "js-yaml" : false,
-    "minimatch" : false,
-    "mkdirp" : false,
-    "multipipe" : false,
-    "rimraf" : false,
-    "safe-wipe" : false,
-    "sass-convert" : false,
-    "sassdoc-theme-default" : false,
-    "update-notifier" : false,
-    "through2" : false
+    "./dist/notifier.js": false,
+    "./dist/exclude.js": false,
+    "./dist/cli.js": false,
+    "./dist/recurse.js": false,
+    "vinyl-fs": false,
+    "glob2base": false,
+    "docopt": false,
+    "glob": false,
+    "js-yaml": false,
+    "minimatch": false,
+    "mkdirp": false,
+    "multipipe": false,
+    "rimraf": false,
+    "safe-wipe": false,
+    "sass-convert": false,
+    "sassdoc-theme-default": false,
+    "update-notifier": false,
+    "through2": false
   },
   "files": [
     "bin",
@@ -96,7 +96,8 @@
     "assert": "^1.1.1",
     "jshint": "^2.5.10",
     "mocha": "^2.0.1",
-    "traceur": ">= 0.0.79 < 1"
+    "traceur": ">= 0.0.79 < 1",
+    "traceur-runner": "pascalduez/traceur-runner#pr__compile_options"
   },
   "engines": {
     "npm": ">=2.0"

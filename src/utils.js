@@ -59,6 +59,7 @@ export function denodeify(fn) {
 }
 
 export function defer() {
+  /* jshint ignore:start */
   let resolve, reject;
 
   let promise = new Promise((resolve_, reject_) => {
@@ -71,6 +72,7 @@ export function defer() {
     resolve,
     reject,
   };
+  /* jshint ignore:end */
 }
 
 /**
@@ -84,3 +86,12 @@ export function defer() {
 export function g2b(src) {
   return glob2base(new Glob([].concat(src)[0]));
 }
+
+export const is = {
+  undef: arg => arg === void 0,
+  string: arg => typeof arg === 'string',
+  function: arg => typeof arg === 'function',
+  object: arg => typeof arg === 'object' && arg !== null,
+  promise: arg => arg && is.function(arg.then),
+  stream: arg => arg && is.function(arg.pipe),
+};
