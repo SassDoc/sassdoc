@@ -29,7 +29,7 @@ class SassDoc {
     let src = args.find(is.string);
     let env = args.find(is.object);
 
-    this.env = ensureEnvironment(env || {}, Promise.reject);
+    this.env = ensureEnvironment(env || {});
     this.logger = this.env.logger;
     this.src = src || process.cwd();
     this.dest = this.env.dest || 'sassdoc';
@@ -164,7 +164,7 @@ class SassDoc {
  * @return {Stream}
  */
 export function parseFilter(src, env = {}) {
-  env = ensureEnvironment(env, Promise.reject);
+  env = ensureEnvironment(env);
 
   let parser = new Parser(env, env.theme && env.theme.annotations);
   let filter = parser.stream();
@@ -178,13 +178,13 @@ export function parseFilter(src, env = {}) {
 /**
  * @return {Object}
  */
-export function ensureEnvironment(config, onError) {
+export function ensureEnvironment(config, onError = e => { throw e; }) {
   if (config instanceof Environment) {
     config.on('error', onError);
     return config;
   }
 
-  let logger = new Logger(config.verbose);
+  let logger = config.logger || new Logger(config.verbose);
   let env = new Environment(logger, config.strict);
 
   env.on('error', onError);
