@@ -4,7 +4,7 @@ require('./bin/traceur-runtime');
 
 var api = require('./dist/sassdoc');
 
-module.exports = api.sassdoc;
+module.exports = api.default;
 module.exports.ensureEnvironment = api.ensureEnvironment;
 module.exports.Environment = api.Environment;
 module.exports.Logger = api.Logger;

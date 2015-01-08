@@ -51,8 +51,7 @@ export default function cli(argv = process.argv) {
     require('./notifier').default(pkg, logger);
   }
 
-  let sd = sassdoc(options['<src>'], env);
-  sd.documentize();
+  sassdoc(options['<src>'], env);
 }
 
 /**

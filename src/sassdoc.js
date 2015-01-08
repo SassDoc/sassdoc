@@ -199,6 +199,6 @@ export function ensureEnvironment(config, onError) {
 */
 export { Environment, Logger, Parser, sorter, errors };
 
-export function sassdoc(...args) {
+export default function sassdoc(...args) {
   return new SassDoc(...args);
 }
