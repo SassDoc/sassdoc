@@ -15,151 +15,6 @@ let vfs = require('vinyl-fs');
 let converter = require('sass-convert');
 let pipe = require('multipipe'); // jshint ignore:line
 
-class SassDoc {
-
-  /**
-   * @param {String} src
-   * @param {Object} env
-   */
-  constructor(...args) {
-    if (!(this instanceof SassDoc)) {
-      return new SassDoc(...args);
-    }
-
-    let src = args.find(is.string);
-    let env = args.find(is.object);
-
-    this.env = ensureEnvironment(env || {});
-    this.logger = this.env.logger;
-    this.src = src || process.cwd();
-    this.dest = this.env.dest || 'sassdoc';
-
-    if (src) {
-      return this.documentize();
-    }
-
-    return this.stream();
-  }
-
-  /**
-   * Safely wipe and re-create the destination dir.
-   */
-  refresh() {
-    return safeWipe(this.dest, {
-      force: true,
-      parent: utils.g2b(this.src),
-      silent: true,
-    })
-      .then(() => mkdir(this.dest))
-      .then(() => {
-        this.logger.log(`Folder "${this.dest}" successfully refreshed.`);
-      })
-      .catch(err => {
-        // Friendly error for already existing directory.
-        throw new errors.Error(err.message);
-      });
-  }
-
-  /**
-   * Render theme with parsed data.
-   */
-  theme() {
-    let promise = this.env.theme(this.dest, this.env);
-
-    if (!is.promise(promise)) {
-      let type = Object.prototype.toString.call(promise);
-      throw new errors.Error(`Theme didn't return a promise, got ${type}.`);
-    }
-
-    return promise
-      .then(() => {
-        let themeName = this.env.themeName || 'anonymous';
-        this.logger.log(`Theme "${themeName}" successfully rendered.`);
-        this.logger.log('Process over. Everything okay!');
-      });
-  }
-
-  /**
-   * All in one method.
-   * @return {Promise}
-   */
-  async documentize() { // jshint ignore:line
-    let filter = parseFilter(this.src, this.env);
-
-    filter.promise
-      .then(data => {
-        this.logger.log(`Folder "${this.src}" successfully parsed.`);
-        this.env.data = data;
-      });
-
-
-
-    let streams = [ // jshint ignore:line
-      vfs.src(this.src),
-      recurse(),
-      exclude(this.env.exclude || []),
-      converter({ from: 'sass', to: 'scss' }),
-      filter
-    ];
-
-    /* jshint ignore:start */
-
-    let pipeline = () => {
-      return new Promise((resolve, reject) => {
-        pipe(...streams, err => {
-          err ? reject(err) : resolve();
-        })
-        .resume(); // Drain.
-      });
-    };
-
-    try {
-      await this.refresh();
-      await pipeline();
-      await this.theme();
-    } catch (err) {
-      this.env.emit('error', err);
-    }
-
-    /* jshint ignore:end */
-  }
-
-  /**
-   * Pipe SassDoc to Vinyl files streams.
-   * @return {Stream}
-   */
-  stream() {
-    let filter = parseFilter(this.src, this.env);
-
-    /* jshint ignore:start */
-
-    let documentize = async () => {
-      try {
-        await this.refresh();
-        await filter.promise;
-        await this.theme();
-      } catch (err) {
-        this.env.emit('error', err);
-      }
-    };
-
-    filter
-      .on('pipe', documentize)
-      .on('error', err => this.env.emit('error', err))
-      .resume(); // Drain.
-
-    /* jshint ignore:end */
-
-    filter.promise
-      .then(data => {
-        this.logger.log('SCSS files successfully parsed.');
-        this.env.data = data;
-      });
-
-    return filter;
-  }
-}
-
 /**
  * @return {Stream}
  */
@@ -199,6 +54,135 @@ export function ensureEnvironment(config, onError = e => { throw e; }) {
 */
 export { Environment, Logger, Parser, sorter, errors };
 
+/**
+ * @param {String} src
+ * @param {Object} env
+ */
 export default function sassdoc(...args) {
-  return new SassDoc(...args);
+  let src = args.find(is.string);
+  let env = args.find(is.object);
+
+  env = ensureEnvironment(env || {});
+  src = src || process.cwd();
+  env.dest = env.dest || 'sassdoc';
+
+  return src ? documentize() : stream();
+
+  /**
+   * Safely wipe and re-create the destination dir.
+   */
+  function refresh() { // jshint ignore:line
+    return safeWipe(env.dest, {
+      force: true,
+      parent: utils.g2b(src),
+      silent: true,
+    })
+      .then(() => mkdir(env.dest))
+      .then(() => {
+        env.logger.log(`Folder "${env.dest}" successfully refreshed.`);
+      })
+      .catch(err => {
+        // Friendly error for already existing directory.
+        throw new errors.Error(err.message);
+      });
+  }
+
+  /**
+   * Render theme with parsed data.
+   */
+  function theme() { // jshint ignore:line
+    let promise = env.theme(env.dest, env);
+
+    if (!is.promise(promise)) {
+      let type = Object.prototype.toString.call(promise);
+      throw new errors.Error(`Theme didn't return a promise, got ${type}.`);
+    }
+
+    return promise
+      .then(() => {
+        let themeName = env.themeName || 'anonymous';
+        env.logger.log(`Theme "${themeName}" successfully rendered.`);
+        env.logger.log('Process over. Everything okay!');
+      });
+  }
+
+  /**
+   * All in one method.
+   *
+   * @return {Promise}
+   */
+  async function documentize() { // jshint ignore:line
+    let filter = parseFilter(src, env);
+
+    filter.promise
+      .then(data => {
+        env.logger.log(`Folder "${src}" successfully parsed.`);
+        env.data = data;
+      });
+
+    let streams = [ // jshint ignore:line
+      vfs.src(src),
+      recurse(),
+      exclude(env.exclude || []),
+      converter({ from: 'sass', to: 'scss' }),
+      filter
+    ];
+
+    /* jshint ignore:start */
+
+    let pipeline = () => {
+      return new Promise((resolve, reject) => {
+        pipe(...streams, err => {
+          err ? reject(err) : resolve();
+        })
+        .resume(); // Drain.
+      });
+    };
+
+    try {
+      await refresh();
+      await pipeline();
+      await theme();
+    } catch (err) {
+      env.emit('error', err);
+    }
+
+    /* jshint ignore:end */
+  }
+
+  /**
+   * Pipe SassDoc to Vinyl files streams.
+   *
+   * @return {Stream}
+   */
+  function stream() {
+    let filter = parseFilter(src, env);
+
+    /* jshint ignore:start */
+
+    let documentize = async () => {
+      try {
+        await refresh();
+        await filter.promise;
+        await theme();
+      } catch (err) {
+        env.emit('error', err);
+      }
+    };
+
+    filter
+      .on('pipe', documentize)
+      .on('error', err => env.emit('error', err))
+      .resume(); // Drain.
+
+    /* jshint ignore:end */
+
+    filter.promise
+      .then(data => {
+        env.logger.log('SCSS files successfully parsed.');
+        env.data = data;
+      });
+
+    return filter;
+  }
 }
