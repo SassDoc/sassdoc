@@ -26,8 +26,8 @@ class SassDoc {
       return new SassDoc(...args);
     }
 
-    let src = args.find(e => is.string(e));
-    let env = args.find(e => is.object(e));
+    let src = args.find(is.string);
+    let env = args.find(is.object);
 
     this.env = ensureEnvironment(env || {}, Promise.reject);
     this.logger = this.env.logger;
