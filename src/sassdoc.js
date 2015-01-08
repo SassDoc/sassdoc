@@ -13,7 +13,7 @@ let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
 let converter = require('sass-convert');
-let pipe = require('multipipe');
+let pipe = require('multipipe'); // jshint ignore:line
 
 class SassDoc {
 
@@ -32,7 +32,7 @@ class SassDoc {
     this.env = ensureEnvironment(env || {}, Promise.reject);
     this.logger = this.env.logger;
     this.src = src || process.cwd();
-    this.dest = this.env.dest || 'sassdoc';;
+    this.dest = this.env.dest || 'sassdoc';
 
     if (src) {
       return this.documentize();
@@ -83,7 +83,7 @@ class SassDoc {
    * All in one method.
    * @return {Promise}
    */
-  async documentize() {
+  async documentize() { // jshint ignore:line
     let filter = parseFilter(this.src, this.env);
 
     filter.promise
@@ -92,13 +92,17 @@ class SassDoc {
         this.env.data = data;
       });
 
-    let streams = [
+
+
+    let streams = [ // jshint ignore:line
       vfs.src(this.src),
       recurse(),
       exclude(this.env.exclude || []),
       converter({ from: 'sass', to: 'scss' }),
       filter
     ];
+
+    /* jshint ignore:start */
 
     let pipeline = () => {
       return new Promise((resolve, reject) => {
@@ -116,6 +120,8 @@ class SassDoc {
     } catch (err) {
       this.env.emit('error', err);
     }
+
+    /* jshint ignore:end */
   }
 
   /**
@@ -124,6 +130,8 @@ class SassDoc {
    */
   stream() {
     let filter = parseFilter(this.src, this.env);
+
+    /* jshint ignore:start */
 
     let documentize = async () => {
       try {
@@ -139,6 +147,8 @@ class SassDoc {
       .on('pipe', documentize)
       .on('error', err => this.env.emit('error', err))
       .resume(); // Drain.
+
+    /* jshint ignore:end */
 
     filter.promise
       .then(data => {
