@@ -53,6 +53,8 @@ export default class Parser {
     let data = [];
     let deferred = utils.defer();
 
+    /* jshint ignore:start */
+
     let parseFile = (buf, enc, path = '', name = '') => {
       let fileData = this.parse(buf.toString(enc), name);
 
@@ -66,16 +68,18 @@ export default class Parser {
       });
     };
 
+    /* jshint ignore:end */
+
     let transform = (file, enc, cb) => {
       // Pass-through.
       cb(null, file);
 
       if (file.isBuffer()) {
-        parseFile(file.contents, enc, file.relative, path.basename(file.relative));
+        parseFile(file.contents, enc, file.relative, path.basename(file.relative)); // jshint ignore:line
       }
       if (file.isStream()) {
         file.pipe(concat(data => {
-          parseFile(data, enc);
+          parseFile(data, enc); // jshint ignore:line
         }));
       }
     };
