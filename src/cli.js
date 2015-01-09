@@ -13,7 +13,6 @@ Options:
   -d, --dest=<dir>      Documentation folder [default: sassdoc].
   -c, --config=<path>   Path to JSON/YAML configuration file.
   -t, --theme=<name>    Theme to use.
-  -s, --stdin           Parse code provided on <STDIN>.
   --no-update-notifier  Disable update notifier check.
   --strict              Turn warnings into errors.
 `;
@@ -55,7 +54,7 @@ export default function cli(argv = process.argv) {
     require('./notifier').default(pkg, logger);
   }
 
-  if (options['--stdin']) {
+  if (!options['<src>']) {
     return process.stdin
       .pipe(source())
       .pipe(sassdoc(env));
