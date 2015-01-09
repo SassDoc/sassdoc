@@ -50,36 +50,38 @@ export default class Parser {
    * @return {Object}
    */
   stream() {
-    let data = [];
     let deferred = utils.defer();
-
-    /* jshint ignore:start */
-
-    let parseFile = (buf, enc, path = '', name = '') => {
-      let fileData = this.parse(buf.toString(enc), name);
-
-      fileData.forEach(item => {
-        item.file = {
-          path,
-          name,
-        };
-
-        data.push(item);
-      });
-    };
-
-    /* jshint ignore:end */
+    let data = [];
 
     let transform = (file, enc, cb) => {
       // Pass-through.
       cb(null, file);
 
+      let parseFile = ({ buf, name, path }) => {
+        let fileData = this.parse(buf.toString(enc), name);
+
+        fileData.forEach(item => {
+          item.file = {
+            path,
+            name,
+          };
+
+          data.push(item);
+        });
+      };
+
       if (file.isBuffer()) {
-        parseFile(file.contents, enc, file.relative, path.basename(file.relative)); // jshint ignore:line
+        let args = {
+          buf: file.contents,
+          name: path.basename(file.relative),
+          path: file.relative,
+        };
+
+        parseFile(args);
       }
       if (file.isStream()) {
-        file.pipe(concat(data => {
-          parseFile(data, enc); // jshint ignore:line
+        file.pipe(concat(buf => {
+          parseFile({ buf });
         }));
       }
     };
