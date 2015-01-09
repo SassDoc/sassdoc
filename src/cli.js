@@ -15,6 +15,7 @@ Options:
   -t, --theme=<name>    Theme to use.
   --no-update-notifier  Disable update notifier check.
   --strict              Turn warnings into errors.
+  --debug               Output debugging information.
 `;
 
 let docopt = require('docopt').docopt;
@@ -27,8 +28,10 @@ let errors = require('./errors');
 
 export default function cli(argv = process.argv.slice(2)) {
   let options = docopt(doc, { version: pkg.version, argv: argv });
-  let logger = new Logger(options['--verbose']);
+  let logger = new Logger(options['--verbose'], options['--debug'] || process.env.SASSDOC_DEBUG);
   let env = new Environment(logger, options['--strict']);
+
+  logger.debug('argv:', () => JSON.stringify(argv));
 
   env.on('error', error => {
     if (error instanceof errors.Warning) {

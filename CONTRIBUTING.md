@@ -39,8 +39,8 @@ Avoid titles like "it doesn't work", "please help me", or "bug with sassdoc". It
 
 Similarly, be as descriptive as possible within your description. If you have a stack trace, post it. If you can make a screenshot, even better! Explain the problem and how you got there so we can reproduce it. Only then we'll be able to investigate.
 
-Posting informations about your current environment and setup is always helpful.  
-As well as the results of: `node -v` `npm -v` `sassdoc -v`
+Posting informations about your current environment and setup is always helpful.
+Hopefully, SassDoc can gather everything for you, just run it with the `--debug` flag when using CLI, or set `SASSDOC_DEBUG=1` environment variable (e.g. `SASSDOC_DEBUG=1 grunt` when using Grunt).
 
 ## Submitting a pull request
 
