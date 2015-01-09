@@ -25,7 +25,7 @@ let Logger = require('./logger').default;
 let sassdoc = require('./sassdoc').default;
 let errors = require('./errors');
 
-export default function cli(argv = process.argv) {
+export default function cli(argv = process.argv.slice(2)) {
   let options = docopt(doc, { version: pkg.version, argv: argv });
   let logger = new Logger(options['--verbose']);
   let env = new Environment(logger, options['--strict']);
