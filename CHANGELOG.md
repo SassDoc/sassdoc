@@ -5,7 +5,7 @@
 ### API breaks for users
 
 * SassDoc now always outputs its own directory in the current folder ([#302](https://github.com/SassDoc/sassdoc/issues/302))
-* `--dest` option has been added to define SassDoc's folder name for output, default is `sassdoc` ([#302](https://github.com/SassDoc/sassdoc/issues/302))
+* `--dest` option has been added to define SassDoc's folder path for output, default is `sassdoc` ([#302](https://github.com/SassDoc/sassdoc/issues/302))
 * `--no-prompt` option no longer exists since SassDoc outputs its own folder ([#302](https://github.com/SassDoc/sassdoc/issues/302))
 * `--sass-convert` option no longer exists and is now implied ([#231](https://github.com/SassDoc/sassdoc/issues/231#issuecomment-63610647))
 * Default name for configuration file is now `.sassdocrc` ([#189](https://github.com/SassDoc/sassdoc/issues/189))
