@@ -4,13 +4,15 @@
 
 ### API breaks for users
 
-* Running SassDoc now fails if destination folder is not empty ([#242](https://github.com/SassDoc/sassdoc/issues/242))
-* `--interactive` (`-i`) option has been added to prompt when folder is not empty rather than failing ([#242](https://github.com/SassDoc/sassdoc/issues/242))
-* `--no-prompt` option no longer exists and has been replaced by `--force` (`-f`) ([#242](https://github.com/SassDoc/sassdoc/issues/242))
-* `--sass-convert` option does not exist anymore, it is now implied ([#231](https://github.com/SassDoc/sassdoc/issues/231#issuecomment-63610647))
+* SassDoc now always outputs its own directory in the current folder ([#302](https://github.com/SassDoc/sassdoc/issues/302))
+* `--dest` option has been added to define SassDoc's folder name for output, default is `sassdoc` ([#302](https://github.com/SassDoc/sassdoc/issues/302))
+* `--no-prompt` option no longer exists since SassDoc outputs its own folder ([#302](https://github.com/SassDoc/sassdoc/issues/302))
+* `--sass-convert` option no longer exists and is now implied ([#231](https://github.com/SassDoc/sassdoc/issues/231#issuecomment-63610647))
 * Default name for configuration file is now `.sassdocrc` ([#189](https://github.com/SassDoc/sassdoc/issues/189))
 * `@alias` can no longer be used on placeholders ([#263](https://github.com/SassDoc/sassdoc/issues/263))
 * Annotations `@access`, `@content`, `@deprecated`, `@group`, `@output`, `@return` and `@type` are now restricted to one use per item ([#257](https://github.com/SassDoc/sassdoc/issues/257))
+* Annotations `@param` and `@prop` now use square brackets (`[]`) for default values rather than parentheses (`()`) to avoid edge issues ([#303](https://github.com/SassDoc/sassdoc/issues/303))
+  To convert all your SassDoc comments to this change, you can run this script on your codebase: `find . -type f -name '*.s[ac]ss' -exec sed -ri '/@param|@prop|@require/y/()/[]/' {} +`
 
 ### API breaks for theme builders
 
@@ -25,13 +27,15 @@
 * `throws` key from item now becomes `throw` ([#225](https://github.com/SassDoc/sassdoc/issues/225))
 * `todos` key from item now becomes `todo` ([#225](https://github.com/SassDoc/sassdoc/issues/225))
 * `prop` key from item now becomes `property` ([#225](https://github.com/SassDoc/sassdoc/issues/225))
-* When using the display filter from sassdoc-extras, items are now removed rather than not displayed from the templates ([sassdoc-extras#11](https://github.com/SassDoc/sassdoc-extras/issues/11))
+* When using the display filter from sassdoc-extras, items are now fully removed rather than given a `display` key ([sassdoc-extras#11](https://github.com/SassDoc/sassdoc-extras/issues/11))
 
 ### New features
 
 * The whole API has been fully refactored in ES6 ([#231](https://github.com/SassDoc/sassdoc/issues/231))
 * `$` sign is now optional when defining the name in `@parameter` annotation ([#222](https://github.com/SassDoc/sassdoc/issues/222))
 * It is now possible to use file/folder exclusion patterns ([#228](https://github.com/SassDoc/sassdoc/issues/231))
+* It is now possible to pipe SassDoc into `stdin` ([#315](https://github.com/SassDoc/sassdoc/pull/315))
+* `--debug` option has been added to output information about current setup ([#311](https://github.com/SassDoc/sassdoc/issues/311))
 * Default theme now has a `googleAnalytics` configuration accepting a Google Analytics tracking key ([sassdoc-theme-default#10](https://github.com/SassDoc/sassdoc-theme-default/pull/10))
 * Default theme now has a `trackingCode` configuration accepting an arbitrary HTML snippet to be included before `</body>` ([sassdoc-theme-default#10](https://github.com/SassDoc/sassdoc-theme-default/pull/10))
 * `@content` annotation is now correctly output in default theme ([sassdoc-theme-default#15](https://github.com/SassDoc/sassdoc-theme-default/issues/15))
