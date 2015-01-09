@@ -1,11 +1,11 @@
 let path = require('path');
-let _ = require('lodash');
+let each = require('lodash.foreach');
 let glob2base = require('glob2base');
 let Glob = require('glob').Glob;
 
 export function eachItem(byTypeAndName, cb) {
-  _.each(byTypeAndName, function (typeObj) {
-    _.each(typeObj, function (item) {
+  each(byTypeAndName, function (typeObj) {
+    each(typeObj, function (item) {
       cb(item);
     });
   });

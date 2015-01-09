@@ -9,7 +9,7 @@ let exclude = require('./exclude').default;
 let recurse = require('./recurse').default;
 let sorter = require('./sorter').default;
 
-let _ = require('lodash');
+let difference = require('lodash.difference');
 let fs = require('fs');
 let path = require('path');
 let mkdir = utils.denodeify(require('mkdirp'));
@@ -88,7 +88,7 @@ export default function sassdoc(...args) {
   env.logger.debug('env:', () => {
     let clone = {};
 
-    _.difference(
+    difference(
       Object.getOwnPropertyNames(env),
       ['domain', '_events', '_maxListeners', 'logger']
     )
