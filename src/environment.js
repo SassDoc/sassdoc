@@ -3,6 +3,7 @@ let fs = require('fs');
 let path = require('path');
 let yaml = require('js-yaml');
 let errors = require('./errors');
+let utils = require('./utils');
 let converter = require('sass-convert');
 
 export default class Environment extends EventEmitter {
@@ -27,7 +28,11 @@ export default class Environment extends EventEmitter {
       if (friendlyErrors.find(c => error instanceof c)) {
         logger.error(error.message);
       } else {
-        logger.error('stack' in error ? error.stack : error);
+        if (utils.is.object(error) && 'stack' in error) {
+          logger.error(error.stack);
+        } else {
+          logger.error(error);
+        }
       }
     });
 
