@@ -1,5 +1,7 @@
 let doc = `
-Usage: sassdoc <src> [options]
+Usage:
+  sassdoc <src> [options]
+  sassdoc [options]
 
 Arguments:
   <src>   Path to your Sass folder.
@@ -11,11 +13,13 @@ Options:
   -d, --dest=<dir>      Documentation folder [default: sassdoc].
   -c, --config=<path>   Path to JSON/YAML configuration file.
   -t, --theme=<name>    Theme to use.
+  -s, --stdin           Parse code provided on <STDIN>.
   --no-update-notifier  Disable update notifier check.
   --strict              Turn warnings into errors.
 `;
 
 let docopt = require('docopt').docopt;
+let source = require('vinyl-source-stream');
 let pkg = require('../package.json');
 let Environment = require('./environment').default;
 let Logger = require('./logger').default;
@@ -49,6 +53,12 @@ export default function cli(argv = process.argv) {
   // Run update notifier if not explicitely disabled.
   if (!env.noUpdateNotifier) {
     require('./notifier').default(pkg, logger);
+  }
+
+  if (options['--stdin']) {
+    return process.stdin
+      .pipe(source())
+      .pipe(sassdoc(env));
   }
 
   sassdoc(options['<src>'], env);
