@@ -62,9 +62,8 @@ export { Environment, Logger, Parser, sorter, errors };
  * @param {Object} env
  */
 export default function sassdoc(...args) {
-  let src = args.find(is.string);
+  let src = args.find(a => is.string(a) || is.array(a));
   let env = args.find(is.object);
-  let hasSrc = src;
 
   env = ensureEnvironment(env || {});
 
@@ -82,7 +81,7 @@ export default function sassdoc(...args) {
   env.logger.debug('platform:', () => process.platform);
   env.logger.debug('cwd:', () => process.cwd());
 
-  env.src = src || process.cwd();
+  env.src = src;
   env.dest = env.dest || 'sassdoc';
 
   env.logger.debug('env:', () => {
@@ -97,7 +96,7 @@ export default function sassdoc(...args) {
     return JSON.stringify(clone, null, 2);
   });
 
-  let task = hasSrc ? documentize : stream;
+  let task = env.src ? documentize : stream;
   env.logger.debug('task:', () => task.name);
 
   return task();
@@ -108,7 +107,7 @@ export default function sassdoc(...args) {
   function refresh() { // jshint ignore:line
     return safeWipe(env.dest, {
       force: true,
-      parent: utils.g2b(env.src),
+      parent: is.string(env.src) ? utils.g2b(env.src) : null,
       silent: true,
     })
       .then(() => mkdir(env.dest))
