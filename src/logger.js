@@ -10,8 +10,9 @@ let log = arr => date(arr).join(' ');              // Log.
 let flog = (name, arr) => log(flag(name, arr));    // Log with flag.
 
 export default class Logger {
-  constructor(verbose = false) {
+  constructor(verbose = false, debug = false) {
     this.verbose = verbose;
+    this.debug_ = debug;
   }
 
   // Log arguments into the console if the verbose mode is enabled.
@@ -30,10 +31,23 @@ export default class Logger {
   error(...args) {
     console.error(chalk.red(flog('ERROR', args)));
   }
+
+  debug(...args) {
+    if (this.debug_) {
+      console.error(chalk.grey(flog('DEBUG', args.map(f => {
+        if (f instanceof Function) {
+          return f();
+        }
+
+        return f;
+      }))));
+    }
+  }
 }
 
 export var empty = {
   log: () => {},
   warn: () => {},
   error: () => {},
+  debug: () => {},
 };

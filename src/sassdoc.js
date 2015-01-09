@@ -9,6 +9,9 @@ let exclude = require('./exclude').default;
 let recurse = require('./recurse').default;
 let sorter = require('./sorter').default;
 
+let _ = require('lodash');
+let fs = require('fs');
+let path = require('path');
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
@@ -18,7 +21,7 @@ let pipe = require('multipipe'); // jshint ignore:line
 /**
  * @return {Stream}
  */
-export function parseFilter(src, env = {}) {
+export function parseFilter(env = {}) {
   env = ensureEnvironment(env);
 
   let parser = new Parser(env, env.theme && env.theme.annotations);
@@ -39,7 +42,7 @@ export function ensureEnvironment(config, onError = e => { throw e; }) {
     return config;
   }
 
-  let logger = config.logger || new Logger(config.verbose);
+  let logger = config.logger || new Logger(config.verbose, process.env.SASSDOC_DEBUG);
   let env = new Environment(logger, config.strict);
 
   env.on('error', onError);
@@ -64,10 +67,40 @@ export default function sassdoc(...args) {
   let hasSrc = src;
 
   env = ensureEnvironment(env || {});
-  src = src || process.cwd();
+
+  env.logger.debug('process.argv:', () => JSON.stringify(process.argv));
+  env.logger.debug('sassdoc version:', () => require('../package.json').version);
+  env.logger.debug('node version:', () => process.version.substr(1));
+
+  env.logger.debug('npm version:', () => {
+    let prefix = path.resolve(process.execPath, '../../lib');
+    let pkg = path.resolve(prefix, 'node_modules/npm/package.json');
+
+    return require(pkg).version;
+  });
+
+  env.logger.debug('platform:', () => process.platform);
+  env.logger.debug('cwd:', () => process.cwd());
+
+  env.src = src || process.cwd();
   env.dest = env.dest || 'sassdoc';
 
-  return hasSrc ? documentize() : stream();
+  env.logger.debug('env:', () => {
+    let clone = {};
+
+    _.difference(
+      Object.getOwnPropertyNames(env),
+      ['domain', '_events', '_maxListeners', 'logger']
+    )
+      .forEach(k => clone[k] = env[k]);
+
+    return JSON.stringify(clone, null, 2);
+  });
+
+  let task = hasSrc ? documentize : stream;
+  env.logger.debug('task:', () => task.name);
+
+  return task();
 
   /**
    * Safely wipe and re-create the destination dir.
@@ -75,7 +108,7 @@ export default function sassdoc(...args) {
   function refresh() { // jshint ignore:line
     return safeWipe(env.dest, {
       force: true,
-      parent: utils.g2b(src),
+      parent: utils.g2b(env.src),
       silent: true,
     })
       .then(() => mkdir(env.dest))
@@ -113,16 +146,25 @@ export default function sassdoc(...args) {
    * @return {Promise}
    */
   async function documentize() { // jshint ignore:line
-    let filter = parseFilter(src, env);
+    let filter = parseFilter(env);
 
     filter.promise
       .then(data => {
-        env.logger.log(`Folder "${src}" successfully parsed.`);
+        env.logger.log(`Folder "${env.src}" successfully parsed.`);
         env.data = data;
+
+        env.logger.debug(() => {
+          fs.writeFile(
+            'sassdoc-data.json',
+            JSON.stringify(data, null, 2)
+          );
+
+          return 'Dumping data to "sassdoc-data.json".';
+        });
       });
 
     let streams = [ // jshint ignore:line
-      vfs.src(src),
+      vfs.src(env.src),
       recurse(),
       exclude(env.exclude || []),
       converter({ from: 'sass', to: 'scss' }),
@@ -157,7 +199,7 @@ export default function sassdoc(...args) {
    * @return {Stream}
    */
   function stream() {
-    let filter = parseFilter(src, env);
+    let filter = parseFilter(env);
 
     /* jshint ignore:start */
 
