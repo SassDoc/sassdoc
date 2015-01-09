@@ -63,7 +63,10 @@
     "sass-convert": false,
     "sassdoc-theme-default": false,
     "update-notifier": false,
-    "through2": false
+    "through2": false,
+    "concat-stream": false,
+    "vinyl-source-stream": false
+
   },
   "files": [
     "bin",
@@ -75,6 +78,7 @@
   ],
   "dependencies": {
     "chalk": "^0.5.0",
+    "concat-stream": "^1.4.7",
     "docopt": "^0.4.1",
     "glob": "^4.3.1",
     "glob2base": "0.0.12",
@@ -90,7 +94,8 @@
     "scss-comment-parser": "0.5.1-rc.5",
     "through2": "^0.6.3",
     "update-notifier": "^0.2.0",
-    "vinyl-fs": "^0.3.11"
+    "vinyl-fs": "^0.3.11",
+    "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
     "assert": "^1.1.1",

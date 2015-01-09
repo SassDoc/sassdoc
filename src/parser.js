@@ -1,6 +1,7 @@
 let AnnotationsApi = require('./annotation').default;
 let ScssCommentParser = require('scss-comment-parser');
 let through = require('through2');
+let concat = require('concat-stream');
 let path = require('path');
 let utils = require('./utils');
 let errors = require('./errors');
@@ -49,28 +50,40 @@ export default class Parser {
    * @return {Object}
    */
   stream() {
-    let data = [];
     let deferred = utils.defer();
+    let data = [];
 
     let transform = (file, enc, cb) => {
       // Pass-through.
       cb(null, file);
 
-      if (!file.isBuffer()) {
-        return;
-      }
+      let parseFile = ({ buf, name, path }) => {
+        let fileData = this.parse(buf.toString(enc), name);
 
-      let name = path.basename(file.relative);
-      let fileData = this.parse(file.contents.toString(enc), name);
+        fileData.forEach(item => {
+          item.file = {
+            path,
+            name,
+          };
 
-      fileData.forEach(item => {
-        item.file = {
+          data.push(item);
+        });
+      };
+
+      if (file.isBuffer()) {
+        let args = {
+          buf: file.contents,
+          name: path.basename(file.relative),
           path: file.relative,
-          name,
         };
 
-        data.push(item);
-      });
+        parseFile(args);
+      }
+      if (file.isStream()) {
+        file.pipe(concat(buf => {
+          parseFile({ buf });
+        }));
+      }
     };
 
     let flush = cb => {
