@@ -17,6 +17,7 @@ let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
 let converter = require('sass-convert');
 let pipe = require('multipipe'); // jshint ignore:line
+let through = require('through2');
 
 /**
  * @return {Stream}
@@ -171,7 +172,7 @@ export default function sassdoc(...args) {
 export function parse(...args) { // jshint ignore:line
   /* jshint ignore:start */
 
-  return srcEnv(documentize, parseFilter)(...args);
+  return srcEnv(documentize, stream)(...args);
 
   async function documentize(env) {
     let data = await baseDocumentize(env);
@@ -181,6 +182,22 @@ export function parse(...args) { // jshint ignore:line
   }
 
   /* jshint ignore:end */
+
+  /**
+   * Don't pass chuncks, but pass final data at the end.
+   */
+  function stream(env) { // jshint ignore:line
+    let parse = parseFilter(env);
+
+    let filter = through.obj((file, enc, cb) => cb(), function (cb) {
+      parse.promise.then(data => {
+        this.push(data);
+        cb();
+      }, cb);
+    });
+
+    return pipe(parse, filter);
+  }
 }
 
 async function baseDocumentize(env) { // jshint ignore:line
