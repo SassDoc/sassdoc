@@ -5,7 +5,7 @@ require('../init');
 var assert = require('assert');
 
 describe('#return', function () {
-  var returns = (new (require('../../dist/annotation').default)()).list.return;
+  var returns = (new (require('../../dist/annotation'))()).list.return;
 
   it('should return an object', function () {
     assert.deepEqual(returns.parse('{List} - list to check'), { type: 'List', description: 'list to check' });

@@ -1,3 +1,3 @@
 'use strict';
 
-require('../bin/traceur-runtime');
+require('../polyfill');

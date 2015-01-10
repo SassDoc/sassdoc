@@ -5,7 +5,7 @@ require('../init');
 var assert = require('assert');
 
 describe('#todo', function () {
-  var todo = (new (require('../../dist/annotation').default)()).list.todo;
+  var todo = (new (require('../../dist/annotation'))()).list.todo;
 
   it('should return the trimmed string', function () {
     assert.equal(todo.parse('   '), '');

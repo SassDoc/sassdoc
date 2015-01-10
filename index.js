@@ -1,6 +1,6 @@
 'use strict';
 
-require('./bin/traceur-runtime');
+require('../polyfill');
 
 var api = require('./dist/sassdoc');
 

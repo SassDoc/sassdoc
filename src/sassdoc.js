@@ -2,12 +2,12 @@ let utils = require('./utils');
 let errors = require('./errors');
 let is = utils.is;
 
-let Environment = require('./environment').default;
-let Logger = require('./logger').default;
-let Parser = require('./parser').default;
-let exclude = require('./exclude').default;
-let recurse = require('./recurse').default;
-let sorter = require('./sorter').default;
+let Environment = require('./environment');
+let Logger = require('./logger');
+let Parser = require('./parser');
+let exclude = require('./exclude');
+let recurse = require('./recurse');
+let sorter = require('./sorter');
 
 let difference = require('lodash.difference'); // jshint ignore:line
 let fs = require('fs');

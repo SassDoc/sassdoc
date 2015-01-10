@@ -2,5 +2,5 @@
 
 'use strict';
 
-require('./traceur-runtime');
+require('../polyfill');
 require('../dist/cli').default(process.argv.slice(2));

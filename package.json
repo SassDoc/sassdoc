@@ -78,6 +78,7 @@
   "dependencies": {
     "chalk": "^0.5.0",
     "concat-stream": "^1.4.7",
+    "core-js": "^0.4.3",
     "docopt": "^0.4.1",
     "glob": "^4.3.1",
     "glob2base": "0.0.12",
@@ -88,6 +89,7 @@
     "minimatch": "^2.0.0",
     "mkdirp": "^0.5.0",
     "multipipe": "^0.1.2",
+    "regenerate": "^1.0.1",
     "rimraf": "^2.2.8",
     "safe-wipe": "0.*",
     "sass-convert": "^0.2.1",
@@ -99,6 +101,7 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
+    "6to5": "^2.9.4",
     "assert": "^1.1.1",
     "jshint": "^2.5.10",
     "mocha": "^2.0.1",

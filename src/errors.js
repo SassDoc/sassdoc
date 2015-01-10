@@ -1,11 +1,11 @@
-export class Error extends this.Error {
+export class SassDocError extends Error {
   constructor(message) {
     super(message);
     this.message = message;
   }
 }
 
-export class Warning extends Error {
+export class Warning extends SassDocError {
   constructor(message) {
     super(message);
     this.message = message;

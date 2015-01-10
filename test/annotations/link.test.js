@@ -5,7 +5,7 @@ require('../init');
 var assert = require('assert');
 
 describe('#link', function () {
-  var link = (new (require('../../dist/annotation').default)()).list.link;
+  var link = (new (require('../../dist/annotation'))()).list.link;
 
   it('should return an object', function () {
     assert.deepEqual(link.parse(''), { url: '', caption: '' });

@@ -5,7 +5,7 @@ require('../init');
 var assert = require('assert');
 
 describe('#since', function () {
-  var since = (new (require('../../dist/annotation').default)()).list.since;
+  var since = (new (require('../../dist/annotation'))()).list.since;
 
   it('should return an object', function () {
     assert.deepEqual(since.parse('   '), {});
