@@ -1,7 +1,7 @@
-let path = require('path');
-let each = require('lodash.foreach');
-let glob2base = require('glob2base');
-let Glob = require('glob').Glob;
+const path = require('path');
+const each = require('lodash.foreach');
+const glob2base = require('glob2base');
+const Glob = require('glob').Glob;
 
 export function eachItem(byTypeAndName, cb) {
   each(byTypeAndName, function (typeObj) {

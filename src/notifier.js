@@ -1,4 +1,4 @@
-let chalk = require('chalk');
+const chalk = require('chalk');
 
 /**
  * Sometimes check for update and notify the user.
@@ -7,7 +7,7 @@ let chalk = require('chalk');
  * @param {Logger} logger
  */
 export default function notify(pkg, logger) {
-  let notifier = require('update-notifier')({
+  const notifier = require('update-notifier')({
     packageName: pkg.name,
     packageVersion: pkg.version,
   });

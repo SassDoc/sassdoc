@@ -1,10 +1,10 @@
-let EventEmitter = require('events').EventEmitter;
-let fs = require('fs');
-let path = require('path');
-let yaml = require('js-yaml');
-let errors = require('./errors');
-let utils = require('./utils');
-let converter = require('sass-convert');
+const EventEmitter = require('events').EventEmitter;
+const fs = require('fs');
+const path = require('path');
+const yaml = require('js-yaml');
+const errors = require('./errors');
+const utils = require('./utils');
+const converter = require('sass-convert');
 
 export default class Environment extends EventEmitter {
 

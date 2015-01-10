@@ -1,6 +1,6 @@
-let path = require('path');
-let through = require('through2');
-let vfs = require('vinyl-fs');
+const path = require('path');
+const through = require('through2');
+const vfs = require('vinyl-fs');
 
 /**
  * Return a transform stream recursing through directory to yield

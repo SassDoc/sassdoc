@@ -1,10 +1,10 @@
-let AnnotationsApi = require('./annotation');
-let ScssCommentParser = require('scss-comment-parser');
-let through = require('through2');
-let concat = require('concat-stream');
-let path = require('path');
-let utils = require('./utils');
-let errors = require('./errors');
+const AnnotationsApi = require('./annotation');
+const ScssCommentParser = require('scss-comment-parser');
+const through = require('through2');
+const concat = require('concat-stream');
+const path = require('path');
+const utils = require('./utils');
+const errors = require('./errors');
 
 export default class Parser {
   constructor(env, additionalAnnotations) {

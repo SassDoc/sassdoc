@@ -19,13 +19,13 @@ Options:
   --debug               Output debugging information.
 `;
 
-let docopt = require('docopt').docopt;
-let source = require('vinyl-source-stream');
-let pkg = require('../package.json');
-let Environment = require('./environment');
-let Logger = require('./logger');
-let sassdoc = require('./sassdoc');
-let errors = require('./errors');
+const docopt = require('docopt').docopt;
+const source = require('vinyl-source-stream');
+const pkg = require('../package.json');
+const Environment = require('./environment');
+const Logger = require('./logger');
+const sassdoc = require('./sassdoc');
+const errors = require('./errors');
 
 export default function cli(argv = process.argv.slice(2)) {
   let options = docopt(doc, { version: pkg.version, argv: argv });

@@ -1,5 +1,5 @@
-let utils = require('../../utils');
-let uniq = require('lodash.uniq');
+const utils = require('../../utils');
+const uniq = require('lodash.uniq');
 
 let reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\[([^\]]*)\])?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
 

@@ -1,23 +1,23 @@
-let utils = require('./utils');
-let errors = require('./errors');
+const utils = require('./utils');
+const errors = require('./errors');
 let is = utils.is;
 
-let Environment = require('./environment');
-let Logger = require('./logger');
-let Parser = require('./parser');
-let exclude = require('./exclude');
-let recurse = require('./recurse');
-let sorter = require('./sorter');
+const Environment = require('./environment');
+const Logger = require('./logger');
+const Parser = require('./parser');
+const exclude = require('./exclude');
+const recurse = require('./recurse');
+const sorter = require('./sorter');
 
-let difference = require('lodash.difference'); // jshint ignore:line
-let fs = require('fs');
-let path = require('path'); // jshint ignore:line
+const difference = require('lodash.difference'); // jshint ignore:line
+const fs = require('fs');
+const path = require('path'); // jshint ignore:line
 let mkdir = utils.denodeify(require('mkdirp'));
-let safeWipe = require('safe-wipe');
-let vfs = require('vinyl-fs');
-let converter = require('sass-convert');
-let pipe = require('multipipe'); // jshint ignore:line
-let through = require('through2');
+const safeWipe = require('safe-wipe');
+const vfs = require('vinyl-fs');
+const converter = require('sass-convert');
+const pipe = require('multipipe'); // jshint ignore:line
+const through = require('through2');
 
 /**
  * @return {Stream}

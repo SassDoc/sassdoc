@@ -1,5 +1,5 @@
-let through = require('through2');
-let minimatch = require('minimatch');
+const through = require('through2');
+const minimatch = require('minimatch');
 
 /**
  * @param {Array} patterns
