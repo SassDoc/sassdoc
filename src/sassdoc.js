@@ -75,7 +75,11 @@ export default function sassdoc(...args) {
     let prefix = path.resolve(process.execPath, '../../lib');
     let pkg = path.resolve(prefix, 'node_modules/npm/package.json');
 
-    return require(pkg).version;
+    try {
+      return require(pkg).version;
+    } catch (e) {
+      return 'unknown';
+    }
   });
 
   env.logger.debug('platform:', () => process.platform);
