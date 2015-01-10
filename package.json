@@ -92,7 +92,7 @@
     "regenerator": "^0.8.3",
     "rimraf": "^2.2.8",
     "safe-wipe": "0.*",
-    "sass-convert": "^0.2.1",
+    "sass-convert": "^0.3.0",
     "sassdoc-theme-default": "2.0.0-rc.10",
     "scss-comment-parser": "0.5.1-rc.5",
     "through2": "^0.6.3",
