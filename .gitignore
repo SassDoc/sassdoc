@@ -2,5 +2,6 @@
 /dist
 /bin/traceur-runtime.js
 /test/data/expected.stream.json
+/sassdoc
 .DS_Store
 npm-debug.log
