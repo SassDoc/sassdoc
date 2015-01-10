@@ -1,7 +1,7 @@
-let path = require('path');
-let vfs = require('vinyl-fs');
-let through = require('through2');
-let sassdoc = require('../src/sassdoc');
+const path = require('path');
+const vfs = require('vinyl-fs');
+const through = require('through2');
+const sassdoc = require('../src/sassdoc');
 
 function inspect() {
   let count = 0;

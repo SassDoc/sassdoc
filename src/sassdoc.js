@@ -1,6 +1,5 @@
-const utils = require('./utils');
+const { denodeify, is, g2b } = require('./utils');
 const errors = require('./errors');
-let is = utils.is;
 
 const Environment = require('./environment');
 const Logger = require('./logger');
@@ -12,7 +11,7 @@ const sorter = require('./sorter');
 const difference = require('lodash.difference'); // jshint ignore:line
 const fs = require('fs');
 const path = require('path'); // jshint ignore:line
-let mkdir = utils.denodeify(require('mkdirp'));
+const mkdir = denodeify(require('mkdirp'));
 const safeWipe = require('safe-wipe');
 const vfs = require('vinyl-fs');
 const converter = require('sass-convert');
@@ -94,7 +93,7 @@ export default function sassdoc(...args) {
   function refresh(env) { // jshint ignore:line
     return safeWipe(env.dest, {
       force: true,
-      parent: is.string(env.src) ? utils.g2b(env.src) : null,
+      parent: is.string(env.src) ? g2b(env.src) : null,
       silent: true,
     })
       .then(() => mkdir(env.dest))
