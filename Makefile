@@ -1,11 +1,11 @@
 TO5 = node_modules/6to5/bin/6to5/index.js
+TO5_NODE = node_modules/6to5/bin/6to5-node
+TO5_FLAGS = --experimental
+
 JSHINT = node_modules/jshint/bin/jshint
 MOCHA = node_modules/mocha/bin/mocha
 YAML = node_modules/js-yaml/bin/js-yaml.js
-
-DEVELOP = develop
 SASSDOC = bin/sassdoc
-SAMPLE = node_modules/sassdoc-theme-default/scss
 
 all: dist lint test
 
@@ -21,7 +21,7 @@ publish: all
 
 dist: force
 	rm -rf $@
-	$(TO5) --experimental src --out-dir dist
+	$(TO5) $(TO5_FLAGS) src --out-dir dist
 
 # Code quality
 # ============
@@ -42,12 +42,7 @@ test/data/expected.stream.json: test/data/expected.json
 .jshintrc: .jshintrc.yaml
 	$(YAML) $< > $@
 
-# Compile sample input in `develop`
-# =================================
-
-compile: develop
-
 develop: force
-	$(SASSDOC) $(SAMPLE) $@ -f
+	$(TO5_NODE) $(TO5_FLAGS) $@
 
 force:
