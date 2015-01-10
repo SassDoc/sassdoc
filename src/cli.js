@@ -62,7 +62,7 @@ export default function cli(argv = process.argv.slice(2)) {
 
   // Whether to parse only or to documentize.
   if (!options['--parse']) {
-    handler = sassdoc.default;
+    handler = sassdoc;
     cb = () => {};
   } else {
     handler = sassdoc.parse;
