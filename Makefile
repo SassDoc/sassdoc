@@ -1,4 +1,4 @@
-TRACEUR = node_modules/traceur/traceur
+TO5 = node_modules/6to5/bin/6to5/index.js
 JSHINT = node_modules/jshint/bin/jshint
 MOCHA = node_modules/mocha/bin/mocha
 YAML = node_modules/js-yaml/bin/js-yaml.js
@@ -19,17 +19,9 @@ publish: all
 # Compile ES6 from `src` to ES5 in `dist`
 # =======================================
 
-dist: runtime force
+dist: force
 	rm -rf $@
-	$(TRACEUR) --modules=commonjs --experimental --dir src dist
-
-# Copy Traceur runtime locally
-# ============================
-
-runtime: bin/traceur-runtime.js
-
-bin/traceur-runtime.js:
-	cp node_modules/traceur/bin/traceur-runtime.js $@
+	$(TO5) --experimental src --out-dir dist
 
 # Code quality
 # ============

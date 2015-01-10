@@ -5,7 +5,7 @@ require('../init');
 var assert = require('assert');
 
 describe('#example', function () {
-  var example = (new (require('../../dist/annotation').default)()).list.example;
+  var example = (new (require('../../dist/annotation'))()).list.example;
 
   it('default type should be `scss`', function () {
     assert.deepEqual(example.parse(''), { type: 'scss', code: '' });

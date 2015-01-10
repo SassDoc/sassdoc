@@ -1,4 +1,4 @@
-let AnnotationsApi = require('./annotation').default;
+let AnnotationsApi = require('./annotation');
 let ScssCommentParser = require('scss-comment-parser');
 let through = require('through2');
 let concat = require('concat-stream');

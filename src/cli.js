@@ -22,8 +22,8 @@ Options:
 let docopt = require('docopt').docopt;
 let source = require('vinyl-source-stream');
 let pkg = require('../package.json');
-let Environment = require('./environment').default;
-let Logger = require('./logger').default;
+let Environment = require('./environment');
+let Logger = require('./logger');
 let sassdoc = require('./sassdoc');
 let errors = require('./errors');
 
@@ -55,14 +55,14 @@ export default function cli(argv = process.argv.slice(2)) {
 
   // Run update notifier if not explicitely disabled.
   if (!env.noUpdateNotifier) {
-    require('./notifier').default(pkg, logger);
+    require('./notifier')(pkg, logger);
   }
 
   let handler, cb;
 
   // Whether to parse only or to documentize.
   if (!options['--parse']) {
-    handler = sassdoc.default;
+    handler = sassdoc;
     cb = () => {};
   } else {
     handler = sassdoc.parse;

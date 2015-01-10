@@ -5,7 +5,7 @@ require('../init');
 var assert = require('assert');
 
 describe('#require', function () {
-  var requires = (new (require('../../dist/annotation').default)()).list.require;
+  var requires = (new (require('../../dist/annotation'))()).list.require;
 
   it('should default to function', function () {
     assert.deepEqual(requires.parse('name - description'), { type: 'function', name: 'name', description: 'description', 'external': false });
