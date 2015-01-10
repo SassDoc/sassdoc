@@ -15,32 +15,44 @@ export default class Logger {
     this.debug_ = debug;
   }
 
-  // Log arguments into the console if the verbose mode is enabled.
+  /**
+   * Log arguments into stderr if the verbose mode is enabled.
+   */
   log(...args) {
     if (this.verbose) {
-      console.log(log(args));
+      console.error(log(args));
     }
   }
 
-  // Always log arguments as warning into the console.
+  /**
+   * Always log arguments as warning into stderr.
+   */
   warn(...args) {
-    console.warn(chalk.yellow(flog('WARNING', args)));
+    chalkHack(() => console.error(chalk.yellow(flog('WARNING', args))));
   }
 
-  // Always log arguments as error into the error console.
+  /**
+   * Always log arguments as error into stderr.
+   */
   error(...args) {
-    console.error(chalk.red(flog('ERROR', args)));
+    chalkHack(() => console.error(chalk.red(flog('ERROR', args))));
   }
 
+  /**
+   * Log arguments into stderr if debug mode is enabled (will call all
+   * argument functions to allow "lazy" arguments).
+   */
   debug(...args) {
     if (this.debug_) {
-      console.error(chalk.grey(flog('DEBUG', args.map(f => {
-        if (f instanceof Function) {
-          return f();
-        }
+      chalkHack(() => {
+        console.error(chalk.grey(flog('DEBUG', args.map(f => {
+          if (f instanceof Function) {
+            return f();
+          }
 
-        return f;
-      }))));
+          return f;
+        }))));
+      });
     }
   }
 }
@@ -51,3 +63,19 @@ export var empty = {
   error: () => {},
   debug: () => {},
 };
+
+/**
+ * Chalk don't allow us to create a new instance with our own `enabled`
+ * value (internal functions always reference the global export). Here
+ * we want to enable it if stderr is a TTY, but it's not acceptable to
+ * modify the global context for this purpose.
+ *
+ * So this hack will set `chalk.enabled` for the time of the synchronous
+ * callback execution, then reset it to whatever was its default value.
+ */
+function chalkHack(cb) {
+  let enabled = chalk.enabled;
+  chalk.enabled = process.stderr.isTTY;
+  cb();
+  chalk.enabled = enabled;
+}
