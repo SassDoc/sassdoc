@@ -92,6 +92,7 @@ export const is = {
   string: arg => typeof arg === 'string',
   function: arg => typeof arg === 'function',
   object: arg => typeof arg === 'object' && arg !== null,
+  array: arg => Array.isArray(arg),
   promise: arg => arg && is.function(arg.then),
   stream: arg => arg && is.function(arg.pipe),
 };
