@@ -9,9 +9,9 @@ let exclude = require('./exclude').default;
 let recurse = require('./recurse').default;
 let sorter = require('./sorter').default;
 
-let difference = require('lodash.difference');
+let difference = require('lodash.difference'); // jshint ignore:line
 let fs = require('fs');
-let path = require('path');
+let path = require('path'); // jshint ignore:line
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
@@ -63,12 +63,14 @@ export { Environment, Logger, Parser, sorter, errors };
  * @see srcEnv
  */
 export default function sassdoc(...args) {
-  return srcEnv(documentize, stream)(...args);
+  return srcEnv(documentize, stream)(...args); // jshint ignore:line
 
   /**
    * @return {Promise}
    */
   async function documentize(env) { // jshint ignore:line
+    /* jshint ignore:start */
+
     let data = await baseDocumentize(env);
 
     try {
@@ -81,6 +83,8 @@ export default function sassdoc(...args) {
     }
 
     return data;
+
+    /* jshint ignore:end */
   }
 
   /**
@@ -164,7 +168,9 @@ export default function sassdoc(...args) {
  * @param {Object} env
  * @see srcEnv
  */
-export function parse(...args) {
+export function parse(...args) { // jshint ignore:line
+  /* jshint ignore:start */
+
   return srcEnv(documentize, parseFilter)(...args);
 
   async function documentize(env) {
@@ -173,9 +179,11 @@ export function parse(...args) {
 
     return data;
   }
+
+  /* jshint ignore:end */
 }
 
-async function baseDocumentize(env) {
+async function baseDocumentize(env) { // jshint ignore:line
   let filter = parseFilter(env);
 
   filter.promise
