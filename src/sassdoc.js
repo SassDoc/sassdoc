@@ -103,7 +103,7 @@ export default function sassdoc(...args) {
       })
       .catch(err => {
         // Friendly error for already existing directory.
-        throw new errors.Error(err.message);
+        throw new errors.SassDocError(err.message);
       });
   }
 

@@ -20,7 +20,7 @@ export default class Environment extends EventEmitter {
 
     this.on('error', error => {
       let friendlyErrors = [
-        errors.Error,
+        errors.SassDocError,
         converter.BinaryError,
         converter.VersionError,
       ];
@@ -59,7 +59,7 @@ export default class Environment extends EventEmitter {
       return this.loadObject(config);
     }
 
-    this.emit('error', new errors.Error(
+    this.emit('error', new errors.SassDocError(
       'Invalid `config` argument, expected string, object or undefined.'
     ));
   }
@@ -207,7 +207,7 @@ export default class Environment extends EventEmitter {
     let str = Object.prototype.toString;
 
     if (typeof this.theme !== 'function') {
-      this.emit('error', new errors.Error(
+      this.emit('error', new errors.SassDocError(
         `Given theme is ${str(this.theme)}, expected ${str(str)}.`
       ));
 
@@ -228,7 +228,7 @@ export default class Environment extends EventEmitter {
     try {
       require.resolve('sassdoc-theme-default');
     } catch (err) {
-      this.emit('error', new errors.Error(
+      this.emit('error', new errors.SassDocError(
         'Holy shit, the default theme was not found!'
       ));
     }

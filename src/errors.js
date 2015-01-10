@@ -3,6 +3,10 @@ export class SassDocError extends Error {
     super(message);
     this.message = message;
   }
+
+  get name() {
+    return 'SassDocError';
+  }
 }
 
 export class Warning extends SassDocError {
