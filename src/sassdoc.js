@@ -141,6 +141,7 @@ export default function sassdoc(...args) {
         await refresh(env);
         await filter.promise;
         await theme(env);
+        okay(env);
       } catch (err) {
         env.emit('error', err);
         throw err;
