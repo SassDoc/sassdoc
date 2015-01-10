@@ -39,7 +39,7 @@ lint: .jshintrc
 
 test: force dist
 	$(MOCHA) test/annotations/*.test.js
-	test/data/dump | diff - test/data/expected.json
+	$(SASSDOC) --parse test/data/test.scss | diff - test/data/expected.json
 
 .jshintrc: .jshintrc.yaml
 	$(YAML) $< > $@
