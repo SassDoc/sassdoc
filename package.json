@@ -104,9 +104,7 @@
     "6to5": "^2.9.4",
     "assert": "^1.1.1",
     "jshint": "^2.5.10",
-    "mocha": "^2.0.1",
-    "traceur": ">= 0.0.79 < 1",
-    "traceur-runner": "pascalduez/traceur-runner#pr__compile_options"
+    "mocha": "^2.0.1"
   },
   "engines": {
     "npm": ">=2.0"
