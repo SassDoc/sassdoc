@@ -89,7 +89,7 @@
     "minimatch": "^2.0.0",
     "mkdirp": "^0.5.0",
     "multipipe": "^0.1.2",
-    "regenerate": "^1.0.1",
+    "regenerator": "^0.8.3",
     "rimraf": "^2.2.8",
     "safe-wipe": "0.*",
     "sass-convert": "^0.2.1",
