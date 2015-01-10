@@ -13,6 +13,7 @@ Options:
   -d, --dest=<dir>      Documentation folder [default: sassdoc].
   -c, --config=<path>   Path to JSON/YAML configuration file.
   -t, --theme=<name>    Theme to use.
+  -p, --parse           Parse the input and output JSON data to stdout.
   --no-update-notifier  Disable update notifier check.
   --strict              Turn warnings into errors.
   --debug               Output debugging information.
@@ -23,7 +24,7 @@ let source = require('vinyl-source-stream');
 let pkg = require('../package.json');
 let Environment = require('./environment').default;
 let Logger = require('./logger').default;
-let sassdoc = require('./sassdoc').default;
+let sassdoc = require('./sassdoc');
 let errors = require('./errors');
 
 export default function cli(argv = process.argv.slice(2)) {
@@ -57,13 +58,25 @@ export default function cli(argv = process.argv.slice(2)) {
     require('./notifier').default(pkg, logger);
   }
 
+  let handler, cb;
+
+  // Whether to parse only or to documentize.
+  if (!options['--parse']) {
+    handler = sassdoc.default;
+    cb = () => {};
+  } else {
+    handler = sassdoc.parse;
+    cb = data => console.log(JSON.stringify(data, null, 2));
+  }
+
   if (!options['<src>']) {
     return process.stdin
       .pipe(source())
-      .pipe(sassdoc(env));
+      .pipe(handler(env))
+      .on('data', cb);
   }
 
-  sassdoc(options['<src>'], env);
+  handler(options['<src>'], env).then(cb);
 }
 
 /**

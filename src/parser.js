@@ -79,6 +79,7 @@ export default class Parser {
 
         parseFile(args);
       }
+
       if (file.isStream()) {
         file.pipe(concat(buf => {
           parseFile({ buf });

@@ -37,9 +37,15 @@ bin/traceur-runtime.js:
 lint: .jshintrc
 	$(JSHINT) bin/sassdoc index.js src test
 
-test: force dist
+test: test/data/expected.stream.json force dist
 	$(MOCHA) test/annotations/*.test.js
-	test/data/dump | diff - test/data/expected.json
+	$(SASSDOC) --parse test/data/test.scss | diff - test/data/expected.json
+	$(SASSDOC) --parse < test/data/test.scss | diff - test/data/expected.stream.json
+	rm -rf sassdoc && $(SASSDOC) test/data/test.scss && [ -d sassdoc ]
+	rm -rf .sassdoc && $(SASSDOC) < test/data/test.scss && [ -d sassdoc ]
+
+test/data/expected.stream.json: test/data/expected.json
+	test/data/stream $< > $@
 
 .jshintrc: .jshintrc.yaml
 	$(YAML) $< > $@

@@ -9,14 +9,15 @@ let exclude = require('./exclude').default;
 let recurse = require('./recurse').default;
 let sorter = require('./sorter').default;
 
-let difference = require('lodash.difference');
+let difference = require('lodash.difference'); // jshint ignore:line
 let fs = require('fs');
-let path = require('path');
+let path = require('path'); // jshint ignore:line
 let mkdir = utils.denodeify(require('mkdirp'));
 let safeWipe = require('safe-wipe');
 let vfs = require('vinyl-fs');
 let converter = require('sass-convert');
 let pipe = require('multipipe'); // jshint ignore:line
+let through = require('through2');
 
 /**
  * @return {Stream}
@@ -60,55 +61,37 @@ export { Environment, Logger, Parser, sorter, errors };
 /**
  * @param {String} src
  * @param {Object} env
+ * @see srcEnv
  */
 export default function sassdoc(...args) {
-  let src = args.find(a => is.string(a) || is.array(a));
-  let env = args.find(is.object);
+  return srcEnv(documentize, stream)(...args); // jshint ignore:line
 
-  env = ensureEnvironment(env || {});
+  /**
+   * @return {Promise}
+   */
+  async function documentize(env) { // jshint ignore:line
+    /* jshint ignore:start */
 
-  env.logger.debug('process.argv:', () => JSON.stringify(process.argv));
-  env.logger.debug('sassdoc version:', () => require('../package.json').version);
-  env.logger.debug('node version:', () => process.version.substr(1));
-
-  env.logger.debug('npm version:', () => {
-    let prefix = path.resolve(process.execPath, '../../lib');
-    let pkg = path.resolve(prefix, 'node_modules/npm/package.json');
+    let data = await baseDocumentize(env);
 
     try {
-      return require(pkg).version;
-    } catch (e) {
-      return 'unknown';
+      await refresh(env);
+      await theme(env);
+      okay(env);
+    } catch (err) {
+      env.emit('error', err);
+      throw err;
     }
-  });
 
-  env.logger.debug('platform:', () => process.platform);
-  env.logger.debug('cwd:', () => process.cwd());
+    return data;
 
-  env.src = src;
-  env.dest = env.dest || 'sassdoc';
-
-  env.logger.debug('env:', () => {
-    let clone = {};
-
-    difference(
-      Object.getOwnPropertyNames(env),
-      ['domain', '_events', '_maxListeners', 'logger']
-    )
-      .forEach(k => clone[k] = env[k]);
-
-    return JSON.stringify(clone, null, 2);
-  });
-
-  let task = env.src ? documentize : stream;
-  env.logger.debug('task:', () => task.name);
-
-  return task();
+    /* jshint ignore:end */
+  }
 
   /**
    * Safely wipe and re-create the destination dir.
    */
-  function refresh() { // jshint ignore:line
+  function refresh(env) { // jshint ignore:line
     return safeWipe(env.dest, {
       force: true,
       parent: is.string(env.src) ? utils.g2b(env.src) : null,
@@ -127,7 +110,7 @@ export default function sassdoc(...args) {
   /**
    * Render theme with parsed data.
    */
-  function theme() { // jshint ignore:line
+  function theme(env) { // jshint ignore:line
     let promise = env.theme(env.dest, env);
 
     if (!is.promise(promise)) {
@@ -139,61 +122,7 @@ export default function sassdoc(...args) {
       .then(() => {
         let themeName = env.themeName || 'anonymous';
         env.logger.log(`Theme "${themeName}" successfully rendered.`);
-        env.logger.log('Process over. Everything okay!');
       });
-  }
-
-  /**
-   * All in one method.
-   *
-   * @return {Promise}
-   */
-  async function documentize() { // jshint ignore:line
-    let filter = parseFilter(env);
-
-    filter.promise
-      .then(data => {
-        env.logger.log(`Folder "${env.src}" successfully parsed.`);
-        env.data = data;
-
-        env.logger.debug(() => {
-          fs.writeFile(
-            'sassdoc-data.json',
-            JSON.stringify(data, null, 2)
-          );
-
-          return 'Dumping data to "sassdoc-data.json".';
-        });
-      });
-
-    let streams = [ // jshint ignore:line
-      vfs.src(env.src),
-      recurse(),
-      exclude(env.exclude || []),
-      converter({ from: 'sass', to: 'scss' }),
-      filter
-    ];
-
-    /* jshint ignore:start */
-
-    let pipeline = () => {
-      return new Promise((resolve, reject) => {
-        pipe(...streams, err => {
-          err ? reject(err) : resolve();
-        })
-        .resume(); // Drain.
-      });
-    };
-
-    try {
-      await refresh();
-      await pipeline();
-      await theme();
-    } catch (err) {
-      env.emit('error', err);
-    }
-
-    /* jshint ignore:end */
   }
 
   /**
@@ -201,18 +130,20 @@ export default function sassdoc(...args) {
    *
    * @return {Stream}
    */
-  function stream() {
+  function stream(env) {
     let filter = parseFilter(env);
 
     /* jshint ignore:start */
 
     let documentize = async () => {
+
       try {
-        await refresh();
+        await refresh(env);
         await filter.promise;
-        await theme();
+        await theme(env);
       } catch (err) {
         env.emit('error', err);
+        throw err;
       }
     };
 
@@ -231,4 +162,151 @@ export default function sassdoc(...args) {
 
     return filter;
   }
+}
+
+/**
+ * @param {String} src
+ * @param {Object} env
+ * @see srcEnv
+ */
+export function parse(...args) { // jshint ignore:line
+  /* jshint ignore:start */
+
+  return srcEnv(documentize, stream)(...args);
+
+  async function documentize(env) {
+    let data = await baseDocumentize(env);
+    okay(env);
+
+    return data;
+  }
+
+  /* jshint ignore:end */
+
+  /**
+   * Don't pass chuncks, but pass final data at the end.
+   */
+  function stream(env) { // jshint ignore:line
+    let parse = parseFilter(env);
+
+    let filter = through.obj((file, enc, cb) => cb(), function (cb) {
+      parse.promise.then(data => {
+        this.push(data);
+        cb();
+      }, cb);
+    });
+
+    return pipe(parse, filter);
+  }
+}
+
+async function baseDocumentize(env) { // jshint ignore:line
+  let filter = parseFilter(env);
+
+  filter.promise
+    .then(data => {
+      env.logger.log(`Folder "${env.src}" successfully parsed.`);
+      env.data = data;
+
+      env.logger.debug(() => {
+        fs.writeFile(
+          'sassdoc-data.json',
+          JSON.stringify(data, null, 2)
+        );
+
+        return 'Dumping data to "sassdoc-data.json".';
+      });
+    });
+
+
+  let streams = [ // jshint ignore:line
+    vfs.src(env.src),
+    recurse(),
+    exclude(env.exclude || []),
+    converter({ from: 'sass', to: 'scss' }),
+    filter
+  ];
+
+  /* jshint ignore:start */
+
+  let pipeline = () => {
+    return new Promise((resolve, reject) => {
+      pipe(...streams, err => {
+        err ? reject(err) : resolve();
+      })
+      .resume(); // Drain.
+    });
+  };
+
+  try {
+    await pipeline();
+  } catch (err) {
+    env.emit('error', err);
+    throw err;
+  }
+
+  return env.data;
+}
+
+/**
+ * Return a function taking optional `src` string or array, and optional
+ * `env` object (arguments are found by their type).
+ *
+ * If `src` is set, proxy to `documentize`, otherwise `stream`.
+ *
+ * Both functions will be passed the `env` object, which will have a
+ * `src` key.
+ */
+function srcEnv(documentize, stream) {
+  return function (...args) {
+    let src = args.find(a => is.string(a) || is.array(a));
+    let env = args.find(is.object);
+
+    env = ensureEnvironment(env || {});
+
+    env.logger.debug('process.argv:', () => JSON.stringify(process.argv));
+    env.logger.debug('sassdoc version:', () => require('../package.json').version);
+    env.logger.debug('node version:', () => process.version.substr(1));
+
+    env.logger.debug('npm version:', () => {
+      let prefix = path.resolve(process.execPath, '../../lib');
+      let pkg = path.resolve(prefix, 'node_modules/npm/package.json');
+
+      try {
+        return require(pkg).version;
+      } catch (e) {
+        return 'unknown';
+      }
+    });
+
+    env.logger.debug('platform:', () => process.platform);
+    env.logger.debug('cwd:', () => process.cwd());
+
+    env.src = src;
+    env.dest = env.dest || 'sassdoc';
+
+    env.logger.debug('env:', () => {
+      let clone = {};
+
+      difference(
+        Object.getOwnPropertyNames(env),
+        ['domain', '_events', '_maxListeners', 'logger']
+      )
+        .forEach(k => clone[k] = env[k]);
+
+      return JSON.stringify(clone, null, 2);
+    });
+
+    let task = env.src ? documentize : stream;
+    env.logger.debug('task:', () => task.name);
+
+    return task(env);
+  };
+}
+
+/**
+ * Log success message.
+ */
+function okay(env) {
+  env.logger.log('Process over. Everything okay!');
 }
