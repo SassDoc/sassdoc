@@ -87,11 +87,16 @@ export function g2b(src) {
   return glob2base(new Glob([].concat(src)[0]));
 }
 
+/**
+ * Type checking helpers.
+ */
+let type = Function.prototype.call.bind(Object.prototype.toString);
+
 export const is = {
   undef: arg => arg === void 0,
   string: arg => typeof arg === 'string',
   function: arg => typeof arg === 'function',
-  object: arg => typeof arg === 'object' && arg !== null,
+  object: arg => type(arg) === '[object Object]',
   array: arg => Array.isArray(arg),
   promise: arg => arg && is.function(arg.then),
   stream: arg => arg && is.function(arg.pipe),
