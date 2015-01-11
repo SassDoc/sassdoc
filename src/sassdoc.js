@@ -211,7 +211,7 @@ async function baseDocumentize(env) { // jshint ignore:line
       env.logger.debug(() => {
         fs.writeFile(
           'sassdoc-data.json',
-          JSON.stringify(data, null, 2)
+          JSON.stringify(data, null, 2) + '\n'
         );
 
         return 'Dumping data to "sassdoc-data.json".';
