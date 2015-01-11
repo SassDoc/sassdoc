@@ -71,6 +71,7 @@
     "bin",
     "dist",
     "index.js",
+    "polyfill.js",
     "CHANGELOG.md",
     "LICENCE.md",
     "README.md"
