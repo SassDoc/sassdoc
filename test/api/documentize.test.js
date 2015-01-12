@@ -2,7 +2,6 @@
 
 var assert = require('assert');
 var fs = require('fs');
-var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 var sassdoc = require('../../');
 
@@ -21,5 +20,5 @@ describe('#documentize', function () {
     assert.ok(fs.existsSync('sassdoc/index.html'));
     assert.ok(fs.existsSync('sassdoc/assets'));
   });
-  
+
 });
