@@ -8,7 +8,6 @@ function devLog(...args) {
   args.unshift(chalk.styles.inverse.open)
   args.push(chalk.styles.inverse.close);
   console.log(...args);
-  return this;
 }
 
 function inspect() {

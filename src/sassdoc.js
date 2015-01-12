@@ -25,7 +25,8 @@ export { Environment, Logger, Parser, sorter, errors };
 
 /**
  * Boostrap Parser and AnnotationsApi, execute parsing phase.
- * @return {Stream.Promise}
+ * @return {Stream}
+ * @return {Promise} - as a property of Stream.
  */
 export function parseFilter(env = {}) {
   env = ensureEnvironment(env);
@@ -133,7 +134,8 @@ export default function sassdoc(...args) {
 
   /**
    * Execute full SassDoc sequence from a Vinyl files stream.
-   * @return {Stream.Promise}
+   * @return {Stream}
+   * @return {Promise} - as a property of Stream.
    */
   function stream(env) {
     let filter = parseFilter(env);
