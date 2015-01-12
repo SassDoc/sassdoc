@@ -1,7 +1,15 @@
 const path = require('path');
+const chalk = require('chalk');
 const vfs = require('vinyl-fs');
 const through = require('through2');
 const sassdoc = require('../src/sassdoc');
+
+function devLog(...args) {
+  args.unshift(chalk.styles.inverse.open)
+  args.push(chalk.styles.inverse.close);
+  console.log(...args);
+  return this;
+}
 
 function inspect() {
   let count = 0;
@@ -10,7 +18,7 @@ function inspect() {
     count++;
     cb(null, chunk);
   }, (cb) => {
-    console.log(count);
+    devLog(`develop:stream:count:${count}`);
     cb();
   });
 }
@@ -18,21 +26,30 @@ function inspect() {
 function documentize() {
   return sassdoc('./test/data', { verbose: true })
     .then(() => {
-      console.log('yeah!');
+      devLog('develop:documentize:end');
     });
 }
 
 function stream() {
-  return vfs.src('./test/data/**/*.scss')
-    .pipe(sassdoc({ verbose: true }))
+  let parse = sassdoc({ verbose: true });
+
+  vfs.src('./test/data/**/*.scss')
+    .pipe(parse)
+    .on('end', () => {
+      devLog('develop:stream:end');
+    })
     .pipe(inspect())
     .on('data', () => {});
+
+  return parse.promise.then(() => {
+    devLog('develop:stream:promise:end');
+  });
 }
 
 (async function () {
   try {
     await documentize();
-    stream();
+    await stream();
   }
   catch (err) {
     console.error(err);
