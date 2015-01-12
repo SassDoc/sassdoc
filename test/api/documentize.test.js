@@ -1,33 +1,25 @@
-/* global describe, it */
 'use strict';
 
 var assert = require('assert');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
+var sassdoc = require('../../');
 
 describe('#documentize', function () {
-  var documentize = require('../../src/api').documentize;
 
-  // Test for empty documentation.
-  describe('empty documentation', function () {
-    before(function (done) {
-      mkdirp('tmp/empty');
-
-      documentize('tmp/empty', 'tmp/docs')
-        .then(done)
-        .catch(done);
-    });
-
-    after(function (done) {
-      rimraf('tmp', done);
-    });
-
-    it('should produce an empty documentation', function () {
-      assert.ok(fs.existsSync('tmp/docs'));
-      assert.ok(fs.existsSync('tmp/docs/index.html'));
-      assert.ok(fs.existsSync('tmp/docs/assets'));
-    });
+  before(function () {
+    return sassdoc('./test/data');
   });
 
+  after(function (done) {
+    rimraf('sassdoc', done);
+  });
+
+  it('should produce documentation files', function () {
+    assert.ok(fs.existsSync('sassdoc'));
+    assert.ok(fs.existsSync('sassdoc/index.html'));
+    assert.ok(fs.existsSync('sassdoc/assets'));
+  });
+  
 });
