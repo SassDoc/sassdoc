@@ -133,37 +133,46 @@ export default function sassdoc(...args) {
 
   /**
    * Execute full SassDoc sequence from a Vinyl files stream.
-   * @return {Stream}
+   * @return {Stream.Promise}
    */
   function stream(env) {
     let filter = parseFilter(env);
-
-    /* jshint ignore:start */
-
-    let documentize = async () => {
-      try {
-        await refresh(env);
-        await filter.promise;
-        await theme(env);
-        okay(env);
-      } catch (err) {
-        env.emit('error', err);
-        throw err;
-      }
-    };
-
-    filter
-      .on('pipe', documentize)
-      .on('error', err => env.emit('error', err))
-      .resume(); // Drain.
-
-    /* jshint ignore:end */
 
     filter.promise
       .then(data => {
         env.logger.log('SCSS files successfully parsed.');
         env.data = data;
       });
+
+    /* jshint ignore:start */
+
+    /**
+     * Returned Promise await the full sequence,
+     * instead of just the parsing step.
+     */
+    filter.promise = new Promise((resolve, reject) => {
+
+      async function documentize() {
+        try {
+          await refresh(env);
+          await theme(env);
+          okay(env);
+          resolve();
+        } catch (err) {
+          reject(err);
+          env.emit('error', err);
+          throw err;
+        }
+      }
+
+      filter
+        .on('end', documentize)
+        .on('error', err => env.emit('error', err))
+        .resume(); // Drain.
+
+    });
+
+    /* jshint ignore:end */
 
     return filter;
   }
