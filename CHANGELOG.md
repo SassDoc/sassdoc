@@ -29,6 +29,15 @@
 * `prop` key from item now becomes `property` ([#225](https://github.com/SassDoc/sassdoc/issues/225))
 * When using the display filter from sassdoc-extras, items are now fully removed rather than given a `display` key ([sassdoc-extras#11](https://github.com/SassDoc/sassdoc-extras/issues/11))
 
+### API breaks for third party integration
+
+* The node API has been revamped and unified.
+  * `sassdoc.documentize` does not exist anymore.
+  * `sassdoc(src, config)` execute the full Documentation process, returns a Promise.
+  * `sassdoc(config)` execute the full Documentation process, returns a Stream of Vinyl files.
+  * `sassdoc(src, config).parse` returns a Promise with the full data object.
+  * `sassdoc(config).parse` returns a Stream with the full data object.
+
 ### New features
 
 * The whole API has been fully refactored in ES6 ([#231](https://github.com/SassDoc/sassdoc/issues/231))
@@ -41,6 +50,7 @@
 * `@content` annotation is now correctly output in default theme ([sassdoc-theme-default#15](https://github.com/SassDoc/sassdoc-theme-default/issues/15))
 * Default theme now displays the type as well as the name when cross-linking items (requirements, and so on...) ([sassdoc-theme-default#17](https://github.com/SassDoc/sassdoc-theme-default/issues/17))
 * Error messages should now be more explicit, providing a file name and a line ([#282](https://github.com/SassDoc/sassdoc/issues/282))
+* `--parse` options has been added to output raw parsing data as JSON from the CLI ([#318](https://github.com/SassDoc/sassdoc/issues/318))
 
 ### Bug fixes
 
@@ -50,6 +60,14 @@
 * Variable content is no longer displayed as `safe` in ([sassdoc-theme-default#19](https://github.com/SassDoc/sassdoc-theme-default/issues/19))
 * `@since` description is now parsed as Markdown in the default theme ([sassdoc-extras#8](https://github.com/SassDoc/sassdoc-extras/issues/8))
 * `@deprecated` description is now parsed as Markdown in the default theme ([sassdoc-extras#7](https://github.com/SassDoc/sassdoc-extras/issues/7))
+
+# 1.10.12
+
+* Backport of `a994ed5` fix multiple require autofill ([#314](https://github.com/SassDoc/sassdoc/issues/314))
+
+# 1.10.11
+
+* Ensure `@todo` compat with docs and contrib ([#293](https://github.com/SassDoc/sassdoc/issues/293))
 
 ## 1.10.6
 
