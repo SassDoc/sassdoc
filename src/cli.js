@@ -1,6 +1,6 @@
 let doc = `
 Usage:
-  sassdoc <src> [options]
+  sassdoc <src>... [options]
   sassdoc [options]
 
 Arguments:
@@ -69,7 +69,7 @@ export default function cli(argv = process.argv.slice(2)) {
     cb = data => console.log(JSON.stringify(data, null, 2));
   }
 
-  if (!options['<src>']) {
+  if (!options['<src>'].length) {
     return process.stdin
       .pipe(source())
       .pipe(handler(env))
