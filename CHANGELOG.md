@@ -33,10 +33,10 @@
 
 * The node API has been revamped and unified.
   * `sassdoc.documentize` does not exist anymore.
-  * `sassdoc(src, config)` execute the full Documentation process, returns a Promise.
-  * `sassdoc(config)` execute the full Documentation process, returns a Stream of Vinyl files.
-  * `sassdoc(src, config).parse` returns a Promise with the full data object.
-  * `sassdoc(config).parse` returns a Stream with the full data object.
+  * `sassdoc(src [, config])` execute the full Documentation process, returns a Promise.
+  * `sassdoc([config])` execute the full Documentation process, returns a Stream of Vinyl files.
+  * `sassdoc(src [, config]).parse` returns a Promise with the full data object.
+  * `sassdoc([config]).parse` returns a Stream with the full data object.
 
 ### New features
 
@@ -50,7 +50,7 @@
 * `@content` annotation is now correctly output in default theme ([sassdoc-theme-default#15](https://github.com/SassDoc/sassdoc-theme-default/issues/15))
 * Default theme now displays the type as well as the name when cross-linking items (requirements, and so on...) ([sassdoc-theme-default#17](https://github.com/SassDoc/sassdoc-theme-default/issues/17))
 * Error messages should now be more explicit, providing a file name and a line ([#282](https://github.com/SassDoc/sassdoc/issues/282))
-* `--parse` options has been added to output raw parsing data as JSON from the CLI ([#318](https://github.com/SassDoc/sassdoc/issues/318))
+* `--parse` option has been added to output raw parsing data as JSON from the CLI ([#318](https://github.com/SassDoc/sassdoc/issues/318))
 
 ### Bug fixes
 
