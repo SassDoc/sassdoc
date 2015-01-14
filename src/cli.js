@@ -4,7 +4,7 @@ Usage:
   sassdoc [options]
 
 Arguments:
-  <src>   Path to your Sass folder.
+  <src>  Path to your Sass folder.
 
 Options:
   -h, --help            Bring help.
