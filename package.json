@@ -73,6 +73,7 @@
     "index.js",
     "polyfill.js",
     "CHANGELOG.md",
+    "UPGRADE-2.0.md",
     "LICENCE.md",
     "README.md"
   ],
