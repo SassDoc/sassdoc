@@ -1,13 +1,17 @@
 const path = require('path');
 const chalk = require('chalk');
+const dateformat = require('dateformat');
 const vfs = require('vinyl-fs');
 const through = require('through2');
 const sassdoc = require('../src/sassdoc');
 
 function devLog(...args) {
-  args.unshift(chalk.styles.inverse.open)
-  args.push(chalk.styles.inverse.close);
-  console.log(...args);
+  console.log(...[
+    chalk.styles.inverse.open,
+    `[${dateformat(new Date(), 'HH:MM:ss')}]`,
+    ...args,
+    chalk.styles.inverse.close
+  ]);
 }
 
 function inspect() {
