@@ -77,7 +77,7 @@ export default function sassdoc(...args) {
   function refresh(env) { // jshint ignore:line
     return safeWipe(env.dest, {
       force: true,
-      parent: is.string(env.src) ? g2b(env.src) : null,
+      parent: is.string(env.src) || is.array(env.src) ? g2b(env.src) : null,
       silent: true,
     })
       .then(() => mkdir(env.dest))
