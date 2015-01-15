@@ -28,7 +28,7 @@ export default class Environment extends EventEmitter {
       if (friendlyErrors.find(c => error instanceof c)) {
         logger.error(error.message);
       } else {
-        if (utils.is.object(error) && 'stack' in error) {
+        if (utils.is.error(error) && 'stack' in error) {
           logger.error(error.stack);
         } else {
           logger.error(error);
