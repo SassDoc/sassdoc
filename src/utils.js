@@ -96,9 +96,11 @@ export const is = {
   undef: arg => arg === void 0,
   string: arg => typeof arg === 'string',
   function: arg => typeof arg === 'function',
-  object: arg => type(arg) === '[object Object]',
-  error: arg => type(arg) === '[object Error]',
+  object: arg => typeof arg === 'object' && arg !== null,
+  plainObject: arg => type(arg) === '[object Object]',
   array: arg => Array.isArray(arg),
+  error: arg => is.object(arg) &&
+    (type(arg) === '[object Error]' || arg instanceof Error),
   promise: arg => arg && is.function(arg.then),
   stream: arg => arg && is.function(arg.pipe),
 };

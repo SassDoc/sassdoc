@@ -286,7 +286,7 @@ async function baseDocumentize(env) { // jshint ignore:line
 function srcEnv(documentize, stream) {
   return function (...args) {
     let src = args.find(a => is.string(a) || is.array(a));
-    let env = args.find(is.object);
+    let env = args.find(is.plainObject);
 
     env = ensureEnvironment(env || {});
 
