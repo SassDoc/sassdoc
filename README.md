@@ -10,20 +10,22 @@ Like JSDoc for your Sass files.
 
 ![SassDoc](http://sassdoc.com/assets/images/preview-image.png)
 
----
+<br>
 
-master: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=master)](https://travis-ci.org/SassDoc/sassdoc)
-develop: [![Build Status](https://travis-ci.org/SassDoc/sassdoc.svg?branch=develop)](https://travis-ci.org/SassDoc/sassdoc)
+[![Build Status][travis-img]][travis-url]
+[![Dependencies Status][depstat-image]][depstat-url]
 
-[![NPM](https://nodei.co/npm/sassdoc.png?downloads=true)](https://nodei.co/npm/sassdoc/)
+[![NPM][npm-img]][npm-url]
+
+<br>
 
 ## How does it work?
 
-[SassDoc](http://sassdoc.com/) parses your source folder
-to grab [documentation-specific comments](http://sassdoc.com/annotations/).
+[SassDoc] parses your source folder to grab
+[documentation-specific comments](http://sassdoc.com/annotations/).
 From there, it builds a [data tree](http://sassdoc.com/data-interface/),
-that gets [enhanced and filtered](http://sassdoc.com/extra-tools/) before being passed
-to the [view](http://sassdoc.com/customising-the-view/).
+that gets [enhanced and filtered](http://sassdoc.com/extra-tools/) before being
+passed to the [view](http://sassdoc.com/customising-the-view/).
 So you end up with a fully styled HTML document located at your destination folder.
 
 ## Getting started
@@ -64,3 +66,13 @@ So you end up with a fully styled HTML document located at your destination fold
 * [Fabrice Weinberg](https://twitter.com/fweinb)
 * [Pascal Duez](https://twitter.com/pascalduez)
 * [Hugo Giraudel](http://twitter.com/HugoGiraudel)
+
+
+
+[SassDoc]: http://sassdoc.com
+[npm-url]: https://www.npmjs.com/package/sassdoc
+[npm-img]: https://nodei.co/npm/sassdoc.png?downloads=true
+[travis-url]: https://travis-ci.org/SassDoc/sassdoc
+[travis-img]: https://travis-ci.org/SassDoc/sassdoc.svg?branch=master
+[depstat-url]: https://david-dm.org/SassDoc/sassdoc
+[depstat-image]: https://david-dm.org/SassDoc/sassdoc.svg
