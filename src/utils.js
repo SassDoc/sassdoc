@@ -90,17 +90,17 @@ export function g2b(src) {
 /**
  * Type checking helpers.
  */
-let type = Function.prototype.call.bind(Object.prototype.toString);
+const toString = arg => Object.prototype.toString.call(arg);
 
 export const is = {
   undef: arg => arg === void 0,
   string: arg => typeof arg === 'string',
   function: arg => typeof arg === 'function',
   object: arg => typeof arg === 'object' && arg !== null,
-  plainObject: arg => type(arg) === '[object Object]',
+  plainObject: arg => toString(arg) === '[object Object]',
   array: arg => Array.isArray(arg),
   error: arg => is.object(arg) &&
-    (type(arg) === '[object Error]' || arg instanceof Error),
+    (toString(arg) === '[object Error]' || arg instanceof Error),
   promise: arg => arg && is.function(arg.then),
   stream: arg => arg && is.function(arg.pipe),
 };
