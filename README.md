@@ -12,10 +12,11 @@ Like JSDoc for your Sass files.
 
 <br>
 
-[![Build Status][travis-img]][travis-url]
+[![Build Status][travis-image]][travis-url]
 [![Dependencies Status][depstat-image]][depstat-url]
+[![License][license-image]][license-url]
 
-[![NPM][npm-img]][npm-url]
+[![NPM][npm-image]][npm-url]
 
 <br>
 
@@ -71,8 +72,10 @@ So you end up with a fully styled HTML document located at your destination fold
 
 [SassDoc]: http://sassdoc.com
 [npm-url]: https://www.npmjs.com/package/sassdoc
-[npm-img]: https://nodei.co/npm/sassdoc.png?downloads=true
-[travis-url]: https://travis-ci.org/SassDoc/sassdoc
-[travis-img]: https://travis-ci.org/SassDoc/sassdoc.svg?branch=master
+[npm-image]: https://nodei.co/npm/sassdoc.png?downloads=true
+[travis-url]: https://travis-ci.org/SassDoc/sassdoc?branch=master
+[travis-image]: http://img.shields.io/travis/SassDoc/sassdoc.svg?style=flat-square
 [depstat-url]: https://david-dm.org/SassDoc/sassdoc
-[depstat-image]: https://david-dm.org/SassDoc/sassdoc.svg
+[depstat-image]: https://david-dm.org/SassDoc/sassdoc.svg?style=flat-square
+[license-image]: http://img.shields.io/npm/l/sassdoc.svg?style=flat-square
+[license-url]: LICENSE.md
