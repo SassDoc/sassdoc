@@ -61,11 +61,11 @@
 * `@since` description is now parsed as Markdown in the default theme ([sassdoc-extras#8](https://github.com/SassDoc/sassdoc-extras/issues/8))
 * `@deprecated` description is now parsed as Markdown in the default theme ([sassdoc-extras#7](https://github.com/SassDoc/sassdoc-extras/issues/7))
 
-# 1.10.12
+## 1.10.12
 
 * Backport of `a994ed5` fix multiple require autofill ([#314](https://github.com/SassDoc/sassdoc/issues/314))
 
-# 1.10.11
+## 1.10.11
 
 * Ensure `@todo` compat with docs and contrib ([#293](https://github.com/SassDoc/sassdoc/issues/293))
 
