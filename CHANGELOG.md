@@ -35,8 +35,8 @@
   * `sassdoc.documentize` does not exist anymore.
   * `sassdoc(src [, config])` execute the full Documentation process, returns a Promise.
   * `sassdoc([config])` execute the full Documentation process, returns a Stream of Vinyl files.
-  * `sassdoc(src [, config]).parse` returns a Promise with the full data object.
-  * `sassdoc([config]).parse` returns a Stream with the full data object.
+  * `sassdoc.parse(src [, config])` returns a Promise with the full data object.
+  * `sassdoc.parse([config])` returns a Stream with the full data object.
 
 ### New features
 
