@@ -44,6 +44,7 @@ find . -type f -name '*.s[ac]ss' -exec sed -ri '/@param|@prop|@require/y/()/[]/'
 ```sh
 find . -type f -name '*.s[ac]ss' -exec sed -Ei '' '/@param|@prop|@require/y/\(\)/\[\]/' {} +
 ```
+
 ## CLI
 
 The CLI usage slightly changed, since the destination is now optional
