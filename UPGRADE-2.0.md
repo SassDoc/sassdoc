@@ -63,6 +63,12 @@ sassdoc scss/ doc/
 sassdoc scss/ --dest doc/
 ```
 
+When you don't give a destination, SassDoc will put the documentation in
+a `sassdoc` folder in the current directory.
+
+**SassDoc will wipe the whole destination folder upon each run, so be
+sure you don't have anything important in it.**
+
 ## Node
 
 The `documentize` function from 1.0 is now the default export from the
