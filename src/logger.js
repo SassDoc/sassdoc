@@ -1,5 +1,6 @@
 const chalk = require('chalk');
-const getDateTime = require('./utils').getDateTime;
+const { is, getDateTime } = require('./utils');
+const errors = require('./errors');
 
 // Helpers.
 let br = str => `[${str}]`;                        // Wrap in brackets.
@@ -63,6 +64,41 @@ export var empty = {
   error: () => {},
   debug: () => {},
 };
+
+/**
+ * Checks if given object looks like a logger.
+ *
+ * If the `debug` function is missing (like for the `console` object),
+ * it will be set to an empty function in a newly returned object.
+ *
+ * If any other method is missing, an exception is thrown.
+ *
+ * @param {Object} logger
+ * @return {Logger}
+ * @throws {SassDocError}
+ */
+export function checkLogger(logger) {
+  const methods = ['log', 'warn', 'error']
+    .filter(x => !(x in logger) || !is.function(logger[x]));
+
+  if (methods.length) {
+    const missing = `"${methods.join('", "')}"`;
+    const s = methods.length > 1 ? 's' : '';
+
+    throw new errors.SassDocError(`Invalid logger, missing ${missing} method${s}`);
+  }
+
+  if ('debug' in logger) {
+    return logger;
+  }
+
+  return {
+    log: logger.log,
+    warn: logger.warn,
+    error: logger.error,
+    debug: empty.debug,
+  };
+}
 
 /**
  * Chalk don't allow us to create a new instance with our own `enabled`

@@ -50,7 +50,7 @@ export function ensureEnvironment(config, onError = e => { throw e; }) {
     return config;
   }
 
-  let logger = config.logger || new Logger(config.verbose, process.env.SASSDOC_DEBUG);
+  let logger = ensureLogger(config);
   let env = new Environment(logger, config.strict);
 
   env.on('error', onError);
@@ -220,6 +220,22 @@ export function parse(...args) { // jshint ignore:line
 
     return pipe(parse, filter);
   }
+}
+
+/**
+ * @param {Object} config
+ * @return {Logger}
+ */
+function ensureLogger(config) {
+  if (!is.object(config) || !('logger' in config)) {
+    // Get default logger.
+    return new Logger(config.verbose, process.env.SASSDOC_DEBUG);
+  }
+
+  let logger = Logger.checkLogger(config.logger);
+  delete config.logger;
+
+  return logger;
 }
 
 /**
