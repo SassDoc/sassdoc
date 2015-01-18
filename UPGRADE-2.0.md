@@ -1,8 +1,6 @@
-Upgrade from 1.0 to 2.0
-=======================
+# Upgrade from 1.0 to 2.0
 
-Annotations
------------
+## Annotations
 
 The default value of some annotations is now inside square brackets
 instead of parentheses. This affects `@param`, `@prop` and `@require`.
@@ -46,8 +44,7 @@ find . -type f -name '*.s[ac]ss' -exec sed -ri '/@param|@prop|@require/y/()/[]/'
 ```sh
 find . -type f -name '*.s[ac]ss' -exec sed -Ei '' '/@param|@prop|@require/y/\(\)/\[\]/' {} +
 ```
-CLI
----
+## CLI
 
 The CLI usage slightly changed, since the destination is now optional
 and configurable with an option instead of an argument, so you'll have
@@ -65,8 +62,7 @@ sassdoc scss/ doc/
 sassdoc scss/ --dest doc/
 ```
 
-Node
-----
+## Node
 
 The `documentize` function from 1.0 is now the default export from the
 `sassdoc` module.
