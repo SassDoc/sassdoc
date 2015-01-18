@@ -5,7 +5,7 @@
 The default value of some annotations is now inside square brackets
 instead of parentheses. This affects `@param`, `@prop` and `@require`.
 
-###### Before
+**Before:**
 
 ```scss
 /**
@@ -14,7 +14,7 @@ instead of parentheses. This affects `@param`, `@prop` and `@require`.
 @function baz($foo) {}
 ```
 
-###### After
+**After:**
 
 ```scss
 /**
@@ -33,13 +33,13 @@ Be sure to review the changes made by the script and eventually fix
 details by hand.
 
 
-###### GNU `sed`
+**GNU `sed`:**
 
 ```sh
 find . -type f -name '*.s[ac]ss' -exec sed -ri '/@param|@prop|@require/y/()/[]/' {} +
 ```
 
-###### BSD/Mac `sed`
+**BSD/Mac `sed`:**
 
 ```sh
 find . -type f -name '*.s[ac]ss' -exec sed -Ei '' '/@param|@prop|@require/y/\(\)/\[\]/' {} +
@@ -51,13 +51,13 @@ The CLI usage slightly changed, since the destination is now optional
 and configurable with an option instead of an argument, so you'll have
 to update your scripts using SassDoc if you have any.
 
-###### Before
+**Before:**
 
 ```sh
 sassdoc scss/ doc/
 ```
 
-###### After
+**After:**
 
 ```sh
 sassdoc scss/ --dest doc/
@@ -68,7 +68,7 @@ sassdoc scss/ --dest doc/
 The `documentize` function from 1.0 is now the default export from the
 `sassdoc` module.
 
-###### Before
+**Before:**
 
 ```js
 var sassdoc = require('sassdoc');
@@ -78,7 +78,7 @@ sassdoc.documentize('scss/').then(function () {
 });
 ```
 
-###### After
+**After:**
 
 ```js
 var sassdoc = require('sassdoc');
