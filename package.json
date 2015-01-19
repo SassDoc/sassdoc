@@ -96,7 +96,7 @@
     "safe-wipe": "0.*",
     "sass-convert": "^0.4.0",
     "sassdoc-theme-default": "2.0.0-rc.11",
-    "scss-comment-parser": "0.5.1-rc.5",
+    "scss-comment-parser": "0.6.0-rc.1",
     "through2": "^0.6.3",
     "update-notifier": "^0.3.0",
     "vinyl-fs": "^0.3.11",

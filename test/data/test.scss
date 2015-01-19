@@ -1,127 +1,126 @@
-/**
- * This is a top level annotation, acting for the whole file.
- * This description is not parsed at this point but might be in the future.
- * @group test
- * @access private
- **/
+////
+/// This is a top level annotation, acting for the whole file.
+/// This description is not parsed at this point but might be in the future.
+/// @group test
+/// @access private
+////
 
-/**
- * This is a global test aiming at testing:
- * - `@access`
- * - `@author`
- * - `@deprecated`
- * - `@example`
- * - `@group`
- * - `@ignore`
- * - `@link`
- * - `@requires`
- * - `@see`
- * - `@since`
- * - `@todo`
- *
- * @access public
- *
- * @author Pascal **Duez**
- * @author Valérian **Galliat**
- * @author Hugo **Giraudel**
- * @author Fabrice **Weinberg**
- *
- * @deprecated This is a *deprecation* message.
- *
- * @example scss - Example description
- * $test: function-global-test();
- *
- * @group test-function
- *
- * @ignore Ignore this line.
- *
- * @link http://google.com Google
- * @link http://sassdoc.com
- *
- * @requires function-specific-test - This is a description with a dash.
- * @requires {mixin} mixin-specific-test This is a description with no dash.
- * @requires $variable-specific-test
- * @requires %placeholder-specific-test This is a description and a link. http://sassdoc.com
- * @requires this::is::an::external::dependancy - External dependency with double colon http://github.com
- * @requires this:is:an:external:dependancy - External dependency with single colon http://github.com
- * @requires this/is/an/external/dependancy - External dependency with slash http://github.com
- * @requires this.is.an.external.dependancy - External dependency with dot http://github.com
- *
- * @see function-specific-test
- * @see {mixin} mixin-global-test
- * @see $variable-global-test
- * @see %placeholder-global-test
- *
- * @since 2.0.0 - Major refacto
- * @since 1.0.0 Other stuff
- *
- * @todo Nothing to do here.
- * @todo My people need me.
- */
+/// This is a global test aiming at testing:
+/// - `@access`
+/// - `@author`
+/// - `@deprecated`
+/// - `@example`
+/// - `@group`
+/// - `@ignore`
+/// - `@link`
+/// - `@requires`
+/// - `@see`
+/// - `@since`
+/// - `@todo`
+///
+/// @access public
+///
+/// @author Pascal **Duez**
+/// @author Valérian **Galliat**
+/// @author Hugo **Giraudel**
+/// @author Fabrice **Weinberg**
+///
+/// @deprecated This is a *deprecation* message.
+///
+/// @example scss - Example description
+/// $test: function-global-test();
+///
+/// @group test-function
+///
+/// @ignore Ignore this line.
+///
+/// @link http://google.com Google
+/// @link http://sassdoc.com
+///
+/// @requires function-specific-test - This is a description with a dash.
+/// @requires {mixin} mixin-specific-test This is a description with no dash.
+/// @requires $variable-specific-test
+/// @requires %placeholder-specific-test This is a description and a link. http://sassdoc.com
+/// @requires this::is::an::external::dependancy - External dependency with double colon http://github.com
+/// @requires this:is:an:external:dependancy - External dependency with single colon http://github.com
+/// @requires this/is/an/external/dependancy - External dependency with slash http://github.com
+/// @requires this.is.an.external.dependancy - External dependency with dot http://github.com
+///
+/// @see function-specific-test
+/// @see {mixin} mixin-global-test
+/// @see $variable-global-test
+/// @see %placeholder-global-test
+///
+/// @since 2.0.0 - Major refacto
+/// @since 1.0.0 Other stuff
+///
+/// @todo Nothing to do here.
+/// @todo My people need me.
+
 @function global-test() {}
 
-/**
- * This is a test function aiming at testing:
- * - `@param`
- * - `@return`
- * - `@throw`
- *
- * @param {*} $arg - Whatever
- * @param {List} $extra-arguments [()] - Extra arguments
- *
- * @return {*} Anything
- *
- * @throw This is an error.
- */
+
+/// This is a test function aiming at testing:
+/// - `@param`
+/// - `@return`
+/// - `@throw`
+///
+/// @param {*} $arg - Whatever
+/// @param {List} $extra-arguments [()] - Extra arguments
+///
+/// @return {*} Anything
+///
+/// @throw This is an error.
+
 @function function-specific-test() {}
 
 
-/**
- * This is a test mixin aiming at testing:
- * - `@content`
- * - `@param`
- * - `@output`
- * - `@throw`
- *
- * @content Content is parsed and whatever.
- *
- * @param {Number} $number [42] - Number
- * @param {Arglist} $extra-arguments - Extra arguments
- *
- * @output Nothing
- *
- * @throw This is an error.
- */
+
+/// This is a test mixin aiming at testing:
+/// - `@content`
+/// - `@param`
+/// - `@output`
+/// - `@throw`
+///
+/// @content Content is parsed and whatever.
+///
+/// @param {Number} $number [42] - Number
+/// @param {Arglist} $extra-arguments - Extra arguments
+///
+/// @output Nothing
+///
+/// @throw This is an error.
+
 @mixin mixin-specific-test {}
 
 
-/**
- * This is a test variable aiming at testing:
- * - `@prop`
- * - `@type`
- *
- * @prop {String} base.first-key ["default"] - Description
- * @prop {String} base.second-key [42] - Description
- *
- * @type {*}
- */
+
+/// This is a test variable aiming at testing:
+/// - `@prop`
+/// - `@type`
+///
+/// @prop {String} base.first-key ["default"] - Description
+/// @prop {String} base.second-key [42] - Description
+///
+/// @type {*}
+
 $variable-specific-test: ();
 
-/**
- * This is a test placeholder aiming at testing:
- * - `@throw`
- *
- * @throw This is an error.
- */
+
+/// This is a test placeholder aiming at testing:
+/// - `@throw`
+///
+/// @throw This is an error.
+
 %placeholder-specific-test {}
 
 
-/**
- * This is a test aiming at testing:
- * - autofilled `@requires`
- * - autofilled `@error`
- * - autofilled `@content`
- */
+
+/// This is a test aiming at testing:
+/// - autofilled `@requires`
+/// - autofilled `@error`
+/// - autofilled `@content`
+
 @mixin autofill-test {
   $call: function-specific-test();
   $use: $variable-specific-test;
