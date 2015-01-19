@@ -30,7 +30,7 @@ openings.
 If you want to know more on what's happening in these cryptic `sed`
 commands, here is the commented `sed` source:
 
-```awk
+```sh
 # Opening (can't determine if poster or normal)
 s,^/\*\*,///,
 
