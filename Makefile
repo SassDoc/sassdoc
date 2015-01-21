@@ -58,4 +58,11 @@ release: all
 	npm publish
 	git push --follow-tags
 
+# Tools
+# =====
+
+rebuild:
+	rm -rf node_modules
+	npm install
+
 force:
