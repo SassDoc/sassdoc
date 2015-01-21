@@ -9,13 +9,6 @@ SASSDOC = bin/sassdoc
 
 all: dist lint test
 
-# Publish package to npm
-# @see npm/npm#3059
-# =======================
-
-publish: all
-	npm publish --tag beta
-
 # Compile ES6 from `src` to ES5 in `dist`
 # =======================================
 
@@ -45,5 +38,24 @@ test/data/expected.stream.json: test/data/expected.json
 
 develop: force
 	$(TO5_NODE) $(TO5_FLAGS) $@
+
+# Publish package to npm
+# @see npm/npm#3059
+# =======================
+
+publish: all
+	npm publish --tag beta
+
+# Release, publish
+# ================
+
+# "patch", "minor", "major", "prepatch",
+# "preminor", "premajor", "prerelease"
+VERS ?= "patch"
+
+release: all
+	npm version $(VERS) -m "Release %s"
+	npm publish
+	git push --follow-tags
 
 force:
