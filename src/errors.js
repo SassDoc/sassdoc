@@ -1,7 +1,7 @@
 export class SassDocError extends Error {
   constructor(message) {
     super(message);
-    this.message = message;
+    this.message = message; // rm when native class support.
   }
 
   get name() {
@@ -12,7 +12,6 @@ export class SassDocError extends Error {
 export class Warning extends SassDocError {
   constructor(message) {
     super(message);
-    this.message = message;
   }
 
   get name() {
