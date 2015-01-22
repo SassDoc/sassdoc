@@ -14,25 +14,6 @@ export function eachItem(byTypeAndName, cb) {
 // Get file extension.
 export var ext = file => path.extname(file).substr(1);
 
-/**
- * Get current date/time.
- *
- * @param {Date} date
- * @return {String} Stringified date time.
- */
-export function getDateTime(date = new Date()) {
-  let y, m, d, h, i, s;
-
-  y = date.getFullYear();
-  m = exports.pad(date.getMonth() + 1);
-  d = exports.pad(date.getDate());
-  h = exports.pad(date.getHours());
-  i = exports.pad(date.getMinutes());
-  s = exports.pad(date.getSeconds());
-
-  return `${y}-${m}-${d} ${h}:${i}:${s}`;
-}
-
 // Pad a number with a leading 0 if inferior to 10.
 export var pad = value => (value < 10 ? '0' : '') + value;
 

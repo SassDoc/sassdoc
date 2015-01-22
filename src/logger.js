@@ -1,14 +1,16 @@
-const chalk = require('chalk');
-const { is, getDateTime } = require('./utils');
+const { is } = require('./utils');
 const errors = require('./errors');
+const chalk = require('chalk');
+const dateformat = require('dateformat');
 
 // Helpers.
-let br = str => `[${str}]`;                        // Wrap in brackets.
-let prepend = (arg, arr) => [arg].concat(arr);     // Prepend.
-let date = arr => prepend(br(getDateTime()), arr); // Prepend date.
-let flag = (name, arr) => prepend(br(name), arr);  // Prepend flag.
-let log = arr => date(arr).join(' ');              // Log.
-let flog = (name, arr) => log(flag(name, arr));    // Log with flag.
+let br = str => `[${str}]`;                          // Wrap in brackets.
+let time = () => dateformat(new Date(), 'HH:MM:ss'); // Format time.
+let prepend = (arg, arr) => [arg].concat(arr);       // Prepend.
+let date = arr => prepend(br(time()), arr);          // Prepend date.
+let flag = (name, arr) => prepend(br(name), arr);    // Prepend flag.
+let log = arr => date(arr).join(' ');                // Log.
+let flog = (name, arr) => log(flag(name, arr));      // Log with flag.
 
 export default class Logger {
   constructor(verbose = false, debug = false) {
