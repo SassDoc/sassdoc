@@ -50,7 +50,7 @@ s,^  *\*,///,
 ## Annotations
 
 The default value of some annotations is now inside square brackets
-instead of parentheses. This affects `@param`, `@prop` and `@require`.
+instead of parentheses. This affects `@param` and `@prop`.
 
 **Before:**
 
@@ -79,13 +79,13 @@ details by hand.
 **GNU `sed`:**
 
 ```sh
-find . -type f -name '*.s[ac]ss' -exec sed -ri '/@param|@prop|@require/y/()/[]/' {} +
+find . -type f -name '*.s[ac]ss' -exec sed -ri '/@param|@prop/y/()/[]/' {} +
 ```
 
 **BSD/Mac `sed`:**
 
 ```sh
-find . -type f -name '*.s[ac]ss' -exec sed -Ei '' '/@param|@prop|@require/y/\(\)/\[\]/' {} +
+find . -type f -name '*.s[ac]ss' -exec sed -Ei '' '/@param|@prop/y/\(\)/\[\]/' {} +
 ```
 
 ## CLI

@@ -13,7 +13,7 @@
 * `@alias` can no longer be used on placeholders ([#263](https://github.com/SassDoc/sassdoc/issues/263))
 * Annotations `@access`, `@content`, `@deprecated`, `@group`, `@output`, `@return` and `@type` are now restricted to one use per item ([#257](https://github.com/SassDoc/sassdoc/issues/257))
 * Annotations `@param` and `@prop` now use square brackets (`[]`) for default values rather than parentheses (`()`) to avoid edge issues ([#303](https://github.com/SassDoc/sassdoc/issues/303))
-  To convert all your SassDoc comments to this change, you can run this script on your codebase: `find . -type f -name '*.s[ac]ss' -exec sed -ri '/@param|@prop|@require/y/()/[]/' {} +`
+* See [`UPGRADE-2.0.md`](UPGRADE-2.0.md#annotations) to convert all your SassDoc comments.
 
 ### API breaks for theme builders
 
