@@ -11,9 +11,6 @@ export function eachItem(byTypeAndName, cb) {
   });
 }
 
-// Get file extension.
-export var ext = file => path.extname(file).substr(1);
-
 // Namespace delimiters.
 let nsDelimiters = ['::', ':', '\\.', '/'];
 let ns = new RegExp(nsDelimiters.join('|'), 'g');
