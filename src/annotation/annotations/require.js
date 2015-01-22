@@ -27,12 +27,12 @@ export default function (env) {
         obj.name = obj.name.slice(1);
       }
 
-      if (match[4]) {
-        obj.description = match[4].trim();
+      if (match[3]) {
+        obj.description = match[3].trim();
       }
 
-      if (match[5]) {
-        obj.url = match[5];
+      if (match[4]) {
+        obj.url = match[4];
       }
 
       return obj;
