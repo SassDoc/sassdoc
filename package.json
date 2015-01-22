@@ -65,7 +65,8 @@
     "update-notifier": false,
     "through2": false,
     "concat-stream": false,
-    "vinyl-source-stream": false
+    "vinyl-source-stream": false,
+    "dateformat": false
   },
   "files": [
     "bin",
