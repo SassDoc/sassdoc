@@ -14,9 +14,6 @@ export function eachItem(byTypeAndName, cb) {
 // Get file extension.
 export var ext = file => path.extname(file).substr(1);
 
-// Pad a number with a leading 0 if inferior to 10.
-export var pad = value => (value < 10 ? '0' : '') + value;
-
 // Namespace delimiters.
 let nsDelimiters = ['::', ':', '\\.', '/'];
 let ns = new RegExp(nsDelimiters.join('|'), 'g');
