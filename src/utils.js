@@ -1,4 +1,3 @@
-const path = require('path');
 const each = require('lodash.foreach');
 const glob2base = require('glob2base');
 const Glob = require('glob').Glob;
