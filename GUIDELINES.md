@@ -49,13 +49,13 @@ Objects with at least 3 key/value pairs should be written with each pair on its 
 let obj = {
   foo: 'foo',
   bar: 'bar',
-  baz: 'baz'
+  baz: 'baz',
 };
 
 f({
   foo: 'foo',
   bar: 'bar',
-  baz: 'baz'
+  baz: 'baz',
 });
 ```
 
