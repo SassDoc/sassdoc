@@ -1,21 +1,22 @@
 const { is } = require('./utils');
 const errors = require('./errors');
 const chalk = require('chalk');
-const dateformat = require('dateformat');
+
+// Special chars.
+let chevron = '\xBB';
+let checkmark = '\u2714';
+let octopus = '\uD83D\uDC19'; // jshint ignore:line
 
 // Helpers.
-let br = str => `[${str}]`;                          // Wrap in brackets.
-let time = () => dateformat(new Date(), 'HH:MM:ss'); // Format time.
-let prepend = (arg, arr) => [arg].concat(arr);       // Prepend.
-let date = arr => prepend(br(time()), arr);          // Prepend date.
-let flag = (name, arr) => prepend(br(name), arr);    // Prepend flag.
-let log = arr => date(arr).join(' ');                // Log.
-let flog = (name, arr) => log(flag(name, arr));      // Log with flag.
+let br = str => `[${str}]`;                       // Wrap in brackets.
+let prepend = (arg, arr) => [arg].concat(arr);    // Prepend.
+let flog = (name, arr) => prepend(br(name), arr); // Log with prepended flag.
 
 export default class Logger {
   constructor(verbose = false, debug = false) {
     this.verbose = verbose;
     this.debug_ = debug;
+    this._times = [];
   }
 
   /**
@@ -23,7 +24,7 @@ export default class Logger {
    */
   log(...args) {
     if (this.verbose) {
-      console.error(log(args));
+      console.error(chalk.grey(chevron), ...args);
     }
   }
 
@@ -39,6 +40,29 @@ export default class Logger {
    */
   error(...args) {
     chalkHack(() => console.error(chalk.red(flog('ERROR', args))));
+  }
+
+  /**
+   * Init a new timer.
+   * @param {String} label
+   */
+  time(label) {
+    this._times[label] = Date.now();
+  }
+
+  /**
+   * End timer and log result.
+   * @param {String} label
+   * @param {String} message
+   */
+  timeEnd(label, message) {
+    let time = this._times[label];
+    if (!time) {
+      throw new Error(`No such label: ${label}`);
+    }
+
+    let duration = Date.now() - time;
+    console.log(`${chalk.green(checkmark)} ${message}`, label, duration);
   }
 
   /**
