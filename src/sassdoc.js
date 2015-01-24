@@ -116,6 +116,8 @@ export default function sassdoc(...args) {
   async function documentize(env) { // jshint ignore:line
     /* jshint ignore:start */
 
+    init(env);
+
     let data = await baseDocumentize(env);
 
     try {
@@ -156,6 +158,7 @@ export default function sassdoc(...args) {
 
       async function documentize() {
         try {
+          init(env);
           await refresh(env);
           await theme(env);
           okay(env);
@@ -197,7 +200,6 @@ export function parse(...args) { // jshint ignore:line
    */
   async function documentize(env) {
     let data = await baseDocumentize(env);
-    okay(env);
 
     return data;
   }
@@ -347,8 +349,16 @@ function srcEnv(documentize, stream) {
 }
 
 /**
+ * Init timer.
+ */
+function init(env) { // jshint ignore:line
+  env.logger.time('SassDoc');
+}
+
+/**
  * Log final success message.
  */
 function okay(env) { // jshint ignore:line
   env.logger.log('Process over. Everything okay!');
+  env.logger.timeEnd('SassDoc', '%s completed after %dms');
 }
