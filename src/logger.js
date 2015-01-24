@@ -1,17 +1,24 @@
 const { is } = require('./utils');
 const errors = require('./errors');
+const fmt = require('util').format;
 const chalk = require('chalk');
 
 // Special chars.
-let chevron = '\xBB';
-let checkmark = '\u2713';
-let octopus = '\uD83D\uDC19'; // jshint ignore:line
+const chevron = '\xBB';
+const checkmark = '\u2713';
+const octopus = '\uD83D\uDC19'; // jshint ignore:line
+const green = chalk.green(chevron);
+const yellow = chalk.yellow(chevron);
+const red = chalk.red(chevron);
+
 // Helpers.
-let br = str => `[${str}]`; // Wrap in brackets.
+const br = str => `[${str}]`; // Wrap in brackets.
 
 export default class Logger {
   constructor(verbose = false, debug = false) {
     this.verbose = verbose;
+    this._stdout = process.stdout;
+    this._stderr = process.stderr;
     this._debug = debug;
     this._times = [];
   }
@@ -21,10 +28,14 @@ export default class Logger {
    */
   log(...args) {
     if (this.verbose) {
-      console.error(chalk.green(chevron), ...args);
+      let str = fmt(`${green} ${args.shift()}`, ...args);
+      this._stderr.write(`${str}\n`);
     }
   }
 
+  /**
+   * Log alias.
+   */
   info(...args) {
     return this.log(...args);
   }
@@ -33,18 +44,20 @@ export default class Logger {
    * Always log arguments as warning into stderr.
    */
   warn(...args) {
-    chalkHack(() =>
-      console.error(chalk.yellow(chevron), br('WARNING'), ...args)
-    );
+    chalkHack(() => {
+      let str = fmt(`${yellow} ${br('WARNING')} ${args.shift()}`, ...args);
+      this._stderr.write(`${str}\n`);
+    });
   }
 
   /**
    * Always log arguments as error into stderr.
    */
   error(...args) {
-    chalkHack(() =>
-      console.error(chalk.red(chevron), br('ERROR'), ...args)
-    );
+    chalkHack(() => {
+      let str = fmt(`${red} ${br('ERROR')} ${args.shift()}`, ...args);
+      this._stderr.write(`${str}\n`);
+    });
   }
 
   /**
@@ -56,7 +69,7 @@ export default class Logger {
   }
 
   /**
-   * End timer and log result.
+   * End timer and log result into stderr.
    * @param {String} label
    * @param {String} format
    */
@@ -71,7 +84,9 @@ export default class Logger {
     }
 
     let duration = Date.now() - time;
-    console.error(`${chalk.green(checkmark)} ${format}`, label, duration);
+
+    let str = fmt(`${chalk.green(checkmark)} ${format}`, label, duration);
+    this._stderr.write(`${str}\n`);
   }
 
   /**
@@ -79,17 +94,27 @@ export default class Logger {
    * argument functions to allow "lazy" arguments).
    */
   debug(...args) {
-    if (this._debug) {
-      chalkHack(() => {
-        console.error(chalk.grey(br('DEBUG'), ...args.map(f => {
-          if (f instanceof Function) {
-            return f();
-          }
-
-          return f;
-        })));
-      });
+    if (!this._debug) {
+      return;
     }
+
+    args = args.map(f => {
+      if (f instanceof Function) {
+        return f();
+      }
+
+      return f;
+    });
+
+    chalkHack(() => {
+      let str = fmt(
+        `${chalk.styles.grey.open}${chevron} ${br('DEBUG')} ${args.shift()}`,
+        ...args,
+        chalk.styles.grey.close
+      );
+
+      this._stderr.write(`${str}\n`);
+    });
   }
 }
 
