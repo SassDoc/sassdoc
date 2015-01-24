@@ -360,5 +360,5 @@ function init(env) { // jshint ignore:line
  */
 function okay(env) { // jshint ignore:line
   env.logger.log('Process over. Everything okay!');
-  env.logger.timeEnd('SassDoc', '%s task completed after %dms');
+  env.logger.timeEnd('SassDoc', '%s completed after %dms');
 }
