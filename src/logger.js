@@ -6,16 +6,13 @@ const chalk = require('chalk');
 let chevron = '\xBB';
 let checkmark = '\u2713';
 let octopus = '\uD83D\uDC19'; // jshint ignore:line
-
 // Helpers.
-let br = str => `[${str}]`;                       // Wrap in brackets.
-let prepend = (arg, arr) => [arg].concat(arr);    // Prepend.
-let flog = (name, arr) => prepend(br(name), arr); // Log with prepended flag.
+let br = str => `[${str}]`; // Wrap in brackets.
 
 export default class Logger {
   constructor(verbose = false, debug = false) {
     this.verbose = verbose;
-    this.debug_ = debug;
+    this._debug = debug;
     this._times = [];
   }
 
@@ -28,27 +25,26 @@ export default class Logger {
     }
   }
 
-  /**
-   * Log arguments into stderr if the verbose mode is enabled.
-   */
   info(...args) {
-    if (this.verbose) {
-      console.error(chalk.yellow(chevron), ...args);
-    }
+    return this.log(...args);
   }
 
   /**
    * Always log arguments as warning into stderr.
    */
   warn(...args) {
-    chalkHack(() => console.error(chalk.yellow(flog('WARNING', args))));
+    chalkHack(() =>
+      console.error(chalk.yellow(chevron), br('WARNING'), ...args)
+    );
   }
 
   /**
    * Always log arguments as error into stderr.
    */
   error(...args) {
-    chalkHack(() => console.error(chalk.red(flog('ERROR', args))));
+    chalkHack(() =>
+      console.error(chalk.red(chevron), br('ERROR'), ...args)
+    );
   }
 
   /**
@@ -62,16 +58,16 @@ export default class Logger {
   /**
    * End timer and log result.
    * @param {String} label
-   * @param {String} message
+   * @param {String} format
    */
-  timeEnd(label, message) {
+  timeEnd(label, format) {
     let time = this._times[label];
     if (!time) {
       throw new Error(`No such label: ${label}`);
     }
 
     let duration = Date.now() - time;
-    console.log(`${chalk.green(checkmark)} ${message}`, label, duration);
+    console.error(`${chalk.green(checkmark)} ${format}`, label, duration);
   }
 
   /**
@@ -79,15 +75,15 @@ export default class Logger {
    * argument functions to allow "lazy" arguments).
    */
   debug(...args) {
-    if (this.debug_) {
+    if (this._debug) {
       chalkHack(() => {
-        console.error(chalk.grey(flog('DEBUG', args.map(f => {
+        console.error(chalk.grey(br('DEBUG'), ...args.map(f => {
           if (f instanceof Function) {
             return f();
           }
 
           return f;
-        }))));
+        })));
       });
     }
   }
