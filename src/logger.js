@@ -61,6 +61,10 @@ export default class Logger {
    * @param {String} format
    */
   timeEnd(label, format) {
+    if (!this.verbose) {
+      return;
+    }
+
     let time = this._times[label];
     if (!time) {
       throw new Error(`No such label: ${label}`);
