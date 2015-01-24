@@ -38,7 +38,7 @@ export default function see(env) {
             return seeItem;
           }
 
-          env.logger.log(`Item "${item.context.name}" refers to "${see.name}" from type "${see.type}" but this item doesn't exist.`);
+          env.logger.info(`Item "${item.context.name}" refers to "${see.name}" from type "${see.type}" but this item doesn't exist.`);
         })
           .filter(x => x !== undefined);
 

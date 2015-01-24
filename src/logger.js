@@ -4,7 +4,7 @@ const chalk = require('chalk');
 
 // Special chars.
 let chevron = '\xBB';
-let checkmark = '\u2714';
+let checkmark = '\u2713';
 let octopus = '\uD83D\uDC19'; // jshint ignore:line
 
 // Helpers.
@@ -24,7 +24,16 @@ export default class Logger {
    */
   log(...args) {
     if (this.verbose) {
-      console.error(chalk.grey(chevron), ...args);
+      console.error(chalk.green(chevron), ...args);
+    }
+  }
+
+  /**
+   * Log arguments into stderr if the verbose mode is enabled.
+   */
+  info(...args) {
+    if (this.verbose) {
+      console.error(chalk.yellow(chevron), ...args);
     }
   }
 
