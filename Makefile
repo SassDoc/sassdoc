@@ -32,6 +32,22 @@ test/data/expected.stream.json: test/data/expected.json
 .jshintrc: .jshintrc.yaml
 	js-yaml $< > $@
 
+cover: dist
+	rm -rf coverage
+	istanbul cover --report none --print detail node_modules/.bin/_mocha test/**/*.test.js
+
+view-cover:
+	istanbul report html
+	open coverage/index.html
+
+travis: cover
+	istanbul report lcovonly
+	(cat coverage/lcov.info | coveralls) || exit 0
+	rm -rf coverage
+
+# Development
+# ===========
+
 develop:
 	6to5-node $(TO5_FLAGS) $@
 
@@ -62,3 +78,4 @@ rebuild:
 	npm install
 
 .PHONY: dist test develop
+.SILENT: dist develop cover travis

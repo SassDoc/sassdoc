@@ -4,7 +4,9 @@ node_js:
   - '0.10'
 
 before_install:
-- npm install -g npm
+  - npm i npm@latest -g
+
+script: make travis
 
 notifications:
   slack:
