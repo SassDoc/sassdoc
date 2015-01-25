@@ -73,7 +73,7 @@ export default class Logger {
    * @param {String} label
    * @param {String} format
    */
-  timeEnd(label, format) {
+  timeEnd(label, format = '%s: %dms') {
     if (!this.verbose) {
       return;
     }
