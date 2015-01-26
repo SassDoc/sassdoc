@@ -120,6 +120,17 @@ export default function sassdoc(...args) {
 
     let data = await baseDocumentize(env);
 
+    if (!data.length) {
+      env.emit('warning', new errors.Warning(`SassDoc could not find anything to document.
+
+  * Are you still using \`/**\` comments? They're no more supported since 2.0.
+    See <http://sassdoc.com/upgrading/#c-style-comments>.
+  * Are you documenting actual Sass items (variables, functions, mixins, placeholders)?
+    SassDoc doesn't support documenting CSS selectors.
+    See <http://sassdoc.com/frequently-asked-questions/#does-sassdoc-support-css-classes-and-ids->.
+`));
+    }
+
     try {
       await refresh(env);
       await theme(env);
