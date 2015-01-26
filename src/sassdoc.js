@@ -82,7 +82,7 @@ export default function sassdoc(...args) {
     })
       .then(() => mkdir(env.dest))
       .then(() => {
-        env.logger.log(`Folder "${env.dest}" successfully refreshed.`);
+        env.logger.log(`Folder \`${env.dest}\` successfully refreshed.`);
       })
       .catch(err => {
         // Friendly error for already existing directory.
@@ -105,7 +105,7 @@ export default function sassdoc(...args) {
     return promise
       .then(() => {
         let themeName = env.themeName || 'anonymous';
-        env.logger.log(`Theme "${themeName}" successfully rendered.`);
+        env.logger.log(`Theme \`${themeName}\` successfully rendered.`);
       });
   }
 
@@ -259,7 +259,7 @@ async function baseDocumentize(env) { // jshint ignore:line
 
   filter.promise
     .then(data => {
-      env.logger.log(`Folder "${env.src}" successfully parsed.`);
+      env.logger.log(`Folder \`${env.src}\` successfully parsed.`);
       env.data = data;
 
       env.logger.debug(() => {
@@ -268,7 +268,7 @@ async function baseDocumentize(env) { // jshint ignore:line
           JSON.stringify(data, null, 2) + '\n'
         );
 
-        return 'Dumping data to "sassdoc-data.json".';
+        return 'Dumping data to `sassdoc-data.json`.';
       });
     });
 

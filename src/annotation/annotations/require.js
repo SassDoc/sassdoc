@@ -131,7 +131,7 @@ export default function (env) {
           if (reqItem === undefined) {
             if (!req.autofill) {
               env.logger.warn(
-                `Item "${item.context.name}" requires "${req.name}" from type "${req.type}" but this item doesn't exist.`
+                `Item \`${item.context.name}\` requires \`${req.name}\` from type \`${req.type}\` but this item doesn't exist.`
               );
             }
 
