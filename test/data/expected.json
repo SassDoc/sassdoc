@@ -407,5 +407,82 @@
       "path": "test.scss",
       "name": "test.scss"
     }
+  },
+  {
+    "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
+    "commentRange": {
+      "start": 138,
+      "end": 141
+    },
+    "context": {
+      "type": "function",
+      "name": "alias-test",
+      "code": "",
+      "line": {
+        "start": 143,
+        "end": 143
+      }
+    },
+    "alias": "alias-test-aliased",
+    "group": [
+      "test"
+    ],
+    "access": "private",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
+    "description": "This is a test function aiming at testing:\n- `@alias`\n",
+    "commentRange": {
+      "start": 145,
+      "end": 146
+    },
+    "context": {
+      "type": "function",
+      "name": "alias-test-aliased",
+      "code": "",
+      "line": {
+        "start": 148,
+        "end": 148
+      }
+    },
+    "group": [
+      "test"
+    ],
+    "access": "private",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    },
+    "aliased": [
+      "alias-test"
+    ]
+  },
+  {
+    "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
+    "commentRange": {
+      "start": 150,
+      "end": 153
+    },
+    "context": {
+      "type": "function",
+      "name": "alias-test-should-warn",
+      "code": "",
+      "line": {
+        "start": 155,
+        "end": 155
+      }
+    },
+    "alias": "should-warn",
+    "group": [
+      "test"
+    ],
+    "access": "private",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
   }
 ]

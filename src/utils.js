@@ -1,14 +1,5 @@
-const each = require('lodash.foreach');
 const glob2base = require('glob2base');
 const Glob = require('glob').Glob;
-
-export function eachItem(byTypeAndName, cb) {
-  each(byTypeAndName, function (typeObj) {
-    each(typeObj, function (item) {
-      cb(item);
-    });
-  });
-}
 
 // Namespace delimiters.
 let nsDelimiters = ['::', ':', '\\.', '/'];

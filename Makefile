@@ -1,5 +1,6 @@
 PATH := node_modules/.bin:$(PATH)
 SASSDOC = bin/sassdoc
+MOCHA = node_modules/.bin/_mocha
 TO5_FLAGS = --experimental
 
 all: dist lint test
@@ -19,7 +20,7 @@ lint: .jshintrc
 
 test: test/data/expected.stream.json dist
 	mocha test/annotations/*.test.js
-	mocha test/src/*.test.js
+	mocha test/env/*.test.js test/utils/*.test.js
 	rm -rf sassdoc && mocha test/api/*.test.js
 	$(SASSDOC) --parse test/data/test.scss | diff - test/data/expected.json
 	$(SASSDOC) --parse < test/data/test.scss | diff - test/data/expected.stream.json
@@ -31,6 +32,23 @@ test/data/expected.stream.json: test/data/expected.json
 
 .jshintrc: .jshintrc.yaml
 	js-yaml $< > $@
+
+cover: dist
+	rm -rf coverage
+	istanbul cover --report none --print detail $(MOCHA) test/**/*.test.js
+
+cover-browse: dist
+	rm -rf coverage
+	istanbul cover --report html $(MOCHA) test/**/*.test.js
+	open coverage/index.html
+
+travis: cover
+	istanbul report lcovonly
+	(cat coverage/lcov.info | coveralls) || exit 0
+	rm -rf coverage
+
+# Development
+# ===========
 
 develop:
 	6to5-node $(TO5_FLAGS) $@
@@ -62,3 +80,4 @@ rebuild:
 	npm install
 
 .PHONY: dist test develop
+.SILENT: dist develop cover view-cover travis

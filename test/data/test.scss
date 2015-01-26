@@ -132,3 +132,24 @@ $variable-specific-test: ();
   @include autofill-test();
   @error "This is an autofilled error";
 }
+
+
+
+/// This is a test function aiming at testing:
+/// - `@alias`
+///
+/// @alias alias-test-aliased
+
+@function alias-test() {}
+
+/// This is a test function aiming at testing:
+/// - `@alias`
+
+@function alias-test-aliased() {}
+
+/// This is a test function aiming at testing:
+/// - `@alias`
+///
+/// @alias should-warn
+
+@function alias-test-should-warn() {}
