@@ -80,4 +80,4 @@ rebuild:
 	npm install
 
 .PHONY: dist test develop
-.SILENT: dist develop cover view-cover foo travis
+.SILENT: dist develop cover view-cover travis

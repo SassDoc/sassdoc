@@ -17,6 +17,11 @@ describe('#errors', function () {
   });
 
   it('should have the proper constructor', function () {
+    assert.ok(SassDocError instanceof errors.SassDocError);
+    assert.ok(Warning instanceof errors.Warning);
+  });
+
+  it('should have the proper super constructor', function () {
     assert.ok(SassDocError instanceof Error);
     assert.ok(Warning instanceof errors.SassDocError);
   });
