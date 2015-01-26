@@ -20,7 +20,7 @@ lint: .jshintrc
 
 test: test/data/expected.stream.json dist
 	mocha test/annotations/*.test.js
-	mocha test/src/*.test.js
+	mocha test/env/*.test.js test/utils/*.test.js
 	rm -rf sassdoc && mocha test/api/*.test.js
 	$(SASSDOC) --parse test/data/test.scss | diff - test/data/expected.json
 	$(SASSDOC) --parse < test/data/test.scss | diff - test/data/expected.stream.json
