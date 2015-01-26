@@ -78,7 +78,7 @@ export default class Environment extends EventEmitter {
     for (let k of Object.keys(config)) {
       if (k in this) {
         return this.emit('error', new Error(
-          `Reserved configuration key "${k}".`
+          `Reserved configuration key \`${k}\`.`
         ));
       }
 
@@ -104,7 +104,7 @@ export default class Environment extends EventEmitter {
     this.file = file;
 
     if (!this.tryLoadCurrentFile()) {
-      this.emit('warning', new errors.Warning(`Config file "${file}" not found.`));
+      this.emit('warning', new errors.Warning(`Config file \`${file}\` not found.`));
       this.logger.warn('Falling back to `.sassdocrc`');
       this.loadDefaultFile();
     }
@@ -158,7 +158,7 @@ export default class Environment extends EventEmitter {
       return;
     }
 
-    this.emit('warning', new errors.Warning(`Package file "${file}" not found.`));
+    this.emit('warning', new errors.Warning(`Package file \`${file}\` not found.`));
     this.logger.warn('Falling back to `package.json`.');
 
     file = this.resolve('package.json');
@@ -198,7 +198,7 @@ export default class Environment extends EventEmitter {
     try {
       require.resolve(module);
     } catch (err) {
-      this.emit('warning', new errors.Warning(`Theme "${this.theme}" not found.`));
+      this.emit('warning', new errors.Warning(`Theme \`${this.theme}\` not found.`));
       this.logger.warn('Falling back to default theme.');
       return this.defaultTheme();
     }

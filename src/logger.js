@@ -142,7 +142,7 @@ export function checkLogger(logger) {
     .filter(x => !(x in logger) || !is.function(logger[x]));
 
   if (methods.length) {
-    const missing = `"${methods.join('", "')}"`;
+    const missing = `"${methods.join('\`, \`')}"`;
     const s = methods.length > 1 ? 's' : '';
 
     throw new errors.SassDocError(`Invalid logger, missing ${missing} method${s}`);
