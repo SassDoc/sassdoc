@@ -13,6 +13,7 @@ Like JSDoc for your Sass files.
 <br>
 
 [![Build Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
 [![Dependencies Status][depstat-image]][depstat-url]
 [![License][license-image]][license-url]
 
@@ -75,6 +76,8 @@ So you end up with a fully styled HTML document located at your destination fold
 [npm-image]: https://nodei.co/npm/sassdoc.png?downloads=true
 [travis-url]: https://travis-ci.org/SassDoc/sassdoc?branch=master
 [travis-image]: http://img.shields.io/travis/SassDoc/sassdoc.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/SassDoc/sassdoc
+[coveralls-image]: https://img.shields.io/coveralls/SassDoc/sassdoc.svg?style=flat-square
 [depstat-url]: https://david-dm.org/SassDoc/sassdoc
 [depstat-image]: https://david-dm.org/SassDoc/sassdoc.svg?style=flat-square
 [license-image]: http://img.shields.io/npm/l/sassdoc.svg?style=flat-square
