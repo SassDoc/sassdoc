@@ -1,5 +1,6 @@
 PATH := node_modules/.bin:$(PATH)
 SASSDOC = bin/sassdoc
+MOCHA = node_modules/.bin/_mocha
 TO5_FLAGS = --experimental
 
 all: dist lint test
@@ -34,10 +35,11 @@ test/data/expected.stream.json: test/data/expected.json
 
 cover: dist
 	rm -rf coverage
-	istanbul cover --report none --print detail node_modules/.bin/_mocha test/**/*.test.js
+	istanbul cover --report none --print detail $(MOCHA) test/**/*.test.js
 
-view-cover:
-	istanbul report html
+cover-browse: dist
+	rm -rf coverage
+	istanbul cover --report html $(MOCHA) test/**/*.test.js
 	open coverage/index.html
 
 travis: cover
@@ -78,4 +80,4 @@ rebuild:
 	npm install
 
 .PHONY: dist test develop
-.SILENT: dist develop cover travis
+.SILENT: dist develop cover view-cover foo travis
