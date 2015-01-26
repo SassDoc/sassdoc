@@ -86,7 +86,6 @@
     "glob2base": "0.0.12",
     "js-yaml": "^3.2.1",
     "lodash.difference": "^2.4.1",
-    "lodash.foreach": "^2.4.1",
     "lodash.uniq": "^2.4.1",
     "minimatch": "^2.0.0",
     "mkdirp": "^0.5.0",
