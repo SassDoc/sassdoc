@@ -117,19 +117,7 @@ export default function sassdoc(...args) {
     /* jshint ignore:start */
 
     init(env);
-
     let data = await baseDocumentize(env);
-
-    if (!data.length) {
-      env.emit('warning', new errors.Warning(`SassDoc could not find anything to document.
-
-  * Are you still using \`/**\` comments? They're no more supported since 2.0.
-    See <http://sassdoc.com/upgrading/#c-style-comments>.
-  * Are you documenting actual Sass items (variables, functions, mixins, placeholders)?
-    SassDoc doesn't support documenting CSS selectors.
-    See <http://sassdoc.com/frequently-asked-questions/#does-sassdoc-support-css-classes-and-ids->.
-`));
-    }
 
     try {
       await refresh(env);
@@ -157,6 +145,7 @@ export default function sassdoc(...args) {
       .then(data => {
         env.logger.log('SCSS files successfully parsed.');
         env.data = data;
+        onEmpty(data, env);
       });
 
     /* jshint ignore:start */
@@ -261,6 +250,7 @@ async function baseDocumentize(env) { // jshint ignore:line
     .then(data => {
       env.logger.log(`Folder \`${env.src}\` successfully parsed.`);
       env.data = data;
+      onEmpty(data, env);
 
       env.logger.debug(() => {
         fs.writeFile(
@@ -360,7 +350,26 @@ function srcEnv(documentize, stream) {
 }
 
 /**
+ * Warn user on empty documentation.
+ * @param {Array} data
+ * @param {Object} env
+ */
+function onEmpty(data, env) {
+  let message = `SassDoc could not find anything to document.\n
+  * Are you still using \`/**\` comments ? They're no more supported since 2.0.
+    See <http://sassdoc.com/upgrading/#c-style-comments>.
+  * Are you documenting actual Sass items (variables, functions, mixins, placeholders) ?
+    SassDoc doesn't support documenting CSS selectors.
+    See <http://sassdoc.com/frequently-asked-questions/#does-sassdoc-support-css-classes-and-ids->.\n`;
+
+  if (!data.length) {
+    env.emit('warning', new errors.Warning(message));
+  }
+}
+
+/**
  * Init timer.
+ * @param {Object} env
  */
 function init(env) { // jshint ignore:line
   env.logger.time('SassDoc');
@@ -368,6 +377,7 @@ function init(env) { // jshint ignore:line
 
 /**
  * Log final success message.
+ * @param {Object} env
  */
 function okay(env) { // jshint ignore:line
   env.logger.log('Process over. Everything okay!');
