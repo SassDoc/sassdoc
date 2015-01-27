@@ -1,10 +1,10 @@
-let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$?([^\s]+))?\s*(?:\[([^\]]*)\])?\s*(?:-?\s*([\s\S]*))?/;
+let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$?([^\s^\]\[]+))?\s*(?:\[([^\]]*)\])?\s*(?:-?\s*([\s\S]*))?/;
 
-export default function parameter() {
+export default function parameter(env) {
   return {
     name: 'parameter',
 
-    parse(text) {
+    parse(text, info, id) {
       let parsed = typeRegEx.exec(text);
       let obj = {};
 
@@ -14,6 +14,9 @@ export default function parameter() {
 
       if (parsed[2]) {
         obj.name = parsed[2];
+      } else {
+        env.logger.warn(`@parameter must at least have a name. Location: ${id}:${info.commentRange.start}:${info.commentRange.end}`);
+        return undefined;
       }
 
       if (parsed[3]) {

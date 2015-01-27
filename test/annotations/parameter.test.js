@@ -5,7 +5,8 @@ require('../init');
 var assert = require('assert');
 
 describe('#parameter', function () {
-  var param = (new (require('../../dist/annotation'))()).list.parameter;
+  var paramCtor = require('../../dist/annotation/annotations/parameter');
+  var param = paramCtor(require('./envMock'));
 
   it('should return an object', function () {
     assert.deepEqual(param.parse('{type} $hyphenated-name [default] - description'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description' });
@@ -25,5 +26,26 @@ describe('#parameter', function () {
   it('should work without the $', function () {
     assert.deepEqual(param.parse('{type} hyphenated-name [default] - description\nmore\nthan\none\nline'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description\nmore\nthan\none\nline' });
   });
+
+  it('should work without a type', function () {
+    assert.deepEqual(param.parse('hyphenated-name [default] - description\nmore\nthan\none\nline'), { name: 'hyphenated-name', default: 'default', description: 'description\nmore\nthan\none\nline' });
+  });
+
+  it('should warn when a name is missing', function (done) {
+    var param = paramCtor({
+      logger: {
+        warn: function(msg){
+          assert.equal(msg, '@parameter must at least have a name. Location: FileID:1:2');
+          done();
+        }
+      }
+    });
+    assert.deepEqual(param.parse('{type} [default] - description\nmore\nthan\none\nline', { commentRange : { start :1, end: 2}}, 'FileID'), undefined);
+  });
+
+  it('should work without a description', function () {
+    assert.deepEqual(param.parse('{type} name'), { type : 'type', name : 'name'});
+  });
+
 
 });

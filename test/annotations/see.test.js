@@ -10,4 +10,10 @@ describe('#see', function () {
   it('should default to function', function () {
     assert.deepEqual(see.parse('name'), { type: 'function', name: 'name' });
   });
+
+  it('should rewrite the .toJSON method', function() {
+    var data = [{description: 'desc', context: {name: 'name'}},{see: [see.parse('name')]}];
+    see.resolve(data);
+    assert.deepEqual(data[1].see.toJSON(), [ { description: 'desc', context: { name: 'name' } } ]);
+  });
 });

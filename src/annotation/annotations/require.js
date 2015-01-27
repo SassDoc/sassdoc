@@ -55,11 +55,11 @@ export default function (env) {
         // Searching for mixins and functions.
         let mixins = [];
         let functions = [];
-        let mixinFunctionRegex = /\s*([\w\d_-]*)\(/g;
+        let mixinFunctionRegex = /\s{1,}([\w\d_-]+)[\s\S]*?(?:\(|;)/g;
         let match;
 
         while ((match = mixinFunctionRegex.exec(item.context.code))) {
-          // Try if this is a mixin or functio.n
+          // Try if this is a mixin or function
           if (compareBefore(item.context.code, '@include', match.index)) {
             if (!isAnnotatedByHand(handWritten, 'mixin', match[1])) {
               mixins.push(match[1]);

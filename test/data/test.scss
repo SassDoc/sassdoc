@@ -135,6 +135,24 @@ $variable-specific-test: ();
 
 
 
+
+/// This is a test that autofill can be overwritten.
+/// @require {function} function-specific-test
+/// @require {mixin} mixin-specific-test
+
+@mixin autofill-test-handwritten {
+  $call: function-specific-test();
+  $use: $variable-specific-test;
+  @include mixin-specific-test;
+}
+
+/// This is a test that autofill should report not found
+/// @require {function} function-not-found
+@mixin autofill-test-not-found {
+}
+
+
+
 /// This is a test function aiming at testing:
 /// - `@alias`
 ///
