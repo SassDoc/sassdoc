@@ -19,6 +19,7 @@ export default function alias(env) {
 
         if (aliasedItem === undefined) {
           env.logger.warn(`Item \`${name}\` is an alias of \`${alias}\` but this item doesn't exist.`);
+          delete item.alias;
           return;
         }
 
