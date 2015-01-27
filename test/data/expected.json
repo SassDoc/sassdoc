@@ -475,7 +475,6 @@
         "end": 155
       }
     },
-    "alias": "should-warn",
     "group": [
       "test"
     ],
