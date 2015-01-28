@@ -31,4 +31,13 @@ describe('#utils:denodeify', function () {
       });
   });
 
+  it('should provide utils.is.*', function () {
+
+    assert.ok(utils.is.stream({ pipe : function(){}}));
+    assert.equal(utils.is.stream(), undefined);
+
+    assert.ok(utils.is.undef());
+
+  });
+
 });
