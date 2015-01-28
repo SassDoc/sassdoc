@@ -14,6 +14,7 @@ const red = chalk.red(chevron);
 // Helpers.
 const br = str => `[${str}]`; // Wrap in brackets.
 
+/* global Logger */
 export default class Logger {
   constructor(verbose = false, debug = false) {
     this.verbose = verbose;
@@ -44,7 +45,7 @@ export default class Logger {
    * Always log arguments as warning into stderr.
    */
   warn(...args) {
-    chalkHack(() => {
+    Logger.chalkHack(() => {
       let str = fmt(`${yellow} ${br('WARNING')} ${args.shift()}`, ...args);
       this._stderr.write(`${str}\n`);
     });
@@ -54,7 +55,7 @@ export default class Logger {
    * Always log arguments as error into stderr.
    */
   error(...args) {
-    chalkHack(() => {
+    Logger.chalkHack(() => {
       let str = fmt(`${red} ${br('ERROR')} ${args.shift()}`, ...args);
       this._stderr.write(`${str}\n`);
     });
@@ -106,7 +107,7 @@ export default class Logger {
       return f;
     });
 
-    chalkHack(() => {
+    Logger.chalkHack(() => {
       let str = fmt(
         `${chalk.styles.grey.open}${chevron} ${br('DEBUG')} ${args.shift()}`,
         ...args,
@@ -116,62 +117,63 @@ export default class Logger {
       this._stderr.write(`${str}\n`);
     });
   }
+
+
+  /**
+   * Chalk don't allow us to create a new instance with our own `enabled`
+   * value (internal functions always reference the global export). Here
+   * we want to enable it if stderr is a TTY, but it's not acceptable to
+   * modify the global context for this purpose.
+   *
+   * So this hack will set `chalk.enabled` for the time of the synchronous
+   * callback execution, then reset it to whatever was its default value.
+   */
+  static chalkHack(cb) {
+    let enabled = chalk.enabled;
+    chalk.enabled = process.stderr.isTTY;
+    cb();
+    chalk.enabled = enabled;
+  }
+
+  /**
+   * Checks if given object looks like a logger.
+   *
+   * If the `debug` function is missing (like for the `console` object),
+   * it will be set to an empty function in a newly returned object.
+   *
+   * If any other method is missing, an exception is thrown.
+   *
+   * @param {Object} logger
+   * @return {Logger}
+   * @throws {SassDocError}
+   */
+  static checkLogger(logger) {
+    const methods = ['log', 'warn', 'error']
+      .filter(x => !(x in logger) || !is.function(logger[x]));
+
+    if (methods.length) {
+      const missing = `"${methods.join('\`, \`')}"`;
+      const s = methods.length > 1 ? 's' : '';
+
+      throw new errors.SassDocError(`Invalid logger, missing ${missing} method${s}`);
+    }
+
+    if ('debug' in logger) {
+      return logger;
+    }
+
+    return {
+      log: logger.log,
+      warn: logger.warn,
+      error: logger.error,
+      debug: this.empty.debug,
+    };
+  }
 }
 
-export var empty = {
+Logger.empty = {
   log: () => {},
   warn: () => {},
   error: () => {},
   debug: () => {},
 };
-
-/**
- * Checks if given object looks like a logger.
- *
- * If the `debug` function is missing (like for the `console` object),
- * it will be set to an empty function in a newly returned object.
- *
- * If any other method is missing, an exception is thrown.
- *
- * @param {Object} logger
- * @return {Logger}
- * @throws {SassDocError}
- */
-export function checkLogger(logger) {
-  const methods = ['log', 'warn', 'error']
-    .filter(x => !(x in logger) || !is.function(logger[x]));
-
-  if (methods.length) {
-    const missing = `"${methods.join('\`, \`')}"`;
-    const s = methods.length > 1 ? 's' : '';
-
-    throw new errors.SassDocError(`Invalid logger, missing ${missing} method${s}`);
-  }
-
-  if ('debug' in logger) {
-    return logger;
-  }
-
-  return {
-    log: logger.log,
-    warn: logger.warn,
-    error: logger.error,
-    debug: empty.debug,
-  };
-}
-
-/**
- * Chalk don't allow us to create a new instance with our own `enabled`
- * value (internal functions always reference the global export). Here
- * we want to enable it if stderr is a TTY, but it's not acceptable to
- * modify the global context for this purpose.
- *
- * So this hack will set `chalk.enabled` for the time of the synchronous
- * callback execution, then reset it to whatever was its default value.
- */
-function chalkHack(cb) {
-  let enabled = chalk.enabled;
-  chalk.enabled = process.stderr.isTTY;
-  cb();
-  chalk.enabled = enabled;
-}

@@ -78,9 +78,9 @@
     "README.md"
   ],
   "dependencies": {
+    "6to5-runtime": "^3.0.12",
     "chalk": "^0.5.0",
     "concat-stream": "^1.4.7",
-    "core-js": "^0.4.3",
     "docopt": "^0.4.1",
     "glob": "^4.3.1",
     "glob2base": "0.0.12",
@@ -90,7 +90,6 @@
     "minimatch": "^2.0.0",
     "mkdirp": "^0.5.0",
     "multipipe": "^0.1.2",
-    "regenerator": "^0.8.3",
     "rimraf": "^2.2.8",
     "safe-wipe": "0.*",
     "sass-convert": "^0.4.0",
@@ -102,7 +101,7 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
-    "6to5": "^2.9.4",
+    "6to5": "^3.0.11",
     "coveralls": "^2.11.2",
     "dateformat": "^1.0.11",
     "istanbul": "^0.3.5",

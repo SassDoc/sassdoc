@@ -1,3 +1,4 @@
+/* global sassdoc */
 const { denodeify, is, g2b } = require('./utils');
 
 const Environment = require('./environment');
@@ -21,44 +22,19 @@ const through = require('through2');
 /**
  * Expose lower API blocks.
  */
-export { Environment, Logger, Parser, sorter, errors };
+sassdoc.Environment = Environment;
+sassdoc.Logger = Logger;
+sassdoc.Parser = Parser;
+sassdoc.sorter = sorter;
+sassdoc.errors = errors;
 
 /**
- * Boostrap Parser and AnnotationsApi, execute parsing phase.
- * @return {Stream}
- * @return {Promise} - as a property of Stream.
+ * Expose core function
  */
-export function parseFilter(env = {}) {
-  env = ensureEnvironment(env);
+sassdoc.parseFilter = parseFilter;
+sassdoc.ensureEnvironment = ensureEnvironment;
+sassdoc.parse = parse;
 
-  let parser = new Parser(env, env.theme && env.theme.annotations);
-  let filter = parser.stream();
-
-  filter.promise
-    .then(data => sorter(data));
-
-  return filter;
-}
-
-/**
- * Ensure a proper Environment Object and events.
- * @return {Object}
- */
-export function ensureEnvironment(config, onError = e => { throw e; }) {
-  if (config instanceof Environment) {
-    config.on('error', onError);
-    return config;
-  }
-
-  let logger = ensureLogger(config);
-  let env = new Environment(logger, config.strict);
-
-  env.on('error', onError);
-  env.load(config);
-  env.postProcess();
-
-  return env;
-}
 
 /**
  * Default public API method.
@@ -184,13 +160,50 @@ export default function sassdoc(...args) {
 }
 
 /**
+ * Boostrap Parser and AnnotationsApi, execute parsing phase.
+ * @return {Stream}
+ * @return {Promise} - as a property of Stream.
+ */
+function parseFilter(env = {}) {
+  env = ensureEnvironment(env);
+
+  let parser = new Parser(env, env.theme && env.theme.annotations);
+  let filter = parser.stream();
+
+  filter.promise
+    .then(data => sorter(data));
+
+  return filter;
+}
+
+/**
+ * Ensure a proper Environment Object and events.
+ * @return {Object}
+ */
+function ensureEnvironment(config, onError = e => { throw e; }) {
+  if (config instanceof Environment) {
+    config.on('error', onError);
+    return config;
+  }
+
+  let logger = ensureLogger(config);
+  let env = new Environment(logger, config.strict);
+
+  env.on('error', onError);
+  env.load(config);
+  env.postProcess();
+
+  return env;
+}
+
+/**
  * Parse and return data object.
  * @param {String | Array} src
  * @param {Object} env
  * @return {Promise | Stream}
  * @see srcEnv
  */
-export function parse(...args) { // jshint ignore:line
+function parse(...args) { // jshint ignore:line
   /* jshint ignore:start */
 
   return srcEnv(documentize, stream)(...args);

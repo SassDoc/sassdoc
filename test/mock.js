@@ -1,7 +1,5 @@
 'use strict';
 
-require('./init');
-
 var path = require('path');
 var fs = require('fs');
 var inherits = require('util').inherits;
