@@ -24,7 +24,7 @@ describe('#defaults', function () {
     });
   });
 
-  it('should assign the proper default values', function () {
+  it('should assign proper default values', function () {
     assert.deepEqual(['undefined'], dummy.group);
     assert.strictEqual('public', dummy.access);
   });
