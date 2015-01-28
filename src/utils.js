@@ -64,8 +64,7 @@ export const is = {
   object: arg => typeof arg === 'object' && arg !== null,
   plainObject: arg => toString(arg) === '[object Object]',
   array: arg => Array.isArray(arg),
-  error: arg => is.object(arg) &&
-    (toString(arg) === '[object Error]' || arg instanceof Error),
+  error: arg => is.object(arg) && (toString(arg) === '[object Error]' || arg instanceof Error),
   promise: arg => arg && is.function(arg.then),
   stream: arg => arg && is.function(arg.pipe),
 };

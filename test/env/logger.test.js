@@ -53,6 +53,12 @@ describe('#logger', function () {
     logger.debug('foo');
     logger.debug('foo', 'bar');
     logger.debug('%s %s', 'foo', 'bar', 'hop');
+    logger.debug(function(){return 'foo bar hop hop';});
+
+    // test logger.info()
+    logger.info('foo');
+    logger.info('foo', 'bar');
+    logger.info('%s %s', 'foo', 'bar', 'hop');
 
     // test logger.timeEnd()
     logger.time('label');
@@ -83,6 +89,13 @@ describe('#logger', function () {
     assert.equal(debug('foo'), strings.shift());
     assert.equal(debug('foo bar'), strings.shift());
     assert.equal(debug('foo bar hop'), strings.shift());
+    assert.equal(debug('foo bar hop hop'), strings.shift());
+  });
+
+  it('should properly `info` with a grey chevron', function () {
+    assert.equal(log('foo'), strings.shift());
+    assert.equal(log('foo bar'), strings.shift());
+    assert.equal(log('foo bar hop'), strings.shift());
   });
 
   it('should properly `timeEnd` with default message', function () {
@@ -108,6 +121,24 @@ describe('#logger', function () {
       logger.time('token');
       logger.timeEnd('token');
     });
+  });
+
+  it('should have a empty logger', function () {
+    assert.deepEqual(Logger.empty.log(), undefined);
+    assert.deepEqual(Logger.empty.warn(), undefined);
+    assert.deepEqual(Logger.empty.error(), undefined);
+    assert.deepEqual(Logger.empty.debug(), undefined);
+  });
+
+  it('should have a function to check if a object is a logger', function () {
+    assert.ok(Logger.checkLogger(Logger.empty));
+    assert.throws(function () {
+      Logger.checkLogger({ log : function() {} });
+    });
+    assert.throws(function () {
+      Logger.checkLogger({ log : function() {}, warn : function(){} });
+    });
+    assert.ok(Logger.checkLogger({ log : function() {}, warn : function(){}, error : function(){} }));
   });
 
   after(function () {

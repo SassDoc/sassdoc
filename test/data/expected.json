@@ -188,6 +188,18 @@
             "end": 134
           }
         }
+      },
+      {
+        "description": "This is a test that autofill can be overwritten.\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test-handwritten",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
+          "line": {
+            "start": 143,
+            "end": 147
+          }
+        }
       }
     ]
   },
@@ -242,6 +254,30 @@
           "line": {
             "start": 60,
             "end": 60
+          }
+        }
+      },
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 124,
+            "end": 134
+          }
+        }
+      },
+      {
+        "description": "This is a test that autofill can be overwritten.\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test-handwritten",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
+          "line": {
+            "start": 143,
+            "end": 147
           }
         }
       }
@@ -308,6 +344,18 @@
           "line": {
             "start": 124,
             "end": 134
+          }
+        }
+      },
+      {
+        "description": "This is a test that autofill can be overwritten.\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test-handwritten",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
+          "line": {
+            "start": 143,
+            "end": 147
           }
         }
       }
@@ -388,6 +436,10 @@
     "content": "",
     "require": [
       {
+        "type": "mixin",
+        "name": "mixin-specific-test"
+      },
+      {
         "type": "function",
         "name": "function-specific-test"
       },
@@ -409,18 +461,83 @@
     }
   },
   {
+    "description": "This is a test that autofill can be overwritten.\n",
+    "commentRange": {
+      "start": 139,
+      "end": 141
+    },
+    "context": {
+      "type": "mixin",
+      "name": "autofill-test-handwritten",
+      "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
+      "line": {
+        "start": 143,
+        "end": 147
+      }
+    },
+    "require": [
+      {
+        "type": "variable",
+        "name": "variable-specific-test"
+      },
+      {
+        "type": "function",
+        "name": "function-specific-test",
+        "external": false
+      },
+      {
+        "type": "mixin",
+        "name": "mixin-specific-test",
+        "external": false
+      }
+    ],
+    "group": [
+      "test"
+    ],
+    "access": "private",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
+    "description": "This is a test that autofill should report not found\n",
+    "commentRange": {
+      "start": 149,
+      "end": 150
+    },
+    "context": {
+      "type": "mixin",
+      "name": "autofill-test-not-found",
+      "code": "\n",
+      "line": {
+        "start": 151,
+        "end": 152
+      }
+    },
+    "require": [],
+    "group": [
+      "test"
+    ],
+    "access": "private",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
     "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
     "commentRange": {
-      "start": 138,
-      "end": 141
+      "start": 156,
+      "end": 159
     },
     "context": {
       "type": "function",
       "name": "alias-test",
       "code": "",
       "line": {
-        "start": 143,
-        "end": 143
+        "start": 161,
+        "end": 161
       }
     },
     "alias": "alias-test-aliased",
@@ -436,16 +553,16 @@
   {
     "description": "This is a test function aiming at testing:\n- `@alias`\n",
     "commentRange": {
-      "start": 145,
-      "end": 146
+      "start": 163,
+      "end": 164
     },
     "context": {
       "type": "function",
       "name": "alias-test-aliased",
       "code": "",
       "line": {
-        "start": 148,
-        "end": 148
+        "start": 166,
+        "end": 166
       }
     },
     "group": [
@@ -463,16 +580,16 @@
   {
     "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
     "commentRange": {
-      "start": 150,
-      "end": 153
+      "start": 168,
+      "end": 171
     },
     "context": {
       "type": "function",
       "name": "alias-test-should-warn",
       "code": "",
       "line": {
-        "start": 155,
-        "end": 155
+        "start": 173,
+        "end": 173
       }
     },
     "group": [
