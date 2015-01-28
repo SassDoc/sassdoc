@@ -1,7 +1,5 @@
 'use strict';
 
-require('../init');
-
 var assert = require('assert');
 var fs = require('fs');
 var utils = require('../../dist/utils');

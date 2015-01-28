@@ -1,7 +1,5 @@
 'use strict';
 
-require('../init');
-
 var assert = require('assert');
 
 describe('#link', function () {
