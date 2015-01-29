@@ -1,7 +1,7 @@
-PATH := node_modules/.bin:$(PATH)
-SASSDOC = bin/sassdoc
-MOCHA = node_modules/.bin/_mocha
-TO5_FLAGS = --experimental
+PATH := $(PWD)/node_modules/.bin:$(PATH)
+SASSDOC := $(PWD)/bin/sassdoc
+MOCHA := $(PWD)/node_modules/.bin/_mocha
+TO5_FLAGS := --experimental
 
 all: dist lint test
 
@@ -21,7 +21,7 @@ lint: .jshintrc
 test: test/data/expected.stream.json dist
 	mocha test/annotations/*.test.js
 	mocha test/env/*.test.js test/utils/*.test.js
-	rm -rf sassdoc && mocha test/api/*.test.js
+	rm -rf sassdoc && $(MOCHA) test/api/*.test.js
 	$(SASSDOC) --parse test/data/test.scss | diff - test/data/expected.json
 	$(SASSDOC) --parse < test/data/test.scss | diff - test/data/expected.stream.json
 	rm -rf sassdoc && $(SASSDOC) test/data/test.scss && [ -d sassdoc ]
