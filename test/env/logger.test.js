@@ -55,11 +55,6 @@ describe('#logger', function () {
     logger.debug('%s %s', 'foo', 'bar', 'hop');
     logger.debug(function(){return 'foo bar hop hop';});
 
-    // test logger.info()
-    logger.info('foo');
-    logger.info('foo', 'bar');
-    logger.info('%s %s', 'foo', 'bar', 'hop');
-
     // test logger.timeEnd()
     logger.time('label');
     logger.timeEnd('label');
@@ -90,12 +85,6 @@ describe('#logger', function () {
     assert.equal(debug('foo bar'), strings.shift());
     assert.equal(debug('foo bar hop'), strings.shift());
     assert.equal(debug('foo bar hop hop'), strings.shift());
-  });
-
-  it('should properly `info` with a grey chevron', function () {
-    assert.equal(log('foo'), strings.shift());
-    assert.equal(log('foo bar'), strings.shift());
-    assert.equal(log('foo bar hop'), strings.shift());
   });
 
   it('should properly `timeEnd` with default message', function () {

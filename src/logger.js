@@ -34,13 +34,6 @@ export default class Logger {
   }
 
   /**
-   * Log alias.
-   */
-  info(...args) {
-    return this.log(...args);
-  }
-
-  /**
    * Always log arguments as warning into stderr.
    */
   warn(...args) {
