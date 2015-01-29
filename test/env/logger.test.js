@@ -17,6 +17,8 @@ function debug(str) {
   return '\u001b[90m\xBB [DEBUG] ' + str + ' \u001b[39m\n';
 }
 
+var noop = function () {};
+
 describe('#logger', function () {
   var logger;
   var stderrWrite;
@@ -53,7 +55,7 @@ describe('#logger', function () {
     logger.debug('foo');
     logger.debug('foo', 'bar');
     logger.debug('%s %s', 'foo', 'bar', 'hop');
-    logger.debug(function(){return 'foo bar hop hop';});
+    logger.debug(function () { return 'foo bar hop hop'; });
 
     // test logger.timeEnd()
     logger.time('label');
@@ -119,18 +121,19 @@ describe('#logger', function () {
     assert.deepEqual(Logger.empty.debug(), undefined);
   });
 
-  it('should have a function to check if a object is a logger', function () {
+  it('should have a function to check if an object is a valid logger', function () {
     assert.ok(Logger.checkLogger(Logger.empty));
     assert.throws(function () {
-      Logger.checkLogger({ log : function() {} });
+      Logger.checkLogger({ log: noop });
     });
     assert.throws(function () {
-      Logger.checkLogger({ log : function() {}, warn : function(){} });
+      Logger.checkLogger({ log: noop, warn: noop });
     });
-    assert.ok(Logger.checkLogger({ log : function() {}, warn : function(){}, error : function(){} }));
+    assert.ok(Logger.checkLogger({ log: noop, warn: noop, error: noop }));
   });
 
   after(function () {
     global.process.stderr.write = stderrWrite;
   });
+
 });

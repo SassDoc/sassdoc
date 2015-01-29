@@ -18,10 +18,11 @@ dist:
 lint: .jshintrc
 	jshint bin/sassdoc index.js src test
 
+.jshintrc: .jshintrc.yaml
+	js-yaml $< > $@
+
 test: test/data/expected.stream.json dist
-	mocha test/annotations/*.test.js
-	mocha test/env/*.test.js test/utils/*.test.js
-	rm -rf sassdoc && $(MOCHA) test/api/*.test.js
+	$(MOCHA) test/**/*.test.js
 	$(SASSDOC) --parse test/data/test.scss | diff - test/data/expected.json
 	$(SASSDOC) --parse < test/data/test.scss | diff - test/data/expected.stream.json
 	rm -rf sassdoc && $(SASSDOC) test/data/test.scss && [ -d sassdoc ]
@@ -29,9 +30,6 @@ test: test/data/expected.stream.json dist
 
 test/data/expected.stream.json: test/data/expected.json
 	test/data/stream $< > $@
-
-.jshintrc: .jshintrc.yaml
-	js-yaml $< > $@
 
 cover: dist
 	rm -rf coverage
@@ -42,7 +40,7 @@ cover-browse: dist
 	istanbul cover --report html $(MOCHA) test/**/*.test.js
 	open coverage/index.html
 
-travis: cover
+travis: lint cover
 	istanbul report lcovonly
 	(cat coverage/lcov.info | coveralls) || exit 0
 	rm -rf coverage
