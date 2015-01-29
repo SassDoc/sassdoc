@@ -10,7 +10,7 @@ const vfs = require('vinyl-fs');
  */
 export default function recurse() {
   return through.obj(function (file, enc, cb) {
-    if (file.isBuffer()) {
+    if (file.isBuffer() || file.isStream()) {
       // Pass-through.
       return cb(null, file);
     }

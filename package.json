@@ -82,6 +82,7 @@
     "concat-stream": "^1.4.7",
     "core-js": "^0.4.3",
     "docopt": "^0.4.1",
+    "event-stream": "^3.2.1",
     "glob": "^4.3.1",
     "glob2base": "0.0.12",
     "js-yaml": "^3.2.1",

@@ -23,9 +23,10 @@ test: test/data/expected.stream.json dist
 	mocha test/env/*.test.js test/utils/*.test.js
 	rm -rf sassdoc && $(MOCHA) test/api/*.test.js
 	$(SASSDOC) --parse test/data/test.scss | diff - test/data/expected.json
-	$(SASSDOC) --parse < test/data/test.scss | diff - test/data/expected.stream.json
+	$(SASSDOC) --parse - < test/data/test.scss | diff - test/data/expected.stream.json
+	cd test/data && $(SASSDOC) --parse | diff - expected.json
 	rm -rf sassdoc && $(SASSDOC) test/data/test.scss && [ -d sassdoc ]
-	rm -rf sassdoc && $(SASSDOC) < test/data/test.scss && [ -d sassdoc ]
+	rm -rf sassdoc && $(SASSDOC) - < test/data/test.scss && [ -d sassdoc ]
 
 test/data/expected.stream.json: test/data/expected.json
 	test/data/stream $< > $@
