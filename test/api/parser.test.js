@@ -1,0 +1,66 @@
+'use strict';
+
+require('../init');
+
+var assert = require('assert');
+var sinon = require('sinon');
+var mock = require('../mock');
+var Environment = require('../../dist/environment');
+var Parser = require('../../dist/parser');
+
+describe('#parser', function () {
+  var warnings = [];
+  var message;
+  var logger;
+  var env;
+  var parser;
+  var spy;
+
+  beforeEach(function () {
+    spy = sinon.spy();
+
+    logger = new mock.Logger(true);
+    env = new Environment(logger, false);
+    warnings = logger.output;
+    env.on('warning', spy);
+
+    parser = new Parser(env);
+  });
+
+  it('should warn if a single annotation is used more than once', function () {
+    message = 'Annotation `return` is only allowed once per comment, second value will be ignored';
+    parser.parse('///desc\n///@return{String}\n///@return{Array}\n@function fail(){}');
+
+    assert.ok(spy.called);
+    assert.ok(warnings[0].includes(message));
+  });
+
+  it('should warn if an annotation is used on wrong type', function () {
+    message = 'Annotation `type` is not allowed on comment from type `function`';
+    parser.parse('///desc\n///@type{Map}\n@function fail(){}');
+
+    assert.ok(spy.called);
+    assert.ok(warnings[0].includes(message));
+  });
+
+  it('should warn if an annotation is unrecognized', function () {
+    message = 'Parser for annotation `shouldfail` not found';
+    parser.parse('///desc\n///@shouldfail fail\n@function fail(){}');
+
+    assert.ok(spy.called);
+    assert.ok(warnings[0].includes(message));
+  });
+
+  it('should warn if there\'s more than one poster comment per file', function () {
+    message = 'You can\'t have more than one poster comment';
+    parser.parse(
+      '////\n////@group fail\n////\n\n' +
+      '////\n////@group fail\n////\n\n' +
+      '/// desc\n@function fail(){}'
+    );
+
+    assert.ok(spy.called);
+    assert.ok(warnings[0].includes(message));
+  });
+
+});

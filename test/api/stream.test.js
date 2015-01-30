@@ -3,6 +3,7 @@
 var assert = require('assert');
 var fs = require('fs');
 var vfs = require('vinyl-fs');
+var source = require('vinyl-source-stream');
 var rimraf = require('rimraf');
 var sassdoc = require('../../');
 
@@ -14,7 +15,7 @@ function read(filePath) {
   return fs.readFileSync(filePath, 'utf8');
 }
 
-describe('#stream', function () {
+describe('#stream-buffer', function () {
   before(clean);
   after(clean);
 
@@ -22,6 +23,28 @@ describe('#stream', function () {
     var stream = sassdoc();
 
     vfs.src('./test/data/**/*.scss')
+      .pipe(stream);
+
+    return stream.promise;
+  });
+
+  it('should produce documentation files', function () {
+    assert.ok(fs.existsSync('sassdoc'));
+    assert.ok(fs.existsSync('sassdoc/index.html'));
+    assert.ok(fs.existsSync('sassdoc/assets'));
+  });
+
+});
+
+describe('#stream-stream', function () {
+  before(clean);
+  after(clean);
+
+  beforeEach(function () {
+    var stream = sassdoc();
+
+    fs.createReadStream('test/data/test.scss')
+      .pipe(source())
       .pipe(stream);
 
     return stream.promise;

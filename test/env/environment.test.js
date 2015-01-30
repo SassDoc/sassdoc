@@ -71,6 +71,23 @@ describe('#environment', function () {
   });
 
   /**
+   * Passed a config file with reserved keys.
+   */
+  describe('#config-fail', function () {
+    var spy = sinon.spy();
+
+    beforeEach(function () {
+      env.on('error', spy);
+      env.load({ fdomain: 'fail', strict: 'fail' }); // @TODO should not failt on 'strcit'
+      env.postProcess();
+    });
+
+    it('should error if config contains reserved keys', function () {
+      assert.ok(spy.called);
+    });
+  });
+
+  /**
    * Default .sassdocrc process.
    */
   describe('#sassdocrc', function () {
