@@ -1,3 +1,5 @@
+const { is } = require('./utils');
+
 const path = require('path');
 const through = require('through2');
 const vfs = require('vinyl-fs');
@@ -10,14 +12,19 @@ const vfs = require('vinyl-fs');
  */
 export default function recurse() {
   return through.obj(function (file, enc, cb) {
+    if (!is.vinylFile(file)) {
+      // Don't know how to handle this object.
+      return cb(new Error('Unsupported stream object. Vinyl file expected.'));
+    }
+
     if (file.isBuffer() || file.isStream()) {
       // Pass-through.
       return cb(null, file);
     }
 
     if (!file.isDirectory()) {
-      // Don't know how to handle this object.
-      return cb(new Error('Unsupported stream object.'));
+      // At that stage we want only dirs. Dismiss file.isNull.
+      return cb();
     }
 
     // It's a directory, find inner Sass/SCSS files.
