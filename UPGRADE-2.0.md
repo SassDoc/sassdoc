@@ -2,7 +2,7 @@
 
 ## C-style comments
 
-The support of C-style `/**` comments [have been dropped][issue-326].
+The support of C-style `/**` comments [has been dropped][issue-326].
 You can use the following scripts to upgrade your codebase to `///`
 comments if you were using them:
 
