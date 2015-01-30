@@ -119,13 +119,13 @@ cd sassdoc-theme-default
 make all
 
 # Run SassDoc
-sassdoc ./scss/ ./test/ --theme ./ --force --verbose
+sassdoc scss/ --theme ./ --verbose
 ```
 
 When you make a change:
 
 ```sh
 # Run all Make tasks and SassDoc
-make all && sassdoc ./scss/ ./test/ --theme ./ --force --verbose
+make all && sassdoc scss/ --theme ./ --verbose
 ```
 
