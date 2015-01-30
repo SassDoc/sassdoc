@@ -34,10 +34,17 @@ export function parseFilter(env = {}) {
   let parser = new Parser(env, env.theme && env.theme.annotations);
   let filter = parser.stream();
 
-  filter.promise
+  let transform = pipe(
+    recurse(),
+    exclude(env.exclude || []),
+    converter({ from: 'sass', to: 'scss' }),
+    filter
+  );
+
+  transform.promise = filter.promise
     .then(data => sorter(data));
 
-  return filter;
+  return transform;
 }
 
 /**
@@ -199,9 +206,7 @@ export function parse(...args) { // jshint ignore:line
    * @return {Promise}
    */
   async function documentize(env) {
-    let data = await baseDocumentize(env);
-
-    return data;
+    return await baseDocumentize(env);
   }
 
   /* jshint ignore:end */
@@ -220,7 +225,10 @@ export function parse(...args) { // jshint ignore:line
       }, cb);
     });
 
-    return pipe(parse, filter);
+    let transform = pipe(parse, filter);
+    transform.promise = parse.promise;
+
+    return transform;
   }
 }
 

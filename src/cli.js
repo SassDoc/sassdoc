@@ -20,6 +20,8 @@ Options:
 `;
 
 const docopt = require('docopt').docopt;
+const es = require('event-stream');
+const vfs = require('vinyl-fs');
 const source = require('vinyl-source-stream');
 const pkg = require('../package.json');
 const Environment = require('./environment');
@@ -70,13 +72,31 @@ export default function cli(argv = process.argv.slice(2)) {
   }
 
   if (!options['<src>'].length) {
-    return process.stdin
-      .pipe(source())
-      .pipe(handler(env))
-      .on('data', cb);
+    options['<src>'].push('.');
   }
 
-  handler(options['<src>'], env).then(cb);
+  let stdin = false;
+
+  let sources = vfs.src(options['<src>'].filter(x => {
+    if (x === '-') {
+      stdin = true;
+      return false;
+    }
+
+    return true;
+  }));
+
+  if (stdin) {
+    sources = es.merge(
+      process.stdin.pipe(source()),
+      sources
+    );
+  }
+
+  let stream = handler(env);
+  stream.promise.then(cb);
+
+  sources.pipe(stream).resume();
 }
 
 /**
