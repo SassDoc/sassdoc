@@ -1,5 +1,6 @@
 let doc = `
 Usage:
+  sassdoc - [options]
   sassdoc <src>... [options]
   sassdoc [options]
 
@@ -29,6 +30,12 @@ const errors = require('./errors');
 
 export default function cli(argv = process.argv.slice(2)) {
   let options = docopt(doc, { version: pkg.version, argv: argv });
+
+  if (!options['-'] && !options['<src>'].length) {
+    // Trigger help display.
+    docopt(doc, { version: pkg.version, argv: ['--help'] });
+  }
+
   let logger = new Logger(options['--verbose'], options['--debug'] || process.env.SASSDOC_DEBUG);
   let env = new Environment(logger, options['--strict']);
 
@@ -69,7 +76,7 @@ export default function cli(argv = process.argv.slice(2)) {
     cb = data => console.log(JSON.stringify(data, null, 2));
   }
 
-  if (!options['<src>'].length) {
+  if (options['-']) {
     return process.stdin
       .pipe(source())
       .pipe(handler(env))
