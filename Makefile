@@ -24,9 +24,9 @@ lint: .jshintrc
 test: test/data/expected.stream.json dist
 	$(MOCHA) test/**/*.test.js
 	$(SASSDOC) --parse test/data/test.scss | diff - test/data/expected.json
-	$(SASSDOC) --parse < test/data/test.scss | diff - test/data/expected.stream.json
+	$(SASSDOC) --parse - < test/data/test.scss | diff - test/data/expected.stream.json
 	rm -rf sassdoc && $(SASSDOC) test/data/test.scss && [ -d sassdoc ]
-	rm -rf sassdoc && $(SASSDOC) < test/data/test.scss && [ -d sassdoc ]
+	rm -rf sassdoc && $(SASSDOC) - < test/data/test.scss && [ -d sassdoc ]
 
 test/data/expected.stream.json: test/data/expected.json
 	test/data/stream $< > $@
