@@ -112,10 +112,6 @@
     "sinon": "^1.12.2",
     "vinyl": "^0.4.6"
   },
-  "engines": {
-    "npm": ">=2.0"
-  },
-  "engineStrict": true,
   "scripts": {
     "test": "make dist lint test"
   }
