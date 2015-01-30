@@ -58,13 +58,6 @@ git push origin master --force
 
 Then on GitHub, [add a new release](https://github.com/SassDoc/sassdoc/releases/new) with both *Tag version* and *Release title* matching the new version. The *description* should be the changelog.
 
-Shortened commands (although it's recommanded to do it step by step to prevent any unfortunate mistake):
-
-```sh
-# Don't forget to replace <version> with the actual version number
-git checkout develop && vim package.json && make test && npm publish && git add package.json && git commit -m "Bump <version>" && git push origin develop && git checkout master && git reset --hard origin develop && git push origin master --force
-```
-
 ## How to release a pre-version
 
 Same as [How to release a new version](#how-to-release-a-new-version) except for the `npm publish` command:
