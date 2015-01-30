@@ -30,12 +30,6 @@ const errors = require('./errors');
 
 export default function cli(argv = process.argv.slice(2)) {
   let options = docopt(doc, { version: pkg.version, argv: argv });
-
-  if (!options['-'] && !options['<src>'].length) {
-    // Trigger help display.
-    docopt(doc, { version: pkg.version, argv: ['--help'] });
-  }
-
   let logger = new Logger(options['--verbose'], options['--debug'] || process.env.SASSDOC_DEBUG);
   let env = new Environment(logger, options['--strict']);
 
@@ -81,6 +75,10 @@ export default function cli(argv = process.argv.slice(2)) {
       .pipe(source())
       .pipe(handler(env))
       .on('data', cb);
+  }
+
+  if (!options['<src>'].length) {
+    options['<src>'].push('.');
   }
 
   handler(options['<src>'], env).then(cb);
