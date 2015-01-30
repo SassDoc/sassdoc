@@ -56,7 +56,7 @@ develop:
 # =======================
 
 publish: all
-	npm publish --tag beta
+	npm publish
 
 # Release, publish
 # ================
