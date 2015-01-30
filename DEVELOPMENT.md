@@ -36,26 +36,21 @@ git checkout develop
 # Bump version number in `package.json`
 vim package.json
 
-# Run tests one last time
-make test
-
-# Publish the package
-npm publish
+# Run tests one last time and publish the package
+make publish
 
 # Commit the change in `package.json`
-git add package.json && git commit -m "Bump <version>"
+git add package.json
+git commit -m 'Bump <version>'
 
 # Push to the repository
 git push origin develop
-
-# Get last commit id
-git rev-parse HEAD
 
 # Head to `master`
 git checkout master
 
 # Sync `master` to `develop` level
-git reset --hard origin develop
+git reset --hard origin/develop
 
 # Push to the repository
 git push origin master --force
