@@ -20,7 +20,6 @@ Options:
 `;
 
 const docopt = require('docopt').docopt;
-const source = require('vinyl-source-stream');
 const pkg = require('../package.json');
 const Environment = require('./environment');
 const Logger = require('./logger');
@@ -70,10 +69,7 @@ export default function cli(argv = process.argv.slice(2)) {
   }
 
   if (!options['<src>'].length) {
-    return process.stdin
-      .pipe(source())
-      .pipe(handler(env))
-      .on('data', cb);
+    return env.emit('error', new errors.SassDocError('Expecting at least one `<src>`.'));
   }
 
   handler(options['<src>'], env).then(cb);
