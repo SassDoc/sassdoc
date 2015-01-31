@@ -343,7 +343,7 @@ function srcEnv(documentize, stream) {
     });
 
     let task = env.src ? documentize : stream;
-    env.logger.debug('task:', () => task.name);
+    env.logger.debug('task:', () => env.src ? 'documentize' : 'stream');
 
     return task(env);
   };
