@@ -30,7 +30,7 @@ describe('#parser', function () {
     parser.parse('///desc\n///@return{String}\n///@return{Array}\n@function fail(){}');
 
     assert.ok(spy.called);
-    assert.ok(warnings[0].includes(message));
+    assert.notEqual(-1, warnings[0].indexOf(message));
   });
 
   it('should warn if an annotation is used on wrong type', function () {
@@ -38,7 +38,7 @@ describe('#parser', function () {
     parser.parse('///desc\n///@type{Map}\n@function fail(){}');
 
     assert.ok(spy.called);
-    assert.ok(warnings[0].includes(message));
+    assert.notEqual(-1, warnings[0].indexOf(message));
   });
 
   it('should warn if an annotation is unrecognized', function () {
@@ -46,7 +46,7 @@ describe('#parser', function () {
     parser.parse('///desc\n///@shouldfail fail\n@function fail(){}');
 
     assert.ok(spy.called);
-    assert.ok(warnings[0].includes(message));
+    assert.notEqual(-1, warnings[0].indexOf(message));
   });
 
   it('should warn if there\'s more than one poster comment per file', function () {
@@ -58,7 +58,7 @@ describe('#parser', function () {
     );
 
     assert.ok(spy.called);
-    assert.ok(warnings[0].includes(message));
+    assert.notEqual(-1, warnings[0].indexOf(message));
   });
 
 });

@@ -65,8 +65,8 @@ describe('#environment', function () {
 
     it('should warn if config file is not found', function () {
       assert.ok(path.basename(env.file) === '.sassdocrc');
-      assert.ok(warnings[0].includes('Config file `fail.json` not found'));
-      assert.ok(warnings[1].includes('Falling back to `.sassdocrc'));
+      assert.notEqual(-1, warnings[0].indexOf('Config file `fail.json` not found'));
+      assert.notEqual(-1, warnings[1].indexOf('Falling back to `.sassdocrc'));
     });
   });
 
@@ -136,8 +136,8 @@ describe('#environment', function () {
     it('should warn if package file is not found and load CWD package.json', function () {
       assert.ok(spy.called);
       assert.ok(env.package.name === 'sassdoc');
-      assert.ok(warnings[0].includes('should/fail.json` not found'));
-      assert.ok(warnings[1].includes('Falling back to `package.json`'));
+      assert.notEqual(-1, warnings[0].indexOf('should/fail.json` not found'));
+      assert.notEqual(-1, warnings[1].indexOf('Falling back to `package.json`'));
     });
   });
 
@@ -175,8 +175,8 @@ describe('#environment', function () {
     });
 
     it('should warn and render the default theme', function () {
-      assert.ok(warnings[0].includes('Theme `fail` not found'));
-      assert.ok(warnings[1].includes('Falling back to default theme'));
+      assert.notEqual(-1, warnings[0].indexOf('Theme `fail` not found'));
+      assert.notEqual(-1, warnings[1].indexOf('Falling back to default theme'));
       // assert.ok(env.themeName === 'default'); // @TODO ??
       assert.ok(fs.existsSync('.sassdoc/index.html'));
       assert.ok(fs.existsSync('.sassdoc/assets'));
