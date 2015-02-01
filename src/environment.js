@@ -26,7 +26,7 @@ export default class Environment extends EventEmitter {
         converter.VersionError,
       ];
 
-      if (friendlyErrors.find(c => error instanceof c)) {
+      if (Array.find(friendlyErrors, c => error instanceof c)) {
         logger.error(error.message);
       } else {
         if (is.error(error) && 'stack' in error) {

@@ -127,7 +127,7 @@ export default function (env) {
             return req;
           }
 
-          let reqItem = data.find(x => x.context.name === req.name);
+          let reqItem = Array.find(data, x => x.context.name === req.name);
 
           if (reqItem === undefined) {
             if (!req.autofill) {

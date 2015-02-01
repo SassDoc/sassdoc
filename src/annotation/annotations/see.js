@@ -32,7 +32,7 @@ export default function see(env) {
         }
 
         item.see = item.see.map(see => {
-          let seeItem = data.find(x => x.context.name === see.name);
+          let seeItem = Array.find(data, x => x.context.name === see.name);
 
           if (seeItem !== undefined) {
             return seeItem;
