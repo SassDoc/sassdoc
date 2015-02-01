@@ -1,5 +1,6 @@
-const { is } = require('./utils');
-const errors = require('./errors');
+import { is } from './utils';
+import * as errors from './errors';
+
 const fmt = require('util').format;
 const chalk = require('chalk');
 

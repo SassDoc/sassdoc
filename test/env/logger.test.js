@@ -2,7 +2,11 @@
 
 var assert = require('assert');
 var jsesc = require('jsesc');
-var Logger = require('../../dist/logger');
+
+var loggerModule = require('../../dist/logger');
+var Logger = loggerModule.default;
+Logger.empty = loggerModule.empty;
+Logger.checkLogger = loggerModule.checkLogger;
 
 function log(str) {
   return '\u001b[32m\xBB\u001b[39m ' + str + '\n';
