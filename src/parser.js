@@ -1,6 +1,7 @@
 import { defer } from './utils';
 import * as errors from './errors';
 import AnnotationsApi from './annotation';
+import sorter from './sorter';
 
 const ScssCommentParser = require('scss-comment-parser');
 const through = require('through2');
@@ -27,6 +28,8 @@ export default class Parser {
    * Called with all found annotations except with type "unkown".
    */
   postProcess(data) {
+    data = sorter(data);
+
     Object.keys(this.annotations.list).forEach(key => {
       let annotation = this.annotations.list[key];
 
