@@ -1,9 +1,10 @@
+import { is } from './utils';
+import * as errors from './errors';
+
 const EventEmitter = require('events').EventEmitter;
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
-const errors = require('./errors');
-const utils = require('./utils');
 const converter = require('sass-convert');
 
 export default class Environment extends EventEmitter {
@@ -25,10 +26,10 @@ export default class Environment extends EventEmitter {
         converter.VersionError,
       ];
 
-      if (friendlyErrors.find(c => error instanceof c)) {
+      if (Array.find(friendlyErrors, c => error instanceof c)) {
         logger.error(error.message);
       } else {
-        if (utils.is.error(error) && 'stack' in error) {
+        if (is.error(error) && 'stack' in error) {
           logger.error(error.stack);
         } else {
           logger.error(error);

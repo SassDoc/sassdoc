@@ -20,13 +20,16 @@ Options:
   --debug               Output debugging information.
 `;
 
+import Environment from './environment';
+import Logger from './logger';
+// Nicer but JSHint no like
+// import sassdoc, { parse } from './sassdoc';
+import { default as sassdoc, parse } from './sassdoc';
+import * as errors from './errors';
+
 const docopt = require('docopt').docopt;
 const source = require('vinyl-source-stream');
 const pkg = require('../package.json');
-const Environment = require('./environment');
-const Logger = require('./logger');
-const sassdoc = require('./sassdoc');
-const errors = require('./errors');
 
 export default function cli(argv = process.argv.slice(2)) {
   let options = docopt(doc, { version: pkg.version, argv: argv });
@@ -72,7 +75,7 @@ export default function cli(argv = process.argv.slice(2)) {
     handler = sassdoc;
     cb = () => {};
   } else {
-    handler = sassdoc.parse;
+    handler = parse;
     cb = data => console.log(JSON.stringify(data, null, 2));
   }
 

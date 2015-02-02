@@ -1,4 +1,4 @@
-const { is } = require('./utils');
+import { is } from './utils';
 
 const path = require('path');
 const through = require('through2');

@@ -1,10 +1,11 @@
-const AnnotationsApi = require('./annotation');
+import { defer } from './utils';
+import * as errors from './errors';
+import AnnotationsApi from './annotation';
+
 const ScssCommentParser = require('scss-comment-parser');
 const through = require('through2');
 const concat = require('concat-stream');
 const path = require('path');
-const utils = require('./utils');
-const errors = require('./errors');
 
 export default class Parser {
   constructor(env, additionalAnnotations) {
@@ -50,7 +51,7 @@ export default class Parser {
    * @return {Object}
    */
   stream() {
-    let deferred = utils.defer();
+    let deferred = defer();
     let data = [];
 
     let transform = (file, enc, cb) => {

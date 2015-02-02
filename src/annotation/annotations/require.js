@@ -1,4 +1,5 @@
-const utils = require('../../utils');
+import { splitNamespace } from '../../utils';
+
 const uniq = require('lodash.uniq');
 
 let reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
@@ -15,7 +16,7 @@ export default function (env) {
         name: match[2],
       };
 
-      obj.external = utils.splitNamespace(obj.name).length > 1;
+      obj.external = splitNamespace(obj.name).length > 1;
 
       if (obj.name.indexOf('$') === 0) {
         obj.type = 'variable';
@@ -126,7 +127,7 @@ export default function (env) {
             return req;
           }
 
-          let reqItem = data.find(x => x.context.name === req.name);
+          let reqItem = Array.find(data, x => x.context.name === req.name);
 
           if (reqItem === undefined) {
             if (!req.autofill) {

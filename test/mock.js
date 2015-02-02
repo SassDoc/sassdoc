@@ -1,12 +1,10 @@
 'use strict';
 
-require('./init');
-
 var path = require('path');
 var fs = require('fs');
 var inherits = require('util').inherits;
 var Writable = require('stream').Writable;
-var Logger = require('../dist/logger');
+var Logger = require('../').Logger;
 var utils = require('../dist/utils');
 var writeFile = utils.denodeify(fs.writeFile);
 var unlink = utils.denodeify(fs.unlink);
@@ -48,6 +46,7 @@ function MockLogger() {
     cb();
   }.bind(this);
 }
+
 inherits(MockLogger, Logger);
 
 Object.defineProperty(MockLogger.prototype, 'output', {
