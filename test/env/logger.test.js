@@ -2,7 +2,11 @@
 
 var assert = require('assert');
 var jsesc = require('jsesc');
-var Logger = require('../../dist/logger');
+
+var loggerModule = require('../../dist/logger');
+var Logger = loggerModule.default;
+Logger.empty = loggerModule.empty;
+Logger.checkLogger = loggerModule.checkLogger;
 
 function log(str) {
   return '\u001b[32m\xBB\u001b[39m ' + str + '\n';
@@ -121,7 +125,7 @@ describe('#logger', function () {
     assert.deepEqual(Logger.empty.debug(), undefined);
   });
 
-  it('should have a function to check if an object is a valid logger', function () {
+  it('should have a function to check for a valid logger', function () {
     assert.ok(Logger.checkLogger(Logger.empty));
     assert.throws(function () {
       Logger.checkLogger({ log: noop });

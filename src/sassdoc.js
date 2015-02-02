@@ -1,12 +1,14 @@
-const { denodeify, is, g2b } = require('./utils');
+import { denodeify, is, g2b } from './utils';
 
-const Environment = require('./environment');
-const Logger = require('./logger');
-const Parser = require('./parser');
-const errors = require('./errors');
-const sorter = require('./sorter');
-const exclude = require('./exclude');
-const recurse = require('./recurse');
+import Environment from './environment';
+// jshint/jshint#2118
+// import Logger, { checkLogger } from './logger';
+import { default as Logger, checkLogger } from './logger';
+import Parser from './parser';
+import * as errors from './errors';
+import sorter from './sorter';
+import exclude from './exclude';
+import recurse from './recurse';
 
 const fs = require('fs');
 const path = require('path'); // jshint ignore:line
@@ -34,9 +36,6 @@ export function parseFilter(env = {}) {
   let parser = new Parser(env, env.theme && env.theme.annotations);
   let filter = parser.stream();
 
-  filter.promise
-    .then(data => sorter(data));
-
   return filter;
 }
 
@@ -58,6 +57,22 @@ export function ensureEnvironment(config, onError = e => { throw e; }) {
   env.postProcess();
 
   return env;
+}
+
+/**
+ * @param {Object} config
+ * @return {Logger}
+ */
+function ensureLogger(config) {
+  if (!is.object(config) || !('logger' in config)) {
+    // Get default logger.
+    return new Logger(config.verbose, process.env.SASSDOC_DEBUG);
+  }
+
+  let logger = checkLogger(config.logger);
+  delete config.logger;
+
+  return logger;
 }
 
 /**
@@ -225,22 +240,6 @@ export function parse(...args) { // jshint ignore:line
 }
 
 /**
- * @param {Object} config
- * @return {Logger}
- */
-function ensureLogger(config) {
-  if (!is.object(config) || !('logger' in config)) {
-    // Get default logger.
-    return new Logger(config.verbose, process.env.SASSDOC_DEBUG);
-  }
-
-  let logger = Logger.checkLogger(config.logger);
-  delete config.logger;
-
-  return logger;
-}
-
-/**
  * Source directory fetching and parsing.
  */
 async function baseDocumentize(env) { // jshint ignore:line
@@ -304,8 +303,8 @@ async function baseDocumentize(env) { // jshint ignore:line
  */
 function srcEnv(documentize, stream) {
   return function (...args) {
-    let src = args.find(a => is.string(a) || is.array(a));
-    let env = args.find(is.plainObject);
+    let src = Array.find(args, a => is.string(a) || is.array(a));
+    let env = Array.find(args, is.plainObject);
 
     env = ensureEnvironment(env || {});
 

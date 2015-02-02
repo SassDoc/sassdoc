@@ -21,7 +21,7 @@
       "url": "https://twitter.com/pascalduez"
     }
   ],
-  "version": "2.0.1",
+  "version": "2.0.2",
   "license": {
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
@@ -78,9 +78,9 @@
     "README.md"
   ],
   "dependencies": {
+    "6to5-runtime": "^3.3.3",
     "chalk": "^0.5.0",
     "concat-stream": "^1.4.7",
-    "core-js": "^0.4.3",
     "docopt": "^0.4.1",
     "glob": "^4.3.1",
     "glob2base": "0.0.12",
@@ -90,11 +90,10 @@
     "minimatch": "^2.0.0",
     "mkdirp": "^0.5.0",
     "multipipe": "^0.1.2",
-    "regenerator": "^0.8.3",
     "rimraf": "^2.2.8",
     "safe-wipe": "0.*",
-    "sass-convert": "^0.4.0",
-    "sassdoc-theme-default": "^2.0.0",
+    "sass-convert": "^0.4.1",
+    "sassdoc-theme-default": "^2.0.4",
     "scss-comment-parser": "^0.6.0",
     "through2": "^0.6.3",
     "update-notifier": "^0.3.0",
@@ -102,12 +101,12 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
-    "6to5": "^2.9.4",
+    "6to5": "^3.3.4",
     "coveralls": "^2.11.2",
     "dateformat": "^1.0.11",
     "istanbul": "^0.3.5",
     "jsesc": "^0.5.0",
-    "jshint": "^2.5.10",
+    "jshint": "^2.6.0",
     "mocha": "^2.0.1",
     "sinon": "^1.12.2",
     "vinyl": "^0.4.6"

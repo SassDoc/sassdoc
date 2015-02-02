@@ -24,7 +24,6 @@ export function denodeify(fn) {
 }
 
 export function defer() {
-  /* jshint ignore:start */
   let resolve, reject;
 
   let promise = new Promise((resolve_, reject_) => {
@@ -37,7 +36,6 @@ export function defer() {
     resolve,
     reject,
   };
-  /* jshint ignore:end */
 }
 
 /**

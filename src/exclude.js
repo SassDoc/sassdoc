@@ -7,7 +7,7 @@ const minimatch = require('minimatch');
  */
 export default function exclude(patterns) {
   return through.obj((file, enc, cb) => {
-    if (patterns.find(x => minimatch(file.relative, x))) {
+    if (Array.find(patterns, x => minimatch(file.relative, x))) {
       return cb();
     }
 

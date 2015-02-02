@@ -15,7 +15,7 @@ export default function alias(env) {
         let alias = item.alias;
         let name = item.context.name;
 
-        let aliasedItem = data.find(i => i.context.name === alias);
+        let aliasedItem = Array.find(data, i => i.context.name === alias);
 
         if (aliasedItem === undefined) {
           env.logger.warn(`Item \`${name}\` is an alias of \`${alias}\` but this item doesn't exist.`);

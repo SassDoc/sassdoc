@@ -26,8 +26,5 @@
   "maxlen": false,
   "esnext": true,
   "node": true,
-  "mocha": true,
-  "globals": {
-    "$traceurRuntime": true
-  }
+  "mocha": true
 }

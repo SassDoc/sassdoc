@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+* Move to 6to5 3 in `selfContained` mode to avoid global scope pollution ([#354](https://github.com/SassDoc/sassdoc/issues/354#issuecomment-72464640))
+
 ## 2.0.0 &mdash; Shiny Streamy Octopus
 
 ### API breaks for users
@@ -33,11 +37,11 @@
 ### API breaks for third party integration
 
 * The node API has been revamped and unified.
-  * `sassdoc.documentize` does not exist anymore.
-  * `sassdoc(src [, config])` execute the full Documentation process, returns a Promise.
-  * `sassdoc([config])` execute the full Documentation process, returns a Stream of Vinyl files.
-  * `sassdoc.parse(src [, config])` returns a Promise with the full data object.
-  * `sassdoc.parse([config])` returns a Stream with the full data object.
+* `sassdoc.documentize` does not exist anymore.
+* `sassdoc(src [, config])` execute the full Documentation process, returns a Promise.
+* `sassdoc([config])` execute the full Documentation process, returns a Stream of Vinyl files.
+* `sassdoc.parse(src [, config])` returns a Promise with the full data object.
+* `sassdoc.parse([config])` returns a Stream with the full data object.
 
 ### New features
 

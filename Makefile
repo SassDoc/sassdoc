@@ -1,7 +1,7 @@
 PATH := $(PWD)/node_modules/.bin:$(PATH)
 SASSDOC := $(PWD)/bin/sassdoc
 MOCHA := $(PWD)/node_modules/.bin/_mocha
-TO5_FLAGS := --experimental
+TO5_FLAGS = --experimental --loose all --optional selfContained
 
 all: dist lint test
 
@@ -16,7 +16,7 @@ dist:
 # ============
 
 lint: .jshintrc
-	jshint bin/sassdoc index.js src test
+	jshint --verbose bin/sassdoc index.js src test
 
 .jshintrc: .jshintrc.yaml
 	js-yaml $< > $@

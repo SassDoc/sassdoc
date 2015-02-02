@@ -1,4 +1,4 @@
-const annotations = require('./annotations');
+import annotations from './annotations';
 
 export default class AnnotationsApi {
   constructor(env) {
