@@ -227,7 +227,7 @@ describe('#environment', function () {
 
     it('should trows if passed logger is not valid', function () {
       assert.throws(function () {
-        var env = ensureEnvironment({ logger: { fail: 'fail' } });
+        ensureEnvironment({ logger: { fail: 'fail' } });
       });
     });
 
