@@ -2,7 +2,6 @@ let doc = `
 Usage:
   sassdoc - [options]
   sassdoc <src>... [options]
-  sassdoc [options]
 
 Arguments:
   <src>  Path to your Sass folder.
