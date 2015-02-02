@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+* Move to 6to5 3 in `selfContained` mode to avoid global scope pollution ([#354](https://github.com/SassDoc/sassdoc/issues/354#issuecomment-72464640))
+
 ## 2.0.0 &mdash; Shiny Streamy Octopus
 
 ### API breaks for users
