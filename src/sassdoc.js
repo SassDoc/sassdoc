@@ -36,9 +36,6 @@ export function parseFilter(env = {}) {
   let parser = new Parser(env, env.theme && env.theme.annotations);
   let filter = parser.stream();
 
-  filter.promise
-    .then(data => sorter(data));
-
   return filter;
 }
 
