@@ -22,7 +22,7 @@ Options:
 
 import Environment from './environment';
 import Logger from './logger';
-// Nicer but JSHint no like
+// jshint/jshint#2118
 // import sassdoc, { parse } from './sassdoc';
 import { default as sassdoc, parse } from './sassdoc';
 import * as errors from './errors';

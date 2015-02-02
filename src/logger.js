@@ -7,7 +7,6 @@ const chalk = require('chalk');
 // Special chars.
 const chevron = '\xBB';
 const checkmark = '\u2713';
-const octopus = '\uD83D\uDC19'; // jshint ignore:line
 const green = chalk.green(chevron);
 const yellow = chalk.yellow(chevron);
 const red = chalk.red(chevron);

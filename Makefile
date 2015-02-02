@@ -16,7 +16,7 @@ dist:
 # ============
 
 lint: .jshintrc
-	jshint bin/sassdoc index.js src test
+	jshint --verbose bin/sassdoc index.js src test
 
 .jshintrc: .jshintrc.yaml
 	js-yaml $< > $@

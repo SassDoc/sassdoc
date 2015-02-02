@@ -26,12 +26,4 @@ maxlen:        false # No maximum line length
 
 esnext:        true  # ES6
 node:          true  # Node.js
-
-globals: # Global variables
-    $traceurRuntime: true
-
-    # For tests only
-    before:          true
-    after:           true
-    describe:        true
-    it:              true
+mocha:         true

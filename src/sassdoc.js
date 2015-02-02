@@ -1,7 +1,7 @@
 import { denodeify, is, g2b } from './utils';
 
 import Environment from './environment';
-// Nicer but JSHint no like
+// jshint/jshint#2118
 // import Logger, { checkLogger } from './logger';
 import { default as Logger, checkLogger } from './logger';
 import Parser from './parser';
