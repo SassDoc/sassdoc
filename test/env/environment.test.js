@@ -1,6 +1,7 @@
 'use strict';
 
 var fs = require('fs');
+var mkdirp = require('mkdirp');
 var path = require('path');
 var assert = require('assert');
 var sinon = require('sinon');
@@ -153,6 +154,7 @@ describe('#environment', function () {
       env.load();
       env.postProcess();
       env.data = [];
+      mkdirp.sync('.sassdoc');
       return env.theme('.sassdoc', env);
     });
 
@@ -175,6 +177,7 @@ describe('#environment', function () {
       env.load({ theme: 'fail' });
       env.postProcess();
       env.data = [];
+      mkdirp.sync('.sassdoc');
       return env.theme('.sassdoc', env);
     });
 
