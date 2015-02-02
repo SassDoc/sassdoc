@@ -7,6 +7,10 @@ var sinon = require('sinon');
 var rimraf = require('rimraf');
 var mock = require('../mock');
 var Environment = require('../../dist/environment');
+var ensureEnvironment = require('../../').ensureEnvironment;
+var loggerModule = require('../../dist/logger');
+var Logger = loggerModule.default;
+Logger.empty = loggerModule.empty;
 
 describe('#environment', function () {
   var warnings = [];
@@ -184,6 +188,52 @@ describe('#environment', function () {
 
     after(function (done) {
       rimraf('.sassdoc', done);
+    });
+  });
+
+  /**
+   * ensureEnvironment
+   */
+  describe('#ensureEnvironment', function () {
+    it('should return a proper Environment instance', function () {
+      var env = ensureEnvironment({ testKey: 'just a test' });
+      assert.ok(env instanceof Environment);
+      assert.ok('testKey' in env);
+    });
+
+    it('should call passed callback on error', function () {
+      var spy = sinon.spy();
+      var env = ensureEnvironment({ logger: Logger.empty }, spy);
+      env.emit('error', new Error('Triggered from test'));
+      assert.ok(spy.called);
+    });
+
+    it('should trow on error by default', function () {
+      assert.throws(function () {
+        var env = ensureEnvironment({ logger: Logger.empty });
+        env.emit('error', new Error('Triggered from test'));
+      });
+    });
+  });
+
+  /**
+   * ensureLogger
+   */
+  describe('#ensureLogger', function () {
+    it('should set a proper Logger instance for env', function () {
+      var env = ensureEnvironment({});
+      assert.ok(env.logger instanceof Logger);
+    });
+
+    it('should trows if passed logger is not valid', function () {
+      assert.throws(function () {
+        var env = ensureEnvironment({ logger: { fail: 'fail' } });
+      });
+    });
+
+    it('should let a valid logger pass', function () {
+      var env = ensureEnvironment({ logger: Logger.empty });
+      assert.ok(!(env.logger instanceof Logger));
     });
   });
 

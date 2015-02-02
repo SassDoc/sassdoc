@@ -60,6 +60,22 @@ export function ensureEnvironment(config, onError = e => { throw e; }) {
 }
 
 /**
+ * @param {Object} config
+ * @return {Logger}
+ */
+function ensureLogger(config) {
+  if (!is.object(config) || !('logger' in config)) {
+    // Get default logger.
+    return new Logger(config.verbose, process.env.SASSDOC_DEBUG);
+  }
+
+  let logger = checkLogger(config.logger);
+  delete config.logger;
+
+  return logger;
+}
+
+/**
  * Default public API method.
  * @param {String | Array} src
  * @param {Object} env
@@ -221,22 +237,6 @@ export function parse(...args) { // jshint ignore:line
 
     return pipe(parse, filter);
   }
-}
-
-/**
- * @param {Object} config
- * @return {Logger}
- */
-function ensureLogger(config) {
-  if (!is.object(config) || !('logger' in config)) {
-    // Get default logger.
-    return new Logger(config.verbose, process.env.SASSDOC_DEBUG);
-  }
-
-  let logger = checkLogger(config.logger);
-  delete config.logger;
-
-  return logger;
 }
 
 /**

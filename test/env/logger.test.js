@@ -125,7 +125,7 @@ describe('#logger', function () {
     assert.deepEqual(Logger.empty.debug(), undefined);
   });
 
-  it('should have a function to check if an object is a valid logger', function () {
+  it('should have a function to check for a valid logger', function () {
     assert.ok(Logger.checkLogger(Logger.empty));
     assert.throws(function () {
       Logger.checkLogger({ log: noop });
