@@ -4,6 +4,10 @@
 
 * Move to 6to5 3 in `selfContained` mode to avoid global scope pollution ([#354](https://github.com/SassDoc/sassdoc/issues/354#issuecomment-72464640))
 
+## 2.0.1
+
+* Fix debug `task.name` value, returning proper function name instead of something like `callee$1$0`.
+
 ## 2.0.0 &mdash; Shiny Streamy Octopus
 
 ### API breaks for users
