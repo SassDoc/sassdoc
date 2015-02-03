@@ -23,12 +23,16 @@ describe('#utils:denodeify', function () {
   });
 
   it('should resolve data', function () {
-    return readFile('README.md', 'utf8')
+    return readFile('test/fixture/denodeify.txt', 'utf8')
       .then(function (data) {
         assert.ok(utils.is.string(data));
-        assert.ok(/# SassDoc/.test(data));
+        assert.ok(/whoot/.test(data));
       });
   });
+
+});
+
+describe('#utils:is', function () {
 
   it('should provide utils.is.*', function () {
     // .stream
