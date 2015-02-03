@@ -11,13 +11,9 @@ const green = chalk.green(chevron);
 const yellow = chalk.yellow(chevron);
 const red = chalk.red(chevron);
 
-// Helpers.
-const br = str => `[${str}]`; // Wrap in brackets.
-
 export default class Logger {
   constructor(verbose = false, debug = false) {
     this.verbose = verbose;
-    this._stdout = process.stdout;
     this._stderr = process.stderr;
     this._debug = debug;
     this._times = [];
@@ -38,7 +34,7 @@ export default class Logger {
    */
   warn(...args) {
     chalkHack(() => {
-      let str = fmt(`${yellow} ${br('WARNING')} ${args.shift()}`, ...args);
+      let str = fmt(`${yellow} [WARNING] ${args.shift()}`, ...args);
       this._stderr.write(`${str}\n`);
     });
   }
@@ -48,7 +44,7 @@ export default class Logger {
    */
   error(...args) {
     chalkHack(() => {
-      let str = fmt(`${red} ${br('ERROR')} ${args.shift()}`, ...args);
+      let str = fmt(`${red} [ERROR] ${args.shift()}`, ...args);
       this._stderr.write(`${str}\n`);
     });
   }
@@ -101,7 +97,7 @@ export default class Logger {
 
     chalkHack(() => {
       let str = fmt(
-        `${chalk.styles.grey.open}${chevron} ${br('DEBUG')} ${args.shift()}`,
+        `${chalk.styles.grey.open}${chevron} [DEBUG] ${args.shift()}`,
         ...args,
         chalk.styles.grey.close
       );
