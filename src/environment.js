@@ -136,7 +136,7 @@ export default class Environment extends EventEmitter {
     }
 
     if (!this.package) {
-      this.package = {};
+      this.defaultPackage();
     }
 
     if (typeof this.package !== 'object') {
@@ -162,7 +162,14 @@ export default class Environment extends EventEmitter {
     this.emit('warning', new errors.Warning(`Package file \`${file}\` not found.`));
     this.logger.warn('Falling back to `package.json`.');
 
-    file = this.resolve('package.json');
+    this.defaultPackage();
+  }
+
+  /**
+   * Load `package.json`.
+   */
+  defaultPackage() {
+    let file = this.resolve('package.json');
     this.package = this.tryParseFile(file);
 
     if (this.package) {
