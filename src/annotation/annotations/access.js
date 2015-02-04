@@ -7,7 +7,7 @@ export default function access(env) {
     },
 
     autofill(item) {
-      if (env.privatePrefix !== undefined) {
+      if (typeof env.privatePrefix !== 'undefined') {
         if ((new RegExp(env.privatePrefix)).test(item.context.name)) {
           return 'private';
         }
