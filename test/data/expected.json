@@ -600,5 +600,29 @@
       "path": "test.scss",
       "name": "test.scss"
     }
+  },
+  {
+    "description": "This is a test placeholder aiming at testing:\n- `@name`\n",
+    "commentRange": {
+      "start": 175,
+      "end": 177
+    },
+    "context": {
+      "type": "placeholder",
+      "name": "placeholder-[blue,green,red]",
+      "code": "",
+      "line": {
+        "start": 179,
+        "end": 179
+      }
+    },
+    "group": [
+      "test"
+    ],
+    "access": "private",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
   }
 ]

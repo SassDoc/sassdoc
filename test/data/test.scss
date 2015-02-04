@@ -171,3 +171,9 @@ $variable-specific-test: ();
 /// @alias should-warn
 
 @function alias-test-should-warn() {}
+
+/// This is a test placeholder aiming at testing:
+/// - `@name`
+/// @name placeholder-[blue,green,red]
+
+%placeholder-#{$color} {}
