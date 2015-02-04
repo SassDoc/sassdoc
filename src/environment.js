@@ -52,11 +52,11 @@ export default class Environment extends EventEmitter {
       return this.loadDefaultFile();
     }
 
-    if (typeof config === 'string') {
+    if (is.string(config)) {
       return this.loadFile(config);
     }
 
-    if (typeof config === 'object') {
+    if (is.plainObject(config)) {
       return this.loadObject(config);
     }
 

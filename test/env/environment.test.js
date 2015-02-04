@@ -46,15 +46,20 @@ describe('#environment', function () {
    * Passed in wrong type config file.
    */
   describe('#config-fail', function () {
-    var spy = sinon.spy();
+    var spy;
 
     beforeEach(function () {
+      spy = sinon.spy();
       env.on('error', spy);
-      env.load(123); // @TOO [] pass
-      env.postProcess();
     });
 
-    it('should error if config is of a wrong format', function () {
+    it('should error if config is a number', function () {
+      env.load(123);
+      assert.ok(spy.called);
+    });
+
+    it('should error if config is an array', function () {
+      env.load([]);
       assert.ok(spy.called);
     });
   });
