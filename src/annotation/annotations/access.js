@@ -1,4 +1,7 @@
 export default function access(env) {
+
+  const defaultPrivatePrefixTest = RegExp.prototype.test.bind(/^[_-]/);
+
   return {
     name: 'access',
 
@@ -7,11 +10,18 @@ export default function access(env) {
     },
 
     autofill(item) {
+      if (env.privatePrefix === false) { return; }
+
+      let testFunc = defaultPrivatePrefixTest;
+
       if (typeof env.privatePrefix !== 'undefined') {
-        if ((new RegExp(env.privatePrefix)).test(item.context.name)) {
-          return 'private';
-        }
+        testFunc = RegExp.prototype.test.bind(new RegExp(env.privatePrefix));
       }
+
+      if (testFunc(item.context.name)) {
+        return 'private';
+      }
+
     },
 
     default() {
