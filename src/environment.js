@@ -235,6 +235,7 @@ export default class Environment extends EventEmitter {
     }
 
     this.theme = require('sassdoc-theme-default');
+    this.themeName = 'default';
   }
 
   /**

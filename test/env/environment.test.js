@@ -184,7 +184,7 @@ describe('#environment', function () {
     it('should warn and render the default theme', function () {
       assert.notEqual(-1, warnings[0].indexOf('Theme `fail` not found'));
       assert.notEqual(-1, warnings[1].indexOf('Falling back to default theme'));
-      // assert.ok(env.themeName === 'default'); // @TODO ??
+      assert.ok(env.themeName === 'default');
       assert.ok(fs.existsSync('.sassdoc/index.html'));
       assert.ok(fs.existsSync('.sassdoc/assets'));
     });
