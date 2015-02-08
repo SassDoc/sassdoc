@@ -53,29 +53,23 @@ export default function (env) {
           });
         }
 
-        // Searching for mixins and functions.
-        let mixins = [];
-        let functions = [];
-        let mixinFunctionRegex = /\s{1,}([\w\d_-]+)[\s\S]*?(?:\(|;)/g;
-        let match;
+        let mixins = searchForMatches(
+          item.context.code,
+          /@include\s+([^(;$]*)/ig,
+          isAnnotatedByHand.bind(null, handWritten, 'mixin')
+        );
 
-        while ((match = mixinFunctionRegex.exec(item.context.code))) {
-          // Try if this is a mixin or function
-          if (compareBefore(item.context.code, '@include', match.index)) {
-            if (!isAnnotatedByHand(handWritten, 'mixin', match[1])) {
-              mixins.push(match[1]);
-            }
-          } else {
-            if (!isAnnotatedByHand(handWritten, 'function', match[1])) {
-              functions.push(match[1]);
-            }
-          }
-        }
+        let functions = searchForMatches(
+          item.context.code,
+          new RegExp('(@include)?\\s*([a-z0-9_-]+)\\s*\\(','ig'), // Literal destorys Syntax
+          isAnnotatedByHand.bind(null, handWritten, 'function'),
+          2 // Get the second matching group instead of 1
+        );
 
         let placeholders = searchForMatches(
           item.context.code,
-          /@extend\s+%([^;\s]+)/ig,
-          isAnnotatedByHand.bind(null, handWritten, 'mixin')
+          /@extend\s*%([^;\s]+)/ig,
+          isAnnotatedByHand.bind(null, handWritten, 'placeholder')
         );
 
         let variables = searchForMatches(
@@ -194,13 +188,13 @@ function isAnnotatedByHand(handWritten, type, name) {
   return false;
 }
 
-function searchForMatches(code, regex, isAnnotatedByHand) {
+function searchForMatches(code, regex, isAnnotatedByHand, id = 1) {
   let match;
   let matches = [];
 
   while ((match = regex.exec(code))) {
-    if (!isAnnotatedByHand(match[1])) {
-      matches.push(match[1]);
+    if (!isAnnotatedByHand(match[id]) && (id <= 1 || match[id-1] === undefined)) {
+      matches.push(match[id]);
     }
   }
 
@@ -217,16 +211,4 @@ function typeNameObject(type) {
       };
     }
   };
-}
-
-function compareBefore(code, str, index) {
-  for (let i = index - str.length, b = 0; i < index; i++) {
-    if (code[i] !== str[b]) {
-      return false;
-    }
-
-    b++;
-  }
-
-  return true;
 }

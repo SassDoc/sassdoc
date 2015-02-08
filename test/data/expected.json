@@ -182,10 +182,10 @@
         "context": {
           "type": "mixin",
           "name": "autofill-test",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
           "line": {
             "start": 124,
-            "end": 134
+            "end": 135
           }
         }
       },
@@ -196,8 +196,8 @@
           "name": "autofill-test-handwritten",
           "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
           "line": {
-            "start": 143,
-            "end": 147
+            "start": 144,
+            "end": 148
           }
         }
       }
@@ -262,10 +262,10 @@
         "context": {
           "type": "mixin",
           "name": "autofill-test",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
           "line": {
             "start": 124,
-            "end": 134
+            "end": 135
           }
         }
       },
@@ -276,8 +276,8 @@
           "name": "autofill-test-handwritten",
           "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
           "line": {
-            "start": 143,
-            "end": 147
+            "start": 144,
+            "end": 148
           }
         }
       }
@@ -340,10 +340,10 @@
         "context": {
           "type": "mixin",
           "name": "autofill-test",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
           "line": {
             "start": 124,
-            "end": 134
+            "end": 135
           }
         }
       },
@@ -354,8 +354,8 @@
           "name": "autofill-test-handwritten",
           "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
           "line": {
-            "start": 143,
-            "end": 147
+            "start": 144,
+            "end": 148
           }
         }
       }
@@ -405,10 +405,10 @@
         "context": {
           "type": "mixin",
           "name": "autofill-test",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
           "line": {
             "start": 124,
-            "end": 134
+            "end": 135
           }
         }
       }
@@ -423,10 +423,10 @@
     "context": {
       "type": "mixin",
       "name": "autofill-test",
-      "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+      "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
       "line": {
         "start": 124,
-        "end": 134
+        "end": 135
       }
     },
     "group": [
@@ -442,6 +442,14 @@
       {
         "type": "function",
         "name": "function-specific-test"
+      },
+      {
+        "type": "function",
+        "name": "alias-test"
+      },
+      {
+        "type": "function",
+        "name": "alias-test-aliased"
       },
       {
         "type": "placeholder",
@@ -463,16 +471,16 @@
   {
     "description": "This is a test that autofill can be overwritten.\n",
     "commentRange": {
-      "start": 139,
-      "end": 141
+      "start": 140,
+      "end": 142
     },
     "context": {
       "type": "mixin",
       "name": "autofill-test-handwritten",
       "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
       "line": {
-        "start": 143,
-        "end": 147
+        "start": 144,
+        "end": 148
       }
     },
     "require": [
@@ -503,16 +511,16 @@
   {
     "description": "This is a test that autofill should report not found\n",
     "commentRange": {
-      "start": 149,
-      "end": 150
+      "start": 150,
+      "end": 151
     },
     "context": {
       "type": "mixin",
       "name": "autofill-test-not-found",
       "code": "\n",
       "line": {
-        "start": 151,
-        "end": 152
+        "start": 152,
+        "end": 153
       }
     },
     "require": [],
@@ -528,16 +536,16 @@
   {
     "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
     "commentRange": {
-      "start": 156,
-      "end": 159
+      "start": 157,
+      "end": 160
     },
     "context": {
       "type": "function",
       "name": "alias-test",
       "code": "",
       "line": {
-        "start": 161,
-        "end": 161
+        "start": 162,
+        "end": 162
       }
     },
     "alias": "alias-test-aliased",
@@ -548,21 +556,35 @@
     "file": {
       "path": "test.scss",
       "name": "test.scss"
-    }
+    },
+    "usedBy": [
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 124,
+            "end": 135
+          }
+        }
+      }
+    ]
   },
   {
     "description": "This is a test function aiming at testing:\n- `@alias`\n",
     "commentRange": {
-      "start": 163,
-      "end": 164
+      "start": 164,
+      "end": 165
     },
     "context": {
       "type": "function",
       "name": "alias-test-aliased",
       "code": "",
       "line": {
-        "start": 166,
-        "end": 166
+        "start": 167,
+        "end": 167
       }
     },
     "group": [
@@ -575,21 +597,35 @@
     },
     "aliased": [
       "alias-test"
+    ],
+    "usedBy": [
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 124,
+            "end": 135
+          }
+        }
+      }
     ]
   },
   {
     "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
     "commentRange": {
-      "start": 168,
-      "end": 171
+      "start": 169,
+      "end": 172
     },
     "context": {
       "type": "function",
       "name": "alias-test-should-warn",
       "code": "",
       "line": {
-        "start": 173,
-        "end": 173
+        "start": 174,
+        "end": 174
       }
     },
     "group": [
