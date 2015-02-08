@@ -7,7 +7,7 @@ export default function access() {
     },
 
     // Abuse the autofill feature to rewrite the `item.context`
-    autofill(item){
+    autofill(item) {
       if (item.name) {
         item.context.name = item.name;
         // Cleanup
