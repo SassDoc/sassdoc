@@ -211,15 +211,3 @@ function typeNameObject(type) {
     }
   };
 }
-
-function compareBefore(code, str, index) {
-  for (let i = index - str.length, b = 0; i < index; i++) {
-    if (code[i] !== str[b]) {
-      return false;
-    }
-
-    b++;
-  }
-
-  return true;
-}
