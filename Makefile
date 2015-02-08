@@ -64,10 +64,11 @@ publish: all
 # "patch", "minor", "major", "prepatch",
 # "preminor", "premajor", "prerelease"
 VERS ?= "patch"
+TAG  ?= "latest"
 
 release: all
 	npm version $(VERS) -m "Release %s"
-	npm publish
+	npm publish --tag $(TAG)
 	git push --follow-tags
 
 # Tools
