@@ -53,29 +53,22 @@ export default function (env) {
           });
         }
 
-        // Searching for mixins and functions.
-        let mixins = [];
-        let functions = [];
-        let mixinFunctionRegex = /\s{1,}([\w\d_-]+)[\s\S]*?(?:\(|;)/g;
-        let match;
+        let mixins = searchForMatches(
+          item.context.code,
+          /@include\s+([^(;$]*)/ig,
+          isAnnotatedByHand.bind(null, handWritten, 'mixin')
+        );
 
-        while ((match = mixinFunctionRegex.exec(item.context.code))) {
-          // Try if this is a mixin or function
-          if (compareBefore(item.context.code, '@include', match.index)) {
-            if (!isAnnotatedByHand(handWritten, 'mixin', match[1])) {
-              mixins.push(match[1]);
-            }
-          } else {
-            if (!isAnnotatedByHand(handWritten, 'function', match[1])) {
-              functions.push(match[1]);
-            }
-          }
-        }
+        let functions = searchForMatches(
+          item.context.code,
+          /:\s*([^(]+)/ig,
+          isAnnotatedByHand.bind(null, handWritten, 'function')
+        );
 
         let placeholders = searchForMatches(
           item.context.code,
           /@extend\s+%([^;\s]+)/ig,
-          isAnnotatedByHand.bind(null, handWritten, 'mixin')
+          isAnnotatedByHand.bind(null, handWritten, 'placeholder')
         );
 
         let variables = searchForMatches(

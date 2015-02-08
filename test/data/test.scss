@@ -122,6 +122,7 @@ $variable-specific-test: ();
 /// - autofilled `@content`
 
 @mixin autofill-test {
+  autofill-test: $autofill-test;
   $call: function-specific-test();
   $use: $variable-specific-test;
   @include mixin-specific-test;
