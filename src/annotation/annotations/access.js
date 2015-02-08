@@ -10,7 +10,9 @@ export default function access(env) {
     },
 
     autofill(item) {
-      if (env.privatePrefix === false) { return; }
+      if (env.privatePrefix === false) {
+        return;
+      }
 
       let testFunc = defaultPrivatePrefixTest;
 
