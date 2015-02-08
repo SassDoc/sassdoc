@@ -8,6 +8,7 @@ module.exports = [
   require('./group.js'),
   require('./ignore.js'),
   require('./link.js'),
+  require('./name.js'),
   require('./output.js'),
   require('./parameter.js'),
   require('./property.js'),
