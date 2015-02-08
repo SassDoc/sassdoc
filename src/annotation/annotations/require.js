@@ -61,13 +61,14 @@ export default function (env) {
 
         let functions = searchForMatches(
           item.context.code,
-          /:\s*([^(]+)/ig,
-          isAnnotatedByHand.bind(null, handWritten, 'function')
+          new RegExp('(@include)?\\s*([a-z0-9_-]+)\\s*\\(','ig'), // Literal destorys Syntax
+          isAnnotatedByHand.bind(null, handWritten, 'function'),
+          2 // Get the second matching group instead of 1
         );
 
         let placeholders = searchForMatches(
           item.context.code,
-          /@extend\s+%([^;\s]+)/ig,
+          /@extend\s*%([^;\s]+)/ig,
           isAnnotatedByHand.bind(null, handWritten, 'placeholder')
         );
 
@@ -187,13 +188,13 @@ function isAnnotatedByHand(handWritten, type, name) {
   return false;
 }
 
-function searchForMatches(code, regex, isAnnotatedByHand) {
+function searchForMatches(code, regex, isAnnotatedByHand, id = 1) {
   let match;
   let matches = [];
 
   while ((match = regex.exec(code))) {
-    if (!isAnnotatedByHand(match[1])) {
-      matches.push(match[1]);
+    if (!isAnnotatedByHand(match[id]) && (id <= 1 || match[id-1] === undefined)) {
+      matches.push(match[id]);
     }
   }
 
