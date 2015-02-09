@@ -41,6 +41,7 @@ export function parseFilter(env = {}) {
 
 /**
  * Ensure a proper Environment Object and events.
+ * @param {Object} config - can be falsy.
  * @return {Object}
  */
 export function ensureEnvironment(config, onError = e => { throw e; }) {
@@ -50,7 +51,7 @@ export function ensureEnvironment(config, onError = e => { throw e; }) {
   }
 
   let logger = ensureLogger(config);
-  let env = new Environment(logger, config.strict);
+  let env = new Environment(logger, config && config.strict);
 
   env.on('error', onError);
   env.load(config);
@@ -66,7 +67,7 @@ export function ensureEnvironment(config, onError = e => { throw e; }) {
 function ensureLogger(config) {
   if (!is.object(config) || !('logger' in config)) {
     // Get default logger.
-    return new Logger(config.verbose, process.env.SASSDOC_DEBUG);
+    return new Logger(config && config.verbose, process.env.SASSDOC_DEBUG);
   }
 
   let logger = checkLogger(config.logger);
@@ -306,7 +307,7 @@ function srcEnv(documentize, stream) {
     let src = Array.find(args, a => is.string(a) || is.array(a));
     let env = Array.find(args, is.plainObject);
 
-    env = ensureEnvironment(env || {});
+    env = ensureEnvironment(env);
 
     env.logger.debug('process.argv:', () => JSON.stringify(process.argv));
     env.logger.debug('sassdoc version:', () => require('../package.json').version);
