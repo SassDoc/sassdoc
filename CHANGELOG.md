@@ -2,7 +2,9 @@
 
 ## 2.0.4
 
-* Fix an issue with autofill when an item name uses a css keyword. ([#359](https://github.com/SassDoc/sassdoc/issues/359))
+* Fix an issue with autofill and items that use a css keyword as name. ([#359](https://github.com/SassDoc/sassdoc/issues/359))
+* Fix an issue where `.sassdocrc` was ignored when using Node.js API
+([#363](https://github.com/SassDoc/sassdoc/issues/363))
 
 ## 2.0.2
 
