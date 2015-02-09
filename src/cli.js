@@ -10,7 +10,7 @@ Options:
   -h, --help            Bring help.
   --version             Show version.
   -v, --verbose         Enable verbose mode.
-  -d, --dest=<dir>      Documentation folder [default: sassdoc].
+  -d, --dest=<dir>      Documentation folder.
   -c, --config=<path>   Path to JSON/YAML configuration file.
   -t, --theme=<name>    Theme to use.
   -p, --parse           Parse the input and output JSON data to stdout.
