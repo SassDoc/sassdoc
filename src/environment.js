@@ -135,6 +135,13 @@ export default class Environment extends EventEmitter {
       this.dir = process.cwd();
     }
 
+    if (!this.dest) {
+      this.dest = 'sassdoc';
+    }
+
+    this.dest = this.resolve(this.dest, this.destCwd);
+    this.displayDest = path.relative(process.cwd(), this.dest);
+
     if (!this.package) {
       this.package = {};
     }
@@ -187,7 +194,10 @@ export default class Environment extends EventEmitter {
       return this.tryTheme(`sassdoc-theme-${this.theme}`);
     }
 
-    return this.tryTheme(this.resolve(this.theme));
+    let theme = this.resolve(this.theme, this.themeCwd);
+    this.displayTheme = path.relative(process.cwd(), theme);
+
+    return this.tryTheme(theme);
   }
 
   /**
@@ -289,9 +299,11 @@ export default class Environment extends EventEmitter {
    * Resolve given file from `this.dir`.
    *
    * @param {String} file
+   * @param {Boolean} cwd - whether it's relative to CWD (like when
+   *                        defined in CLI).
    * @return {String}
    */
-  resolve(file) {
-    return path.resolve(this.dir, file);
+  resolve(file, cwd = false) {
+    return path.resolve(cwd ? process.cwd() : this.dir, file);
   }
 }

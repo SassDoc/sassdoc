@@ -100,6 +100,7 @@ function ensure(env, options, names) {
 
     if (options[v]) {
       env[k] = options[v];
+      env[k + 'Cwd'] = true;
     }
   }
 }
