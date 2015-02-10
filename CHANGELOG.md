@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.4
+
+* Fix an issue with autofill and items that use a css keyword as name. ([#359](https://github.com/SassDoc/sassdoc/issues/359))
+* Fix an issue where `.sassdocrc` was ignored when using Node.js API
+([#363](https://github.com/SassDoc/sassdoc/issues/363))
+
+## 2.0.3
+
+* Fix the CLI synopsis, SassDoc can't be executed without arguments.
+
 ## 2.0.2
 
 * Move to 6to5 3 in `selfContained` mode to avoid global scope pollution ([#354](https://github.com/SassDoc/sassdoc/issues/354#issuecomment-72464640))
