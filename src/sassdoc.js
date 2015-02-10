@@ -98,7 +98,7 @@ export default function sassdoc(...args) {
     })
       .then(() => mkdir(env.dest))
       .then(() => {
-        env.logger.log(`Folder \`${env.dest}\` successfully refreshed.`);
+        env.logger.log(`Folder \`${env.displayDest}\` successfully refreshed.`);
       })
       .catch(err => {
         // Friendly error for already existing directory.
@@ -120,8 +120,8 @@ export default function sassdoc(...args) {
 
     return promise
       .then(() => {
-        let themeName = env.themeName || 'anonymous';
-        env.logger.log(`Theme \`${themeName}\` successfully rendered.`);
+        let displayTheme = env.displayTheme || 'anonymous';
+        env.logger.log(`Theme \`${displayTheme}\` successfully rendered.`);
       });
   }
 
@@ -328,7 +328,6 @@ function srcEnv(documentize, stream) {
     env.logger.debug('cwd:', () => process.cwd());
 
     env.src = src;
-    env.dest = env.dest || 'sassdoc';
 
     env.logger.debug('env:', () => {
       let clone = {};
