@@ -138,3 +138,12 @@ sassdoc('scss/').then(function () {
 ```
 
 The `parse` function still works the same way as in 1.0.
+
+## Gulp
+
+Starting from version 2.0 SassDoc core is fully Gulp compatible, and can be directly
+integrated in any Vinyl files pipeline. The [Gulp plugin](https://github.com/SassDoc/gulp-sassdoc) is now deprecated.
+Refer to the [documentation](http://sassdoc.com/gulp/) for full examples.
+
+Similarly to any Gulp plugin, passing a directory path to `gulp.src` won't work anymore.  
+You have to pass in glob patterns: `'source/**/*.scss'`
