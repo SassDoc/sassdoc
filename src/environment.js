@@ -143,7 +143,7 @@ export default class Environment extends EventEmitter {
     this.displayDest = path.relative(process.cwd(), this.dest);
 
     if (!this.package) {
-      this.package = {};
+      this.package = this.resolve('package.json');
     }
 
     if (typeof this.package !== 'object') {
