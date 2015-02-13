@@ -93,7 +93,7 @@
     "rimraf": "^2.2.8",
     "safe-wipe": "0.*",
     "sass-convert": "^0.4.1",
-    "sassdoc-theme-default": "^2.0.4",
+    "sassdoc-theme-default": "^2.1.0",
     "scss-comment-parser": "^0.6.0",
     "through2": "^0.6.3",
     "update-notifier": "^0.3.0",
@@ -101,7 +101,7 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
-    "6to5": "^3.3.4",
+    "6to5": "^3.6.0",
     "coveralls": "^2.11.2",
     "dateformat": "^1.0.11",
     "istanbul": "^0.3.5",
