@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.7
+
+* Fix group sorting. ([e506be0](https://github.com/SassDoc/sassdoc/commit/e506be01df1bdbb378cdfa015b221b8ff72843d0))
+
+## 2.0.6
+
+* Graceful relative paths in CLI and config file. ([#362](https://github.com/SassDoc/sassdoc/issues/362),
+[c47dea1](https://github.com/SassDoc/sassdoc/commit/c47dea149771e995b1782fd917e48bec37df48f6))
+
 ## 2.0.5
 
 * Fix an issue with relative path passed via CLI and configuration file ([#364](https://github.com/SassDoc/sassdoc/pull/364), [c47dea1](https://github.com/SassDoc/sassdoc/commit/c47dea149771e995b1782fd917e48bec37df48f6))
