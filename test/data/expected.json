@@ -1,127 +1,5 @@
 [
   {
-    "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
-    "commentRange": {
-      "start": 8,
-      "end": 58
-    },
-    "context": {
-      "type": "function",
-      "name": "global-test",
-      "code": "",
-      "line": {
-        "start": 60,
-        "end": 60
-      }
-    },
-    "access": "public",
-    "author": [
-      "Pascal **Duez**",
-      "Valérian **Galliat**",
-      "Hugo **Giraudel**",
-      "Fabrice **Weinberg**"
-    ],
-    "deprecated": "This is a *deprecation* message.",
-    "example": [
-      {
-        "type": "scss",
-        "code": "$test: function-global-test();",
-        "description": "Example description"
-      }
-    ],
-    "group": [
-      "test-function"
-    ],
-    "ignore": [],
-    "link": [
-      {
-        "url": "http://google.com",
-        "caption": "Google"
-      },
-      {
-        "url": "http://sassdoc.com",
-        "caption": ""
-      }
-    ],
-    "require": [
-      {
-        "type": "function",
-        "name": "function-specific-test",
-        "external": false,
-        "description": "This is a description with a dash."
-      },
-      {
-        "type": "mixin",
-        "name": "mixin-specific-test",
-        "external": false,
-        "description": "This is a description with no dash."
-      },
-      {
-        "type": "variable",
-        "name": "variable-specific-test",
-        "external": false
-      },
-      {
-        "type": "placeholder",
-        "name": "placeholder-specific-test",
-        "external": false,
-        "description": "This is a description and a link. http://sassdoc.com"
-      },
-      {
-        "type": "function",
-        "name": "this::is::an::external::dependancy",
-        "external": true
-      },
-      {
-        "type": "function",
-        "name": "this:is:an:external:dependancy",
-        "external": true
-      },
-      {
-        "type": "function",
-        "name": "this/is/an/external/dependancy",
-        "external": true
-      },
-      {
-        "type": "function",
-        "name": "this.is.an.external.dependancy",
-        "external": true
-      }
-    ],
-    "see": [
-      {
-        "description": "This is a test function aiming at testing:\n- `@param`\n- `@return`\n- `@throw`\n\n",
-        "context": {
-          "type": "function",
-          "name": "function-specific-test",
-          "code": "",
-          "line": {
-            "start": 75,
-            "end": 75
-          }
-        }
-      }
-    ],
-    "since": [
-      {
-        "version": "2.0.0",
-        "description": "Major refacto"
-      },
-      {
-        "version": "1.0.0",
-        "description": "Other stuff\n"
-      }
-    ],
-    "todo": [
-      "Nothing to do here.",
-      "My people need me."
-    ],
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    }
-  },
-  {
     "description": "This is a test function aiming at testing:\n- `@param`\n- `@return`\n- `@throw`\n\n",
     "commentRange": {
       "start": 63,
@@ -166,18 +44,6 @@
     },
     "usedBy": [
       {
-        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
-        "context": {
-          "type": "function",
-          "name": "global-test",
-          "code": "",
-          "line": {
-            "start": 60,
-            "end": 60
-          }
-        }
-      },
-      {
         "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
         "context": {
           "type": "mixin",
@@ -198,6 +64,18 @@
           "line": {
             "start": 144,
             "end": 148
+          }
+        }
+      },
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 60,
+            "end": 60
           }
         }
       }
@@ -246,18 +124,6 @@
     },
     "usedBy": [
       {
-        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
-        "context": {
-          "type": "function",
-          "name": "global-test",
-          "code": "",
-          "line": {
-            "start": 60,
-            "end": 60
-          }
-        }
-      },
-      {
         "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
         "context": {
           "type": "mixin",
@@ -278,6 +144,18 @@
           "line": {
             "start": 144,
             "end": 148
+          }
+        }
+      },
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 60,
+            "end": 60
           }
         }
       }
@@ -324,18 +202,6 @@
     },
     "usedBy": [
       {
-        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
-        "context": {
-          "type": "function",
-          "name": "global-test",
-          "code": "",
-          "line": {
-            "start": 60,
-            "end": 60
-          }
-        }
-      },
-      {
         "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
         "context": {
           "type": "mixin",
@@ -356,6 +222,18 @@
           "line": {
             "start": 144,
             "end": 148
+          }
+        }
+      },
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 60,
+            "end": 60
           }
         }
       }
@@ -389,18 +267,6 @@
     },
     "usedBy": [
       {
-        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
-        "context": {
-          "type": "function",
-          "name": "global-test",
-          "code": "",
-          "line": {
-            "start": 60,
-            "end": 60
-          }
-        }
-      },
-      {
         "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
         "context": {
           "type": "mixin",
@@ -409,6 +275,18 @@
           "line": {
             "start": 124,
             "end": 135
+          }
+        }
+      },
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 60,
+            "end": 60
           }
         }
       }
@@ -632,6 +510,128 @@
       "test"
     ],
     "access": "private",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
+    "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+    "commentRange": {
+      "start": 8,
+      "end": 58
+    },
+    "context": {
+      "type": "function",
+      "name": "global-test",
+      "code": "",
+      "line": {
+        "start": 60,
+        "end": 60
+      }
+    },
+    "access": "public",
+    "author": [
+      "Pascal **Duez**",
+      "Valérian **Galliat**",
+      "Hugo **Giraudel**",
+      "Fabrice **Weinberg**"
+    ],
+    "deprecated": "This is a *deprecation* message.",
+    "example": [
+      {
+        "type": "scss",
+        "code": "$test: function-global-test();",
+        "description": "Example description"
+      }
+    ],
+    "group": [
+      "test-function"
+    ],
+    "ignore": [],
+    "link": [
+      {
+        "url": "http://google.com",
+        "caption": "Google"
+      },
+      {
+        "url": "http://sassdoc.com",
+        "caption": ""
+      }
+    ],
+    "require": [
+      {
+        "type": "function",
+        "name": "function-specific-test",
+        "external": false,
+        "description": "This is a description with a dash."
+      },
+      {
+        "type": "mixin",
+        "name": "mixin-specific-test",
+        "external": false,
+        "description": "This is a description with no dash."
+      },
+      {
+        "type": "variable",
+        "name": "variable-specific-test",
+        "external": false
+      },
+      {
+        "type": "placeholder",
+        "name": "placeholder-specific-test",
+        "external": false,
+        "description": "This is a description and a link. http://sassdoc.com"
+      },
+      {
+        "type": "function",
+        "name": "this::is::an::external::dependancy",
+        "external": true
+      },
+      {
+        "type": "function",
+        "name": "this:is:an:external:dependancy",
+        "external": true
+      },
+      {
+        "type": "function",
+        "name": "this/is/an/external/dependancy",
+        "external": true
+      },
+      {
+        "type": "function",
+        "name": "this.is.an.external.dependancy",
+        "external": true
+      }
+    ],
+    "see": [
+      {
+        "description": "This is a test function aiming at testing:\n- `@param`\n- `@return`\n- `@throw`\n\n",
+        "context": {
+          "type": "function",
+          "name": "function-specific-test",
+          "code": "",
+          "line": {
+            "start": 75,
+            "end": 75
+          }
+        }
+      }
+    ],
+    "since": [
+      {
+        "version": "2.0.0",
+        "description": "Major refacto"
+      },
+      {
+        "version": "1.0.0",
+        "description": "Other stuff\n"
+      }
+    ],
+    "todo": [
+      "Nothing to do here.",
+      "My people need me."
+    ],
     "file": {
       "path": "test.scss",
       "name": "test.scss"
