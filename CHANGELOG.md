@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.8
+
+* Ensure specific 6to5 and 6to5-runtime version. ([#369](https://github.com/SassDoc/sassdoc/issues/369),
+[8bab189](https://github.com/SassDoc/sassdoc/commit/8bab18915b9fa7df6c764bb3211ecfb7acc491b1))
+
 ## 2.0.7
 
 * Fix group sorting. ([e506be0](https://github.com/SassDoc/sassdoc/commit/e506be01df1bdbb378cdfa015b221b8ff72843d0))
