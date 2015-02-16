@@ -92,7 +92,7 @@
     "multipipe": "^0.1.2",
     "rimraf": "^2.2.8",
     "safe-wipe": "0.*",
-    "sass-convert": "^0.4.1",
+    "sass-convert": "^0.5.0",
     "sassdoc-theme-default": "^2.1.0",
     "scss-comment-parser": "^0.6.0",
     "through2": "^0.6.3",
