@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.9
+
+* Update `sass-convert` version to prevent the 6to5-runtime issue described in ([#369](https://github.com/SassDoc/sassdoc/issues/369))
+
 ## 2.0.8
 
 * Ensure specific 6to5 and 6to5-runtime version. ([#369](https://github.com/SassDoc/sassdoc/issues/369),
