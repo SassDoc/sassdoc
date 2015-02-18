@@ -10,15 +10,15 @@ import sorter from './sorter';
 import exclude from './exclude';
 import recurse from './recurse';
 
-const fs = require('fs');
-const path = require('path'); // jshint ignore:line
-const difference = require('lodash.difference'); // jshint ignore:line
+import fs from 'fs';
+import path from 'path'; // jshint ignore:line
+import difference from 'lodash.difference'; // jshint ignore:line
+import safeWipe from 'safe-wipe';
+import vfs from 'vinyl-fs';
+import converter from 'sass-convert';
+import pipe from 'multipipe'; // jshint ignore:line
+import through from 'through2';
 const mkdir = denodeify(require('mkdirp'));
-const safeWipe = require('safe-wipe');
-const vfs = require('vinyl-fs');
-const converter = require('sass-convert');
-const pipe = require('multipipe'); // jshint ignore:line
-const through = require('through2');
 
 /**
  * Expose lower API blocks.

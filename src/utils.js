@@ -1,5 +1,5 @@
-const glob2base = require('glob2base');
-const Glob = require('glob').Glob;
+import glob2base from 'glob2base';
+import { Glob } from 'glob';
 
 // Namespace delimiters.
 const nsDelimiters = ['::', ':', '\\.', '/'];

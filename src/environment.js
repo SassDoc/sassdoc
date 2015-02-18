@@ -1,11 +1,10 @@
 import { is } from './utils';
 import * as errors from './errors';
-
-const EventEmitter = require('events').EventEmitter;
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
-const converter = require('sass-convert');
+import { EventEmitter } from 'events';
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
+import converter from 'sass-convert';
 
 export default class Environment extends EventEmitter {
 

@@ -2,11 +2,10 @@ import { defer } from './utils';
 import * as errors from './errors';
 import AnnotationsApi from './annotation';
 import sorter from './sorter';
-
-const ScssCommentParser = require('scss-comment-parser');
-const through = require('through2');
-const concat = require('concat-stream');
-const path = require('path');
+import ScssCommentParser from 'scss-comment-parser';
+import through from 'through2';
+import concat from 'concat-stream';
+import path from 'path';
 
 export default class Parser {
   constructor(env, additionalAnnotations) {

@@ -1,9 +1,9 @@
-const path = require('path');
-const chalk = require('chalk');
-const dateformat = require('dateformat');
-const vfs = require('vinyl-fs');
-const through = require('through2');
-const sassdoc = require('../src/sassdoc');
+import path from 'path';
+import chalk from 'chalk';
+import dateformat from 'dateformat';
+import vfs from 'vinyl-fs';
+import through from 'through2';
+import sassdoc from '../src/sassdoc';
 
 function devLog(...args) {
   console.log(...[

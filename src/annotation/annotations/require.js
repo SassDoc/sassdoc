@@ -1,6 +1,5 @@
 import { splitNamespace } from '../../utils';
-
-const uniq = require('lodash.uniq');
+import uniq from 'lodash.uniq';
 
 const reqRegEx = /^\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:-?\s*([^<$]*))?\s*(?:<?\s*(.*)\s*>)?$/;
 

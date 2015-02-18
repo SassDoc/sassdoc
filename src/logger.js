@@ -1,8 +1,7 @@
 import { is } from './utils';
 import * as errors from './errors';
-
-const fmt = require('util').format;
-const chalk = require('chalk');
+import { format as fmt } from 'util';
+import chalk from 'chalk';
 
 // Special chars.
 const chevron = '\xBB';

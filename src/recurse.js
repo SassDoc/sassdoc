@@ -1,8 +1,7 @@
 import { is } from './utils';
-
-const path = require('path');
-const through = require('through2');
-const vfs = require('vinyl-fs');
+import path from 'path';
+import through from 'through2';
+import vfs from 'vinyl-fs';
 
 /**
  * Return a transform stream recursing through directory to yield
