@@ -1,7 +1,7 @@
 PATH := $(PWD)/node_modules/.bin:$(PATH)
 SASSDOC := $(PWD)/bin/sassdoc
 MOCHA := $(PWD)/node_modules/.bin/_mocha
-TO5_FLAGS = --experimental --loose all --optional selfContained
+BABEL_FLAGS = --experimental --loose all --optional selfContained
 
 all: dist lint test
 
@@ -10,7 +10,7 @@ all: dist lint test
 
 dist:
 	rm -rf $@
-	6to5 $(TO5_FLAGS) src --out-dir $@
+	babel $(BABEL_FLAGS) src --out-dir $@
 
 # Code quality
 # ============
@@ -49,7 +49,7 @@ travis: lint cover
 # ===========
 
 develop:
-	6to5-node $(TO5_FLAGS) $@
+	babel-node $(BABEL_FLAGS) $@
 
 # Publish package to npm
 # @see npm/npm#3059
