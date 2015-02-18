@@ -1,4 +1,4 @@
-let seeRegEx = /\s*(?:\{([\w-_]+)\}\s*)?(.*)/;
+const seeRegEx = /\s*(?:\{([\w-_]+)\}\s*)?(.*)/;
 
 export default function see(env) {
   return {

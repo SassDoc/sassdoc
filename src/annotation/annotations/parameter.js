@@ -1,4 +1,4 @@
-let typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$?([^\s^\]\[]+))?\s*(?:\[([^\]]*)\])?\s*(?:-?\s*([\s\S]*))?/;
+const typeRegEx = /^\s*(?:\{(.*)\})?\s*(?:\$?([^\s^\]\[]+))?\s*(?:\[([^\]]*)\])?\s*(?:-?\s*([\s\S]*))?/;
 
 export default function parameter(env) {
   return {

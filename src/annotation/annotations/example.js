@@ -7,7 +7,7 @@
  * <div></div>
  */
 
-let descRegEx = /(\w+)\s*(?:-?\s*(.*))/;
+const descRegEx = /(\w+)\s*(?:-?\s*(.*))/;
 
 export default function example() {
   return {
