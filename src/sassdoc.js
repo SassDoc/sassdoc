@@ -34,9 +34,8 @@ export function parseFilter(env = {}) {
   env = ensureEnvironment(env);
 
   let parser = new Parser(env, env.theme && env.theme.annotations);
-  let filter = parser.stream();
 
-  return filter;
+  return parser.stream();
 }
 
 /**
