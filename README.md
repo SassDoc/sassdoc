@@ -5,6 +5,7 @@
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![Dependencies Status][depstat-image]][depstat-url]
 [![License][license-image]][license-url]
+[![Gitter][chat-image]][chat-url]
 
 [![NPM][npm-image]][npm-url]
 
@@ -30,3 +31,5 @@ Head to the [site][SassDoc] for extensive documentation.
 [depstat-image]: https://david-dm.org/SassDoc/sassdoc.svg?style=flat-square
 [license-image]: http://img.shields.io/npm/l/sassdoc.svg?style=flat-square
 [license-url]: LICENSE.md
+[chat-image]: https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square
+[chat-url]: https://gitter.im/SassDoc/sassdoc
