@@ -1,7 +1,7 @@
 PATH := $(PWD)/node_modules/.bin:$(PATH)
 SASSDOC := $(PWD)/bin/sassdoc
 MOCHA := $(PWD)/node_modules/.bin/_mocha
-BABEL_FLAGS = --experimental --loose all --optional selfContained
+BABEL_FLAGS = --experimental --loose all --optional runtime
 
 all: dist lint test
 
