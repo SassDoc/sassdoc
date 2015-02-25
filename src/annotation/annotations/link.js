@@ -1,4 +1,4 @@
-let linkRegex = /\s*([^:]+\:\/\/[^\s]*)?\s*(.*?)$/;
+const linkRegex = /\s*([^:]+\:\/\/[^\s]*)?\s*(.*?)$/;
 
 export default function link() {
   return {

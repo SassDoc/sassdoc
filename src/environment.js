@@ -1,11 +1,10 @@
 import { is } from './utils';
 import * as errors from './errors';
-
-const EventEmitter = require('events').EventEmitter;
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
-const converter = require('sass-convert');
+import { EventEmitter } from 'events';
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
+import converter from 'sass-convert';
 
 export default class Environment extends EventEmitter {
 
@@ -52,11 +51,11 @@ export default class Environment extends EventEmitter {
       return this.loadDefaultFile();
     }
 
-    if (typeof config === 'string') {
+    if (is.string(config)) {
       return this.loadFile(config);
     }
 
-    if (typeof config === 'object') {
+    if (is.plainObject(config)) {
       return this.loadObject(config);
     }
 
@@ -143,7 +142,7 @@ export default class Environment extends EventEmitter {
     this.displayDest = path.relative(process.cwd(), this.dest);
 
     if (!this.package) {
-      this.package = this.resolve('package.json');
+      this.defaultPackage();
     }
 
     if (typeof this.package !== 'object') {
@@ -169,7 +168,14 @@ export default class Environment extends EventEmitter {
     this.emit('warning', new errors.Warning(`Package file \`${file}\` not found.`));
     this.logger.warn('Falling back to `package.json`.');
 
-    file = this.resolve('package.json');
+    this.defaultPackage();
+  }
+
+  /**
+   * Load `package.json`.
+   */
+  defaultPackage() {
+    let file = this.resolve('package.json');
     this.package = this.tryParseFile(file);
 
     if (this.package) {
@@ -245,6 +251,7 @@ export default class Environment extends EventEmitter {
     }
 
     this.theme = require('sassdoc-theme-default');
+    this.themeName = 'default';
   }
 
   /**

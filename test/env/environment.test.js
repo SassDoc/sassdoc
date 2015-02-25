@@ -46,15 +46,20 @@ describe('#environment', function () {
    * Passed in wrong type config file.
    */
   describe('#config-fail', function () {
-    var spy = sinon.spy();
+    var spy;
 
     beforeEach(function () {
+      spy = sinon.spy();
       env.on('error', spy);
-      env.load(123); // @TOO [] pass
-      env.postProcess();
     });
 
-    it('should error if config is of a wrong format', function () {
+    it('should error if config is a number', function () {
+      env.load(123);
+      assert.ok(spy.called);
+    });
+
+    it('should error if config is an array', function () {
+      env.load([]);
       assert.ok(spy.called);
     });
   });
@@ -184,7 +189,7 @@ describe('#environment', function () {
     it('should warn and render the default theme', function () {
       assert.notEqual(-1, warnings[0].indexOf('Theme `fail` not found'));
       assert.notEqual(-1, warnings[1].indexOf('Falling back to default theme'));
-      // assert.ok(env.themeName === 'default'); // @TODO ??
+      assert.ok(env.themeName === 'default');
       assert.ok(fs.existsSync('.sassdoc/index.html'));
       assert.ok(fs.existsSync('.sassdoc/assets'));
     });

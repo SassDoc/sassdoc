@@ -1,4 +1,4 @@
-let sinceRegEx = /\s*([^\s]*)\s*(?:-?\s*([\s\S]*))?\s*$/;
+const sinceRegEx = /\s*([^\s]*)\s*(?:-?\s*([\s\S]*))?\s*$/;
 
 export default function since() {
   return {

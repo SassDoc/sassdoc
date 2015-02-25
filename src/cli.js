@@ -25,10 +25,9 @@ import Logger from './logger';
 // import sassdoc, { parse } from './sassdoc';
 import { default as sassdoc, parse } from './sassdoc';
 import * as errors from './errors';
-
-const docopt = require('docopt').docopt;
-const source = require('vinyl-source-stream');
-const pkg = require('../package.json');
+import { docopt } from 'docopt';
+import source from 'vinyl-source-stream';
+import pkg from '../package.json';
 
 export default function cli(argv = process.argv.slice(2)) {
   let options = docopt(doc, { version: pkg.version, argv: argv });

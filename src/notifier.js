@@ -1,4 +1,4 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
 
 /**
  * Sometimes check for update and notify the user.

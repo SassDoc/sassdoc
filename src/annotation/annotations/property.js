@@ -1,4 +1,4 @@
-let reqRegEx = /\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\[([^\]]*)\])?\s*(?:-?\s*([\s\S]*))\s*$/;
+const reqRegEx = /\s*(?:\{(.*)\})?\s*(?:(\$?[^\s]+))?\s*(?:\[([^\]]*)\])?\s*(?:-?\s*([\s\S]*))\s*$/;
 
 export default function property() {
   return {
