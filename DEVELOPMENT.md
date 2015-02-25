@@ -121,6 +121,7 @@ git push
 
 # Head to `master`
 git checkout master
+git pull
 
 # Merge `develop` branch
 git merge --no-ff develop
