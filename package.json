@@ -21,7 +21,7 @@
       "url": "https://twitter.com/pascalduez"
     }
   ],
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": {
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
@@ -79,7 +79,7 @@
   ],
   "dependencies": {
     "babel-runtime": "^4.4.0",
-    "chalk": "^0.5.0",
+    "chalk": "^1.0.0",
     "concat-stream": "^1.4.7",
     "docopt": "^0.4.1",
     "glob": "^4.3.1",

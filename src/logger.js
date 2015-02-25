@@ -1,7 +1,11 @@
 import { is } from './utils';
 import * as errors from './errors';
 import { format as fmt } from 'util';
-import chalk from 'chalk';
+import chalkModule from 'chalk';
+
+const chalk = new chalkModule.constructor({
+  enabled: process.stderr.isTTY,
+});
 
 // Special chars.
 const chevron = '\xBB';
@@ -32,20 +36,16 @@ export default class Logger {
    * Always log arguments as warning into stderr.
    */
   warn(...args) {
-    chalkHack(() => {
-      let str = fmt(`${yellow} [WARNING] ${args.shift()}`, ...args);
-      this._stderr.write(`${str}\n`);
-    });
+    let str = fmt(`${yellow} [WARNING] ${args.shift()}`, ...args);
+    this._stderr.write(`${str}\n`);
   }
 
   /**
    * Always log arguments as error into stderr.
    */
   error(...args) {
-    chalkHack(() => {
-      let str = fmt(`${red} [ERROR] ${args.shift()}`, ...args);
-      this._stderr.write(`${str}\n`);
-    });
+    let str = fmt(`${red} [ERROR] ${args.shift()}`, ...args);
+    this._stderr.write(`${str}\n`);
   }
 
   /**
@@ -94,15 +94,13 @@ export default class Logger {
       return f;
     });
 
-    chalkHack(() => {
-      let str = fmt(
-        `${chalk.styles.grey.open}${chevron} [DEBUG] ${args.shift()}`,
-        ...args,
-        chalk.styles.grey.close
-      );
+    let str = fmt(
+      `${chalkModule.styles.grey.open}${chevron} [DEBUG] ${args.shift()}`,
+      ...args,
+      chalkModule.styles.grey.close
+    );
 
-      this._stderr.write(`${str}\n`);
-    });
+    this._stderr.write(`${str}\n`);
   }
 }
 
@@ -146,20 +144,4 @@ export function checkLogger(logger) {
     error: logger.error,
     debug: empty.debug,
   };
-}
-
-/**
- * Chalk don't allow us to create a new instance with our own `enabled`
- * value (internal functions always reference the global export). Here
- * we want to enable it if stderr is a TTY, but it's not acceptable to
- * modify the global context for this purpose.
- *
- * So this hack will set `chalk.enabled` for the time of the synchronous
- * callback execution, then reset it to whatever was its default value.
- */
-function chalkHack(cb) {
-  let enabled = chalk.enabled;
-  chalk.enabled = process.stderr.isTTY;
-  cb();
-  chalk.enabled = enabled;
 }
