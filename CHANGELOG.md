@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.0 &mdash; Polite Little Squid
+
+* A [`@name` annotation](http://sassdoc.com/annotations/#name) has been added to make it possible to override an item's name ([#358](https://github.com/SassDoc/sassdoc/issues/358))
+* A [`privatePrefix` option](http://sassdoc.com/customising-the-view/#private-prefix) has been added to make it possible to autofill `@access` (|#357](https://github.com/SassDoc/sassdoc/issues/357))
+* [`description` and `descriptionPath` options](http://sassdoc.com/customising-the-view/#description) have been added to make it possible to provide a project wide description, as direct Markdown or a Markdown file ([#256](https://github.com/SassDoc/sassdoc/issues/256))
+* A [`sort` option](http://sassdoc.com/customising-the-view/#sort) has been added to make it possible to order items based on a couple of criterias ([#239](https://github.com/SassDoc/sassdoc/issues/239))
+
 ## 2.0.9
 
 * Update `sass-convert` version to prevent the 6to5-runtime issue described in ([#369](https://github.com/SassDoc/sassdoc/issues/369))
