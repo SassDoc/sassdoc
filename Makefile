@@ -1,6 +1,5 @@
 BIN = $(PWD)/node_modules/.bin/
 SASSDOC = $(PWD)/bin/sassdoc
-BABEL_FLAGS = --experimental --loose all --optional runtime
 
 all: dist lint test
 
@@ -9,7 +8,7 @@ all: dist lint test
 
 dist:
 	rm -rf $@
-	$(BIN)babel $(BABEL_FLAGS) src --out-dir $@
+	$(BIN)babel src --out-dir $@
 
 # Code quality
 # ============
@@ -48,7 +47,7 @@ travis: lint cover
 # ===========
 
 develop:
-	$(BIN)babel-node $(BABEL_FLAGS) $@
+	$(BIN)babel-node $@
 
 # Publish package to npm
 # @see npm/npm#3059
