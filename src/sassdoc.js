@@ -1,9 +1,7 @@
 import { denodeify, is, g2b } from './utils';
 
 import Environment from './environment';
-// jshint/jshint#2118
-// import Logger, { checkLogger } from './logger';
-import { default as Logger, checkLogger } from './logger';
+import Logger, { checkLogger } from './logger';
 import Parser from './parser';
 import * as errors from './errors';
 import sorter from './sorter';
