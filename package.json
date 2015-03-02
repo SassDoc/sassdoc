@@ -21,7 +21,7 @@
       "url": "https://twitter.com/pascalduez"
     }
   ],
-  "version": "2.1.1",
+  "version": "2.1.2",
   "license": {
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
@@ -97,7 +97,7 @@
     "scss-comment-parser": "^0.6.0",
     "through2": "^0.6.3",
     "update-notifier": "^0.3.0",
-    "vinyl-fs": "^0.3.11",
+    "vinyl-fs": "^1.0.0",
     "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
