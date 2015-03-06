@@ -8,7 +8,7 @@ all: dist lint test
 
 dist:
 	rm -rf $@
-	$(BIN)babel src --out-dir $@
+	$(BIN)babel src -d $@
 
 # Code quality
 # ============

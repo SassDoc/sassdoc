@@ -2,5 +2,6 @@
   "experimental": true,
   "playground": true,
   "loose": ["all"],
-  "optional": ["runtime"]
+  "optional": ["runtime"],
+  "auxiliaryComment": "istanbul ignore next"
 }
