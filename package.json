@@ -82,7 +82,7 @@
     "chalk": "^1.0.0",
     "concat-stream": "^1.4.7",
     "docopt": "^0.4.1",
-    "glob": "^4.3.1",
+    "glob": "^5.0.0",
     "glob2base": "0.0.12",
     "js-yaml": "^3.2.1",
     "lodash.difference": "^3.0.0",
