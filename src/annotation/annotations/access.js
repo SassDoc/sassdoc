@@ -10,6 +10,10 @@ export default function access(env) {
     },
 
     autofill(item) {
+      if (item.access !== 'auto') {
+        return;
+      }
+
       if (env.privatePrefix === false) {
         return;
       }
@@ -24,10 +28,11 @@ export default function access(env) {
         return 'private';
       }
 
+      return 'public';
     },
 
     default() {
-      return 'public';
+      return 'auto';
     },
 
     multiple: false,
