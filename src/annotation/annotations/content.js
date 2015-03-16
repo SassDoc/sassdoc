@@ -7,7 +7,7 @@ export default function content() {
     },
 
     autofill(item) {
-      if (item.context.code.indexOf('@content') > -1) {
+      if (!item.content && item.context.code.indexOf('@content') > -1) {
         return '';
       }
     },
