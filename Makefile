@@ -21,7 +21,7 @@ lint: .jshintrc
 	$(BIN)js-yaml $< > $@
 
 test: test/data/expected.stream.json dist
-	$(BIN)_mocha test/**/*.test.js
+	$(BIN)mocha test/**/*.test.js
 	$(SASSDOC) --parse test/data/test.scss | diff - test/data/expected.json
 	$(SASSDOC) --parse - < test/data/test.scss | diff - test/data/expected.stream.json
 	rm -rf sassdoc && $(SASSDOC) test/data/test.scss && [ -d sassdoc ]

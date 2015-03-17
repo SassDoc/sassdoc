@@ -49,6 +49,18 @@ describe('#require', function () {
 
   it('should work for multiline description', function () {
     assert.deepEqual(requires.parse('name - description\nmore\nthan\none\nline'), { type: 'function', name: 'name', description: 'description\nmore\nthan\none\nline', 'external': false });
-   });
+  });
+
+  it('should resolve by type and name', function () {
+    var data = [
+      { context: { type: 'function', name: 'rem' } },
+      { context: { type: 'mixin', name: 'rem' } },
+      { context: { type: 'mixin', name: 'test' }, require: [ { type: 'mixin', name: 'rem' } ] },
+    ];
+
+    requires.resolve(data);
+
+    assert.deepEqual(data[2].require[0].item.context, { type: 'mixin', name: 'rem' });
+  });
 
 });
