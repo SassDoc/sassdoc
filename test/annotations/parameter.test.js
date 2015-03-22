@@ -30,19 +30,19 @@ describe('#parameter', function () {
   });
 
   it('should warn when a name is missing', function (done) {
-    var param = paramCtor({
+    param = paramCtor({
       logger: {
-        warn: function(msg){
+        warn: function (msg) {
           assert.equal(msg, '@parameter must at least have a name. Location: FileID:1:2');
           done();
         }
       }
     });
-    assert.deepEqual(param.parse('{type} [default] - description\nmore\nthan\none\nline', { commentRange : { start :1, end: 2}}, 'FileID'), undefined);
+    assert.deepEqual(param.parse('{type} [default] - description\nmore\nthan\none\nline', { commentRange: { start: 1, end: 2 }}, 'FileID'), undefined);
   });
 
   it('should work without a description', function () {
-    assert.deepEqual(param.parse('{type} name'), { type : 'type', name : 'name'});
+    assert.deepEqual(param.parse('{type} name'), { type: 'type', name: 'name' });
   });
 
 

@@ -11,16 +11,9 @@ describe('#content', function () {
     assert.deepEqual(content.parse('\nTest\n\nTest\t'), 'Test\n\nTest');
   });
 
-  it('should add @content to all items that contain it in item.context.code', function(){
+  it('should add @content to all items that contain it in item.context.code', function () {
 
-    assert.deepEqual(
-      content.autofill({
-        context : {
-          code : '@content'
-        }
-      }),
-      ''
-    );
+    assert.deepEqual(content.autofill({ context: { code: '@content' }}), '');
 
   });
 });
