@@ -4,7 +4,7 @@ import { format as fmt } from 'util';
 import chalkModule from 'chalk';
 
 const chalk = new chalkModule.constructor({
-  enabled: process.stderr.isTTY,
+  enabled: process.stderr && process.stderr.isTTY,
 });
 
 // Special chars.
