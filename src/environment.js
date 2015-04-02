@@ -190,8 +190,6 @@ export default class Environment extends EventEmitter {
    * Process `this.theme`.
    */
   loadTheme() {
-    this.themeName = this.theme || 'default';
-
     if (this.theme === undefined) {
       return this.defaultTheme();
     }
@@ -201,6 +199,7 @@ export default class Environment extends EventEmitter {
     }
 
     let theme = this.resolve(this.theme, this.themeCwd);
+    this.themeName = this.theme;
     this.displayTheme = path.relative(process.cwd(), theme);
 
     return this.tryTheme(theme);
@@ -251,7 +250,7 @@ export default class Environment extends EventEmitter {
     }
 
     this.theme = require('sassdoc-theme-default');
-    this.themeName = 'default';
+    this.themeName = this.displayTheme = 'default';
   }
 
   /**
