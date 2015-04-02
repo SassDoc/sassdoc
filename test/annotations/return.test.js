@@ -25,13 +25,13 @@ describe('#return', function () {
 
   it('should fail without type', function (done) {
     var ret = returnsCtor({
-      logger : {
-        warn : function(msg){
-          assert.equal(msg,'@return must at least have a type. Location: FileID:1:2');
+      logger: {
+        warn: function (msg) {
+          assert.equal(msg, '@return must at least have a type. Location: FileID:1:2');
           done();
         }
       }
     });
-    assert.deepEqual(ret.parse('', {commentRange: { start: 1, end: 2}}, 'FileID'), undefined);
+    assert.deepEqual(ret.parse('', { commentRange: { start: 1, end: 2 }}, 'FileID'), undefined);
   });
 });

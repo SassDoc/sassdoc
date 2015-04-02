@@ -13,11 +13,8 @@ dist:
 # Code quality
 # ============
 
-lint: .jshintrc
-	$(BIN)jshint --verbose bin/sassdoc index.js src test
-
-.jshintrc: .jshintrc.yaml
-	$(BIN)js-yaml $< > $@
+lint:
+	$(BIN)eslint bin/sassdoc index.js src test
 
 test: test/data/expected.stream.json dist
 	$(BIN)mocha test/**/*.test.js

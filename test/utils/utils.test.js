@@ -36,7 +36,7 @@ describe('#utils:is', function () {
 
   it('should provide utils.is.*', function () {
     // .stream
-    assert.equal(utils.is.stream({ pipe : function(){}}), true);
+    assert.equal(utils.is.stream({ pipe: function () {}}), true);
     assert.equal(utils.is.stream(), undefined);
     // .undef
     assert.equal(utils.is.undef(1), false);
@@ -47,8 +47,8 @@ describe('#utils:is', function () {
     // .string
     assert.equal(utils.is.string(), false);
     // .function
-    assert.equal(utils.is['function'](), false);
-    assert.equal(utils.is['function'](function(){}), true);
+    assert.equal(utils.is.function(), false);
+    assert.equal(utils.is.function(function () {}), true);
     // .object
     assert.equal(utils.is.object(), false);
     assert.equal(utils.is.object(1), false);

@@ -225,7 +225,7 @@ export default class Environment extends EventEmitter {
 
     if (typeof this.theme !== 'function') {
       this.emit('error', new errors.SassDocError(
-        `Given theme is ${str(this.theme)}, expected ${str(str)}.`
+        `Given theme is ${str(this.theme)}, expected ${str(str)}.` // eslint-disable-line comma-spacing
       ));
 
       return this.defaultTheme();

@@ -102,8 +102,10 @@
   },
   "devDependencies": {
     "babel": "4.6.*",
+    "babel-eslint": "^2.0.2",
     "coveralls": "^2.11.2",
     "dateformat": "^1.0.11",
+    "eslint": "^0.18.0",
     "istanbul": "^0.3.5",
     "jsesc": "^0.5.0",
     "jshint": "^2.6.3",
