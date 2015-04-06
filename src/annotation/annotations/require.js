@@ -60,7 +60,7 @@ export default function (env) {
 
         let functions = searchForMatches(
           item.context.code,
-          new RegExp('(@include)?\\s*([a-z0-9_-]+)\\s*\\(','ig'), // Literal destorys Syntax
+          new RegExp('(@include)?\\s*([a-z0-9_-]+)\\s*\\(', 'ig'), // Literal destorys Syntax
           isAnnotatedByHand.bind(null, handWritten, 'function'),
           2 // Get the second matching group instead of 1
         );
@@ -187,12 +187,12 @@ function isAnnotatedByHand(handWritten, type, name) {
   return false;
 }
 
-function searchForMatches(code, regex, isAnnotatedByHand, id = 1) {
+function searchForMatches(code, regex, isAnnotatedByHandProxy, id = 1) {
   let match;
   let matches = [];
 
   while ((match = regex.exec(code))) {
-    if (!isAnnotatedByHand(match[id]) && (id <= 1 || match[id-1] === undefined)) {
+    if (!isAnnotatedByHandProxy(match[id]) && (id <= 1 || match[id-1] === undefined)) {
       matches.push(match[id]);
     }
   }

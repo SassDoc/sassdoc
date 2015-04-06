@@ -204,21 +204,21 @@ describe('#environment', function () {
    */
   describe('#ensureEnvironment', function () {
     it('should return a proper Environment instance', function () {
-      var env = ensureEnvironment({ testKey: 'just a test' });
+      env = ensureEnvironment({ testKey: 'just a test' });
       assert.ok(env instanceof Environment);
       assert.ok('testKey' in env);
     });
 
     it('should call passed callback on error', function () {
       var spy = sinon.spy();
-      var env = ensureEnvironment({ logger: Logger.empty }, spy);
+      env = ensureEnvironment({ logger: Logger.empty }, spy);
       env.emit('error', new Error('Triggered from test'));
       assert.ok(spy.called);
     });
 
     it('should trow on error by default', function () {
       assert.throws(function () {
-        var env = ensureEnvironment({ logger: Logger.empty });
+        env = ensureEnvironment({ logger: Logger.empty });
         env.emit('error', new Error('Triggered from test'));
       });
     });
@@ -229,7 +229,7 @@ describe('#environment', function () {
    */
   describe('#ensureLogger', function () {
     it('should set a proper Logger instance for env', function () {
-      var env = ensureEnvironment({});
+      env = ensureEnvironment({});
       assert.ok(env.logger instanceof Logger);
     });
 
@@ -240,7 +240,7 @@ describe('#environment', function () {
     });
 
     it('should let a valid logger pass', function () {
-      var env = ensureEnvironment({ logger: Logger.empty });
+      env = ensureEnvironment({ logger: Logger.empty });
       assert.ok(!(env.logger instanceof Logger));
     });
   });

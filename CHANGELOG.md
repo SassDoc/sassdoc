@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.8
+
+* Upgrade to Babel 5.0 ([#394](https://github.com/SassDoc/sassdoc/pull/394))
+* Ensure `default` theme name is properly logged ([#393](https://github.com/SassDoc/sassdoc/pull/393))
+* Several dependencies updates ([#392](https://github.com/SassDoc/sassdoc/pull/392))
+* Switched to Eslint ([#388](https://github.com/SassDoc/sassdoc/pull/388))
+
 ## 2.1.0 &mdash; Polite Little Squid
 
 * A [`@name` annotation](http://sassdoc.com/annotations/#name) has been added to make it possible to override an item's name ([#358](https://github.com/SassDoc/sassdoc/issues/358))

@@ -14,7 +14,7 @@ export default function example() {
     name: 'example',
 
     parse(text) {
-      let example = {
+      let instance = {
         type: 'scss', // Default to `scss`.
         code: text,
       };
@@ -24,17 +24,17 @@ export default function example() {
 
       if (optionalType.trim().length !== 0) {
         let typeDesc = descRegEx.exec(optionalType);
-        example.type = typeDesc[1];
+        instance.type = typeDesc[1];
         if (typeDesc[2].length !== 0) {
-          example.description = typeDesc[2];
+          instance.description = typeDesc[2];
         }
-        example.code = text.substr(optionalType.length + 1); // Remove the type
+        instance.code = text.substr(optionalType.length + 1); // Remove the type
       }
 
       // Remove all leading/trailing line breaks.
-      example.code = example.code.replace(/^\n|\n$/g, '');
+      instance.code = instance.code.replace(/^\n|\n$/g, '');
 
-      return example;
+      return instance;
     },
   };
 }

@@ -1,9 +1,7 @@
 import { denodeify, is, g2b } from './utils';
 
 import Environment from './environment';
-// jshint/jshint#2118
-// import Logger, { checkLogger } from './logger';
-import { default as Logger, checkLogger } from './logger';
+import Logger, { checkLogger } from './logger';
 import Parser from './parser';
 import * as errors from './errors';
 import sorter from './sorter';
@@ -11,12 +9,12 @@ import exclude from './exclude';
 import recurse from './recurse';
 
 import fs from 'fs';
-import path from 'path'; // jshint ignore:line
-import difference from 'lodash.difference'; // jshint ignore:line
+import path from 'path';
+import difference from 'lodash.difference';
 import safeWipe from 'safe-wipe';
 import vfs from 'vinyl-fs';
 import converter from 'sass-convert';
-import pipe from 'multipipe'; // jshint ignore:line
+import pipe from 'multipipe';
 import through from 'through2';
 const mkdir = denodeify(require('mkdirp'));
 
@@ -83,13 +81,13 @@ function ensureLogger(config) {
  * @see srcEnv
  */
 export default function sassdoc(...args) {
-  return srcEnv(documentize, stream)(...args); // jshint ignore:line
+  return srcEnv(documentize, stream)(...args);
 
   /**
    * Safely wipe and re-create the destination directory.
    * @return {Promise}
    */
-  function refresh(env) { // jshint ignore:line
+  function refresh(env) {
     return safeWipe(env.dest, {
       force: true,
       parent: is.string(env.src) || is.array(env.src) ? g2b(env.src) : null,
@@ -109,7 +107,7 @@ export default function sassdoc(...args) {
    * Render theme with parsed data context.
    * @return {Promise}
    */
-  function theme(env) { // jshint ignore:line
+  function theme(env) {
     let promise = env.theme(env.dest, env);
 
     if (!is.promise(promise)) {
@@ -128,9 +126,7 @@ export default function sassdoc(...args) {
    * Execute full SassDoc sequence from a source directory.
    * @return {Promise}
    */
-  async function documentize(env) { // jshint ignore:line
-    /* jshint ignore:start */
-
+  async function documentize(env) {
     init(env);
     let data = await baseDocumentize(env);
 
@@ -144,8 +140,6 @@ export default function sassdoc(...args) {
     }
 
     return data;
-
-    /* jshint ignore:end */
   }
 
   /**
@@ -162,8 +156,6 @@ export default function sassdoc(...args) {
         env.data = data;
         onEmpty(data, env);
       });
-
-    /* jshint ignore:start */
 
     /**
      * Returned Promise await the full sequence,
@@ -192,8 +184,6 @@ export default function sassdoc(...args) {
 
     });
 
-    /* jshint ignore:end */
-
     return filter;
   }
 }
@@ -205,8 +195,7 @@ export default function sassdoc(...args) {
  * @return {Promise | Stream}
  * @see srcEnv
  */
-export function parse(...args) { // jshint ignore:line
-  /* jshint ignore:start */
+export function parse(...args) {
 
   return srcEnv(documentize, stream)(...args);
 
@@ -219,30 +208,28 @@ export function parse(...args) { // jshint ignore:line
     return data;
   }
 
-  /* jshint ignore:end */
-
   /**
    * Don't pass files through, but pass final data at the end.
    * @return {Stream}
    */
-  function stream(env) { // jshint ignore:line
-    let parse = parseFilter(env);
+  function stream(env) {
+    let parseStream = parseFilter(env);
 
     let filter = through.obj((file, enc, cb) => cb(), function (cb) {
-      parse.promise.then(data => {
+      parseStream.promise.then(data => {
         this.push(data);
         cb();
       }, cb);
     });
 
-    return pipe(parse, filter);
+    return pipe(parseStream, filter);
   }
 }
 
 /**
  * Source directory fetching and parsing.
  */
-async function baseDocumentize(env) { // jshint ignore:line
+async function baseDocumentize(env) {
   let filter = parseFilter(env);
 
   filter.promise
@@ -261,7 +248,7 @@ async function baseDocumentize(env) { // jshint ignore:line
       });
     });
 
-  let streams = [ // jshint ignore:line
+  let streams = [
     vfs.src(env.src),
     recurse(),
     exclude(env.exclude || []),
@@ -269,13 +256,10 @@ async function baseDocumentize(env) { // jshint ignore:line
     filter
   ];
 
-  /* jshint ignore:start */
-
   let pipeline = () => {
     return new Promise((resolve, reject) => {
-      pipe(...streams, err => {
-        err ? reject(err) : resolve();
-      })
+      pipe(...streams, err =>
+        err ? reject(err) : resolve())
       .resume(); // Drain.
     });
   };
@@ -288,8 +272,6 @@ async function baseDocumentize(env) { // jshint ignore:line
   }
 
   return env.data;
-
-  /* jshint ignore:end */
 }
 
 /**
@@ -369,7 +351,7 @@ function onEmpty(data, env) {
  * Init timer.
  * @param {Object} env
  */
-function init(env) { // jshint ignore:line
+function init(env) {
   env.logger.time('SassDoc');
 }
 
@@ -377,7 +359,7 @@ function init(env) { // jshint ignore:line
  * Log final success message.
  * @param {Object} env
  */
-function okay(env) { // jshint ignore:line
+function okay(env) {
   env.logger.log('Process over. Everything okay!');
   env.logger.timeEnd('SassDoc', '%s completed after %dms');
 }
