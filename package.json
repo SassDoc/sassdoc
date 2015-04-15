@@ -78,7 +78,7 @@
     "README.md"
   ],
   "dependencies": {
-    "babel-runtime": "5.0.*",
+    "babel-runtime": "5.1.*",
     "chalk": "^1.0.0",
     "concat-stream": "^1.4.7",
     "docopt": "^0.6.1",
@@ -101,7 +101,7 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
-    "babel": "5.0.*",
+    "babel": "5.1.*",
     "babel-eslint": "^2.0.2",
     "coveralls": "^2.11.2",
     "dateformat": "^1.0.11",
