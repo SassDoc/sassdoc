@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.9
+
+* Upgrade to Babel 5.1, fix zn issue with `Symbol`  ([#396](https://github.com/SassDoc/sassdoc/issues/396))
+
 ## 2.1.8
 
 * Upgrade to Babel 5.0 ([#394](https://github.com/SassDoc/sassdoc/pull/394))
