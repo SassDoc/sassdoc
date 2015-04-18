@@ -30,10 +30,10 @@ export default function recurse() {
     let pattern = path.resolve(file.path, '**/*.+(sass|scss)');
 
     vfs.src(pattern)
-      .pipe(through.obj((file, enc, cb) => {
+      .pipe(through.obj((_file, _enc, _cb) => {
         // Append to "parent" stream.
-        this.push(file);
-        cb();
+        this.push(_file);
+        _cb();
       }, () => {
         // All done.
         cb();
