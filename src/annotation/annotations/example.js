@@ -7,6 +7,7 @@
  * <div></div>
  */
 
+const stripIndent = require('strip-indent');
 const descRegEx = /(\w+)\s*(?:-?\s*(.*))/;
 
 export default function example() {
@@ -33,6 +34,8 @@ export default function example() {
 
       // Remove all leading/trailing line breaks.
       instance.code = instance.code.replace(/^\n|\n$/g, '');
+
+      instance.code = stripIndent(instance.code);
 
       return instance;
     },
