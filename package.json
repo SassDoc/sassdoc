@@ -21,7 +21,7 @@
       "url": "https://twitter.com/pascalduez"
     }
   ],
-  "version": "2.1.9",
+  "version": "2.1.10",
   "license": {
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
@@ -95,6 +95,7 @@
     "sass-convert": "^0.5.0",
     "sassdoc-theme-default": "^2.3.4",
     "scss-comment-parser": "^0.6.0",
+    "strip-indent": "^1.0.1",
     "through2": "^0.6.3",
     "update-notifier": "^0.3.0",
     "vinyl-fs": "^1.0.0",
