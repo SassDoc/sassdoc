@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.11
+
+* Republish of 2.1.10 because of a failed npm publish.
+
+## 2.1.10
+
+* Strip `@example` indent ([#401](https://github.com/SassDoc/sassdoc/pull/401))
+
 ## 2.1.9
 
 * Upgrade to Babel 5.1, fix zn issue with `Symbol`  ([#396](https://github.com/SassDoc/sassdoc/issues/396))
