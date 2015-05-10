@@ -15,6 +15,10 @@ describe('#example', function () {
     assert.deepEqual(example.parse('\nsome code\n'), { type: 'scss', code: 'some code' });
   });
 
+  it('should strip indent', function () {
+    assert.deepEqual(example.parse('\n    some code\n        indented\n'), { type: 'scss', code: 'some code\n    indented' });
+  });
+
   it('should extract type and description from first line', function () {
     assert.deepEqual(example.parse('type\nsome code'), { type: 'type', code: 'some code' });
     assert.deepEqual(example.parse('type - description\nsome code'), { type: 'type', description: 'description', code: 'some code' });
