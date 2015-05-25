@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.12
+
+* More generic streaming success message ([#402](https://github.com/SassDoc/sassdoc/pull/402))
+
 ## 2.1.11
 
 * Republish of 2.1.10 because of a failed npm publish.
