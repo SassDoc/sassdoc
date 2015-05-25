@@ -22,10 +22,7 @@
     }
   ],
   "version": "2.1.11",
-  "license": {
-    "type": "MIT",
-    "url": "http://opensource.org/licenses/MIT"
-  },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/SassDoc/sassdoc"
