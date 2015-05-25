@@ -152,7 +152,7 @@ export default function sassdoc(...args) {
 
     filter.promise
       .then(data => {
-        env.logger.log('SCSS files successfully parsed.');
+        env.logger.log('Sass sources successfully parsed.');
         env.data = data;
         onEmpty(data, env);
       });
