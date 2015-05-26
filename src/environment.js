@@ -136,6 +136,7 @@ export default class Environment extends EventEmitter {
 
     if (!this.dest) {
       this.dest = 'sassdoc';
+      this.destCwd = true;
     }
 
     this.dest = this.resolve(this.dest, this.destCwd);
