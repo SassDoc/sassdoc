@@ -1,6 +1,7 @@
 /node_modules
 /dist
 /test/data/expected.stream.json
+/test/custom-sassdoc
 /sassdoc
 /coverage
 .DS_Store
