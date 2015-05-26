@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.13
+
+* Default destination is relative to CWD ([#403](https://github.com/SassDoc/sassdoc/pull/403))
+
 ## 2.1.12
 
 * More generic streaming success message ([#402](https://github.com/SassDoc/sassdoc/pull/402))
