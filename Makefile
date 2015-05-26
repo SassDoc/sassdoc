@@ -22,6 +22,8 @@ test: test/data/expected.stream.json dist
 	$(SASSDOC) --parse - < test/data/test.scss | diff - test/data/expected.stream.json
 	rm -rf sassdoc && $(SASSDOC) test/data/test.scss && [ -d sassdoc ]
 	rm -rf sassdoc && $(SASSDOC) - < test/data/test.scss && [ -d sassdoc ]
+	rm -rf sassdoc && $(SASSDOC) -c test/config.yaml test/data/test.scss && [ -d sassdoc ]
+	rm -rf sassdoc test/custom-sassdoc && $(SASSDOC) -c test/config-dest.yaml test/data/test.scss && [ -d test/custom-sassdoc ]
 
 test/data/expected.stream.json: test/data/expected.json
 	test/data/stream $< > $@
