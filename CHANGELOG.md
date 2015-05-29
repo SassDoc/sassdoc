@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Add a `debug` option ([#407](https://github.com/SassDoc/sassdoc/pull/407))
+
 ## 2.1.20
 
 * Add `argument` as an alias for `parameter` annotation.
