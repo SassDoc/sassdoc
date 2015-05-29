@@ -234,7 +234,7 @@ async function baseDocumentize(env) {
 
   filter.promise
     .then(data => {
-      env.logger.log(`Folder \`${env.src}\` successfully parsed.`);
+      env.logger.log(`Input \`${env.src}\` successfully parsed.`);
       env.data = data;
       onEmpty(data, env);
 
