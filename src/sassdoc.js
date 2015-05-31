@@ -62,9 +62,14 @@ export function ensureEnvironment(config, onError = e => { throw e; }) {
  * @return {Logger}
  */
 function ensureLogger(config) {
-  if (!is.object(config) || !('logger' in config)) {
+  if (!is.object(config)) {
     // Get default logger.
-    return new Logger(config && config.verbose, process.env.SASSDOC_DEBUG);
+    return new Logger();
+  }
+
+  if (!('logger' in config)) {
+    // Get default configured logger.
+    return new Logger(config.verbose, config.debug || process.env.SASSDOC_DEBUG);
   }
 
   let logger = checkLogger(config.logger);
