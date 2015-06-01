@@ -12,13 +12,11 @@ export default function alias(env) {
           return;
         }
 
-        let alias = item.alias;
         let name = item.context.name;
-
-        let aliasedItem = Array.find(data, i => i.context.name === alias);
+        let aliasedItem = Array.find(data, i => i.context.name === item.alias);
 
         if (aliasedItem === undefined) {
-          env.logger.warn(`Item \`${name}\` is an alias of \`${alias}\` but this item doesn't exist.`);
+          env.logger.warn(`Item \`${name}\` is an alias of \`${item.alias}\` but this item doesn't exist.`);
           delete item.alias;
           return;
         }

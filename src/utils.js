@@ -11,13 +11,13 @@ export const splitNamespace = value => value.split(ns);
 export function denodeify(fn) {
   return function (...args) {
     return new Promise((resolve, reject) => {
-      fn(...args, (err, ...args) => {
+      fn(...args, (err, ...cbargs) => {
         if (err) {
           reject(err);
           return;
         }
 
-        resolve(...args);
+        resolve(...cbargs);
       });
     });
   };
