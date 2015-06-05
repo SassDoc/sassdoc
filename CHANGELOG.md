@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-* Add a `debug` option ([#407](https://github.com/SassDoc/sassdoc/pull/407))
+* Add a `debug` option ([#406](https://github.com/SassDoc/sassdoc/pull/406))
 
 ## 2.1.13
 
