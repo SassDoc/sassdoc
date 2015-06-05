@@ -31,6 +31,15 @@ export default function access(env) {
       return 'public';
     },
 
+    resolve(data) {
+      data.forEach(item => {
+        // Ensure valid access when not autofilled.
+        if (item.access === 'auto') {
+          item.access = 'public';
+        }
+      });
+    },
+
     default() {
       return 'auto';
     },

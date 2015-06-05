@@ -38,4 +38,10 @@ describe('#access', function () {
     assert.equal(access.autofill({ context: { name: 'private'}, access: 'private'}), undefined);
     assert.equal(access.autofill({ context: { name: '_private-name'}, access: 'auto'}), 'private');
   });
+
+  it('should work when not autofilled', function () {
+    var data = [{ access: 'auto' }];
+    access.resolve(data);
+    assert.equal(data[0].access, 'public');
+  });
 });
