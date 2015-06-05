@@ -4,6 +4,10 @@
 
 * Add a `debug` option ([#406](https://github.com/SassDoc/sassdoc/pull/406))
 
+## 2.1.14
+
+* Make `access` work when not autofilled ([#399](https://github.com/SassDoc/sassdoc/issues/399))
+
 ## 2.1.13
 
 * Default destination is relative to CWD ([#403](https://github.com/SassDoc/sassdoc/pull/403))
