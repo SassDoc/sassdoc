@@ -45,5 +45,7 @@ export default function access(env) {
     },
 
     multiple: false,
+
+    overwritePoster: true
   };
 }
