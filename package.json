@@ -21,7 +21,7 @@
       "url": "https://twitter.com/pascalduez"
     }
   ],
-  "version": "2.1.14",
+  "version": "2.1.15",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -75,7 +75,7 @@
     "README.md"
   ],
   "dependencies": {
-    "babel-runtime": "5.1.*",
+    "babel-runtime": "5.5.*",
     "chalk": "^1.0.0",
     "concat-stream": "^1.4.7",
     "docopt": "^0.6.1",
@@ -99,7 +99,7 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
-    "babel": "5.1.*",
+    "babel": "5.5.*",
     "babel-eslint": "^2.0.2",
     "coveralls": "^2.11.2",
     "dateformat": "^1.0.11",

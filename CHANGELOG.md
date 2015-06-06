@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.15
+
+* Update Babel to 5.5 because of a bug with Babel 5.1 runtime.
+
 ## 2.1.14
 
 * Make `access` work when not autofilled ([#399](https://github.com/SassDoc/sassdoc/issues/399))
