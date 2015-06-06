@@ -1,545 +1,5 @@
 [
   {
-    "description": "This is a test function aiming at testing:\n- `@param`\n- `@return`\n- `@throw`\n\n",
-    "commentRange": {
-      "start": 63,
-      "end": 73
-    },
-    "context": {
-      "type": "function",
-      "name": "function-specific-test",
-      "code": "",
-      "line": {
-        "start": 75,
-        "end": 75
-      }
-    },
-    "parameter": [
-      {
-        "type": "*",
-        "name": "arg",
-        "description": "Whatever"
-      },
-      {
-        "type": "List",
-        "name": "extra-arguments",
-        "default": "()",
-        "description": "Extra arguments\n"
-      }
-    ],
-    "return": {
-      "type": "*",
-      "description": "Anything\n"
-    },
-    "throw": [
-      "This is an error."
-    ],
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    },
-    "usedBy": [
-      {
-        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
-        "context": {
-          "type": "mixin",
-          "name": "autofill-test",
-          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
-          "line": {
-            "start": 124,
-            "end": 135
-          }
-        }
-      },
-      {
-        "description": "This is a test that autofill can be overwritten.\n",
-        "context": {
-          "type": "mixin",
-          "name": "autofill-test-handwritten",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
-          "line": {
-            "start": 144,
-            "end": 148
-          }
-        }
-      },
-      {
-        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
-        "context": {
-          "type": "function",
-          "name": "global-test",
-          "code": "",
-          "line": {
-            "start": 60,
-            "end": 60
-          }
-        }
-      }
-    ]
-  },
-  {
-    "description": "This is a test mixin aiming at testing:\n- `@content`\n- `@param`\n- `@output`\n- `@throw`\n\n",
-    "commentRange": {
-      "start": 79,
-      "end": 92
-    },
-    "context": {
-      "type": "mixin",
-      "name": "mixin-specific-test",
-      "code": "",
-      "line": {
-        "start": 94,
-        "end": 94
-      }
-    },
-    "content": "Content is parsed and whatever.",
-    "parameter": [
-      {
-        "type": "Number",
-        "name": "number",
-        "default": "42",
-        "description": "Number"
-      },
-      {
-        "type": "Arglist",
-        "name": "extra-arguments",
-        "description": "Extra arguments\n"
-      }
-    ],
-    "output": "Nothing",
-    "throw": [
-      "This is an error."
-    ],
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    },
-    "usedBy": [
-      {
-        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
-        "context": {
-          "type": "mixin",
-          "name": "autofill-test",
-          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
-          "line": {
-            "start": 124,
-            "end": 135
-          }
-        }
-      },
-      {
-        "description": "This is a test that autofill can be overwritten.\n",
-        "context": {
-          "type": "mixin",
-          "name": "autofill-test-handwritten",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
-          "line": {
-            "start": 144,
-            "end": 148
-          }
-        }
-      },
-      {
-        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
-        "context": {
-          "type": "function",
-          "name": "global-test",
-          "code": "",
-          "line": {
-            "start": 60,
-            "end": 60
-          }
-        }
-      }
-    ]
-  },
-  {
-    "description": "This is a test variable aiming at testing:\n- `@prop`\n- `@type`\n\n",
-    "commentRange": {
-      "start": 98,
-      "end": 105
-    },
-    "context": {
-      "type": "variable",
-      "name": "variable-specific-test",
-      "value": "()",
-      "scope": "private",
-      "line": {
-        "start": 107,
-        "end": 107
-      }
-    },
-    "property": [
-      {
-        "type": "String",
-        "name": "base.first-key",
-        "default": "\"default\"",
-        "description": "Description"
-      },
-      {
-        "type": "String",
-        "name": "base.second-key",
-        "default": "42",
-        "description": "Description"
-      }
-    ],
-    "type": "{*}",
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    },
-    "usedBy": [
-      {
-        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
-        "context": {
-          "type": "mixin",
-          "name": "autofill-test",
-          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
-          "line": {
-            "start": 124,
-            "end": 135
-          }
-        }
-      },
-      {
-        "description": "This is a test that autofill can be overwritten.\n",
-        "context": {
-          "type": "mixin",
-          "name": "autofill-test-handwritten",
-          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
-          "line": {
-            "start": 144,
-            "end": 148
-          }
-        }
-      },
-      {
-        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
-        "context": {
-          "type": "function",
-          "name": "global-test",
-          "code": "",
-          "line": {
-            "start": 60,
-            "end": 60
-          }
-        }
-      }
-    ]
-  },
-  {
-    "description": "This is a test placeholder aiming at testing:\n- `@throw`\n\n",
-    "commentRange": {
-      "start": 110,
-      "end": 113
-    },
-    "context": {
-      "type": "placeholder",
-      "name": "placeholder-specific-test",
-      "code": "",
-      "line": {
-        "start": 115,
-        "end": 115
-      }
-    },
-    "throw": [
-      "This is an error."
-    ],
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    },
-    "usedBy": [
-      {
-        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
-        "context": {
-          "type": "mixin",
-          "name": "autofill-test",
-          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
-          "line": {
-            "start": 124,
-            "end": 135
-          }
-        }
-      },
-      {
-        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
-        "context": {
-          "type": "function",
-          "name": "global-test",
-          "code": "",
-          "line": {
-            "start": 60,
-            "end": 60
-          }
-        }
-      }
-    ]
-  },
-  {
-    "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
-    "commentRange": {
-      "start": 119,
-      "end": 122
-    },
-    "context": {
-      "type": "mixin",
-      "name": "autofill-test",
-      "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
-      "line": {
-        "start": 124,
-        "end": 135
-      }
-    },
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "content": "",
-    "require": [
-      {
-        "type": "mixin",
-        "name": "mixin-specific-test"
-      },
-      {
-        "type": "function",
-        "name": "function-specific-test"
-      },
-      {
-        "type": "function",
-        "name": "alias-test"
-      },
-      {
-        "type": "function",
-        "name": "alias-test-aliased"
-      },
-      {
-        "type": "placeholder",
-        "name": "placeholder-specific-test"
-      },
-      {
-        "type": "variable",
-        "name": "variable-specific-test"
-      }
-    ],
-    "throw": [
-      "This is an autofilled error"
-    ],
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    }
-  },
-  {
-    "description": "This is a test that autofill can be overwritten.\n",
-    "commentRange": {
-      "start": 140,
-      "end": 142
-    },
-    "context": {
-      "type": "mixin",
-      "name": "autofill-test-handwritten",
-      "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
-      "line": {
-        "start": 144,
-        "end": 148
-      }
-    },
-    "require": [
-      {
-        "type": "variable",
-        "name": "variable-specific-test"
-      },
-      {
-        "type": "function",
-        "name": "function-specific-test",
-        "external": false
-      },
-      {
-        "type": "mixin",
-        "name": "mixin-specific-test",
-        "external": false
-      }
-    ],
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    }
-  },
-  {
-    "description": "This is a test that autofill should report not found\n",
-    "commentRange": {
-      "start": 150,
-      "end": 151
-    },
-    "context": {
-      "type": "mixin",
-      "name": "autofill-test-not-found",
-      "code": "\n",
-      "line": {
-        "start": 152,
-        "end": 153
-      }
-    },
-    "require": [],
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    }
-  },
-  {
-    "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
-    "commentRange": {
-      "start": 157,
-      "end": 160
-    },
-    "context": {
-      "type": "function",
-      "name": "alias-test",
-      "code": "",
-      "line": {
-        "start": 162,
-        "end": 162
-      }
-    },
-    "alias": "alias-test-aliased",
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    },
-    "usedBy": [
-      {
-        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
-        "context": {
-          "type": "mixin",
-          "name": "autofill-test",
-          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
-          "line": {
-            "start": 124,
-            "end": 135
-          }
-        }
-      }
-    ]
-  },
-  {
-    "description": "This is a test function aiming at testing:\n- `@alias`\n",
-    "commentRange": {
-      "start": 164,
-      "end": 165
-    },
-    "context": {
-      "type": "function",
-      "name": "alias-test-aliased",
-      "code": "",
-      "line": {
-        "start": 167,
-        "end": 167
-      }
-    },
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    },
-    "aliased": [
-      "alias-test"
-    ],
-    "usedBy": [
-      {
-        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
-        "context": {
-          "type": "mixin",
-          "name": "autofill-test",
-          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
-          "line": {
-            "start": 124,
-            "end": 135
-          }
-        }
-      }
-    ]
-  },
-  {
-    "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
-    "commentRange": {
-      "start": 169,
-      "end": 172
-    },
-    "context": {
-      "type": "function",
-      "name": "alias-test-should-warn",
-      "code": "",
-      "line": {
-        "start": 174,
-        "end": 174
-      }
-    },
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    }
-  },
-  {
-    "description": "This is a test placeholder aiming at testing:\n- `@name`\n",
-    "commentRange": {
-      "start": 176,
-      "end": 178
-    },
-    "context": {
-      "type": "placeholder",
-      "name": "placeholder-[blue,green,red]",
-      "code": "",
-      "line": {
-        "start": 180,
-        "end": 180
-      }
-    },
-    "group": [
-      "test"
-    ],
-    "access": "private",
-    "file": {
-      "path": "test.scss",
-      "name": "test.scss"
-    }
-  },
-  {
     "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
     "commentRange": {
       "start": 8,
@@ -570,6 +30,7 @@
       }
     ],
     "group": [
+      "test",
       "test-function"
     ],
     "ignore": [],
@@ -656,6 +117,546 @@
       "Nothing to do here.",
       "My people need me."
     ],
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
+    "description": "This is a test function aiming at testing:\n- `@param`\n- `@return`\n- `@throw`\n\n",
+    "commentRange": {
+      "start": 63,
+      "end": 73
+    },
+    "context": {
+      "type": "function",
+      "name": "function-specific-test",
+      "code": "",
+      "line": {
+        "start": 75,
+        "end": 75
+      }
+    },
+    "parameter": [
+      {
+        "type": "*",
+        "name": "arg",
+        "description": "Whatever"
+      },
+      {
+        "type": "List",
+        "name": "extra-arguments",
+        "default": "()",
+        "description": "Extra arguments\n"
+      }
+    ],
+    "return": {
+      "type": "*",
+      "description": "Anything\n"
+    },
+    "throw": [
+      "This is an error."
+    ],
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    },
+    "usedBy": [
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 60,
+            "end": 60
+          }
+        }
+      },
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 124,
+            "end": 135
+          }
+        }
+      },
+      {
+        "description": "This is a test that autofill can be overwritten.\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test-handwritten",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
+          "line": {
+            "start": 144,
+            "end": 148
+          }
+        }
+      }
+    ]
+  },
+  {
+    "description": "This is a test mixin aiming at testing:\n- `@content`\n- `@param`\n- `@output`\n- `@throw`\n\n",
+    "commentRange": {
+      "start": 79,
+      "end": 92
+    },
+    "context": {
+      "type": "mixin",
+      "name": "mixin-specific-test",
+      "code": "",
+      "line": {
+        "start": 94,
+        "end": 94
+      }
+    },
+    "content": "Content is parsed and whatever.",
+    "parameter": [
+      {
+        "type": "Number",
+        "name": "number",
+        "default": "42",
+        "description": "Number"
+      },
+      {
+        "type": "Arglist",
+        "name": "extra-arguments",
+        "description": "Extra arguments\n"
+      }
+    ],
+    "output": "Nothing",
+    "throw": [
+      "This is an error."
+    ],
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    },
+    "usedBy": [
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 60,
+            "end": 60
+          }
+        }
+      },
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 124,
+            "end": 135
+          }
+        }
+      },
+      {
+        "description": "This is a test that autofill can be overwritten.\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test-handwritten",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
+          "line": {
+            "start": 144,
+            "end": 148
+          }
+        }
+      }
+    ]
+  },
+  {
+    "description": "This is a test variable aiming at testing:\n- `@prop`\n- `@type`\n\n",
+    "commentRange": {
+      "start": 98,
+      "end": 105
+    },
+    "context": {
+      "type": "variable",
+      "name": "variable-specific-test",
+      "value": "()",
+      "scope": "private",
+      "line": {
+        "start": 107,
+        "end": 107
+      }
+    },
+    "property": [
+      {
+        "type": "String",
+        "name": "base.first-key",
+        "default": "\"default\"",
+        "description": "Description"
+      },
+      {
+        "type": "String",
+        "name": "base.second-key",
+        "default": "42",
+        "description": "Description"
+      }
+    ],
+    "type": "{*}",
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    },
+    "usedBy": [
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 60,
+            "end": 60
+          }
+        }
+      },
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 124,
+            "end": 135
+          }
+        }
+      },
+      {
+        "description": "This is a test that autofill can be overwritten.\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test-handwritten",
+          "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
+          "line": {
+            "start": 144,
+            "end": 148
+          }
+        }
+      }
+    ]
+  },
+  {
+    "description": "This is a test placeholder aiming at testing:\n- `@throw`\n\n",
+    "commentRange": {
+      "start": 110,
+      "end": 113
+    },
+    "context": {
+      "type": "placeholder",
+      "name": "placeholder-specific-test",
+      "code": "",
+      "line": {
+        "start": 115,
+        "end": 115
+      }
+    },
+    "throw": [
+      "This is an error."
+    ],
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    },
+    "usedBy": [
+      {
+        "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
+        "context": {
+          "type": "function",
+          "name": "global-test",
+          "code": "",
+          "line": {
+            "start": 60,
+            "end": 60
+          }
+        }
+      },
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 124,
+            "end": 135
+          }
+        }
+      }
+    ]
+  },
+  {
+    "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+    "commentRange": {
+      "start": 119,
+      "end": 122
+    },
+    "context": {
+      "type": "mixin",
+      "name": "autofill-test",
+      "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+      "line": {
+        "start": 124,
+        "end": 135
+      }
+    },
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "content": "",
+    "require": [
+      {
+        "type": "mixin",
+        "name": "mixin-specific-test"
+      },
+      {
+        "type": "function",
+        "name": "function-specific-test"
+      },
+      {
+        "type": "function",
+        "name": "alias-test"
+      },
+      {
+        "type": "function",
+        "name": "alias-test-aliased"
+      },
+      {
+        "type": "placeholder",
+        "name": "placeholder-specific-test"
+      },
+      {
+        "type": "variable",
+        "name": "variable-specific-test"
+      }
+    ],
+    "throw": [
+      "This is an autofilled error"
+    ],
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
+    "description": "This is a test that autofill can be overwritten.\n",
+    "commentRange": {
+      "start": 140,
+      "end": 142
+    },
+    "context": {
+      "type": "mixin",
+      "name": "autofill-test-handwritten",
+      "code": "\n  $call: function-specific-test();\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n",
+      "line": {
+        "start": 144,
+        "end": 148
+      }
+    },
+    "require": [
+      {
+        "type": "variable",
+        "name": "variable-specific-test"
+      },
+      {
+        "type": "function",
+        "name": "function-specific-test",
+        "external": false
+      },
+      {
+        "type": "mixin",
+        "name": "mixin-specific-test",
+        "external": false
+      }
+    ],
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
+    "description": "This is a test that autofill should report not found\n",
+    "commentRange": {
+      "start": 150,
+      "end": 151
+    },
+    "context": {
+      "type": "mixin",
+      "name": "autofill-test-not-found",
+      "code": "\n",
+      "line": {
+        "start": 152,
+        "end": 153
+      }
+    },
+    "require": [],
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
+    "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
+    "commentRange": {
+      "start": 157,
+      "end": 160
+    },
+    "context": {
+      "type": "function",
+      "name": "alias-test",
+      "code": "",
+      "line": {
+        "start": 162,
+        "end": 162
+      }
+    },
+    "alias": "alias-test-aliased",
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    },
+    "usedBy": [
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 124,
+            "end": 135
+          }
+        }
+      }
+    ]
+  },
+  {
+    "description": "This is a test function aiming at testing:\n- `@alias`\n",
+    "commentRange": {
+      "start": 164,
+      "end": 165
+    },
+    "context": {
+      "type": "function",
+      "name": "alias-test-aliased",
+      "code": "",
+      "line": {
+        "start": 167,
+        "end": 167
+      }
+    },
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    },
+    "aliased": [
+      "alias-test"
+    ],
+    "usedBy": [
+      {
+        "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
+        "context": {
+          "type": "mixin",
+          "name": "autofill-test",
+          "code": "\n  autofill-test: $autofill-test;\n  $call: function-specific-test(alias-test(),alias-test-aliased(),'test', $no);\n  $use: $variable-specific-test;\n  @include mixin-specific-test;\n  @extend %placeholder-specific-test;\n\n  @content;\n\n  @include autofill-test();\n  @error \"This is an autofilled error\";\n",
+          "line": {
+            "start": 124,
+            "end": 135
+          }
+        }
+      }
+    ]
+  },
+  {
+    "description": "This is a test function aiming at testing:\n- `@alias`\n\n",
+    "commentRange": {
+      "start": 169,
+      "end": 172
+    },
+    "context": {
+      "type": "function",
+      "name": "alias-test-should-warn",
+      "code": "",
+      "line": {
+        "start": 174,
+        "end": 174
+      }
+    },
+    "group": [
+      "test"
+    ],
+    "access": "public",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
+    "description": "This is a test placeholder aiming at testing:\n- `@name`\n",
+    "commentRange": {
+      "start": 176,
+      "end": 178
+    },
+    "context": {
+      "type": "placeholder",
+      "name": "placeholder-[blue,green,red]",
+      "code": "",
+      "line": {
+        "start": 180,
+        "end": 180
+      }
+    },
+    "group": [
+      "test"
+    ],
+    "access": "public",
     "file": {
       "path": "test.scss",
       "name": "test.scss"
