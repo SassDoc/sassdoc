@@ -5,5 +5,7 @@ export default function author() {
     parse(text) {
       return text.trim();
     },
+
+    overwritePoster: true
   };
 }
