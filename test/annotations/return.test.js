@@ -29,8 +29,8 @@ describe('#return', function () {
         warn: function (msg) {
           assert.equal(msg, '@return must at least have a type. Location: FileID:1:2');
           done();
-        }
-      }
+        },
+      },
     });
     assert.deepEqual(ret.parse('', { commentRange: { start: 1, end: 2 }}, 'FileID'), undefined);
   });

@@ -107,8 +107,8 @@ describe('#environment', function () {
       display: {
         access: ['public', 'private'],
         alias: true,
-        watermark: true
-      }
+        watermark: true,
+      },
     };
 
     beforeEach(function () {
