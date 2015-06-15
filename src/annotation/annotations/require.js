@@ -192,7 +192,7 @@ function searchForMatches(code, regex, isAnnotatedByHandProxy, id = 1) {
   let matches = [];
 
   while ((match = regex.exec(code))) {
-    if (!isAnnotatedByHandProxy(match[id]) && (id <= 1 || match[id-1] === undefined)) {
+    if (!isAnnotatedByHandProxy(match[id]) && (id <= 1 || match[id - 1] === undefined)) {
       matches.push(match[id]);
     }
   }
