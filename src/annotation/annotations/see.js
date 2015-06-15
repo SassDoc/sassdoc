@@ -9,7 +9,7 @@ export default function see(env) {
 
       let obj = {
         type: match[1] || 'function',
-        name: match[2]
+        name: match[2],
       };
 
       if (obj.name.indexOf('$') === 0) {

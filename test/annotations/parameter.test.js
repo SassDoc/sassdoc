@@ -35,8 +35,8 @@ describe('#parameter', function () {
         warn: function (msg) {
           assert.equal(msg, '@parameter must at least have a name. Location: FileID:1:2');
           done();
-        }
-      }
+        },
+      },
     });
     assert.deepEqual(param.parse('{type} [default] - description\nmore\nthan\none\nline', { commentRange: { start: 1, end: 2 }}, 'FileID'), undefined);
   });
