@@ -101,10 +101,10 @@
   "devDependencies": {
     "babel": "5.6.*",
     "babel-eslint": "^3.1.15",
+    "babel-istanbul": "^0.2.10",
     "coveralls": "^2.11.2",
     "dateformat": "^1.0.11",
     "eslint": "^0.23.0",
-    "istanbul": "^0.3.13",
     "jsesc": "^0.5.0",
     "jshint": "^2.6.3",
     "mocha": "^2.2.1",
