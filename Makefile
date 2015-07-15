@@ -30,15 +30,15 @@ test/data/expected.stream.json: test/data/expected.json
 
 cover: dist
 	rm -rf coverage
-	$(BIN)istanbul cover --report none --print detail $(BIN)_mocha test/**/*.test.js
+	$(BIN)babel-istanbul cover --report none --print detail $(BIN)_mocha test/**/*.test.js
 
 cover-browse: dist
 	rm -rf coverage
-	$(BIN)istanbul cover --report html $(BIN)_mocha test/**/*.test.js
+	$(BIN)babel-istanbul cover --report html $(BIN)_mocha test/**/*.test.js
 	open coverage/index.html
 
 travis: lint cover
-	$(BIN)istanbul report lcovonly
+	$(BIN)babel-istanbul report lcovonly
 	(cat coverage/lcov.info | coveralls) || exit 0
 	rm -rf coverage
 
