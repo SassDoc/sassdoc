@@ -86,7 +86,7 @@ function foo(bar = 'baz') {}
 
 ## Code blocks
 
-Whenever writing an `if`/`else` statement, the `else` keyword should directly follow the closing curly brace from the `if` statement. No line break between the closing brace and the keyword should exist. 
+Whenever writing an `if`/`else` statement, the `else` keyword should directly follow the closing curly brace from the `if` statement. No line break between the closing brace and the keyword should exist.
 
 Also, there should always be a single space between the `if` keyword and the condition.
 
@@ -104,7 +104,7 @@ Same goes with do/while and try/catch.
 
 ## Inline documentation
 
-Every function should be documented using [JSDoc](). Annotations should not be aligned in order not to have to update alignment whever a longer line is added.
+Every function should be documented using [JSDoc](http://usejsdoc.org/). Annotations should not be aligned in order not to have to update alignment whever a longer line is added.
 
 ```js
 /**
@@ -125,7 +125,7 @@ cfg.post(config);
 config.view = config; // Backward compatibility.
 
 /**
- * This is an extra long comment that does not fit on a single line because it 
+ * This is an extra long comment that does not fit on a single line because it
  * is longer than 80 characters. Because of this, it it splitted across several
  * lines.
  */
