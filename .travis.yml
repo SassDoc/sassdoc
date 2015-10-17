@@ -3,12 +3,19 @@ language: node_js
 node_js:
   - '0.10'
   - '0.12'
-  - 'iojs'
+  - '4.2'
+  - 'stable'
 
 before_install:
   - npm i npm@latest -g
 
+sudo: false
+
+git:
+  depth: 10
+
 script: make travis
+
 
 notifications:
   slack:
