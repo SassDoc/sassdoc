@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.16
+
+* Upgrade scss-comment-parser. ([#21](https://github.com/SassDoc/scss-comment-parser/pull/21))
+
 ## 2.1.15
 
 * Update Babel to 5.5 because of a bug with Babel 5.1 runtime.
