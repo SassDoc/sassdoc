@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.17
+
+* Downgrade scss-comment-parser. ([#438](https://github.com/SassDoc/sassdoc/issues/438), [#439](https://github.com/SassDoc/sassdoc/issues/439))
+
 ## 2.1.16
 
 * Upgrade scss-comment-parser. ([#21](https://github.com/SassDoc/scss-comment-parser/pull/21))
