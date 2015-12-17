@@ -178,3 +178,8 @@ $variable-specific-test: ();
 /// @name placeholder-[blue,green,red]
 
 %placeholder-#{$color} {}
+
+/// This is a test CSS block.
+/// @name data-foo
+
+[data-foo="bar"] { color: red; }
