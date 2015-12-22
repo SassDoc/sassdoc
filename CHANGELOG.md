@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.19
+
+* Fix expected line numbers from scss-comment-parser.
+
 ## 2.1.18
 
 * Fix previous publish.
