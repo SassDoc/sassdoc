@@ -540,6 +540,30 @@
     }
   },
   {
+    "description": "This is a test CSS block.\n",
+    "commentRange": {
+      "start": 182,
+      "end": 183
+    },
+    "context": {
+      "type": "css",
+      "name": "data-foo",
+      "value": "color: red;",
+      "line": {
+        "start": 185,
+        "end": 186
+      }
+    },
+    "group": [
+      "test"
+    ],
+    "access": "private",
+    "file": {
+      "path": "test.scss",
+      "name": "test.scss"
+    }
+  },
+  {
     "description": "This is a global test aiming at testing:\n- `@access`\n- `@author`\n- `@deprecated`\n- `@example`\n- `@group`\n- `@ignore`\n- `@link`\n- `@requires`\n- `@see`\n- `@since`\n- `@todo`\n\n",
     "commentRange": {
       "start": 8,
