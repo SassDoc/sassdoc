@@ -30,7 +30,7 @@ export default function parameter(env) {
       return obj;
     },
 
-    alias: ['arg', 'arguments', 'param', 'parameters'],
+    alias: ['arg', 'argument', 'arguments', 'param', 'parameters'],
 
     allowedOn: ['function', 'mixin'],
   };
