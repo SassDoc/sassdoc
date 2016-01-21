@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.20
+
+* Add `argument` as an alias for `parameter` annotation.
+
 ## 2.1.19
 
 * Fix expected line numbers from scss-comment-parser.
