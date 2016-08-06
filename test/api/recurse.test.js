@@ -31,7 +31,7 @@ describe('#recurse', function () {
 describe('#recurse-null', function () {
   var files = [];
   var nullFile = new File({
-    contents: null
+    contents: null,
   });
 
   before(function (done) {

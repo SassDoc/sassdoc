@@ -253,7 +253,7 @@ async function baseDocumentize(env) {
     recurse(),
     exclude(env.exclude || []),
     converter({ from: 'sass', to: 'scss' }),
-    filter
+    filter,
   ];
 
   let pipeline = () => {

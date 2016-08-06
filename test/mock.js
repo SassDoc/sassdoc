@@ -32,7 +32,7 @@ Object.defineProperty(SassDocRc.prototype, 'contents', {
       throw new Error('SassDocRc.contents can only be an Object.');
     }
     this._contents = config;
-  }
+  },
 });
 
 module.exports.SassDocRc = SassDocRc;
@@ -52,7 +52,7 @@ inherits(MockLogger, Logger);
 Object.defineProperty(MockLogger.prototype, 'output', {
   get: function () {
     return this._output;
-  }
+  },
 });
 
 module.exports.Logger = MockLogger;
