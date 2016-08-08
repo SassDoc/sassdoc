@@ -1,0 +1,11 @@
+version: v1.5.0
+ignore: {}
+patch:
+  'npm:minimatch:20160620':
+    - sassdoc-theme-default > html-minifier > cli > glob > minimatch:
+        patched: '2016-08-08T12:29:15.957Z'
+  'npm:uglify-js:20151024':
+    - sassdoc-theme-default > html-minifier > uglify-js:
+        patched: '2016-08-08T12:29:15.957Z'
+    - sassdoc-theme-default > swig > uglify-js:
+        patched: '2016-08-08T12:29:15.957Z'

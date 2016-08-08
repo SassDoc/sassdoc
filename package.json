@@ -84,7 +84,7 @@
     "js-yaml": "^3.2.1",
     "lodash.difference": "^3.1.0",
     "lodash.uniq": "^3.1.0",
-    "minimatch": "^2.0.4",
+    "minimatch": "3.0.2",
     "mkdirp": "^0.5.0",
     "multipipe": "^0.1.2",
     "rimraf": "^2.3.2",
@@ -95,8 +95,9 @@
     "strip-indent": "^1.0.1",
     "through2": "^0.6.3",
     "update-notifier": "^0.3.0",
-    "vinyl-fs": "^1.0.0",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-fs": "2.0.0",
+    "vinyl-source-stream": "^1.0.0",
+    "snyk": "^1.18.0"
   },
   "devDependencies": {
     "babel": "5.5.*",
@@ -111,6 +112,9 @@
     "vinyl": "^0.4.6"
   },
   "scripts": {
-    "test": "make dist lint test"
-  }
+    "test": "make dist lint test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
