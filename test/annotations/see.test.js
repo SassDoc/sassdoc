@@ -10,8 +10,8 @@ describe('#see', function () {
   });
 
   it('should rewrite the .toJSON method', function () {
-    var data = [{ description: 'desc', context: { name: 'name' }}, { see: [see.parse('name')] }];
+    var data = [{ description: 'desc', context: { name: 'name' }, group: 'test' }, { see: [see.parse('name')] }];
     see.resolve(data);
-    assert.deepEqual(data[1].see.toJSON(), [{ description: 'desc', context: { name: 'name' }}]);
+    assert.deepEqual(data[1].see.toJSON(), [{ description: 'desc', context: { name: 'name' }, group: 'test'}]);
   });
 });
