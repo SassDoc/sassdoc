@@ -47,6 +47,7 @@ export default function see(env) {
             return {
               description: item.description,
               context: item.context,
+              group: item.group,
             };
           });
         };
