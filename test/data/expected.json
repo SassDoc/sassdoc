@@ -503,6 +503,14 @@
     "aliased": [
       "alias-test"
     ],
+    "aliasedgroup": [
+      {
+        "group": [
+          "test"
+        ],
+        "name": "alias-test"
+      }
+    ],
     "usedBy": [
       {
         "description": "This is a test aiming at testing:\n- autofilled `@requires`\n- autofilled `@error`\n- autofilled `@content`\n",
