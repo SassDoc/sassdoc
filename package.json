@@ -96,7 +96,8 @@
     "through2": "^0.6.3",
     "update-notifier": "^0.3.0",
     "vinyl-fs": "^1.0.0",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-source-stream": "^1.0.0",
+    "snyk": "^1.25.0"
   },
   "devDependencies": {
     "babel": "5.5.*",
@@ -111,6 +112,9 @@
     "vinyl": "^0.4.6"
   },
   "scripts": {
-    "test": "make dist lint test"
-  }
+    "test": "make dist lint test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
