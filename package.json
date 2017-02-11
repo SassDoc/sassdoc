@@ -120,6 +120,13 @@
     "nyc": "^10.1.2",
     "opn-cli": "^3.1.0",
     "sinon": "^1.14.1",
+    "standard": "^8.6.0",
     "vinyl": "^0.4.6"
+  },
+  "scripts": {
+    "test": "make dist lint test"
+  },
+  "standard": {
+    "globals": ["it", "describe", "after", "before", "beforeEach"]
   }
 }
