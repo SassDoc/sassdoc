@@ -94,7 +94,7 @@
     "scss-comment-parser": "^0.8.1",
     "strip-indent": "^2.0.0",
     "through2": "^0.6.3",
-    "update-notifier": "^0.3.0",
+    "update-notifier": "^1.0.3",
     "vinyl-fs": "^1.0.0",
     "vinyl-source-stream": "^1.0.0"
   },
