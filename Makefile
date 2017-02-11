@@ -1,7 +1,7 @@
 BIN = $(PWD)/node_modules/.bin/
 SASSDOC = $(PWD)/bin/sassdoc
 
-all: dist lint test
+all: lint dist test
 
 # Compile ES6 from `src` to ES5 in `dist`
 # =======================================
@@ -28,19 +28,18 @@ test: test/data/expected.stream.json dist
 test/data/expected.stream.json: test/data/expected.json
 	test/data/stream $< > $@
 
-cover: dist
+cover:
 	rm -rf coverage
-	$(BIN)istanbul cover --report none --print detail $(BIN)_mocha test/**/*.test.js
+	$(BIN)nyc $(BIN)mocha test/**/*.test.js
 
 cover-browse: dist
 	rm -rf coverage
-	$(BIN)istanbul cover --report html $(BIN)_mocha test/**/*.test.js
-	open coverage/index.html
+	$(BIN)nyc --reporter=html $(BIN)mocha test/**/*.test.js
+	$(BIN)opn coverage/index.html
 
-travis: lint cover
-	$(BIN)istanbul report lcovonly
-	(cat coverage/lcov.info | coveralls) || exit 0
-	rm -rf coverage
+coveralls:
+	($(BIN)nyc report --reporter=text-lcov | $(BIN)coveralls) || exit 0
+
 
 # Development
 # ===========

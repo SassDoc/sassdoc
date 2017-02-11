@@ -13,7 +13,8 @@ sudo: false
 git:
   depth: 10
 
-script: make travis
+script: make lint dist test cover
+after_success: make coveralls
 
 notifications:
   slack:

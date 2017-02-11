@@ -4,5 +4,6 @@
 /test/custom-sassdoc
 /sassdoc
 /coverage
+.nyc_output
 .DS_Store
 npm-debug.log
