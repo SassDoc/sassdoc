@@ -125,6 +125,8 @@
     "test": "make dist lint test"
   },
   "standard": {
-    "globals": ["it", "describe", "after", "before", "beforeEach"]
+    "env": {
+      "mocha": true
+    }
   }
 }
