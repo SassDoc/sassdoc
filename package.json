@@ -82,7 +82,7 @@
     "glob": "^7.1.1",
     "glob2base": "0.0.12",
     "js-yaml": "^3.2.1",
-    "lodash.difference": "^3.1.0",
+    "lodash.difference": "^4.5.0",
     "lodash.uniq": "^3.1.0",
     "minimatch": "^3.0.3",
     "mkdirp": "^0.5.0",
