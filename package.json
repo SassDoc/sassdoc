@@ -86,7 +86,7 @@
     "lodash.uniq": "^4.5.0",
     "minimatch": "^3.0.3",
     "mkdirp": "^0.5.0",
-    "multipipe": "^0.1.2",
+    "multipipe": "^1.0.2",
     "rimraf": "^2.3.2",
     "safe-wipe": "0.*",
     "sass-convert": "^0.5.0",
