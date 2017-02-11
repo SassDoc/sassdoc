@@ -95,7 +95,7 @@
     "strip-indent": "^2.0.0",
     "through2": "^0.6.3",
     "update-notifier": "^1.0.3",
-    "vinyl-fs": "^1.0.0",
+    "vinyl-fs": "^2.4.4",
     "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
