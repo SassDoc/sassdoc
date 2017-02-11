@@ -10,7 +10,9 @@ describe('#utils:denodeify', function () {
 
   it('should catch errors', function () {
     assert.doesNotThrow(function () {
-      readFile('fail');
+      readFile('fail').catch(function (err) {
+        assert.ok(utils.is.error(err));
+      });
     });
   });
 
