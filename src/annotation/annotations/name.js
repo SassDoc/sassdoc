@@ -1,20 +1,20 @@
-export default function access() {
+export default function name () {
   return {
     name: 'name',
 
-    parse(text) {
-      return text.trim();
+    parse (text) {
+      return text.trim()
     },
 
     // Abuse the autofill feature to rewrite the `item.context`
-    autofill(item) {
+    autofill (item) {
       if (item.name) {
-        item.context.name = item.name;
+        item.context.name = item.name
         // Cleanup
-        delete item.name;
+        delete item.name
       }
     },
 
     multiple: false
-  };
+  }
 }

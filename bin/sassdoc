@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
+'use strict'
 
-require('../dist/cli').default(process.argv.slice(2));
+require('../dist/cli').default(process.argv.slice(2))

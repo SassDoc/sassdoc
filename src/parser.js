@@ -1,43 +1,43 @@
-import { defer } from './utils';
-import * as errors from './errors';
-import AnnotationsApi from './annotation';
-import sorter from './sorter';
-import ScssCommentParser from 'scss-comment-parser';
-import through from 'through2';
-import concat from 'concat-stream';
-import path from 'path';
+import { defer } from './utils'
+import * as errors from './errors'
+import AnnotationsApi from './annotation'
+import sorter from './sorter'
+import ScssCommentParser from 'scss-comment-parser'
+import through from 'through2'
+import concat from 'concat-stream'
+import path from 'path'
 
 export default class Parser {
-  constructor(env, additionalAnnotations) {
-    this.annotations = new AnnotationsApi(env);
-    this.annotations.addAnnotations(additionalAnnotations);
-    this.scssParser = new ScssCommentParser(this.annotations.list, env);
+  constructor (env, additionalAnnotations) {
+    this.annotations = new AnnotationsApi(env)
+    this.annotations.addAnnotations(additionalAnnotations)
+    this.scssParser = new ScssCommentParser(this.annotations.list, env)
 
     this.scssParser.commentParser.on('warning', warning => {
-      env.emit('warning', new errors.Warning(warning.message));
-    });
+      env.emit('warning', new errors.Warning(warning.message))
+    })
   }
 
-  parse(code, id) {
-    return this.scssParser.parse(code, id);
+  parse (code, id) {
+    return this.scssParser.parse(code, id)
   }
 
   /**
    * Invoke the `resolve` function of an annotation if present.
    * Called with all found annotations except with type "unkown".
    */
-  postProcess(data) {
-    data = sorter(data);
+  postProcess (data) {
+    data = sorter(data)
 
     Object.keys(this.annotations.list).forEach(key => {
-      let annotation = this.annotations.list[key];
+      let annotation = this.annotations.list[key]
 
       if (annotation.resolve) {
-        annotation.resolve(data);
+        annotation.resolve(data)
       }
-    });
+    })
 
-    return data;
+    return data
   }
 
   /**
@@ -52,55 +52,55 @@ export default class Parser {
    * @param {Object} parser
    * @return {Object}
    */
-  stream() {
-    let deferred = defer();
-    let data = [];
+  stream () {
+    let deferred = defer()
+    let data = []
 
     let transform = (file, enc, cb) => {
       // Pass-through.
-      cb(null, file);
+      cb(null, file)
 
       let parseFile = ({ buf, name, path }) => {
-        let fileData = this.parse(buf.toString(enc), name);
+        let fileData = this.parse(buf.toString(enc), name)
 
         fileData.forEach(item => {
           item.file = {
             path,
             name,
-          };
+          }
 
-          data.push(item);
-        });
-      };
+          data.push(item)
+        })
+      }
 
       if (file.isBuffer()) {
         let args = {
           buf: file.contents,
           name: path.basename(file.relative),
           path: file.relative,
-        };
+        }
 
-        parseFile(args);
+        parseFile(args)
       }
 
       if (file.isStream()) {
         file.pipe(concat(buf => {
-          parseFile({ buf });
-        }));
+          parseFile({ buf })
+        }))
       }
-    };
+    }
 
     let flush = cb => {
-      data = data.filter(item => item.context.type !== 'unknown');
-      data = this.postProcess(data);
+      data = data.filter(item => item.context.type !== 'unknown')
+      data = this.postProcess(data)
 
-      deferred.resolve(data);
-      cb();
-    };
+      deferred.resolve(data)
+      cb()
+    }
 
-    let filter = through.obj(transform, flush);
-    filter.promise = deferred.promise;
+    let filter = through.obj(transform, flush)
+    filter.promise = deferred.promise
 
-    return filter;
+    return filter
   }
 }

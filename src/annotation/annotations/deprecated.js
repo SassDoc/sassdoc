@@ -1,12 +1,12 @@
-export default function deprecated() {
+export default function deprecated () {
 
   return {
     name: 'deprecated',
 
-    parse(text) {
-      return text.trim();
+    parse (text) {
+      return text.trim()
     },
 
     multiple: false,
-  };
+  }
 }

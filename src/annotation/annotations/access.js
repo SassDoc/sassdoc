@@ -1,49 +1,49 @@
-export default function access(env) {
+export default function access (env) {
 
-  const defaultPrivatePrefixTest = RegExp.prototype.test.bind(/^[_-]/);
+  const defaultPrivatePrefixTest = RegExp.prototype.test.bind(/^[_-]/)
 
   return {
     name: 'access',
 
-    parse(text) {
-      return text.trim();
+    parse (text) {
+      return text.trim()
     },
 
-    autofill(item) {
+    autofill (item) {
       if (item.access !== 'auto') {
-        return;
+        return
       }
 
       if (env.privatePrefix === false) {
-        return;
+        return
       }
 
-      let testFunc = defaultPrivatePrefixTest;
+      let testFunc = defaultPrivatePrefixTest
 
       if (typeof env.privatePrefix !== 'undefined') {
-        testFunc = RegExp.prototype.test.bind(new RegExp(env.privatePrefix));
+        testFunc = RegExp.prototype.test.bind(new RegExp(env.privatePrefix))
       }
 
       if (testFunc(item.context.name)) {
-        return 'private';
+        return 'private'
       }
 
-      return 'public';
+      return 'public'
     },
 
-    resolve(data) {
+    resolve (data) {
       data.forEach(item => {
         // Ensure valid access when not autofilled.
         if (item.access === 'auto') {
-          item.access = 'public';
+          item.access = 'public'
         }
-      });
+      })
     },
 
-    default() {
-      return 'auto';
+    default () {
+      return 'auto'
     },
 
     multiple: false,
-  };
+  }
 }

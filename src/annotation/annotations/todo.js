@@ -1,11 +1,11 @@
-export default function todo() {
+export default function todo () {
   return {
     name: 'todo',
 
-    parse(text) {
-      return text.trim();
+    parse (text) {
+      return text.trim()
     },
 
     alias: ['todos'],
-  };
+  }
 }

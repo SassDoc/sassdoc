@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-var path = require('path');
-var input = path.resolve(process.argv[2]);
+var path = require('path')
+var input = path.resolve(process.argv[2])
 
 console.log(
   JSON.stringify(
     require(input).map(function (item) {
-      item.file = {};
-      return item;
+      item.file = {}
+      return item
     }),
     null,
     2
   )
-);
+)
