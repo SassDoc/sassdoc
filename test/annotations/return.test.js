@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 describe('#return', function () {
-  var returnsCtor = require('../../dist/annotation/annotations/return');
+  var returnsCtor = require('../../dist/annotation/annotations/return').default;
   var returns = returnsCtor(require('./envMock'));
 
   it('should return an object', function () {

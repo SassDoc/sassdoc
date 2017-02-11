@@ -2,4 +2,4 @@
 
 'use strict';
 
-require('../dist/cli')(process.argv.slice(2));
+require('../dist/cli').default(process.argv.slice(2));

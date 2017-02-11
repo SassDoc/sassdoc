@@ -5,7 +5,7 @@ var sinon = require('sinon');
 var vfs = require('vinyl-fs');
 var File = require('vinyl');
 var through = require('through2');
-var recurse = require('../../dist/recurse');
+var recurse = require('../../dist/recurse').default;
 
 describe('#recurse', function () {
   var files = [];
