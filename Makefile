@@ -14,7 +14,7 @@ dist:
 # ============
 
 lint:
-	$(BIN)eslint bin/sassdoc index.js src test
+	$(BIN)standard bin/sassdoc index.js src/**/*.js test/**/*.js
 
 test: test/data/expected.stream.json dist
 	$(BIN)mocha test/**/*.test.js
