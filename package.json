@@ -98,7 +98,7 @@
     "rimraf": "^2.3.2",
     "safe-wipe": "0.*",
     "sass-convert": "^0.5.0",
-    "sassdoc-theme-default": "^2.3.4",
+    "sassdoc-theme-default": "^2.5.2",
     "scss-comment-parser": "^0.8.1",
     "strip-indent": "^2.0.0",
     "through2": "^1.1.1",
