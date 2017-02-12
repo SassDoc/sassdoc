@@ -101,7 +101,7 @@
     "sassdoc-theme-default": "^2.3.4",
     "scss-comment-parser": "^0.8.1",
     "strip-indent": "^2.0.0",
-    "through2": "^0.6.3",
+    "through2": "^1.1.1",
     "update-notifier": "^1.0.3",
     "vinyl-fs": "^2.4.4",
     "vinyl-source-stream": "^1.0.0"
