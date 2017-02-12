@@ -1,6 +1,12 @@
 {
-  "stage": 1,
-  "loose": ["all"],
-  "optional": ["runtime"],
-  "auxiliaryComment": "istanbul ignore next"
+  "presets": ["latest"],
+  "plugins": [
+    ["transform-runtime", {
+      "polyfill": true,
+      "regenerator": true
+    }],
+    ["babel-plugin-transform-builtin-extend", {
+      "globals": ["Error"]
+    }]
+  ]
 }

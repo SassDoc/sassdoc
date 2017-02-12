@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 describe('#group', function () {
-  var group = (new (require('../../dist/annotation'))()).list.group;
+  var group = (new (require('../../dist/annotation').default)()).list.group;
 
   it('should parse a single group and ingore case', function () {
     assert.deepEqual(group.parse('group'), ['group']);

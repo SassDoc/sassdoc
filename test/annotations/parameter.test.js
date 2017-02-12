@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 describe('#parameter', function () {
-  var paramCtor = require('../../dist/annotation/annotations/parameter');
+  var paramCtor = require('../../dist/annotation/annotations/parameter').default;
   var param = paramCtor(require('./envMock'));
 
   it('should return an object', function () {

@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 describe('#name', function () {
-  var name = (new (require('../../dist/annotation'))()).list.name;
+  var name = (new (require('../../dist/annotation').default)()).list.name;
 
   it('should return the trimmed string', function () {
     assert.equal(name.parse('   '), '');

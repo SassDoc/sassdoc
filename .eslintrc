@@ -40,3 +40,5 @@ rules:
   space-before-blocks: "always"
   space-in-brackets: "always"
   no-underscore-dangle: 0
+
+  new-cap: 0

@@ -61,7 +61,7 @@ export default function cli(argv = process.argv.slice(2)) {
 
   // Run update notifier if not explicitely disabled.
   if (!env.noUpdateNotifier) {
-    require('./notifier')(pkg, logger);
+    require('./notifier').default(pkg, logger);
   }
 
   let handler, cb;

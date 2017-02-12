@@ -3,8 +3,8 @@
 var assert = require('assert');
 var sinon = require('sinon');
 var mock = require('../mock');
-var Environment = require('../../dist/environment');
-var Parser = require('../../dist/parser');
+var Environment = require('../../dist/environment').default;
+var Parser = require('../../dist/parser').default;
 
 describe('#parser', function () {
   var warnings = [];

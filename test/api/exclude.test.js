@@ -3,7 +3,7 @@
 var assert = require('assert');
 var vfs = require('vinyl-fs');
 var through = require('through2');
-var exclude = require('../../dist/exclude');
+var exclude = require('../../dist/exclude').default;
 
 describe('#exclude', function () {
   var files = [];

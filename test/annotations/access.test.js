@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 describe('#access', function () {
-  var accessCtor = require('../../dist/annotation/annotations/access');
+  var accessCtor = require('../../dist/annotation/annotations/access').default;
   var access = accessCtor({});
 
   it('should return the trimmed string', function () {
