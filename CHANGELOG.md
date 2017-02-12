@@ -1,5 +1,11 @@
 # Changelog
 
+
+## 2.2.0
+
+ * Batch upgrade dependencies, fix security warnings.
+ * Upgrade transpilation to Babel 6.
+
 ## 2.1.20
 
 * Add `argument` as an alias for `parameter` annotation.
