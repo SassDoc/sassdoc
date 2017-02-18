@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#content', function () {
-  var content = (new (require('../../dist/annotation').default)()).list.content
+  var contentCtor = require('../../dist/annotation/annotations/content').default
+  var content = contentCtor({})
 
   it('should return object', function () {
     assert.deepEqual(content.parse('Test'), 'Test')

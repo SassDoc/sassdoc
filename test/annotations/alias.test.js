@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#alias', function () {
-  var alias = (new (require('../../dist/annotation').default)()).list.alias
+  var aliasCtor = require('../../dist/annotation/annotations/alias').default
+  var alias = aliasCtor({})
 
   it('should return the trimmed string', function () {
     assert.equal(alias.parse('   '), '')

@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#author', function () {
-  var author = (new (require('../../dist/annotation').default)()).list.author
+  var authorCtor = require('../../dist/annotation/annotations/author').default
+  var author = authorCtor({})
 
   it('should return the trimmed string', function () {
     assert.equal(author.parse('   '), '')

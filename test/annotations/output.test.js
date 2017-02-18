@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#output', function () {
-  var output = (new (require('../../dist/annotation').default)()).list.output
+  var outputCtor = require('../../dist/annotation/annotations/output').default
+  var output = outputCtor({})
 
   it('should parse an output description', function () {
     assert.deepEqual(output.parse('position'), 'position')

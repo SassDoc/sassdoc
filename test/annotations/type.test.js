@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#type', function () {
-  var type = (new (require('../../dist/annotation').default)()).list.type
+  var typeCtor = require('../../dist/annotation/annotations/type').default
+  var type = typeCtor({})
 
   it('should return the trimmed string', function () {
     assert.equal(type.parse('   '), '')

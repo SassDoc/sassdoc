@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#todo', function () {
-  var todo = (new (require('../../dist/annotation').default)()).list.todo
+  var todoCtor = require('../../dist/annotation/annotations/todo').default
+  var todo = todoCtor({})
 
   it('should return the trimmed string', function () {
     assert.equal(todo.parse('   '), '')

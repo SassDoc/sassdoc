@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#see', function () {
-  var see = (new (require('../../dist/annotation').default)()).list.see
+  var seeCtor = require('../../dist/annotation/annotations/see').default
+  var see = seeCtor({})
 
   it('should default to function', function () {
     assert.deepEqual(see.parse('name'), { type: 'function', name: 'name' })

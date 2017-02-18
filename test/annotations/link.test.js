@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#link', function () {
-  var link = (new (require('../../dist/annotation').default)()).list.link
+  var linkCtor = require('../../dist/annotation/annotations/link').default
+  var link = linkCtor({})
 
   it('should return an object', function () {
     assert.deepEqual(link.parse(''), { url: '', caption: '' })

@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#since', function () {
-  var since = (new (require('../../dist/annotation').default)()).list.since
+  var sinceCtor = require('../../dist/annotation/annotations/since').default
+  var since = sinceCtor({})
 
   it('should return an object', function () {
     assert.deepEqual(since.parse('   '), {})

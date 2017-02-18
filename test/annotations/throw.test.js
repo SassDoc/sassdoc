@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#throw', function () {
-  var _throw = (new (require('../../dist/annotation').default)()).list.throw
+  var throwCtor = require('../../dist/annotation/annotations/throw').default
+  var _throw = throwCtor({})
 
   it('should return the trimmed string', function () {
     assert.equal(_throw.parse('   '), '')

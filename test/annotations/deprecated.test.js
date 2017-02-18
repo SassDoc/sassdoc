@@ -3,7 +3,8 @@
 var assert = require('assert')
 
 describe('#deprecated', function () {
-  var deprecated = (new (require('../../dist/annotation').default)()).list.deprecated
+  var deprecatedCtor = require('../../dist/annotation/annotations/deprecated').default
+  var deprecated = deprecatedCtor({})
 
   it('should return the trimmed string', function () {
     assert.equal(deprecated.parse('   '), '')
