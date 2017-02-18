@@ -1,41 +1,41 @@
-import glob2base from 'glob2base';
-import { Glob } from 'glob';
+import glob2base from 'glob2base'
+import { Glob } from 'glob'
 
 // Namespace delimiters.
-const nsDelimiters = ['::', ':', '\\.', '/'];
-const ns = new RegExp(nsDelimiters.join('|'), 'g');
+const nsDelimiters = ['::', ':', '\\.', '/']
+const ns = new RegExp(nsDelimiters.join('|'), 'g')
 
 // Split a namespace on possible namespace delimiters.
-export const splitNamespace = value => value.split(ns);
+export const splitNamespace = value => value.split(ns)
 
-export function denodeify(fn) {
+export function denodeify (fn) {
   return function (...args) {
     return new Promise((resolve, reject) => {
       fn(...args, (err, ...args) => {
         if (err) {
-          reject(err);
-          return;
+          reject(err)
+          return
         }
 
-        resolve(...args);
-      });
-    });
-  };
+        resolve(...args)
+      })
+    })
+  }
 }
 
-export function defer() {
-  let resolve, reject;
+export function defer () {
+  let resolve, reject
 
   let promise = new Promise((resolve_, reject_) => {
-    resolve = resolve_;
-    reject = reject_;
-  });
+    resolve = resolve_
+    reject = reject_
+  })
 
   return {
     promise,
     resolve,
     reject,
-  };
+  }
 }
 
 /**
@@ -46,14 +46,14 @@ export function defer() {
  * @param {Array|String} src Glob pattern or array of glob patterns.
  * @return {String}
  */
-export function g2b(src) {
-  return glob2base(new Glob([].concat(src)[0]));
+export function g2b (src) {
+  return glob2base(new Glob([].concat(src)[0]))
 }
 
 /**
  * Type checking helpers.
  */
-const toString = arg => Object.prototype.toString.call(arg);
+const toString = arg => Object.prototype.toString.call(arg)
 
 export const is = {
   undef: arg => arg === void 0,
@@ -67,4 +67,4 @@ export const is = {
   promise: arg => arg && is.function(arg.then),
   stream: arg => arg && is.function(arg.pipe),
   vinylFile: arg => is.plainObject(arg) && arg.constructor.name === 'File',
-};
+}

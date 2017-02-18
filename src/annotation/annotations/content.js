@@ -1,19 +1,19 @@
-export default function content() {
+export default function content () {
   return {
     name: 'content',
 
-    parse(text) {
-      return text.trim();
+    parse (text) {
+      return text.trim()
     },
 
-    autofill(item) {
+    autofill (item) {
       if (!item.content && item.context.code.indexOf('@content') > -1) {
-        return '';
+        return ''
       }
     },
 
     allowedOn: ['mixin'],
 
     multiple: false,
-  };
+  }
 }

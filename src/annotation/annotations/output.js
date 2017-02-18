@@ -1,9 +1,9 @@
-export default function output() {
+export default function output () {
   return {
     name: 'output',
 
-    parse(text) {
-      return text.trim();
+    parse (text) {
+      return text.trim()
     },
 
     alias: ['outputs'],
@@ -11,5 +11,5 @@ export default function output() {
     allowedOn: ['mixin'],
 
     multiple: false,
-  };
+  }
 }

@@ -31,6 +31,7 @@
   "keywords": [
     "sass",
     "scss",
+    "css",
     "doc",
     "documentation",
     "comments",
@@ -76,6 +77,11 @@
   "scripts": {
     "test": "make"
   },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
+  },
   "nyc": {
     "exclude": [
       "**/*.test.js",
@@ -108,18 +114,17 @@
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
-    "babel-eslint": "^2.0.2",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-latest": "^6.22.0",
     "coveralls": "^2.11.2",
     "dateformat": "^1.0.11",
-    "eslint": "^0.18.0",
     "jsesc": "^0.5.0",
     "mocha": "^2.2.1",
     "nyc": "^10.1.2",
     "opn-cli": "^3.1.0",
     "sinon": "^1.14.1",
+    "standard": "^8.6.0",
     "vinyl": "^0.4.6"
   }
 }

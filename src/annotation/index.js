@@ -1,14 +1,14 @@
-import annotations from './annotations';
+import annotations from './annotations'
 
 export default class AnnotationsApi {
-  constructor(env) {
-    this.env = env;
+  constructor (env) {
+    this.env = env
 
     this.list = {
-      _: { alias: {} },
-    };
+      _: { alias: {} }
+    }
 
-    this.addAnnotations(annotations);
+    this.addAnnotations(annotations)
   }
 
   /**
@@ -16,18 +16,18 @@ export default class AnnotationsApi {
    * @param {String} name - Name of the annotation
    * @param {Object} annotation - Annotation object
    */
-  addAnnotation(name, annotation) {
-    annotation = annotation(this.env);
+  addAnnotation (name, annotation) {
+    annotation = annotation(this.env)
 
-    this.list._.alias[name] = name;
+    this.list._.alias[name] = name
 
     if (Array.isArray(annotation.alias)) {
       annotation.alias.forEach(aliasName => {
-        this.list._.alias[aliasName] = name;
-      });
+        this.list._.alias[aliasName] = name
+      })
     }
 
-    this.list[name] = annotation;
+    this.list[name] = annotation
   }
 
   /**
@@ -35,11 +35,11 @@ export default class AnnotationsApi {
    * in the `name` key of the annotation.
    * @param {Array} annotations - Annotation objects
    */
-  addAnnotations(annotations) {
+  addAnnotations (annotations) {
     if (annotations !== undefined) {
       annotations.forEach(annotation => {
-        this.addAnnotation(annotation().name, annotation);
-      });
+        this.addAnnotation(annotation().name, annotation)
+      })
     }
   }
 }

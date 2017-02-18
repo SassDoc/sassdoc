@@ -18,5 +18,5 @@ module.exports = [
   require('./since.js').default,
   require('./throw.js').default,
   require('./todo.js').default,
-  require('./type.js').default,
-];
+  require('./type.js').default
+]

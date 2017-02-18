@@ -1,9 +1,9 @@
-export default function author() {
+export default function author () {
   return {
     name: 'author',
 
-    parse(text) {
-      return text.trim();
+    parse (text) {
+      return text.trim()
     },
-  };
+  }
 }

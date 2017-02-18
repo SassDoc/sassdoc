@@ -1,15 +1,15 @@
-export default function group() {
+export default function group () {
   return {
     name: 'group',
 
-    parse(text) {
-      return [text.trim().toLowerCase()];
+    parse (text) {
+      return [text.trim().toLowerCase()]
     },
 
-    default() {
-      return ['undefined'];
+    default () {
+      return ['undefined']
     },
 
     multiple: false,
-  };
+  }
 }

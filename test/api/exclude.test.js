@@ -1,18 +1,18 @@
-'use strict';
+'use strict'
 
-var assert = require('assert');
-var vfs = require('vinyl-fs');
-var through = require('through2');
-var exclude = require('../../dist/exclude').default;
+var assert = require('assert')
+var vfs = require('vinyl-fs')
+var through = require('through2')
+var exclude = require('../../dist/exclude').default
 
 describe('#exclude', function () {
-  var files = [];
+  var files = []
 
-  function inspect() {
+  function inspect () {
     return through.obj(function (file, enc, cb) {
-      files.push(file.relative);
-      cb(null, file);
-    });
+      files.push(file.relative)
+      cb(null, file)
+    })
   }
 
   before(function (done) {
@@ -20,12 +20,11 @@ describe('#exclude', function () {
       .pipe(exclude(['two.scss']))
       .pipe(inspect())
       .on('end', done)
-      .resume();
-  });
+      .resume()
+  })
 
   it('should properly exlude file patterns', function () {
-    assert.strictEqual(2, files.length);
-    assert.strictEqual(-1, files.indexOf('two.css'));
-  });
-
-});
+    assert.strictEqual(2, files.length)
+    assert.strictEqual(-1, files.indexOf('two.css'))
+  })
+})
