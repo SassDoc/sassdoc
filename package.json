@@ -31,6 +31,7 @@
   "keywords": [
     "sass",
     "scss",
+    "css",
     "doc",
     "documentation",
     "comments",
@@ -76,6 +77,11 @@
   "scripts": {
     "test": "make"
   },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
+  },
   "nyc": {
     "exclude": [
       "**/*.test.js",
@@ -120,13 +126,5 @@
     "sinon": "^1.14.1",
     "standard": "^8.6.0",
     "vinyl": "^0.4.6"
-  },
-  "scripts": {
-    "test": "make dist lint test"
-  },
-  "standard": {
-    "env": {
-      "mocha": true
-    }
   }
 }
