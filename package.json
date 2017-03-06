@@ -116,7 +116,7 @@
     "babel-cli": "^6.22.2",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
     "babel-plugin-transform-runtime": "^6.22.0",
-    "babel-preset-latest": "^6.22.0",
+    "babel-preset-env": "^1.2.0",
     "coveralls": "^2.11.2",
     "dateformat": "^2.0.0",
     "jsesc": "^2.4.0",
