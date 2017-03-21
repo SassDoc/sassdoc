@@ -337,10 +337,7 @@ function srcEnv (documentize, stream) {
 function onEmpty (data, env) {
   let message = `SassDoc could not find anything to document.\n
   * Are you still using \`/**\` comments ? They're no more supported since 2.0.
-    See <http://sassdoc.com/upgrading/#c-style-comments>.
-  * Are you documenting actual Sass items (variables, functions, mixins, placeholders) ?
-    SassDoc doesn't support documenting CSS selectors.
-    See <http://sassdoc.com/frequently-asked-questions/#does-sassdoc-support-css-classes-and-ids->.\n`
+    See <http://sassdoc.com/upgrading/#c-style-comments>.\n`
 
   if (!data.length) {
     env.emit('warning', new errors.Warning(message))
