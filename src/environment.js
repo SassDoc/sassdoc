@@ -12,10 +12,11 @@ export default class Environment extends EventEmitter {
    * @param {Logger} logger
    * @param {Boolean} strict
    */
-  constructor (logger, strict = false) {
+  constructor (logger, verbose = false, strict = false) {
     super()
 
     this.logger = logger
+    this.verbose = verbose
     this.strict = strict
 
     this.on('error', error => {

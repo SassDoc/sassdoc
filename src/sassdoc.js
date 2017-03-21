@@ -48,7 +48,7 @@ export function ensureEnvironment (config, onError = e => { throw e }) {
   }
 
   let logger = ensureLogger(config)
-  let env = new Environment(logger, config && config.strict)
+  let env = new Environment(logger, config && config.verbose, config && config.strict)
 
   env.on('error', onError)
   env.load(config)
@@ -339,7 +339,7 @@ function onEmpty (data, env) {
   * Are you still using \`/**\` comments ? They're no more supported since 2.0.
     See <http://sassdoc.com/upgrading/#c-style-comments>.\n`
 
-  if (!data.length) {
+  if (!data.length && env.verbose) {
     env.emit('warning', new errors.Warning(message))
   }
 }
