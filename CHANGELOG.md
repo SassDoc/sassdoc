@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 2.2.1
+
+ * Scope empty data message under the verbose flag. ([#488](https://github.com/SassDoc/sassdoc/issues/488), [#489](https://github.com/SassDoc/sassdoc/issues/489))
+   This prevent unwanted console cluttering on certain build setup.
+ * Remove empty data warning about CSS selectors.
+   This is no longer relevant, since CSS selectors are supported (although not being promoted yet).
+
 ## 2.2.0
 
  * Batch upgrade dependencies, fix security warnings.
