@@ -36,7 +36,7 @@ export default function cli (argv = process.argv.slice(2)) {
   }
 
   let logger = new Logger(options['--verbose'], options['--debug'] || process.env.SASSDOC_DEBUG)
-  let env = new Environment(logger, options['--strict'])
+  let env = new Environment(logger, options['--verbose'], options['--strict'])
 
   logger.debug('argv:', () => JSON.stringify(argv))
 
