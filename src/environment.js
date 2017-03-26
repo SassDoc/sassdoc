@@ -76,15 +76,17 @@ export default class Environment extends EventEmitter {
       this.dir = path.dirname(this.file)
     }
 
-    for (let k of Object.keys(config)) {
-      if (k in this) {
-        return this.emit('error', new Error(
-          `Reserved configuration key \`${k}\`.`
-        ))
-      }
+    Object.keys(config)
+      .filter(key => ['verbose', 'strict'].indexOf(key) === -1)
+      .forEach(k => {
+        if (k in this) {
+          return this.emit('error', new Error(
+            `Reserved configuration key \`${k}\`.`
+          ))
+        }
 
-      this[k] = config[k]
-    }
+        this[k] = config[k]
+      })
   }
 
   /**
