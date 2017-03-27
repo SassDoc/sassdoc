@@ -1,6 +1,5 @@
 [![SassDoc](https://cdn.rawgit.com/SassDoc/sassdoc/master/assets/header.svg)](http://sassdoc.com)
 
-<br>
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![Dependencies Status][depstat-image]][depstat-url]
