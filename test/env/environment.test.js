@@ -20,7 +20,7 @@ describe('#environment', function () {
 
   beforeEach(function () {
     logger = new mock.Logger(true)
-    env = new Environment(logger, false)
+    env = new Environment(logger)
     warnings = logger.output
   })
 
@@ -88,12 +88,26 @@ describe('#environment', function () {
 
     beforeEach(function () {
       env.on('error', spy)
-      env.load({ fdomain: 'fail', strict: 'fail' }) // @TODO should not failt on 'strcit'
+      env.load({ logger: 'fail' })
       env.postProcess()
     })
 
     it('should error if config contains reserved keys', function () {
       assert.ok(spy.called)
+    })
+  })
+
+  describe('#config-fail', function () {
+    var spy = sinon.spy()
+
+    beforeEach(function () {
+      env.on('error', spy)
+      env.load({ verbose: true, strict: true })
+      env.postProcess()
+    })
+
+    it('should not error if config contains verbose or strict keys', function () {
+      assert.equal(spy.called, false)
     })
   })
 
