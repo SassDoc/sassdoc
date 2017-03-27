@@ -1,6 +1,11 @@
 # Changelog
 
 
+## 2.2.2
+
+ * Fix the `verbose` and `strict` flags throwing an exception when being passed
+   from config or API params. ([#491](https://github.com/SassDoc/sassdoc/issues/491), [#490](https://github.com/SassDoc/sassdoc/issues/490))
+
 ## 2.2.1
 
  * Scope empty data message under the verbose flag. ([#488](https://github.com/SassDoc/sassdoc/issues/488), [#489](https://github.com/SassDoc/sassdoc/issues/489))
