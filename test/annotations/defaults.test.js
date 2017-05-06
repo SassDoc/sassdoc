@@ -2,6 +2,7 @@
 
 var assert = require('assert')
 var File = require('vinyl')
+var Buffer = require('safe-buffer').Buffer
 var sassdoc = require('../../')
 
 describe('#defaults', function () {
