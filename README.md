@@ -10,8 +10,6 @@
 
 ## Documentation
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/SassDoc/sassdoc.svg)](https://greenkeeper.io/)
-
 Head to the [site][SassDoc] for extensive documentation.
 
 ## Credits
