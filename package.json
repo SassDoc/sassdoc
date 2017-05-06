@@ -107,7 +107,7 @@
     "sassdoc-theme-default": "^2.5.2",
     "scss-comment-parser": "^0.8.1",
     "strip-indent": "^2.0.0",
-    "through2": "^1.1.1",
+    "through2": "^2.0.3",
     "update-notifier": "^2.1.0",
     "vinyl-fs": "^2.4.4",
     "vinyl-source-stream": "^1.0.0"
@@ -124,7 +124,7 @@
     "nyc": "^10.1.2",
     "opn-cli": "^3.1.0",
     "sinon": "^2.1.0",
-    "standard": "^9.0.2",
+    "standard": "^10.0.2",
     "vinyl": "^2.0.1"
   }
 }
