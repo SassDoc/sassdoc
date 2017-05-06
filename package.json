@@ -91,7 +91,7 @@
   "dependencies": {
     "babel-runtime": "^6.22.0",
     "chalk": "^1.0.0",
-    "concat-stream": "^1.4.7",
+    "concat-stream": "^1.6.0",
     "docopt": "^0.6.1",
     "glob": "^7.1.1",
     "glob2base": "0.0.12",
