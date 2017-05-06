@@ -95,7 +95,7 @@
     "docopt": "^0.6.1",
     "glob": "^7.1.1",
     "glob2base": "0.0.12",
-    "js-yaml": "^3.2.1",
+    "js-yaml": "^3.8.3",
     "lodash.difference": "^4.5.0",
     "lodash.uniq": "^4.5.0",
     "minimatch": "^3.0.3",
@@ -104,7 +104,7 @@
     "rimraf": "^2.3.2",
     "safe-wipe": "0.*",
     "sass-convert": "^0.5.0",
-    "sassdoc-theme-default": "^2.5.2",
+    "sassdoc-theme-default": "^2.6.1",
     "scss-comment-parser": "^0.8.1",
     "strip-indent": "^2.0.0",
     "through2": "^2.0.3",
@@ -113,18 +113,18 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.0",
+    "babel-cli": "^6.24.1",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
     "babel-plugin-transform-runtime": "^6.22.0",
-    "babel-preset-env": "^1.2.2",
-    "coveralls": "^2.11.2",
+    "babel-preset-env": "^1.4.0",
+    "coveralls": "^2.13.1",
     "dateformat": "^2.0.0",
-    "jsesc": "^2.4.0",
-    "mocha": "^3.2.0",
-    "nyc": "^10.1.2",
+    "jsesc": "^2.5.1",
+    "mocha": "^3.3.0",
+    "nyc": "^10.3.2",
     "opn-cli": "^3.1.0",
-    "sinon": "^2.1.0",
+    "sinon": "^2.2.0",
     "standard": "^10.0.2",
-    "vinyl": "^2.0.1"
+    "vinyl": "^2.0.2"
   }
 }
