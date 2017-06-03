@@ -52,6 +52,6 @@ If it's a little something like typo, styles or wording, feel free to jump on it
 
 If you are thinking of something a bit more complex, be sure to talk with someone from the team before even starting coding in order to avoid any useless work. Also be sure to read our [code guidelines](GUIDELINES.md).
 
-New features or sizeable refactors should be based on the `develop` branch while bugfixes should head into both `master` and `develop`.
+Pull requests should target the `master` branch.
 
 Anyway, thank you very much for contributing!

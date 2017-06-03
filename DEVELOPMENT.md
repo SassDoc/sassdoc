@@ -18,8 +18,8 @@ git remote add upstream https://github.com/SassDoc/sassdoc.git
 # Head into the local repository
 cd sassdoc
 
-# Move to `develop` branch
-git checkout develop
+# Move to `master` branch
+git checkout master
 
 # Install node modules
 npm install
@@ -31,12 +31,12 @@ make
 ## How to develop a feature
 
 ```sh
-# Be sure to be on an up-to-date `develop`
-git checkout develop
+# Be sure to be on an up-to-date `master`
+git checkout master
 git pull
 
 # If you're on a fork, be sure to pull the `upstream` version
-git pull upstream develop
+git pull upstream master
 
 # Create a new feature branch
 git checkout -b feature/my-new-feature
@@ -49,7 +49,7 @@ git commit
 # Push your branch
 git push -u origin feature/my-new-feature
 
-# Then make a pull request (targeting `develop`)!
+# Then make a pull request (targeting `master`)!
 ```
 
 ## How to make an hotfix
@@ -91,12 +91,6 @@ git tag <version>
 git push
 git push --tags
 
-# Merge in `develop` and push
-git checkout develop
-git pull
-git merge --no-ff hotfix/hotfix-to-merge
-git push
-
 # Delete hotfix branch
 git branch -d hotfix/hotfix-to-merge
 git push origin :hotfix/hotfix-to-merge
@@ -105,8 +99,8 @@ git push origin :hotfix/hotfix-to-merge
 ## How to release a new version
 
 ```sh
-# Move to `develop` branch and get latest changes
-git checkout develop
+# Move to `master` branch and get latest changes
+git checkout master
 git pull
 
 # Bump version number in `package.json`
@@ -116,15 +110,8 @@ vim package.json
 git add package.json
 git commit -m 'Bump <version>'
 
-# Push on `develop`
+# Push on `master`
 git push
-
-# Head to `master`
-git checkout master
-git pull
-
-# Merge `develop` branch
-git merge --no-ff develop
 
 # Tag the commit
 git tag <version>
@@ -138,32 +125,6 @@ git push --tags
 ```
 
 Then on GitHub, [add a new release](https://github.com/SassDoc/sassdoc/releases/new) with both *Tag version* and *Release title* matching the new version. The *description* should be the changelog.
-
-## How to release a pre-version
-
-Same as [How to release a new version](#how-to-release-a-new-version) except it's not merged in `master` and the `npm publish` is slightly different:
-
-```sh
-# Move to `develop` branch and get latest changes
-git checkout develop
-git pull
-
-# Bump version number in `package.json`
-vim package.json
-
-# Commit the change in `package.json`
-git add package.json
-git commit -m 'Bump <version>'
-
-# Push on `develop`
-git push
-
-# Run tests one last time
-make test
-
-# Publish the package
-npm publish --tag beta
-```
 
 ## How to work on the theme
 
