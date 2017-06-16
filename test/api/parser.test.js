@@ -73,6 +73,5 @@ describe('#parser', function () {
       assert.equal(data.length, 1)
       assert.equal(data[0].context.type, 'unknown')
     })
-
   })
 })
