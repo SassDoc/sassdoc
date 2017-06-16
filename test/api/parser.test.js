@@ -5,6 +5,7 @@ var sinon = require('sinon')
 var mock = require('../mock')
 var Environment = require('../../dist/environment').default
 var Parser = require('../../dist/parser').default
+var source = require('vinyl-source-stream');
 
 describe('#parser', function () {
   var warnings = []
@@ -59,5 +60,19 @@ describe('#parser', function () {
 
     assert.ok(spy.called)
     assert.notEqual(-1, warnings[0].indexOf(message))
+  })
+
+  it('should include unknown contexts if requested by theme', function () {
+    parser.includeUnknownContexts = true
+    var parseStream = parser.stream()
+
+    var sourceStream = source('fake')
+    sourceStream.end('///desc\n')
+    sourceStream.pipe(parseStream)
+    return parseStream.promise.then(data => {
+      assert.equal(data.length, 1)
+      assert.equal(data[0].context.type, 'unknown')
+    })
+
   })
 })

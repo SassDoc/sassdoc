@@ -12,6 +12,7 @@ export default class Parser {
     this.annotations = new AnnotationsApi(env)
     this.annotations.addAnnotations(additionalAnnotations)
     this.scssParser = new ScssCommentParser(this.annotations.list, env)
+    this.includeUnknownContexts = env.theme && env.theme.includeUnknownContexts
 
     this.scssParser.commentParser.on('warning', warning => {
       env.emit('warning', new errors.Warning(warning.message))
@@ -24,7 +25,7 @@ export default class Parser {
 
   /**
    * Invoke the `resolve` function of an annotation if present.
-   * Called with all found annotations except with type "unkown".
+   * Called with all found annotations except with type "unknown".
    */
   postProcess (data) {
     data = sorter(data)
@@ -91,7 +92,9 @@ export default class Parser {
     }
 
     let flush = cb => {
-      data = data.filter(item => item.context.type !== 'unknown')
+      if (!this.includeUnknownContexts) {
+        data = data.filter(item => item.context.type !== 'unknown')
+      }
       data = this.postProcess(data)
 
       deferred.resolve(data)
