@@ -5,7 +5,7 @@ var sinon = require('sinon')
 var mock = require('../mock')
 var Environment = require('../../dist/environment').default
 var Parser = require('../../dist/parser').default
-var source = require('vinyl-source-stream');
+var source = require('vinyl-source-stream')
 
 describe('#parser', function () {
   var warnings = []
