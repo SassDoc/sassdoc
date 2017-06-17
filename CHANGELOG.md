@@ -1,6 +1,12 @@
 # Changelog
 
 
+## 2.3.0
+
+ * Themes can now pass an `includeUnknownContexts` config key up to the parser.  
+   Allows for including comments not necessarily linked to an item in final data.
+   ([#498](https://github.com/SassDoc/sassdoc/pull/498))
+
 ## 2.2.2
 
  * Fix the `verbose` and `strict` flags throwing an exception when being passed
