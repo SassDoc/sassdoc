@@ -67,8 +67,9 @@ describe('#parser', function () {
     var parseStream = parser.stream()
 
     var sourceStream = source('fake')
-    sourceStream.end('///desc\n')
     sourceStream.pipe(parseStream)
+    sourceStream.end('///desc\n')
+
     return parseStream.promise.then(data => {
       assert.equal(data.length, 1)
       assert.equal(data[0].context.type, 'unknown')
