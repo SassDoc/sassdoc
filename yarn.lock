@@ -4156,6 +4156,12 @@ vinyl-source-stream@^1.0.0:
     through2 "^0.6.1"
     vinyl "^0.4.3"
 
+vinyl-string@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vinyl-string/-/vinyl-string-1.0.2.tgz#3a249efeb0d36c4cb0a5e59e30d68e54f739d8e3"
+  dependencies:
+    vinyl "^1.1.1"
+
 vinyl@^0.4.3:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/vinyl/-/vinyl-0.4.6.tgz#2f356c87a550a255461f36bbeb2a5ba8bf784847"
@@ -4163,7 +4169,7 @@ vinyl@^0.4.3:
     clone "^0.2.0"
     clone-stats "^0.0.1"
 
-vinyl@^1.0.0:
+vinyl@^1.0.0, vinyl@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/vinyl/-/vinyl-1.2.0.tgz#5c88036cf565e5df05558bfc911f8656df218884"
   dependencies:
