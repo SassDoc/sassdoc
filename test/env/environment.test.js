@@ -214,6 +214,31 @@ describe('#environment', function () {
   })
 
   /**
+   * A scoped package is passed as theme.
+   */
+  describe('#theme-scoped', function () {
+    beforeEach(function () {
+      env.load({ theme: '@test/sassdoc-theme-test' })
+      env.postProcess()
+      env.data = []
+      mkdirp.sync('.sassdoc')
+      return env.theme('.sassdoc', env)
+    })
+
+    it('should warn and render the default theme', function () {
+      assert.notEqual(-1, warnings[0].indexOf('Theme `@test/sassdoc-theme-test` not found'))
+      assert.notEqual(-1, warnings[1].indexOf('Falling back to default theme'))
+      assert.ok(env.themeName === 'default')
+      assert.ok(fs.existsSync('.sassdoc/index.html'))
+      assert.ok(fs.existsSync('.sassdoc/assets'))
+    })
+
+    after(function (done) {
+      rimraf('.sassdoc', done)
+    })
+  })
+
+  /**
    * ensureEnvironment
    */
   describe('#ensureEnvironment', function () {
