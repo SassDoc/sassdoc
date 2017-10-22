@@ -1,6 +1,11 @@
 # Changelog
 
 
+## 2.4.0
+
+  * Added support for scoped theme packages.
+    ([#514](https://github.com/SassDoc/sassdoc/issues/514), [#515](https://github.com/SassDoc/sassdoc/pull/515))
+    
 ## 2.3.0
 
  * Themes can now pass an `includeUnknownContexts` config key up to the parser.  
