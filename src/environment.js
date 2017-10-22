@@ -198,10 +198,20 @@ export default class Environment extends EventEmitter {
       return this.defaultTheme()
     }
 
-    if (this.theme.indexOf('/') === -1) {
+    const hasSlash = this.theme.includes('/')
+    const isScoped = this.theme.startsWith('@') && hasSlash
+
+    // We assume it's a full scoped package name.
+    if (isScoped) {
+      return this.tryTheme(this.theme)
+    }
+
+    // We assume it's a theme name shorthand.
+    if (!hasSlash) {
       return this.tryTheme(`sassdoc-theme-${this.theme}`)
     }
 
+    // We assume it's a path to a local theme.
     let theme = this.resolve(this.theme, this.themeCwd)
     this.themeName = this.theme
     this.displayTheme = path.relative(process.cwd(), theme)
