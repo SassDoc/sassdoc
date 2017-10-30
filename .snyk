@@ -1,0 +1,8 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.8.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:marked:20170907':
+    - sassdoc-theme-default > sassdoc-extras > marked:
+        patched: '2017-10-30T01:35:09.940Z'

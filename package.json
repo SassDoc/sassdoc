@@ -75,7 +75,9 @@
     "README.md"
   ],
   "scripts": {
-    "test": "make"
+    "test": "make",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "standard": {
     "env": {
@@ -111,7 +113,8 @@
     "update-notifier": "^2.2.0",
     "vinyl-fs": "^2.4.4",
     "vinyl-source-stream": "^1.0.0",
-    "vinyl-string": "^1.0.2"
+    "vinyl-string": "^1.0.2",
+    "snyk": "^1.47.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -128,5 +131,6 @@
     "sinon": "^2.3.4",
     "standard": "^10.0.3",
     "vinyl": "^2.1.0"
-  }
+  },
+  "snyk": true
 }
