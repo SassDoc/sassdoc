@@ -29,16 +29,18 @@ export default class Parser {
    */
   postProcess (data) {
     data = sorter(data)
+    let promises = []
 
     Object.keys(this.annotations.list).forEach(key => {
       let annotation = this.annotations.list[key]
 
       if (annotation.resolve) {
-        annotation.resolve(data)
+        let promise = Promise.resolve(annotation.resolve(data))
+        promises.push(promise)
       }
     })
 
-    return data
+    return Promise.all(promises).then(() => data)
   }
 
   /**
@@ -95,10 +97,11 @@ export default class Parser {
       if (!this.includeUnknownContexts) {
         data = data.filter(item => item.context.type !== 'unknown')
       }
-      data = this.postProcess(data)
-
-      deferred.resolve(data)
-      cb()
+      this.postProcess(data).then(processed => {
+        data = processed;
+        deferred.resolve(data)
+        cb()
+      })
     }
 
     let filter = through.obj(transform, flush)

@@ -266,6 +266,7 @@ async function baseDocumentize (env) {
 
   try {
     await pipeline()
+    await filter.promise
   } catch (err) {
     env.emit('error', err)
     throw err

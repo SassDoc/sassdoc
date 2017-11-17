@@ -73,4 +73,27 @@ describe('#parser', function () {
       assert.equal(data[0].context.type, 'unknown')
     })
   })
+
+  it('should include data from async annotation.resolve fns', function () {
+    var annotation = () => ({
+      name: 'async',
+      parse: raw => raw,
+      resolve: data => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            data.foo = 'bar'
+            resolve()
+          }, 10)
+        })
+      },
+    })
+    parser = new Parser(env, [annotation])
+    var parseStream = parser.stream()
+
+    vs('///desc\n///@async\n@function pass(){}', { path: 'fake' }).pipe(parseStream)
+
+    return parseStream.promise.then(data => {
+      assert.equal(data.foo, 'bar')
+    })
+  })
 })
