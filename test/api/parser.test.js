@@ -85,7 +85,7 @@ describe('#parser', function () {
             resolve()
           }, 10)
         })
-      },
+      }
     })
     parser = new Parser(env, [annotation])
     var parseStream = parser.stream()
