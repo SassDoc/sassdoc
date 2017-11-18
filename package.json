@@ -119,7 +119,7 @@
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-env": "^1.6.0",
     "coveralls": "^3.0.0",
-    "dateformat": "^2.0.0",
+    "dateformat": "^3.0.2",
     "jsesc": "^2.5.1",
     "mocha": "^3.4.2",
     "nyc": "^11.2.1",
