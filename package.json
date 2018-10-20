@@ -21,7 +21,7 @@
       "url": "https://twitter.com/pascalduez"
     }
   ],
-  "version": "2.5.0",
+  "version": "2.5.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -104,7 +104,7 @@
     "rimraf": "^2.6.2",
     "safe-wipe": "0.*",
     "sass-convert": "^0.5.0",
-    "sassdoc-theme-default": "^2.6.1",
+    "sassdoc-theme-default": "^2.6.2",
     "scss-comment-parser": "^0.8.3",
     "strip-indent": "^2.0.0",
     "through2": "1.1.1",
