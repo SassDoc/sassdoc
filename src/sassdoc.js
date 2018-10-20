@@ -241,7 +241,10 @@ async function baseDocumentize (env) {
       env.logger.debug(() => {
         fs.writeFile(
           'sassdoc-data.json',
-          JSON.stringify(data, null, 2) + '\n'
+          JSON.stringify(data, null, 2) + '\n',
+          err => {
+            if (err) throw err
+          }
         )
 
         return 'Dumping data to `sassdoc-data.json`.'
