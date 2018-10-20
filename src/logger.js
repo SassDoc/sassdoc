@@ -2,6 +2,7 @@ import { is } from './utils'
 import * as errors from './errors'
 import { format as fmt } from 'util'
 import chalkModule from 'chalk'
+import style from 'ansi-styles';
 
 const chalk = new chalkModule.constructor({
   enabled: process.stderr && process.stderr.isTTY,
@@ -95,9 +96,9 @@ export default class Logger {
     })
 
     let str = fmt(
-      `${chalkModule.styles.grey.open}${chevron} [DEBUG] ${args.shift()}`,
+      `${style.grey.open}${chevron} [DEBUG] ${args.shift()}`,
       ...args,
-      chalkModule.styles.grey.close
+      style.grey.close
     )
 
     this._stderr.write(`${str}\n`)
