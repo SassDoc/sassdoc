@@ -101,7 +101,7 @@
     "lodash.uniq": "^4.5.0",
     "minimatch": "^3.0.4",
     "mkdirp": "^0.5.0",
-    "multipipe": "^2.0.3",
+    "multipipe": "1.0.2",
     "rimraf": "^2.6.2",
     "safe-wipe": "0.*",
     "sass-convert": "^0.5.0",

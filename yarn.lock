@@ -3459,10 +3459,10 @@ ms@2.0.0:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
 
-multipipe@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/multipipe/-/multipipe-2.0.3.tgz#2305ecf8f69cc67737f507c460e6aec0a41eacfb"
-  integrity sha512-OtUaPHj/mrk2dh+34+uw7RGGg7rhOcV7UVjhyHM3zk/yvUq7580G5XNEw9elzjR2N92GmB+YxgS/b0+xo8zHPQ==
+multipipe@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/multipipe/-/multipipe-1.0.2.tgz#cc13efd833c9cda99f224f868461b8e1a3fd939d"
+  integrity sha1-zBPv2DPJzamfIk+GhGG44aP9k50=
   dependencies:
     duplexer2 "^0.1.2"
     object-assign "^4.1.0"
