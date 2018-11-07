@@ -60,7 +60,7 @@ export default function require_ (env) {
 
         let functions = searchForMatches(
           item.context.code,
-          new RegExp('(@include)?\\s*([a-z0-9_-]+)\\s*\\(', 'ig'), // Literal destorys Syntax
+          new RegExp('(@include)?\\s*([a-z0-9_-]+)\\s*\\(', 'ig'), // Literal destroys Syntax
           isAnnotatedByHand.bind(null, handWritten, 'function'),
           2 // Get the second matching group instead of 1
         )
@@ -77,23 +77,31 @@ export default function require_ (env) {
           isAnnotatedByHand.bind(null, handWritten, 'variable')
         )
 
-        // Create object for each required item.
-        mixins = mixins.map(typeNameObject('mixin'))
-        functions = functions.map(typeNameObject('function'))
-        placeholders = placeholders.map(typeNameObject('placeholder'))
-        variables = variables.map(typeNameObject('variable'))
+        // Create object for each required item, removing duplicates
+        mixins = mixins
+          .filter(removeDuplicates)
+          .map(typeNameObject('mixin'))
+        functions = functions
+          .filter(removeDuplicates)
+          .map(typeNameObject('function'))
+        placeholders = placeholders
+          .filter(removeDuplicates)
+          .map(typeNameObject('placeholder'))
+        variables = variables
+          .filter(removeDuplicates)
+          .map(typeNameObject("variable"));
 
         // Merge all arrays.
         let all = [].concat(mixins, functions, placeholders, variables)
 
-        // Merge in user supplyed requires if there are any.
+        // Merge in user supplied requires if there are any.
         if (item.require && item.require.length > 0) {
           all = all.concat(item.require)
         }
 
         // Filter empty values.
-        all = all.filter(x => {
-          return x !== undefined
+        all = all.filter((elem) => {
+          return elem !== undefined
         })
 
         if (all.length > 0) {
@@ -145,7 +153,9 @@ export default function require_ (env) {
             }
           }
 
-          reqItem.usedBy.push(item)
+          if (reqItem.usedBy.indexOf(item) === -1) {
+            reqItem.usedBy.push(item)
+          }
           req.item = reqItem
 
           return req
@@ -210,4 +220,8 @@ function typeNameObject (type) {
       }
     }
   }
+}
+
+function removeDuplicates (elem, pos, arr) {
+  return arr.indexOf(elem) === pos
 }
