@@ -34,6 +34,9 @@
     "throw": [
       "This is an error."
     ],
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "group": [
       "test"
     ],
@@ -114,6 +117,9 @@
     "throw": [
       "This is an error."
     ],
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "group": [
       "test"
     ],
@@ -192,6 +198,9 @@
       }
     ],
     "type": "{*}",
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "group": [
       "test"
     ],
@@ -257,6 +266,9 @@
     "throw": [
       "This is an error."
     ],
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "group": [
       "test"
     ],
@@ -306,6 +318,9 @@
         "start": 124,
         "end": 135
       }
+    },
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
     },
     "group": [
       "test"
@@ -377,6 +392,9 @@
         "external": false
       }
     ],
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "group": [
       "test"
     ],
@@ -402,6 +420,9 @@
       }
     },
     "require": [],
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "group": [
       "test"
     ],
@@ -427,6 +448,9 @@
       }
     },
     "alias": "alias-test-aliased",
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "group": [
       "test"
     ],
@@ -464,6 +488,9 @@
         "start": 167,
         "end": 167
       }
+    },
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
     },
     "group": [
       "test"
@@ -506,6 +533,9 @@
         "end": 174
       }
     },
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "group": [
       "test"
     ],
@@ -530,6 +560,9 @@
         "end": 180
       }
     },
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "group": [
       "test"
     ],
@@ -553,6 +586,9 @@
         "start": 185,
         "end": 186
       }
+    },
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
     },
     "group": [
       "test"
@@ -680,6 +716,9 @@
       "Nothing to do here.",
       "My people need me."
     ],
+    "groupDescriptions": {
+      "test": "This is a group description. It describes the group.\nIt can be split across multiple lines."
+    },
     "file": {
       "path": "test.scss",
       "name": "test.scss"
