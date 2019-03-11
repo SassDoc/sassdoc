@@ -6,6 +6,7 @@ module.exports = [
   require('./deprecated.js').default,
   require('./example.js').default,
   require('./group.js').default,
+  require('./groupDescription.js').default,
   require('./ignore.js').default,
   require('./link.js').default,
   require('./name.js').default,
