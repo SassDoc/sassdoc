@@ -10,4 +10,12 @@ describe('#group', function () {
     assert.deepEqual(group.parse('group'), ['group'])
     assert.deepEqual(group.parse('GRoup'), ['group'])
   })
+
+  it('should parse a description from subsequent lines', function () {
+    var item = {}
+    assert.deepEqual(group.parse('group\ndescription', item), ['group'])
+    assert.deepEqual(item, {'groupDescriptions': {
+      'group': 'description'
+    }})
+  })
 })

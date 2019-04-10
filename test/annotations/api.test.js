@@ -9,7 +9,7 @@ describe('#AnnotationsApi', function () {
   it('should include the right number of annotations', function () {
     assert.equal(
       Object.keys(api.list).length,
-      21
+      22
     )
   })
 })
