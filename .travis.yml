@@ -1,10 +1,10 @@
 language: node_js
 
 node_js:
-  - '4'
-  - '6'
-  - '8'
-  - 'stable'
+  - 6
+  - 8
+  - lts/*
+  - stable
 
 before_install:
   - npm i npm@latest -g
