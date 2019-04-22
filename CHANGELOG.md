@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.7.0
+
+  * Update `sassdoc-theme-default`.  
+    Template engine replacement, swap Swig per Nunjucks.
+
 ## 2.6.0
 
   * Update `sassdoc-theme-default`.  
