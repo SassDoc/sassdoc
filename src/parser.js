@@ -60,8 +60,6 @@ export default class Parser {
     let data = []
 
     let transform = (file, enc, cb) => {
-      // Pass-through.
-      cb(null, file)
 
       let parseFile = ({ buf, name, path }) => {
         let fileData = this.parse(buf.toString(enc), name)
@@ -76,20 +74,30 @@ export default class Parser {
         })
       }
 
-      if (file.isBuffer()) {
-        let args = {
-          buf: file.contents,
-          name: path.basename(file.relative),
-          path: file.relative,
+      let parseError = false;
+      try {
+        if (file.isBuffer()) {
+          let args = {
+            buf: file.contents,
+            name: path.basename(file.relative),
+            path: file.relative,
+          }
+          parseFile(args)
         }
 
-        parseFile(args)
+        if (file.isStream()) {
+          file.pipe(concat(buf => {
+            parseFile({ buf })
+          }))
+        }
+      } catch (error) {
+        parseError = true;
+        cb(error);
       }
 
-      if (file.isStream()) {
-        file.pipe(concat(buf => {
-          parseFile({ buf })
-        }))
+      // Pass-through.
+      if (!parseError) {
+        cb(null, file)
       }
     }
 
