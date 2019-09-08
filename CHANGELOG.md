@@ -1,5 +1,11 @@
 # Changelog
 
+
+## 2.7.1
+
+  * Allow SCSS parser stream errors to be caught.
+  [(#540)](https://github.com/SassDoc/sassdoc/pull/540)
+
 ## 2.7.0
 
   * Update `sassdoc-theme-default`.  
@@ -10,7 +16,7 @@
   * Update `sassdoc-theme-default`.  
   * Update `scss-comment-parser`.  
   * Add group description parsing
-  ([#534](https://github.com/SassDoc/sassdoc/pull/534)
+  [(#534)](https://github.com/SassDoc/sassdoc/pull/534)
 
 ## 2.5.1
 
