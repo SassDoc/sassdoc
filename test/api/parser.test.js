@@ -96,4 +96,16 @@ describe('#parser', function () {
       assert.equal(data.foo, 'bar')
     })
   })
+
+  it('should throw a catchable error for invalid scss stream', function (done) {
+    message = 'Parser did not throw a catchable error for invalid scss'
+
+    vs('///invalid\n$%^', { path: 'fake' }).pipe(parser.stream())
+      .on('error', () => {
+        done()
+      })
+      .on('finish', () => {
+        done(assert.ok(false, message))
+      })
+  })
 })
