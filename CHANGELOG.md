@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.2
+
+  * Update fs-vinyl dependency to fix security vulnerability.
+  [(#540)](https://github.com/SassDoc/sassdoc/pull/547)
 
 ## 2.7.1
 
