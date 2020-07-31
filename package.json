@@ -109,7 +109,7 @@
     "scss-comment-parser": "^0.8.4",
     "strip-indent": "^2.0.0",
     "through2": "1.1.1",
-    "update-notifier": "^2.5.0",
+    "update-notifier": "^4.1.0",
     "vinyl-fs": "^3.0.3",
     "vinyl-source-stream": "^1.0.0",
     "vinyl-string": "^1.0.2"
