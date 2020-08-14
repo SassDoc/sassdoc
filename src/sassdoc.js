@@ -16,7 +16,7 @@ import vfs from 'vinyl-fs'
 import converter from 'sass-convert'
 import pipe from 'multipipe'
 import through from 'through2'
-const mkdir = denodeify(require('mkdirp'))
+import mkdir from 'mkdirp';
 
 /**
  * Expose lower API blocks.
