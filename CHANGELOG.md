@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.7.3
+
+  * Update dependencies to fix security vulnerabilities.
+  Most notably `update-notifier`.
+
 ## 2.7.2
 
   * Update fs-vinyl dependency to fix security vulnerability.
