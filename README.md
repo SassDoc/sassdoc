@@ -17,7 +17,7 @@ Head to the [site][SassDoc] for extensive documentation.
 * [Valérian Galliat](https://twitter.com/valeriangalliat)
 * [Fabrice Weinberg](https://twitter.com/fweinb)
 * [Pascal Duez](https://twitter.com/pascalduez)
-* [Hugo Giraudel](http://twitter.com/HugoGiraudel)
+* [Kitty Giraudel](http://twitter.com/KittyGiraudel)
 
 [SassDoc]: http://sassdoc.com
 [npm-url]: https://www.npmjs.com/package/sassdoc
