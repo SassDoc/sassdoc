@@ -14,7 +14,7 @@ export default function alias (env) {
 
         let alias = item.alias
         let name = item.context.name
-        var aliasGroup = item.group
+        let aliasGroup = item.group
 
         let aliasedItem = Array.find(data, i => i.context.name === alias)
 
@@ -28,12 +28,12 @@ export default function alias (env) {
           aliasedItem.aliased = []
         }
 
-        if (!Array.isArray(aliasedItem.aliasedgroup)) {
-          aliasedItem.aliasedgroup = [];
+        if (!Array.isArray(aliasedItem.aliasedGroup)) {
+          aliasedItem.aliasedGroup = [];
         }
 
         aliasedItem.aliased.push(name)
-        aliasedItem.aliasedgroup.push({ group: aliasGroup, name: name })
+        aliasedItem.aliasedGroup.push({ group: aliasGroup, name: name })
       })
     },
 
