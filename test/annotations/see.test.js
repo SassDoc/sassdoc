@@ -13,6 +13,6 @@ describe('#see', function () {
   it('should rewrite the .toJSON method', function () {
     var data = [{ description: 'desc', context: { name: 'name' }, group: 'test' }, { see: [see.parse('name')] }]
     see.resolve(data)
-    assert.deepEqual(data[1].see.toJSON(), [{ description: 'desc', context: { name: 'name' }, group: 'test'}])
+    assert.deepEqual(data[1].see.toJSON(), [{ description: 'desc', context: { name: 'name' }, group: 'test' }])
   })
 })
