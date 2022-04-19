@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.7.4
+
+  * Support group in `@see` URL. [[SassDoc/sassdoc#567]](https://github.com/SassDoc/sassdoc/pull/567),
+    [[SassDoc/sassdoc#465]](https://github.com/SassDoc/sassdoc/pull/465) and
+    [[SassDoc/sassdoc-theme-default#116]](https://github.com/SassDoc/sassdoc-theme-default/pull/116).
+
 ## 2.7.3
 
   * Update dependencies to fix security vulnerabilities.
