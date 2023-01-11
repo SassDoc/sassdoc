@@ -36,6 +36,13 @@ describe('#property', function () {
       default: 'default',
       description: 'description [with brackets]'
     })
+
+    assert.deepEqual(prop.parse('{Function} base.default ["[default]"] default with inside brackets, description [with brackets]'), {
+      type: 'Function',
+      name: 'base.default',
+      default: '"[default]"',
+      description: 'default with inside brackets, description [with brackets]'
+    })
   })
 
   it('should work for multiline description', function () {
