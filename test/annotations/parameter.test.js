@@ -9,6 +9,7 @@ describe('#parameter', function () {
   it('should return an object', function () {
     assert.deepEqual(param.parse('{type} $hyphenated-name [default] - description'), { type: 'type', name: 'hyphenated-name', default: 'default', description: 'description' })
     assert.deepEqual(param.parse('{type} $name [default] - description [with brackets]'), { type: 'type', name: 'name', default: 'default', description: 'description [with brackets]' })
+    assert.deepEqual(param.parse('{type} $name ["[default]"] default with inside brackets, description [with brackets]'), { type: 'type', name: 'name', default: '"[default]"', description: 'default with inside brackets, description [with brackets]' })
     assert.deepEqual(param.parse('{List} $list - list to check'), { type: 'List', name: 'list', description: 'list to check' })
   })
 
